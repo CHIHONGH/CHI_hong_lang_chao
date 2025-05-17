@@ -416,53 +416,99 @@ on_actions = {
 				}
 				set_global_flag = war_won
 				if = {
-					limit = {
-						FROM = {
-							OR = {
-								original_tag = PRC
-								is_ally_with = PRC
-								has_war_with = PRC
-							}
-						}
+					limit = { 
 						ROOT = {
+							original_tag = CPP
+						}
+						FROM = {
 							original_tag = PER
 						}
 					}
-					FROM = {
-						PRC = {
-							annex_country = {
-								target = PER
-								transfer_troops = no
-							}
-							release_autonomy = {
-								target = PER
-								autonomy_state = autonomy_puppet
-								freedom_level = 0.1
-							}
+					PRC = {
+						add_to_faction = CPP
+						add_to_variable = {
+							CPC_frame = 8
 						}
-						PER = {
-							inherit_technology = PRC
-							set_cosmetic_tag = PRC_repolice_gonh
-							set_party_name = {
-								ideology = communist
-								long_name = PRC_nationalist_party_long
-								name = PRC_nationalist_party_long
-							}
-							set_politics = {
-								ruling_party = communist
-								election_frequency = 60
-								elections_allowed = yes
-							}
-							create_country_leader = {
-								name = "伊朗人民代表大会"
-								desc = "POLITICS_ASTGW_DESC"
-								picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-								expire = "1999.1.1"
-								ideology = marxism_leninism
-							}
+						clamp_variable = {
+							var = CPC_frame
+							min = 0
+							max = 100
+						}
+						add_to_variable = {
+							PRC_Lib_Int_Dir_Var = 1
 						}
 					}
-					set_global_flag = skip_default_capitulation
+					CPP = {
+						every_core_state = {
+							remove_core_of = PER
+						}
+					}
+				}
+				if = {
+					limit = { 
+						ROOT = {
+							original_tag = CPA
+						}
+						FROM = {
+							original_tag = TAL	
+						}
+						NOT = {
+							country_exists = AFG
+						}
+					}
+					PRC = {
+						add_to_faction = CPA
+						add_to_variable = {
+							CPC_frame = 8
+						}
+						clamp_variable = {
+							var = CPC_frame
+							min = 0
+							max = 100
+						}
+						add_to_variable = {
+							PRC_Lib_Int_Dir_Var = 1
+						}
+					}
+					CPA = {
+						every_core_state = {
+							remove_core_of = TAL
+							remove_core_of = AFG
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						ROOT = {
+							original_tag = CPA
+						}
+						FROM = {
+							original_tag = AFG
+						}
+						NOT = {
+							country_exists = TAL
+						}
+					}
+					PRC = {
+						add_to_faction = CPA
+						add_to_variable = {
+							CPC_frame = 8
+						}
+						clamp_variable = {
+							var = CPC_frame
+							min = 0
+							max = 100
+						}
+						add_to_variable = {
+							PRC_Lib_Int_Dir_Var = 1
+						}
+					}
+					CPA = {
+						every_core_state = {
+							remove_core_of = TAL
+							remove_core_of = AFG
+						}
+					}
 				}
 				if = {
 					# ROP kill PHI
