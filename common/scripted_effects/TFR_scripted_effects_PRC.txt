@@ -1,475 +1,484 @@
-	#Party Approval
-	PRC_add_party_approval = {
-		custom_effect_tooltip = PRC_add_party_approval_tt
-		
-		add_to_variable = {
-			var = PRC_approval_rating_var
-			value = PRC_approval_rating_var_temp
-		}
-		
-		clamp_variable = {
-			var = PRC_approval_rating_var
-			min = -0.5
-			max = 1
-		}
-
-		set_variable = {
-			var = PRC_approval_rating_dynamic_var
-			value = PRC_approval_rating_var
-		}
-		
-		multiply_variable = {
-			var = PRC_approval_rating_dynamic_var
-			value = 0.1
-		}
+#Party Approval
+PRC_add_party_approval = {
+	custom_effect_tooltip = PRC_add_party_approval_tt
+	add_to_variable = {
+		var = PRC_approval_rating_var
+		value = PRC_approval_rating_var_temp
 	}
+	clamp_variable = {
+		var = PRC_approval_rating_var
+		min = -0.5
+		max = 1
+	}
+	set_variable = {
+		var = PRC_approval_rating_dynamic_var
+		value = PRC_approval_rating_var
+	}
+	multiply_variable = {
+		var = PRC_approval_rating_dynamic_var
+		value = 0.1
+	}
+}
 
-	PRC_add_capital_flight_timeout = {
-		custom_effect_tooltip = PRC_capital_flight_timeout_tt
-		
-		add_to_variable = {
-			var = PRC_capital_flight_timeout
-			value = PRC_capital_flight_timeout_temp
+PRC_add_capital_flight_timeout = {
+	custom_effect_tooltip = PRC_capital_flight_timeout_tt
+	add_to_variable = {
+		var = PRC_capital_flight_timeout
+		value = PRC_capital_flight_timeout_temp
+	}
+	clamp_variable = {
+		var = PRC_capital_flight_timeout
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_enviromental_progress = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = PRC_environmental_reform_success
+			}
 		}
-		
+		custom_effect_tooltip = PRC_add_enviromental_progress_tt
+		add_to_variable = {
+			var = PRC_enviromental_progress
+			value = PRC_enviromental_progress_temp
+		}
 		clamp_variable = {
-			var = PRC_capital_flight_timeout
+			var = PRC_enviromental_progress
 			min = 0
 			max = 1
 		}
-	}
-
-	PRC_add_enviromental_progress = {
 		if = {
 			limit = {
-				NOT = {
-					has_country_flag = PRC_environmental_reform_success
+				check_variable = {
+					var = PRC_enviromental_progress
+					value = 0.3
+					compare = less_than_or_equals
 				}
 			}
-			custom_effect_tooltip = PRC_add_enviromental_progress_tt
-		
-			add_to_variable = {
-				var = PRC_enviromental_progress
-				value = PRC_enviromental_progress_temp
-			}
-
-			clamp_variable = {
-				var = PRC_enviromental_progress
-				min = 0
-				max = 1
-			}
-			if = {
-				limit = {
-					check_variable = {
-						var = PRC_enviromental_progress
-						value = 0.3
-						compare = less_than_or_equals
-					}
-				}
-				PRC = {
-					country_event = { id = china.223 days = 6 }
+			PRC = {
+				country_event = {
+					id = china.223
+					days = 6
 				}
 			}
-			if = {
-				limit = {
-					check_variable = {
-						var = PRC_enviromental_progress
-						value = 0.2
-						compare = less_than_or_equals
-					}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = PRC_enviromental_progress
+					value = 0.2
+					compare = less_than_or_equals
 				}
-				PRC = {
-					country_event = { id = china.224 days = 8 }
-					country_event = { id = china.225 days = 45 }
+			}
+			PRC = {
+				country_event = {
+					id = china.224
+					days = 8
+				}
+				country_event = {
+					id = china.225
+					days = 45
 				}
 			}
 		}
 	}
+}
 
-	PRC_add_reforms_progress = {
-		custom_effect_tooltip = PRC_add_reforms_progress_tooltip
-		add_to_variable = {
-			var = PRC_reforms_progress
-			value = PRC_reforms_progress_temp
+PRC_add_reforms_progress = {
+	custom_effect_tooltip = PRC_add_reforms_progress_tooltip
+	add_to_variable = {
+		var = PRC_reforms_progress
+		value = PRC_reforms_progress_temp
+	}
+	clamp_variable = {
+		var = PRC_reforms_progress
+		min = 0
+		max = 100
+	}
+}
+
+PRC_add_xiongania_progress = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = PRC_capital_construction_process_is_finished_flag
+			}
 		}
-	
+		custom_effect_tooltip = PRC_add_xiongania_progress_tooltip
+		add_to_variable = {
+			var = PRC_xiongania_progress
+			value = PRC_xiongania_progress_temp
+		}
 		clamp_variable = {
-			var = PRC_reforms_progress
+			var = PRC_xiongania_progress
 			min = 0
 			max = 100
-		}		
-	}
-
-	PRC_add_xiongania_progress = {
+		}
 		if = {
 			limit = {
-				NOT = {
-					has_country_flag = PRC_capital_construction_process_is_finished_flag
+				check_variable = {
+					var = PRC_xiongania_progress
+					value = 99
+					compare = greater_than_or_equals
 				}
 			}
-			custom_effect_tooltip = PRC_add_xiongania_progress_tooltip
-			add_to_variable = {
-				var = PRC_xiongania_progress
-				value = PRC_xiongania_progress_temp
-			}
-
-			clamp_variable = {
-				var = PRC_xiongania_progress
-				min = 0
-				max = 100
-			}
-
-			if = {
-				limit = {
-					check_variable = {
-						var = PRC_xiongania_progress
-						value = 99
-						compare = greater_than_or_equals
-					}
-				}
-				PRC = {
-					country_event = { id = china.413 days = 5 }
+			PRC = {
+				country_event = {
+					id = china.413
+					days = 5
 				}
 			}
 		}
 	}
+}
 
-	PRC_decrease_overloaded_bureaucracy = {
+PRC_decrease_overloaded_bureaucracy = {
+	effect_tooltip = {
+		swap_ideas = {
+			remove_idea = PRC_overloaded_bureaucracy_idea
+			add_idea = PRC_overloaded_bureaucracy_idea_bad
+		}
+	}
+	hidden_effect = {
+		add_to_variable = {
+			var = PRC_bureaucracy_conscription_factor_dynamic_var
+			value = -0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_stability_factor_dynamic_var
+			value = -0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_political_power_factor_dynamic_var
+			value = -0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_production_speed_buildings_factor_dynamic_var
+			value = -0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_industrial_capacity_factory_dynamic_var
+			value = -0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var
+			value = -0.025
+		}
+	}
+}
+
+PRC_increase_overloaded_bureaucracy = {
+	effect_tooltip = {
+		swap_ideas = {
+			remove_idea = PRC_overloaded_bureaucracy_idea
+			add_idea = PRC_overloaded_bureaucracy_idea_good
+		}
+	}
+	hidden_effect = {
+		add_to_variable = {
+			var = PRC_bureaucracy_conscription_factor_dynamic_var
+			value = 0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_stability_factor_dynamic_var
+			value = 0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_political_power_factor_dynamic_var
+			value = 0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_production_speed_buildings_factor_dynamic_var
+			value = 0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_industrial_capacity_factory_dynamic_var
+			value = 0.025
+		}
+		add_to_variable = {
+			var = PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var
+			value = 0.025
+		}
+	}
+}
+
+PRC_add_loji_project_web_progress = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = PRC_loji_project_web_success
+			}
+		}
+		custom_effect_tooltip = PRC_add_loji_project_web_progress_tooltip
+		add_to_variable = {
+			var = PRC_loji_project_web_progress
+			value = PRC_loji_project_web_progress_temp
+		}
+		clamp_variable = {
+			var = PRC_loji_project_web_progress
+			min = 0
+			max = 1
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = PRC_loji_project_web_progress
+					value = 0.99
+					compare = greater_than_or_equals
+				}
+			}
+			PRC = {
+				country_event = {
+					id = china.481
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+PRC_add_army_reform_progress = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = PRC_army_reform_success
+			}
+		}
+		custom_effect_tooltip = PRC_add_army_reform_progress_tooltip
+		add_to_variable = {
+			var = PRC_army_reform_progress
+			value = PRC_army_reform_progress_temp
+		}
+		clamp_variable = {
+			var = PRC_army_reform_progress
+			min = 0
+			max = 1
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = PRC_army_reform_progress
+					value = 0.99
+					compare = greater_than_or_equals
+				}
+			}
+			PRC = {
+				country_event = {
+					id = china.278
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+#Corona
+PRC_decrease_corona = {
+	if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea4
+		}
+		remove_ideas = PRC_coronavirus_pandemic_idea4
+		set_country_flag = PRC_no_coronavirus
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea3
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea3
+			add_idea = PRC_coronavirus_pandemic_idea4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea2
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea2
+			add_idea = PRC_coronavirus_pandemic_idea3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea1
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea1
+			add_idea = PRC_coronavirus_pandemic_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea
+			add_idea = PRC_coronavirus_pandemic_idea1
+		}
+	}
+}
+
+PRC_decrease_oil = {
+	if = {
+		limit = {
+			has_idea = PRC_oil_crash5
+		}
+		remove_ideas = PRC_oil_crash5
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash4
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash4
+			add_idea = PRC_oil_crash5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash3
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash3
+			add_idea = PRC_oil_crash4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash2
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash2
+			add_idea = PRC_oil_crash3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash1
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash1
+			add_idea = PRC_oil_crash2
+		}
+	}
+	else = {
+		#Prevents empty effects
 		effect_tooltip = {
-			swap_ideas = {					
-				remove_idea = PRC_overloaded_bureaucracy_idea
-				add_idea = PRC_overloaded_bureaucracy_idea_bad
-			}
-		}
-		hidden_effect = {
-			add_to_variable = {
-				var = PRC_bureaucracy_conscription_factor_dynamic_var
-				value = -0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_stability_factor_dynamic_var
-				value = -0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_political_power_factor_dynamic_var
-				value = -0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_production_speed_buildings_factor_dynamic_var
-				value = -0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_industrial_capacity_factory_dynamic_var
-				value = -0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var
-				value = -0.025
-			}
-		}		
-	}
-
-	PRC_increase_overloaded_bureaucracy = {
-		effect_tooltip = {
-			swap_ideas = {					
-				remove_idea = PRC_overloaded_bureaucracy_idea
-				add_idea = PRC_overloaded_bureaucracy_idea_good
-			}
-		}
-		hidden_effect = {
-			add_to_variable = {
-				var = PRC_bureaucracy_conscription_factor_dynamic_var
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_stability_factor_dynamic_var
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_political_power_factor_dynamic_var
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_production_speed_buildings_factor_dynamic_var
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_industrial_capacity_factory_dynamic_var
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var
-				value = 0.025
-			}
-		}		
-	}
-
-	PRC_add_loji_project_web_progress = {
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = PRC_loji_project_web_success
-				}
-			}
-			custom_effect_tooltip = PRC_add_loji_project_web_progress_tooltip
-			add_to_variable = {
-				var = PRC_loji_project_web_progress
-				value = PRC_loji_project_web_progress_temp
-			}
-
-			clamp_variable = {
-				var = PRC_loji_project_web_progress
-				min = 0
-				max = 1
-			}
-			if = {
-				limit = {
-					check_variable = {
-						var = PRC_loji_project_web_progress
-						value = 0.99
-						compare = greater_than_or_equals
-					}
-				}
-				PRC = {
-					country_event = { id = china.481 days = 1 }
-				}
-			}
-		}		
-	}
-
-	PRC_add_army_reform_progress = {
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = PRC_army_reform_success
-				}
-			}
-			custom_effect_tooltip = PRC_add_army_reform_progress_tooltip
-			add_to_variable = {
-				var = PRC_army_reform_progress
-				value = PRC_army_reform_progress_temp
-			}
-
-			clamp_variable = {
-				var = PRC_army_reform_progress
-				min = 0
-				max = 1
-			}
-			if = {
-				limit = {
-					check_variable = {
-						var = PRC_army_reform_progress
-						value = 0.99
-						compare = greater_than_or_equals
-					}
-				}
-				PRC = {
-					country_event = { id = china.278 days = 1 }
-				}
-			}
-		}		
-	}
-	#Corona
-	PRC_decrease_corona = {
-		if = {
-			limit = {
-				has_idea = PRC_coronavirus_pandemic_idea4
-			}
-			remove_ideas = PRC_coronavirus_pandemic_idea4
-			set_country_flag = PRC_no_coronavirus
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_coronavirus_pandemic_idea3
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea3
-				add_idea = PRC_coronavirus_pandemic_idea4
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_coronavirus_pandemic_idea2
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea2
-				add_idea = PRC_coronavirus_pandemic_idea3
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_coronavirus_pandemic_idea1 
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea1
-				add_idea = PRC_coronavirus_pandemic_idea2
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_coronavirus_pandemic_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea
-				add_idea = PRC_coronavirus_pandemic_idea1
-			}
-		}
-	}
-	
-	PRC_decrease_oil = {
-		if = {
-			limit = {
-				has_idea = PRC_oil_crash5
-			}
-			remove_ideas = PRC_oil_crash5
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_oil_crash4
-			}
-			swap_ideas = {
-				remove_idea = PRC_oil_crash4
-				add_idea = PRC_oil_crash5
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_oil_crash3
-			}
-			swap_ideas = {
-				remove_idea = PRC_oil_crash3
-				add_idea = PRC_oil_crash4
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_oil_crash2 
-			}
-			swap_ideas = {
-				remove_idea = PRC_oil_crash2
-				add_idea = PRC_oil_crash3
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_oil_crash1
-			}
 			swap_ideas = {
 				remove_idea = PRC_oil_crash1
 				add_idea = PRC_oil_crash2
 			}
 		}
-		else = {
-			#Prevents empty effects
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_oil_crash1
-					add_idea = PRC_oil_crash2
-				}
-			}
+	}
+}
+
+PRC_decrease_corrupt_bureaucracy = {
+	if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy_idea
+			add_idea = PRC_corrupt_bureaucracy2_idea
 		}
 	}
-	PRC_decrease_corrupt_bureaucracy = {
-		if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy_idea
-				add_idea = PRC_corrupt_bureaucracy2_idea
-			}
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy2_idea
 		}
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy2_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy2_idea
-				add_idea = PRC_corrupt_bureaucracy3_idea
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy3_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy3_idea
-				add_idea = PRC_corrupt_bureaucracy4_idea
-			}
-		}		
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy4_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy4_idea
-				add_idea = PRC_corrupt_bureaucracy5_idea
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy5_idea
-			}
-			remove_ideas = PRC_corrupt_bureaucracy5_idea
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy2_idea
+			add_idea = PRC_corrupt_bureaucracy3_idea
 		}
 	}
-	PRC_increase_corrupt_bureaucracy = {
-		if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy_negative1_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy_negative1_idea
-				add_idea = PRC_corrupt_bureaucracy_negative2_idea
-			}
-		}	
-		if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy_idea
-				add_idea = PRC_corrupt_bureaucracy_negative1_idea
-			}
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy3_idea
 		}
-		if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy2_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy2_idea
-				add_idea = PRC_corrupt_bureaucracy_idea
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy3_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy3_idea
-				add_idea = PRC_corrupt_bureaucracy2_idea
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy4_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy4_idea
-				add_idea = PRC_corrupt_bureaucracy3_idea
-			}
-		}		
-		else_if = {
-			limit = {
-				has_idea = PRC_corrupt_bureaucracy5_idea
-			}
-			swap_ideas = {
-				remove_idea = PRC_corrupt_bureaucracy5_idea
-				add_idea = PRC_corrupt_bureaucracy4_idea
-			}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy3_idea
+			add_idea = PRC_corrupt_bureaucracy4_idea
 		}
 	}
-	PRC_increase_comprehensive_transformation = {
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy4_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy4_idea
+			add_idea = PRC_corrupt_bureaucracy5_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy5_idea
+		}
+		remove_ideas = PRC_corrupt_bureaucracy5_idea
+	}
+}
+
+PRC_increase_corrupt_bureaucracy = {
+	if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy_negative1_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy_negative1_idea
+			add_idea = PRC_corrupt_bureaucracy_negative2_idea
+		}
+	}
+	if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy_idea
+			add_idea = PRC_corrupt_bureaucracy_negative1_idea
+		}
+	}
+	if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy2_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy2_idea
+			add_idea = PRC_corrupt_bureaucracy_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy3_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy3_idea
+			add_idea = PRC_corrupt_bureaucracy2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy4_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy4_idea
+			add_idea = PRC_corrupt_bureaucracy3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_corrupt_bureaucracy5_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_corrupt_bureaucracy5_idea
+			add_idea = PRC_corrupt_bureaucracy4_idea
+		}
+	}
+}
+
+PRC_increase_comprehensive_transformation = {
 	if = {
 		limit = {
 			NOT = {
@@ -520,2219 +529,2253 @@
 			remove_idea = PRC_comprehensive_transformation_4
 			add_idea = PRC_comprehensive_transformation_5
 		}
-	}	
+	}
 }
-	PRC_increase_corona = {
-		if = {
-			limit = {
-				has_idea = PRC_coronavirus_pandemic_idea4
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea4
-				add_idea = PRC_coronavirus_pandemic_idea3
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_coronavirus_pandemic_idea3
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea3
-				add_idea = PRC_coronavirus_pandemic_idea2
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_coronavirus_pandemic_idea2
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea2
-				add_idea = PRC_coronavirus_pandemic_idea1
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_coronavirus_pandemic_idea1 
-			}
-			swap_ideas = {
-				remove_idea = PRC_coronavirus_pandemic_idea1
-				add_idea = PRC_coronavirus_pandemic_idea
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_coronavirus_pandemic_idea
-			}
-			add_stability = -0.05
-		}
-		else = {
-			add_ideas = PRC_coronavirus_pandemic_idea4
-		}
-	}
-	
-	#Influence Effects
-	
-	
-	PRC_add_influence_nat = {
-		custom_effect_tooltip = PRC_influence_nat_tooltip
-		
-		add_to_variable = {
-			var = PRC_influence_nat_var
-			value = PRC_influence_nat_var_temp
-		}
-		
-		clamp_variable = {
-			var = PRC_influence_nat_var
-			min = 0
-			max = 1
-		}
 
-		set_variable = {
-			var = PRC_influence_nat_dynamic_var
-			value = PRC_influence_nat_var
+PRC_increase_corona = {
+	if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea4
 		}
-		
-		multiply_variable = {
-			var = PRC_influence_nat_dynamic_var
-			value = 0.1
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea4
+			add_idea = PRC_coronavirus_pandemic_idea3
 		}
 	}
-	
-	PRC_add_influence_cen = {
-		custom_effect_tooltip = PRC_influence_cen_tooltip
-		
-		add_to_variable = {
-			var = PRC_influence_cen_var
-			value = PRC_influence_cen_var_temp
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea3
 		}
-		
-		clamp_variable = {
-			var = PRC_influence_cen_var
-			min = 0
-			max = 1
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea3
+			add_idea = PRC_coronavirus_pandemic_idea2
 		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea2
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea2
+			add_idea = PRC_coronavirus_pandemic_idea1
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea1
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea1
+			add_idea = PRC_coronavirus_pandemic_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea
+		}
+		add_stability = -0.05
+	}
+	else = {
+		add_ideas = PRC_coronavirus_pandemic_idea4
+	}
+}
 
-		set_variable = {
-			var = PRC_influence_cen_dynamic_var
-			value = PRC_influence_cen_var
-		}
-		
-		multiply_variable = {
-			var = PRC_influence_cen_dynamic_var
-			value = 0.2
-		}
+#Influence Effects
+PRC_add_influence_nat = {
+	custom_effect_tooltip = PRC_influence_nat_tooltip
+	add_to_variable = {
+		var = PRC_influence_nat_var
+		value = PRC_influence_nat_var_temp
 	}
-	
-	PRC_add_influence_new = {
-		custom_effect_tooltip = PRC_influence_new_tooltip
-		
-		add_to_variable = {
-			var = PRC_influence_new_var
-			value = PRC_influence_new_var_temp
-		}
-		
-		clamp_variable = {
-			var = PRC_influence_new_var
-			min = 0
-			max = 1
-		}
+	clamp_variable = {
+		var = PRC_influence_nat_var
+		min = 0
+		max = 1
+	}
+	set_variable = {
+		var = PRC_influence_nat_dynamic_var
+		value = PRC_influence_nat_var
+	}
+	multiply_variable = {
+		var = PRC_influence_nat_dynamic_var
+		value = 0.1
+	}
+}
 
-		set_variable = {
-			var = PRC_influence_new_dynamic_var
-			value = PRC_influence_new_var
-		}
-		
-		multiply_variable = {
-			var = PRC_influence_new_dynamic_var
-			value = 0.2
-		}
+PRC_add_influence_cen = {
+	custom_effect_tooltip = PRC_influence_cen_tooltip
+	add_to_variable = {
+		var = PRC_influence_cen_var
+		value = PRC_influence_cen_var_temp
 	}
-	
-	PRC_add_influence_lib = {
-		custom_effect_tooltip = PRC_influence_lib_tooltip
-		
-		add_to_variable = {
-			var = PRC_influence_lib_var
-			value = PRC_influence_lib_var_temp
-		}
-		
-		clamp_variable = {
-			var = PRC_influence_lib_var
-			min = 0
-			max = 1
-		}
+	clamp_variable = {
+		var = PRC_influence_cen_var
+		min = 0
+		max = 1
+	}
+	set_variable = {
+		var = PRC_influence_cen_dynamic_var
+		value = PRC_influence_cen_var
+	}
+	multiply_variable = {
+		var = PRC_influence_cen_dynamic_var
+		value = 0.2
+	}
+}
 
-		set_variable = {
-			var = PRC_influence_lib_dynamic_var
-			value = PRC_influence_lib_var
-		}
-		
-		multiply_variable = {
-			var = PRC_influence_lib_dynamic_var
-			value = 0.2
-		}
+PRC_add_influence_new = {
+	custom_effect_tooltip = PRC_influence_new_tooltip
+	add_to_variable = {
+		var = PRC_influence_new_var
+		value = PRC_influence_new_var_temp
 	}
-	
-	PRC_who_won_power_struggle = {
-		if = {
-			limit = {
-				AND = {
-					check_variable = { 
-						PRC_influence_new_var > PRC_influence_lib_var
-					}
-					check_variable = { 
-						PRC_influence_new_var > PRC_influence_aut_var 
-					}
-					check_variable = { 
-						PRC_influence_new_var > PRC_influence_cen_var 
-					}
-					check_variable = { 
-						PRC_influence_new_var > PRC_influence_nat_var 
-					}
-				}
-			}
-			set_country_flag = PRC_new_left_victory_flag
-			country_event = {
-				id = china.17
-				days = 1
-			}
-		}
-		else_if = {
-			limit = {
-				AND = {
-					check_variable = { PRC_influence_lib_var > PRC_influence_new_var }
-					check_variable = { PRC_influence_lib_var > PRC_influence_aut_var }
-					check_variable = { PRC_influence_lib_var > PRC_influence_cen_var }
-					check_variable = { PRC_influence_lib_var > PRC_influence_nat_var }
-				}
-			}
-			set_country_flag = PRC_liberal_victory_flag
-			country_event = {
-				id = china.19
-				days = 1
-			}
-			random = {
-				chance = 80
-				CHI = {
-					country_event = {
-						id = taiwan.9
-						days = 14 
-						random_days = 20
-					}
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				AND = {
-					check_variable = { PRC_influence_aut_var > PRC_influence_new_var }
-					check_variable = { PRC_influence_aut_var > PRC_influence_lib_var}
-					check_variable = { PRC_influence_aut_var > PRC_influence_cen_var }
-					check_variable = { PRC_influence_aut_var > PRC_influence_nat_var }
-				}
-			}
-			set_country_flag = PRC_authoritarian_victory_flag
-			country_event = {
-				id = china.22
-				days = 1
-			}
-		}
-		else_if = {
-			limit = {
-				AND = {
-					check_variable = { PRC_influence_cen_var > PRC_influence_new_var }
-					check_variable = { PRC_influence_cen_var > PRC_influence_lib_var}
-					check_variable = { PRC_influence_cen_var > PRC_influence_aut_var }
-					check_variable = { PRC_influence_cen_var > PRC_influence_nat_var }
-				}
-			}
-			set_country_flag = PRC_centrists_victory_flag
-			country_event = {
-				id = china.20
-				days = 1
-			}
-		}
-		else_if = {
-			limit = {
-				AND = {
-					check_variable = { PRC_influence_nat_var > PRC_influence_new_var }
-					check_variable = { PRC_influence_nat_var > PRC_influence_lib_var}
-					check_variable = { PRC_influence_nat_var > PRC_influence_aut_var }
-					check_variable = { PRC_influence_nat_var > PRC_influence_cen_var }
-				}
-			}
-			set_country_flag = PRC_nationalist_victory_flag
-			country_event = {
-				id = china.21
-				days = 1
-			}
-		}
-		else = {
-			add_political_power = 2000
-		}
+	clamp_variable = {
+		var = PRC_influence_new_var
+		min = 0
+		max = 1
 	}
-	
-	#SE Asia
-	PRC_add_CAM_influence = {
-		custom_effect_tooltip = PRC_add_CAM_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_CAM_var 
-			value = global.PRC_influence_CAM_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_CAM_var
-			min = 0
-			max = 1
-		}
+	set_variable = {
+		var = PRC_influence_new_dynamic_var
+		value = PRC_influence_new_var
 	}
-	PRC_subtract_CAM_influence = {
-		custom_effect_tooltip = PRC_subtract_CAM_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_CAM_var 
-			value = global.PRC_influence_CAM_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_CAM_var
-			min = 0
-			max = 1
-		}
+	multiply_variable = {
+		var = PRC_influence_new_dynamic_var
+		value = 0.2
 	}
-	PRC_add_INS_influence = {
-		custom_effect_tooltip = PRC_add_INS_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_INS_var 
-			value = global.PRC_influence_INS_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_INS_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_INS_influence = {
-		custom_effect_tooltip = PRC_subtract_INS_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_INS_var 
-			value = global.PRC_influence_INS_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_INS_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_LAO_influence = {
-		custom_effect_tooltip = PRC_add_LAO_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_LAO_var 
-			value = global.PRC_influence_LAO_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_LAO_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_LAO_influence = {
-		custom_effect_tooltip = PRC_subtract_LAO_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_LAO_var 
-			value = global.PRC_influence_LAO_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_LAO_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_MAL_influence = {
-		custom_effect_tooltip = PRC_add_MAL_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_MAL_var 
-			value = global.PRC_influence_MAL_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_MAL_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_MAL_influence = {
-		custom_effect_tooltip = PRC_subtract_MAL_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_MAL_var 
-			value = global.PRC_influence_MAL_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_MAL_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_BRM_influence = {
-		custom_effect_tooltip = PRC_add_BRM_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_BRM_var 
-			value = global.PRC_influence_BRM_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_BRM_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_BRM_influence = {
-		custom_effect_tooltip = PRC_subtract_BRM_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_BRM_var 
-			value = global.PRC_influence_BRM_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_BRM_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_PHI_influence = {
-		custom_effect_tooltip = PRC_add_PHI_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_PHI_var 
-			value = global.PRC_influence_PHI_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_PHI_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_PHI_influence = {
-		custom_effect_tooltip = PRC_subtract_PHI_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_PHI_var 
-			value = global.PRC_influence_PHI_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_PHI_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_SIG_influence = {
-		custom_effect_tooltip = PRC_add_SIG_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_SIG_var 
-			value = global.PRC_influence_SIG_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_SIG_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_SIG_influence = {
-		custom_effect_tooltip = PRC_subtract_SIG_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_SIG_var 
-			value = global.PRC_influence_SIG_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_SIG_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_SIA_influence = {
-		custom_effect_tooltip = PRC_add_SIA_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_SIA_var 
-			value = global.PRC_influence_SIA_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_SIA_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_SIA_influence = {
-		custom_effect_tooltip = PRC_subtract_SIA_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_SIA_var 
-			value = global.PRC_influence_SIA_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_SIA_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_add_VIN_influence = {
-		custom_effect_tooltip = PRC_add_VIN_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_VIN_var 
-			value = global.PRC_influence_VIN_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_VIN_var
-			min = 0
-			max = 1
-		}
-	}
-	PRC_subtract_VIN_influence = {
-		custom_effect_tooltip = PRC_subtract_VIN_influence_tt
-		
-		add_to_variable = {
-			var = global.PRC_influence_VIN_var 
-			value = global.PRC_influence_VIN_var_temp
-		}
-		
-		clamp_variable = {
-			var = global.PRC_influence_VIN_var
-			min = 0
-			max = 1
-		}
-	}
-	
-	PRC_increase_mss = {
-		if = {
-			limit = {
-				has_idea = PRC_mss_idea1
-			}
-			swap_ideas = {
-				remove_idea = PRC_mss_idea1
-				add_idea = PRC_mss_idea2
-			}
-		}
-		else_if = {
-			limit = { 
-				has_idea = PRC_mss_idea2
-			}
-			swap_ideas = {
-				remove_idea = PRC_mss_idea2
-				add_idea = PRC_mss_idea3
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_mss_idea3
-			}
-			swap_ideas = {
-				remove_idea = PRC_mss_idea3
-				add_idea = PRC_mss_idea4
-			}
-		}
-		else_if = {
-			limit = {
-				has_idea = PRC_mss_idea4
-			}
-			swap_ideas = {
-				remove_idea = PRC_mss_idea4
-				add_idea = PRC_mss_idea5
-			}
-		}
-	}
-	
-	PRC_increase_war_exhaustion = {
-		add_to_variable = {
-			PRC_war_exhaustion_war_support_factor_dynamic = -0.015
-		}
-		add_to_variable = {
-			PRC_war_exhaustion_army_attack_factor_dynamic = -0.015
-		}
-		add_to_variable = {
-			PRC_war_exhaustion_army_defence_factor_dynamic = -0.015
-		}
-		add_to_variable = {
-			PRC_war_exhaustion_army_org_factor_dynamic = -0.01
-		}
-		add_to_variable = {
-			PRC_war_exhaustion_army_morale_factor_dynamic = -0.02
-		}
-		add_to_variable = {
-			PRC_war_exhaustion_surrender_limit_dynamic = -0.005
-		}
-		effect_tooltip = {
-			swap_ideas = {
-				remove_idea = PRC_war_exhaustion
-				add_idea = PRC_war_exhaustion2
-			}
-		}
-	}
+}
 
-	PRC_japans_victory_in_the_gaw = {
-		set_global_flag = PRC_japanese_gaw_victory_global
-		set_country_flag = GAW_disabled
-		clr_global_flag = pan_asian_war_ongoing
-		PRC = { #return "days = x" later
-			#country_event = { id = china.248 days = 1 }
-			#country_event = { id = china.249 days = 2 }
-			#country_event = { id = china.44 days = 3 }
-			#country_event = { id = china.45 days = 4 }
-			#country_event = { id = china.46 days = 5 }
-			#country_event = { id = china.47 days = 6 }
-			#country_event = { id = china.48 days = 7 }
-			#country_event = { id = china.49 days = 8 }
-			#country_event = { id = china.50 days = 9 }
-			#country_event = { id = china.51 days = 10 }
-			country_event = china.247
-		}
-		set_global_flag = PRC_china_collapse
-		news_event = news.414
-		if = {
-			limit = {
-				has_global_flag = PRC_taiwan_war_lost
+PRC_add_influence_lib = {
+	custom_effect_tooltip = PRC_influence_lib_tooltip
+	add_to_variable = {
+		var = PRC_influence_lib_var
+		value = PRC_influence_lib_var_temp
+	}
+	clamp_variable = {
+		var = PRC_influence_lib_var
+		min = 0
+		max = 1
+	}
+	set_variable = {
+		var = PRC_influence_lib_dynamic_var
+		value = PRC_influence_lib_var
+	}
+	multiply_variable = {
+		var = PRC_influence_lib_dynamic_var
+		value = 0.2
+	}
+}
+
+PRC_who_won_power_struggle = {
+	if = {
+		limit = {
+			AND = {
+				check_variable = {
+					PRC_influence_new_var > PRC_influence_lib_var
+				}
+				check_variable = {
+					PRC_influence_new_var > PRC_influence_aut_var
+				}
+				check_variable = {
+					PRC_influence_new_var > PRC_influence_cen_var
+				}
+				check_variable = {
+					PRC_influence_new_var > PRC_influence_nat_var
+				}
 			}
+		}
+		set_country_flag = PRC_new_left_victory_flag
+		country_event = {
+			id = china.17
+			days = 1
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				check_variable = {
+					PRC_influence_lib_var > PRC_influence_new_var
+				}
+				check_variable = {
+					PRC_influence_lib_var > PRC_influence_aut_var
+				}
+				check_variable = {
+					PRC_influence_lib_var > PRC_influence_cen_var
+				}
+				check_variable = {
+					PRC_influence_lib_var > PRC_influence_nat_var
+				}
+			}
+		}
+		set_country_flag = PRC_liberal_victory_flag
+		country_event = {
+			id = china.19
+			days = 1
+		}
+		random = {
+			chance = 80
 			CHI = {
-				transfer_state = 1218
-				transfer_state = 1382
-				transfer_state = 879
-			}	
+				country_event = {
+					id = taiwan.9
+					days = 14
+					random_days = 20
+				}
+			}
 		}
-		else = {
+	}
+	else_if = {
+		limit = {
+			AND = {
+				check_variable = {
+					PRC_influence_aut_var > PRC_influence_new_var
+				}
+				check_variable = {
+					PRC_influence_aut_var > PRC_influence_lib_var
+				}
+				check_variable = {
+					PRC_influence_aut_var > PRC_influence_cen_var
+				}
+				check_variable = {
+					PRC_influence_aut_var > PRC_influence_nat_var
+				}
+			}
+		}
+		set_country_flag = PRC_authoritarian_victory_flag
+		country_event = {
+			id = china.22
+			days = 1
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				check_variable = {
+					PRC_influence_cen_var > PRC_influence_new_var
+				}
+				check_variable = {
+					PRC_influence_cen_var > PRC_influence_lib_var
+				}
+				check_variable = {
+					PRC_influence_cen_var > PRC_influence_aut_var
+				}
+				check_variable = {
+					PRC_influence_cen_var > PRC_influence_nat_var
+				}
+			}
+		}
+		set_country_flag = PRC_centrists_victory_flag
+		country_event = {
+			id = china.20
+			days = 1
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				check_variable = {
+					PRC_influence_nat_var > PRC_influence_new_var
+				}
+				check_variable = {
+					PRC_influence_nat_var > PRC_influence_lib_var
+				}
+				check_variable = {
+					PRC_influence_nat_var > PRC_influence_aut_var
+				}
+				check_variable = {
+					PRC_influence_nat_var > PRC_influence_cen_var
+				}
+			}
+		}
+		set_country_flag = PRC_nationalist_victory_flag
+		country_event = {
+			id = china.21
+			days = 1
+		}
+	}
+	else = {
+		add_political_power = 2000
+	}
+}
+
+#SE Asia
+PRC_add_CAM_influence = {
+	custom_effect_tooltip = PRC_add_CAM_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_CAM_var
+		value = global.PRC_influence_CAM_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_CAM_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_CAM_influence = {
+	custom_effect_tooltip = PRC_subtract_CAM_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_CAM_var
+		value = global.PRC_influence_CAM_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_CAM_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_INS_influence = {
+	custom_effect_tooltip = PRC_add_INS_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_INS_var
+		value = global.PRC_influence_INS_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_INS_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_INS_influence = {
+	custom_effect_tooltip = PRC_subtract_INS_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_INS_var
+		value = global.PRC_influence_INS_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_INS_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_LAO_influence = {
+	custom_effect_tooltip = PRC_add_LAO_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_LAO_var
+		value = global.PRC_influence_LAO_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_LAO_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_LAO_influence = {
+	custom_effect_tooltip = PRC_subtract_LAO_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_LAO_var
+		value = global.PRC_influence_LAO_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_LAO_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_MAL_influence = {
+	custom_effect_tooltip = PRC_add_MAL_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_MAL_var
+		value = global.PRC_influence_MAL_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_MAL_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_MAL_influence = {
+	custom_effect_tooltip = PRC_subtract_MAL_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_MAL_var
+		value = global.PRC_influence_MAL_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_MAL_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_BRM_influence = {
+	custom_effect_tooltip = PRC_add_BRM_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_BRM_var
+		value = global.PRC_influence_BRM_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_BRM_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_BRM_influence = {
+	custom_effect_tooltip = PRC_subtract_BRM_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_BRM_var
+		value = global.PRC_influence_BRM_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_BRM_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_PHI_influence = {
+	custom_effect_tooltip = PRC_add_PHI_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_PHI_var
+		value = global.PRC_influence_PHI_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_PHI_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_PHI_influence = {
+	custom_effect_tooltip = PRC_subtract_PHI_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_PHI_var
+		value = global.PRC_influence_PHI_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_PHI_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_SIG_influence = {
+	custom_effect_tooltip = PRC_add_SIG_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_SIG_var
+		value = global.PRC_influence_SIG_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_SIG_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_SIG_influence = {
+	custom_effect_tooltip = PRC_subtract_SIG_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_SIG_var
+		value = global.PRC_influence_SIG_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_SIG_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_SIA_influence = {
+	custom_effect_tooltip = PRC_add_SIA_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_SIA_var
+		value = global.PRC_influence_SIA_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_SIA_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_SIA_influence = {
+	custom_effect_tooltip = PRC_subtract_SIA_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_SIA_var
+		value = global.PRC_influence_SIA_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_SIA_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_add_VIN_influence = {
+	custom_effect_tooltip = PRC_add_VIN_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_VIN_var
+		value = global.PRC_influence_VIN_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_VIN_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_subtract_VIN_influence = {
+	custom_effect_tooltip = PRC_subtract_VIN_influence_tt
+	add_to_variable = {
+		var = global.PRC_influence_VIN_var
+		value = global.PRC_influence_VIN_var_temp
+	}
+	clamp_variable = {
+		var = global.PRC_influence_VIN_var
+		min = 0
+		max = 1
+	}
+}
+
+PRC_increase_mss = {
+	if = {
+		limit = {
+			has_idea = PRC_mss_idea1
+		}
+		swap_ideas = {
+			remove_idea = PRC_mss_idea1
+			add_idea = PRC_mss_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_mss_idea2
+		}
+		swap_ideas = {
+			remove_idea = PRC_mss_idea2
+			add_idea = PRC_mss_idea3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_mss_idea3
+		}
+		swap_ideas = {
+			remove_idea = PRC_mss_idea3
+			add_idea = PRC_mss_idea4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_mss_idea4
+		}
+		swap_ideas = {
+			remove_idea = PRC_mss_idea4
+			add_idea = PRC_mss_idea5
+		}
+	}
+}
+
+PRC_increase_war_exhaustion = {
+	add_to_variable = {
+		PRC_war_exhaustion_war_support_factor_dynamic = -0.015
+	}
+	add_to_variable = {
+		PRC_war_exhaustion_army_attack_factor_dynamic = -0.015
+	}
+	add_to_variable = {
+		PRC_war_exhaustion_army_defence_factor_dynamic = -0.015
+	}
+	add_to_variable = {
+		PRC_war_exhaustion_army_org_factor_dynamic = -0.01
+	}
+	add_to_variable = {
+		PRC_war_exhaustion_army_morale_factor_dynamic = -0.02
+	}
+	add_to_variable = {
+		PRC_war_exhaustion_surrender_limit_dynamic = -0.005
+	}
+	effect_tooltip = {
+		swap_ideas = {
+			remove_idea = PRC_war_exhaustion
+			add_idea = PRC_war_exhaustion2
+		}
+	}
+}
+
+PRC_japans_victory_in_the_gaw = {
+	set_global_flag = PRC_japanese_gaw_victory_global
+	set_country_flag = GAW_disabled
+	clr_global_flag = pan_asian_war_ongoing
+	PRC = {
+		#return "days = x" later
+		#country_event = { id = china.248 days = 1 }
+		#country_event = { id = china.249 days = 2 }
+		#country_event = { id = china.44 days = 3 }
+		#country_event = { id = china.45 days = 4 }
+		#country_event = { id = china.46 days = 5 }
+		#country_event = { id = china.47 days = 6 }
+		#country_event = { id = china.48 days = 7 }
+		#country_event = { id = china.49 days = 8 }
+		#country_event = { id = china.50 days = 9 }
+		#country_event = { id = china.51 days = 10 }
+		country_event = china.247
+	}
+	set_global_flag = PRC_china_collapse
+	news_event = news.414
+	if = {
+		limit = {
+			has_global_flag = PRC_taiwan_war_lost
+		}
+		CHI = {
+			transfer_state = 1218
+			transfer_state = 1382
+			transfer_state = 879
+		}
+	}
+	else = {
+		CHI = {
+			transfer_state = 1218
+			transfer_state = 1382
+			transfer_state = 879
+			transfer_state = 1148
+			transfer_state = 1149
+			transfer_state = 1150
+			transfer_state = 524
+		}
+	}
+	CHI = {
+		transfer_state = 591
+		transfer_state = 728
+		transfer_state = 591
+		transfer_state = 591
+		transfer_state = 591
+		transfer_state = 591
+	}
+	if = {
+		limit = {
 			CHI = {
-				transfer_state = 1218
-				transfer_state = 1382
-				transfer_state = 879
-				transfer_state = 1148
-				transfer_state = 1149
-				transfer_state = 1150
-				transfer_state = 524
+				has_cosmetic_tag = CHI_PRC_puppet
+			}
+		}
+		PRC = {
+			end_puppet = CHI
+		}
+		CHI = {
+			drop_cosmetic_tag = yes
+		}
+		JAP = {
+			add_to_faction = CHI
+			puppet = CHI
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = pdto_captured_guangzhou
+		}
+		CHI = {
+			transfer_state = 1191
+			transfer_state = 592
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = pdto_captured_hong_kong
+		}
+		CHI = {
+			transfer_state = 1395
+			transfer_state = 326
+			transfer_state = 729
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = pdto_captured_fuzhou
+		}
+		CHI = {
+			transfer_state = 595
+			transfer_state = 1217
+			transfer_state = 1219
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = battle_of_shanghai
+		}
+		JAP = {
+			transfer_state = 1215
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = battle_of_nanjing
+		}
+		JAP = {
+			transfer_state = 613
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = pdto_captured_qingdao
+				has_global_flag = pdto_captured_tianjin
+				has_global_flag = battle_of_beijing
+			}
+		}
+		JAP = {
+			transfer_state = 1393
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = pdto_captured_qingdao
+		}
+		JAP = {
+			transfer_state = 1420
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = pdto_captured_tianjin
+				has_global_flag = battle_of_beijing
+				has_global_flag = pdto_entered_manchuria
+			}
+		}
+		JAP = {
+			transfer_state = 1394
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = pdto_captured_tianjin
+				has_global_flag = battle_of_beijing
+			}
+		}
+		JAP = {
+			transfer_state = 1157
+			transfer_state = 609
+		}
+	}
+	if = {
+		limit = {
+			CHI = {
+				controls_state = 595
+				controls_state = 1395
+				controls_state = 592
 			}
 		}
 		CHI = {
-			transfer_state = 591
-			transfer_state = 728
-			transfer_state = 591
-			transfer_state = 591
-			transfer_state = 591
-			transfer_state = 591
+			transfer_state = 1216
+			transfer_state = 1206
 		}
-		if = {
-			limit = {
-				CHI = {
-					has_cosmetic_tag = CHI_PRC_puppet
-				}
-			}
-			PRC = {
-				end_puppet = CHI
-			}
-			CHI = {
-				drop_cosmetic_tag = yes
-			}
-			JAP = { 
-				add_to_faction = CHI
-				puppet = CHI
-			}
+	}
+	if = {
+		limit = {
+			has_global_flag = pdto_takes_1413_1414
 		}
-		if = {
-			limit = {
-				has_global_flag = pdto_captured_guangzhou
-			}
-			CHI = {	
-				transfer_state = 1191
-				transfer_state = 592
-			}
+		PD1 = {
+			transfer_state = 1413
 		}
-		if = {
-			limit = {
-				has_global_flag = pdto_captured_hong_kong
-			}
-			CHI = {	
-				transfer_state = 1395
-				transfer_state = 326
-				transfer_state = 729
-			}
+		PD1 = {
+			transfer_state = 1414
 		}
-		if = {
-			limit = {
-				has_global_flag = pdto_captured_fuzhou
-			}
-			CHI = {	
-				transfer_state = 595
-				transfer_state = 1217
-				transfer_state = 1219
-			}
+		PD1 = {
+			transfer_state = 1417
 		}
-		if = {
-			limit = {
-				has_global_flag = battle_of_shanghai
-			}
-			JAP = {	
-				transfer_state = 1215
-			}
+	}
+	if = {
+		limit = {
+			has_global_flag = pdto_takes_1415
 		}
-		if = {
-			limit = {
-				has_global_flag = battle_of_nanjing
-			}
-			JAP = {	
-				transfer_state = 613
-			}
+		PD1 = {
+			transfer_state = 1415
 		}
-		if = {
-			limit = {
-				OR = {
-					has_global_flag = pdto_captured_qingdao
-					has_global_flag = pdto_captured_tianjin
-					has_global_flag = battle_of_beijing
-				}
-			}
-			JAP = {	
-				transfer_state = 1393
-			}
+		PD1 = {
+			transfer_state = 1416
 		}
-		if = {
-			limit = {
-				has_global_flag = pdto_captured_qingdao
-			}
-			JAP = {	
-				transfer_state = 1420
-			}
+	}
+	JAP = {
+		add_to_faction = PD1
+	}
+	KOR = {
+		annex_country = {
+			target = PRK
+			transfer_troops = no
 		}
-		if = {
-			limit = {
-				OR = {
-					has_global_flag = pdto_captured_tianjin
-					has_global_flag = battle_of_beijing
-					has_global_flag = pdto_entered_manchuria
-				}
-			}
-			JAP = {	
-				transfer_state = 1394
-			}
-		}
-		if = {
-			limit = {
-				OR = {
-					has_global_flag = pdto_captured_tianjin
-					has_global_flag = battle_of_beijing
-				}
-			}
-			JAP = {	
-				transfer_state = 1157
-				transfer_state = 609
-			}
-		}
-		if = {
-			limit = {
-				CHI = {
-					controls_state = 595
-					controls_state = 1395
-					controls_state = 592
-				}
-			}
-			CHI = {	
-				transfer_state = 1216
-				transfer_state = 1206
-			}
-		}
-		if = {
-			limit = {
-				has_global_flag = pdto_takes_1413_1414			
-			}
-			PD1 = {	transfer_state = 1413 }
-			PD1 = {	transfer_state = 1414 }
-			PD1 = {	transfer_state = 1417 }
-		}
-		if = {
-			limit = {
-				has_global_flag = pdto_takes_1415
-			}
-			PD1 = {	transfer_state = 1415 }
-			PD1 = {	transfer_state = 1416 }
-		}
-		JAP = {
-			add_to_faction = PD1
-		}
-		KOR = {
-			annex_country = {
-    			target = PRK
-    			transfer_troops = no
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_global_flag = RAJ_india_dead
-				}
-			}
-			1380 = { transfer_state_to = RAJ }
-			440 = { transfer_state_to = RAJ }
-			443 = { transfer_state_to = RAJ }
-			1132 = { transfer_state_to = RAJ }
-			787 = { transfer_state_to = RAJ }
-			788 = { transfer_state_to = RAJ }
-			1131 = { transfer_state_to = RAJ }
-			441 = { transfer_state_to = RAJ }
-			RAJ = {
-				puppet = PAK
-				puppet = NEP
-				puppet = BHU
-				puppet = BRM
-				annex_country = {
-    				target = SRL
-    				transfer_troops = no
-				}
-				annex_country = {
-    				target = SAJ
-    				transfer_troops = no
-				}
-				set_country_flag = GAW_disabled
-			}
-			every_state = {
-				limit = {
-					is_core_of = RAJ
-					NOT = {
-						is_controlled_by = RAJ
-					}
-				}
-				transfer_state_to = RAJ
-			}
-			PAK = {
-				set_cosmetic_tag = RAJ_military_administration
-			}
-			NEP = {
-				set_cosmetic_tag = RAJ_military_administration
-			}
-			BHU = {
-				set_cosmetic_tag = RAJ_military_administration
-			}
-			BRM = {
-				set_cosmetic_tag = RAJ_military_administration
-			}
-		}
-		if = {
-			limit = {
+	}
+	if = {
+		limit = {
+			NOT = {
 				has_global_flag = RAJ_india_dead
 			}
-			PRC = {
-				end_puppet = PRJ
-			}
-			PRJ = {
-				transfer_state = 434
-				add_state_core = 434
-				get_current_government_type = yes
-				set_cosmetic_tag = PRJ_pakistan_administration
-			}
-			PAK = {
-				puppet = PRJ
-			}
-			PRJ = {
-				restore_previous_government_type = yes
-			}
 		}
-		JAP = {
-			end_puppet = PRC
-			add_to_faction = CHI
-			country_event = {
-				id = jap.1003
-				days = 7
+		1380 = {
+			transfer_state_to = RAJ
+		}
+		440 = {
+			transfer_state_to = RAJ
+		}
+		443 = {
+			transfer_state_to = RAJ
+		}
+		1132 = {
+			transfer_state_to = RAJ
+		}
+		787 = {
+			transfer_state_to = RAJ
+		}
+		788 = {
+			transfer_state_to = RAJ
+		}
+		1131 = {
+			transfer_state_to = RAJ
+		}
+		441 = {
+			transfer_state_to = RAJ
+		}
+		RAJ = {
+			puppet = PAK
+			puppet = NEP
+			puppet = BHU
+			puppet = BRM
+			annex_country = {
+				target = SRL
+				transfer_troops = no
 			}
-			country_event = {
-				id = jap.149
-				days = 14
-				random_days = 7
-			}
-			country_event = {
-				id = jap.150
-				days = 20
-				random_days = 20
+			annex_country = {
+				target = SAJ
+				transfer_troops = no
 			}
 			set_country_flag = GAW_disabled
 		}
-		AST = {
-			set_country_flag = GAW_disabled
-		}
-		PRC = {
-			set_politics = {
-				ruling_party = nationalist
-				last_election = "2019.6.5"
-				election_frequency = 48
-				elections_allowed = no
-			}
-			set_popularities = {
-				social_democrat = 20
-				market_liberal = 3
-				communist = 25
-				social_liberal = 7
-				nationalist = 45
-			}
-			country_event = {
-				id = china.1003
-				days = 30
-			}
-		}
-		every_country = {
-			limit = {
-				has_country_flag = eadi_member
-			}
-			clr_country_flag = eadi_member
-		}
-		every_country = {
-			limit = {
-				is_ally_with = JAP
-			}
-			set_country_flag = pdto_member
-		}
-	}
-
-	
-	# PRC_chinas_victory_in_the_gaw_allies = {
-	# 	PRC = {
-	# 		if = {
-	# 			limit = {
-	# 				has_completed_focus = PRC_under_the_rule_of_the_great_entity
-	# 			}
-	# 			set_country_flag = PRC_loji_united_asia
-	# 		}
-	# 	}
-	# 	news_event = {
-	# 		id = news.413
-	# 		days = 0
-	# 	}
-	# 	PRC = {
-	# 		annex_country = {
-    # 			target = CHI
-    # 			transfer_troops = no
-	# 		}
-	# 		country_event = {
-	# 			id = china.333
-	# 			days = 50
-	# 		}
-	# 	}
-	# 	PRK = {
-	# 		annex_country = {
-    # 			target = KOR
-    # 			transfer_troops = no
-	# 		}
-	# 	}
-	# 	#NEP = {
-	# 	#	set_cosmetic_tag = PRC_military_administration
-	# 	#}
-	# 	#BHU = {
-	# 	#	set_cosmetic_tag = PRC_military_administration
-	# 	#}
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		VIN = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	VIN = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = communist
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			totalitarian_socialist = 5
-	# 	# 			libertarian_socialist = 10
-	# 	# 			social_democrat = 5
-	# 	# 			communist = 80
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		LAO = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	LAO = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = communist
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			totalitarian_socialist = 3
-	# 	# 			libertarian_socialist = 2
-	# 	# 			social_democrat = 2
-	# 	# 			communist = 93
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		CAM = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	CAM = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = authoritarian_democrat
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			communist = 10
-	# 	# 			conservative = 6
-	# 	# 			social_democrat = 12
-	# 	# 			authoritarian_democrat = 72
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		SIA = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	SIA = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = communist
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			conservative = 5
-	# 	# 			authoritarian_democrat = 19
-	# 	# 			market_liberal = 2
-	# 	# 			social_democrat = 10
-	# 	# 			nationalist = 5
-	# 	# 			communist = 59
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		INS = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	INS = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = authoritarian_democrat
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			totalitarian_socialist = 3
-	# 	# 			libertarian_socialist = 10
-	# 	# 			social_democrat = 12
-	# 	# 			social_liberal = 15
-	# 	# 			authoritarian_democrat = 60
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		MAL = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	MAL = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = authoritarian_democrat
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			totalitarian_socialist = 3
-	# 	# 			libertarian_socialist = 10
-	# 	# 			social_democrat = 12
-	# 	# 			social_liberal = 15
-	# 	# 			authoritarian_democrat = 60
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	# if = {
-	# 	# 	limit = {
-	# 	# 		PHI = {
-	# 	# 			is_puppet_of = PRC
-	# 	# 		}
-	# 	# 	}
-	# 	# 	PHI = {
-	# 	# 		drop_cosmetic_tag = yes
-	# 	# 		set_politics = {
-	# 	# 			ruling_party = totalitarian_socialist
-	# 	# 			elections_allowed = no
-	# 	# 		}
-	# 	# 		set_popularities = {
-	# 	# 			totalitarian_socialist = 77
-	# 	# 			conservative = 10
-	# 	# 			social_democrat = 10
-	# 	# 			fascist = 3
-	# 	# 		}
-	# 	# 		create_country_leader = {
-	# 	# 			name = NPA_luis_jalandoni_char
-	# 	# 			picture = "gfx/leaders/PHI/Luis_Jalandoni.png"
-	# 	# 			ideology = left_wing_junta
-	# 	# 		}
-	# 	# 	}
-	# 	# }
-	# 	if = {
-	# 		limit = {
-	# 			AST = {
-	# 				is_puppet_of = PRC
-	# 			}
-	# 		}
-	# 		AST = {
-	# 			drop_cosmetic_tag = yes
-	# 			set_politics = {
-	# 				ruling_party = libertarian_socialist
-	# 				elections_allowed = no
-	# 			}
-	# 			set_popularities = {
-	# 				conservative = 8
-	# 				libertarian_socialist = 52
-	# 				market_liberal = 25
-	# 				nationalist = 15
-	# 			}
-	# 		}
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			PNG = {
-	# 				is_puppet_of = PRC
-	# 			}
-	# 		}
-	# 		PNG = {
-	# 			drop_cosmetic_tag = yes
-	# 			set_politics = {
-	# 				ruling_party = conservative
-	# 				elections_allowed = no
-	# 			}
-	# 			set_popularities = {
-	# 				conservative = 55
-	# 				market_liberal = 35
-	# 				authoritarian_democrat = 1
-	# 				nationalist = 1
-	# 				market_liberal = 2
-	# 				social_liberal = 2
-	# 				communist = 4
-	# 			}
-	# 		}
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			NZL = {
-	# 				is_puppet_of = PRC
-	# 			}
-	# 		}
-	# 		NZL = {
-	# 			drop_cosmetic_tag = yes
-	# 			set_politics = {
-	# 				ruling_party = social_democrat
-	# 				elections_allowed = no
-	# 			}
-	# 			set_popularities = {
-	# 				conservative = 30
-	# 				social_democrat = 35
-	# 				authoritarian_democrat = 17
-	# 				nationalist = 3
-	# 				market_liberal = 5
-	# 				social_liberal = 3
-	# 				communist = 7
-	# 			}
-	# 		}
-	# 	}
-	# 	every_country = {
-	# 		limit = {
-	# 			has_country_flag = pdto_member
-	# 		}
-	# 		clr_country_flag = pdto_member
-	# 	}
-	# 	every_country = {
-	# 		limit = {
-	# 			is_ally_with = PRC
-	# 		}
-	# 		clr_country_flag = JAP_PEC_member_flag
-	# 		set_country_flag = eadi_member
-	# 		remove_ideas = {
-	# 			JAP_PDTO_member_1
-	# 			JAP_PDTO_member_2
-	# 			JAP_PEC_member
-	# 			JAP_PEC_member_2
-	# 		}
-	# 	}
-	# }
-
-	PRC_end_taiwan_war = {
-		clr_global_flag = PRC_ongoing_taiwan_war
-		white_peace = AST
-		white_peace = JAP
-		annex_country = {
-		    target = HKN
-		    transfer_troops = no
-		}
-		326 = {
-			add_dynamic_modifier = {
-				modifier = PRC_hong_kong
-			}
-		}
-		# country_event = {
-		# 	id = china.250
-		# 	days = 120
-		# }
-		country_event = {
-			id = china.254
-			days = 200
-		}
-		clr_global_flag = battle_of_okinawa
-		every_state = { #защита от дебила
-			limit = {
-				is_owned_by = JAP
-				NOT = {
-					OR = {
-						state = 526
-						state = 876
-					}
-				}
-			}
-			remove_dynamic_modifier = {
-				modifier = PRC_non_combat_area
-				scope = PRC #потом скоупы поменять
-			}
-		}
-		every_state = { #защита от дебила
-			limit = {
-				is_owned_by = AST
-			}
-			remove_dynamic_modifier = {
-				modifier = PRC_non_combat_area
-				scope = PRC
-			}
-		}
-		every_state = { #защита от дебила
-			limit = {
-				is_owned_by = PRC
-				is_coastal = yes
-				NOT = {
-					OR = {
-						state = 326
-						state = 648
-					}
-				}
-			}
-			remove_dynamic_modifier = {
-				modifier = PRC_non_combat_area
-			}
-		}
-		AST = {
-			country_event = Australia.18
-		}
-		JAP = {
-			if = {
-				limit = {
-					OR = {
-						has_idea = low_society
-						has_idea = lower_society
-					}
-				}
-				add_ideas = medium_society
-				set_temp_variable = {
-					var = society_development_var_temp
-					value = 0.25
-				}
-				add_society_development = yes
-			}
-		}
-	}
-	
-	PRC_dissolve_japan = {
 		every_state = {
 			limit = {
-				is_core_of = JAP
+				is_core_of = RAJ
+				NOT = {
+					is_controlled_by = RAJ
+				}
 			}
-			remove_core_of = JAP
+			transfer_state_to = RAJ
 		}
-		PRC = {
-			transfer_state = 1341
-			transfer_state = 876
-			transfer_state = 1338
-			transfer_state = 526
-			transfer_state = 645
-			puppet = TOK
+		PAK = {
+			set_cosmetic_tag = RAJ_military_administration
 		}
-		TOK = {
-			transfer_state = 1332
-			add_state_core = 1332
-			create_faction = PRC_yokohama_treaty_organisation_faction
-			hidden_effect = {
-				puppet = CGK
-				puppet = KYU
-				puppet = HOK
-				puppet = SHK
-				puppet = KTO
-				puppet = CHB
-				puppet = KSI
-				puppet = TOH
-				puppet = OSA
-				puppet = NAG
-				puppet = SNI
-				add_to_faction = CGK
-				add_to_faction = KYU
-				add_to_faction = HOK
-				add_to_faction = SHK
-				add_to_faction = KSI
-				add_to_faction = OSA
-				add_to_faction = CHB
-				add_to_faction = NAG
-				add_to_faction = KTO
-				add_to_faction = TOH
-				add_to_faction = SNI
-				set_politics = {
-					ruling_party = libertarian_socialist
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					conservative = 20.8
-					nationalist = 17.1
-					libertarian_socialist = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
+		NEP = {
+			set_cosmetic_tag = RAJ_military_administration
 		}
-		CGK = {
-			transfer_state = 529
-			add_state_core = 529
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = conservative
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					nationalist = 20.8
-					communist = 17.1
-					conservative = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
+		BHU = {
+			set_cosmetic_tag = RAJ_military_administration
 		}
-		KYU = {
-			transfer_state = 528
-			add_state_core = 528
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = conservative
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					social_democrat = 20.8
-					communist = 17.1
-					conservative = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		HOK = {
-			transfer_state = 536
-			transfer_state = 1333
-			transfer_state = 1334
-			add_state_core = 536
-			add_state_core = 1333
-			add_state_core = 1334
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = social_liberal
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					market_liberal = 24.5
-					conservative = 20.8
-					nationalist = 17.1
-					social_liberal = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		SHK = {
-			transfer_state = 530
-			add_state_core = 530
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = libertarian_socialist
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					social_democrat = 20.8
-					communist = 17.1
-					libertarian_socialist = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		KSI = {
-			transfer_state = 531
-			add_state_core = 531
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = market_liberal
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					nationalist = 24.5
-					conservative = 20.8
-					communist = 17.1
-					market_liberal = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		OSA = {
-			transfer_state = 1340
-			add_state_core = 1340
-			hidden_effect = {
-				set_politics = {
-					ruling_party = market_liberal
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					conservative = 20.8
-					nationalist = 17.1
-					market_liberal = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		CHB = {
-			transfer_state = 532
-			transfer_state = 535
-			transfer_state = 534
-			add_state_core = 532
-			add_state_core = 535
-			add_state_core = 534
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = authoritarian_democrat
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					conservative = 10
-					nationalist = 4
-					authoritarian_democrat = 86
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		NAG = {
-			transfer_state = 1337
-			add_state_core = 1337
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = conservative
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					conservative = 20.8
-					nationalist = 17.1
-					communist = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		KTO = {
-			transfer_state = 282
-			add_state_core = 282
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = social_liberal
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					libertarian_socialist = 24.5
-					conservative = 20.8
-					social_liberal = 54.7
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		TOH = {
-			transfer_state = 533
-			transfer_state = 1336
-			add_state_core = 533
-			add_state_core = 1336
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = conservative
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					social_liberal = 24.5
-					market_liberal = 20.8
-					social_democrat = 17.1
-					conservative = 37.6
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
-		}
-		SNI = {
-			transfer_state = 1335
-			add_state_core = 1335
-			hidden_effect = {
-				set_politics = {	
-					ruling_party = social_liberal
-					last_election = "2017.10.22"
-					election_frequency = 48
-					elections_allowed = no
-				}
-				set_popularities = {
-					communist = 24.5
-					libertarian_socialist = 17.1
-					social_liberal = 58.4
-				}
-				add_ideas = JAP_dejapanization_idea
-			}
+		BRM = {
+			set_cosmetic_tag = RAJ_military_administration
 		}
 	}
-	
-	PRC_dissolve_india = {
-		set_global_flag = RAJ_india_dead
-		RAJ = {
-			#diplomatic_relation = {
-			#	country = BHU
-			#	relation = guarantee
-			#	active = no
-			#}
-			#diplomatic_relation = {
-			#	country = SRL
-			#	relation = guarantee
-			#	active = no
-			#}
-			#diplomatic_relation = {
-			#	country = NEP
-			#	relation = guarantee
-			#	active = no
-			#}
-			every_state = {
-				limit = {
-					is_core_of = RAJ
-				}
-				remove_core_of = RAJ
-				add_claim_by = RAJ
-				add_claim_by = NAX
-				add_claim_by = RSS
-				add_claim_by = LRJ
-			}
-		}
-		PRJ = {
-			transfer_state = 432
-			transfer_state = 1367
-			transfer_state = 789
-			transfer_state = 437
-			transfer_state = 1370
-			transfer_state = 1397
-			transfer_state = 1398
-			load_oob = "PRJ_civil_war"
-			set_capital = { state = 1397 }
+	if = {
+		limit = {
+			has_global_flag = RAJ_india_dead
 		}
 		PRC = {
-			country_event = china.456
-			puppet = PRJ
-			transfer_state = 434
-			add_state_core = 434
-			annex_country = {
-    			target = TIB
-    			transfer_troops = no
-			}
-			annex_country = {
-    			target = SIK
-    			transfer_troops = no
-			}
+			end_puppet = PRJ
 		}
 		PRJ = {
-			set_politics = {	
-				ruling_party = nationalist
-				last_election = "2016.11.8"
+			transfer_state = 434
+			add_state_core = 434
+			get_current_government_type = yes
+			set_cosmetic_tag = PRJ_pakistan_administration
+		}
+		PAK = {
+			puppet = PRJ
+		}
+		PRJ = {
+			restore_previous_government_type = yes
+		}
+	}
+	JAP = {
+		end_puppet = PRC
+		add_to_faction = CHI
+		country_event = {
+			id = jap.1003
+			days = 7
+		}
+		country_event = {
+			id = jap.149
+			days = 14
+			random_days = 7
+		}
+		country_event = {
+			id = jap.150
+			days = 20
+			random_days = 20
+		}
+		set_country_flag = GAW_disabled
+	}
+	AST = {
+		set_country_flag = GAW_disabled
+	}
+	PRC = {
+		set_politics = {
+			ruling_party = nationalist
+			last_election = "2019.6.5"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			social_democrat = 20
+			market_liberal = 3
+			communist = 25
+			social_liberal = 7
+			nationalist = 45
+		}
+		country_event = {
+			id = china.1003
+			days = 30
+		}
+	}
+	every_country = {
+		limit = {
+			has_country_flag = eadi_member
+		}
+		clr_country_flag = eadi_member
+	}
+	every_country = {
+		limit = {
+			is_ally_with = JAP
+		}
+		set_country_flag = pdto_member
+	}
+}
+
+# PRC_chinas_victory_in_the_gaw_allies = {
+# 	PRC = {
+# 		if = {
+# 			limit = {
+# 				has_completed_focus = PRC_under_the_rule_of_the_great_entity
+# 			}
+# 			set_country_flag = PRC_loji_united_asia
+# 		}
+# 	}
+# 	news_event = {
+# 		id = news.413
+# 		days = 0
+# 	}
+# 	PRC = {
+# 		annex_country = {
+# 			target = CHI
+# 			transfer_troops = no
+# 		}
+# 		country_event = {
+# 			id = china.333
+# 			days = 50
+# 		}
+# 	}
+# 	PRK = {
+# 		annex_country = {
+# 			target = KOR
+# 			transfer_troops = no
+# 		}
+# 	}
+# 	#NEP = {
+# 	#	set_cosmetic_tag = PRC_military_administration
+# 	#}
+# 	#BHU = {
+# 	#	set_cosmetic_tag = PRC_military_administration
+# 	#}
+# 	# if = {
+# 	# 	limit = {
+# 	# 		VIN = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	VIN = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = communist
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			totalitarian_socialist = 5
+# 	# 			libertarian_socialist = 10
+# 	# 			social_democrat = 5
+# 	# 			communist = 80
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	# if = {
+# 	# 	limit = {
+# 	# 		LAO = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	LAO = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = communist
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			totalitarian_socialist = 3
+# 	# 			libertarian_socialist = 2
+# 	# 			social_democrat = 2
+# 	# 			communist = 93
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	# if = {
+# 	# 	limit = {
+# 	# 		CAM = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	CAM = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = authoritarian_democrat
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			communist = 10
+# 	# 			conservative = 6
+# 	# 			social_democrat = 12
+# 	# 			authoritarian_democrat = 72
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	# if = {
+# 	# 	limit = {
+# 	# 		SIA = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	SIA = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = communist
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			conservative = 5
+# 	# 			authoritarian_democrat = 19
+# 	# 			market_liberal = 2
+# 	# 			social_democrat = 10
+# 	# 			nationalist = 5
+# 	# 			communist = 59
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	# if = {
+# 	# 	limit = {
+# 	# 		INS = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	INS = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = authoritarian_democrat
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			totalitarian_socialist = 3
+# 	# 			libertarian_socialist = 10
+# 	# 			social_democrat = 12
+# 	# 			social_liberal = 15
+# 	# 			authoritarian_democrat = 60
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	# if = {
+# 	# 	limit = {
+# 	# 		MAL = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	MAL = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = authoritarian_democrat
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			totalitarian_socialist = 3
+# 	# 			libertarian_socialist = 10
+# 	# 			social_democrat = 12
+# 	# 			social_liberal = 15
+# 	# 			authoritarian_democrat = 60
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	# if = {
+# 	# 	limit = {
+# 	# 		PHI = {
+# 	# 			is_puppet_of = PRC
+# 	# 		}
+# 	# 	}
+# 	# 	PHI = {
+# 	# 		drop_cosmetic_tag = yes
+# 	# 		set_politics = {
+# 	# 			ruling_party = totalitarian_socialist
+# 	# 			elections_allowed = no
+# 	# 		}
+# 	# 		set_popularities = {
+# 	# 			totalitarian_socialist = 77
+# 	# 			conservative = 10
+# 	# 			social_democrat = 10
+# 	# 			fascist = 3
+# 	# 		}
+# 	# 		create_country_leader = {
+# 	# 			name = NPA_luis_jalandoni_char
+# 	# 			picture = "gfx/leaders/PHI/Luis_Jalandoni.png"
+# 	# 			ideology = left_wing_junta
+# 	# 		}
+# 	# 	}
+# 	# }
+# 	if = {
+# 		limit = {
+# 			AST = {
+# 				is_puppet_of = PRC
+# 			}
+# 		}
+# 		AST = {
+# 			drop_cosmetic_tag = yes
+# 			set_politics = {
+# 				ruling_party = libertarian_socialist
+# 				elections_allowed = no
+# 			}
+# 			set_popularities = {
+# 				conservative = 8
+# 				libertarian_socialist = 52
+# 				market_liberal = 25
+# 				nationalist = 15
+# 			}
+# 		}
+# 	}
+# 	if = {
+# 		limit = {
+# 			PNG = {
+# 				is_puppet_of = PRC
+# 			}
+# 		}
+# 		PNG = {
+# 			drop_cosmetic_tag = yes
+# 			set_politics = {
+# 				ruling_party = conservative
+# 				elections_allowed = no
+# 			}
+# 			set_popularities = {
+# 				conservative = 55
+# 				market_liberal = 35
+# 				authoritarian_democrat = 1
+# 				nationalist = 1
+# 				market_liberal = 2
+# 				social_liberal = 2
+# 				communist = 4
+# 			}
+# 		}
+# 	}
+# 	if = {
+# 		limit = {
+# 			NZL = {
+# 				is_puppet_of = PRC
+# 			}
+# 		}
+# 		NZL = {
+# 			drop_cosmetic_tag = yes
+# 			set_politics = {
+# 				ruling_party = social_democrat
+# 				elections_allowed = no
+# 			}
+# 			set_popularities = {
+# 				conservative = 30
+# 				social_democrat = 35
+# 				authoritarian_democrat = 17
+# 				nationalist = 3
+# 				market_liberal = 5
+# 				social_liberal = 3
+# 				communist = 7
+# 			}
+# 		}
+# 	}
+# 	every_country = {
+# 		limit = {
+# 			has_country_flag = pdto_member
+# 		}
+# 		clr_country_flag = pdto_member
+# 	}
+# 	every_country = {
+# 		limit = {
+# 			is_ally_with = PRC
+# 		}
+# 		clr_country_flag = JAP_PEC_member_flag
+# 		set_country_flag = eadi_member
+# 		remove_ideas = {
+# 			JAP_PDTO_member_1
+# 			JAP_PDTO_member_2
+# 			JAP_PEC_member
+# 			JAP_PEC_member_2
+# 		}
+# 	}
+# }
+PRC_end_taiwan_war = {
+	clr_global_flag = PRC_ongoing_taiwan_war
+	white_peace = AST
+	white_peace = JAP
+	annex_country = {
+		target = HKN
+		transfer_troops = no
+	}
+	326 = {
+		add_dynamic_modifier = {
+			modifier = PRC_hong_kong
+		}
+	}
+	# country_event = {
+	# 	id = china.250
+	# 	days = 120
+	# }
+	country_event = {
+		id = china.254
+		days = 200
+	}
+	clr_global_flag = battle_of_okinawa
+	every_state = {
+		#защита от дебила
+		limit = {
+			is_owned_by = JAP
+			NOT = {
+				OR = {
+					state = 526
+					state = 876
+				}
+			}
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_non_combat_area
+			scope = PRC			#потом скоупы поменять
+		}
+	}
+	every_state = {
+		#защита от дебила
+		limit = {
+			is_owned_by = AST
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_non_combat_area
+			scope = PRC
+		}
+	}
+	every_state = {
+		#защита от дебила
+		limit = {
+			is_owned_by = PRC
+			is_coastal = yes
+			NOT = {
+				OR = {
+					state = 326
+					state = 648
+				}
+			}
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_non_combat_area
+		}
+	}
+	AST = {
+		country_event = Australia.18
+	}
+	JAP = {
+		if = {
+			limit = {
+				OR = {
+					has_idea = low_society
+					has_idea = lower_society
+				}
+			}
+			add_ideas = medium_society
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.25
+			}
+			add_society_development = yes
+		}
+	}
+}
+
+PRC_dissolve_japan = {
+	every_state = {
+		limit = {
+			is_core_of = JAP
+		}
+		remove_core_of = JAP
+	}
+	PRC = {
+		transfer_state = 1341
+		transfer_state = 876
+		transfer_state = 1338
+		transfer_state = 526
+		transfer_state = 645
+		puppet = TOK
+	}
+	TOK = {
+		transfer_state = 1332
+		add_state_core = 1332
+		create_faction = PRC_yokohama_treaty_organisation_faction
+		hidden_effect = {
+			puppet = CGK
+			puppet = KYU
+			puppet = HOK
+			puppet = SHK
+			puppet = KTO
+			puppet = CHB
+			puppet = KSI
+			puppet = TOH
+			puppet = OSA
+			puppet = NAG
+			puppet = SNI
+			add_to_faction = CGK
+			add_to_faction = KYU
+			add_to_faction = HOK
+			add_to_faction = SHK
+			add_to_faction = KSI
+			add_to_faction = OSA
+			add_to_faction = CHB
+			add_to_faction = NAG
+			add_to_faction = KTO
+			add_to_faction = TOH
+			add_to_faction = SNI
+			set_politics = {
+				ruling_party = libertarian_socialist
+				last_election = "2017.10.22"
 				election_frequency = 48
 				elections_allowed = no
 			}
-		
 			set_popularities = {
-				totalitarian_socialist = 33
-				nationalist = 34
-				libertarian_socialist = 33
+				social_liberal = 24.5
+				conservative = 20.8
+				nationalist = 17.1
+				libertarian_socialist = 37.6
 			}
+			add_ideas = JAP_dejapanization_idea
 		}
-		PAK = {
-			transfer_state = 439
-			transfer_state = 441
-			transfer_state = 1381
-			transfer_state = 1373
-			transfer_state = 1131
-			transfer_state = 787
-			add_state_core = 439
-			add_state_core = 441
-			add_state_core = 1381
-			annex_country = {
-			    target = SAJ
-			    transfer_troops = no
-			}
-		}
-		LRJ = {
-			transfer_state = 433
-			transfer_state = 428
-			433 = {
-				add_core_of = LRJ
-			}
-			428 = {
-				add_core_of = LRJ
-			}
-			add_ideas = RAJ_indian_civil_war_idea
-			set_capital = { state = 428 }
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		MPJ = {
-			transfer_state = 436
-			transfer_state = 438
-			transfer_state = 1399
-			transfer_state = 1400
-			436 = {
-				add_core_of = MPJ
-			}
-			438 = {
-				add_core_of = UPJ
-			}
-			1399 = {
-				add_core_of = UPJ
-			}
-			1400 = {
-				add_core_of = UPJ
-			}
-			add_ideas = RAJ_indian_civil_war_idea
-			set_capital = { state = 438 }
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		SAJ = {
-			drop_cosmetic_tag = yes
-			clr_country_flag = eadi_member
-			clr_country_flag = pdto_member
-			remove_ideas = {
-				PRC_coordinate_eadi_militaries_idea
-				JAP_PDTO_member_1
-				JAP_PDTO_member_2
-				JAP_PEC_member
-				JAP_PEC_member_2
-			}
-			transfer_state = 429
-			transfer_state = 427
-			transfer_state = 424
-			add_ideas = RAJ_indian_civil_war_idea
-			429 = {
-				add_core_of = SAJ
-			}
-			427 = {
-				add_core_of = SAJ
-			}
-			424 = {
-				add_core_of = SAJ
-			}
-			set_capital = { state = 429 }
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		DRV = {
-			transfer_state = 423
-			transfer_state = 320
-			transfer_state = 1418
-			load_oob = "DRV_civil_war"
-			423 = {
-				add_core_of = DRV
-			}
-			320 = {
-				add_core_of = DRV
-			}
-			1418 = {
-				add_core_of = DRV
-			}
-			add_ideas = RAJ_indian_civil_war_idea
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		RSS = {
-			transfer_state = 425
-			425 = {
-				add_core_of = RSS
-			}
-			add_ideas = RAJ_indian_civil_war_idea
-			set_capital = { state = 425 }
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		NAX = {
-			transfer_state = 435
-			transfer_state = 1372
-			transfer_state = 1371
-			1372 = {
-				add_core_of = NAX
-			}
-			435 = {
-				add_core_of = NAX
-			}
-			1371 = {
-				add_core_of = NAX
-			}
-			load_oob = "NAX_civil_war"
-			add_ideas = RAJ_indian_civil_war_idea
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		SLJ = {
-			transfer_state = 426
-			426 = {
-				add_core_of = SLJ
-			}
-			load_oob = "SLJ_civil_war"
-			add_ideas = RAJ_indian_civil_war_idea
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		BAN = {
-			transfer_state = 431
-			transfer_state = 1369
-			give_military_access = PRC
-			give_military_access = PAK
-		}
-		BRM = {
-			transfer_state = 1366
-			transfer_state = 1368
-		}
-		RJN = {
-			transfer_state = 281
-			transfer_state = 321
-			transfer_state = 733
-			281 = {
-				add_core_of = RJN
-			}
-			321 = {
-				add_core_of = RJN
-			}
-			733 = {
-				add_core_of = RJN
-			}
-			add_ideas = RAJ_indian_civil_war_idea
-			set_capital = { state = 321 }
-		}
-		RAJ = {
-			add_ideas = RAJ_indian_civil_war_idea
-			clr_country_flag = JAP_PEC_member_flag
-			drop_cosmetic_tag = yes
-			clr_country_flag = eadi_member
+	}
+	CGK = {
+		transfer_state = 529
+		add_state_core = 529
+		hidden_effect = {
 			set_politics = {
 				ruling_party = conservative
-				elections_allowed = no 
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
 			}
-			add_popularity = {
-				ideology = communist
-				popularity = -0.3
+			set_popularities = {
+				social_liberal = 24.5
+				nationalist = 20.8
+				communist = 17.1
+				conservative = 37.6
 			}
-			add_popularity = {
-				ideology = nationalist
-				popularity = -0.3
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	KYU = {
+		transfer_state = 528
+		add_state_core = 528
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
 			}
-			remove_ideas = {
-				JAP_PDTO_member_1
-				JAP_PDTO_member_2
-				JAP_PEC_member
-				JAP_PEC_member_2
+			set_popularities = {
+				social_liberal = 24.5
+				social_democrat = 20.8
+				communist = 17.1
+				conservative = 37.6
 			}
-			set_nationality = {
-				target_country = RSS
-				character = RAJ_Mohan_Bhagwat
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	HOK = {
+		transfer_state = 536
+		transfer_state = 1333
+		transfer_state = 1334
+		add_state_core = 536
+		add_state_core = 1333
+		add_state_core = 1334
+		hidden_effect = {
+			set_politics = {
+				ruling_party = social_liberal
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
 			}
-			RSS = {
-				promote_character = RAJ_Mohan_Bhagwat
+			set_popularities = {
+				market_liberal = 24.5
+				conservative = 20.8
+				nationalist = 17.1
+				social_liberal = 37.6
 			}
-			set_nationality = {
-				target_country = LRJ
-				character = RAJ_Rahul_Ghandi
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	SHK = {
+		transfer_state = 530
+		add_state_core = 530
+		hidden_effect = {
+			set_politics = {
+				ruling_party = libertarian_socialist
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
 			}
-			LRJ = {
-				promote_character = RAJ_Rahul_Ghandi
+			set_popularities = {
+				social_liberal = 24.5
+				social_democrat = 20.8
+				communist = 17.1
+				libertarian_socialist = 37.6
 			}
-			set_nationality = {
-				target_country = UPJ
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	KSI = {
+		transfer_state = 531
+		add_state_core = 531
+		hidden_effect = {
+			set_politics = {
+				ruling_party = market_liberal
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				nationalist = 24.5
+				conservative = 20.8
+				communist = 17.1
+				market_liberal = 37.6
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	OSA = {
+		transfer_state = 1340
+		add_state_core = 1340
+		hidden_effect = {
+			set_politics = {
+				ruling_party = market_liberal
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				social_liberal = 24.5
+				conservative = 20.8
+				nationalist = 17.1
+				market_liberal = 37.6
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	CHB = {
+		transfer_state = 532
+		transfer_state = 535
+		transfer_state = 534
+		add_state_core = 532
+		add_state_core = 535
+		add_state_core = 534
+		hidden_effect = {
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				conservative = 10
+				nationalist = 4
+				authoritarian_democrat = 86
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	NAG = {
+		transfer_state = 1337
+		add_state_core = 1337
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				social_liberal = 24.5
+				conservative = 20.8
+				nationalist = 17.1
+				communist = 37.6
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	KTO = {
+		transfer_state = 282
+		add_state_core = 282
+		hidden_effect = {
+			set_politics = {
+				ruling_party = social_liberal
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				libertarian_socialist = 24.5
+				conservative = 20.8
+				social_liberal = 54.7
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	TOH = {
+		transfer_state = 533
+		transfer_state = 1336
+		add_state_core = 533
+		add_state_core = 1336
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				social_liberal = 24.5
+				market_liberal = 20.8
+				social_democrat = 17.1
+				conservative = 37.6
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+	SNI = {
+		transfer_state = 1335
+		add_state_core = 1335
+		hidden_effect = {
+			set_politics = {
+				ruling_party = social_liberal
+				last_election = "2017.10.22"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				communist = 24.5
+				libertarian_socialist = 17.1
+				social_liberal = 58.4
+			}
+			add_ideas = JAP_dejapanization_idea
+		}
+	}
+}
+
+PRC_dissolve_india = {
+	set_global_flag = RAJ_india_dead
+	RAJ = {
+		#diplomatic_relation = {
+		#	country = BHU
+		#	relation = guarantee
+		#	active = no
+		#}
+		#diplomatic_relation = {
+		#	country = SRL
+		#	relation = guarantee
+		#	active = no
+		#}
+		#diplomatic_relation = {
+		#	country = NEP
+		#	relation = guarantee
+		#	active = no
+		#}
+		every_state = {
+			limit = {
+				is_core_of = RAJ
+			}
+			remove_core_of = RAJ
+			add_claim_by = RAJ
+			add_claim_by = NAX
+			add_claim_by = RSS
+			add_claim_by = LRJ
+		}
+	}
+	PRJ = {
+		transfer_state = 432
+		transfer_state = 1367
+		transfer_state = 789
+		transfer_state = 437
+		transfer_state = 1370
+		transfer_state = 1397
+		transfer_state = 1398
+		load_oob = "PRJ_civil_war"
+		set_capital = {
+			state = 1397
+		}
+	}
+	PRC = {
+		country_event = china.456
+		puppet = PRJ
+		transfer_state = 434
+		add_state_core = 434
+		annex_country = {
+			target = TIB
+			transfer_troops = no
+		}
+		annex_country = {
+			target = SIK
+			transfer_troops = no
+		}
+	}
+	PRJ = {
+		set_politics = {
+			ruling_party = nationalist
+			last_election = "2016.11.8"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			totalitarian_socialist = 33
+			nationalist = 34
+			libertarian_socialist = 33
+		}
+	}
+	PAK = {
+		transfer_state = 439
+		transfer_state = 441
+		transfer_state = 1381
+		transfer_state = 1373
+		transfer_state = 1131
+		transfer_state = 787
+		add_state_core = 439
+		add_state_core = 441
+		add_state_core = 1381
+		annex_country = {
+			target = SAJ
+			transfer_troops = no
+		}
+	}
+	LRJ = {
+		transfer_state = 433
+		transfer_state = 428
+		433 = {
+			add_core_of = LRJ
+		}
+		428 = {
+			add_core_of = LRJ
+		}
+		add_ideas = RAJ_indian_civil_war_idea
+		set_capital = {
+			state = 428
+		}
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	MPJ = {
+		transfer_state = 436
+		transfer_state = 438
+		transfer_state = 1399
+		transfer_state = 1400
+		436 = {
+			add_core_of = MPJ
+		}
+		438 = {
+			add_core_of = UPJ
+		}
+		1399 = {
+			add_core_of = UPJ
+		}
+		1400 = {
+			add_core_of = UPJ
+		}
+		add_ideas = RAJ_indian_civil_war_idea
+		set_capital = {
+			state = 438
+		}
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	SAJ = {
+		drop_cosmetic_tag = yes
+		clr_country_flag = eadi_member
+		clr_country_flag = pdto_member
+		remove_ideas = {
+			PRC_coordinate_eadi_militaries_idea
+			JAP_PDTO_member_1
+			JAP_PDTO_member_2
+			JAP_PEC_member
+			JAP_PEC_member_2
+		}
+		transfer_state = 429
+		transfer_state = 427
+		transfer_state = 424
+		add_ideas = RAJ_indian_civil_war_idea
+		429 = {
+			add_core_of = SAJ
+		}
+		427 = {
+			add_core_of = SAJ
+		}
+		424 = {
+			add_core_of = SAJ
+		}
+		set_capital = {
+			state = 429
+		}
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	DRV = {
+		transfer_state = 423
+		transfer_state = 320
+		transfer_state = 1418
+		load_oob = "DRV_civil_war"
+		423 = {
+			add_core_of = DRV
+		}
+		320 = {
+			add_core_of = DRV
+		}
+		1418 = {
+			add_core_of = DRV
+		}
+		add_ideas = RAJ_indian_civil_war_idea
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	RSS = {
+		transfer_state = 425
+		425 = {
+			add_core_of = RSS
+		}
+		add_ideas = RAJ_indian_civil_war_idea
+		set_capital = {
+			state = 425
+		}
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	NAX = {
+		transfer_state = 435
+		transfer_state = 1372
+		transfer_state = 1371
+		1372 = {
+			add_core_of = NAX
+		}
+		435 = {
+			add_core_of = NAX
+		}
+		1371 = {
+			add_core_of = NAX
+		}
+		load_oob = "NAX_civil_war"
+		add_ideas = RAJ_indian_civil_war_idea
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	SLJ = {
+		transfer_state = 426
+		426 = {
+			add_core_of = SLJ
+		}
+		load_oob = "SLJ_civil_war"
+		add_ideas = RAJ_indian_civil_war_idea
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	BAN = {
+		transfer_state = 431
+		transfer_state = 1369
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	BRM = {
+		transfer_state = 1366
+		transfer_state = 1368
+	}
+	RJN = {
+		transfer_state = 281
+		transfer_state = 321
+		transfer_state = 733
+		281 = {
+			add_core_of = RJN
+		}
+		321 = {
+			add_core_of = RJN
+		}
+		733 = {
+			add_core_of = RJN
+		}
+		add_ideas = RAJ_indian_civil_war_idea
+		set_capital = {
+			state = 321
+		}
+	}
+	RAJ = {
+		add_ideas = RAJ_indian_civil_war_idea
+		clr_country_flag = JAP_PEC_member_flag
+		drop_cosmetic_tag = yes
+		clr_country_flag = eadi_member
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = -0.3
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.3
+		}
+		remove_ideas = {
+			JAP_PDTO_member_1
+			JAP_PDTO_member_2
+			JAP_PEC_member
+			JAP_PEC_member_2
+		}
+		set_nationality = {
+			target_country = RSS
+			character = RAJ_Mohan_Bhagwat
+		}
+		RSS = {
+			promote_character = RAJ_Mohan_Bhagwat
+		}
+		set_nationality = {
+			target_country = LRJ
+			character = RAJ_Rahul_Ghandi
+		}
+		LRJ = {
+			promote_character = RAJ_Rahul_Ghandi
+		}
+		set_nationality = {
+			target_country = UPJ
+			character = RAJ_Amardeep_Singh_Bhinder
+		}
+		UPJ = {
+			add_country_leader_role = {
 				character = RAJ_Amardeep_Singh_Bhinder
-			}
-			UPJ = {
-				add_country_leader_role = {
-					character = RAJ_Amardeep_Singh_Bhinder
-					promote_leader = yes
-					country_leader = {
-						ideology = military_junta
-						traits = {
-						}
+				promote_leader = yes
+				country_leader = {
+					ideology = military_junta
+					traits = {
 					}
 				}
 			}
-			set_nationality = {
-				target_country = MPJ
+		}
+		set_nationality = {
+			target_country = MPJ
+			character = RAJ_Suchindra_Kumar
+		}
+		MPJ = {
+			add_country_leader_role = {
 				character = RAJ_Suchindra_Kumar
-			}
-			MPJ = {
-				add_country_leader_role = {
-					character = RAJ_Suchindra_Kumar
-					promote_leader = yes
-					country_leader = {
-						ideology = military_democracy
-						traits = {
-						}
+				promote_leader = yes
+				country_leader = {
+					ideology = military_democracy
+					traits = {
 					}
 				}
 			}
-			set_nationality = {
-				target_country = SAJ
+		}
+		set_nationality = {
+			target_country = SAJ
+			character = RAJ_Anil_Chauhan
+		}
+		SAJ = {
+			add_country_leader_role = {
 				character = RAJ_Anil_Chauhan
-			}
-			SAJ = {
-				add_country_leader_role = {
-					character = RAJ_Anil_Chauhan
-					promote_leader = yes
-					country_leader = {
-						ideology = military_democracy
-						traits = {
-						}
+				promote_leader = yes
+				country_leader = {
+					ideology = military_democracy
+					traits = {
 					}
 				}
 			}
-			set_nationality = {
-				target_country = SLJ
+		}
+		set_nationality = {
+			target_country = SLJ
+			character = RAJ_Yogendra_Dimri
+		}
+		SLJ = {
+			add_country_leader_role = {
 				character = RAJ_Yogendra_Dimri
-			}
-			SLJ = {
-				add_country_leader_role = {
-					character = RAJ_Yogendra_Dimri
-					promote_leader = yes
-					country_leader = {
-						ideology = military_democracy
-						traits = {
-						}
+				promote_leader = yes
+				country_leader = {
+					ideology = military_democracy
+					traits = {
 					}
 				}
 			}
-			transfer_navy = {
-				target = RJN
-			}
-			transfer_units_fraction = {
-				target = MPJ
-				size = 0.1
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			transfer_units_fraction = {
-				target = UPJ
-				size = 0.1
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			transfer_units_fraction = {
-				target = NBG
-				size = 0.1
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			transfer_units_fraction = {
-				target = LRJ
-				size = 0.3
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			transfer_units_fraction = {
-				target = NAX
-				size = 0.3
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			transfer_units_fraction = {
-				target = RSS
-				size = 0.3
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			transfer_units_fraction = {
-				target = SAJ
-				size = 0.2
-				stockpile_ratio = 0.05
-				army_ratio = 0.05
-				navy_ratio = 0.05
-				air_ratio = 0.05
-			}
-			give_military_access = PRC
-			give_military_access = PAK
 		}
-		if = {
-			limit = {
-				430 = {
-					controller = {
-						OR = {
-							tag = PRC
-							is_ally_with = PRC
-						}
+		transfer_navy = {
+			target = RJN
+		}
+		transfer_units_fraction = {
+			target = MPJ
+			size = 0.1
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		transfer_units_fraction = {
+			target = UPJ
+			size = 0.1
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		transfer_units_fraction = {
+			target = NBG
+			size = 0.1
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		transfer_units_fraction = {
+			target = LRJ
+			size = 0.3
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		transfer_units_fraction = {
+			target = NAX
+			size = 0.3
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		transfer_units_fraction = {
+			target = RSS
+			size = 0.3
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		transfer_units_fraction = {
+			target = SAJ
+			size = 0.2
+			stockpile_ratio = 0.05
+			army_ratio = 0.05
+			navy_ratio = 0.05
+			air_ratio = 0.05
+		}
+		give_military_access = PRC
+		give_military_access = PAK
+	}
+	if = {
+		limit = {
+			430 = {
+				controller = {
+					OR = {
+						tag = PRC
+						is_ally_with = PRC
 					}
 				}
-				PRC = {
-					has_completed_focus = PRC_operation_gangaridai
-				}
 			}
-			PRJ = {
-				annex_country = {
-				    target = BAN
-				    transfer_troops = no
-				}
+			PRC = {
+				has_completed_focus = PRC_operation_gangaridai
 			}
 		}
-		if = {
-			limit = {
-				PRC = {
-					controls_state = 424
-					has_completed_focus = PRC_operation_pallava
-				}
-			}
-			PRJ = {
-				transfer_state = 424
-			}
-		}
-		if = {
-			limit = {
-				PRC = {
-					controls_state = 1418
-					has_completed_focus = PRC_operation_pallava
-				}
-			}
-			PRJ = {
-				transfer_state = 1418
+		PRJ = {
+			annex_country = {
+				target = BAN
+				transfer_troops = no
 			}
 		}
 	}
+	if = {
+		limit = {
+			PRC = {
+				controls_state = 424
+				has_completed_focus = PRC_operation_pallava
+			}
+		}
+		PRJ = {
+			transfer_state = 424
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				controls_state = 1418
+				has_completed_focus = PRC_operation_pallava
+			}
+		}
+		PRJ = {
+			transfer_state = 1418
+		}
+	}
+}
 
-	# PRC_gaw_start = {
-	# 	every_state = {
-	# 		limit = {
-	# 			OR = {
-	# 				state = 787
-	# 				state = 1132
-	# 				state = 440
-	# 				state = 1380
-	# 				state = 442
-	# 				state = 443
-	# 				state = 445
-	# 				state = 1324
-	# 				state = 441
-	# 				state = 1131
-	# 				state = 1373
-	# 				state = 439
-	# 				state = 1381
-	# 				state = 437
-	# 				state = 1397
-	# 				state = 1398
-	# 				state = 1370
-	# 				state = 789
-	# 				state = 432
-	# 				state = 1367
-	# 				state = 434
-	# 				state = 1366
-	# 				state = 1368
-	# 				state = 1369
-	# 				state = 430
-	# 				state = 431
-	# 				state = 424
-	# 				state = 1418
-	# 				state = 1413
-	# 				state = 1417
-	# 				state = 1414
-	# 				state = 1415
-	# 				state = 1416
-	# 				state = 422
-	# 				region = 146
-	# 				region = 189
-	# 				region = 142
-	# 				region = 188
-	# 				region = 160
-	# 				region = 159
-	# 				region = 187
-	# 				region = 158
-	# 				region = 93
-	# 				region = 167
-	# 				region = 193
-	# 				region = 194
-	# 				region = 195
-	# 				region = 156
-	# 				region = 76
-	# 				region = 154
-	# 				region = 165
-	# 				region = 164
-	# 				region = 143
-	# 				region = 145
-	# 				region = 220
-	# 				region = 216
-	# 				region = 219
-	# 				region = 152
-	# 				state = 428
-	# 				state = 433
-	# 				state = 1379
-	# 				state = 438
-	# 				state = 436
-	# 				state = 1400
-	# 				state = 1399
-	# 				state = 435
-	# 				state = 1371
-	# 				state = 426
-	# 				state = 1372
-	# 				state = 427
-	# 				state = 425
-	# 				state = 423
-	# 				state = 320
-	# 				state = 429
-	# 				state = 716
-	# 				state = 1394
-	# 				state = 328
-	# 				state = 717
-	# 			}
-	# 		}
-	# 		add_dynamic_modifier = {
-	# 			modifier = PRC_unplanned_offensive
-	# 			days = 575
-	# 		}
-	# 	}
-	# 	#every_state = {
-	# 	#	limit = {
-	# 	#		OR = {
-	# 	#		}
-	# 	#	}
-	# 	#	add_dynamic_modifier = {
-	# 	#		modifier = PRC_non_combat_area
-	# 	#	}
-	# 	#}
-	# 	JAP = {
-	# 		country_event = {
-	# 			id = jap.1002
-	# 			hours = 6
-	# 		}
-	# 		activate_mission = JAP_GAW_war_exhaustion
-	# 		PRC_GAW_check_faction_members = yes
-	# 		add_dynamic_modifier = {
-	# 			modifier = PRC_war_exhaustion_dynamic
-	# 		}
-	# 		load_oob = GAW_reserves_jap1
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			JAP = {
-	# 				is_ai = yes
-	# 			}
-	# 		}
-	# 		JAP = {
-	# 			load_oob = GAW_reserves_jap1_ai
-	# 		}
-	# 	}
-	# 	news_event = news.415
-	# 	set_global_flag = pan_asian_war_ongoing
-	# 	clr_global_flag = GAW_soon
-	# 	activate_mission = PRC_GAW_war_exhaustion
-	# 	PRC_GAW_check_faction_members = yes
-	# 	add_dynamic_modifier = {
-	# 		modifier = PRC_war_exhaustion_dynamic
-	# 	}
-	# 	AST = {
-	# 		activate_mission = JAP_GAW_war_exhaustion
-	# 		PRC_GAW_check_faction_members = yes
-	# 		add_dynamic_modifier = {
-	# 			modifier = PRC_war_exhaustion_dynamic
-	# 		}
-	# 		load_oob = GAW_reserves_ast1_ai
-	# 		if = {
-	# 			limit = { has_dlc = "Man the Guns" }
-	# 				load_oob = "AST_2000_naval_mtg"
-	# 				load_oob = "AST_2000_naval_mtg"
-	# 				load_oob = "AST_2000_naval_mtg"
-	# 			else = {
-	# 				load_oob = "AST_2000_naval_legacy"
-	# 				load_oob = "AST_2000_naval_legacy"
-	# 				load_oob = "AST_2000_naval_legacy"
-	# 			}
-	# 		}
-	# 	}
-	# 	RAJ = {
-	# 		activate_mission = JAP_GAW_war_exhaustion
-	# 		PRC_GAW_check_faction_members = yes
-	# 		add_dynamic_modifier = {
-	# 			modifier = PRC_war_exhaustion_dynamic
-	# 		}
-	# 		load_oob = GAW_militia_raj1
-	# 		if = {
-	# 			limit = { has_dlc = "Man the Guns" }
-	# 				load_oob = "RAJ_2000_naval_mtg"
-	# 			else = {
-	# 				load_oob = "RAJ_2000_naval_legacy"
-	# 			}
-	# 		}
-	# 	}
-	# 	CUB = {
-	# 		activate_mission = great_asian_war_mission
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			PRC = {
-	# 				is_ai = yes
-	# 			}
-	# 		}
-	# 		INS = {
-	# 			load_oob = GAW_militia_ins2
-	# 		}
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			PRC = {
-	# 				is_ai = no
-	# 			}
-	# 		}
-	# 		INS = {
-	# 			load_oob = GAW_militia_ins1
-	# 		}
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			PRC = {
-	# 				is_ai = yes
-	# 			}
-	# 		}
-	# 		PAK = {
-	# 			load_oob = GAW_militia_pak1
-	# 		}
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			JAP  = {
-	# 				is_ai = yes
-	# 			}
-	# 			PRC  = {
-	# 				is_ai = no
-	# 			}
-	# 		}
-	# 		every_country = {
-	# 			limit = {
-	# 				OR = {
-	# 					tag = AST
-	# 					tag = RAJ
-	# 					tag = JAP
-	# 				}
-	# 			}
-	# 			add_ideas = JAP_AST_RAJ_ai_buff_against_prc_player_gaw
-	# 		}
-	# 	}
-	# 	if = {
-	# 		limit = {
-	# 			JAP  = {
-	# 				is_ai = no
-	# 			}
-	# 			PRC  = {
-	# 				is_ai = yes
-	# 			}
-	# 		}
-	# 		PRC =  {
-	# 			add_ideas = PRC_ai_buff_against_jap_player_gaw
-	# 		}
-	# 	}
-	# 	every_country = {
-	# 		limit = {
-	# 			OR = {
-	# 				tag = NEP
-	# 				tag = SRL
-	# 				tag = VIN
-	# 				tag = LAO
-	# 				tag = CAM
-	# 				tag = SIA
-	# 				tag = MAL
-	# 				tag = SIG
-	# 				tag = INS
-	# 				tag = PHI
-	# 				tag = PNG
-	# 				tag = NZL
-	# 				tag = BAN
-	# 			}
-	# 		}
-	# 		load_oob = GAW_templates_for_ai
-	# 		capital_scope = {
-	# 			create_unit = {
-	# 				division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
-	# 				owner = PREV
-	# 				count = 6
-	# 			}
-	# 			create_unit = {
-	# 				division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
-	# 				owner = PREV
-	# 				count = 4
-	# 			}
-	# 		}
-	# 	}
-	# }
-	
+# PRC_gaw_start = {
+# 	every_state = {
+# 		limit = {
+# 			OR = {
+# 				state = 787
+# 				state = 1132
+# 				state = 440
+# 				state = 1380
+# 				state = 442
+# 				state = 443
+# 				state = 445
+# 				state = 1324
+# 				state = 441
+# 				state = 1131
+# 				state = 1373
+# 				state = 439
+# 				state = 1381
+# 				state = 437
+# 				state = 1397
+# 				state = 1398
+# 				state = 1370
+# 				state = 789
+# 				state = 432
+# 				state = 1367
+# 				state = 434
+# 				state = 1366
+# 				state = 1368
+# 				state = 1369
+# 				state = 430
+# 				state = 431
+# 				state = 424
+# 				state = 1418
+# 				state = 1413
+# 				state = 1417
+# 				state = 1414
+# 				state = 1415
+# 				state = 1416
+# 				state = 422
+# 				region = 146
+# 				region = 189
+# 				region = 142
+# 				region = 188
+# 				region = 160
+# 				region = 159
+# 				region = 187
+# 				region = 158
+# 				region = 93
+# 				region = 167
+# 				region = 193
+# 				region = 194
+# 				region = 195
+# 				region = 156
+# 				region = 76
+# 				region = 154
+# 				region = 165
+# 				region = 164
+# 				region = 143
+# 				region = 145
+# 				region = 220
+# 				region = 216
+# 				region = 219
+# 				region = 152
+# 				state = 428
+# 				state = 433
+# 				state = 1379
+# 				state = 438
+# 				state = 436
+# 				state = 1400
+# 				state = 1399
+# 				state = 435
+# 				state = 1371
+# 				state = 426
+# 				state = 1372
+# 				state = 427
+# 				state = 425
+# 				state = 423
+# 				state = 320
+# 				state = 429
+# 				state = 716
+# 				state = 1394
+# 				state = 328
+# 				state = 717
+# 			}
+# 		}
+# 		add_dynamic_modifier = {
+# 			modifier = PRC_unplanned_offensive
+# 			days = 575
+# 		}
+# 	}
+# 	#every_state = {
+# 	#	limit = {
+# 	#		OR = {
+# 	#		}
+# 	#	}
+# 	#	add_dynamic_modifier = {
+# 	#		modifier = PRC_non_combat_area
+# 	#	}
+# 	#}
+# 	JAP = {
+# 		country_event = {
+# 			id = jap.1002
+# 			hours = 6
+# 		}
+# 		activate_mission = JAP_GAW_war_exhaustion
+# 		PRC_GAW_check_faction_members = yes
+# 		add_dynamic_modifier = {
+# 			modifier = PRC_war_exhaustion_dynamic
+# 		}
+# 		load_oob = GAW_reserves_jap1
+# 	}
+# 	if = {
+# 		limit = {
+# 			JAP = {
+# 				is_ai = yes
+# 			}
+# 		}
+# 		JAP = {
+# 			load_oob = GAW_reserves_jap1_ai
+# 		}
+# 	}
+# 	news_event = news.415
+# 	set_global_flag = pan_asian_war_ongoing
+# 	clr_global_flag = GAW_soon
+# 	activate_mission = PRC_GAW_war_exhaustion
+# 	PRC_GAW_check_faction_members = yes
+# 	add_dynamic_modifier = {
+# 		modifier = PRC_war_exhaustion_dynamic
+# 	}
+# 	AST = {
+# 		activate_mission = JAP_GAW_war_exhaustion
+# 		PRC_GAW_check_faction_members = yes
+# 		add_dynamic_modifier = {
+# 			modifier = PRC_war_exhaustion_dynamic
+# 		}
+# 		load_oob = GAW_reserves_ast1_ai
+# 		if = {
+# 			limit = { has_dlc = "Man the Guns" }
+# 				load_oob = "AST_2000_naval_mtg"
+# 				load_oob = "AST_2000_naval_mtg"
+# 				load_oob = "AST_2000_naval_mtg"
+# 			else = {
+# 				load_oob = "AST_2000_naval_legacy"
+# 				load_oob = "AST_2000_naval_legacy"
+# 				load_oob = "AST_2000_naval_legacy"
+# 			}
+# 		}
+# 	}
+# 	RAJ = {
+# 		activate_mission = JAP_GAW_war_exhaustion
+# 		PRC_GAW_check_faction_members = yes
+# 		add_dynamic_modifier = {
+# 			modifier = PRC_war_exhaustion_dynamic
+# 		}
+# 		load_oob = GAW_militia_raj1
+# 		if = {
+# 			limit = { has_dlc = "Man the Guns" }
+# 				load_oob = "RAJ_2000_naval_mtg"
+# 			else = {
+# 				load_oob = "RAJ_2000_naval_legacy"
+# 			}
+# 		}
+# 	}
+# 	CUB = {
+# 		activate_mission = great_asian_war_mission
+# 	}
+# 	if = {
+# 		limit = {
+# 			PRC = {
+# 				is_ai = yes
+# 			}
+# 		}
+# 		INS = {
+# 			load_oob = GAW_militia_ins2
+# 		}
+# 	}
+# 	if = {
+# 		limit = {
+# 			PRC = {
+# 				is_ai = no
+# 			}
+# 		}
+# 		INS = {
+# 			load_oob = GAW_militia_ins1
+# 		}
+# 	}
+# 	if = {
+# 		limit = {
+# 			PRC = {
+# 				is_ai = yes
+# 			}
+# 		}
+# 		PAK = {
+# 			load_oob = GAW_militia_pak1
+# 		}
+# 	}
+# 	if = {
+# 		limit = {
+# 			JAP  = {
+# 				is_ai = yes
+# 			}
+# 			PRC  = {
+# 				is_ai = no
+# 			}
+# 		}
+# 		every_country = {
+# 			limit = {
+# 				OR = {
+# 					tag = AST
+# 					tag = RAJ
+# 					tag = JAP
+# 				}
+# 			}
+# 			add_ideas = JAP_AST_RAJ_ai_buff_against_prc_player_gaw
+# 		}
+# 	}
+# 	if = {
+# 		limit = {
+# 			JAP  = {
+# 				is_ai = no
+# 			}
+# 			PRC  = {
+# 				is_ai = yes
+# 			}
+# 		}
+# 		PRC =  {
+# 			add_ideas = PRC_ai_buff_against_jap_player_gaw
+# 		}
+# 	}
+# 	every_country = {
+# 		limit = {
+# 			OR = {
+# 				tag = NEP
+# 				tag = SRL
+# 				tag = VIN
+# 				tag = LAO
+# 				tag = CAM
+# 				tag = SIA
+# 				tag = MAL
+# 				tag = SIG
+# 				tag = INS
+# 				tag = PHI
+# 				tag = PNG
+# 				tag = NZL
+# 				tag = BAN
+# 			}
+# 		}
+# 		load_oob = GAW_templates_for_ai
+# 		capital_scope = {
+# 			create_unit = {
+# 				division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+# 				owner = PREV
+# 				count = 6
+# 			}
+# 			create_unit = {
+# 				division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+# 				owner = PREV
+# 				count = 4
+# 			}
+# 		}
+# 	}
+# }
 PRC_remove_special_regional_modifiers = {
 	custom_effect_tooltip = SOV_remove_special_regional_modifiers_tt
 	hidden_effect = {
@@ -2957,6 +3000,7 @@ PRC_join_BRI = {
 		}
 	}
 }
+
 PRC_leave_BRI = {
 	remove_ideas = {
 		PRC_BRI_member
@@ -2987,4 +3031,768 @@ PRC_leave_BRI = {
 	remove_from_array = {
 		PRC.PRC_BRI_members = THIS
 	}
+}
+
+PRC_gaizaowancheng_X = {
+	if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 2
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.025
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea12a
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 3
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.035
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea12b
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 4
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var
+			value = 0.2
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.05
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea12c
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 5
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var
+			value = 0.25
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.05
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea12d
+			}
+		}
+	}
+}
+
+PRC_gaizaowancheng_W = {
+	if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 2
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_facto_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_office_park_factor_dynamic_var
+			value = 0.05
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea15a
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 3
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_facto_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_office_park_factor_dynamic_var
+			value = 0.075
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea15b
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 4
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_facto_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_office_park_factor_dynamic_var
+			value = 0.1
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea15c
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 5
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_facto_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.175
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_office_park_factor_dynamic_var
+			value = 0.125
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea15d
+			}
+		}
+	}
+}
+
+PRC_gaizaowancheng_J = {
+	if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 2
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_income_growth_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_usiness_value_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.1
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea14a
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 3
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_income_growth_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_usiness_value_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.125
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea14b
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 4
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_income_growth_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_usiness_value_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.15
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea14c
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 5
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_income_growth_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_expense_growth_factor_dynamic_var
+			value = -0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_usiness_value_factor_dynamic_var
+			value = 0.175
+		}
+		add_to_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.175
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.175
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea14d
+			}
+		}
+	}
+}
+
+PRC_gaizaowancheng_G = {
+	if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 2
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_industrial_capacity_factory_dynamic_var
+			value = 0.1
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea13a
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 3
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_industrial_capacity_factory_dynamic_var
+			value = 0.125
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea13b
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 4
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_industrial_capacity_factory_dynamic_var
+			value = 0.15
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea13c
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 5
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_personal_value_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+			value = 0.175
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+			value = 0.175
+		}
+		add_to_variable = {
+			var = PRC_mic_industrial_capacity_factory_dynamic_var
+			value = 0.175
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea13d
+			}
+		}
+	}
+}
+
+PRC_gaizaowancheng_Y = {
+	if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 2
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = PRC_mic_global_building_slots_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_local_resources_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_infrastructure_factor_dynamic_var
+			value = 0.1
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea16a
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 3
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = PRC_mic_global_building_slots_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_local_resources_factor_dynamic_var
+			value = 0.15
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_infrastructure_factor_dynamic_var
+			value = 0.15
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea16b
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 4
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = PRC_mic_global_building_slots_factor_dynamic_var
+			value = 0.2
+		}
+		add_to_variable = {
+			var = PRC_mic_local_resources_factor_dynamic_var
+			value = 0.2
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_infrastructure_factor_dynamic_var
+			value = 0.2
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea16c
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PRC_nl_jingjiCd1_var = 5
+			}
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_business_value_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		add_to_variable = {
+			var = PRC_mic_global_building_slots_factor_dynamic_var
+			value = 0.25
+		}
+		add_to_variable = {
+			var = PRC_mic_local_resources_factor_dynamic_var
+			value = 0.25
+		}
+		add_to_variable = {
+			var = PRC_mic_production_speed_infrastructure_factor_dynamic_var
+			value = 0.25
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_made_in_china_dummy_idea0
+				add_idea = PRC_made_in_china_dummy_idea16d
+			}
+		}
+	}
+}
+
+PRC_nl_strengthen_guidance1 = {
+	custom_effect_tooltip = PRC_nl_strengthen_guidance1_tt
+	set_country_flag = PRC_nl_strengthen_guidance1_flag
+}
+
+PRC_nl_strengthen_guidance2 = {
+	custom_effect_tooltip = PRC_nl_strengthen_guidance1_tt
+	set_country_flag = PRC_nl_strengthen_guidance2_flag
+}
+
+PRC_nl_strengthen_guidance3 = {
+	custom_effect_tooltip = PRC_nl_strengthen_guidance1_tt
+	set_country_flag = PRC_nl_strengthen_guidance3_flag
+}
+
+PRC_nl_strengthen_guidance4 = {
+	custom_effect_tooltip = PRC_nl_strengthen_guidance1_tt
+	set_country_flag = PRC_nl_strengthen_guidance4_flag
+}
+
+PRC_nl_strengthen_guidance5 = {
+	custom_effect_tooltip = PRC_nl_strengthen_guidance1_tt
+	set_country_flag = PRC_nl_strengthen_guidance5_flag
 }

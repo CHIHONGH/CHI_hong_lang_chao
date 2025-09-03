@@ -67,6 +67,7 @@ PRC_Culture_Revital = {
 				academic_development_var_temp = 0.1
 			}
 			add_academic_development = yes
+			country_event = Chihong.59
 		}
 	}
 	#	改革中高考
@@ -163,11 +164,13 @@ PRC_Culture_Revital = {
 	PRC_rebuild_rural_school = {
 		icon = GFX_PRC_decision_youth_project
 		visible = {
-			has_completed_focus = PRC_nl_future_with_technology
-			has_country_flag = PRC_culture_enabled_flag
+			#has_completed_focus = PRC_nl_future_with_technology
+			#has_country_flag = PRC_culture_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_future_with_technology
+			#has_completed_focus = PRC_nl_future_with_technology
+			always = no
 		}
 		cost = 50
 		days_remove = 90
@@ -200,11 +203,13 @@ PRC_Culture_Revital = {
 	PRC_regularize_teacher_test = {
 		icon = GFX_PRC_New_Gaokao
 		visible = {
-			has_completed_focus = PRC_nl_future_with_technology
-			has_country_flag = PRC_culture_enabled_flag
+			#has_completed_focus = PRC_nl_future_with_technology
+			#has_country_flag = PRC_culture_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_future_with_technology
+			#has_completed_focus = PRC_nl_future_with_technology
+			always = no
 		}
 		cost = 100
 		days_remove = 90
@@ -238,11 +243,13 @@ PRC_Culture_Revital = {
 	PRC_edu_automation = {
 		icon = GFX_PRC_New_Gaokao
 		visible = {
-			has_completed_focus = PRC_nl_future_with_technology
-			has_country_flag = PRC_culture_enabled_flag
+			#has_completed_focus = PRC_nl_future_with_technology
+			#has_country_flag = PRC_culture_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_future_with_technology
+			#has_completed_focus = PRC_nl_future_with_technology
+			always = no
 		}
 		cost = 120
 		days_remove = 180
@@ -285,11 +292,13 @@ PRC_Culture_Revital = {
 	PRC_guide_students = {
 		icon = generic_political_rally
 		visible = {
-			has_completed_focus = PRC_nl_purge_academic_bureaucrats
-			has_country_flag = PRC_culture_enabled_flag
+			#has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			#has_country_flag = PRC_culture_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			#has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			always = no
 		}
 		cost = 75
 		days_remove = 180
@@ -327,11 +336,13 @@ PRC_Culture_Revital = {
 	PRC_unify_teachers = {
 		icon = generic_political_rally
 		visible = {
-			has_completed_focus = PRC_nl_purge_academic_bureaucrats
-			has_country_flag = PRC_culture_enabled_flag
+			#has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			#has_country_flag = PRC_culture_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			#has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			always = no
 		}
 		cost = 50
 		days_remove = 90
@@ -371,19 +382,55 @@ PRC_Culture_Revital = {
 		days_remove = 100
 		fire_only_once = yes
 		remove_effect = {
+			add_stability = 0.1
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.1
+			}
+			add_farming_development = yes
 			country_event = Chihong.37
+		}
+	}
+	PRC_invite_WLI_art_festival = {
+		icon = GFX_PRC_cylc_decision
+		visible = {
+			has_completed_focus = PRC_nl_proletarian_art_festival
+			has_completed_focus = Establishment_the_channel
+			has_country_flag = PRC_culture_enabled_flag
+		}
+		available = {
+			has_completed_focus = PRC_nl_proletarian_art_festival
+		}
+		cost = 50
+		days_remove = 14
+		fire_only_once = yes
+		remove_effect = {
+			custom_effect_tooltip = IPAF_effect_tt
+			set_country_flag = international_proletarian_art_festival_flag
 		}
 	}
 	#	宣传人民群众作品
 	PRC_propagate_PEOPLE_work = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_fighting_pen_revo_draw
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_fighting_pen_revo_draw
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_fighting_pen_revo_draw
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_fighting_pen_revo_draw
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = 75
 		days_remove = 180
@@ -472,16 +519,48 @@ PRC_Culture_Revital = {
 			}
 		}
 	}
+	RC_Brace_the_Future = {
+		icon = GFX_PRC_new_left_decision
+		visible = {
+			#has_completed_focus = PRC_nl_social_reeducation
+			#has_country_flag = PRC_culture_enabled_flag
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
+		}
+		available = {
+			#has_completed_focus = PRC_nl_party_the_face
+			#has_campaign_slot = yes
+			always = no
+		}
+		cost = 50
+		complete_effect = {
+			set_temp_variable = {
+				debt_var_temp = 10
+			}
+			add_debt = yes
+		}
+		days_remove = 90
+		days_re_enable = 90
+		modifier = {
+			stability_factor = 0.1
+			political_power_gain = 0.1
+			society_development_monthly = 0.005
+			research_speed_factor = 0.1
+			consumer_goods_factor = -0.15
+		}
+	}
 	#	宣传：坚持党的领导
 	PRC_establish_lead_by_party = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_party_the_face
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_party_the_face
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_party_the_face
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_party_the_face
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = socialist_ppgda_cost1
 		days_remove = 90
@@ -511,12 +590,14 @@ PRC_Culture_Revital = {
 	PRC_hundred_flowers = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_end_to_past_chaos
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_end_to_past_chaos
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_end_to_past_chaos
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_end_to_past_chaos
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = socialist_ppgda_cost1
 		days_remove = 90
@@ -547,12 +628,14 @@ PRC_Culture_Revital = {
 	PRC_Commie_Youth_Rev = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_youth_league
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_youth_league
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_youth_league
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_youth_league
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = socialist_ppgda_cost1
 		days_remove = 90
@@ -583,12 +666,14 @@ PRC_Culture_Revital = {
 	PRC_socialist_culture_peoples_culture = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_revive_red_culture
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_revive_red_culture
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_revive_red_culture
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_revive_red_culture
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = socialist_ppgda_cost
 		days_remove = 180
@@ -625,12 +710,14 @@ PRC_Culture_Revital = {
 	PRC_nobody_shall_be_left = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = socialist_ppgda_cost2
 		days_remove = 180
@@ -659,12 +746,14 @@ PRC_Culture_Revital = {
 	PRC_teacher_the_gardener = {
 		icon = GFX_decision_generic_propaganda_campaigns
 		visible = {
-			has_completed_focus = PRC_nl_future_with_technology
-			has_country_flag = PRC_propaganda_enabled_flag
+			#has_completed_focus = PRC_nl_future_with_technology
+			#has_country_flag = PRC_propaganda_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_future_with_technology
-			has_campaign_slot = yes
+			#has_completed_focus = PRC_nl_future_with_technology
+			#has_campaign_slot = yes
+			always = no
 		}
 		cost = socialist_ppgda_cost1
 		days_remove = 90
@@ -719,12 +808,13 @@ PRC_Culture_Revital = {
 		days_remove = 1
 		fire_only_once = yes
 		remove_effect = {
+			set_country_flag = PRC_out_capitalist_so_call_equity_flag
 			set_temp_variable = {
 				society_development_var_temp = 0.1
 			}
 			add_society_development = yes
 			add_to_variable = {
-				PPRC_pp_var = -0.02
+				PSC_pp_factor_var = 0.025
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -748,12 +838,13 @@ PRC_Culture_Revital = {
 		days_remove = 90
 		fire_only_once = yes
 		remove_effect = {
+			set_country_flag = PRC_PRC_out_maleism_flag
 			set_temp_variable = {
 				society_development_var_temp = 0.1
 			}
 			add_society_development = yes
 			add_to_variable = {
-				PPRC_pp_var = -0.02
+				PSC_pp_factor_var = 0.025
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -786,11 +877,13 @@ PRC_Culture_Revital = {
 	PRC_cadre_revolutionization = {
 		icon = GFX_PRC_centrist_decision
 		visible = {
-			has_completed_focus = PRC_nl_party_the_face
-			has_country_flag = PRC_reform_enabled_flag
+			#has_completed_focus = PRC_nl_party_the_face
+			#has_country_flag = PRC_reform_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_party_the_face
+			#has_completed_focus = PRC_nl_party_the_face
+			always = no
 		}
 		cost = 100
 		complete_effect = {
@@ -813,6 +906,7 @@ PRC_Culture_Revital = {
 	#	更替地方不忠党团支部
 	PRC_replace_unloyal_officers = {
 		icon = GFX_PRC_centrist_decision
+		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_nl_youth_league
 			has_country_flag = PRC_reform_enabled_flag
@@ -829,14 +923,19 @@ PRC_Culture_Revital = {
 			research_speed_factor = 0.03
 		}
 		remove_effect = {
-			add_political_power = 20
 			add_to_variable = {
-				PPRC_pp_var = -0.02
+				PPRC_pp_g_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = -0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_party_rectification_campaign_empty
-					add_idea = PRC_party_rectification_campaign16
+					add_idea = PRC_party_rectification_campaign34
 				}
 			}
 		}
@@ -845,11 +944,13 @@ PRC_Culture_Revital = {
 	PRC_buy_tiktok = {
 		icon = GFX_PRC_Reform_by_Force
 		visible = {
-			has_completed_focus = PRC_nl_purge_culture_propaganders
-			has_country_flag = PRC_reform_enabled_flag
+			#has_completed_focus = PRC_nl_purge_culture_propaganders
+			#has_country_flag = PRC_reform_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_purge_culture_propaganders
+			#has_completed_focus = PRC_nl_purge_culture_propaganders
+			always = no
 		}
 		cost = 125
 		days_remove = 180
@@ -881,11 +982,13 @@ PRC_Culture_Revital = {
 	PRC_buy_wechat = {
 		icon = GFX_PRC_Reform_by_Force
 		visible = {
-			has_completed_focus = PRC_nl_purge_culture_propaganders
-			has_country_flag = PRC_reform_enabled_flag
+			#has_completed_focus = PRC_nl_purge_culture_propaganders
+			#has_country_flag = PRC_reform_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_purge_culture_propaganders
+			#has_completed_focus = PRC_nl_purge_culture_propaganders
+			always = no
 		}
 		cost = 125
 		days_remove = 180
@@ -917,11 +1020,13 @@ PRC_Culture_Revital = {
 	PRC_digital_budget_supervision = {
 		icon = GFX_PRC_Step_Past_Chairman_Xiaoping
 		visible = {
-			has_completed_focus = PRC_nl_purge_academic_bureaucrats
-			has_country_flag = PRC_reform_enabled_flag
+			#has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			#has_country_flag = PRC_reform_enabled_flag
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			#has_completed_focus = PRC_nl_purge_academic_bureaucrats
+			always = no
 		}
 		cost = 50
 		days_remove = 90
@@ -972,30 +1077,43 @@ PRC_Rt_People_Democracy = {
 				ideology = authoritarian_democrat
 				popularity = 0.05
 			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
 			add_to_variable = {
 				PPRC_st_week_var = -0.001
 			}
 			add_to_variable = {
-				PPRC_st_var = -0.02
+				PPRC_st_var = -0.1
 			}
 			add_to_variable = {
-				PPRC_expense_var = 0.01
+				PPRC_expense_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_factory_output_var = -0.03
+				PPRC_factory_output_var = -0.05
 			}
 			add_to_variable = {
-				PPRC_max_efficiency_var = -0.03
+				PPRC_max_efficiency_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_pp_var = 0.15
 			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_party_rectification_campaign_empty
-					add_idea = PRC_party_rectification_campaign1
+					add_idea = PRC_party_rectification_campaign0
 				}
 			}
 		}
 	}
-	#	与老左派和解
+	#	与革命派和解
 	PRC_detente_with_old_lefties = {
 		icon = GFX_PRC_new_left_decision
 		visible = {
@@ -1016,24 +1134,23 @@ PRC_Rt_People_Democracy = {
 				ideology = totalitarian_socialist
 				popularity = 0.1
 			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:totalitarian_socialist
+			}
+			add_to_coalition = yes
+			add_country_leader_role = {
+				character = PRC_Mao_Yuanxin
+				country_leader = {
+					expire = "2099.1.1"
+					ideology = maoism
+				}
+				promote_leader = yes
+			}
+		}
+		remove_effect = {
 			add_days_mission_timeout = {
 				mission = PRC_damage_from_reactionary_mission
-				days = 25
-			}
-			add_to_variable = {
-				PRC_cpc_political_power_gain_dynamic_var = 0.03
-			}
-			add_to_variable = {
-				PRC_cpc_totalitarian_socialist_drift_dynamic_var = 0.02
-			}
-			add_to_variable = {
-				PRC_cpc_industrial_capacity_factory_dynamic_var = 0.04
-			}
-			add_to_variable = {
-				PRC_cpc_personal_expense_factor_dynamic_var = -0.1
-			}
-			add_to_variable = {
-				PRC_cpc_agriculture_development_monthly_dynamic_var = 0.003
+				days = 21
 			}
 			add_to_variable = {
 				PPRC_pp_var = -0.05
@@ -1042,19 +1159,18 @@ PRC_Rt_People_Democracy = {
 				PPRC_st_var = -0.05
 			}
 			add_to_variable = {
-				PPRC_factory_output_var = 0.05
+				PPRC_factory_output_var = 0.075
 			}
 			add_to_variable = {
 				PPRC_max_efficiency_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.02
+				PPRC_ts_drift_var = 0.02
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = -0.05
 			}
 			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_communist_party_of_china_dummy
-					add_idea = PRC_communist_party_of_china_dummy3
-				}
 				swap_ideas = {
 					remove_idea = PRC_party_rectification_campaign_empty
 					add_idea = PRC_party_rectification_campaign2
@@ -1062,7 +1178,7 @@ PRC_Rt_People_Democracy = {
 			}
 		}
 	}
-	#	与新左派和解
+	#	与温和派合作
 	PRC_detente_with_new_lefties = {
 		icon = GFX_PRC_new_left_decision
 		visible = {
@@ -1084,27 +1200,19 @@ PRC_Rt_People_Democracy = {
 				ideology = social_democrat
 				popularity = 0.1
 			}
+			add_country_leader_role = {
+				character = PRC_ciu_zhiyuan
+				country_leader = {
+					expire = "2099.1.1"
+					ideology = social_democracy
+				}
+				promote_leader = yes
+			}
+		}
+		remove_effect = {
 			add_days_mission_timeout = {
 				mission = PRC_damage_from_reactionary_mission
-				days = 25
-			}
-			add_to_variable = {
-				PRC_cpc_political_power_gain_dynamic_var = 0.03
-			}
-			add_to_variable = {
-				PRC_cpc_social_democrat_drift_dynamic_var = 0.02
-			}
-			add_to_variable = {
-				PRC_cpc_business_value_factor_dynamic_var = 0.04
-			}
-			add_to_variable = {
-				PRC_cpc_personal_value_factor_dynamic_var = 0.04
-			}
-			add_to_variable = {
-				PRC_cpc_production_speed_industrial_complex_factor_dynamic_var = 0.05
-			}
-			add_to_variable = {
-				PRC_cpc_society_development_monthly_dynamic_var = 0.003
+				days = 21
 			}
 			add_to_variable = {
 				PPRC_pp_var = -0.05
@@ -1113,7 +1221,7 @@ PRC_Rt_People_Democracy = {
 				PPRC_st_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_line_var = 0.1
+				PPRC_efficiency_gain_var = 0.1
 			}
 			add_to_variable = {
 				PPRC_infrust_var = 0.1
@@ -1122,13 +1230,15 @@ PRC_Rt_People_Democracy = {
 				PPRC_income_var = 0.035
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.02
+				PPRC_business_value_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_sd_drift_var = 0.02
 			}
 			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_communist_party_of_china_dummy
-					add_idea = PRC_communist_party_of_china_dummy4
-				}
 				swap_ideas = {
 					remove_idea = PRC_party_rectification_campaign_empty
 					add_idea = PRC_party_rectification_campaign3
@@ -1145,41 +1255,58 @@ PRC_Rt_People_Democracy = {
 		cost = 100
 		days_remove = 30
 		days_re_enable = 90
+		fire_only_once = yes
 		complete_effect = {
-			add_popularity = {
-				ideology = communist
-				popularity = -0.015
-			}
-			add_popularity = {
-				ideology = libertarian_socialist
-				popularity = -0.015
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				society_development_var_temp = 0.03
-			}
-			add_society_development = yes
-			add_to_variable = {
-				PRC_cpc_political_power_gain_dynamic_var = 0.02
+			add_political_power = 100
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 21
 			}
 			add_to_variable = {
-				PPRC_pp_var = -0.02
+				PPRC_pp_g_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.01
+				PPRC_st_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_st_var = 0.02
+				PPRC_nt_drift_var = -0.05
 			}
 			add_to_variable = {
-				PPRC_society_dev_var = 0.001
+				PPRC_max_efficiency_var = -0.075
+			}
+			add_to_variable = {
+				PPRC_efficiency_gain_var = -0.1
+			}
+			add_to_variable = {
+				PPRC_society_dev_var = 0.005
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_communist_party_of_china_dummy
-					add_idea = PRC_communist_party_of_china_dummy5
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign4
 				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				PPRC_pp_var = -0.1
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_consumer_var = -0.075
+			}
+			add_to_variable = {
+				PPRC_consumer_num_var = -0.1
+			}
+			add_to_variable = {
+				PPRC_society_dev_var = 0.005
+			}
+			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_party_rectification_campaign_empty
 					add_idea = PRC_party_rectification_campaign4
@@ -1196,35 +1323,28 @@ PRC_Rt_People_Democracy = {
 		cost = 50
 		days_remove = 60
 		days_re_enable = 90
-		complete_effect = {
-			add_stability = -0.05
-			add_days_mission_timeout = {
-				mission = PRC_damage_from_reactionary_mission
-				days = 25
-			}
-		}
-		modifier = {
-			political_power_gain = -0.05
-			personal_expense_factor = 0.1
-			authoritarian_democrat_drift = -0.05
-		}
 		remove_effect = {
 			add_popularity = {
 				ideology = authoritarian_democrat
 				popularity = -0.05
 			}
-			add_stability = 0.03
 			add_to_variable = {
-				PPRC_pp_var = -0.02
+				PPRC_pp_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_st_var = 0.02
+				PPRC_st_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_st_party_var = 0.02
+				PPRC_consumer_var = -0.05
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.01
+				PPRC_consumer_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_expense_var = -0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1238,7 +1358,8 @@ PRC_Rt_People_Democracy = {
 	PRC_punchdown_factory_bureaucracy = {
 		icon = GFX_PRC_new_left_decision
 		visible = {
-			has_completed_focus = PRC_nl_people_walk_with_party
+			#has_completed_focus = PRC_nl_people_walk_with_party
+			always = no
 		}
 		cost = 75
 		days_remove = 45
@@ -1286,10 +1407,12 @@ PRC_Rt_People_Democracy = {
 	PRC_promote_people_commune = {
 		icon = GFX_PRC_new_left_decision
 		visible = {
-			has_completed_focus = PRC_nl_people_walk_with_party
+			#has_completed_focus = PRC_nl_people_walk_with_party
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_people_walk_with_party
+			#has_completed_focus = PRC_nl_people_walk_with_party
+			always = no
 		}
 		cost = 75
 		days_remove = 45
@@ -1322,7 +1445,7 @@ PRC_Rt_People_Democracy = {
 				PPRC_consumer_var = -0.02
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.02
+				PPRC_nt_drift_var = -0.02
 			}
 			add_to_variable = {
 				PPRC_supply_var = 0.02
@@ -1342,7 +1465,11 @@ PRC_Youth_Ideological_Education = {
 	PRC_military_revolutionization = {
 		icon = generic
 		available = {
-			has_completed_focus = PRC_nl_cadre_revolutionization
+			#has_completed_focus = PRC_nl_cadre_revolutionization
+			always = no
+		}
+		visible = {
+			always = no
 		}
 		cost = 90
 		days_remove = 90
@@ -1353,7 +1480,7 @@ PRC_Youth_Ideological_Education = {
 			army_attack_factor = -0.1
 		}
 		remove_effect = {
-			PRC_decrease_corrupt_bureaucracy = yes
+			#PRC_decrease_corrupt_bureaucracy = yes
 			set_temp_variable = {
 				military_development_var_temp = 0.05
 			}
@@ -1386,7 +1513,7 @@ PRC_Youth_Ideological_Education = {
 				PPRC_reinforce_var = 0.02
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.01
+				PPRC_nt_drift_var = -0.01
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1396,7 +1523,7 @@ PRC_Youth_Ideological_Education = {
 			}
 		}
 	}
-	#	国企规模化
+	#	打击国企经济犯罪
 	PRC_state_corporation_revolution = {
 		icon = GFX_PRC_new_left_decision
 		visible = {
@@ -1419,33 +1546,36 @@ PRC_Youth_Ideological_Education = {
 			production_speed_industrial_complex_factor = 0.1
 		}
 		remove_effect = {
-			set_temp_variable = {
-				industrial_development_var_temp = 0.07
-			}
-			add_industrial_development = yes
-			add_to_variable = {
-				PPRC_pp_var = -0.03
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 21
 			}
 			add_to_variable = {
-				PPRC_st_var = 0.02
+				PPRC_pp_var = -0.05
 			}
 			add_to_variable = {
 				PPRC_income_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_expense_factor = 0.05
+				PPRC_expense_factor = -0.05
 			}
 			add_to_variable = {
-				PPRC_building_var = 0.075
+				PPRC_personal_value_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_energy_var = 0.01
+				PPRC_business_value_var = 0.15
 			}
 			add_to_variable = {
-				PPRC_research_var = 0.04
+				PPRC_building_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.02
+				PPRC_energy_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_research_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = -0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1453,10 +1583,10 @@ PRC_Youth_Ideological_Education = {
 					add_idea = PRC_party_rectification_campaign11
 				}
 			}
-			PRC_decrease_corrupt_bureaucracy = yes
+			#PRC_decrease_corrupt_bureaucracy = yes
 		}
 	}
-	#	行政干部革命化
+	#	行政干部理论再学习
 	PRC_party_cadre_revolution = {
 		icon = GFX_PRC_new_left_decision
 		visible = {
@@ -1473,18 +1603,28 @@ PRC_Youth_Ideological_Education = {
 		}
 		remove_effect = {
 			add_political_power = 100
-			PRC_decrease_corrupt_bureaucracy = yes
-			add_to_variable = {
-				PPRC_pp_var = -0.04
+			#PRC_decrease_corrupt_bureaucracy = yes
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 21
 			}
 			add_to_variable = {
-				PPRC_st_week_var = 0.001
+				PPRC_pp_g_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_society_dev_var = 0.004
+				PPRC_st_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = -0.02
+				PPRC_max_efficiency_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_efficiency_gain_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_society_dev_var = 0.005
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = -0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1520,28 +1660,27 @@ PRC_Youth_Ideological_Education = {
 				ideology = communist
 				popularity = 0.07
 			}
-			add_days_mission_timeout = {
-				mission = PRC_damage_from_reactionary_mission
-				days = 25
-			}
 		}
 		modifier = {
 			communist_drift = 0.05
-			research_speed_factor = 0.07
+			research_speed_factor = 0.1
 			society_development_monthly = 0.007
 		}
 		remove_effect = {
 			add_to_variable = {
-				PPRC_pp_var = -0.08
+				PPRC_pp_g_var = 0.2
 			}
 			add_to_variable = {
 				PPRC_st_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_consumer_var = 0.04
+				PPRC_consumer_var = -0.05
 			}
 			add_to_variable = {
-				PPRC_research_var = 0.04
+				PPRC_research_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_factory_output_var = 0.075
 			}
 			add_to_variable = {
 				PPRC_com_drift_var = 0.03
@@ -1597,10 +1736,10 @@ PRC_Youth_Ideological_Education = {
 			add_society_development = yes
 			add_poverty_development = yes
 			add_to_variable = {
-				PPRC_pp_var = -0.12
+				PPRC_pp_var = 0.15
 			}
 			add_to_variable = {
-				PPRC_expense_factor = -0.05
+				PPRC_expense_factor = -0.15
 			}
 			add_to_variable = {
 				PPRC_st_var = 0.04
@@ -1612,10 +1751,10 @@ PRC_Youth_Ideological_Education = {
 				PPRC_factory_output_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_max_efficiency_var = 0.04
+				PPRC_max_efficiency_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_line_var = 0.04
+				PPRC_line_var = 0.05
 			}
 			add_to_variable = {
 				PPRC_efficiency_gain_var = 0.08
@@ -1635,10 +1774,12 @@ PRC_Youth_Ideological_Education = {
 	PRC_second_sanwan_reform = {
 		icon = GFX_PRC_crimson_sky
 		visible = {
-			has_completed_focus = PRC_nl_marxist_theory_peak
+			#has_completed_focus = PRC_nl_marxist_theory_peak
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_marxist_theory_peak
+			#has_completed_focus = PRC_nl_marxist_theory_peak
+			always = no
 		}
 		cost = 125
 		days_remove = 90
@@ -1725,25 +1866,28 @@ PRC_Youth_Ideological_Education = {
 		}
 		remove_effect = {
 			add_to_variable = {
-				PPRC_pp_var = -0.05
+				PPRC_pp_var = -0.15
 			}
 			add_to_variable = {
 				PPRC_st_var = 0.075
 			}
 			add_to_variable = {
-				PPRC_research_var = 0.025
+				PPRC_research_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_society_dev_var = 0.004
+				PPRC_society_dev_var = 0.005
 			}
 			add_to_variable = {
-				PPRC_academic_dev_var = 0.004
+				PPRC_academic_dev_var = 0.005
 			}
 			add_to_variable = {
 				PPRC_com_drift_var = 0.03
 			}
 			add_to_variable = {
 				PPRC_sd_drift_var = 0.02
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = -0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1800,10 +1944,19 @@ PRC_Youth_Ideological_Education = {
 				PPRC_academic_dev_var = 0.002
 			}
 			add_to_variable = {
-				PPRC_farming_dev_var = 0.002
+				PPRC_farming_dev_var = 0.005
 			}
 			add_to_variable = {
 				PPRC_conscription_factor_var = 0.03
+			}
+			add_to_variable = {
+				PPRC_ts_drift_var = 0.03
+			}
+			add_to_variable = {
+				PPRC_ls_drift_var = 0.02
+			}
+			add_to_variable = {
+				PPRC_ad_drift_var = -0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1834,25 +1987,28 @@ PRC_Youth_Ideological_Education = {
 		complete_effect = {
 			set_country_flag = PRC_CR_refine_flag
 			add_to_variable = {
-				PPRC_pp_var = -0.12
+				PPRC_pp_var = -0.15
 			}
 			add_to_variable = {
 				PPRC_st_var = 0.125
 			}
 			add_to_variable = {
-				PPRC_business_value_var = 0.05
+				PPRC_business_value_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_building_var = 0.03
+				PPRC_building_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_research_var = 0.03
+				PPRC_research_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_factory_output_var = 0.03
+				PPRC_factory_output_var = 0.075
 			}
 			add_to_variable = {
-				PPRC_ad_drift_var = 0.02
+				PPRC_consumer_var = -0.1
+			}
+			add_to_variable = {
+				PPRC_nt_drift_var = -0.05
 			}
 			add_to_variable = {
 				PPRC_com_drift_var = 0.05
@@ -1886,31 +2042,28 @@ PRC_Youth_Ideological_Education = {
 		complete_effect = {
 			set_country_flag = PRC_CR_refine_flag
 			add_to_variable = {
-				PPRC_pp_var = 0.06
+				PPRC_pp_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_st_var = -0.07
+				PPRC_st_var = -0.1
 			}
 			add_to_variable = {
 				PPRC_personal_value_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_building_var = 0.09
+				PPRC_building_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_research_var = 0.09
+				PPRC_research_var = 0.1
 			}
 			add_to_variable = {
-				PPRC_factory_output_var = 0.09
+				PPRC_factory_output_var = 0.1
 			}
 			add_to_variable = {
 				PPRC_max_efficiency_var = 0.06
 			}
 			add_to_variable = {
-				PPRC_line_var = 0.06
-			}
-			add_to_variable = {
-				PPRC_attack_var = 0.025
+				PPRC_line_var = 0.1
 			}
 			add_to_variable = {
 				PPRC_ts_var = 0.02
@@ -1919,7 +2072,7 @@ PRC_Youth_Ideological_Education = {
 				PPRC_ls_drift_var = 0.05
 			}
 			add_to_variable = {
-				PPRC_slot_var = 0.06
+				PPRC_slot_var = 0.1
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1933,24 +2086,26 @@ PRC_Youth_Ideological_Education = {
 	PRC_new_set_of_bureaucracy = {
 		icon = GFX_PRC_things_going_bad
 		visible = {
-			has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			NOT = {
-				has_country_flag = PRC_opposition_suspended_flag
-			}
+			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+			#NOT = {
+			#	has_country_flag = PRC_opposition_suspended_flag
+			#}
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			custom_trigger_tooltip = {
-				tooltip = COM_MORE_THAN_LS
-				check_variable = {
-					var = party_popularity@communist
-					value = party_popularity@libertarian_socialist
-					compare = greater_than_or_equals
-				}
-			}
-			NOT = {
-				has_country_flag = PRC_opposition_suspended_flag
-			}
+			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+			#custom_trigger_tooltip = {
+			#	tooltip = COM_MORE_THAN_LS
+			#	check_variable = {
+			#		var = party_popularity@communist
+			#		value = party_popularity@libertarian_socialist
+			#		compare = greater_than_or_equals
+			#	}
+			#}
+			#NOT = {
+			#	has_country_flag = PRC_opposition_suspended_flag
+			#}
+			always = no
 		}
 		cost = 75
 		days_remove = 100
@@ -1994,24 +2149,26 @@ PRC_Youth_Ideological_Education = {
 	PRC_second_clear_four_campaign = {
 		icon = GFX_PRC_cylc_decision
 		visible = {
-			has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			NOT = {
-				has_country_flag = PRC_opposition_suspended_flag
-			}
+			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+			#NOT = {
+			#	has_country_flag = PRC_opposition_suspended_flag
+			#}
+			always = no
 		}
 		available = {
-			has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			custom_trigger_tooltip = {
-				tooltip = COM_LESS_THAN_LS
-				check_variable = {
-					var = party_popularity@communist
-					value = party_popularity@libertarian_socialist
-					compare = less_than_or_equals
-				}
-			}
-			NOT = {
-				has_country_flag = PRC_opposition_suspended_flag
-			}
+			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+			#custom_trigger_tooltip = {
+			#	tooltip = COM_LESS_THAN_LS
+			#	check_variable = {
+			#		var = party_popularity@communist
+			#		value = party_popularity@libertarian_socialist
+			#		compare = less_than_or_equals
+			#	}
+			#}
+			#NOT = {
+			#	has_country_flag = PRC_opposition_suspended_flag
+			#}
+			always = no
 		}
 		cost = 90
 		days_remove = 365
@@ -3636,6 +3793,7 @@ PRC_ready_for_global_economy_destory_category = {
 		}
 	}
 }
+
 PRC_maoist_politburo_cat = {
 	PRC_clean_up_kinmen = {
 		icon = GFX_PRC_soliders
@@ -3643,7 +3801,7 @@ PRC_maoist_politburo_cat = {
 			tag = PRC
 		}
 		visible = {
-			has_completed_focus = PRC_nl_martial_law_reconstruction #PRC_the_red_phoenix
+			has_completed_focus = PRC_nl_martial_law_reconstruction			#PRC_the_red_phoenix
 		}
 		available = {
 		}
@@ -3670,7 +3828,7 @@ PRC_maoist_politburo_cat = {
 			tag = PRC
 		}
 		visible = {
-			has_completed_focus = PRC_nl_martial_law_reconstruction #PRC_the_red_phoenix
+			has_completed_focus = PRC_nl_martial_law_reconstruction			#PRC_the_red_phoenix
 		}
 		available = {
 		}
@@ -3697,7 +3855,7 @@ PRC_maoist_politburo_cat = {
 			tag = PRC
 		}
 		visible = {
-			has_completed_focus = PRC_nl_martial_law_reconstruction #PRC_the_red_phoenix
+			has_completed_focus = PRC_nl_martial_law_reconstruction			#PRC_the_red_phoenix
 		}
 		available = {
 		}
@@ -3724,7 +3882,7 @@ PRC_maoist_politburo_cat = {
 			tag = PRC
 		}
 		visible = {
-			has_completed_focus = PRC_nl_martial_law_reconstruction #PRC_the_red_phoenix
+			has_completed_focus = PRC_nl_martial_law_reconstruction			#PRC_the_red_phoenix
 		}
 		available = {
 		}
@@ -3751,7 +3909,7 @@ PRC_maoist_politburo_cat = {
 			tag = PRC
 		}
 		visible = {
-			has_completed_focus = PRC_nl_martial_law_reconstruction #PRC_the_red_phoenix
+			has_completed_focus = PRC_nl_martial_law_reconstruction			#PRC_the_red_phoenix
 		}
 		available = {
 			1150 = {
@@ -3779,679 +3937,6 @@ PRC_maoist_politburo_cat = {
 		}
 		ai_will_do = {
 			base = 999
-		}
-	}
-	PRC_nl_jingji2_d1 = {
-			#决议：推进国内大循环	
-			icon = GFX_PRC_decision_industrial_expension
-			cost = 100
-			days_remove = 90	
-			fire_only_once = yes
-			allowed = {
-				tag = PRC
-			}
-			visible = {
-				has_completed_focus = PRC_nl_advance_productivity #完成国策发展先进生产力解锁此决议
-			}
-			modifier = {
-				consumer_goods_factor = 0.1
-				misc_expense = 25
-			}
-			complete_effect = {
-			}
-			remove_effect = {
-				effect_tooltip = {	#仅展示效果，不执行
-					swap_ideas = {
-						remove_idea = PRC_made_in_china_dummy_idea0	#空民族精神，无效果
-						add_idea = PRC_nl_jingji2_d1_idea	#仅填追加效果
-					}
-				}
-				add_to_variable = {	#预设变量，文件在common/dynamic_modifiers中，直接作用于于此创建的dynamic（相当于民族精神）实际上执行上文效果的是这部分
-					var = PRC_mic_production_speed_buildings_factor_dynamic_var	#效果为建造速度+5%，具体效果根据此名称在dynamic_modifiers文件中对应的修正而定
-					value = 0.05  #数值
-				}
-				add_to_variable = {
-					var = PRC_mic_local_resources_factor_dynamic_var
-					value = 0.1
-				}
-				add_to_variable = {
-					var = PRC_mic_min_export_dynamic_var
-					value = -0.1
-				}
-				add_to_variable = {
-					var = PRC_mic_industrial_development_monthly_dynamic_var
-					value = 0.005
-				}
-				add_stability = 0.05
-				set_temp_variable = { #TFR特殊变量：工业发展+10%
-					var = industrial_development_var_temp
-					value = 0.1
-				}
-				add_industrial_development = yes
-				set_country_flag = PRC_nl_condition_jingji1_flag  #创建国家标记，一些p语言没有的条件需要借此实现
-			}
-	}
-	PRC_nl_jingji2_d2 = {
-		#决议：建设先进产业集群
-		icon = GFX_PRC_decision_fund_manufacturing_improvements
-		cost = 100
-		days_remove = 180	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_advance_productivity
-		}
-		modifier = {
-			production_speed_buildings_factor = -0.1
-			civilian_factory_use = 5
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji2_d2_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_production_speed_buildings_factor_dynamic_var
-				value = 0.15
-			}
-			every_controlled_state = { #随机控制省份+3建筑位+2民工
-				random_select_amount = 3
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			every_controlled_state = {
-				random_select_amount = 3
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = office_park
-					level = 1
-					instant_build = yes
-				}
-			}
-			set_country_flag = PRC_nl_condition_jingji2_flag
-		}
-	}
-	PRC_nl_jingji2_d3 = {
-		#决议：	扩展科技小院模式
-		icon = GFX_decision_FPR_Energy_Focus
-		cost = 75
-		days_remove = 90	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_advance_productivity
-		}
-		modifier = {
-			farming_development_monthly = 0.005 
-			academic_development_monthly = 0.005
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji2_d3_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_mic_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_mic_production_speed_energy_farm_factor_dynamic_var
-				value = 0.1
-			}
-			every_controlled_state = {
-				random_select_amount = 5
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = energy_farm
-					level = 1
-					instant_build = yes
-				}
-			}
-			set_country_flag = PRC_nl_condition_jingji3_flag
-		}
-	}
-	PRC_nl_jingji2_d4 = {
-		#决议：推广农业八字宪法	
-		icon = GFX_decision_generic_investment
-		cost = 50
-		days_remove = 90	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_advance_productivity
-		}
-		modifier = {
-			farming_development_monthly = 0.005
-			society_development_monthly = 0.005
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji2_d4_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_mic_local_resources_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = PRC_mic_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			set_country_flag = PRC_nl_condition_jingji4_flag
-		}
-	}
-	PRC_nl_jingji3_d1 = {
-		#决议：消灭血汗工厂
-		icon = GFX_PRC_things_going_bad
-		cost = 100
-		days_remove = 90	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_reform_production_relation
-		}
-		modifier = {
-			industrial_development_monthly = 0.005
-			production_speed_buildings_factor = -0.2
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji3_d1_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_mic_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			592 = {	#于592移除一个民工，若加仅变正负
-				add_building_construction = {
-					type = industrial_complex
-					level = -1
-					instant_build = yes
-				}
-			}
-			1206 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = -1
-					instant_build = yes
-				}
-			}
-			1207 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = -1
-					instant_build = yes
-				}
-			}
-			728 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = -1
-					instant_build = yes
-				}
-			}
-			set_country_flag = PRC_nl_condition_jingji5_flag
-		}
-	}
-	PRC_nl_jingji3_d2 = {
-		#决议：落实劳动法
-		icon = GFX_SOV_decision_SOV_recover_bureaucracy
-		cost = 150
-		days_remove = 180	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_reform_production_relation
-		}
-		modifier = {
-			political_power_factor = -0.15
-			poverty_development_monthly = 0.005
-		}
-		complete_effect = {
-			hidden_effect = {
-				country_event = {
-					id = prcs.37
-					days = 5
-					random_days = 20
-				}
-			}
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji3_d2_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.05
-			}
-			swap_ideas = {
-				remove_idea = medium_safety
-				add_idea = high_safety
-			}
-			set_country_flag = PRC_nl_condition_jingji6_flag
-		}
-	}
-	PRC_nl_jingji3_d3 = {
-		#决议：新时代赎买政策
-		icon = GFX_SOV_china_investment
-		cost = 100
-		days_remove = 180	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_reform_production_relation
-		}
-		modifier = {
-			consumer_goods_factor = -0.15
-			business_value_factor = -0.25
-		}
-		complete_effect = {
-			set_country_flag = PRC_gaizaoqiye1_flag
-			unlock_decision_category_tooltip = PRC_gaizaodaxingqiye_category
-			effect_tooltip = {
-				add_ideas = PRC_nl_jingji3_d3C0_idea
-			}
-			add_to_variable = {
-				var = PRC_nlgzc_political_power_gain_dynamic_var
-				value = -0.2
-			}
-			add_to_variable = {
-				var = PRC_nlgzc_business_value_factor_dynamic_var
-				value = -0.1
-			}
-			add_to_variable = {
-				var = PRC_nlgzc_expense_growth_factor_dynamic_var
-				value = 0.05
-			}
-			set_country_flag = PRC_nl_condition_jingjiC0_flag
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji3_d3_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_business_value_factor_dynamic_var
-				value = -0.15
-			}
-			add_to_variable = {
-				var = PRC_mic_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 150
-			}
-			add_debt_with_inflation = yes
-			set_country_flag = PRC_nl_condition_jingji7_flag
-		}
-	}
-	PRC_nl_jingji3_d4 = {
-		#决议：规范统一平台经济
-		icon = GFX_decision_FPR_Debt_Forgiveness_Programs
-		cost = 100
-		days_remove = 120	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_reform_production_relation
-		}
-		modifier = {
-			consumer_goods_factor = 0.1
-			misc_income = 25
-		}
-		complete_effect = {
-			unlock_decision_tooltip = PRC_nl_jingjiCd10
-			unlock_decision_tooltip = PRC_nl_jingjiCd11
-			set_country_flag = PRC_gaizaoqiye2_flag
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji3_d4_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_business_value_factor_dynamic_var
-				value = 0.15
-			}
-			add_stability = 0.05
-			add_war_support = 0.05
-			set_country_flag = PRC_nl_condition_jingji8_flag
-		}
-	}
-	PRC_nl_jingji5_d1 = {
-		#决议：发扬大庆工业精神
-		icon = GFX_PRC_decision_youth_project
-		cost = 150
-		days_remove = 180	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_new_era_angang_constitution
-		}
-		modifier = {
-			political_power_factor = 0.1
-			production_speed_buildings_factor = 0.15
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji5_d1_idea
-				}
-				if = {
-					limit = {
-						has_country_flag = PRC_nl_condition_jingji10_flag
-					}
-					swap_ideas = {
-						remove_idea = PRC_nl_jingji5_d0_idea
-						add_idea = PRC_nl_jingji5_d1a_idea
-					}
-				}
-				else = {
-					add_ideas = PRC_nl_jingji5_d1a_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_production_speed_buildings_factor_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_mic_industrial_capacity_factory_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_mic_industrial_capacity_dockyard_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_PXF_political_power_gain_dynamic_var
-				value = 0.15
-			}
-			add_to_variable = {
-				var = PRC_PXF_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			set_country_flag = PRC_nl_condition_jingji9_flag
-		}
-	}
-	PRC_nl_jingji6_d1 = {
-		#决议：发扬农业大寨精神
-		icon = GFX_decision_generic_investment
-		cost = 100
-		days_remove = 120	
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_reform_farmer_cooperation
-		}
-		modifier = {
-			political_power_factor = 0.1
-			consumer_goods_factor = -0.1
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji6_d1_idea
-				}
-				if = {
-					limit = {
-						has_country_flag = PRC_nl_condition_jingji9_flag
-					}
-					swap_ideas = {
-						remove_idea = PRC_nl_jingji5_d0_idea
-						add_idea = PRC_nl_jingji6_d1b_idea
-					}
-				}
-				else = {
-					add_ideas = PRC_nl_jingji6_d1b_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_conscription_factor_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_mic_local_resources_factor_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_mic_personal_value_factor_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_PXF_political_power_gain_dynamic_var
-				value = 0.15
-			}
-			add_to_variable = {
-				var = PRC_PXF_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			set_country_flag = PRC_nl_condition_jingji10_flag
-		}
-	}
-	PRC_nl_jingji14_d1 = {
-		#决议：发挥人民群众的创造力
-		icon = GFX_PRC_new_left_decision
-		cost = 100
-		days_remove = 120
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_free_and_equal_labor
-		}
-		modifier = {
-			research_speed_factor = 0.1
-			industrial_development_monthly = 0.01
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji14_d1_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_personal_value_dynamic_var
-				value = 0.2
-			}
-			add_to_variable = {
-				var = PRC_mic_personal_value_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = PRC_mic_personal_expense_dynamic_var
-				value = 0.1
-			}
-			set_country_flag = PRC_nl_condition_jingji14_flag
-		}
-	}
-	PRC_nl_jingji15_d1 = {
-		#决议：实现自由人的联合体
-		icon = GFX_PRC_new_left_decision
-		cost = 100
-		days_remove = 120
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			has_completed_focus = PRC_nl_industry_five
-		}
-		visible = {
-			has_completed_focus = PRC_nl_improve_commune_function
-		}
-		modifier = {
-			political_power_factor = 0.1
-			society_development_monthly = 0.01
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			change_economy_type_auto_socialism1 = yes
-			set_country_flag = PRC_nl_condition_jingji15_flag
-		}
-	}
-	PRC_nl_jingji16_d1 = {
-		#决议：普及家用服务机器人
-		icon = GFX_PRC_decision_fund_manufacturing_improvements
-		cost = 50
-		days_remove = 180
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_robotic_emergency_assist
-		}
-		modifier = {
-			civilian_factory_use = 10
-			consumer_goods_factor = 0.25
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji16_d1_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_consumer_goods_factor_dynamic_var
-				value = 0.15
-			}
-			add_to_variable = {
-				var = PRC_mic_monthly_population_dynamic_var
-				value = 0.2
-			}
-			add_to_variable = {
-				var = PRC_mic_personal_value_factor_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = PRC_mic_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_mic_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			set_country_flag = PRC_nl_condition_jingji16_flag
-		}
-	}
-	PRC_nl_jingji23_d1 = {
-		#决议：人定胜天
-		icon = GFX_PRC_decision_youth_project
-		cost = 200
-		days_remove = 120
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_nl_improve_commune_function
-		}
-		modifier = {
-			expense_growth_factor = 0.15
-			research_speed_factor = -0.1
-		}
-		complete_effect = {
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 350
-			}
-			add_debt_with_inflation = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_jingji23_d1_idea
-				}
-			}
-			add_to_variable = {
-				var = PRC_mic_local_building_slots_factor_dynamic_var
-				value = 0.15
-			}
-			modify_building_resources = {
-				building = synthetic_refinery
-				resource = oil
-				amount = 2
-			}
-			modify_building_resources = {
-				building = synthetic_refinery
-				resource = rubber
-				amount = 4
-			}
-			set_country_flag = PRC_nl_condition_jingji23_flag
 		}
 	}
 }

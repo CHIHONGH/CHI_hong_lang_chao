@@ -372,23 +372,17 @@ PRC_has_oil_crisis_trigger = {
 	}
 }
 
-PRC_jingji_1_jieduan = {	#国策掀起社会主义建设高潮执行条件：已完成第一阶段所有决议
+PRC_jingji_1_jieduan = {
+	#执行条件：已完成第一阶段计划
 	custom_trigger_tooltip = {
-		tooltip = PRC_nl_complete1y_tooltip #提示文本名，在本地化文件中设置，于TFR_replace_triggers_l_simp_chinese.yml中搜索等号后名称
-		tag = PRC                                           #从此
-		has_country_flag = PRC_nl_condition_jingji1_flag	#
-		has_country_flag = PRC_nl_condition_jingji2_flag	#
-		has_country_flag = PRC_nl_condition_jingji3_flag	#
-		has_country_flag = PRC_nl_condition_jingji4_flag	#
-		has_country_flag = PRC_nl_condition_jingji5_flag	#
-		has_country_flag = PRC_nl_condition_jingji6_flag	#
-		has_country_flag = PRC_nl_condition_jingji7_flag	#
-		has_country_flag = PRC_nl_condition_jingji8_flag	#至此为所代替的条件
-		#满足上述9条件→PRC_jingji_1_jieduan=yes→一阶段决议全部完成→可点掀起高潮国策
+		tooltip = PRC_nl_complete1y_tooltip		#提示文本名，在本地化文件中设置，于TFR_replace_triggers_l_simp_chinese.yml中搜索等号后名称
+		tag = PRC
+		has_completed_focus = PRC_nl_socialist_construction_climax		#至此为所代替的条件
 	}
 }
 
-PRC_jingji_2_jieduan = {	#国策确保人民美好生活执行条件：已完成第二阶段所有决议
+PRC_jingji_2_jieduan = {
+	#国策确保人民美好生活执行条件：已完成第二阶段所有决议
 	custom_trigger_tooltip = {
 		tooltip = PRC_nl_complete2y_tooltip
 		tag = PRC
@@ -396,7 +390,9 @@ PRC_jingji_2_jieduan = {	#国策确保人民美好生活执行条件：已完成
 		has_country_flag = PRC_nl_condition_jingji10_flag
 	}
 }
-PRC_jingji_3_jieduan = {	#国策敢教日月换新天执行条件：已完成第三阶段所有决议
+
+PRC_jingji_3_jieduan = {
+	#国策敢教日月换新天执行条件：已完成第三阶段所有决议
 	custom_trigger_tooltip = {
 		tooltip = PRC_nl_complete3y_tooltip
 		tag = PRC
@@ -407,3 +403,80 @@ PRC_jingji_3_jieduan = {	#国策敢教日月换新天执行条件：已完成第
 	}
 }
 
+PRC_nl_culture_xianzhi = {
+	#
+	custom_trigger_tooltip = {
+		tooltip = PRC_nl_culture_complete_tooltip
+		tag = PRC
+		check_variable = {
+			#检查变量大小
+			var = PRC_nl_focus_culture_complete_var			#变量
+			value = 3			#要检查的值
+			compare = not_equals			#检查的方式
+		}
+	}
+}
+
+PRC_nl_culture_vardel_xianzhi = {
+	#
+	custom_trigger_tooltip = {
+		tooltip = PRC_nl_culture_vardel_tooltip
+		tag = PRC
+		check_variable = {
+			#检查变量大小
+			var = PRC_nl_focus_culture_complete_var			#变量
+			value = 3			#要检查的值
+			compare = equals			#检查的方式
+		}
+	}
+}
+
+PRC_nl_culture_lock = {
+	#
+	custom_trigger_tooltip = {
+		tooltip = PRC_nl_culture_lock_tooltip
+		tag = PRC
+		NOT = {
+			has_country_flag = PRC_nl_focus_culture_complete_flag
+		}
+	}
+}
+
+PRC_nl_rebuild_proletarian_dictatorship_tigger = {
+	#
+	custom_trigger_tooltip = {
+		tooltip = PRC_rebuild_proletarian_dictatorship_tooltip
+		tag = PRC
+		nationalist < 0.1
+		authoritarian_democrat < 0.1
+	}
+}
+
+PRC_nl_socialism_female_tigger = {
+	#
+	custom_trigger_tooltip = {
+		tooltip = PRC_nl_socialism_female_tooltip
+		tag = PRC
+		has_country_flag = PRC_out_capitalist_so_call_equity_flag
+		has_country_flag = PRC_PRC_out_maleism_flag
+	}
+}
+
+PRC_nl_comprehensive_social_integration_tigger = {
+	#
+	custom_trigger_tooltip = {
+		tooltip = nems_jindu_trigger_tt
+		tag = PRC
+		has_country_flag = zidonghua_moxed
+	}
+}
+
+PRC_nl_gaizaojinxing_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = PRC_nl_gaizaojinxing_trigger_tt
+		tag = PRC
+		NOT = {
+			has_country_flag = PRC_nl_gaizaojinxing_flag
+		}
+	}
+}

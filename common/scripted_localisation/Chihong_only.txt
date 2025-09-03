@@ -490,3 +490,28 @@ scripted_loc = {
 		localization_key = PRC_Party_Display_Long8
 	}
 }
+defined_text = {
+	name = PRC_NEMS
+	text = {
+		trigger = {
+			NOT = {
+				has_country_flag = zidonghua_moxed  ##符合此条件，显示词条1的文本
+			}			
+		}
+		localization_key = PRC_NEMS_LOC_1
+	}
+	text = {
+		trigger = {
+			has_country_flag = zidonghua_moxed  ##符合此条件，显示词条2的文本
+		}
+		localization_key = PRC_NEMS_LOC_2
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_long_march_1_stage_flag ##符合此条件，显示词条2的文本
+			has_country_flag = PRC_long_march_2_stage_flag
+			has_country_flag = PRC_long_march_3_stage_flag
+		}
+		localization_key = PRC_NEMS_LOC_3
+	}
+}

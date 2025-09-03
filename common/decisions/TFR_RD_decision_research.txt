@@ -1,19 +1,19 @@
 PRC_nems_system = {
 	fanduipai_zunao = {
 		icon = GFX_PRC_Power_Through_the_Chairman
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
 		activation = {
 			always = no
 		}
-		available = { 
+		available = {
 			always = no
 		}
 		is_good = no
 		selectable_mission = no
 		days_mission_timeout = 100
-		timeout_effect = { 
+		timeout_effect = {
 			set_temp_variable = {
 				var = nems_jindu_rating_var_temp
 				value = -0.02
@@ -22,23 +22,21 @@ PRC_nems_system = {
 			activate_mission = fanduipai_zunao
 		}
 	}
-
 	yu_fanduipai_hezuo = {
 		icon = GFX_PRC_Power_Through_the_Chairman
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_automation_model
 			has_decision = zidonghua_moxing
 		}
-        cost = 30
+		cost = 30
 		days_re_enable = 60
 		days_remove = 60
 		complete_effect = {
@@ -48,22 +46,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	chongzu_zjw = {
-		icon = GFX_PRC_centrist_decision	
-		allowed = { 
+		icon = GFX_PRC_centrist_decision
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 		}
-        fire_only_once = yes
-        cost = 20
+		fire_only_once = yes
+		cost = 20
 		complete_effect = {
 			set_temp_variable = {
 				var = nems_jindu_rating_var_temp
@@ -71,45 +67,45 @@ PRC_nems_system = {
 			}
 			nems_jindu = yes
 			hidden_effect = {
-			add_dynamic_modifier = {
-				modifier = PRC_NEMS_dynamic
-			}
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.05
-			}
+				add_dynamic_modifier = {
+					modifier = PRC_NEMS_dynamic
+				}
+				add_to_variable = {
+					var = NEMS_stability_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_consumer_goods_factor_dynamic_var
+					value = -0.02
+				}
+				add_to_variable = {
+					var = NEMS_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_industrial_capacity_factory_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_business_value_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_personal_value_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = NEMS_income_growth_factor_dynamic_var
+					value = 0.05
+				}
 			}
 			effect_tooltip = {
 				add_ideas = PRC_NEMS
@@ -117,24 +113,22 @@ PRC_nems_system = {
 		}
 	}
 	saoqing_zhangai = {
-		icon = GFX_PRC_Reinforce_Communism	
-		allowed = { 
+		icon = GFX_PRC_Reinforce_Communism
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_maoist_vision
 		}
-        cost = 10
+		cost = 10
 		days_remove = 15
 		days_re_enable = 30
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -149,26 +143,23 @@ PRC_nems_system = {
 			add_society_development = yes
 		}
 	}
-
 	tongji_shengchan_shuju = {
 		icon = GFX_PRC_things_going_bad
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_adopting_ASPR_experience
 		}
-        cost = 20
+		cost = 20
 		days_remove = 30
 		days_re_enable = 45
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -183,115 +174,88 @@ PRC_nems_system = {
 			add_society_development = yes
 		}
 	}
-
-
 	gaizao_gongchang = {
 		icon = GFX_fund_manufacturing_improvements
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_sensor_network_deployment
 		}
-        cost = 30
+		cost = 30
 		days_remove = 120
 		days_re_enable = 0
 		complete_effect = {
-			
 		}
 		modifier = {
 			civilian_factory_use = 5
 		}
 		remove_effect = {
-			add_offsite_building = { type = arms_factory level = 1 }
-			add_offsite_building = { type = industrial_complex level = 1 }
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
 		}
 	}
-
 	zidonghua_moxing = {
 		icon = GFX_PRC_NEMS
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
 		activation = {
 			always = no
 		}
-		available = { 
+		available = {
 			always = no
 		}
 		is_good = no
 		selectable_mission = no
-		days_mission_timeout = 500
+		days_mission_timeout = 30   #720
 		timeout_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.1
-			}
-			nems_jindu = yes
-			remove_dynamic_modifier = {
-				modifier = zidonghua_moxing_dynamic
-			}
 			add_to_variable = {
 				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+				value = 0.1
 			}
 			add_to_variable = {
 				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
+				value = 0.75
 			}
 			add_to_variable = {
 				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
+				value = 0.05
 			}
 			add_to_variable = {
 				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
+				value = 0.075
 			}
 			add_to_variable = {
 				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				value = -0.1
 			}
 			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.01
+				var = NEMS_income_growth_factor_dynamic_var
+				value = 0.05
 			}
 			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.01
+				var = NEMS_expense_growth_factor_dynamic_var
+				value = 0.1
 			}
 			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.01
+				var = NEMS_inflation_monthly_dynamic_var
+				value = -0.2
 			}
 			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.01
+				var = NEMS_misc_income_dynamic_var
+				value = -10
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -300,24 +264,141 @@ PRC_nems_system = {
 				}
 			}
 			set_country_flag = zidonghua_moxed
+			if = {
+				limit = {
+					has_country_flag = PRC_nl_building_foundation_of_model_flag
+				}
+				add_to_variable = {
+					var = NEMS_industrial_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = NEMS_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = NEMS_poverty_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = NEMS_farming_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = NEMS_academic_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = NEMS_production_lack_of_resource_penalty_factor_dynamic_var
+					value = -0.1
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = PRC_NEMS0
+						add_idea = aidonghua_moxing_idea1
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = PRC_nl_spread_lot_flag
+				}
+				add_to_variable = {
+					var = NEMS_industrial_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = NEMS_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = NEMS_poverty_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = NEMS_farming_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = NEMS_academic_development_monthly_dynamic_var
+					value = 0.01
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = PRC_NEMS0
+						add_idea = aidonghua_moxing_idea2
+					}
+				}
+			}
 		}
 	}
-
-	jiasu_gongzuo = {
-		icon = GFX_jsc
-		allowed = { 
+	PRC_nl_building_foundation_of_model ={
+		icon = GFX_PRC_NEMS
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		activation = {
+			always = no
 		}
-        visible = {
+		available = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 10 #180
+		timeout_effect = {
+			add_days_mission_timeout = {
+				mission = zidonghua_moxing
+				days = -90
+			}
+			custom_effect_tooltip = PRC_nl_PRC_nl_spread_lot_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = aidonghua_moxing_idea1
+				}
+			}
+			set_country_flag = PRC_nl_building_foundation_of_model_flag
+		}
+	}
+	PRC_nl_spread_lot = {
+		icon = GFX_jsc
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_national_IoT_construction
+		}
+		cost = 250
+		days_re_enable = 180
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = PRC_nl_PRC_nl_spread_lot_tt
+			effect_tooltip = {
+					swap_ideas = {
+						remove_idea = PRC_NEMS0
+						add_idea = aidonghua_moxing_idea2
+					}
+				}
+			set_country_flag = PRC_nl_spread_lot_flag
+		}
+	}
+	jiasu_gongzuo = {
+		icon = GFX_jsc
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
 			has_completed_focus = PRC_nl_automation_model
 			NOT = {
 				has_country_flag = zidonghua_moxed
 			}
 		}
-        cost = 10
+		cost = 10
 		days_re_enable = 60
 		complete_effect = {
 			add_days_mission_timeout = {
@@ -326,25 +407,23 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	touru_keyan_ranyuan = {
 		icon = GFX_jsc
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_automation_model
 			NOT = {
 				has_country_flag = zidonghua_moxed
 			}
 		}
-        cost = 10
+		cost = 10
 		days_re_enable = 60
 		complete_effect = {
-			add_to_variable	 = {
+			add_to_variable = {
 				var = zdh_research_speed_factor_var
 				value = -0.01
 			}
@@ -360,32 +439,30 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	touru_zijin = {
 		icon = GFX_jsc
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_automation_model
 			NOT = {
 				has_country_flag = zidonghua_moxed
 			}
 		}
-        cost = 10
+		cost = 10
 		days_re_enable = 60
 		complete_effect = {
 			add_days_mission_timeout = {
 				mission = zidonghua_moxing
 				days = -60
 			}
-			add_to_variable	 = {
+			add_to_variable = {
 				var = zdh_consumer_goods_factor_var
 				value = 0.01
 			}
@@ -397,22 +474,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	beijing_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_decentralized_construction
 		}
-        cost = 150
+		cost = 150
 		days_remove = 150
 		fire_only_once = yes
 		modifier = {
@@ -433,22 +508,20 @@ PRC_nems_system = {
 			nems_jindu = yes
 		}
 	}
-
 	guangzhou_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 100
+		cost = 100
 		days_remove = 100
 		fire_only_once = yes
 		modifier = {
@@ -511,22 +584,20 @@ PRC_nems_system = {
 			set_country_flag = guangzhou_jiedian_complete
 		}
 	}
-
 	shanghai_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 100
+		cost = 100
 		days_remove = 100
 		fire_only_once = yes
 		modifier = {
@@ -589,25 +660,22 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	wuhan_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 100
+		cost = 100
 		days_remove = 100
 		fire_only_once = yes
-
 		modifier = {
 			civilian_factory_use = 3
 		}
@@ -668,22 +736,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	shenyang_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 100
+		cost = 100
 		days_remove = 100
 		fire_only_once = yes
 		modifier = {
@@ -746,22 +812,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	chongqing_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 100
+		cost = 100
 		days_remove = 100
 		fire_only_once = yes
 		modifier = {
@@ -824,22 +888,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-	
 	xian_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 100
+		cost = 100
 		days_remove = 100
 		fire_only_once = yes
 		modifier = {
@@ -902,22 +964,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	wulumuqi_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = xian_jiedian_complete
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -979,22 +1039,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	lasa_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = chongqing_jiedian_complete
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1056,22 +1114,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	taibei_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = shanghai_jiedian_complete
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1133,22 +1189,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	haikou_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_country_flag = guangzhou_jiedian_complete
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1210,24 +1264,23 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	wulan_baotuo_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
+		available = {
 			1391 = {
 				is_controlled_by_ROOT_or_ally = yes
 			}
 		}
-        visible = {
+		visible = {
 			has_country_flag = beijing_jiedian_complete
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1294,24 +1347,23 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	haishenwan_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
+		available = {
 			408 = {
 				is_controlled_by_ROOT_or_ally = yes
 			}
 		}
-        visible = {
+		visible = {
 			has_country_flag = shenyan_jiedian_complete
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1378,30 +1430,28 @@ PRC_nems_system = {
 			}
 		}
 	}
-
-
 	guoyouqiye_shixing = {
 		icon = GFX_PRC_decision_industrial_expension
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
 		activation = {
 			always = no
 		}
-		available = { 
+		available = {
 			always = no
 		}
 		is_good = no
 		selectable_mission = no
 		days_mission_timeout = 150
-		timeout_effect = { 
+		timeout_effect = {
 			set_temp_variable = {
 				var = nems_jindu_rating_var_temp
 				value = 0.1
 			}
 			nems_jindu = yes
 			set_temp_variable = {
-				var=industrial_development_var_temp
+				var = industrial_development_var_temp
 				value = 0.1
 			}
 			add_industrial_development = yes
@@ -1418,22 +1468,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	hua_nan = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1479,22 +1527,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	hua_zhong = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1540,22 +1586,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	hua_bei = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1601,22 +1645,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	hua_dong = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1662,22 +1704,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	dong_bei = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1723,22 +1763,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	xi_bei = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1784,22 +1822,20 @@ PRC_nems_system = {
 			}
 		}
 	}
-
 	xi_nan = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
-        cost = 50
+		cost = 50
 		days_remove = 50
 		fire_only_once = yes
 		modifier = {
@@ -1854,7 +1890,7 @@ PRC_nems_system = {
 			NOT = {
 				tag = PRC
 			}
-			is_in_faction_with = PRC	
+			is_in_faction_with = PRC
 		}
 		cost = 50
 		fire_only_once = yes
@@ -1868,27 +1904,25 @@ PRC_nems_system = {
 				}
 			}
 		}
-
 	}
 }
 
 PRC_dawn_project = {
 	zhiyao_yimiao = {
 		icon = GFX_PRC_Negotiate_with_the_Fuerdai
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -1921,23 +1955,94 @@ PRC_dawn_project = {
 			}
 		}
 	}
-
-	liangzi_jisuan = {
+	PRC_nl_military_civilian_integration = {
 		icon = GFX_computers
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
+		days_remove = 120
+		complete_effect = {
+		}
+		remove_effect = {
+			custom_effect_tooltip = PRC_military_tree_opened_tt
+			set_country_flag = PRC_military_tree_available
+			add_to_variable = {
+				var = rd_production_factory_max_efficiency_factor_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = rd_production_speed_arms_factory_factor_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = rd_production_speed_industrial_complex_factor_var
+				value = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_research_idea0
+					add_idea = PRC_research_idea1
+				}
+			}
+		}
+	}
+	PRC_nl_stellar_exploration = {
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 120
+		complete_effect = {
+			unlock_decision_tooltip = PRC_asteroid_mining_programme_new_left
+			unlock_decision_tooltip = PRC_new_moon_race_programme_new_left
+			unlock_decision_tooltip = PRC_expand_satellite_launching_programme_new_left
+			set_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		remove_effect = {
+			hidden_effect = {
+				country_event = {
+					id = prcs.53
+					days = 40
+					random_days = 50
+				}
+			}
+		}
+	}
+	liangzi_jisuan = {
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -1966,23 +2071,21 @@ PRC_dawn_project = {
 			}
 		}
 	}
-
 	xinnengyuan_chuneng = {
 		icon = GFX_PRC_atomic_nuclear
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -1991,6 +2094,11 @@ PRC_dawn_project = {
 			add_income = yes
 		}
 		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
 			add_to_variable = {
 				var = rd_production_speed_energy_farm_factor_var
 				value = 0.25
@@ -2033,23 +2141,21 @@ PRC_dawn_project = {
 			}
 		}
 	}
-
 	fenzi_yuzhong = {
 		icon = GFX_PRC_chinese_enviroment_cat
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -2058,6 +2164,11 @@ PRC_dawn_project = {
 			add_income = yes
 		}
 		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
 			add_to_variable = {
 				var = rd_farming_development_monthly_var
 				value = 0.01
@@ -2074,23 +2185,21 @@ PRC_dawn_project = {
 			}
 		}
 	}
-
 	chaodao_cailiao = {
 		icon = GFX_PRC_railroad_train
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -2123,20 +2232,19 @@ PRC_dawn_project = {
 	}
 	haiyang_ziyuan = {
 		icon = GFX_PRC_chinese_enviroment_cat
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -2193,23 +2301,21 @@ PRC_dawn_project = {
 			}
 		}
 	}
-
 	wulixue_touzi = {
 		icon = GFX_PRC_Communist_Money
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
@@ -2218,6 +2324,25 @@ PRC_dawn_project = {
 			add_income = yes
 		}
 		remove_effect = {
+			add_tech_bonus = {
+				name = wulixue_touzi
+				bonus = 1
+				uses = 1
+				ahead_reduction = 1
+				category = air_equipment
+			}
+			add_to_variable = {
+				var = rd_air_accidents_factor_var
+				value = -0.25
+			}
+			add_to_variable = {
+				var = rd_air_agility_factor_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = rd_air_range_factor_var
+				value = 0.15
+			}
 			add_to_variable = {
 				var = rd_research_speed_factor_var
 				value = 0.2
@@ -2234,23 +2359,21 @@ PRC_dawn_project = {
 			}
 		}
 	}
-
 	sidai_hefanying = {
 		icon = GFX_PRC_atomic_nuclear
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		allowed = { 
+		allowed = {
 			tag = PRC
 		}
-		available = { 
-
+		available = {
 		}
-        visible = {
+		visible = {
 			has_completed_focus = PRC_nl_dawn_project
 		}
-        fire_only_once = yes
-        cost = 50
+		fire_only_once = yes
+		cost = 50
 		days_remove = 180
 		complete_effect = {
 			set_temp_variable = {
