@@ -14200,7 +14200,7 @@ country_event = {
 	id = china.3001
 	title = china.3001.t
 	desc = china.3001.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
@@ -14220,7 +14220,7 @@ country_event = {
 	id = china.3002
 	title = china.3002.t
 	desc = china.3002.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
@@ -14235,7 +14235,7 @@ country_event = {
 	id = china.3003
 	title = china.3003.t
 	desc = china.3003.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
@@ -14244,7 +14244,6 @@ country_event = {
     	name = china.3003.a
     	add_political_power = 50
     	custom_effect_tooltip = PRC_tfr_nl_china_old_hkway_tt
-    	add_ideas = PRC_Organizacion_del_Partido_idea
     	country_event = {
             id = china.3009
             days = 120
@@ -14266,17 +14265,28 @@ country_event = {
 	id = china.3004
 	title = china.3004.t
 	desc = china.3004.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
 	}
 	option = {
     	name = china.3004.a
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_mygo_idea
-			add_idea = PRC_Organizacion_del_Partido_bluelotus_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_lanlianhua
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.15
+        }
+        add_to_variable = {
+        	PPRC_society_dev_var = -0.003
+        }
 		remove_ideas = {
 		    PRC_the_separatist_problem
 		}
@@ -14291,24 +14301,65 @@ country_event = {
 	id = china.3005
 	title = china.3005.t
 	desc = china.3005.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
 	}
 	option = {
     	name = china.3005.a
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_mygo_idea
-			add_idea = PRC_Organizacion_del_Partido_oldhappy_idea
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_jiuhuansimeng
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_factory_output_var = 0.03
+        }
+        add_to_variable = {
+        	PPRC_max_efficiency_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.07
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.07
+        }
+        remove_ideas = {
+		    PRC_the_separatist_problem
 		}
+		add_timed_idea = {
+            idea = PRC_the_separatist_problem
+            days = 120
+        }
     }
     option = {
     	name = china.3005.b
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_mygo_idea
-			add_idea = PRC_Organizacion_del_Partido_oldhappy_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_jiuhuansimeng
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_factory_output_var = 0.03
+        }
+        add_to_variable = {
+        	PPRC_max_efficiency_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.07
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.07
+        }
 		remove_ideas = {
 		    PRC_the_separatist_problem
 		}
@@ -14323,7 +14374,7 @@ country_event = {
 	id = china.3006
 	title = china.3006.t
 	desc = china.3006.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
@@ -14331,10 +14382,33 @@ country_event = {
 	option = {
     	name = china.3006.a
     	custom_effect_tooltip = PRC_tfr_nl_china_third_core_tt
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_idea
-			add_idea = PRC_Organizacion_del_Partido_oldandnew_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_jiushiminxinturang
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_var = -0.1
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_max_efficiency_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_expense_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_expense_factor = 0.05
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.05
+        }
     	country_event = {
             id = china.3007
             days = 240
@@ -14343,10 +14417,33 @@ country_event = {
     option = {
     	name = china.3006.b
     	custom_effect_tooltip = PRC_tfr_nl_china_fifth_city_tt
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_idea
-			add_idea = PRC_Organizacion_del_Partido_oldandnew_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_jiushiminxinturang
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_var = -0.1
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_max_efficiency_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_expense_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_expense_factor = 0.05
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.05
+        }
     	country_event = {
             id = china.3008
             days = 240
@@ -14358,17 +14455,28 @@ country_event = {
 	id = china.3007
 	title = china.3007.t
 	desc = china.3007.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
 	}
 	option = {
     	name = china.3007.a
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_oldandnew_idea
-			add_idea = PRC_Organizacion_del_Partido_lionmout_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_shizishanxia
+            }
+        }
+        add_to_variable = {
+        	PPRC_business_value_var = 0.1
+        }
+        add_to_variable = {
+        	PPRC_research_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_building_var = 0.05
+        }
 		remove_ideas = {
 		    PRC_the_separatist_problem
 		}
@@ -14383,17 +14491,34 @@ country_event = {
 	id = china.3008
 	title = china.3008.t
 	desc = china.3008.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
 	}
 	option = {
     	name = china.3008.a
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_oldandnew_idea
-			add_idea = PRC_Organizacion_del_Partido_flower_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_zijinhuazaikai
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_personal_value_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_society_dev_var = 0.003
+        }
 		remove_ideas = {
 		    PRC_the_separatist_problem
 		}
@@ -14408,7 +14533,7 @@ country_event = {
 	id = china.3009
 	title = china.3009.t
 	desc = china.3009.d
-	picture = GFX_Chinese_soldiers
+	
 	is_triggered_only = yes
 	trigger = {
 		tag = PRC
@@ -14416,10 +14541,30 @@ country_event = {
 	option = {
     	name = china.3009.a
     	custom_effect_tooltip = PRC_tfr_nl_china_pandem_tt
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_idea
-			add_idea = PRC_Organizacion_del_Partido_mygo_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_mituzhizi
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = -0.07
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.1
+        }
+        add_to_variable = {
+        	PPRC_business_value_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_com_drift_var = 0.03
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.03
+        }
     	country_event = {
              id = china.3004
              days = 120
@@ -14428,15 +14573,2207 @@ country_event = {
     option = {
     	name = china.3009.b
     	custom_effect_tooltip = PRC_tfr_nl_china_hksyndica_tt
-    	swap_ideas = {
-			remove_idea = PRC_Organizacion_del_Partido_idea
-			add_idea = PRC_Organizacion_del_Partido_mygo_idea
-		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_mituzhizi
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = -0.07
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.1
+        }
+        add_to_variable = {
+        	PPRC_business_value_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_com_drift_var = 0.03
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.03
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.03
+        }
     	country_event = {
             id = china.3005
              days = 240
         }
     }
 }
+
+country_event = {
+	id = china.3010
+	title = china.3010.t
+	desc = china.3010.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3010.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_pandem_tt
+		remove_ideas = {
+		    PRC_the_separatist_problem
+		}
+		add_timed_idea = {
+            idea = PRC_the_separatist_problem
+            days = 150
+        }
+
+    }
+}
+
+country_event = {
+	id = china.3011
+	title = china.3011.t
+	desc = china.3011.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3011.a
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_pimi
+            }
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.05
+        }
+    	custom_effect_tooltip = PRC_tfr_nl_pimi_tt
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3012
+	title = china.3012.t
+	desc = china.3012.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3012.a
+    	add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.03
+		}
+    	effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_goushao
+            }
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.05
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3013
+	title = china.3013.t
+	desc = china.3013.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3013.a
+    	add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.1
+		}
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_yunniang
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.05
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3016
+	title = china.3016.t
+	desc = china.3016.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3016.a
+    	add_political_power = -100
+    	add_stability = -0.25
+    	custom_effect_tooltip = PRC_tfr_nl_china_kuanghuan_tt
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_kuanghuan
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.05
+        }
+    	#country_event = {
+            #id = china.3009
+           # days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3015
+	title = china.3015.t
+	desc = china.3015.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3015.a
+    	country_event = {
+            id = china.3016
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3014
+	title = china.3014.t
+	desc = china.3014.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3014.a
+    	country_event = {
+            id = china.3015
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3017
+	title = china.3017.t
+	desc = china.3017.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3017.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_heiyun_a_tt
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_heiyun
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.1
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.03
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+    option = {
+    	name = china.3017.b
+    	custom_effect_tooltip = PRC_tfr_nl_china_heiyun_b_tt
+    	add_political_power = -50
+    	add_stability = -0.1
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3018
+	title = china.3018.t
+	desc = china.3018.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3018.a
+    	add_war_support = -0.05
+    	add_stability = -0.05
+    	country_event = {
+            id = china.3019
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3019
+	title = china.3019.t
+	desc = china.3019.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3019.a
+    	add_manpower = -10
+        add_stability = -0.1
+    	country_event = {
+            id = china.3009
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3020
+	title = china.3020.t
+	desc = china.3020.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3020.a
+    	country_event = {
+            id = china.3021
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3021
+	title = china.3021.t
+	desc = china.3021.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3021.a
+    	country_event = {
+            id = china.3022
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3022
+	title = china.3022.t
+	desc = china.3022.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3022.a
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_party_rectification_campaign_jiedao
+        	}
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = 0.15
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.15
+        }
+        add_to_variable = {
+        	PPRC_consumer_num_var = -0.15
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_society_dev_var = 0.005
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3023
+	title = china.3023.t
+	desc = china.3023.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3023.a
+    	country_event = {
+            id = china.3024
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3024
+	title = china.3024.t
+	desc = china.3024.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3024.a
+    	country_event = {
+            id = china.3025
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3025
+	title = china.3025.t
+	desc = china.3025.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3026.a
+    	add_political_power = 50
+
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_PRC_party_rectification_campaign_xinzang
+        	}
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_max_efficiency_var = 0.03
+        }
+        add_to_variable = {
+        	PPRC_start_efficiency_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_society_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.05
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3026
+	title = china.3026.t
+	desc = china.3026.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3026.a
+    	add_political_power = 15
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_party_rectification_campaign_fengzi
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_expense_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_factory_output_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_max_efficiency_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_max_cp_var = 25
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.01
+        }
+    }
+}
+
+country_event = {
+	id = china.3027
+	title = china.3027.t
+	desc = china.3027.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3027.a
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_party_rectification_campaign_yemuxia
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_expense_factor = -0.03
+        }
+        add_to_variable = {
+        	PPRC_poverty_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.02
+        }
+    	country_event = {
+            id = china.3009
+            days = 120
+        }
+    }
+}
+
+country_event = {
+	id = china.3028
+	title = china.3028.t
+	desc = china.3028.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3028.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_dangyuanmen_tt
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+
+country_event = {
+	id = china.3029
+	title = china.3029.t
+	desc = china.3029.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3029.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_bingshanyijiao_tt
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    PRC_party_rectification_campaign_bingshanyijiao
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = -0.1
+        }
+        add_to_variable = {
+        	PPRC_ws_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_society_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_int_def_var = 0.2
+        }
+        add_to_variable = {
+        	PPRC_personal_value_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_ts_var = 0.02
+        }
+        add_to_variable = {
+        	PPRC_ls_drift_var = 0.02
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.02
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.02
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3030
+	title = china.3030.t
+	desc = china.3030.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3030.a
+    	add_manpower = -1
+    	custom_effect_tooltip = PRC_tfr_nl_china_tianyuanzhibie_tt
+    }
+}
+
+country_event = {
+	id = china.3031
+	title = china.3031.t
+	desc = china.3031.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3031.a
+    	add_political_power = -10
+    	custom_effect_tooltip = PRC_tfr_nl_china_woshizaofanpai_a_tt
+    }
+    option = {
+    	name = china.3031.b
+    	add_stability = -0.03
+    	custom_effect_tooltip = PRC_tfr_nl_china_woshizaofanpai_b_tt
+    }
+}
+
+country_event = {
+	id = china.3032
+	title = china.3032.t
+	desc = china.3032.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3032.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_tongtoupidai_tt
+    	custom_effect_tooltip = PRC_tfr_nl_china_yizezuopaiyanlun_tt
+    }
+}
+
+country_event = {
+	id = china.3033
+	title = china.3033.t
+	desc = china.3033.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3033.a
+    	add_political_power = 50
+    	custom_effect_tooltip = PRC_tfr_nl_china_baolei_tt
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_party_rectification_campaign_baolei
+        	}
+        }
+        add_to_variable = {
+        	PPRC_pp_g_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_defence_var = 0.025
+        }
+        add_to_variable = {
+        	PPRC_dis_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.05
+        }
+        custom_effect_tooltip = PRC_tfr_nl_china_baolei_b_tt
+    	country_event = {
+            id = china.3034
+            days = 0
+        }
+    }
+}
+
+country_event = {
+	id = china.3034
+	title = china.3034.t
+	desc = china.3034.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3034.a
+    }
+}
+
+country_event = {
+	id = china.3035
+	title = china.3035.t
+	desc = china.3035.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3035.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_qiutu_tt
+    	add_stability = 0.05
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_party_rectification_campaign_qiutu
+        	}
+        }
+        add_to_variable = {
+        	PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_society_dev_var = 0.005
+        }
+    	#country_event = {
+            #id = china.3009
+            #days = 120
+        #}
+    }
+}
+
+country_event = {
+	id = china.3036
+	title = china.3036.t
+	desc = china.3036.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3036.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_shouwangshike_tt
+    	add_stability = 0.1
+    	add_popularity = {
+			ideology = conservative
+			popularity = -0.15
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.2
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.2
+		}
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.1
+		}
+		add_society_development = yes
+    }
+}
+
+country_event = {
+	id = china.3037
+	title = china.3037.t
+	desc = china.3037.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3037.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_yuhoudezaochen_tt
+    	effect_tooltip = {
+        	swap_ideas = {
+        	    remove_idea = PRC_party_rectification_campaign_empty
+        	    add_idea = PRC_party_rectification_campaign_yuhoudezaochen
+        	}
+        }
+        add_to_variable = {
+        	PPRC_pp_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_factory_output_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_efficiency_gain_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_poverty_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_academic_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_industry_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_farming_dev_var = 0.003
+        }
+        add_to_variable = {
+        	PPRC_ts_var = 0.02
+        }
+        add_to_variable = {
+        	PPRC_ls_drift_var = 0.05
+        }
+        add_to_variable = {
+        	PPRC_ad_drift_var = -0.05
+        }
+        add_to_variable = {
+        	PPRC_nt_drift_var = -0.05
+        }
+    }
+}
+
+country_event = {
+	id = china.3038
+	title = china.3038.t
+	desc = china.3038.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3038.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_wujierzhong_tt
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3039
+	title = china.3039.t
+	desc = china.3039.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3039.a
+    	country_event = {
+            id = china.3030
+            days = 0
+        }
+    }
+}
+country_event = {
+	id = china.3040
+	title = china.3040.t
+	desc = china.3040.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3040.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_yongshengyuyongcun_tt
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3041
+	title = china.3041.t
+	desc = china.3041.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3041.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3042
+	title = china.3042.t
+	desc = china.3042.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3042.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+
+country_event = {
+	id = china.3043
+	title = china.3043.t
+	desc = china.3043.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3043.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3044
+	title = china.3044.t
+	desc = china.3044.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3044.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3045
+	title = china.3045.t
+	desc = china.3045.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3045.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3046
+	title = china.3046.t
+	desc = china.3046.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3046.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+    option = {
+    	name = china.3046.b
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3047
+	title = china.3047.t
+	desc = china.3047.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3047.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3048
+	title = china.3048.t
+	desc = china.3048.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3048.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3049
+	title = china.3049.t
+	desc = china.3049.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3049.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+    option = {
+    	name = china.3049.b
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+
+
+
+country_event = {
+	id = china.3050
+	title = china.3050.t
+	desc = china.3050.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3050.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_nanyachidaluyi_tt
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3051
+	title = china.3051.t
+	desc = china.3051.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3051.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3052
+	title = china.3052.t
+	desc = china.3052.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3052.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3053
+	title = china.3053.t
+	desc = china.3053.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3053.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3054
+	title = china.3054.t
+	desc = china.3054.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3054.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3055
+	title = china.3055.t
+	desc = china.3055.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3055.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3056
+	title = china.3056.t
+	desc = china.3056.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3056.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3057
+	title = china.3057.t
+	desc = china.3057.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3057.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3058
+	title = china.3058.t
+	desc = china.3058.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3058.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3059
+	title = china.3059.t
+	desc = china.3059.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3059.a
+    	add_manpower = 1
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3060
+	title = china.3060.t
+	desc = china.3060.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3060.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3061
+	title = china.3061.t
+	desc = china.3061.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3061.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3062
+	title = china.3062.t
+	desc = china.3062.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3062.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3063
+	title = china.3063.t
+	desc = china.3063.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3063.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3064
+	title = china.3064.t
+	desc = china.3064.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3064.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3065
+	title = china.3065.t
+	desc = china.3065.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3065.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3066
+	title = china.3066.t
+	desc = china.3066.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3060.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3067
+	title = china.3067.t
+	desc = china.3067.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3067.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3068
+	title = china.3068.t
+	desc = china.3068.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3068.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3069
+	title = china.3069.t
+	desc = china.3069.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3069.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3070
+	title = china.3070.t
+	desc = china.3070.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3070.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3071
+	title = china.3071.t
+	desc = china.3071.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3071.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3072
+	title = china.3072.t
+	desc = china.3072.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3072.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_zhenxuanliangzhong_tt
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3073
+	title = china.3073.t
+	desc = china.3073.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3068.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3074
+	title = china.3074.t
+	desc = china.3074.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3074.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3075
+	title = china.3075.t
+	desc = china.3075.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3075.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3076
+	title = china.3076.t
+	desc = china.3076.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3076.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3078
+	title = china.3078.t
+	desc = china.3078.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3078.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3079
+	title = china.3079.t
+	desc = china.3079.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3068.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3080
+	title = china.3080.t
+	desc = china.3080.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3080.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3081
+	title = china.3081.t
+	desc = china.3081.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3081.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3082
+	title = china.3082.t
+	desc = china.3082.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3082.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3083
+	title = china.3083.t
+	desc = china.3083.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3083.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3084
+	title = china.3084.t
+	desc = china.3084.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3084.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3085
+	title = china.3085.t
+	desc = china.3085.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3085.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3086
+	title = china.3086.t
+	desc = china.3086.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3086.a
+    	custom_effect_tooltip = PRC_tfr_nl_china_heweiguojia_tt
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3087
+	title = china.3087.t
+	desc = china.3087.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3087.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3088
+	title = china.3088.t
+	desc = china.3088.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3088.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3089
+	title = china.3089.t
+	desc = china.3089.d
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3089.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3090
+	title = china.3090.t
+	desc = china.3090.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3090.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3091
+	title = china.3091.t
+	desc = china.3091.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3091.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3092
+	title = china.3092.t
+	desc = china.3092.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3092.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3093
+	title = china.3093.t
+	desc = china.3093.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3093.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3094
+	title = china.3094.t
+	desc = china.3094.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3090.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3095
+	title = china.3095.t
+	desc = china.3095.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3090.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3096
+	title = china.3096.t
+	desc = china.3096.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3096.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3097
+	title = china.3097.t
+	desc = china.3097.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3097.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3098
+	title = china.3098.t
+	desc = china.3098.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3098.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3099
+	title = china.3099.t
+	desc = china.3099.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3099.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3100
+	title = china.3100.t
+	desc = china.3100.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3100.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3101
+	title = china.3101.t
+	desc = china.3101.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3101.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3102
+	title = china.3102.t
+	desc = china.3102.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3102.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3103
+	title = china.3103.t
+	desc = china.3103.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3103.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3104
+	title = china.3104.t
+	desc = china.3104.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3104.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3105
+	title = china.3105.t
+	desc = china.3105.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3105.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3106
+	title = china.3106.t
+	desc = china.3106.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3106.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3107
+	title = china.3107.t
+	desc = china.3107.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3107.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3108
+	title = china.3108.t
+	desc = china.3108.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3108.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3109
+	title = china.3109.t
+	desc = china.3109.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3109.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3110
+	title = china.3110.t
+	desc = china.3110.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3110.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3111
+	title = china.3111.t
+	desc = china.3111.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3111.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3112
+	title = china.3112.t
+	desc = china.3112.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3112.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3113
+	title = china.3113.t
+	desc = china.3113.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3113.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3114
+	title = china.3114.t
+	desc = china.3114.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3114.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3115
+	title = china.3115.t
+	desc = china.3115.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3110.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3116
+	title = china.3116.t
+	desc = china.3116.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3116.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+country_event = {
+	id = china.3117
+	title = china.3117.t
+	desc = china.3117.d
+
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+    	name = china.3117.a
+    	#country_event = {
+            #id = china.3025
+            #days = 0
+        #}
+    }
+}
+
 
 
