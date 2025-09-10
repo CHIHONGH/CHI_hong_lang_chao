@@ -3161,10 +3161,18 @@ focus_tree = {
 			focus = PRC_nl_socialist_construction_climax
 		}
 		available = {
-			has_completed_focus = PRC_nl_autonomous_iteration_system
-			has_completed_focus = PRC_nl_free_and_equal_labor
-			has_completed_focus = PRC_nl_industry_five
-			has_completed_focus = PRC_nl_gain_from_each_good
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = PRC_nl_long_march_plan
+						has_completed_focus = PRC_nl_socialist_construction_climax
+					}
+				}
+				has_completed_focus = PRC_nl_autonomous_iteration_system
+				has_completed_focus = PRC_nl_free_and_equal_labor
+				has_completed_focus = PRC_nl_industry_five
+				has_completed_focus = PRC_nl_gain_from_each_good
+			}
 		}
 		relative_position_id = PRC_nl_advance_productivity
 		completion_reward = {
