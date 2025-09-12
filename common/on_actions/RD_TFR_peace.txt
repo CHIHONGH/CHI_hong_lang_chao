@@ -368,6 +368,27 @@ on_actions = {
 				}
 				set_global_flag = skip_default_capitulation
 			}
+			else_if = {
+				limit = {
+					OR = {
+						country_exists = JAP
+						FROM = {
+							OR = {
+								original_tag = JPL
+								NOT = {
+									country_exists = JPL
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					annex_country = {
+						target = JAP
+						transfer_troops = no
+					}
+				}
+			}
 			log = "[GetDateText]: FROM: [From.GetName] ROOT: [Root.GetName] on_capitulation"
 			set_global_flag = show_peace_popup_alert
 			FROM = {
@@ -411,7 +432,7 @@ on_actions = {
 				}
 				set_global_flag = war_won
 				if = {
-					limit = { 
+					limit = {
 						ROOT = {
 							original_tag = CPP
 						}
@@ -440,12 +461,12 @@ on_actions = {
 					}
 				}
 				if = {
-					limit = { 
+					limit = {
 						ROOT = {
 							original_tag = CPA
 						}
 						FROM = {
-							original_tag = TAL	
+							original_tag = TAL
 						}
 						NOT = {
 							country_exists = AFG
@@ -473,7 +494,7 @@ on_actions = {
 					}
 				}
 				else_if = {
-					limit = { 
+					limit = {
 						ROOT = {
 							original_tag = CPA
 						}
@@ -749,27 +770,27 @@ on_actions = {
 						# clr_country_flag = PRC_spread_chinese_influence
 					}
 					ROOT = {
+						create_country_leader = {
+							name = VIN_Vo_Van_Thuong
+							picture = GFX_VIN_Vo_Van_Thuong
+							ideology = left_nationalism
+						}
 						set_popularities = {
 							totalitarian_socialist = 40
 							communist = 60
 						}
 						set_politics = {
-							ruling_party = totalitarian_socialist
+							ruling_party = communist
 							election_frequency = 60
 							elections_allowed = yes
 						}
 						set_party_name = {
-							ideology = totalitarian_socialist
+							ideology = communist
 							long_name = PRC_nationalist_party_new_long
 							name = PRC_nationalist_party_new
 						}
 						set_cosmetic_tag = PRC_repolice_gonh
 						JAP_leave_PEC = yes
-						create_country_leader = {
-							name = VIN_pepole
-							picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-							ideology = left_wing_junta
-						}
 						clr_country_flag = pdto_member
 						every_country = {
 							limit = {

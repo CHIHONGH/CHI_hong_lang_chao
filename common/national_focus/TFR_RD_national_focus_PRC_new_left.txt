@@ -1369,12 +1369,12 @@ focus_tree = {
 		id = PRC_nl_cosmos_red_tide
 		icon = GFX_focus_PRC_cosmos_red_tide
 		cost = 3
-		x = -4
+		x = 1
 		y = 1
 		prerequisite = {
 			focus = PRC_nl_peoples_culture_revolutionary_culture
 		}
-		relative_position_id = PRC_nl_peoples_culture_revolutionary_culture
+		relative_position_id = PRC_nl_second_newculture
 		available = {
 			PRC_nl_culture_xianzhi = yes
 			PRC_nl_culture_lock = yes
@@ -1416,7 +1416,7 @@ focus_tree = {
 		id = PRC_nl_second_newculture
 		icon = GFX_focus_PRC_people_artist
 		cost = 3
-		x = -2
+		x = -3
 		y = 1
 		prerequisite = {
 			focus = PRC_nl_peoples_culture_revolutionary_culture
@@ -1506,7 +1506,7 @@ focus_tree = {
 		id = PRC_nl_proletarian_art_festival
 		icon = GFX_focus_PRC_proletarian_art_festival
 		cost = 3
-		x = 2
+		x = 3
 		y = 1
 		prerequisite = {
 			focus = PRC_nl_peoples_culture_revolutionary_culture
@@ -1551,12 +1551,12 @@ focus_tree = {
 		id = PRC_nl_shatter_myth_bourgeoisie
 		icon = GFX_focus_PRC_battle_pen_revo_drawing
 		cost = 3
-		x = 4
+		x = -1
 		y = 1
 		prerequisite = {
 			focus = PRC_nl_peoples_culture_revolutionary_culture
 		}
-		relative_position_id = PRC_nl_peoples_culture_revolutionary_culture
+		relative_position_id = PRC_nl_proletarian_art_festival
 		available = {
 			PRC_nl_culture_xianzhi = yes
 			PRC_nl_culture_lock = yes
@@ -2155,6 +2155,7 @@ focus_tree = {
 		x = 0
 		y = 4
 		available = {
+			has_completed_focus = PRC_nl_newculture_tbc
 		}
 		prerequisite = {
 			focus = PRC_nl_what_does_party_represent
@@ -2212,7 +2213,7 @@ focus_tree = {
 		icon = GFX_focus_PRC_long_live_internationalism
 		cost = 3
 		x = 0
-		y = 2
+		y = 3
 		prerequisite = {
 			focus = PRC_nl_second_newculture
 			focus = PRC_nl_cosmos_red_tide
@@ -2875,7 +2876,14 @@ focus_tree = {
 		relative_position_id = PRC_nl_socialist_modernization
 		completion_reward = {
 			add_political_power = 150
-			focus_unlock = yes
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = PRC_nl_dawn_project
+					}
+				}
+				focus_unlock = yes
+			}
 			set_country_flag = PRC_nl_socialist_construction_climax_flag
 			effect_tooltip = {
 				swap_ideas = {
@@ -2918,6 +2926,15 @@ focus_tree = {
 			unlock_decision_tooltip = PRC_project_the_long_march_phase_1
 			unlock_decision_tooltip = PRC_project_the_long_march_phase_2
 			unlock_decision_tooltip = PRC_project_the_long_march_phase_3
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = PRC_nl_socialist_construction_climax
+					}
+				}
+				focus_unlock = yes
+			}
+			set_country_flag = PRC_nl_socialist_construction_climax_flag
 			unlock_decision_category_tooltip = PRC_loji_category
 		}
 	}
@@ -2939,7 +2956,6 @@ focus_tree = {
 			has_country_flag = PRC_nl_socialist_construction_climax_flag
 		}
 		completion_reward = {
-			focus_unlock = yes
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_made_in_china_dummy_idea0
