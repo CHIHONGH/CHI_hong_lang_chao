@@ -104,37 +104,21 @@ news_event = {
 	picture = GFX_Chinese_soldiers_news
 	is_triggered_only = yes
 	major = yes
-	trigger = {
-	}
 	option = {
 		name = prcs.6.a
 	}
 }
 
-country_event = {
+news_event = {
 	id = prcs.7
 	title = prcs.7.t
 	desc = prcs.7.d
-	picture = GFX_PRC_RAJ_offensive
-	fire_only_once = yes
-	trigger = {
-		AND = {
-			PRC = {
-				is_in_faction_with = ROP
-			}
-			PRC = {
-				is_in_faction_with = SRI
-			}
-			PRC = {
-				is_in_faction_with = SMA
-			}
-		}
-	}
+	picture = GFX_chineseships
+	is_triggered_only = yes
+	major = yes
 	option = {
+		set_country_flag = prc_asia_civil_war_flag
 		name = prcs.7.a
-		hidden_effect = {
-			remove_ideas = PRC_SEA_volunteer_limit
-		}
 	}
 }
 
@@ -145,7 +129,6 @@ news_event = {
 	picture = GFX_pla_mongolia_news
 	major = yes
 	is_triggered_only = yes
-	major = yes
 	option = {
 		name = prcs.8.a
 		trigger = {
@@ -254,6 +237,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = prcs.16.a
+		country_event = prcs.18
 	}
 	major = no
 }
@@ -266,6 +250,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = prcs.17.a
+		country_event = prcs.18
 	}
 	major = no
 }
@@ -861,6 +846,36 @@ country_event = {
 	}
 }
 
+news_event = {
+	#####对缅甸解放作战#####
+	id = prcs.50
+	title = prcs.50.t
+	desc = prcs.50.d
+	picture = GFX_pla_mongolia_news
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = prcs.50.a
+	}
+}
+
+country_event = {
+	#####触发外交线事件#####
+	id = prcs.49
+	title = prcs.49.t
+	desc = prcs.49.d
+	picture = GFX_SOV_secret_documents
+	is_triggered_only = yes
+	option = {
+		name = prcs.49.a
+		custom_effect_tooltip = PRC_for_policy_tree_available_true
+		set_country_flag = PRC_for_policy_tree_available
+		hidden_effect = {
+			complete_national_focus = PRC_unfinished_revolution
+		}
+	}
+}
+
 country_event = {
 	#####天光好（瓦解地方恩庇网事件）#####
 	id = prcs.51
@@ -868,9 +883,6 @@ country_event = {
 	desc = prcs.51.d
 	picture = GFX_PRC_fuck_protectors2
 	is_triggered_only = yes
-	trigger = {
-		tag = PRC
-	}
 	option = {
 		name = prcs.51.a
 		hidden_effect = {
@@ -965,6 +977,7 @@ country_event = {
 	}
 	option = {
 		name = prcs.56.a
+		country_event = prcs.57
 		add_manpower = -1
 		PRK = {
 			add_manpower = 1
@@ -1317,6 +1330,7 @@ country_event = {
 		name = prcs.77.a
 	}
 }
+
 country_event = {
 	id = prcs.78
 	title = prcs.78.t
@@ -1347,15 +1361,18 @@ country_event = {
 	option = {
 		name = prcs.78.a
 		if = {
-			limit = { 
+			limit = {
 				NOT = {
 					has_country_flag = fuck_off_news1
 				}
 			}
-			news_event = { id = nlnews.556 }
+			news_event = {
+				id = nlnews.556
+			}
 		}
 	}
 }
+
 country_event = {
 	id = prcs.79
 	title = prcs.79.t
@@ -1398,7 +1415,7 @@ country_event = {
 	option = {
 		name = prcs.79.a
 		if = {
-			limit = { 
+			limit = {
 				NOT = {
 					has_country_flag = fuck_off_news2
 				}
@@ -1409,6 +1426,7 @@ country_event = {
 		}
 	}
 }
+
 news_event = {
 	id = prcs.80
 	title = prcs.80.t
@@ -1420,24 +1438,20 @@ news_event = {
 		name = prcs.80.a
 	}
 }
+
 news_event = {
 	id = prcs.81
 	title = prcs.81.t
 	desc = prcs.81.d
 	picture = GFX_chinese_flag
-	fire_only_once = yes
+	is_triggered_only = yes
 	major = yes
-	trigger = {
-		PRC = {
-			is_ally_with = ROP
-			is_ally_with = SRI
-			is_ally_with = SMA
-		}
-	}
 	option = {
+		set_country_flag = prc_allies_in_southeast_asia_flag_set
 		name = prcs.81.a
 	}
 }
+
 country_event = {
 	id = Chihong.1
 	title = Chihong.1.t
@@ -1601,7 +1615,7 @@ country_event = {
 	option = {
 		name = Chihong.8.a
 		JAP = {
-			add_manpower = -232
+			add_manpower = -432
 		}
 		custom_effect_tooltip = Chihong_8_tt
 		ai_chance = {
@@ -1997,9 +2011,16 @@ country_event = {
 	title = Chihong.31.t
 	desc = Chihong.31.desc
 	picture = GFX_Chihong31_event
-	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		country_exists = ATW
+	}
 	option = {
 		name = Chihong.31.a
+		country_event = {
+			id = Chihong.32
+			hours = 22
+		}
 		ai_chance = {
 			base = 50
 		}
@@ -2017,6 +2038,10 @@ country_event = {
 		ai_chance = {
 			base = 50
 		}
+		country_event = {
+			id = Chihong.33
+			hours = 22
+		}
 	}
 }
 
@@ -2031,6 +2056,10 @@ country_event = {
 		ai_chance = {
 			base = 50
 		}
+		country_event = {
+			id = Chihong.34
+			hours = 22
+		}
 	}
 }
 
@@ -2044,6 +2073,10 @@ country_event = {
 		name = Chihong.34.a
 		ai_chance = {
 			base = 50
+		}
+		country_event = {
+			id = Chihong.35
+			hours = 22
 		}
 	}
 }
@@ -2067,9 +2100,20 @@ country_event = {
 	title = Chihong.36.t
 	desc = Chihong.36.desc
 	picture = GFX_SOV_secret_documents
-	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		JAP = {
+			has_completed_focus	= JAP_defeat_challenge_chinese_dominance
+		}
+	}
 	option = {
 		name = Chihong.36.a
+		hidden_effect = {
+			country_event = {
+				id = prcs.49
+				days = 2
+			}
+		}
 		ai_chance = {
 			base = 50
 		}
@@ -2333,19 +2377,20 @@ country_event = {
 		}
 	}
 }
+
 country_event = {
-    id = Chihong.51
-    title = Chihong.51.t
-    desc = Chihong.51.d
-    picture = GFX_PRC_coffin
+	id = Chihong.51
+	title = Chihong.51.t
+	desc = Chihong.51.d
+	picture = GFX_PRC_coffin
 	fire_only_once = yes
-    is_triggered_only = yes
-    option = {
-        name = Chihong.51.a
-        ai_chance = {
-            base = 50
-        }
-        country_event={
+	is_triggered_only = yes
+	option = {
+		name = Chihong.51.a
+		ai_chance = {
+			base = 50
+		}
+		country_event = {
 			id = Chihong.52
 			days = 3
 		}
@@ -2355,24 +2400,26 @@ country_event = {
 		ai_chance = {
 			base = 50
 		}
-		country_event={
+		country_event = {
 			id = Chihong.52
 			days = 3
 		}
 	}
 }
+
 #丰碑
 country_event = {
-    id = Chihong.52
-    title = Chihong.52.t
-    desc = Chihong.52.d
-    picture = GFX_PRC_xiangriver
+	id = Chihong.52
+	title = Chihong.52.t
+	desc = Chihong.52.d
+	picture = GFX_PRC_xinhuamen
 	fire_only_once = yes
-    is_triggered_only = yes
-    option = {
-        name = Chihong.52.a
-    }
+	is_triggered_only = yes
+	option = {
+		name = Chihong.52.a
+	}
 }
+
 country_event = {
 	id = china.1733
 	title = china.1733.t
@@ -2796,7 +2843,7 @@ country_event = {
 	}
 	option = {
 		PRK = {
-			add_stability = 0.10
+			add_stability = 0.1
 		}
 		name = china.1714.b
 	}
@@ -2866,6 +2913,9 @@ country_event = {
 		}
 	}
 	option = {
+		ai_chance = {
+			base = 10
+		}
 		name = china.1718.b
 	}
 }

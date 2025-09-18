@@ -1,0 +1,1678 @@
+﻿###########################
+# Thailand Events
+###########################
+
+add_namespace = thailand
+add_namespace = patani
+
+country_event = { #First Covid cases reported
+	id = thailand.1
+	title = thailand.1.t
+	desc = thailand.1.d
+	picture = GFX_Generic_COVID1
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.1.a
+		#
+	}
+}
+
+country_event = { #Future Foreward Party Disbands
+	id = thailand.2
+	title = thailand.2.t
+	desc = thailand.2.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.2.a
+		    set_party_name = { ideology = social_democrat long_name = SIA_move_foreward_party_long name = SIA_move_foreward_party }
+			hidden_effect = { country_event = {  id = thailand.3 days = 1 } country_event = {  id = thailand.13 days = 1662 } }
+	}
+}
+
+country_event = { #Protests break out
+	id = thailand.3
+	title = thailand.3.t
+	desc = thailand.3.d
+	picture = GFX_Thailand_Protests_1
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.3.a
+		#
+	}
+}
+
+country_event = { #Rama sick with Covid
+	id = thailand.4
+	title = thailand.4.t
+	desc = thailand.4.d
+	picture = GFX_SIA_Rama_X
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.4.b
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				    has_game_rule = {
+						rule = Rama_X_Covid
+						option = Rama_X_Fuck_Covid
+					}
+			}
+		}
+		hidden_effect = {
+			country_event = { 
+				id = thailand.12
+				days = 45
+				random_days = 30
+			}
+		}
+	}
+}
+
+country_event = { #Mass Protests break out
+	id = thailand.5
+	title = thailand.5.t
+	desc = thailand.5.d
+	picture = GFX_Thailand_Protests_1
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.5.a
+			hidden_effect = { country_event = {  id = thailand.6 days = 35 } }
+	}
+}
+
+country_event = { #Student groups demand reform
+	id = thailand.6
+	title = thailand.6.t
+	desc = thailand.6.d
+	picture = GFX_Thailand_Protests_2
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.6.a
+			hidden_effect = { country_event = {  id = thailand.7 days = 65 } }
+	}
+}
+
+country_event = { #State of Emergency Declared
+	id = thailand.7
+	title = thailand.7.t
+	desc = thailand.7.d
+	picture = GFX_Thailand_Protests_4
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.7.a
+			hidden_effect = { country_event = {  id = thailand.8 days = 60 } }
+	}
+}
+
+country_event = { #Protests Disperse
+	id = thailand.8
+	title = thailand.8.t
+	desc = thailand.8.d
+	picture = GFX_Thailand_Protests_4
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.8.a
+			hidden_effect = { country_event = {  id = thailand.9 days = 65 } }
+	}
+}
+
+country_event = { #Protests break out over detentions
+	id = thailand.9
+	title = thailand.9.t
+	desc = thailand.9.d
+	picture = GFX_Thailand_Protests_1
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.9.a
+			hidden_effect = { country_event = {  id = thailand.10 days = 95 } }
+	}
+}
+
+country_event = { #Protests escalate
+	id = thailand.10
+	title = thailand.10.t
+	desc = thailand.10.d
+	picture = GFX_Thailand_Protests_3
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.10.a
+			hidden_effect = { country_event = {  id = thailand.11 days = 120 } }
+	}
+}
+
+country_event = { #Goverment decides course of action
+	id = thailand.11
+	title = thailand.11.t
+	desc = thailand.11.d
+	picture = GFX_SIA_Rama_X
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.11.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				    has_game_rule = {
+						rule = Rama_X_Protest
+						option = Protest_Fuck_Rama_X
+					}
+			}
+		}
+		set_politics = {
+			ruling_party = nationalist 
+       			elections_allowed = no
+		}
+		add_popularity = { ideology = nationalist popularity = 0.35 }
+	    set_party_name = { ideology = nationalist long_name = SIA_nationalist_party_absolutist_long name = SIA_nationalist_party_absolutist }
+		clr_country_flag = head_of_gov_ui_enabled
+		hidden_effect = {
+			set_portraits = {
+				character = SIA_rama_x_char
+				civilian = { large ="GFX_portrait_SIA_rama_2" }
+			}
+		}
+	}
+	option = {
+		name = thailand.11.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				    has_game_rule = {
+						rule = Rama_X_Protest
+						option = Rama_X_Fuck_Protest
+					}
+			}
+		}
+		set_cosmetic_tag = SIA_military_junta
+		set_politics = {
+			ruling_party = nationalist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = nationalist popularity = 0.35 }
+		add_country_leader_role = {
+			character = SIA_rama_x_char
+			promote_leader = yes
+			country_leader = {
+				ideology = military_junta
+				expire = "1.1.1.1"
+			}
+		}
+	    set_party_name = { ideology = nationalist long_name = SIA_nationalist_party_junta_long name = SIA_nationalist_party_junta }
+		hidden_effect = { country_event = {  id = thailand.17 days = 90 } }
+	}
+}
+
+country_event = { #Rama X dies
+	id = thailand.12
+	title = thailand.12.t
+	desc = thailand.12.d
+	picture = GFX_SIA_Rama_X_dead
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.12.a
+		ai_chance = {
+			factor = 50
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = Rama_X_dies
+					    option = Rama_X_dies_2
+					}
+				    has_game_rule = {
+					    rule = Rama_X_dies
+					    option = Rama_X_dies_3
+					}
+			      }
+			   }
+		}
+		kill_country_leader = yes
+		promote_character = SIA_dipangkorn_rasmijoti_char
+		hidden_effect = {
+			retire_character = SIA_vacharaesorn_vivacharawongse_char
+			retire_character = SIA_maha_chakri_sirindhorn_char
+			country_event = {  id = thailand.14 days = 90 }
+		}
+	}
+	option = {
+		name = thailand.12.b
+		ai_chance = {
+			factor = 30
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = Rama_X_dies
+					    option = Rama_X_dies_1
+					}
+				    has_game_rule = {
+					    rule = Rama_X_dies
+					    option = Rama_X_dies_3
+					}
+			      }
+			   }
+		}
+		kill_country_leader = yes
+		promote_character = SIA_vacharaesorn_vivacharawongse_char
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = 0.10
+		}
+		JAP_add_SIA_influence = yes
+		hidden_effect = {
+			retire_character = SIA_dipangkorn_rasmijoti_char
+			retire_character = SIA_maha_chakri_sirindhorn_char
+			country_event = {  id = thailand.14 days = 90 }
+		}
+	}
+	option = {
+		name = thailand.12.c
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+			    	has_game_rule = {
+					    rule = Rama_X_dies
+					    option = Rama_X_dies_1
+					}
+				    has_game_rule = {
+					    rule = Rama_X_dies
+					    option = Rama_X_dies_2
+					}
+			      }
+			   }
+		}
+		kill_country_leader = yes
+		promote_character = SIA_maha_chakri_sirindhorn_char
+		set_temp_variable = {
+			var = global.PRC_influence_SIA_var_temp
+			value = 0.10
+		}
+		PRC_add_SIA_influence = yes
+		hidden_effect = {
+			retire_character = SIA_dipangkorn_rasmijoti_char
+			retire_character = SIA_vacharaesorn_vivacharawongse_char
+		}
+	}
+}
+
+country_event = { #Move Foreward Party Disbands
+	id = thailand.13
+	title = thailand.13.t
+	desc = thailand.13.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.13.a
+		set_party_name = { ideology = social_democrat long_name = SIA_peoples_party_long name = SIA_peoples_party }
+	}
+}
+
+country_event = { #Question of reform
+	id = thailand.14
+	title = thailand.14.t
+	desc = thailand.14.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.14.a
+		ai_chance = {
+			factor = 35
+		    modifier = {
+				factor = 0
+				OR = {
+			    	has_game_rule = {
+					    rule = THI_Question_of_reform
+					    option = THI_Question_of_reform_2
+					    }
+				    has_game_rule = {
+					    rule = THI_Question_of_reform
+					    option = THI_Question_of_reform_3
+				    	}
+			      }
+			   }
+		}
+	}
+	option = {
+		name = thailand.14.b
+		ai_chance = {
+			factor = 45
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_Question_of_reform
+					    option = THI_Question_of_reform_1
+					}
+				    has_game_rule = {
+					    rule = THI_Question_of_reform
+					    option = THI_Question_of_reform_3
+					}
+			      }
+			   }
+		}
+		hidden_effect = {
+			country_event = {  id = thailand.15 days = 1450 }
+		}
+	}
+	option = {
+		name = thailand.14.c
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				    OR = {
+				    has_game_rule = {
+					    rule = THI_Question_of_reform
+					    option = THI_Question_of_reform_1
+					    }
+				    has_game_rule = {
+					    rule = THI_Question_of_reform
+					    option = THI_Question_of_reform_2
+					    }
+			      }
+			   }
+		}
+		hidden_effect = {
+			country_event = {  id = thailand.16 days = 1600 }
+		}
+	}
+}
+
+country_event = { #Snap Elections
+	id = thailand.15
+	title = thailand.15.t
+	desc = thailand.15.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.15.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_lost
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_Snap_Elections
+					    option = THI_Snap_Elections_2
+					}
+				    has_game_rule = {
+				    	rule = THI_Snap_Elections
+				    	option = THI_Snap_Elections_3
+					}
+			      }
+			   }
+		}
+		set_politics = {
+			ruling_party = social_democrat 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = social_democrat popularity = 0.35 }
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = 0.05
+		}
+		JAP_add_SIA_influence = yes
+	}
+	option = {
+		name = thailand.15.b
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_Snap_Elections
+					    option = THI_Snap_Elections_1
+					}
+			    	has_game_rule = {
+				    	rule = THI_Snap_Elections
+				    	option = THI_Snap_Elections_3
+					}
+			      }
+			   }
+		}
+		set_politics = {
+			ruling_party = social_liberal 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = social_liberal popularity = 0.35 }
+	}
+	option = {
+		name = thailand.15.c
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+			    	has_game_rule = {
+					    rule = THI_Snap_Elections
+					    option = THI_Snap_Elections_1
+					}
+				    has_game_rule = {
+					    rule = THI_Snap_Elections
+				    	option = THI_Snap_Elections_2
+					}
+			      }
+			   }
+		}
+		set_politics = {
+			ruling_party = market_liberal 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = market_liberal popularity = 0.35 }
+		set_temp_variable = {
+			var = global.PRC_influence_SIA_var_temp
+			value = 0.05
+		}
+		PRC_add_SIA_influence = yes
+	}
+}
+
+country_event = { #First Republican Elections
+	id = thailand.16
+	title = thailand.16.t
+	desc = thailand.16.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.16.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_lost
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_2
+					}
+			    	has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_3
+					}
+			    	has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_4
+					}
+			      }
+			   }
+		}
+		retire_character = SIA_vacharaesorn_vivacharawongse_char
+		retire_character = SIA_maha_chakri_sirindhorn_char
+		retire_character = SIA_thaksin_shinawatra_char
+		promote_character = SIA_yingluck_shinawatra_char
+		promote_character = SIA_thanathorn_juangroongruangkit_char
+		set_cosmetic_tag = ETI_thailand
+		set_politics = {
+			ruling_party = social_democrat 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = social_democrat popularity = 0.35 }
+		clr_country_flag = head_of_gov_ui_enabled
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = 0.05
+		}
+		JAP_add_SIA_influence = yes
+	}
+	option = {
+		name = thailand.16.b
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_1
+					}
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_3
+					}
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_4
+					}
+			      }
+			   }
+		}
+		retire_character = SIA_vacharaesorn_vivacharawongse_char
+		retire_character = SIA_maha_chakri_sirindhorn_char
+		retire_character = SIA_thaksin_shinawatra_char
+		promote_character = SIA_yingluck_shinawatra_char
+		set_cosmetic_tag = ETI_thailand
+		set_politics = {
+			ruling_party = conservative 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = conservative popularity = 0.35 }
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+	option = {
+		name = thailand.16.c
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_1
+					}
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+				    	option = THI_First_Republican_Elections_2
+					}
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+				    	option = THI_First_Republican_Elections_4
+					}
+			      }
+			   }
+		}
+		retire_character = SIA_vacharaesorn_vivacharawongse_char
+		retire_character = SIA_maha_chakri_sirindhorn_char
+		retire_character = SIA_thaksin_shinawatra_char
+		promote_character = SIA_yingluck_shinawatra_char
+		promote_character = SIA_jurin_lakasanawisit_char
+		set_cosmetic_tag = ETI_thailand
+		set_politics = {
+			ruling_party = market_liberal 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = market_liberal popularity = 0.35 }
+		clr_country_flag = head_of_gov_ui_enabled
+		set_temp_variable = {
+			var = global.PRC_influence_SIA_var_temp
+			value = 0.05
+		}
+		PRC_add_SIA_influence = yes
+	}
+	option = {
+		name = thailand.16.e
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_1
+					}
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_2
+					}
+				    has_game_rule = {
+					    rule = THI_First_Republican_Elections
+					    option = THI_First_Republican_Elections_3
+					}
+			      }
+			   }
+		}
+		retire_character = SIA_vacharaesorn_vivacharawongse_char
+		retire_character = SIA_maha_chakri_sirindhorn_char
+		set_cosmetic_tag = SIA_military_junta
+		create_country_leader = {
+			name = SIA_dipangkorn_rasmijoti_char
+			picture = "GFX_portrait_SIA_dipangkorn_rasmijoti"
+			ideology = military_junta
+		}
+		set_politics = {
+			ruling_party = nationalist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = nationalist popularity = 0.35 }
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = -0.05
+		}
+		JAP_add_SIA_influence = yes
+	    set_party_name = { ideology = nationalist long_name = SIA_nationalist_party_junta_long name = SIA_nationalist_party_junta }
+		set_country_flag = SIA_republican_betrayal_flag
+	}
+}
+
+country_event = { #CIVIL WAR TIME RAAAAAAAAGGGGGGGGHHHHHH!!!!
+	id = thailand.17
+	title = thailand.17.t
+	desc = thailand.17.d
+	picture = GFX_Thailand_Protests_3
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.17.a
+		set_country_flag = SIA_civil_war_flag
+		ETI = {
+			every_state = {
+				limit = {
+					is_core_of = SIA
+				}
+				add_core_of = ETI
+				add_dynamic_modifier = {
+					modifier = BRM_peoples_war
+				}
+			}
+			transfer_state = 890
+			transfer_state = 891
+			declare_war_on = { 
+				target = SIA 
+				type = civil_war 
+			}
+			load_oob = "ETI_2020"
+		}
+		if = {
+			limit = {
+				has_country_flag = SIA_patani_talks_fail_flag
+			}
+			BRU = {
+				724 = {
+					add_core_of = BRU
+				}
+				transfer_state = 724
+				load_oob = "BRU_2020"
+			}
+		}
+		PRC = {
+			country_event = {
+				id = thailand.23
+				days = 10
+			}
+		}
+	}
+}
+
+country_event = { #Patani Peace Talks
+	id = thailand.18
+	title = thailand.18.t
+	desc = thailand.18.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.18.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				    has_game_rule = {
+					    rule = Patani_Peace_Talks
+				    	option = Patani_Peace_Talks_2
+					}
+			}
+		}
+	}
+	
+	option = {
+		name = thailand.18.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				    has_game_rule = {
+					    rule = Patani_Peace_Talks
+					    option = Patani_Peace_Talks_1
+					}
+			}
+		}
+		set_country_flag = SIA_patani_talks_fail_flag
+	}
+}
+
+country_event = { #First Republican Post-CW Elections
+	id = thailand.19
+	title = thailand.19.t
+	desc = thailand.19.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.19.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_lost
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_4
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_5
+					}
+			      }
+			   }
+		}
+		promote_character = SIA_thanathorn_juangroongruangkit_char
+		set_politics = {
+			ruling_party = social_democrat 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = social_democrat popularity = 0.35 }
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = 0.05
+		}
+		JAP_add_SIA_influence = yes
+	}
+	option = {
+		name = thailand.19.b
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_1
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_4
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_5
+					}
+			      }
+			   }
+		}
+		promote_character = SIA_thaksin_shinawatra_char
+		set_politics = {
+			ruling_party = conservative 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = conservative popularity = 0.15 }
+	}
+	option = {
+		name = thailand.19.c
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_1
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_4
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_5
+					}
+			      }
+			   }
+		}
+		set_cosmetic_tag = SIA_military_junta
+		create_country_leader = {
+			name = SIA_dipangkorn_rasmijoti_char
+			picture = "GFX_portrait_SIA_dipangkorn_rasmijoti"
+			ideology = military_junta
+		}
+		set_politics = {
+			ruling_party = nationalist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = nationalist popularity = 0.35 }
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = 0.05
+		}
+		JAP_add_SIA_influence = yes
+	    set_party_name = { ideology = nationalist long_name = SIA_nationalist_party_junta_long name = SIA_nationalist_party_junta }
+		set_country_flag = head_of_gov_ui_enabled
+		set_country_flag = SIA_republican_betrayal_flag
+	}
+	option = {
+		name = thailand.19.e
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_1
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_5
+					}
+			      }
+			   }
+		}
+		drop_cosmetic_tag = yes
+		create_country_leader = {
+			name = SIA_maha_chakri_sirindhorn_char
+			picture = "GFX_portrait_SIA_maha_chakri_sirindhorn"
+			ideology = corporatocracy
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = authoritarian_democrat popularity = 0.35 }
+		set_temp_variable = {
+			var = global.PRC_influence_SIA_var_temp
+			value = 0.10
+		}
+		PRC_add_SIA_influence = yes
+		set_country_flag = head_of_gov_ui_enabled
+		set_country_flag = SIA_business_plot_success_flag
+	}
+	option = { #Shelved for now
+		name = thailand.19.f
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_1
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = ETI_election
+					    option = ETI_election_4
+					}
+			      }
+			   }
+		}
+		set_cosmetic_tag = ETI_radical
+		set_country_flag = SIA_republican_radicals
+		hidden_effect = {
+			country_event = {  id = thailand.20 days = 30 }
+		}
+	}
+}
+
+country_event = { #New Special Elections
+	id = thailand.20
+	title = thailand.20.t
+	desc = thailand.20.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.20.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_lost
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_4
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_5
+					}
+			      }
+			   }
+		}
+		promote_character = SIA_thanathorn_juangroongruangkit_char
+		set_politics = {
+			ruling_party = social_democrat 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = social_democrat popularity = 0.35 }
+		set_temp_variable = {
+			var = global.JAP_influence_SIA_var_temp
+			value = 0.05
+		}
+		JAP_add_SIA_influence = yes
+	}
+	option = {
+		name = thailand.20.b
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_1
+					}
+				    has_game_rule = {
+				    	rule = New_ETI_election
+					    option = New_ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_4
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_5
+					}
+			      }
+			   }
+		}
+		promote_character = SIA_thaksin_shinawatra_char
+		set_politics = {
+			ruling_party = conservative 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = conservative popularity = 0.15 }
+	}
+	option = {
+		name = thailand.20.c
+		ai_chance = {
+			factor = 20
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_1
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_4
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_5
+					}
+			      }
+			   }
+		}
+		promote_character = SIA_arnon_nanpa_char
+		set_politics = {
+			ruling_party = social_liberal 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = social_liberal popularity = 0.35 }
+	}
+	option = {
+		name = thailand.20.e
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+				    	rule = New_ETI_election
+					    option = New_ETI_election_1
+					}
+				    has_game_rule = {
+				    	rule = New_ETI_election
+				    	option = New_ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+				    	option = New_ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+				    	option = New_ETI_election_5
+					}
+			      }
+			   }
+		}
+		promote_character = SIA_jatupat_boonpattararaksa_char
+		set_politics = {
+			ruling_party = libertarian_socialist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = libertarian_socialist popularity = 0.35 }
+	}
+	option = {
+		name = thailand.20.f
+		promote_character = SIA_wichai_chutham_char
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_1
+					}
+				    has_game_rule = {
+				    	rule = New_ETI_election
+				    	option = New_ETI_election_2
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_3
+					}
+				    has_game_rule = {
+					    rule = New_ETI_election
+					    option = New_ETI_election_4
+					}
+			      }
+			   }
+			}
+		}
+		set_politics = {
+			ruling_party = communist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = communist popularity = 0.35 }
+		set_temp_variable = {
+			var = global.PRC_influence_SIA_var_temp
+			value = 0.10
+		}
+		PRC_add_SIA_influence = yes
+		country_event = {  id = thailand.21 days = 7 }
+	}
+}
+
+country_event = { #Direction of Communism
+	id = thailand.21
+	title = thailand.21.t
+	desc = thailand.21.d
+	picture = GFX_Thailand_Protests_2
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.21.a
+		ai_chance = {
+			factor = 45
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_Direction_of_Communism
+				    	option = ETI_Direction_of_Communism_2
+					}
+				    has_game_rule = {
+					    rule = ETI_Direction_of_Communism
+					    option = ETI_Direction_of_Communism_3
+					}
+			      }
+			   }
+		}
+	}
+	option = {
+		name = thailand.21.b
+		ai_chance = {
+			factor = 45
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_Direction_of_Communism
+					    option = ETI_Direction_of_Communism_1
+					}
+				    has_game_rule = {
+					    rule = ETI_Direction_of_Communism
+					    option = ETI_Direction_of_Communism_3
+					}
+			      }
+			   }
+		}
+		set_politics = {
+			ruling_party = totalitarian_socialist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = totalitarian_socialist popularity = 0.35 }
+	}
+	option = {
+		name = thailand.21.c
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = ETI_Direction_of_Communism
+					    option = ETI_Direction_of_Communism_1
+					}
+				    has_game_rule = {
+					    rule = ETI_Direction_of_Communism
+				    	option = ETI_Direction_of_Communism_2
+					}
+			      }
+			   }
+		}
+		set_cosmetic_tag = ETI_anarchist
+		promote_character = SIA_anarchist_council_char
+		set_politics = {
+			ruling_party = libertarian_socialist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = libertarian_socialist popularity = 0.35 }
+		set_country_flag = SIA_anarchist_direction_flag
+	}
+}
+
+country_event = { #Government Takeover
+	id = thailand.22
+	title = thailand.22.t
+	desc = thailand.22.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = thailand.22.a
+		trigger = {
+			has_country_flag = eadi_member
+		}
+		set_cosmetic_tag = ETI_radical
+		promote_character = SIA_wichai_chutham_char
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+		}
+		add_popularity = { ideology = communist popularity = 0.35 }
+		clr_country_flag = SIA_anarchist_direction_flag
+	}
+	option = {
+		name = thailand.22.b
+		trigger = {
+			has_country_flag = pdto_member
+		}
+		set_cosmetic_tag = ETI_radical
+		promote_character = SIA_arnon_nanpa_char
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = no
+		}
+		add_popularity = { ideology = social_liberal popularity = 0.35 }
+		clr_country_flag = SIA_anarchist_direction_flag
+	}
+}
+
+country_event = { #China Negotiations
+	id = thailand.23
+	title = thailand.23.t
+	desc = thailand.23.d
+	picture = GFX_PRC_situation_in_myanmar
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = PRC
+	}
+
+	option = {
+	name = thailand.23.a
+		unlock_decision_tooltip = PRC_thailand_negotiations
+		set_country_flag = PRC_thailand_negotiations_flag
+	}
+}
+
+country_event = { #Future of Patani
+	id = patani.1
+	title = patani.1.t
+	desc = patani.1.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = patani.1.a
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_2
+					}
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_3
+					}
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_4
+					}
+			      }
+			   }
+		}
+	}
+	option = {
+		name = patani.1.b
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_1
+					}
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_3
+					}
+			      }
+			   }
+		}
+		set_cosmetic_tag = BRU_islamist
+		promote_character = BRU_wan_kadir_che_man_char
+		set_politics = {
+			ruling_party = authoritarian_democrat 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = authoritarian_democrat popularity = 0.65 }
+		hidden_effect = {
+			country_event = {  id = patani.2 days = 14 }
+		}
+	}
+	option = {
+		name = patani.1.c
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_1
+					}
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_2
+					}
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_4
+					}
+			      }
+			   }
+		}
+		MAL = {
+			annex_country = {
+				target = BRU
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+country_event = { #Jihadist Coup Attempt
+	id = patani.2
+	title = patani.2.t
+	desc = patani.2.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = patani.2.a
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_4
+					}
+			      }
+			   }
+		}
+	}
+	option = {
+		name = patani.2.b
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = Future_of_Patani
+						option = Future_of_Patani_2
+					}
+			      }
+			   }
+		}
+		set_cosmetic_tag = BRU_jihadi
+		promote_character = BRU_abdullah_sungkar_char
+		set_politics = {
+			ruling_party = nationalist 
+       		elections_allowed = no
+		}
+		add_popularity = { ideology = nationalist popularity = 0.35 }
+	    set_party_name = { ideology = nationalist long_name = BRU_ji_party_long name = BRU_ji_party }
+	}
+}
+
+country_event = { #Future of Patani (THAI OCCUPATION)
+	id = patani.3
+	title = patani.3.t
+	desc = patani.3.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = patani.3.a
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = SIA_Future_of_Patani
+						option = SIA_Future_of_Patani_2
+					}
+				    has_game_rule = {
+						rule = SIA_Future_of_Patani
+						option = SIA_Future_of_Patani_3
+					}
+			      }
+			   }
+		}
+		trigger = {
+			OR = {
+				has_country_flag = SIA_royal_victory_flag
+				has_country_flag = SIA_republican_betrayal_flag
+			}
+		}
+		release_puppet = BRU
+		BRU = {
+			set_cosmetic_tag = BRU_royal_puppet
+			retire_character = BRU_anas_abdulrahman_char
+			retire_character = BRU_abdullah_sungkar_char
+			promote_character = BRU_santi_sakuntanak_char
+			set_politics = {
+				ruling_party = nationalist 
+				elections_allowed = no
+			}
+			set_party_name = { ideology = nationalist long_name = BRU_puppet_party name = BRU_puppet_party }
+		}
+		hidden_effect = {
+			country_event = {  id = patani.4 days = 300 }
+		}
+	}
+	option = {
+		name = patani.3.b
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = SIA_Future_of_Patani
+						option = SIA_Future_of_Patani_1
+					}
+				    has_game_rule = {
+						rule = SIA_Future_of_Patani
+						option = SIA_Future_of_Patani_3
+					}
+			      }
+			   }
+		}
+		trigger = {
+			has_country_flag = SIA_republican_victory_flag
+			NOT = {
+				has_country_flag = SIA_republican_betrayal_flag
+				has_country_flag = SIA_anarchist_direction_flag
+			}
+		}
+		release_puppet = BRU
+		BRU = {
+			set_cosmetic_tag = BRU_republic_puppet
+			set_politics = {
+				ruling_party = nationalist 
+				elections_allowed = no
+			}
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 10
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+						rule = SIA_Future_of_Patani
+						option = SIA_Future_of_Patani_1
+					}
+				    has_game_rule = {
+						rule = SIA_Future_of_Patani
+						option = SIA_Future_of_Patani_2
+					}
+			      }
+			   }
+		}
+		trigger = {
+			has_country_flag = SIA_republican_victory_flag
+			NOT = {
+				has_country_flag = SIA_republican_betrayal_flag
+			}
+		}
+		name = patani.3.c
+	}
+}
+
+country_event = { #Situation Stabilised
+	id = patani.4
+	title = patani.4.t
+	desc = patani.4.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = patani.4.a
+		annex_country = {
+			target = BRU
+			transfer_troops = yes
+		}
+	}
+}

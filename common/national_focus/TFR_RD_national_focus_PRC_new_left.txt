@@ -1,7 +1,7 @@
 focus_tree = {
 	id = china_new_left_focus
 	country = {
-		factor = 100
+		factor = 0
 		modifier = {
 			#Makes Tree persist after changes made to it
 			add = 10
@@ -29,7 +29,7 @@ focus_tree = {
 		}
 		allow_branch = {
 			NOT = {
-				has_country_flag = PRC_for_policy_tree_available
+				has_country_flag = Prc_NewLeft_focus_key
 			}
 		}
 		completion_reward = {
@@ -234,6 +234,7 @@ focus_tree = {
 				var = society_development_var_temp
 				value = 0.1
 			}
+			set_country_flag = Prc_NewLeft_focus_key
 			add_society_development = yes
 			#以下处理皆考虑于原版，改动民族精神为动态修正。
 			effect_tooltip = {
@@ -268,8 +269,6 @@ focus_tree = {
 					value = 0.03
 				}
 			}
-			custom_effect_tooltip = PRC_for_policy_tree_available
-			set_country_flag = PRC_for_policy_tree_available
 		}
 	}
 	#政治线
@@ -278,7 +277,7 @@ focus_tree = {
 		icon = GFX_focus_PRC_nl_the_second_rectification_movement
 		cost = 5
 		allow_branch = {
-			has_country_flag = PRC_for_policy_tree_available
+			has_country_flag = Prc_NewLeft_focus_key
 		}
 		x = 25
 		y = 1
@@ -461,6 +460,7 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_clean_house
 		completion_reward = {
+			country_event = Chihong.11
 			add_political_power = 50
 			add_stability = 0.05
 			add_popularity = {
@@ -1055,6 +1055,10 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			country_event = {
+				id = prcs.21
+				hours = 11
+			}	
 			add_political_power = 100
 			set_temp_variable = {
 				var = academic_development_var_temp
@@ -1237,6 +1241,7 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_education_the_groundstone
 		completion_reward = {
+			country_event = prcs.19
 			add_political_power = -50
 			add_to_variable = {
 				PSC_stability_var = -0.1
@@ -1825,6 +1830,10 @@ focus_tree = {
 			PRC_nl_rebuild_proletarian_dictatorship_tigger = yes
 		}
 		completion_reward = {
+			country_event = {
+				id = prcs.73
+				days = 2
+			}
 			add_political_power = 75
 			set_variable = {
 				PRC_RPD_pp_factor_var = 0.05
@@ -2261,7 +2270,7 @@ focus_tree = {
 		icon = GFX_focus_PRC_forward_to_the_future
 		cost = 3
 		allow_branch = {
-			has_country_flag = PRC_for_policy_tree_available
+			has_country_flag = Prc_NewLeft_focus_key
 		}
 		x = 41
 		y = 1
@@ -2317,6 +2326,7 @@ focus_tree = {
 				value = 0.05
 			}
 			hidden_effect = {
+				country_event = prcs.37
 				add_dynamic_modifier = {
 					modifier = PRC_research_dynamic
 				}
@@ -2532,6 +2542,12 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_automation_model
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = prcs.46
+					hours = 9
+				}
+			}
 			#unlock_decision_tooltip = hua_nan
 			#unlock_decision_tooltip = hua_bei
 			#unlock_decision_tooltip = hua_dong
@@ -2727,6 +2743,9 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_automation_model
 		completion_reward = {
+			hidden_effect = {
+				country_event = prcs.37
+			}
 			add_days_mission_timeout = {
 				mission = zidonghua_moxing
 				days = -90
@@ -2747,6 +2766,12 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_building_foundation_of_model
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = prcs.20
+					hours = 22
+				}
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_made_in_china_dummy_idea
@@ -2778,6 +2803,7 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_reform_production_relation
 		completion_reward = {
+			country_event = Chihong.12
 			unlock_decision_category_tooltip = PRC_nl_expand_reform_category
 			unlock_decision_tooltip = PRC_nl_shipbuilding_ingenuity
 			unlock_decision_tooltip = PRC_nl_food_safety_reforms
@@ -2879,7 +2905,7 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_completed_focus = PRC_nl_dawn_project
+						has_completed_focus = PRC_nl_long_march_plan
 					}
 				}
 				focus_unlock = yes
@@ -2923,6 +2949,11 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_dawn_project
 		completion_reward = {
+			country_event = prcs.23
+			hidden_effect = {
+				id = Chihong.13
+				days = 2
+			}
 			unlock_decision_tooltip = PRC_project_the_long_march_phase_1
 			unlock_decision_tooltip = PRC_project_the_long_march_phase_2
 			unlock_decision_tooltip = PRC_project_the_long_march_phase_3
