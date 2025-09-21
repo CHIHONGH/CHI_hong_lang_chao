@@ -5248,6 +5248,16 @@ shared_focus = {
 		}
 		hidden_effect = {
 			country_event = {
+                id = prcs.56
+                days = 60
+				random_days = 7
+            }
+			country_event = {
+				id = prcs.11
+				days = 55
+				random_days = 7
+			}
+			country_event = {
 				id = china.1018
 				days = 40
 				random_days = 5
@@ -5335,27 +5345,26 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_revenge_for_nanking completion_reward"
 		country_event = china.1012
 		custom_effect_tooltip = PRC_rebuild_japan_tt
-		if = {
-			limit = {
-				NOT = {
-					country_exists = JPL
-				}
-			}
-			PRC = {
-				every_controlled_state = {
-					limit = {
-						is_controlled_by = PRC
-						is_core_of = JAP
-					}
-					transfer_state_to = JPL
-					set_state_owner_to = JPL
-					set_state_controller_to = JPL
-					add_core_of = JPL
-				}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		NOT = {
+		# 			country_exists = JPL
+		# 		}
+		# 	}
+		# 	PRC = {
+		# 		every_controlled_state = {
+		# 			limit = {
+		# 				is_controlled_by = PRC
+		# 				is_core_of = JPL
+		# 			}
+		# 			transfer_state_to = JPL
+		# 			set_state_owner_to = JPL
+		# 			set_state_controller_to = JPL
+		# 			add_core_of = JPL
+		# 		}
+		# 	}
+		# }
 		JPL = {
-			set_cosmetic_tag = JAP_PRC_puppet
 			add_timed_idea = {
 				idea = PRC_JAP_mass_repair_company_idea
 				days = 350
@@ -5374,35 +5383,6 @@ shared_focus = {
 		}
 		add_debt_with_inflation = yes
 		hidden_effect = {
-			puppet = JPL
-			TOK = {
-				set_nationality = {
-					target_country = JPL
-					character = TOK_toru_miyamoto_char
-				}
-			}
-			JPL = {
-				promote_character = {
-					character = TOK_toru_miyamoto_char
-					ideology = eurocommunism
-				}
-				#retire_character = JAP_naruhito_char
-				#retire_character = JAP_fumihito_char
-				#retire_character = JAP_peoples_diet_char
-				set_stability = 0.35
-				set_war_support = 0.075
-				set_popularities = {
-					social_liberal = 14.5
-					conservative = 10.8
-					communist = 37.1
-					libertarian_socialist = 37.6
-				}
-				set_politics = {
-					ruling_party = communist
-					long_name = JAP_PRC_puppet_party_long
-					name = JAP_PRC_puppet_party
-				}
-			}
 			1338 = {
 				transfer_state_to = PRC
 			}

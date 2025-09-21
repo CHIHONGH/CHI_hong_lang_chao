@@ -67,7 +67,6 @@ PRC_Culture_Revital = {
 				academic_development_var_temp = 0.1
 			}
 			add_academic_development = yes
-			country_event = Chihong.59
 		}
 	}
 	#	改革中高考
@@ -1070,6 +1069,7 @@ PRC_Rt_People_Democracy = {
 		}
 		selectable_mission = no
 		is_good = no
+		fire_only_once = yes
 		days_mission_timeout = 90
 		timeout_effect = {
 			activate_mission = PRC_damage_from_reactionary_mission
@@ -1455,6 +1455,140 @@ PRC_Rt_People_Democracy = {
 					remove_idea = PRC_party_rectification_campaign_empty
 					add_idea = PRC_party_rectification_campaign9
 				}
+			}
+		}
+	}
+	# 人大改革：扩大工农兵席位
+	PRC_EPS = {
+		icon = GFX_PRC_liberal_decision
+		visible = {
+			has_country_flag = PRC_R_N_P_C
+		}
+		available = {
+		}
+		cost = 50
+		days_remove = 60
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = PRC_Basic_land_reform
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_road_to_people_democracy
+					add_idea = PRC_road_to_people_democracy7
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign35
+				}
+			}
+			add_to_variable = {
+				PPRC_ls_drift_var = 0.02
+			}
+			add_to_variable = {
+				PPRC_ts_var = 0.01
+			}
+			add_to_variable = {
+				PRC_RPD_factory_output_var = 0.05
+			}
+			add_to_variable = {
+				PRC_RPD_industry_dev_var = 0.05
+			}
+			add_to_variable = {
+				PRC_RPD_farming_dev_var = 0.05
+			}
+		}
+	}
+	# 人大改革：实行职业团体代表制
+	PRC_ISPG = {
+		icon = GFX_PRC_liberal_decision
+		visible = {
+			has_country_flag = PRC_R_N_P_C
+		}
+		available = {
+			has_country_flag = PRC_Basic_land_reform
+		}
+		cost = 75
+		days_remove = 120
+		fire_only_once = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_road_to_people_democracy
+					add_idea = PRC_road_to_people_democracy8
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign36
+				}
+			}
+			add_to_variable = {
+				PPRC_sd_drift_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_ts_var = 0.02
+			}
+			add_to_variable = {
+				PRC_RPD_personal_value_var = 0.05
+			}
+			add_to_variable = {
+				PRC_RPD_business_value_var = 0.05
+			}
+			add_to_variable = {
+				PRC_RPD_expense_factor = -0.05
+			}
+			add_to_variable = {
+				PRC_RPD_income_var = 0.05
+			}
+			add_to_variable = {
+				PRC_RPD_poverty_dev_var = 0.05
+			}
+		}
+	}
+	# 人大改革：地方试点先行
+	PRC_RNPCP = {
+		icon = GFX_PRC_liberal_decision
+		visible = {
+			has_country_flag = PRC_R_N_P_C
+		}
+		available = {
+		}
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_road_to_people_democracy
+					add_idea = PRC_road_to_people_democracy9
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign37
+				}
+			}
+			add_to_variable = {
+				PPRC_com_drift_var = 0.02
+			}
+			add_to_variable = {
+				PPRC_ts_var = 0.02
+			}
+			add_to_variable = {
+				PRC_RPD_pp_g_var = 0.1
+			}
+			add_to_variable = {
+				PRC_RPD_st_var = 0.05
+			}
+			add_to_variable = {
+				PRC_RPD_slot_var = 0.07
+			}
+			add_to_variable = {
+				PRC_RPD_society_dev_var = 0.03
 			}
 		}
 	}

@@ -1567,8 +1567,8 @@ PRC_export_revolution = {
             }
             NEP = {
                 create_country_leader = {
-                    name = NEP_Prachanda
-                    picture = GFX_NEP_Prachanda
+                    name = NEP_jilan
+                    picture = GFX_NEP_JiLan
                     ideology = maoism
                 }
                 hidden_effect = {
@@ -2347,37 +2347,28 @@ PRC_export_revolution = {
             base = 10
         }
     }
-    PRC_JAP_red_army = {
-        #红军
-        icon = GFX_PRC_new_left_decision
+    PRC_JAP_red_army_mission = {
+		icon = GFX_PRC_new_left_decision
+		activation = {
+			has_global_flag = pan_asian_war_ongoing
+		}
         available = {
-            has_completed_focus = Formation_of_JAP_Red_Army
-            has_country_flag = PRC_JAP_secret_united
-            has_global_flag = pan_asian_war_ongoing
-        }
-        visible = {
-            has_completed_focus = Formation_of_JAP_Red_Army
-        }
+			country_exists = JPL
+		}
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 25
         fire_only_once = yes
-        cost = 100
-        days_remove = 35
-        complete_effect = {
-            hidden_effect = {
-                every_state = {
-                    limit = {
-                        is_owned_by = JAP
-                    }
-                    add_core_of = JPL
-                }
-            }
-        }
-        remove_effect = {
+		timeout_effect = {
             ROOT = {
                 set_autonomy = {
                     target = JPL
                     autonomous_state = autonomy_communist
                     freedom_level = 0.3
                 }
+            }
+            hidden_effect = {
+                remove_mission = PRC_JAP_red_army_mission
             }
             JPL = {
                 create_country_leader = {
@@ -2440,6 +2431,33 @@ PRC_export_revolution = {
                     type = annex_everything
                 }
             }
+		}
+	}
+    PRC_JAP_red_army = {
+        #红军
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = Formation_of_JAP_Red_Army
+            has_country_flag = PRC_JAP_secret_united
+        }
+        visible = {
+            has_completed_focus = Formation_of_JAP_Red_Army
+        }
+        fire_only_once = yes
+        cost = 100
+        days_remove = 35
+        complete_effect = {
+            hidden_effect = {
+                every_state = {
+                    limit = {
+                        is_owned_by = JAP
+                    }
+                    add_core_of = JPL
+                }
+            }
+        }
+        remove_effect = {
+            custom_effect_tooltip = JAP_red_army_tootip
             add_to_variable = {
                 PRC_WLI_consumer_factor = -0.01
             }
@@ -2455,7 +2473,6 @@ PRC_export_revolution = {
             add_to_variable = {
                 PRC_WLI_members_pp_cost = -5
             }
-            set_country_flag = form_jap_red_army
         }
         ai_will_do = {
             base = 10
@@ -2466,9 +2483,6 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         available = {
             has_country_flag = form_jap_red_army
-            JPL = {
-                exists = yes
-            }
         }
         visible = {
             has_country_flag = form_jap_red_army
@@ -2476,8 +2490,9 @@ PRC_export_revolution = {
         fire_only_once = no
         cost = 50
         days_remove = 70
-        days_re_enable = 30
+        days_re_enable = 10
         remove_effect = {
+            custom_effect_tooltip = Japan_red_army_equipment
             JPL = {
                 add_equipment_to_stockpile = {
                     type = infantry_equipment
