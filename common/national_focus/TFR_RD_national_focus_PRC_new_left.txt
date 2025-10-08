@@ -11,6 +11,7 @@ focus_tree = {
 	}
 	#!gfx:interface\New_left_Collection_of_files\PRC_goals.gfx
 	#!gfx:interface\New_left_Collection_of_files\RD_New_left_goals.gfx
+	
 	# shared_focus = PRC_establish_eadi
 	shared_focus = PRC_chinas_greatest_hour
 	shared_focus = PLA_when_that_day_comes
@@ -51,6 +52,10 @@ focus_tree = {
 				days = 2
 			}
 			hidden_effect = {
+				country_event = {
+					id = prcs.3001
+					hours = 11
+				}
 				country_event = {
 					id = prcs.75
 					days = 1095
@@ -244,7 +249,9 @@ focus_tree = {
 				}
 			}
 			hidden_effect = {
-				remove_ideas = PRC_chinese_communist_party_idea
+				remove_dynamic_modifier	= {
+					modifier = PRC_chinese_communist_party_dynamic
+				}
 				add_dynamic_modifier = {
 					modifier = PRC_communist_party_of_china_dynamic
 				}
@@ -635,6 +642,10 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_nl_clean_house
 		}
+		available = {
+			has_completed_focus = PRC_nl_from_people_to_people
+			has_completed_focus = PRC_nl_red_flag_never_falls
+		}
 		relative_position_id = PRC_nl_clean_house
 		select_effect = {
 			country_event = {
@@ -644,6 +655,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			unlock_decision_tooltip = PRC_Brace_the_Future
 			effect_tooltip = {
 				add_ideas = PRC_socialist_culture_start1
 			}
@@ -664,8 +676,11 @@ focus_tree = {
 			set_temp_variable = {
 				campaign_slot_total_var_temp = 1
 			}
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 59
+			}
 			add_campaign_slot = yes
-			unlock_decision_category_tooltip = PRC_Brace_the_Future
 		}
 	}
 	focus = {
@@ -686,6 +701,16 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = Chihong.80
+					hours = 20
+				}
+			}
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 26
+			}
 			add_political_power = -50
 			set_temp_variable = {
 				society_development_var_temp = -0.1
@@ -767,6 +792,12 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_political_awakening
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = Chihong.65
+					days = 8
+				}
+			}
 			add_political_power = 150
 			set_temp_variable = {
 				society_development_var_temp = 0.1
@@ -827,6 +858,12 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_marxist_theory_peak
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = Chihong.73
+					hours = 23
+				}
+			}
 			add_political_power = 50
 			add_to_variable = {
 				PRC_cpc_personal_expense_factor_dynamic_var = 0.1
@@ -1057,6 +1094,22 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 26
+			}
+			hidden_effect = {
+				country_event = {
+					id = Chihong.78
+					days = 5
+					random_days = 3
+				}
+				country_event = {
+					id = Chihong.79
+					days = 60
+					random_days = 56
+				}
+			}
 			country_event = {
 				id = prcs.21
 				hours = 11
@@ -1101,9 +1154,23 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_education_the_groundstone
 		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 26
+			}
 			add_political_power = 50
 			set_variable = {
 				PSC_stability_var = 0.05
+			}
+			country_event = {
+				id = Chihong.62
+				hours = 12
+			}
+			hidden_effect = {
+				country_event = {
+					id = Chihong.83
+					days = 120
+				}
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -1111,12 +1178,11 @@ focus_tree = {
 					add_idea = PRC_socialist_culture_start30
 				}
 			}
-			country_event = Chihong.60
 		}
 	}
 	focus = {
 		id = PRC_nl_restructure_our_study
-		icon = GFX_focus_PRC_denounce_xi_revisionism
+		icon = GFX_focus_PRC_GangTie_shizen_yang
 		cost = 3
 		x = 1
 		y = 1
@@ -1201,6 +1267,10 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_damage_from_reactionary_mission
+				days = 26
+			}
 			custom_effect_tooltip = FRA_focus_select_effect_tt
 			effect_tooltip = {
 				add_ideas = PRC_offing_bad_trend
@@ -1286,10 +1356,6 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_end_to_past_chaos
 		completion_reward = {
-			add_days_mission_timeout = {
-				mission = PRC_damage_from_reactionary_mission
-				days = 21
-			}
 			set_temp_variable = {
 				society_development_var_temp = -0.1
 			}
@@ -1342,8 +1408,6 @@ focus_tree = {
 		y = 4
 		prerequisite = {
 			focus = PRC_nl_long_live_internationalism
-		}
-		prerequisite = {
 			focus = PRC_nl_purge_academic_bureaucrats
 		}
 		prerequisite = {
@@ -1351,6 +1415,10 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_social_reeducation
 		completion_reward = {
+			custom_effect_tooltip = PARTY_polict
+			unlock_decision_tooltip = PRC_second_clear_four_campaign
+			unlock_decision_tooltip = PRC_new_set_of_bureaucracy
+			country_event = Chihong.82
 			set_variable = {
 				#设置变量的数值
 				var = PRC_nl_focus_culture_complete_var				#变量
@@ -1833,6 +1901,12 @@ focus_tree = {
 			PRC_nl_rebuild_proletarian_dictatorship_tigger = yes
 		}
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = Chihong.75
+					days = 8
+				}
+			}
 			country_event = {
 				id = prcs.73
 				days = 2
@@ -2802,7 +2876,7 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_nl_China_shocks_world
-		icon = GFX_focus_PRC_state_syndicalism
+		icon = GFX_focus_PRC_denounce_xi_revisionism
 		cost = 3
 		x = 0
 		y = 2
@@ -2812,6 +2886,13 @@ focus_tree = {
 		relative_position_id = PRC_nl_reform_production_relation
 		completion_reward = {
 			country_event = Chihong.12
+			hidden_effect = {
+				country_event = {
+					id = prcs.75
+					days = 4
+					random_days = 2
+				}
+			}
 			unlock_decision_category_tooltip = PRC_nl_expand_reform_category
 			unlock_decision_tooltip = PRC_nl_shipbuilding_ingenuity
 			unlock_decision_tooltip = PRC_nl_food_safety_reforms
@@ -2843,6 +2924,10 @@ focus_tree = {
 			add_to_variable = {
 				var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
 				value = 0.1
+			}
+			country_event = {
+				id = prcs.3116
+				hours = 21
 			}
 			unlock_decision_tooltip = PRC_nl_jingji6_d1			#发扬农业大寨精神
 		}
@@ -2883,7 +2968,15 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_China_shocks_world
 		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = Chihong.58
+					days = 11
+					random_days = 7
+				}	
+			}
 			#unlock_decision_tooltip = PRC_nl_super_project
+			country_event = prcs.3161
 			unlock_decision_tooltip = PRC_nl_jingji23_d1
 		}
 	}
@@ -2908,6 +3001,9 @@ focus_tree = {
 		relative_position_id = PRC_nl_socialist_modernization
 		completion_reward = {
 			add_political_power = 150
+			hidden_effect = {
+				country_event = Chihong.77
+			}
 			if = {
 				limit = {
 					NOT = {
@@ -3227,9 +3323,33 @@ focus_tree = {
 				has_completed_focus = PRC_nl_gain_from_each_good
 			}
 		}
-		relative_position_id = PRC_nl_advance_productivity
 		completion_reward = {
+            608 = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 2
+                    instant_build = yes
+                }
+            }
+			592 = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 2
+                    instant_build = yes
+                }
+            }
+			609 = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 2
+                    instant_build = yes
+                }
+            }
 		}
+		relative_position_id = PRC_nl_advance_productivity
 	}
 	focus = {
 		id = PRC_nl_commonhappy
@@ -3320,6 +3440,114 @@ focus_tree = {
 		}
 		relative_position_id = PRC_nl_socialist_construction_climax
 		completion_reward = {
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_ningxia_hui_autonomous_region
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}			
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_tibet_autonomous_region
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}		
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_xinjiang_uygur_autonomous_region
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}		
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_inner_mongolia_autonomous_region
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}	
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_guangxi_zhuang_autonomous_region
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}	
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_hong_kong
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}			
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_macau
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_peoples_commune
+				}
+			}
+			hidden_effect = {
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_hong_kong
+					}
+				}		
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_macau
+					}
+				}		
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_guangxi_zhuang_autonomous_region
+					}
+				}		
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_inner_mongolia_autonomous_region
+					}
+				}		
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_xinjiang_uygur_autonomous_region
+					}
+				}		
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_tibet_autonomous_region
+					}
+				}		
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_ningxia_hui_autonomous_region
+					}
+				}
+			}
+
 			change_economy_type_auto_communism = yes
 		}
 	}

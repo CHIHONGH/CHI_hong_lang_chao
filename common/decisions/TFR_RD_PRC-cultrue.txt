@@ -1964,7 +1964,6 @@ PRC_Youth_Ideological_Education = {
 			hidden_effect = {
 				retire_character = PRC_wei_fenghe
 				retire_character = PRC_Li_Shangfu
-				set_country_flag = PRC_jailed_for_corruption_flag
 			}
 		}
 	}
@@ -2175,6 +2174,13 @@ PRC_Youth_Ideological_Education = {
 		fire_only_once = yes
 		complete_effect = {
 			set_country_flag = PRC_CR_refine_flag
+			hidden_effect = {
+				country_event = {
+					id = prcs.3111
+					hours = 22
+					random_hours = 13
+				}
+			}
 			add_to_variable = {
 				PPRC_pp_var = 0.1
 			}
@@ -2220,26 +2226,24 @@ PRC_Youth_Ideological_Education = {
 	PRC_new_set_of_bureaucracy = {
 		icon = GFX_PRC_things_going_bad
 		visible = {
-			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			#NOT = {
-			#	has_country_flag = PRC_opposition_suspended_flag
-			#}
-			always = no
+			has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
+			NOT = {
+				has_country_flag = PRC_opposition_suspended_flag
+			}
 		}
 		available = {
-			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			#custom_trigger_tooltip = {
-			#	tooltip = COM_MORE_THAN_LS
-			#	check_variable = {
-			#		var = party_popularity@communist
-			#		value = party_popularity@libertarian_socialist
-			#		compare = greater_than_or_equals
-			#	}
-			#}
-			#NOT = {
-			#	has_country_flag = PRC_opposition_suspended_flag
-			#}
-			always = no
+			has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
+			custom_trigger_tooltip = {
+				tooltip = COM_MORE_THAN_LS
+				check_variable = {
+					var = party_popularity@communist
+					value = party_popularity@nationalist
+					compare = greater_than_or_equals
+				}
+			}
+			NOT = {
+				has_country_flag = PRC_opposition_suspended_flag
+			}
 		}
 		cost = 75
 		days_remove = 100
@@ -2283,26 +2287,24 @@ PRC_Youth_Ideological_Education = {
 	PRC_second_clear_four_campaign = {
 		icon = GFX_PRC_cylc_decision
 		visible = {
-			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			#NOT = {
-			#	has_country_flag = PRC_opposition_suspended_flag
-			#}
-			always = no
+			has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
+			NOT = {
+				has_country_flag = PRC_opposition_suspended_flag
+			}
 		}
 		available = {
-			#has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
-			#custom_trigger_tooltip = {
-			#	tooltip = COM_LESS_THAN_LS
-			#	check_variable = {
-			#		var = party_popularity@communist
-			#		value = party_popularity@libertarian_socialist
-			#		compare = less_than_or_equals
-			#	}
-			#}
-			#NOT = {
-			#	has_country_flag = PRC_opposition_suspended_flag
-			#}
-			always = no
+			has_completed_focus = PRC_nl_peoples_culture_revolutionary_culture
+			custom_trigger_tooltip = {
+				tooltip = COM_LESS_THAN_LS
+				check_variable = {
+					var = party_popularity@communist
+					value = party_popularity@nationalist
+					compare = less_than_or_equals
+				}
+			}
+			NOT = {
+				has_country_flag = PRC_opposition_suspended_flag
+			}
 		}
 		cost = 90
 		days_remove = 365
@@ -2973,6 +2975,9 @@ PRC_solve_economy_crisis = {
 			NOT = {
 				has_global_flag = TFR_PRC_crists_completed
 			}
+			check_variable = {
+				PRC_CM_fa < 3					#已动用准备金次数<3
+			}
 		}
 		available = {
 			custom_trigger_tooltip = {
@@ -2983,6 +2988,9 @@ PRC_solve_economy_crisis = {
 			}
 		}
 		complete_effect = {
+			add_to_variable = {
+				PRC_CM_fa = 1				#已动员次数+1
+			}
 			set_temp_variable = {
 				PRC_reserve_fund_new_dagoujiao = -20				#储备金+200B
 			}
@@ -3003,6 +3011,9 @@ PRC_solve_economy_crisis = {
 			NOT = {
 				has_global_flag = TFR_PRC_crists_completed
 			}
+			check_variable = {
+				PRC_CM_fi < 2					#已动用准备金次数<2
+			}
 		}
 		complete_effect = {
 			set_temp_variable = {
@@ -3013,6 +3024,9 @@ PRC_solve_economy_crisis = {
 				var = debt_var_temp
 				value = 150
 			}
+			add_to_variable = {
+				PRC_CM_fi = 1				#已动员次数+1
+			}
 			add_debt = yes
 		}
 	}
@@ -3021,11 +3035,17 @@ PRC_solve_economy_crisis = {
 		icon = GFX_decision_generic_political_discourse
 		days_re_enable = 10
 		visible = {
+			check_variable = {
+				PRC_CM_ti < 2					#已动员次数<2
+			}
 			NOT = {
 				has_global_flag = TFR_PRC_crists_completed
 			}
 		}
 		complete_effect = {
+			add_to_variable = {
+				PRC_CM_ti = 1				#已动员次数+1
+			}
 			set_temp_variable = {
 				var = debt_var_temp
 				value = 300
@@ -3689,26 +3709,24 @@ PRC_ready_for_global_economy_destory_category = {
 		remove_Effect = {
 			set_country_flag = PRC_weaken_economy_ties_yes
 			random_owned_state = {
-				add_extra_state_shared_building_slots = 6
+				limit = {
+					industrial_complex > 2
+				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = office_park					#办公园区+6
-					level = 6
+					level = 2
 					instant_build = yes
 				}
 			}
 			random_owned_state = {
-				add_extra_state_shared_building_slots = 6
-				add_building_construction = {
-					type = office_park
-					level = 6
-					instant_build = yes
+				limit = {
+					industrial_complex > 2
 				}
-			}
-			random_owned_state = {
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = office_park
-					level = 6
+					level = 2
 					instant_build = yes
 				}
 			}

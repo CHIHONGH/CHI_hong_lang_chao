@@ -50,7 +50,6 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_country_flag = PRC_oil_crisis_ongoing
-			set_country_flag = PRC_oil_crisis_ongoing_fake
 			country_event = {
 				id = china.11
 				days = 5
@@ -82,6 +81,7 @@ country_event = {
 	}
 	option = {
 		name = china.4.a
+		custom_effect_tooltip = PRC_oil_crash_tooltip
 		effect_tooltip = {
 			add_ideas = PRC_oil_crash1
 			add_political_power = -30
@@ -89,64 +89,13 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = prc_change.1
-				days = 60
+				days = 10
 			}
 		}
 		focus_unlock = yes
 	}
 }
 
-#Oil Crash Hits China
-country_event = {
-	id = china.4
-	title = china.4.t
-	desc = china.4.d
-	picture = GFX_red_line_go_down
-	is_triggered_only = yes
-	trigger = {
-		tag = PRC
-	}
-	immediate = {
-		hidden_effect = {
-			set_country_flag = PRC_oil_crisis_ongoing
-			country_event = {
-				id = china.11
-				days = 5
-			}
-			add_ideas = PRC_oil_crash1
-			add_political_power = -30
-			country_event = {
-				id = china.288
-				days = 3
-			}
-			country_event = {
-				id = china.289
-				days = 30
-			}
-			country_event = {
-				id = china.290
-				days = 40
-			}
-			country_event = {
-				id = china.324
-				days = 110
-			}
-			add_stability = -0.25
-			add_popularity = {
-				ideology = communist
-				popularity = -0.175
-			}
-		}
-	}
-	option = {
-		name = china.4.a
-		effect_tooltip = {
-			add_ideas = PRC_oil_crash1
-			add_political_power = -30
-		}
-		focus_unlock = yes
-	}
-}
 
 #First COVID Death
 country_event = {
@@ -616,7 +565,6 @@ country_event = {
 		add_ideas = PRC_he_junke_eco
 		add_ideas = PRC_wang_yi_for
 		add_ideas = PRC_chen_wenqing_int
-		add_ideas = PRC_li_qiaoming
 		add_ideas = PRC_zhang_jun_sec
 		effect_tooltip = {
 			focus_unlock = yes
@@ -7598,7 +7546,7 @@ country_event = {
 		add_society_development = yes
 		hidden_effect = {
 			country_event = {
-				id = china.237
+				id = prcs.3148
 				days = 3
 			}
 		}
@@ -9925,7 +9873,7 @@ country_event = {
 	}
 	option = {
 		name = china.300.a
-		add_stability = -0.025
+		add_stability = 0.025
 		set_country_flag = PRC_PLA_in_wuhan_flag
 	}
 }
@@ -10357,10 +10305,6 @@ country_event = {
 			value = -0.075
 		}
 		add_farming_development = yes
-		swap_ideas = {
-			remove_idea = PRC_party_rectification_campaign_bf1f 
-			add_idea = PRC_party_rectification_campaign_bf1e
-		}
 	}
 }
 

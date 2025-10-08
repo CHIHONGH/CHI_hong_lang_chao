@@ -11,17 +11,18 @@ country_event = {
 	}
 	option = {
 		name = prc_change.1.a
-		clr_country_flag = PRC_oil_crisis_ongoing_fake
-		set_country_flag = PRC_oil_crisis_ongoing_true
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = characters_will_be_retired
 		show_ideas_tooltip = PRC_li_keqiang_hog
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = characters_will_be_recruited
+		show_ideas_tooltip = PRC_HuChunHua_hog_dummy
+		set_country_flag = PRC_the_man_death_flag
 		hidden_effect = {
 			remove_ideas = PRC_li_keqiang_hog
-			add_ideas = vacant_hog
+			add_ideas = PRC_HuChunHua_hog_dummy
 		}
-		focus_unlock = yes
-		complete_national_focus = PRC_the_man_death
+		complete_national_focus = turbulence_returns_ship_runs_aground
 	}
 }
 
@@ -70,6 +71,7 @@ country_event = {
 	option = {
 		name = prc_change.4.a
 		add_stability = -0.035
+		complete_national_focus = emergency_work_meeting
 		add_popularity = {
 			ideology = communist
 			popularity = -0.035
@@ -171,12 +173,10 @@ country_event = {
 			}
 		}
 		custom_effect_tooltip = appoint_head_minister_tooltip
-		show_ideas_tooltip = PRC_HuChunHua_hog_dummy
+		# show_ideas_tooltip = PRC_HuChunHua_hog_dummy
 		clr_country_flag = PRC_internal_factions_enabled_flag
-		set_country_flag = PRC_the_man_death_flag
 		hidden_effect = {
 			set_cosmetic_tag = PRC_totalitarian_socialist
-			add_ideas = PRC_HuChunHua_hog_dummy
 			add_popularity = {
 				ideology = libertarian_socialist
 				popularity = 0.1
