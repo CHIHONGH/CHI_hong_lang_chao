@@ -1,0 +1,788 @@
+guiTypes = {
+    extendedScrollbarType = {
+		name = "RD_PLA_right_vertical_slider"
+		position = { x = -5 y = 0 }
+ 		size = { width = 18 height = 18 }
+		startValue = 0
+		orientation = upper_right
+		origo = upper_right
+		smooth_scrolling = yes
+		
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "RD_PLA_scrollbar_vertical_bg"
+		}
+		
+		slider = {
+			name = "Slider"	
+			quadTextureSprite = "RD_PLA_vertical_scroll_bar_drager"
+			position = { x = -2 y = -2 }
+		}
+
+	}
+
+    containerWindowType = {
+        name = "RD_PLA_reform_window"
+        size = {
+            width = 1085
+            height = 725
+        }
+        position = { x=725 y=4}
+        animation_type = decelerated
+        fade_type = linear
+        fade_time = 500
+        animation_time = 500
+        background = {
+            name = "background"
+            quadTextureSprite = GFX_tiled_bg
+        }
+        
+        iconType = {
+            name = "RD_PLA_political_bg"
+            spriteType = RD_PLA_political_bg
+            position = {
+                x = 782
+                y = 245
+            }
+        }
+        
+        instantTextBoxType = {
+            name = "title"
+            text = RD_PLA_UI_title
+            font = "VCR02_36"
+            position = {
+                x = 303
+                y = 14
+            }
+            maxWidth = 467
+            maxHeight = 50
+            text_color_code = Y
+            fixedsize = yes
+            format = center
+        }
+        instantTextBoxType = {
+            name = "progress"
+            text = RD_PLA_UI_progress
+            font = "VCR02_24"
+            position = {
+                x = 303
+                y = 66
+            }
+            maxWidth = 467
+            maxHeight = 50
+            text_color_code = Y
+            fixedsize = yes
+            format = center
+        }
+        iconType = {
+            name = "CPC"
+            spriteType = "RD_PLA_CPC"
+            position = {
+                x = 14
+                y = 0
+            }
+        }
+        iconType = {
+            name = "PLA"
+            spriteType = "RD_PLA_PLA"
+            position = {
+                x = 809
+                y = 18
+            }
+        }
+        iconType = {
+            name = "RD_PLA_small_1"
+            spriteType = "RD_PLA_PLA_small"
+            position = {
+                x = 309
+                y = 161
+            }
+        }
+        instantTextBoxType = {
+            name = "title_RD_PLA_MR"
+            text = RD_PLA_UI_MR_title
+            font = "VCR02_20"
+            position = {
+                x = 408
+                y = 194
+            }
+            text_color_code = Y
+            maxWidth = 267
+            maxHeight = 50
+            fixedsize = yes
+            format = center
+        }
+        iconType = {
+            name = "RD_PLA_small_2"
+            spriteType = "RD_PLA_PLA_small"
+            position = {
+                x = 676
+                y = 160
+            }
+        }
+        instantTextBoxType = {
+            name = "propaganda_1"
+            text = RD_PLA_UI_propaganda
+            font = "VCR02_20"
+            position = {
+                x = 353
+                y = 263
+            }
+            text_color_code = Y
+            maxWidth = 377
+            maxHeight = 50
+            fixedsize = yes
+            format = center
+        }
+        iconType = {
+            name = "RD_reform_bar"
+            quadTextureSprite = "RD_PLA_progress_bar"
+            position = {
+                x = 257
+                y = 101
+            }
+        }
+        buttonType = {
+            name = "button_MR_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_1_text"
+            position = {
+                x = 387
+                y = 316
+            }
+            pdx_tooltip = "button_MR_1_tt"
+            pdx_disabled_tooltip = "button_MR_1_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_1_0"
+            spriteType = "RD_PLA_button_reform_operating"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_1_text"
+            position = {
+                x = 387
+                y = 316
+            }
+            pdx_disabled_tooltip = "button_MR_1_disabled_tt_0"
+        }
+        buttonType = {
+            name = "button_MR_1_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_1_text"
+            position = {
+                x = 387
+                y = 316
+            }
+            pdx_disabled_tooltip = "button_MR_1_disabled_tt_1"
+        }
+
+        buttonType = {
+            name = "button_MR_2"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_2_text"
+            position = {
+                x = 387
+                y = 371
+            }
+            pdx_tooltip = "button_MR_2_tt"
+            pdx_disabled_tooltip = "button_MR_2_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_2_0"
+            spriteType = "RD_PLA_button_reform_operating"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_2_text"
+            position = {
+                x = 387
+                y = 371
+            }
+            pdx_disabled_tooltip = "button_MR_2_disabled_tt_0"
+        }
+        buttonType = {
+            name = "button_MR_2_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_2_text"
+            position = {
+                x = 387
+                y = 371
+            }
+            pdx_disabled_tooltip = "button_MR_2_disabled_tt_1"
+        }
+
+        buttonType = {
+            name = "button_MR_3"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_3_text"
+            position = {
+                x = 387
+                y = 426
+            }
+            pdx_tooltip = "button_MR_3_tt"
+            pdx_disabled_tooltip = "button_MR_3_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_3_0"
+            spriteType = "RD_PLA_button_reform_operating"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_3_text"
+            position = {
+                x = 387
+                y = 426
+            }
+            pdx_disabled_tooltip = "button_MR_3_disabled_tt_0"
+        }
+        buttonType = {
+            name = "button_MR_3_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_3_text"
+            position = {
+                x = 387
+                y = 426
+            }
+            pdx_disabled_tooltip = "button_MR_3_disabled_tt_1"
+        }
+
+        buttonType = {
+            name = "button_MR_4"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_4_text"
+            position = {
+                x = 387
+                y = 481
+            }
+            pdx_tooltip = "button_MR_4_tt"
+            pdx_disabled_tooltip = "button_MR_4_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_4_0"
+            spriteType = "RD_PLA_button_reform_operating"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_4_text"
+            position = {
+                x = 387
+                y = 481
+            }
+            pdx_disabled_tooltip = "button_MR_4_disabled_tt_0"
+        }
+        buttonType = {
+            name = "button_MR_4_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_4_text"
+            position = {
+                x = 387
+                y = 481
+            }
+            pdx_disabled_tooltip = "button_MR_4_disabled_tt_1"
+        }
+        buttonType = {
+            name = "button_MR_4_2"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_4_text"
+            position = {
+                x = 387
+                y = 481
+            }
+            pdx_disabled_tooltip = "button_MR_4_disabled_tt_2"
+        }
+
+
+        buttonType = {
+            name = "button_MR_5"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_5_text"
+            position = {
+                x = 387
+                y = 536
+            }
+            pdx_tooltip = "button_MR_5_tt"
+            pdx_disabled_tooltip = "button_MR_5_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_5_0"
+            spriteType = "RD_PLA_button_reform_operating"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_5_text"
+            position = {
+                x = 387
+                y = 536
+            }
+            pdx_disabled_tooltip = "button_MR_5_disabled_tt_0"
+        }
+        buttonType = {
+            name = "button_MR_5_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_5_text"
+            position = {
+                x = 387
+                y = 536
+            }
+            pdx_disabled_tooltip = "button_MR_5_disabled_tt_1"
+        }
+        buttonType = {
+            name = "button_MR_5_2"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_5_text"
+            position = {
+                x = 387
+                y = 536
+            }
+            pdx_tooltip = "button_MR_5_tt"
+            pdx_disabled_tooltip = "button_MR_5_disabled_tt_2"
+        }
+
+
+        buttonType = {
+            name = "button_MR_6"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_6_text"
+            position = {
+                x = 387
+                y = 591
+            }
+            pdx_tooltip = "button_MR_6_tt"
+            pdx_disabled_tooltip = "button_MR_6_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_6_0"
+            spriteType = "RD_PLA_button_reform_operating"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_6_text"
+            position = {
+                x = 387
+                y = 591
+            }
+            pdx_disabled_tooltip = "button_MR_6_disabled_tt"
+        }
+        buttonType = {
+            name = "button_MR_6_1"
+            spriteType = "RD_PLA_button_reform"
+            buttonFont = "VCR02_16"
+            buttonText = "button_MR_6_text"
+            position = {
+                x = 387
+                y = 591
+            }
+            pdx_disabled_tooltip = "button_MR_6_disabled_tt"
+        }
+
+
+        instantTextBoxType = {
+            name = "title_RD_PLA_research"
+            text = RD_PLA_UI_research_title
+            font = "VCR02_24"
+            position = {
+                x = 18
+                y = 194
+            }
+            text_color_code = Y
+            maxWidth = 267
+            maxHeight = 50
+            fixedsize = yes
+            format = center
+        }
+
+        instantTextBoxType = {
+            name = "RD_PLA_research_details"
+            text = RD_PLA_research_detail
+            font = "VCR02_16"
+            position = {
+                x = 18
+                y = 224
+            }
+            text_color_code = Y
+            maxWidth = 267
+            maxHeight = 50
+            fixedsize = yes
+            format = center
+        }
+
+        containerWindowType = {
+            name = "RD_PLA_research_window"
+            position = {
+                x = 0
+                y = 245
+            }
+            size = {
+                width = 295
+                height = 470
+            }
+            clipping = yes
+            background = {
+                name = "background"
+                quadTextureSprite = GFX_tiled_bg
+            }
+            verticalScrollbar = "RD_PLA_right_vertical_slider"
+            vertical_scroll_step = 41
+			scroll_wheel_factor = 40
+
+            iconType = {
+                name = "program_1"
+                spriteType = RD_PLA_research_program_A
+                position = {
+                    x = 4
+                    y = -1
+                }
+            }
+
+            iconType = {
+                name = "program_2"
+                spriteType = RD_PLA_research_program_B
+                position = {
+                    x = 4
+                    y = 70
+                }
+            }
+
+            iconType = {
+                name = "program_3"
+                spriteType = RD_PLA_research_program_C
+                position = {
+                    x = 4
+                    y = 132
+                }
+            }
+
+            iconType = {
+                name = "program_4"
+                spriteType = RD_PLA_research_program_D
+                position = {
+                    x = 4
+                    y = 202
+                }
+            }
+
+            iconType = {
+                name = "program_5"
+                spriteType = RD_PLA_research_program_E
+                position = {
+                    x = 4
+                    y = 272
+                }
+            }
+
+            iconType = {
+                name = "program_6"
+                spriteType = RD_PLA_research_program_F
+                position = {
+                    x = 4
+                    y = 342
+                }
+            }
+
+            iconType = {
+                name = "program_7"
+                spriteType = RD_PLA_research_program_G
+                position = {
+                    x = 4
+                    y = 408
+                }
+            }
+            iconType = {
+                name = "program_8"
+                spriteType = RD_PLA_research_program_H
+                position = {
+                    x = 4
+                    y = 474
+                }
+            }
+            iconType = {
+                name = "program_9"
+                spriteType = RD_PLA_research_program_I
+                position = {
+                    x = 4
+                    y = 542
+                }
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_1"
+                spriteType = RD_PLA_button_research
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_1_text"
+                position = {
+                    x = 62
+                    y = 17
+                }
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_2"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 85
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_2_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_3"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 153
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_3_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_4"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 221
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_4_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+           buttonType = {
+                name = "RD_PLA_research_button_5"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 289
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_5_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_6"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 357
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_6_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_7"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 425
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_7_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_8"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 493
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_8_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+            buttonType = {
+                name = "RD_PLA_research_button_9"
+                spriteType = RD_PLA_button_research
+                position = {
+                    x = 62
+                    y = 561
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_RS_9_text"
+                pdx_tooltip = "button_RS_1_tt"
+            }
+
+
+        }
+
+        instantTextBoxType = {
+            name = "title_RD_PLA_political"
+            text = RD_PLA_UI_political_title
+            font = "VCR02_24"
+            position = {
+                x = 795
+                y = 194
+            }
+            text_color_code = Y
+            maxWidth = 267
+            maxHeight = 50
+            fixedsize = yes
+            format = center
+        }
+
+        instantTextBoxType = {
+            name = "RD_PLA_political_details"
+            text = RD_PLA_political_detail
+            font = "VCR02_16"
+            position = {
+                x = 795
+                y = 224
+            }
+            text_color_code = Y
+            maxWidth = 267
+            maxHeight = 50
+            fixedsize = yes
+            format = center
+        }
+
+        containerWindowType = {
+            name = "RD_PLA_poltics_window"
+            position = {
+                x = 782
+                y = 245
+            }
+            size = {
+                width = 295
+                height = 470
+            }
+            clipping = yes
+            verticalScrollbar = "RD_PLA_right_vertical_slider"
+            vertical_scroll_step = 40
+            scroll_wheel_factor = 40
+
+            iconType = {
+                name = "RD_PLA_political_slot_left"
+                quadTextureSprite = "RD_PLA_political_slot"
+                position = {
+                    x = 7
+                    y = 32
+                }
+            }
+            instantTextBoxType = {
+                name = "RD_PLA_political_slot_time_left"
+                text = RD_PLA_political_slot_days_left_left
+                font = "VCR02_18"
+                position = {
+                    x = 7
+                    y = 160
+                }
+                text_color_code = Y
+                maxWidth = 92
+                maxHeight = 20
+                fixedsize = yes
+                format = center
+            }
+            iconType = {
+                name = "RD_PLA_political_slot_middle"
+                quadTextureSprite = "RD_PLA_political_slot"
+                position = {
+                    x = 102
+                    y = 32
+                }
+            }
+            instantTextBoxType = {
+                name = "RD_PLA_political_slot_time_middle"
+                text = RD_PLA_political_slot_days_left_middle
+                font = "VCR02_18"
+                position = {
+                    x = 102
+                    y = 160
+                }
+                text_color_code = Y
+                maxWidth = 92
+                maxHeight = 20
+                fixedsize = yes
+                format = center
+            }
+            iconType = {
+                name = "RD_PLA_political_slot_right"
+                quadTextureSprite = "RD_PLA_political_slot"
+                position = {
+                    x = 197
+                    y = 32
+                }
+            }
+            instantTextBoxType = {
+                name = "RD_PLA_political_slot_time_right"
+                text = RD_PLA_political_slot_days_left_right
+                font = "VCR02_18"
+                position = {
+                    x = 197
+                    y = 160
+                }
+                text_color_code = Y
+                maxWidth = 92
+                maxHeight = 20
+                fixedsize = yes
+                format = center
+            }
+            buttonType = {
+                name = "RD_PLA_political_button_1"
+                spriteType = RD_PLA_button_propaganda
+                buttonFont = "VCR02_16"
+                buttonText = "button_PL_1_text"
+                position = {
+                    x = 38
+                    y = 187
+                }
+                pdx_tooltip = RD_PLA_political_button_1_tt
+            }
+            buttonType = {
+                name = "RD_PLA_political_button_2"
+                spriteType = RD_PLA_button_propaganda
+                position = {
+                    x = 38
+                    y = 242
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_PL_2_text"
+                pdx_tooltip = RD_PLA_political_button_2_tt
+            }
+            buttonType = {
+                name = "RD_PLA_political_button_3"
+                spriteType = RD_PLA_button_propaganda
+                position = {
+                    x = 38
+                    y = 297
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_PL_3_text"
+                pdx_tooltip = RD_PLA_political_button_3_tt
+            }
+            buttonType = {
+                name = "RD_PLA_political_button_4"
+                spriteType = RD_PLA_button_propaganda
+                position = {
+                    x = 38
+                    y = 352
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_PL_4_text"
+                pdx_tooltip = RD_PLA_political_button_4_tt
+            }
+           buttonType = {
+                name = "RD_PLA_political_button_5"
+                spriteType = RD_PLA_button_propaganda
+                position = {
+                    x = 38
+                    y = 407
+                }
+                buttonFont = "VCR02_16"
+                buttonText = "button_PL_5_text"
+                pdx_tooltip = RD_PLA_political_button_5_tt
+            }
+
+
+        }
+
+        iconType = {
+            name = "RD_PLA_frameword"
+            spriteType = "RD_PLA_framework"
+            alwaystransparent = yes
+        }
+    }
+}

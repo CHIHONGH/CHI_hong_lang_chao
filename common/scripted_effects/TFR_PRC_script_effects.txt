@@ -105,3 +105,146 @@ improve_people_democracy = {
 	}
 
 }
+
+PLA_add_propaganda_effect = {
+	if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_left_var > 1
+			}
+			check_variable = {
+				RD_PLA_political_slot_middle_var > 1
+			}
+			check_variable = {
+				RD_PLA_political_slot_right_var > 1
+			}
+		}
+		log = "There is no propaganda slot. What are you doing?"
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_left_var = 1
+			}
+		}
+		set_variable = {
+			RD_PLA_political_slot_left_var = RD_PLA_ppgd_temp
+		}
+		meta_effect = {
+			text = {
+				add_timed_idea = {
+					idea = RD_PLA_political_ppgd_[ppgd_var]
+					days = 100
+				}
+			}
+			ppgd_var = RD_PLA_ppgd_temp
+		}
+		set_country_flag = {
+			flag = RD_PLA_political_slot_left_occupied_flag
+			value = 1
+			days = 100
+		}
+		subtract_from_variable = {
+			RD_PLA_political_available_slots = 1
+		}
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_middle_var = 1
+			}
+		}
+		set_variable = {
+			RD_PLA_political_slot_middle_var = RD_PLA_ppgd_temp
+		}
+		meta_effect = {
+			text = {
+				add_timed_idea = {
+					idea = RD_PLA_political_ppgd_[ppgd_var]
+					days = 100
+				}
+			}
+			ppgd_var = RD_PLA_ppgd_temp
+		}
+		set_country_flag = {
+			flag = RD_PLA_political_slot_middle_occupied_flag
+			value = 1
+			days = 100
+		}
+		subtract_from_variable = {
+			RD_PLA_political_available_slots = 1
+		}
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_right_var = 1
+			}
+		}
+		set_variable = {
+			RD_PLA_political_slot_right_var = RD_PLA_ppgd_temp
+		}
+		meta_effect = {
+			text = {
+				add_timed_idea = {
+					idea = RD_PLA_political_ppgd_[ppgd_var]
+					days = 100
+				}
+			}
+			ppgd_var = RD_PLA_ppgd_temp
+		}
+		set_country_flag = {
+			flag = RD_PLA_political_slot_right_occupied_flag
+			value = 1
+			days = 100
+		}
+		subtract_from_variable = {
+			RD_PLA_political_available_slots = 1
+		}
+	}
+}
+
+PLA_stop_propaganda_effect = {
+	if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_left_var = RD_PLA_ppgd_temp
+			}
+		}
+		set_variable = {
+			RD_PLA_political_slot_left_var = 1
+		}
+		add_to_variable = {
+			RD_PLA_political_available_slots = 1
+		}
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_middle_var = RD_PLA_ppgd_temp
+			}
+		}
+		set_variable = {
+			RD_PLA_political_slot_middle_var = 1
+		}
+		add_to_variable = {
+			RD_PLA_political_available_slots = 1
+		}
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				RD_PLA_political_slot_right_var = RD_PLA_ppgd_temp
+			}
+		}
+		set_variable = {
+			RD_PLA_political_slot_right_var = 1
+		}
+		add_to_variable = {
+			RD_PLA_political_available_slots = 1
+		}
+	}
+	else = {
+		log = "Is there a propaganda that I should remove? Maybe not."
+	}
+}
