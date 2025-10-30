@@ -14745,7 +14745,54 @@ PRC_pla_reformation = {
 		available = {
 		}
 		ai_will_do = {
-			base = 100
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		modifier = {
+			conscription_factor = 0.1
+			offensive_war_stability_factor = 0.2
+			war_support_weekly = 0.02
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	PRC_enhance_ideological_education = {
+		icon = generic_propaganda_campaigns
+		visible = {
+			has_completed_focus = PLA_reform_of_military_and_political_work
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		cost = 75
+		days_remove = 90
+		days_re_enable = 180
+		modifier = {
+			command_power_gain = 0.15
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			air_experience = 15
+			navy_experience = 15
+			army_experience = 15
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.025
+			}
+			PRC_add_army_reform_progress = yes
+		}
+	}
+	PRC_deepen_internationalist_education = {
+		icon = generic_propaganda_campaigns
+		visible = {
+			has_completed_focus = PLA_Strengthen_PLA_training
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
 		}
 		cost = 50
 		fire_only_once = no
@@ -14759,7 +14806,7 @@ PRC_pla_reformation = {
 		remove_effect = {
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.05
+				value = 7.5
 			}
 			PRC_add_army_reform_progress = yes
 			army_experience = 15
@@ -14784,12 +14831,54 @@ PRC_pla_reformation = {
 		complete_effect = {
 		}
 		modifier = {
-			training_time_army_factor = -0.15
+			army_attack_factor = -0.15
+			army_defence_factor = -0.1
+			army_org_factor = 0.1
 		}
 		remove_effect = {
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.05
+				value = 0.075
+			}
+			PRC_add_army_reform_progress = yes
+			add_to_variable = {
+				PPRC_pp_g_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_org_regain_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_defence_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_reinforce_var = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign41
+				}
+			}
+		}
+	}
+	PRC_reform_the_international_troops = {
+		icon = GFX_PRC_centrist_decision
+		visible = {
+			has_completed_focus = PLA_Mingji_Baiqiuen
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		cost = 150
+		days_remove = 365
+		fire_only_once = yes
+		modifier = {
+			weekly_manpower = 200
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 5
 			}
 			PRC_add_army_reform_progress = yes
 			army_experience = 10
@@ -15012,6 +15101,83 @@ PRC_pla_reformation = {
 			base = 1
 		}
 	}
+	#演练
+	PRC_toggle_exercise_decision = {
+		icon = generic
+		days_remove = 1
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_country_flag = PRC_pla_reform_exercise_hide_flag
+		}
+	}
+	PRC_accelerated_officer_training_programs = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_pla_reform_exercise_hide_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 200
+		days_remove = 30
+		complete_effect = {
+		}
+		modifier = {
+			experience_gain_factor = 0.1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.05
+			}
+			PRC_add_army_reform_progress = yes
+			army_experience = 15
+		}
+	}
+	PRC_accelerated_soldier_training_programs = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_pla_reform_exercise_hide_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 200
+		days_remove = 30
+		complete_effect = {
+		}
+		modifier = {
+			training_time_army_factor = -0.15
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.05
+			}
+			PRC_add_army_reform_progress = yes
+			army_experience = 10
+		}
+	}
 	PRC_naval_exercises_decision = {
 		icon = generic_propaganda_campaigns
 		fire_only_once = no
@@ -15120,7 +15286,7 @@ PRC_pla_reformation = {
 			air_experience = 10
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.005
+				value = 0.5
 			}
 			PRC_add_army_reform_progress = yes
 		}
@@ -15158,7 +15324,7 @@ PRC_pla_reformation = {
 			navy_experience = 10
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.005
+				value = 0.5
 			}
 			PRC_add_army_reform_progress = yes
 		}

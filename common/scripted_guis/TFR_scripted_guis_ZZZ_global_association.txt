@@ -111,6 +111,25 @@ scripted_gui = {
 			TFR_eurasianist_system_type_icon_visible = {
 				has_idea = ZZZ_eurasianist_system
 			}
+			PRC_PLA_REFORM_OPEN_visible = {
+				tag = PRC
+				has_completed_focus = PLA_when_that_day_comes
+			}
+		}
+		effects = {
+			PRC_PLA_REFORM_OPEN_click = {
+				if = {
+					limit = { 
+						NOT = {
+							has_country_flag = PLA_reform_gui_enabled
+						}
+					}
+					set_country_flag = PLA_reform_gui_enabled
+				}
+				else = {
+					clr_country_flag = PLA_reform_gui_enabled
+				}
+			}
 		}
 	}
 	
