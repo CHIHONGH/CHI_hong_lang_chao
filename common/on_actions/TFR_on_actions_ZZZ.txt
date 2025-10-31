@@ -3818,6 +3818,43 @@ on_actions = {
 				}
 			}
 			if = {
+				#PRC kill USAstate
+				limit = {
+					FROM.FROM = {
+						state = 932
+					}
+					OR = {
+						FROM = {
+							tag = PTF
+						}
+						FROM = {
+							tag = PRC
+						}
+					}
+					OR = {
+						ROOT = {
+							tag = PTF
+						}
+						ROOT = {
+							tag = PRC
+						}
+					}
+					not = {
+						has_global_flag = battle_of_okinawa
+					}
+				}
+				set_global_flag = battle_of_okinawa
+				news_event = {
+					id = prcs.3123
+				}
+				PRC = {
+					country_event = {
+						id = prcs.3109
+						days = 1
+					}
+				}
+			}
+			if = {
 				#PRC Invades Okinawa
 				limit = {
 					FROM.FROM = {
@@ -3979,6 +4016,12 @@ on_actions = {
 				news_event = {
 					id = news.499
 					hours = 5
+				}
+				PRC = {
+					country_event = {
+						id = prcs.3147
+						days = 2
+					}
 				}
 			}
 			if = {
@@ -4266,6 +4309,10 @@ on_actions = {
 						days = 25
 					}
 					country_event = china.446
+					country_event = {
+						id = prcs.3100
+						days = 14
+					}
 				}
 				JAP = {
 					add_days_mission_timeout = {

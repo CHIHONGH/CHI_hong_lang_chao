@@ -1,1215 +1,1215 @@
 PRC_coronavirus_category = {
-	PRC_focusing_on_vaccine_research = {
-		icon = generic_vaccine
-		available = {
-			has_completed_focus = focus_on_vaccine_research
-		}
-		visible = {
-			has_completed_focus = focus_on_vaccine_research
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 30
-		days_re_enable = 90
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_vaccine_development_mission
-				days = -75
-			}
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 200
-			}
-			add_debt = yes
-			set_temp_variable = {
-				var = poverty_development_var_temp
-				value = 0.08
-			}
-			add_poverty_development = yes
+    PRC_focusing_on_vaccine_research = {
+        icon = generic_vaccine
+        available = {
+            has_completed_focus = focus_on_vaccine_research
+        }
+        visible = {
+            has_completed_focus = focus_on_vaccine_research
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 30
+        days_re_enable = 90
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_vaccine_development_mission
+                days = -75
+            }
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 200
+            }
+            add_debt = yes
+            set_temp_variable = {
+                var = poverty_development_var_temp
+                value = 0.08
+            }
+            add_poverty_development = yes
 
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-	PRC_online_presentation = {
-		icon = generic_mask
-		available = {
-			has_completed_focus = promote_prevention_measures
-		}
-		visible = {
-			has_completed_focus = promote_prevention_measures
-		}
-		fire_only_once = no
-		cost = 75
-		days_remove = 35
-		days_re_enable = 50
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 30
-			}
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 10
-			}
-			add_debt = yes
-			add_stability = 0.05
-		}
-		ai_will_do = {
-			base = 0
-		}
-	}
-	PRC_control_the_coronavirus_mission = {
-		icon = generic_coronavirus
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			has_country_flag = PRC_dealt_with_coronavirus
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 85
-		timeout_effect = {
-			PRC_increase_corona = yes
-			activate_mission = PRC_control_the_coronavirus_mission
-		}
-	}
-	PRC_vaccine_development_mission = {
-		icon = generic_vaccine
-		allowed = {
-			tag = JAP
-		}
-		available = {
-			always = no
-		}
-		visible = {
-			has_completed_focus = PRC_kickstart_vaccine_research
-		}
-		activation = {
-			always = no
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 300
-		timeout_effect = {
-			set_country_flag = PRC_dealt_with_coronavirus
-			activate_mission = PRC_waning_coronavirus
-		}
-	}
-	PRC_waning_coronavirus = {
-		icon = generic_vaccine
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			has_country_flag = PRC_no_coronavirus
-		}
-		activation = {
-			always = no
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 70
-		timeout_effect = {
-			PRC_decrease_corona = yes
-			activate_mission = PRC_waning_coronavirus
-			clr_country_flag = PRC_has_coronavirus
-		}
-		complete_effect = {
-			add_stability = 0.05
-		}
-	}
-	PRC_distribute_vaccines = {
-		icon = generic_vaccine
-		available = {
-			tag = PRC
-			num_of_civilian_factories_available_for_projects > 1
-		}
-		visible = {
-			has_country_flag = PRC_dealt_with_coronavirus
-		}
-		fire_only_once = no
-		cost = 50
-		days_remove = 30
-		modifier = {
-			civilian_factory_use = 2
-		}
-		days_re_enable = 30
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_waning_coronavirus
-				days = -40
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-	PRC_visit_wuhan = {
-		icon = generic_mask
-		available = {
-			has_completed_focus = lockdown_wuhan
-		}
-		visible = {
-			has_completed_focus = lockdown_wuhan
-		}
-		fire_only_once = yes
-		cost = 5
-		days_remove = 5
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 10
-			}
-		}
-		remove_effect = {
-			country_event = china.74
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-	PRC_distribute_masks = {
-		icon = generic_mask
-		available = {
-			has_completed_focus = strict_lockdown_policy
-			num_of_civilian_factories_available_for_projects > 2
-		}
-		visible = {
-			has_completed_focus = strict_lockdown_policy
-		}
-		fire_only_once = no
-		cost = 25
-		days_remove = 15
-		days_re_enable = 30
-		modifier = {
-			civilian_factory_use = 3
-		}
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 20
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-	PRC_construct_emergency_hospitals = {
-		icon = GFX_PRC_decision_youth_project
-		available = {
-			has_completed_focus = strict_lockdown_policy
-			num_of_civilian_factories_available_for_projects > 4
-		}
-		visible = {
-			has_completed_focus = strict_lockdown_policy
-		}
-		fire_only_once = no
-		cost = 75
-		days_remove = 50
-		modifier = {
-			civilian_factory_use = 5
-		}
-		days_re_enable = 350
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 50
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					state_population > 1000000
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	PRC_deploy_the_pla = {
-		icon = GFX_PRC_soliders
-		available = {
-			has_completed_focus = strict_lockdown_policy
-		}
-		visible = {
-			has_completed_focus = strict_lockdown_policy
-		}
-		fire_only_once = no
-		cost = 50
-		days_remove = 14
-		days_re_enable = 30
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 75
-			}
-			add_stability = -0.05
-			if = {
-				limit = {
-					NOT = {
-						has_country_flag = PRC_PLA_in_wuhan_flag
-					}
-				}
-				country_event = {
-					id = china.300
-					hours = 6
-				}
-			}
-		}
-		remove_effect = {
-			army_experience = 15
-			if = {
-				limit = {
-					NOT = {
-						has_country_flag = PRC_PLA_in_wuhan_flag2
-					}
-				}
-				country_event = {
-					id = china.302
-					hours = 6
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_burn_infected_bodies = {
-		icon = GFX_decision_generic_ignite_civil_war
-		available = {
-			has_completed_focus = PRC_adopt_strict_lockdown_measures
-		}
-		visible = {
-			has_completed_focus = PRC_adopt_strict_lockdown_measures
-		}
-		fire_only_once = no
-		cost = 20
-		days_remove = 30
-		days_re_enable = 30
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 20
-			}
-			add_stability = -0.03
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_declare_a_curfew = {
-		icon = GFX_decision_unknown
-		available = {
-			has_completed_focus = PRC_adopt_strict_lockdown_measures
-		}
-		visible = {
-			has_completed_focus = PRC_adopt_strict_lockdown_measures
-		}
-		fire_only_once = yes
-		cost = 25
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = PRC_control_the_coronavirus_mission
-				days = 40
-			}
-			add_stability = 0.05
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+    PRC_online_presentation = {
+        icon = generic_mask
+        available = {
+            has_completed_focus = promote_prevention_measures
+        }
+        visible = {
+            has_completed_focus = promote_prevention_measures
+        }
+        fire_only_once = no
+        cost = 75
+        days_remove = 35
+        days_re_enable = 50
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 30
+            }
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 10
+            }
+            add_debt = yes
+            add_stability = 0.05
+        }
+        ai_will_do = {
+            base = 0
+        }
+    }
+    PRC_control_the_coronavirus_mission = {
+        icon = generic_coronavirus
+        allowed = {
+            tag = PRC
+        }
+        activation = {
+            always = no
+        }
+        available = {
+            has_country_flag = PRC_dealt_with_coronavirus
+        }
+        is_good = no
+        selectable_mission = no
+        days_mission_timeout = 85
+        timeout_effect = {
+            PRC_increase_corona = yes
+            activate_mission = PRC_control_the_coronavirus_mission
+        }
+    }
+    PRC_vaccine_development_mission = {
+        icon = generic_vaccine
+        allowed = {
+            tag = JAP
+        }
+        available = {
+            always = no
+        }
+        visible = {
+            has_completed_focus = PRC_kickstart_vaccine_research
+        }
+        activation = {
+            always = no
+        }
+        is_good = no
+        selectable_mission = no
+        days_mission_timeout = 300
+        timeout_effect = {
+            set_country_flag = PRC_dealt_with_coronavirus
+            activate_mission = PRC_waning_coronavirus
+        }
+    }
+    PRC_waning_coronavirus = {
+        icon = generic_vaccine
+        allowed = {
+            tag = PRC
+        }
+        activation = {
+            always = no
+        }
+        available = {
+            has_country_flag = PRC_no_coronavirus
+        }
+        activation = {
+            always = no
+        }
+        is_good = no
+        selectable_mission = no
+        days_mission_timeout = 70
+        timeout_effect = {
+            PRC_decrease_corona = yes
+            activate_mission = PRC_waning_coronavirus
+            clr_country_flag = PRC_has_coronavirus
+        }
+        complete_effect = {
+            add_stability = 0.05
+        }
+    }
+    PRC_distribute_vaccines = {
+        icon = generic_vaccine
+        available = {
+            tag = PRC
+            num_of_civilian_factories_available_for_projects > 1
+        }
+        visible = {
+            has_country_flag = PRC_dealt_with_coronavirus
+        }
+        fire_only_once = no
+        cost = 50
+        days_remove = 30
+        modifier = {
+            civilian_factory_use = 2
+        }
+        days_re_enable = 30
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_waning_coronavirus
+                days = -40
+            }
+        }
+        ai_will_do = {
+            base = 100
+        }
+    }
+    PRC_visit_wuhan = {
+        icon = generic_mask
+        available = {
+            has_completed_focus = lockdown_wuhan
+        }
+        visible = {
+            has_completed_focus = lockdown_wuhan
+        }
+        fire_only_once = yes
+        cost = 5
+        days_remove = 5
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 10
+            }
+        }
+        remove_effect = {
+            country_event = china.74
+        }
+        ai_will_do = {
+            base = 100
+        }
+    }
+    PRC_distribute_masks = {
+        icon = generic_mask
+        available = {
+            has_completed_focus = strict_lockdown_policy
+            num_of_civilian_factories_available_for_projects > 2
+        }
+        visible = {
+            has_completed_focus = strict_lockdown_policy
+        }
+        fire_only_once = no
+        cost = 25
+        days_remove = 15
+        days_re_enable = 30
+        modifier = {
+            civilian_factory_use = 3
+        }
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 20
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+    PRC_construct_emergency_hospitals = {
+        icon = GFX_PRC_decision_youth_project
+        available = {
+            has_completed_focus = strict_lockdown_policy
+            num_of_civilian_factories_available_for_projects > 4
+        }
+        visible = {
+            has_completed_focus = strict_lockdown_policy
+        }
+        fire_only_once = no
+        cost = 75
+        days_remove = 50
+        modifier = {
+            civilian_factory_use = 5
+        }
+        days_re_enable = 350
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 50
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    is_core_of = ROOT
+                    state_population > 1000000
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+        }
+        ai_will_do = {
+            base = 5
+        }
+    }
+    PRC_deploy_the_pla = {
+        icon = GFX_PRC_soliders
+        available = {
+            has_completed_focus = strict_lockdown_policy
+        }
+        visible = {
+            has_completed_focus = strict_lockdown_policy
+        }
+        fire_only_once = no
+        cost = 50
+        days_remove = 14
+        days_re_enable = 30
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 75
+            }
+            add_stability = -0.05
+            if = {
+                limit = {
+                    NOT = {
+                        has_country_flag = PRC_PLA_in_wuhan_flag
+                    }
+                }
+                country_event = {
+                    id = china.300
+                    hours = 6
+                }
+            }
+        }
+        remove_effect = {
+            army_experience = 15
+            if = {
+                limit = {
+                    NOT = {
+                        has_country_flag = PRC_PLA_in_wuhan_flag2
+                    }
+                }
+                country_event = {
+                    id = china.302
+                    hours = 6
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_burn_infected_bodies = {
+        icon = GFX_decision_generic_ignite_civil_war
+        available = {
+            has_completed_focus = PRC_adopt_strict_lockdown_measures
+        }
+        visible = {
+            has_completed_focus = PRC_adopt_strict_lockdown_measures
+        }
+        fire_only_once = no
+        cost = 20
+        days_remove = 30
+        days_re_enable = 30
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 20
+            }
+            add_stability = -0.03
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_declare_a_curfew = {
+        icon = GFX_decision_unknown
+        available = {
+            has_completed_focus = PRC_adopt_strict_lockdown_measures
+        }
+        visible = {
+            has_completed_focus = PRC_adopt_strict_lockdown_measures
+        }
+        fire_only_once = yes
+        cost = 25
+        complete_effect = {
+            add_days_mission_timeout = {
+                mission = PRC_control_the_coronavirus_mission
+                days = 40
+            }
+            add_stability = 0.05
+        }
+        ai_will_do = {
+            base = 100
+        }
+    }
 }
 
 PRC_the_rebellious_west_cat = {
-	# 
-	PRC_send_xinjiang_reinforcements = {
-		icon = GFX_PRC_decision_pacify_xinjiang
-		available = {
-			has_country_flag = PRC_xinjiang_rebellion
-		}
-		visible = {
-			has_country_flag = PRC_xinjiang_rebellion
-		}
-		fire_only_once = no
-		cost = 35
-		days_re_enable = 60
-		days_remove = 10
-		complete_effect = {
-			add_manpower = -7500
-		}
-		remove_effect = {
-			XIN = {
-				random_owned_controlled_state = {
-					create_unit = {
-						division = "name = \"PLA Garrison\" division_template = \"Jixiehua Bubing Shi\"  start_experience_factor = 0.2"
-						allow_spawning_on_enemy_provs = no
-						owner = XIN
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_send_xinjiang_guns = {
-		icon = GFX_PRC_decision_pacify_xinjiang
-		available = {
-			has_country_flag = PRC_xinjiang_rebellion
-		}
-		visible = {
-			has_country_flag = PRC_xinjiang_rebellion
-		}
-		fire_only_once = no
-		cost = 20
-		days_re_enable = 25
-		days_remove = 7
-		complete_effect = {
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 0.5
-			}
-			add_debt = yes
-		}
-		remove_effect = {
-			XIN = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 2500
-					producer = PRC
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_xinjiang_bombing_raid = {
-		icon = GFX_PRC_decision_pacify_xinjiang
-		available = {
-			has_country_flag = PRC_xinjiang_rebellion
-		}
-		visible = {
-			has_country_flag = PRC_xinjiang_rebellion
-		}
-		fire_only_once = no
-		cost = 50
-		days_re_enable = 100
-		days_remove = 5
-		remove_effect = {
-			air_experience = 10
-			SIK = {
-				add_timed_idea = {
-					idea = PRC_bombing_raids
-					days = 50
-				}
-			}
-			HUT = {
-				add_timed_idea = {
-					idea = PRC_bombing_raids
-					days = 50
-				}
-			}
-			ETL = {
-				add_timed_idea = {
-					idea = PRC_bombing_raids
-					days = 50
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_send_tibet_reinforcements = {
-		icon = GFX_PRC_decision_pacify_tibet
-		available = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		visible = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		fire_only_once = no
-		cost = 35
-		days_re_enable = 60
-		days_remove = 10
-		complete_effect = {
-			add_manpower = -7500
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_tibet_pacification_progress_tt
-			hidden_effect = {
-				add_to_variable = {
-					PRC_tibet_pacification_progress = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_send_tibet_guns = {
-		icon = GFX_PRC_decision_pacify_tibet
-		available = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		visible = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		fire_only_once = no
-		cost = 25
-		days_re_enable = 25
-		days_remove = 7
-		complete_effect = {
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 0.75
-			}
-			add_debt = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_tibet_pacification_progress_tt
-			hidden_effect = {
-				add_to_variable = {
-					PRC_tibet_pacification_progress = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_tibetbombing_raid = {
-		icon = GFX_PRC_decision_pacify_tibet
-		available = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		visible = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		fire_only_once = no
-		cost = 50
-		days_re_enable = 100
-		days_remove = 5
-		remove_effect = {
-			air_experience = 10
-			custom_effect_tooltip = PRC_tibet_pacification_progress_tt
-			hidden_effect = {
-				add_to_variable = {
-					PRC_tibet_pacification_progress = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_pacify_tibet = {
-		icon = GFX_PRC_decision_pacify_tibet
-		available = {
-			has_country_flag = PRC_tibet_rebellion
-			custom_trigger_tooltip = {
-				tooltip = PRC_tibet_pacification_available_tt
-				check_variable = {
-					var = PRC_tibet_pacification_progress
-					value = 6
-					compare = greater_than_or_equals
-				}
-			}
-		}
-		visible = {
-			has_country_flag = PRC_tibet_rebellion
-		}
-		fire_only_once = yes
-		cost = 75
-		complete_effect = {
-			clr_country_flag = PRC_tibet_rebellion
-			add_stability = 0.1
-			322 = {
-				set_demilitarized_zone = no
-			}
-			1156 = {
-				set_demilitarized_zone = no
-			}
-			1155 = {
-				set_demilitarized_zone = no
-			}
-			1152 = {
-				set_demilitarized_zone = no
-			}
-			1153 = {
-				set_demilitarized_zone = no
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
+    #
+    PRC_send_xinjiang_reinforcements = {
+        icon = GFX_PRC_decision_pacify_xinjiang
+        available = {
+            has_country_flag = PRC_xinjiang_rebellion
+        }
+        visible = {
+            has_country_flag = PRC_xinjiang_rebellion
+        }
+        fire_only_once = no
+        cost = 35
+        days_re_enable = 60
+        days_remove = 10
+        complete_effect = {
+            add_manpower = -7500
+        }
+        remove_effect = {
+            XIN = {
+                random_owned_controlled_state = {
+                    create_unit = {
+                        division = "name = \"PLA Garrison\" division_template = \"Jixiehua Bubing Shi\"  start_experience_factor = 0.2"
+                        allow_spawning_on_enemy_provs = no
+                        owner = XIN
+                    }
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_send_xinjiang_guns = {
+        icon = GFX_PRC_decision_pacify_xinjiang
+        available = {
+            has_country_flag = PRC_xinjiang_rebellion
+        }
+        visible = {
+            has_country_flag = PRC_xinjiang_rebellion
+        }
+        fire_only_once = no
+        cost = 20
+        days_re_enable = 25
+        days_remove = 7
+        complete_effect = {
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 0.5
+            }
+            add_debt = yes
+        }
+        remove_effect = {
+            XIN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 2500
+                    producer = PRC
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_xinjiang_bombing_raid = {
+        icon = GFX_PRC_decision_pacify_xinjiang
+        available = {
+            has_country_flag = PRC_xinjiang_rebellion
+        }
+        visible = {
+            has_country_flag = PRC_xinjiang_rebellion
+        }
+        fire_only_once = no
+        cost = 50
+        days_re_enable = 100
+        days_remove = 5
+        remove_effect = {
+            air_experience = 10
+            SIK = {
+                add_timed_idea = {
+                    idea = PRC_bombing_raids
+                    days = 50
+                }
+            }
+            HUT = {
+                add_timed_idea = {
+                    idea = PRC_bombing_raids
+                    days = 50
+                }
+            }
+            ETL = {
+                add_timed_idea = {
+                    idea = PRC_bombing_raids
+                    days = 50
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_send_tibet_reinforcements = {
+        icon = GFX_PRC_decision_pacify_tibet
+        available = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        visible = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        fire_only_once = no
+        cost = 35
+        days_re_enable = 60
+        days_remove = 10
+        complete_effect = {
+            add_manpower = -7500
+        }
+        remove_effect = {
+            custom_effect_tooltip = PRC_tibet_pacification_progress_tt
+            hidden_effect = {
+                add_to_variable = {
+                    PRC_tibet_pacification_progress = 1
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_send_tibet_guns = {
+        icon = GFX_PRC_decision_pacify_tibet
+        available = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        visible = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        fire_only_once = no
+        cost = 25
+        days_re_enable = 25
+        days_remove = 7
+        complete_effect = {
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 0.75
+            }
+            add_debt = yes
+        }
+        remove_effect = {
+            custom_effect_tooltip = PRC_tibet_pacification_progress_tt
+            hidden_effect = {
+                add_to_variable = {
+                    PRC_tibet_pacification_progress = 1
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_tibetbombing_raid = {
+        icon = GFX_PRC_decision_pacify_tibet
+        available = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        visible = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        fire_only_once = no
+        cost = 50
+        days_re_enable = 100
+        days_remove = 5
+        remove_effect = {
+            air_experience = 10
+            custom_effect_tooltip = PRC_tibet_pacification_progress_tt
+            hidden_effect = {
+                add_to_variable = {
+                    PRC_tibet_pacification_progress = 1
+                }
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
+    PRC_pacify_tibet = {
+        icon = GFX_PRC_decision_pacify_tibet
+        available = {
+            has_country_flag = PRC_tibet_rebellion
+            custom_trigger_tooltip = {
+                tooltip = PRC_tibet_pacification_available_tt
+                check_variable = {
+                    var = PRC_tibet_pacification_progress
+                    value = 6
+                    compare = greater_than_or_equals
+                }
+            }
+        }
+        visible = {
+            has_country_flag = PRC_tibet_rebellion
+        }
+        fire_only_once = yes
+        cost = 75
+        complete_effect = {
+            clr_country_flag = PRC_tibet_rebellion
+            add_stability = 0.1
+            322 = {
+                set_demilitarized_zone = no
+            }
+            1156 = {
+                set_demilitarized_zone = no
+            }
+            1155 = {
+                set_demilitarized_zone = no
+            }
+            1152 = {
+                set_demilitarized_zone = no
+            }
+            1153 = {
+                set_demilitarized_zone = no
+            }
+        }
+        ai_will_do = {
+            base = 50
+        }
+    }
 }
 
 PRC_balance_of_power_liberal_category = {
-	PRC_Wave_of_Uncertainty = {
-		icon = generic_political_discourse
-		available = {
-			always = no
-		}
-		activation = {
-			always = no
-		}
-		fire_only_once = no
-		days_mission_timeout = 21
-		cancel_trigger = {
-			OR = {
-				has_completed_focus = PRC_unchain_the_united_front
-				has_completed_focus = PRC_remove_the_guiding_role
-			}
-		}
-		timeout_effect = {
-			hidden_effect = {
-				activate_mission = PRC_Wave_of_Uncertainty
-			}
-			random_list = {
-				4 = {
-					add_power_balance_value = {
-						id = PRC_Liberal_Conservative_power_balance
-						value = -0.05
-					}
-				}
-				1 = {
-					add_power_balance_value = {
-						id = PRC_Liberal_Conservative_power_balance
-						value = -0.1
-					}
-				}
-				4 = {
-					add_power_balance_value = {
-						id = PRC_Liberal_Conservative_power_balance
-						value = 0.05
-					}
-				}
-				1 = {
-					add_power_balance_value = {
-						id = PRC_Liberal_Conservative_power_balance
-						value = 0.1
-					}
-				}
-			}
-		}
-		cancel_effect = {
-			add_political_power = 100
-		}
-	}
-	PRC_Oligarchist_Actions = {
-		icon = generic_political_discourse
-		available = {
-			always = no
-		}
-		activation = {
-			always = no
-		}
-		fire_only_once = no
-		days_mission_timeout = 100
-		cancel_trigger = {
-		}
-		timeout_effect = {
-			hidden_effect = {
-				activate_mission = PRC_Oligarchist_Actions
-			}
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = -0.05
-			}
-		}
-		cancel_effect = {
-		}
-	}
-	PRC_Embrace_Communitarianism = {
-		icon = GFX_PRC_Confucian_Ideals
-		available = {
-			has_completed_focus = PRC_establish_the_principles_of_confucian_democracy
-		}
-		visible = {
-			has_completed_focus = PRC_establish_the_principles_of_confucian_democracy
-		}
-		fire_only_once = yes
-		cost = 70
-		days_remove = 210
-		remove_effect = {
-			PRC_increase_comprehensive_transformation = yes
-			set_temp_variable = {
-				var = PRC_reforms_progress_temp
-				value = 8
-			}
-			PRC_add_reforms_progress = yes
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.1
-			}
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.05
-			}
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Reshuffle_Bureaucracy = {
-		icon = GFX_PRC_Communist_Money
-		available = {
-			has_completed_focus = PRC_the_chinese_glasnost
-			has_idea = PRC_Party_Pushback
-		}
-		visible = {
-			has_completed_focus = PRC_the_chinese_glasnost
-			has_idea = PRC_Party_Pushback
-		}
-		fire_only_once = yes
-		cost = 100
-		complete_effect = {
-			hidden_effect = {
-				add_popularity = {
-					ideology = communist
-					popularity = -0.05
-				}
-			}
-			modify_timed_idea = {
-				idea = PRC_Party_Pushback
-				days = -100
-			}
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.04
-			}
-			add_stability = 0.08
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Recall_Unpopular_Politicians = {
-		icon = GFX_PRC_Negotiate_with_the_Fuerdai
-		available = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-			has_idea = PRC_Party_Pushback
-		}
-		visible = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-			has_idea = PRC_Party_Pushback
-		}
-		fire_only_once = no
-		cost = 65
-		days_remove = 15
-		days_re_enable = 15
-		cost = 65
-		complete_effect = {
-			hidden_effect = {
-				add_popularity = {
-					ideology = communist
-					popularity = -0.05
-				}
-				add_war_support = 0.005
-				random = {
-					chance = 25
-					country_event = {
-						id = china.143
-					}
-				}
-			}
-			modify_timed_idea = {
-				idea = PRC_Party_Pushback
-				days = -50
-			}
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.04
-			}
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.01
-			}
-			add_stability = 0.04
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Negotiate_with_the_Conservative = {
-		icon = GFX_PRC_Negotiate_with_the_Fuerdai
-		available = {
-			has_completed_focus = PRC_special_political_zones
-			has_idea = PRC_Party_Pushback
-		}
-		visible = {
-			has_completed_focus = PRC_special_political_zones
-			has_idea = PRC_Party_Pushback
-		}
-		fire_only_once = no
-		cost = 65
-		days_remove = 15
-		days_re_enable = 15
-		modifier = {
-			power_balance_daily = -0.0025
-		}
-		remove_effect = {
-			hidden_effect = {
-				random = {
-					chance = 25
-					country_event = {
-						id = china.144
-					}
-				}
-			}
-		}
-		complete_effect = {
-			modify_timed_idea = {
-				idea = PRC_Party_Pushback
-				days = -50
-			}
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = -0.04
-			}
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.02
-			}
-			add_stability = 0.04
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Bend_to_Party_Demands = {
-		icon = GFX_PRC_Bend_the_Knee
-		available = {
-			has_completed_focus = PRC_the_chinese_glasnost
-			OR = {
-				has_stability < 0.35
-				has_idea = PRC_Party_Pushback
-			}
-		}
-		visible = {
-			has_completed_focus = PRC_the_chinese_glasnost
-		}
-		fire_only_once = no
-		cost = 25
-		days_re_enable = 60
-		complete_effect = {
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = -0.04
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.05
-			}
-			PRC_add_party_approval = yes
-			add_war_support = 0.03
-			add_stability = 0.03
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Reinforce_Communist_Doctrine = {
-		icon = GFX_PRC_Reinforce_Communism
-		available = {
-			has_completed_focus = PRC_the_chinese_glasnost
-		}
-		visible = {
-			has_completed_focus = PRC_the_chinese_glasnost
-			has_idea = PRC_Party_Pushback
-		}
-		fire_only_once = yes
-		cost = 50
-		days_re_enable = 60
-		complete_effect = {
-			add_popularity = {
-				ideology = communist
-				popularity = 0.04
-			}
-			if = {
-				limit = {
-					has_idea = PRC_Party_Pushback
-				}
-				remove_ideas = PRC_Party_Pushback
-			}
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = -0.06
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.05
-			}
-			PRC_add_party_approval = yes
-			add_stability = 0.08
-		}
-		ai_will_do = {
-			base = 1000
-		}
-	}
-	PRC_Set_New_Gaokao_Standards = {
-		icon = GFX_PRC_New_Gaokao
-		available = {
-			has_completed_focus = PRC_question_the_four_cardinal_principles
-		}
-		visible = {
-			has_completed_focus = PRC_question_the_four_cardinal_principles
-		}
-		fire_only_once = yes
-		cost = 150
-		complete_effect = {
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.08
-			}
-			set_temp_variable = {
-				var = academic_development_var_temp
-				value = 0.15
-			}
-			add_academic_development = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Negotiate_with_the_Fuerdai = {
-		icon = GFX_PRC_Negotiate_with_the_Fuerdai
-		available = {
-			has_completed_focus = PRC_the_chinese_glasnost
-		}
-		visible = {
-			has_completed_focus = PRC_the_chinese_glasnost
-		}
-		fire_only_once = no
-		custom_cost_trigger = {
-			check_variable = {
-				var = income_var
-				value = 25
-			}
-		}
-		custom_cost_text = dx_more_than_25B
-		days_re_enable = 60
-		days_remove = 60
-		modifier = {
-			industrial_factory_donations = 3
-			power_balance_daily = 0.001
-		}
-		complete_effect = {
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.03
-			}
-			set_temp_variable = {
-				var = income_var_temp
-				value = -25
-			}
-			add_income = yes
-			add_popularity = {
-				ideology = market_liberal
-				popularity = 0.02
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = -0.05
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Step_Past_Chairman_Xiaoping = {
-		icon = GFX_PRC_Step_Past_Chairman_Xiaoping
-		available = {
-			has_completed_focus = PRC_question_the_four_cardinal_principles
-		}
-		visible = {
-			has_completed_focus = PRC_question_the_four_cardinal_principles
-		}
-		fire_only_once = no
-		custom_cost_trigger = {
-			num_of_civilian_factories_available_for_projects > 2
-		}
-		custom_cost_text = decision_cost_civ_factory_3
-		modifier = {
-			civilian_factory_use = 3
-			consumer_goods_factor = -0.05
-			power_balance_daily = 0.001
-		}
-		days_remove = 120
-		days_re_enable = 240
-		complete_effect = {
-			add_political_power = 25
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = -0.1
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Acknowledge_Government_Mistakes = {
-		icon = GFX_PRC_Acknowledge_Government_Mistakes
-		available = {
-			has_completed_focus = PRC_roll_back_censorship_programs
-		}
-		visible = {
-			has_completed_focus = PRC_roll_back_censorship_programs
-		}
-		fire_only_once = yes
-		custom_cost_trigger = {
-			has_stability > 0.05
-		}
-		custom_cost_text = 5_stability_cost
-		complete_effect = {
-			hidden_effect = {
-				add_stability = -0.05
-			}
-			add_popularity = {
-				ideology = communist
-				popularity = -0.08
-			}
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.03
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.05
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Quiet_Moderate_Politicians = {
-		icon = GFX_PRC_Quiet_Moderate_Politicians
-		available = {
-			has_completed_focus = PRC_special_political_zones
-		}
-		visible = {
-			has_completed_focus = PRC_special_political_zones
-		}
-		fire_only_once = no
-		cost = 75
-		days_re_enable = 60
-		complete_effect = {
-			add_popularity = {
-				ideology = social_liberal
-				popularity = -0.03
-			}
-			add_stability = 0.03
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = -0.06
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.05
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Disband_the_SPC = {
-		icon = GFX_PRC_Disband_the_SPC
-		available = {
-			has_completed_focus = PRC_special_political_zones
-		}
-		visible = {
-			has_completed_focus = PRC_special_political_zones
-		}
-		fire_only_once = yes
-		custom_cost_trigger = {
-			command_power > 24
-			has_political_power > 49
-		}
-		custom_cost_text = decision_cost_CP_25_pp_50
-		complete_effect = {
-			hidden_effect = {
-				add_command_power = -25
-				add_political_power = -50
-			}
-			add_stability = 0.08
-			add_popularity = {
-				ideology = nationalist
-				popularity = 0.08
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = -0.2
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Sack_the_SPC = {
-		icon = GFX_PRC_Sack_the_SPC
-		available = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		visible = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		fire_only_once = yes
-		cost = 150
-		days_remove = 90
-		modifier = {
-			communist_drift = 0.025
-		}
-		remove_effect = {
-			add_stability = -0.125
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.05
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = -0.1
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Propogate_Factionalism = {
-		icon = GFX_PRC_Propogate_Factionalism
-		available = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		visible = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		fire_only_once = no
-		days_re_enable = 60
-		days_remove = 75
-		modifier = {
-			power_balance_daily = -0.001
-		}
-		custom_cost_trigger = {
-			has_political_power > 25
-			has_government = communist
-		}
-		custom_cost_text = 5_communist_support_25pp_cost
-		complete_effect = {
-			hidden_effect = {
-				add_political_power = -25
-				add_popularity = {
-					ideology = communist
-					popularity = 0.05
-				}
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.1
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Utilize_Political_Favours = {
-		icon = GFX_PRC_Utilize_Political_Favours
-		available = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		visible = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-			has_stability > 40
-		}
-		fire_only_once = no
-		cost = 25
-		days_remove = 60
-		days_re_enable = 30
-		modifier = {
-			communist_drift = 0.1
-			power_balance_daily = -0.005
-		}
-		complete_effect = {
-			add_political_power = 75
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.1
-			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_Empower_Democratic_Opposition_in_NPC = {
-		icon = GFX_PRC_Empower_Democratic_Opposition_in_NPC
-		available = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		visible = {
-			has_completed_focus = PRC_reform_the_upper_leadership
-		}
-		custom_cost_trigger = {
-			has_stability > 0.05
-		}
-		custom_cost_text = 5_stability_cost
-		fire_only_once = no
-		days_remove = 30
-		days_re_enable = 60
-		modifier = {
-			political_power_cost = 0.25
-		}
-		remove_effect = {
-			add_power_balance_value = {
-				id = PRC_Liberal_Conservative_power_balance
-				value = 0.04
-			}
-			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
-				value = 0.02
-			}
-			PRC_add_party_approval = yes
-		}
-		complete_effect = {
-			set_temp_variable = {
-				var = PRC_reforms_progress_temp
-				value = 5
-			}
-			PRC_add_reforms_progress = yes
-			hidden_effect = {
-				add_stability = -0.05
-			}
-			add_popularity = {
-				ideology = communist
-				popularity = -0.08
-			}
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
+    PRC_Wave_of_Uncertainty = {
+        icon = generic_political_discourse
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        fire_only_once = no
+        days_mission_timeout = 21
+        cancel_trigger = {
+            OR = {
+                has_completed_focus = PRC_unchain_the_united_front
+                has_completed_focus = PRC_remove_the_guiding_role
+            }
+        }
+        timeout_effect = {
+            hidden_effect = {
+                activate_mission = PRC_Wave_of_Uncertainty
+            }
+            random_list = {
+                4 = {
+                    add_power_balance_value = {
+                        id = PRC_Liberal_Conservative_power_balance
+                        value = -0.05
+                    }
+                }
+                1 = {
+                    add_power_balance_value = {
+                        id = PRC_Liberal_Conservative_power_balance
+                        value = -0.1
+                    }
+                }
+                4 = {
+                    add_power_balance_value = {
+                        id = PRC_Liberal_Conservative_power_balance
+                        value = 0.05
+                    }
+                }
+                1 = {
+                    add_power_balance_value = {
+                        id = PRC_Liberal_Conservative_power_balance
+                        value = 0.1
+                    }
+                }
+            }
+        }
+        cancel_effect = {
+            add_political_power = 100
+        }
+    }
+    PRC_Oligarchist_Actions = {
+        icon = generic_political_discourse
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        fire_only_once = no
+        days_mission_timeout = 100
+        cancel_trigger = {
+        }
+        timeout_effect = {
+            hidden_effect = {
+                activate_mission = PRC_Oligarchist_Actions
+            }
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = -0.05
+            }
+        }
+        cancel_effect = {
+        }
+    }
+    PRC_Embrace_Communitarianism = {
+        icon = GFX_PRC_Confucian_Ideals
+        available = {
+            has_completed_focus = PRC_establish_the_principles_of_confucian_democracy
+        }
+        visible = {
+            has_completed_focus = PRC_establish_the_principles_of_confucian_democracy
+        }
+        fire_only_once = yes
+        cost = 70
+        days_remove = 210
+        remove_effect = {
+            PRC_increase_comprehensive_transformation = yes
+            set_temp_variable = {
+                var = PRC_reforms_progress_temp
+                value = 8
+            }
+            PRC_add_reforms_progress = yes
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.1
+            }
+            add_popularity = {
+                ideology = authoritarian_democrat
+                popularity = 0.05
+            }
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Reshuffle_Bureaucracy = {
+        icon = GFX_PRC_Communist_Money
+        available = {
+            has_completed_focus = PRC_the_chinese_glasnost
+            has_idea = PRC_Party_Pushback
+        }
+        visible = {
+            has_completed_focus = PRC_the_chinese_glasnost
+            has_idea = PRC_Party_Pushback
+        }
+        fire_only_once = yes
+        cost = 100
+        complete_effect = {
+            hidden_effect = {
+                add_popularity = {
+                    ideology = communist
+                    popularity = -0.05
+                }
+            }
+            modify_timed_idea = {
+                idea = PRC_Party_Pushback
+                days = -100
+            }
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.04
+            }
+            add_stability = 0.08
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Recall_Unpopular_Politicians = {
+        icon = GFX_PRC_Negotiate_with_the_Fuerdai
+        available = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+            has_idea = PRC_Party_Pushback
+        }
+        visible = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+            has_idea = PRC_Party_Pushback
+        }
+        fire_only_once = no
+        cost = 65
+        days_remove = 15
+        days_re_enable = 15
+        cost = 65
+        complete_effect = {
+            hidden_effect = {
+                add_popularity = {
+                    ideology = communist
+                    popularity = -0.05
+                }
+                add_war_support = 0.005
+                random = {
+                    chance = 25
+                    country_event = {
+                        id = china.143
+                    }
+                }
+            }
+            modify_timed_idea = {
+                idea = PRC_Party_Pushback
+                days = -50
+            }
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.04
+            }
+            add_popularity = {
+                ideology = authoritarian_democrat
+                popularity = 0.01
+            }
+            add_stability = 0.04
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Negotiate_with_the_Conservative = {
+        icon = GFX_PRC_Negotiate_with_the_Fuerdai
+        available = {
+            has_completed_focus = PRC_special_political_zones
+            has_idea = PRC_Party_Pushback
+        }
+        visible = {
+            has_completed_focus = PRC_special_political_zones
+            has_idea = PRC_Party_Pushback
+        }
+        fire_only_once = no
+        cost = 65
+        days_remove = 15
+        days_re_enable = 15
+        modifier = {
+            power_balance_daily = -0.0025
+        }
+        remove_effect = {
+            hidden_effect = {
+                random = {
+                    chance = 25
+                    country_event = {
+                        id = china.144
+                    }
+                }
+            }
+        }
+        complete_effect = {
+            modify_timed_idea = {
+                idea = PRC_Party_Pushback
+                days = -50
+            }
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = -0.04
+            }
+            add_popularity = {
+                ideology = authoritarian_democrat
+                popularity = 0.02
+            }
+            add_stability = 0.04
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Bend_to_Party_Demands = {
+        icon = GFX_PRC_Bend_the_Knee
+        available = {
+            has_completed_focus = PRC_the_chinese_glasnost
+            OR = {
+                has_stability < 0.35
+                has_idea = PRC_Party_Pushback
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_the_chinese_glasnost
+        }
+        fire_only_once = no
+        cost = 25
+        days_re_enable = 60
+        complete_effect = {
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = -0.04
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.05
+            }
+            PRC_add_party_approval = yes
+            add_war_support = 0.03
+            add_stability = 0.03
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Reinforce_Communist_Doctrine = {
+        icon = GFX_PRC_Reinforce_Communism
+        available = {
+            has_completed_focus = PRC_the_chinese_glasnost
+        }
+        visible = {
+            has_completed_focus = PRC_the_chinese_glasnost
+            has_idea = PRC_Party_Pushback
+        }
+        fire_only_once = yes
+        cost = 50
+        days_re_enable = 60
+        complete_effect = {
+            add_popularity = {
+                ideology = communist
+                popularity = 0.04
+            }
+            if = {
+                limit = {
+                    has_idea = PRC_Party_Pushback
+                }
+                remove_ideas = PRC_Party_Pushback
+            }
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = -0.06
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.05
+            }
+            PRC_add_party_approval = yes
+            add_stability = 0.08
+        }
+        ai_will_do = {
+            base = 1000
+        }
+    }
+    PRC_Set_New_Gaokao_Standards = {
+        icon = GFX_PRC_New_Gaokao
+        available = {
+            has_completed_focus = PRC_question_the_four_cardinal_principles
+        }
+        visible = {
+            has_completed_focus = PRC_question_the_four_cardinal_principles
+        }
+        fire_only_once = yes
+        cost = 150
+        complete_effect = {
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.08
+            }
+            set_temp_variable = {
+                var = academic_development_var_temp
+                value = 0.15
+            }
+            add_academic_development = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Negotiate_with_the_Fuerdai = {
+        icon = GFX_PRC_Negotiate_with_the_Fuerdai
+        available = {
+            has_completed_focus = PRC_the_chinese_glasnost
+        }
+        visible = {
+            has_completed_focus = PRC_the_chinese_glasnost
+        }
+        fire_only_once = no
+        custom_cost_trigger = {
+            check_variable = {
+                var = income_var
+                value = 25
+            }
+        }
+        custom_cost_text = dx_more_than_25B
+        days_re_enable = 60
+        days_remove = 60
+        modifier = {
+            industrial_factory_donations = 3
+            power_balance_daily = 0.001
+        }
+        complete_effect = {
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.03
+            }
+            set_temp_variable = {
+                var = income_var_temp
+                value = -25
+            }
+            add_income = yes
+            add_popularity = {
+                ideology = market_liberal
+                popularity = 0.02
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = -0.05
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Step_Past_Chairman_Xiaoping = {
+        icon = GFX_PRC_Step_Past_Chairman_Xiaoping
+        available = {
+            has_completed_focus = PRC_question_the_four_cardinal_principles
+        }
+        visible = {
+            has_completed_focus = PRC_question_the_four_cardinal_principles
+        }
+        fire_only_once = no
+        custom_cost_trigger = {
+            num_of_civilian_factories_available_for_projects > 2
+        }
+        custom_cost_text = decision_cost_civ_factory_3
+        modifier = {
+            civilian_factory_use = 3
+            consumer_goods_factor = -0.05
+            power_balance_daily = 0.001
+        }
+        days_remove = 120
+        days_re_enable = 240
+        complete_effect = {
+            add_political_power = 25
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = -0.1
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Acknowledge_Government_Mistakes = {
+        icon = GFX_PRC_Acknowledge_Government_Mistakes
+        available = {
+            has_completed_focus = PRC_roll_back_censorship_programs
+        }
+        visible = {
+            has_completed_focus = PRC_roll_back_censorship_programs
+        }
+        fire_only_once = yes
+        custom_cost_trigger = {
+            has_stability > 0.05
+        }
+        custom_cost_text = 5_stability_cost
+        complete_effect = {
+            hidden_effect = {
+                add_stability = -0.05
+            }
+            add_popularity = {
+                ideology = communist
+                popularity = -0.08
+            }
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.03
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.05
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Quiet_Moderate_Politicians = {
+        icon = GFX_PRC_Quiet_Moderate_Politicians
+        available = {
+            has_completed_focus = PRC_special_political_zones
+        }
+        visible = {
+            has_completed_focus = PRC_special_political_zones
+        }
+        fire_only_once = no
+        cost = 75
+        days_re_enable = 60
+        complete_effect = {
+            add_popularity = {
+                ideology = social_liberal
+                popularity = -0.03
+            }
+            add_stability = 0.03
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = -0.06
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.05
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Disband_the_SPC = {
+        icon = GFX_PRC_Disband_the_SPC
+        available = {
+            has_completed_focus = PRC_special_political_zones
+        }
+        visible = {
+            has_completed_focus = PRC_special_political_zones
+        }
+        fire_only_once = yes
+        custom_cost_trigger = {
+            command_power > 24
+            has_political_power > 49
+        }
+        custom_cost_text = decision_cost_CP_25_pp_50
+        complete_effect = {
+            hidden_effect = {
+                add_command_power = -25
+                add_political_power = -50
+            }
+            add_stability = 0.08
+            add_popularity = {
+                ideology = nationalist
+                popularity = 0.08
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = -0.2
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Sack_the_SPC = {
+        icon = GFX_PRC_Sack_the_SPC
+        available = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        visible = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        fire_only_once = yes
+        cost = 150
+        days_remove = 90
+        modifier = {
+            communist_drift = 0.025
+        }
+        remove_effect = {
+            add_stability = -0.125
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.05
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = -0.1
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Propogate_Factionalism = {
+        icon = GFX_PRC_Propogate_Factionalism
+        available = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        visible = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        fire_only_once = no
+        days_re_enable = 60
+        days_remove = 75
+        modifier = {
+            power_balance_daily = -0.001
+        }
+        custom_cost_trigger = {
+            has_political_power > 25
+            has_government = communist
+        }
+        custom_cost_text = 5_communist_support_25pp_cost
+        complete_effect = {
+            hidden_effect = {
+                add_political_power = -25
+                add_popularity = {
+                    ideology = communist
+                    popularity = 0.05
+                }
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.1
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Utilize_Political_Favours = {
+        icon = GFX_PRC_Utilize_Political_Favours
+        available = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        visible = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+            has_stability > 40
+        }
+        fire_only_once = no
+        cost = 25
+        days_remove = 60
+        days_re_enable = 30
+        modifier = {
+            communist_drift = 0.1
+            power_balance_daily = -0.005
+        }
+        complete_effect = {
+            add_political_power = 75
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.1
+            }
+            PRC_add_party_approval = yes
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
+    PRC_Empower_Democratic_Opposition_in_NPC = {
+        icon = GFX_PRC_Empower_Democratic_Opposition_in_NPC
+        available = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        visible = {
+            has_completed_focus = PRC_reform_the_upper_leadership
+        }
+        custom_cost_trigger = {
+            has_stability > 0.05
+        }
+        custom_cost_text = 5_stability_cost
+        fire_only_once = no
+        days_remove = 30
+        days_re_enable = 60
+        modifier = {
+            political_power_cost = 0.25
+        }
+        remove_effect = {
+            add_power_balance_value = {
+                id = PRC_Liberal_Conservative_power_balance
+                value = 0.04
+            }
+            set_temp_variable = {
+                var = PRC_approval_rating_var_temp
+                value = 0.02
+            }
+            PRC_add_party_approval = yes
+        }
+        complete_effect = {
+            set_temp_variable = {
+                var = PRC_reforms_progress_temp
+                value = 5
+            }
+            PRC_add_reforms_progress = yes
+            hidden_effect = {
+                add_stability = -0.05
+            }
+            add_popularity = {
+                ideology = communist
+                popularity = -0.08
+            }
+        }
+        ai_will_do = {
+            base = 1
+        }
+    }
 }
 
 PRC_chinas_liberalization_category = {
@@ -14699,835 +14699,836 @@ PRC_chinese_economic_miracle = {
 }
 
 PRC_pla_reformation = {
-	PRC_serve_the_people_prop = {
-		icon = generic_propaganda_campaigns
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			OR = {
-				has_completed_focus = PLA_equipment_research
-				has_completed_focus = PLA_improved_soldiers
-			}
-		}
-		available = {
-			has_campaign_slot = yes
-		}
-		ai_will_do = {
-			base = 5
-		}
-		cost = 75
-		days_remove = 100
-		days_re_enable = 100
-		fire_only_once = no
-		cancel_if_not_visible = yes
-		modifier = {
-			army_defence_factor = 0.05
-			army_attack_factor = 0.015
-			army_morale_factor = 0.015
-			conscription_factor = 0.015
-			training_time_factor = -0.07
-		}
-		complete_effect = {
-			remove_campaign_slot = yes
-		}
-		remove_effect = {
-			add_campaign_slot = yes
-		}
+    PRC_serve_the_people_prop = {
+        icon = generic_propaganda_campaigns
+        allowed = {
+            original_tag = PRC
+        }
+        visible = {
+            OR = {
+                has_completed_focus = PLA_equipment_research
+                has_completed_focus = PLA_improved_soldiers
+            }
+        }
+        available = {
+            has_campaign_slot = yes
+        }
+        ai_will_do = {
+            base = 5
+        }
+        cost = 75
+        days_remove = 100
+        days_re_enable = 100
+        fire_only_once = no
+        cancel_if_not_visible = yes
+        modifier = {
+            army_defence_factor = 0.05
+            army_attack_factor = 0.015
+            army_morale_factor = 0.015
+            conscription_factor = 0.015
+            training_time_factor = -0.07
+        }
+        complete_effect = {
+            remove_campaign_slot = yes
+        }
+        remove_effect = {
+            add_campaign_slot = yes
+        }
+    }
+    PRC_accelerated_officer_training_programs = {
+        icon = GFX_PRC_soliders
+        allowed = {
+            tag = PRC
+        }
+        visible = {
+        }
+        available = {
+        }
+        ai_will_do = {
+            base = 1
+        }
+        complete_effect = {
+            remove_campaign_slot = yes
+        }
+        modifier = {
+            conscription_factor = 0.1
+            offensive_war_stability_factor = 0.2
+            war_support_weekly = 0.02
+        }
+        remove_effect = {
+            add_campaign_slot = yes
+        }
+    }
+    PRC_enhance_ideological_education = {
+        icon = generic_propaganda_campaigns
+        visible = {
+            has_completed_focus = PLA_reform_of_military_and_political_work
+            NOT = {
+                has_country_flag = PRC_pla_reform_ppgd_hide_flag
+            }
+        }
+        cost = 75
+        days_remove = 90
+        days_re_enable = 180
+        modifier = {
+            command_power_gain = 0.15
+        }
+        remove_effect = {
+            add_stability = 0.05
+            add_war_support = 0.05
+            air_experience = 15
+            navy_experience = 15
+            army_experience = 15
+            set_temp_variable = {
+                var = PRC_army_reform_progress_temp
+                value = 2.5
+            }
+            PRC_add_army_reform_progress = yes
+        }
+    }
+    PRC_deepen_internationalist_education = {
+        icon = generic_propaganda_campaigns
+        visible = {
+            has_completed_focus = PLA_Strengthen_PLA_training
+            NOT = {
+                has_country_flag = PRC_pla_reform_ppgd_hide_flag
+            }
+        }
+        cost = 50
+        fire_only_once = no
+        days_re_enable = 200
+        days_remove = 30
+        complete_effect = {
+        }
+        modifier = {
+            experience_gain_factor = 0.1
+        }
+        remove_effect = {
+            set_temp_variable = {
+                var = PRC_army_reform_progress_temp
+                value = 7.5
+            }
+            PRC_add_army_reform_progress = yes
+            army_experience = 15
+        }
+    }
+    PRC_accelerated_soldier_training_programs = {
+        icon = GFX_PRC_soliders
+        allowed = {
+            tag = PRC
+        }
+        visible = {
+        }
+        remove_effect = {
+            set_temp_variable = {
+                var = PRC_army_reform_progress_temp
+                value = 7.5
+            }
+            PRC_add_army_reform_progress = yes
+            add_to_variable = {
+                PPRC_conscription_factor_var = -0.1
+            }
+            add_to_variable = {
+                PPRC_org_regain_var = 0.1
+            }
+            add_to_variable = {
+                PPRC_battalion_upkeep_var = -0.05
+            }
+            add_to_variable = {
+                PPRC_ship_upkeep_var = -0.05
+            }
+            add_to_variable = {
+                PPRC_aircraft_upkeep_var = -0.05
+            }
+            add_to_variable = {
+                PPRC_military_dev_var = 0.005
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_party_rectification_campaign_empty
+                    add_idea = PRC_party_rectification_campaign40
+                }
+            }
+            available = {
+            }
+            ai_will_do = {
+                base = 100
+            }
+            cost = 50
+            fire_only_once = no
+            days_re_enable = 200
+            days_remove = 30
+            days_re_enable = 60
+            remove_effect = {
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 2.5
+                }
+                PRC_add_army_reform_progress = yes
+                set_temp_variable = {
+                    military_development_var_temp = 0.05
+                }
+                add_military_development = yes
+            }
+        }
 	}
-	PRC_accelerated_officer_training_programs = {
-		icon = GFX_PRC_soliders
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 1
-		}
-		complete_effect = {
-			remove_campaign_slot = yes
-		}
-		modifier = {
-			conscription_factor = 0.1
-			offensive_war_stability_factor = 0.2
-			war_support_weekly = 0.02
-		}
-		remove_effect = {
-			add_campaign_slot = yes
-		}
-	}
-	PRC_enhance_ideological_education = {
-		icon = generic_propaganda_campaigns
-		visible = {
-			has_completed_focus = PLA_reform_of_military_and_political_work
-			NOT = {
-				has_country_flag = PRC_pla_reform_ppgd_hide_flag
-			}
-		}
-		cost = 75
-		days_remove = 90
-		days_re_enable = 180
-		modifier = {
-			command_power_gain = 0.15
-		}
-		remove_effect = {
-			add_stability = 0.05
-			add_war_support = 0.05
-			air_experience = 15
-			navy_experience = 15
-			army_experience = 15
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 2.5
-			}
-			PRC_add_army_reform_progress = yes
-		}
-	}
-	PRC_deepen_internationalist_education = {
-		icon = generic_propaganda_campaigns
-		visible = {
-			has_completed_focus = PLA_Strengthen_PLA_training
-			NOT = {
-				has_country_flag = PRC_pla_reform_ppgd_hide_flag
-			}
-		}
-		cost = 50
-		fire_only_once = no
-		days_re_enable = 200
-		days_remove = 30
-		complete_effect = {
-		}
-		modifier = {
-			experience_gain_factor = 0.1
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 7.5
-			}
-			PRC_add_army_reform_progress = yes
-			army_experience = 15
-		}
-	}
-	PRC_accelerated_soldier_training_programs = {
-		icon = GFX_PRC_soliders
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 7.5
-			}
-			PRC_add_army_reform_progress = yes
-			add_to_variable = {
-				PPRC_conscription_factor_var = -0.1
-			}
-			add_to_variable = {
-				PPRC_org_regain_var = 0.1
-			}
-			add_to_variable = {
-				PPRC_battalion_upkeep_var = -0.05
-			}
-			add_to_variable = {
-				PPRC_ship_upkeep_var = -0.05
-			}
-			add_to_variable = {
-				PPRC_aircraft_upkeep_var = -0.05
-			}	
-			add_to_variable = {
-				PPRC_military_dev_var = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_party_rectification_campaign_empty
-					add_idea = PRC_party_rectification_campaign40
-				}
-			}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		cost = 50
-		fire_only_once = no
-		days_re_enable = 200
-		days_remove = 30
-		days_re_enable = 60
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 2.5
-			}
-			PRC_add_army_reform_progress = yes
-			set_temp_variable = {
-				military_development_var_temp = 0.05
-			}
-			add_military_development = yes
-		}
-	}
-	PRC_state_role_of_polizist = {
-		icon = GFX_PRC_centrist_decision
-		visible = {
-			has_completed_focus = PLA_not_forget_the_traditions_of_the_Red_Army
-			NOT = {
-				has_country_flag = PRC_pla_reform_ppgd_hide_flag
-			}
-		}
-		available = {
-			command_power > 49
-		}
-		cost = 100
-		days_remove = 180
-		fire_only_once = yes
-		complete_effect = {
-		}
-		modifier = {
-			army_attack_factor = -0.15
-			army_defence_factor = -0.1
-			army_org_factor = 0.1
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 7.5
-			}
-			PRC_add_army_reform_progress = yes
-			add_to_variable = {
-				PPRC_pp_g_var = 0.05
-			}
-			add_to_variable = {
-				PPRC_org_regain_var = 0.05
-			}
-			add_to_variable = {
-				PPRC_defence_var = 0.05
-			}
-			add_to_variable = {
-				PPRC_reinforce_var = 0.05
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_party_rectification_campaign_empty
-					add_idea = PRC_party_rectification_campaign41
-				}
-			}
-		}
-	}
-	PRC_reform_the_international_troops = {
-		icon = GFX_PRC_centrist_decision
-		visible = {
-			has_completed_focus = PLA_Mingji_Baiqiuen
-			NOT = {
-				has_country_flag = PRC_pla_reform_ppgd_hide_flag
-			}
-		}
-		cost = 150
-		days_remove = 365
-		fire_only_once = yes
-		modifier = {
-			weekly_manpower = 200
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 5
-			}
-			PRC_add_army_reform_progress = yes
-			add_to_variable = {
-				PPRC_weekly_manpower_var = 100
-			}
-			add_to_variable = {
-				PPRC_send_volunteer_size_var = 2
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_party_rectification_campaign_empty
-					add_idea = PRC_party_rectification_campaign42
-				}
-			}
-		}
-	}
-	PRC_victory_towards_revolution = {
-		icon = GFX_PRC_centrist_decision
-		visible = {
-			has_completed_focus = PLA_MaiBu_Congtouyue
-			NOT = {
-				has_country_flag = PRC_pla_reform_ppgd_hide_flag
-				has_country_flag = PRC_victory_towards_flag_2
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_victory_towards_flag_1
-			}
-		}
-		cost = 150
-		days_remove = 365
-		fire_only_once = yes
-		complete_effect = {
-			set_country_flag = PRC_victory_towards_flag_1
-		}
-		modifier = {
-			military_development_monthly = 0.01
-			command_power_gain = 0.05
-		}
-		remove_effect = {
-			set_country_flag = PRC_victory_towards_flag_2
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 10
-			}
-			PRC_add_army_reform_progress = yes
-			add_to_variable = {
-				PPRC_attack_var = 0.05
-			}
-			add_to_variable = {
-				PPRC_army_strength_var = 0.1
-			}
-			add_to_variable = {
-				PPRC_width_var = -0.1
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_party_rectification_campaign_empty
-					add_idea = PRC_party_rectification_campaign43
-				}
-			}
-		}
-	}
-	PRC_victory_towards_liberation = {
-		icon = GFX_PRC_centrist_decision
-		visible = {
-			has_completed_focus = PLA_MaiBu_Congtouyue
-			NOT = {
-				has_country_flag = PRC_pla_reform_ppgd_hide_flag
-				has_country_flag = PRC_victory_towards_flag_2
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_victory_towards_flag_1
-			}
-		}
-		cost = 150
-		days_remove = 365
-		fire_only_once = yes
-		complete_effect = {
-			set_country_flag = PRC_victory_towards_flag_1
-		}
-		modifier = {
-			military_development_monthly = 0.01
-			command_power_gain = 0.05
-		}
-		remove_effect = {
-			set_country_flag = PRC_victory_towards_flag_2
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 10
-			}
-			PRC_add_army_reform_progress = yes
-			army_experience = 10
-		}
-	}
-	PRC_military_project_mission = {
-		#icon = GFX_decision_ger_military_buildup
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			always = no
-		}
-		is_good = yes
-		selectable_mission = no
-		days_mission_timeout = 125
-		fire_only_once = no
-		timeout_effect = {
-		}
-		complete_effect = {
-		}
-		priority = 999
-	}
-	PRC_project_ghost_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_equipment_research
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_military_project_researching
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.259
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_project_nib_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_improved_soldiers
-		}
-		available = {
-			NOT = {
-				has_country_flag = PLA_equipment_research
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.260
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_project_swimmer_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_elite_marine_corps
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_military_project_researching
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.261
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_project_impulse_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_increase_naval_production
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_military_project_researching
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.262
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_project_dark_sword_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_equipment_research
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_military_project_researching
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.263
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_project_flash_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_next_generation_army
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_military_project_researching
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.264
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	PRC_project_nami_dec = {
-		#icon = GFX_decision_ger_military_buildup
-		cost = 25
-		fire_only_once = yes
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_equipment_research
-		}
-		available = {
-			NOT = {
-				has_country_flag = PRC_military_project_researching
-			}
-			hidden_trigger = {
-				NOT = {
-					has_country_flag = anti_debil
-				}
-			}
-		}
-		complete_effect = {
-			country_event = china.265
-			set_country_flag = anti_debil
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-	#演练
-	PRC_toggle_exercise_decision = {
-		icon = generic
-		days_remove = 1
-		ai_will_do = {
-			base = 0
-		}
-		complete_effect = {
-			set_country_flag = PRC_pla_reform_exercise_hide_flag
-		}
-	}
-	PRC_accelerated_officer_training_programs = {
-		icon = GFX_PRC_soliders
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			NOT = {
-				has_country_flag = PRC_pla_reform_exercise_hide_flag
-			}
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		cost = 50
-		fire_only_once = no
-		days_re_enable = 200
-		days_remove = 30
-		complete_effect = {
-		}
-		modifier = {
-			experience_gain_factor = 0.1
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 5
-			}
-			PRC_add_army_reform_progress = yes
-			army_experience = 15
-		}
-	}
-	PRC_accelerated_soldier_training_programs = {
-		icon = GFX_PRC_soliders
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			NOT = {
-				has_country_flag = PRC_pla_reform_exercise_hide_flag
-			}
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		cost = 50
-		fire_only_once = no
-		days_re_enable = 200
-		days_remove = 30
-		complete_effect = {
-		}
-		modifier = {
-			training_time_army_factor = -0.15
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 5
-			}
-			PRC_add_army_reform_progress = yes
-			army_experience = 10
-		}
-	}
-	PRC_naval_exercises_decision = {
-		icon = generic_propaganda_campaigns
-		fire_only_once = no
-		days_remove = 100
-		days_re_enable = 60
-		cost = 50
-		visible = {
-			has_completed_focus = PRC_south_asian_brothers
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 1
-		}
-		complete_effect = {
-		}
-		remove_effect = {
-			random_list = {
-				20 = {
-					random_navy_leader = {
-						add_maneuver = 1
-					}
-				}
-				20 = {
-					random_navy_leader = {
-						add_coordination = 1
-					}
-				}
-				20 = {
-					random_navy_leader = {
-						add_attack = 1
-					}
-				}
-				20 = {
-					random_navy_leader = {
-						add_skill_level = 1
-					}
-				}
-				20 = {
-					random_navy_leader = {
-						add_defense = 1
-					}
-				}
-			}
-			every_country = {
-				limit = {
-					is_in_faction_with = PRC
-				}
-				navy_experience = 50
-			}
-		}
-		modifier = {
-			experience_gain_navy = 0.1
-		}
-	}
-	PRC_proudly_serve_your_nation = {
-		icon = generic_propaganda_campaigns
-		days_remove = 175
-		days_re_enable = 175
-		cost = 25
-		visible = {
-			has_completed_focus = PRC_national_fanaticism
-		}
-		available = {
-			has_campaign_slot = yes
-		}
-		ai_will_do = {
-			base = 1
-		}
-		complete_effect = {
-			remove_campaign_slot = yes
-		}
-		modifier = {
-			conscription_factor = 0.1
-			offensive_war_stability_factor = 0.2
-			war_support_weekly = 0.02
-		}
-	}
-	PRC_conduct_air_exercises = {
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_chinas_spot_in_the_sun
-		}
-		fire_only_once = no
-		cost = 0
-		custom_cost_text = PRC_operation_crimson_sky_decision_cost
-		custom_cost_trigger = {
-			NOT = {
-				command_power < 30
-			}
-		}
-		days_remove = 100
-		days_re_enable = 50
-		complete_effect = {
-			hidden_effect = {
-				add_command_power = -30
-			}
-		}
-		modifier = {
-			experience_gain_air_factor = 0.25
-			air_training_xp_gain_factor = 0.25
-		}
-		remove_effect = {
-			air_experience = 10
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 0.5
-			}
-			PRC_add_army_reform_progress = yes
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	PRC_conduct_naval_exercises = {
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_chinas_spot_in_the_sun
-		}
-		fire_only_once = no
-		cost = 0
-		custom_cost_text = PRC_operation_crimson_sky_decision_cost
-		custom_cost_trigger = {
-			NOT = {
-				command_power < 30
-			}
-		}
-		days_remove = 100
-		days_re_enable = 50
-		complete_effect = {
-			hidden_effect = {
-				add_command_power = -30
-			}
-		}
-		modifier = {
-			experience_gain_navy_factor = 0.25
-			experience_gain_navy_unit_factor = 0.25
-		}
-		remove_effect = {
-			navy_experience = 10
-			set_temp_variable = {
-				var = PRC_army_reform_progress_temp
-				value = 0.5
-			}
-			PRC_add_army_reform_progress = yes
-		}
-		ai_will_do = {
-			base = 5
-		}
-	}
-	#PRC_infrastructure_overhaul = {
-	#	icon = generic_industry
-	#	allowed = {
-	#		tag = PRC
-	#	}
-	#	visible = {
-	#		has_completed_focus = PRC_public_works_campaign
-	#	}
-	#	available = {
-	#		tag = PRC
-	#	}
-	#	fire_only_once = no
-	#	cost = 150
-	#	days_remove = 365
-	#	days_re_enable = 70
-	#	complete_effect = {
-	#	}
-	#	modifier = {
-	#		consumer_goods_factor = 0.15
-	#	}
-	#	remove_effect = {
-	#		set_temp_variable = {
-	#				var = PRC_approval_rating_var_temp
-	#				value = -0.15
-	#			}
-	#		PRC_add_party_approval = yes
-	#
-	#		every_owned_state = {
-	#			add_building_construction = {
-	#				type = infrastructure 
-	#				level = 1
-	#				instant_build = yes
-	#			}
-	#		}
-	#
-	#		set_temp_variable = {
-	#			var = poverty_development_var_temp
-	#			value = 0.10
-	#		}
-	#		add_poverty_development = yes
-	#	}
-	#	ai_will_do = {
-	#	base = 10
-	#	}
-	#}
-}
+        PRC_state_role_of_polizist = {
+            icon = GFX_PRC_centrist_decision
+            visible = {
+                has_completed_focus = PLA_not_forget_the_traditions_of_the_Red_Army
+                NOT = {
+                    has_country_flag = PRC_pla_reform_ppgd_hide_flag
+                }
+            }
+            available = {
+                command_power > 49
+            }
+            cost = 100
+            days_remove = 180
+            fire_only_once = yes
+            complete_effect = {
+            }
+            modifier = {
+                army_attack_factor = -0.15
+                army_defence_factor = -0.1
+                army_org_factor = 0.1
+            }
+            remove_effect = {
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 7.5
+                }
+                PRC_add_army_reform_progress = yes
+                add_to_variable = {
+                    PPRC_pp_g_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_org_regain_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_defence_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_reinforce_var = 0.05
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_party_rectification_campaign_empty
+                        add_idea = PRC_party_rectification_campaign41
+                    }
+                }
+            }
+        }
+        PRC_reform_the_international_troops = {
+            icon = GFX_PRC_centrist_decision
+            visible = {
+                has_completed_focus = PLA_Mingji_Baiqiuen
+                NOT = {
+                    has_country_flag = PRC_pla_reform_ppgd_hide_flag
+                }
+            }
+            cost = 150
+            days_remove = 365
+            fire_only_once = yes
+            modifier = {
+                weekly_manpower = 200
+            }
+            remove_effect = {
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 5
+                }
+                PRC_add_army_reform_progress = yes
+                add_to_variable = {
+                    PPRC_weekly_manpower_var = 100
+                }
+                add_to_variable = {
+                    PPRC_send_volunteer_size_var = 2
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_party_rectification_campaign_empty
+                        add_idea = PRC_party_rectification_campaign42
+                    }
+                }
+            }
+        }
+        PRC_victory_towards_revolution = {
+            icon = GFX_PRC_centrist_decision
+            visible = {
+                has_completed_focus = PLA_MaiBu_Congtouyue
+                NOT = {
+                    has_country_flag = PRC_pla_reform_ppgd_hide_flag
+                    has_country_flag = PRC_victory_towards_flag_2
+                }
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_victory_towards_flag_1
+                }
+            }
+            cost = 150
+            days_remove = 365
+            fire_only_once = yes
+            complete_effect = {
+                set_country_flag = PRC_victory_towards_flag_1
+            }
+            modifier = {
+                military_development_monthly = 0.01
+                command_power_gain = 0.05
+            }
+            remove_effect = {
+                set_country_flag = PRC_victory_towards_flag_2
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 10
+                }
+                PRC_add_army_reform_progress = yes
+                add_to_variable = {
+                    PPRC_attack_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_army_strength_var = 0.1
+                }
+                add_to_variable = {
+                    PPRC_width_var = -0.1
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_party_rectification_campaign_empty
+                        add_idea = PRC_party_rectification_campaign43
+                    }
+                }
+            }
+        }
+        PRC_victory_towards_liberation = {
+            icon = GFX_PRC_centrist_decision
+            visible = {
+                has_completed_focus = PLA_MaiBu_Congtouyue
+                NOT = {
+                    has_country_flag = PRC_pla_reform_ppgd_hide_flag
+                    has_country_flag = PRC_victory_towards_flag_2
+                }
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_victory_towards_flag_1
+                }
+            }
+            cost = 150
+            days_remove = 365
+            fire_only_once = yes
+            complete_effect = {
+                set_country_flag = PRC_victory_towards_flag_1
+            }
+            modifier = {
+                military_development_monthly = 0.01
+                command_power_gain = 0.05
+            }
+            remove_effect = {
+                set_country_flag = PRC_victory_towards_flag_2
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 10
+                }
+                PRC_add_army_reform_progress = yes
+                army_experience = 10
+            }
+        }
+        PRC_military_project_mission = {
+            #icon = GFX_decision_ger_military_buildup
+            allowed = {
+                tag = PRC
+            }
+            activation = {
+                always = no
+            }
+            available = {
+                always = no
+            }
+            is_good = yes
+            selectable_mission = no
+            days_mission_timeout = 125
+            fire_only_once = no
+            timeout_effect = {
+            }
+            complete_effect = {
+            }
+            priority = 999
+        }
+        PRC_project_ghost_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PLA_equipment_research
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_military_project_researching
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.259
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        PRC_project_nib_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PLA_improved_soldiers
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PLA_equipment_research
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.260
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        PRC_project_swimmer_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PLA_elite_marine_corps
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_military_project_researching
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.261
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        PRC_project_impulse_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PRC_increase_naval_production
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_military_project_researching
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.262
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        PRC_project_dark_sword_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PLA_equipment_research
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_military_project_researching
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.263
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        PRC_project_flash_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PRC_next_generation_army
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_military_project_researching
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.264
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        PRC_project_nami_dec = {
+            #icon = GFX_decision_ger_military_buildup
+            cost = 25
+            fire_only_once = yes
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PLA_equipment_research
+            }
+            available = {
+                NOT = {
+                    has_country_flag = PRC_military_project_researching
+                }
+                hidden_trigger = {
+                    NOT = {
+                        has_country_flag = anti_debil
+                    }
+                }
+            }
+            complete_effect = {
+                country_event = china.265
+                set_country_flag = anti_debil
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+        #演练
+        PRC_toggle_exercise_decision = {
+            icon = generic
+            days_remove = 1
+            ai_will_do = {
+                base = 0
+            }
+            complete_effect = {
+                set_country_flag = PRC_pla_reform_exercise_hide_flag
+            }
+        }
+        PRC_accelerated_officer_training_programs = {
+            icon = GFX_PRC_soliders
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                NOT = {
+                    has_country_flag = PRC_pla_reform_exercise_hide_flag
+                }
+            }
+            available = {
+            }
+            ai_will_do = {
+                base = 100
+            }
+            cost = 50
+            fire_only_once = no
+            days_re_enable = 200
+            days_remove = 30
+            complete_effect = {
+            }
+            modifier = {
+                experience_gain_factor = 0.1
+            }
+            remove_effect = {
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 5
+                }
+                PRC_add_army_reform_progress = yes
+                army_experience = 15
+            }
+        }
+        PRC_accelerated_soldier_training_programs = {
+            icon = GFX_PRC_soliders
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                NOT = {
+                    has_country_flag = PRC_pla_reform_exercise_hide_flag
+                }
+            }
+            available = {
+            }
+            ai_will_do = {
+                base = 100
+            }
+            cost = 50
+            fire_only_once = no
+            days_re_enable = 200
+            days_remove = 30
+            complete_effect = {
+            }
+            modifier = {
+                training_time_army_factor = -0.15
+            }
+            remove_effect = {
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 5
+                }
+                PRC_add_army_reform_progress = yes
+                army_experience = 10
+            }
+        }
+        PRC_naval_exercises_decision = {
+            icon = generic_propaganda_campaigns
+            fire_only_once = no
+            days_remove = 100
+            days_re_enable = 60
+            cost = 50
+            visible = {
+                has_completed_focus = PRC_south_asian_brothers
+            }
+            available = {
+            }
+            ai_will_do = {
+                base = 1
+            }
+            complete_effect = {
+            }
+            remove_effect = {
+                random_list = {
+                    20 = {
+                        random_navy_leader = {
+                            add_maneuver = 1
+                        }
+                    }
+                    20 = {
+                        random_navy_leader = {
+                            add_coordination = 1
+                        }
+                    }
+                    20 = {
+                        random_navy_leader = {
+                            add_attack = 1
+                        }
+                    }
+                    20 = {
+                        random_navy_leader = {
+                            add_skill_level = 1
+                        }
+                    }
+                    20 = {
+                        random_navy_leader = {
+                            add_defense = 1
+                        }
+                    }
+                }
+                every_country = {
+                    limit = {
+                        is_in_faction_with = PRC
+                    }
+                    navy_experience = 50
+                }
+            }
+            modifier = {
+                experience_gain_navy = 0.1
+            }
+        }
+        PRC_proudly_serve_your_nation = {
+            icon = generic_propaganda_campaigns
+            days_remove = 175
+            days_re_enable = 175
+            cost = 25
+            visible = {
+                has_completed_focus = PRC_national_fanaticism
+            }
+            available = {
+                has_campaign_slot = yes
+            }
+            ai_will_do = {
+                base = 1
+            }
+            complete_effect = {
+                remove_campaign_slot = yes
+            }
+            modifier = {
+                conscription_factor = 0.1
+                offensive_war_stability_factor = 0.2
+                war_support_weekly = 0.02
+            }
+        }
+        PRC_conduct_air_exercises = {
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PRC_chinas_spot_in_the_sun
+            }
+            fire_only_once = no
+            cost = 0
+            custom_cost_text = PRC_operation_crimson_sky_decision_cost
+            custom_cost_trigger = {
+                NOT = {
+                    command_power < 30
+                }
+            }
+            days_remove = 100
+            days_re_enable = 50
+            complete_effect = {
+                hidden_effect = {
+                    add_command_power = -30
+                }
+            }
+            modifier = {
+                experience_gain_air_factor = 0.25
+                air_training_xp_gain_factor = 0.25
+            }
+            remove_effect = {
+                air_experience = 10
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 0.5
+                }
+                PRC_add_army_reform_progress = yes
+            }
+            ai_will_do = {
+                base = 5
+            }
+        }
+        PRC_conduct_naval_exercises = {
+            allowed = {
+                tag = PRC
+            }
+            visible = {
+                has_completed_focus = PRC_chinas_spot_in_the_sun
+            }
+            fire_only_once = no
+            cost = 0
+            custom_cost_text = PRC_operation_crimson_sky_decision_cost
+            custom_cost_trigger = {
+                NOT = {
+                    command_power < 30
+                }
+            }
+            days_remove = 100
+            days_re_enable = 50
+            complete_effect = {
+                hidden_effect = {
+                    add_command_power = -30
+                }
+            }
+            modifier = {
+                experience_gain_navy_factor = 0.25
+                experience_gain_navy_unit_factor = 0.25
+            }
+            remove_effect = {
+                navy_experience = 10
+                set_temp_variable = {
+                    var = PRC_army_reform_progress_temp
+                    value = 0.5
+                }
+                PRC_add_army_reform_progress = yes
+            }
+            ai_will_do = {
+                base = 5
+            }
+        }
+    }
+    #PRC_infrastructure_overhaul = {
+    #	icon = generic_industry
+    #	allowed = {
+    #		tag = PRC
+    #	}
+    #	visible = {
+    #		has_completed_focus = PRC_public_works_campaign
+    #	}
+    #	available = {
+    #		tag = PRC
+    #	}
+    #	fire_only_once = no
+    #	cost = 150
+    #	days_remove = 365
+    #	days_re_enable = 70
+    #	complete_effect = {
+    #	}
+    #	modifier = {
+    #		consumer_goods_factor = 0.15
+    #	}
+    #	remove_effect = {
+    #		set_temp_variable = {
+    #				var = PRC_approval_rating_var_temp
+    #				value = -0.15
+    #			}
+    #		PRC_add_party_approval = yes
+    #
+    #		every_owned_state = {
+    #			add_building_construction = {
+    #				type = infrastructure
+    #				level = 1
+    #				instant_build = yes
+    #			}
+    #		}
+    #
+    #		set_temp_variable = {
+    #			var = poverty_development_var_temp
+    #			value = 0.10
+    #		}
+    #		add_poverty_development = yes
+    #	}
+    #	ai_will_do = {
+    #	base = 10
+    #	}
+    #}
 
 PRC_national_peoples_congress_category = {
 	PRC_hold_patriotic_rally = {

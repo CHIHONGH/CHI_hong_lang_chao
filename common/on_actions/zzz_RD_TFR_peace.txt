@@ -456,6 +456,28 @@ on_actions = {
                 }
                 set_global_flag = war_won
                 if = {
+                    # PRC kill PTF
+                    limit = {
+                        FROM = {
+                            original_tag = PTF
+                        }
+                        ROOT = {
+                            original_tag = PRC
+                        }
+                    }
+                    ROOT = {
+                        country_event = {
+                            id = prcs.3134
+                            days = 4
+                        }
+                    }
+                    FROM = {
+                        white_peace = ROOT
+                        add_ideas = GER_national_catastrophe
+                    }
+                    set_global_flag = skip_default_capitulation
+                }
+                if = {
                     # PRT kill SIA
                     limit = {
                         FROM = {
@@ -784,11 +806,7 @@ on_actions = {
                     }
                     FROM = {
                         PRC = {
-                            annex_country = {
-                                target = PRK
-                                transfer_troops = no
-                            }
-                            release_autonomy = {
+                            set_autonomy = {
                                 target = PRK
                                 autonomy_state = autonomy_communist
                                 freedom_level = 0.1
@@ -877,11 +895,6 @@ on_actions = {
                         # clr_country_flag = PRC_spread_chinese_influence
                     }
                     ROOT = {
-                        create_country_leader = {
-                            name = VIN_Vo_Van_Thuong
-                            picture = GFX_VIN_Vo_Van_Thuong
-                            ideology = marxism_leninism
-                        }
                         set_popularities = {
                             totalitarian_socialist = 40
                             communist = 60
