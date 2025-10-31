@@ -282,6 +282,20 @@ scripted_gui = {
 				}
 				PLA_add_propaganda_effect = yes
 			}
+
+			close_click = {
+				if = {
+					limit = { 
+						NOT = {
+							has_country_flag = PLA_reform_gui_enabled
+						}
+					}
+					set_country_flag = PLA_reform_gui_enabled
+				}
+				else = {
+					clr_country_flag = PLA_reform_gui_enabled
+				}
+			}
 		}
 		triggers = {
 
