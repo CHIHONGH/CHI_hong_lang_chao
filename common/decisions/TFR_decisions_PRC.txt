@@ -14781,7 +14781,7 @@ PRC_pla_reformation = {
 			army_experience = 15
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.025
+				value = 2.5
 			}
 			PRC_add_army_reform_progress = yes
 		}
@@ -14819,6 +14819,36 @@ PRC_pla_reformation = {
 		}
 		visible = {
 		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 7.5
+			}
+			PRC_add_army_reform_progress = yes
+			add_to_variable = {
+				PPRC_conscription_factor_var = -0.1
+			}
+			add_to_variable = {
+				PPRC_org_regain_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_battalion_upkeep_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_ship_upkeep_var = -0.05
+			}
+			add_to_variable = {
+				PPRC_aircraft_upkeep_var = -0.05
+			}	
+			add_to_variable = {
+				PPRC_military_dev_var = 0.005
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign40
+				}
+			}
 		available = {
 		}
 		ai_will_do = {
@@ -14828,6 +14858,33 @@ PRC_pla_reformation = {
 		fire_only_once = no
 		days_re_enable = 200
 		days_remove = 30
+		days_re_enable = 60
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 2.5
+			}
+			PRC_add_army_reform_progress = yes
+			set_temp_variable = {
+				military_development_var_temp = 0.05
+			}
+			add_military_development = yes
+		}
+	}
+	PRC_state_role_of_polizist = {
+		icon = GFX_PRC_centrist_decision
+		visible = {
+			has_completed_focus = PLA_not_forget_the_traditions_of_the_Red_Army
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		available = {
+			command_power > 49
+		}
+		cost = 100
+		days_remove = 180
+		fire_only_once = yes
 		complete_effect = {
 		}
 		modifier = {
@@ -14838,7 +14895,7 @@ PRC_pla_reformation = {
 		remove_effect = {
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.075
+				value = 7.5
 			}
 			PRC_add_army_reform_progress = yes
 			add_to_variable = {
@@ -14879,6 +14936,99 @@ PRC_pla_reformation = {
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
 				value = 5
+			}
+			PRC_add_army_reform_progress = yes
+			add_to_variable = {
+				PPRC_weekly_manpower_var = 100
+			}
+			add_to_variable = {
+				PPRC_send_volunteer_size_var = 2
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign42
+				}
+			}
+		}
+	}
+	PRC_victory_towards_revolution = {
+		icon = GFX_PRC_centrist_decision
+		visible = {
+			has_completed_focus = PLA_MaiBu_Congtouyue
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+				has_country_flag = PRC_victory_towards_flag_2
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_victory_towards_flag_1
+			}
+		}
+		cost = 150
+		days_remove = 365
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = PRC_victory_towards_flag_1
+		}
+		modifier = {
+			military_development_monthly = 0.01
+			command_power_gain = 0.05
+		}
+		remove_effect = {
+			set_country_flag = PRC_victory_towards_flag_2
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 10
+			}
+			PRC_add_army_reform_progress = yes
+			add_to_variable = {
+				PPRC_attack_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_army_strength_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_width_var = -0.1
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_party_rectification_campaign_empty
+					add_idea = PRC_party_rectification_campaign43
+				}
+			}
+		}
+	}
+	PRC_victory_towards_liberation = {
+		icon = GFX_PRC_centrist_decision
+		visible = {
+			has_completed_focus = PLA_MaiBu_Congtouyue
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+				has_country_flag = PRC_victory_towards_flag_2
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_victory_towards_flag_1
+			}
+		}
+		cost = 150
+		days_remove = 365
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = PRC_victory_towards_flag_1
+		}
+		modifier = {
+			military_development_monthly = 0.01
+			command_power_gain = 0.05
+		}
+		remove_effect = {
+			set_country_flag = PRC_victory_towards_flag_2
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 10
 			}
 			PRC_add_army_reform_progress = yes
 			army_experience = 10
@@ -15139,7 +15289,7 @@ PRC_pla_reformation = {
 		remove_effect = {
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.05
+				value = 5
 			}
 			PRC_add_army_reform_progress = yes
 			army_experience = 15
@@ -15172,7 +15322,7 @@ PRC_pla_reformation = {
 		remove_effect = {
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
-				value = 0.05
+				value = 5
 			}
 			PRC_add_army_reform_progress = yes
 			army_experience = 10
