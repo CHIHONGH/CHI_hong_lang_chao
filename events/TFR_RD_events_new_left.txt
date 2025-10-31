@@ -601,35 +601,35 @@ country_event = {
     title = prcs.36.t
     desc = prcs.36.d
     is_triggered_only = yes
+
     option = {
         name = prcs.36.a
-        custom_effect_tooltip = PRC_tfr_china_ending_tt
-        custom_effect_tooltip = unrestricted_diplomacy_tt
-        set_country_flag = unrestricted_diplomacy_flag
         if = {
             limit = {
-                SOV = {
-                    OR = {
-                        has_government = communist
-                        has_government = totalitarian_socialist
-                        has_government = libertarian_socialist
-                    }
+                check_variable = {
+                    var = party_popularity@communist
+                    value = party_popularity@libertarian_socialist
+                    compare = less_than_or_equals
                 }
             }
-            set_country_flag = PRC_Revolution_return_ending1
+            country_event = {
+                id = prcs.3039
+                days = 1
+            }
         }
         else_if = {
             limit = {
-                APA = {
-                    has_country_flag = APA_reunified_flag
+                check_variable = {
+                    var = party_popularity@libertarian_socialist
+                    value = party_popularity@communist 
+                    compare = less_than_or_equals
                 }
             }
-            set_country_flag = PRC_Revolution_return_ending
+            country_event = {
+                id = prcs.3087
+                days = 1
+            }
         }
-        else = {
-            set_country_flag = PRC_Revolution_return_ending2
-        }
-        TFR_Country_Closing_Screen_Show = yes
     }
 }
 
@@ -2053,6 +2053,7 @@ country_event = {
     picture = GFX_Chihong31_event
     fire_only_once = yes
     trigger = {
+        tag = PRC
         country_exists = ATW
     }
     option = {
@@ -2723,268 +2724,358 @@ country_event = {
     }
 }
 country_event = {
-	id = Chihong.71
-	title = Chihong.71.t
-	desc = Chihong.71.d
-	picture = GFX_Event_Template9
+    id = Chihong.71
+    title = Chihong.71.t
+    desc = Chihong.71.d
+    picture = GFX_Event_Template9
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.71.a
-	}
+    option = {
+        name = Chihong.71.a
+    }
 }
 
 country_event = {
-	id = Chihong.72
-	title = Chihong.72.t
-	desc = Chihong.72.d
-	picture = GFX_Event_Template20
+    id = Chihong.72
+    title = Chihong.72.t
+    desc = Chihong.72.d
+    picture = GFX_Event_Template20
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.72.a
-	}
+    option = {
+        name = Chihong.72.a
+    }
 }
 
 country_event = {
-	id = Chihong.73
-	title = Chihong.73.t
-	desc = Chihong.73.d
-	picture = GFX_Event_Template10
+    id = Chihong.73
+    title = Chihong.73.t
+    desc = Chihong.73.d
+    picture = GFX_Event_Template10
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.73.a
-	}
+    option = {
+        name = Chihong.73.a
+    }
 }
 
 country_event = {
-	id = Chihong.74
-	title = Chihong.74.t
-	desc = Chihong.74.d
-	picture = GFX_Event_Template11
+    id = Chihong.74
+    title = Chihong.74.t
+    desc = Chihong.74.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.74.a
+    option = {
+        name = Chihong.74.a
         hidden_effect = {
             country_event = Chihong.84
         }
-	}
+    }
 }
 
 country_event = {
-	id = Chihong.75
-	title = Chihong.75.t
-	desc = Chihong.75.d
-	picture = GFX_Event_Template12
+    id = Chihong.75
+    title = Chihong.75.t
+    desc = Chihong.75.d
+    picture = GFX_Event_Template12
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.75.a
+    option = {
+        name = Chihong.75.a
         country_event = Chihong.76
-	}
+    }
 }
 
 country_event = {
-	id = Chihong.76
-	title = Chihong.76.t
-	desc = Chihong.76.d
-	picture = GFX_Event_Template12
+    id = Chihong.76
+    title = Chihong.76.t
+    desc = Chihong.76.d
+    picture = GFX_Event_Template12
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.76.a
-	}
+    option = {
+        name = Chihong.76.a
+    }
 }
 
 country_event = {
-	id = Chihong.77
-	title = Chihong.77.t
-	desc = Chihong.77.d
-	picture = GFX_Event_Template13
+    id = Chihong.77
+    title = Chihong.77.t
+    desc = Chihong.77.d
+    picture = GFX_Event_Template13
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.77.a
-	}
+    option = {
+        name = Chihong.77.a
+    }
 }
 
 country_event = {
-	id = Chihong.78
-	title = Chihong.78.t
-	desc = Chihong.78.d
-	picture = GFX_Event_Template14
+    id = Chihong.78
+    title = Chihong.78.t
+    desc = Chihong.78.d
+    picture = GFX_Event_Template14
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.78.a
-	}
+    option = {
+        name = Chihong.78.a
+    }
 }
 
 country_event = {
-	id = Chihong.79
-	title = Chihong.79.t
-	desc = Chihong.79.d
-	picture = GFX_Event_Template15
+    id = Chihong.79
+    title = Chihong.79.t
+    desc = Chihong.79.d
+    picture = GFX_Event_Template15
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.79.a
-	}
+    option = {
+        name = Chihong.79.a
+    }
 }
 
 country_event = {
-	id = Chihong.80
-	title = Chihong.80.t
-	desc = Chihong.80.d
-	picture = GFX_Event_Template16
+    id = Chihong.80
+    title = Chihong.80.t
+    desc = Chihong.80.d
+    picture = GFX_Event_Template16
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.80.a
-	}
+    option = {
+        name = Chihong.80.a
+    }
 }
 country_event = {
-	id = Chihong.81
-	title = Chihong.81.t
-	desc = Chihong.81.d
-	picture = GFX_Event_Template17
+    id = Chihong.81
+    title = Chihong.81.t
+    desc = Chihong.81.d
+    picture = GFX_Event_Template17
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.81.a
-	}
+    option = {
+        name = Chihong.81.a
+    }
 }
 country_event = {
-	id = Chihong.82
-	title = Chihong.82.t
-	desc = Chihong.82.d
-	picture = GFX_Event_Template18
+    id = Chihong.82
+    title = Chihong.82.t
+    desc = Chihong.82.d
+    picture = GFX_Event_Template18
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.82.a
-	}
+    option = {
+        name = Chihong.82.a
+    }
 }
 country_event = {
-	id = Chihong.83
-	title = Chihong.83.t
-	desc = Chihong.83.d
-	picture = GFX_Event_Template19
+    id = Chihong.83
+    title = Chihong.83.t
+    desc = Chihong.83.d
+    picture = GFX_Event_Template19
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.83.a
-	}
+    option = {
+        name = Chihong.83.a
+    }
 }
 
 country_event = {
-	id = Chihong.84
-	title = Chihong.84.t
-	desc = Chihong.84.d
-	picture = GFX_Event_Template11
+    id = Chihong.84
+    title = Chihong.84.t
+    desc = Chihong.84.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
+    option = {
         hidden_effect = {
             country_event = Chihong.85
         }
-		name = Chihong.84.a
-	}
+        name = Chihong.84.a
+    }
 }
 
 country_event = {
-	id = Chihong.85
-	title = Chihong.85.t
-	desc = Chihong.85.d
-	picture = GFX_Event_Template11
+    id = Chihong.85
+    title = Chihong.85.t
+    desc = Chihong.85.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
+    option = {
         hidden_effect = {
             country_event = Chihong.86
         }
-		name = Chihong.85.a
-	}
+        name = Chihong.85.a
+    }
 }
 
 country_event = {
-	id = Chihong.86
-	title = Chihong.86.t
-	desc = Chihong.86.d
-	picture = GFX_Event_Template11
+    id = Chihong.86
+    title = Chihong.86.t
+    desc = Chihong.86.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
+    option = {
         hidden_effect = {
             country_event = Chihong.87
         }
-		name = Chihong.86.a
-	}
+        name = Chihong.86.a
+    }
 }
 
 country_event = {
-	id = Chihong.87
-	title = Chihong.87.t
-	desc = Chihong.87.d
-	picture = GFX_Event_Template11
+    id = Chihong.87
+    title = Chihong.87.t
+    desc = Chihong.87.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
+    option = {
         hidden_effect = {
             country_event = Chihong.88
         }
-		name = Chihong.87.a
-	}
+        name = Chihong.87.a
+    }
 }
 
 country_event = {
-	id = Chihong.88
-	title = Chihong.88.t
-	desc = Chihong.88.d
-	picture = GFX_Event_Template11
+    id = Chihong.88
+    title = Chihong.88.t
+    desc = Chihong.88.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
+    option = {
         hidden_effect = {
             country_event = Chihong.89
         }
-		name = Chihong.88.a
-	}
+        name = Chihong.88.a
+    }
 }
 
 country_event = {
-	id = Chihong.89
-	title = Chihong.89.t
-	desc = Chihong.89.d
-	picture = GFX_Event_Template11
+    id = Chihong.89
+    title = Chihong.89.t
+    desc = Chihong.89.d
+    picture = GFX_Event_Template11
 
-	is_triggered_only = yes
+    is_triggered_only = yes
 
-	option = {
-		name = Chihong.89.a
-	}
+    option = {
+        name = Chihong.89.a
+    }
 }
 
+country_event = {
+    id = Chihong.90
+    title = Chihong.90.t
+    desc = Chihong.90.d
+    picture = GFX_SOV_secret_documents
+    mean_time_to_happen = {
+        days = 5
+    }
+    fire_only_once = yes
+    trigger = {
+        tag = PRC
+        OR = {
+            PAK  = {
+                has_war_with = RAJ
+            }
+            RAJ  = {
+                has_war_with = PAK
+            }
+        }
+    }
+    option = {
+        name = Chihong.90.a
+        ai_chance = { factor = 10 }
+        country_event = {
+            id = Chihong.91
+            days = 7
+        }
+    }
+    option = {
+        name = Chihong.90.b
+        ai_chance = { factor = 30 }
+        country_event = {
+            id = Chihong.92
+            days = 10
+        }
+    }
+    option = {
+        name = Chihong.90.c
+        ai_chance = { factor = 60 }
+        country_event = {
+            id = Chihong.93
+            days = 8
+        }
+    }
+}
+
+# Chihong.91
+country_event = {
+    id = Chihong.91
+    title = Chihong.91.t
+    desc = Chihong.91.d
+    picture = GFX_SOV_secret_documents
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.91.a
+        ai_chance = { factor = 100 }
+    }
+}
+
+# Chihong.92
+country_event = {
+    id = Chihong.92
+    title = Chihong.92.t
+    desc = Chihong.92.d
+    picture = GFX_SOV_secret_documents
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.92.a
+        ai_chance = { factor = 100 }
+    }
+}
+
+# Chihong.93
+country_event = {
+    id = Chihong.93
+    title = Chihong.93.t
+    desc = Chihong.93.d
+    picture = GFX_SOV_secret_documents
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.93.a
+        ai_chance = { factor = 100 }
+    }
+}
 
 country_event = {
     id = china.1733

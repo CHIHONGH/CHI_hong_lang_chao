@@ -59,6 +59,14 @@ news_event = {
 	is_triggered_only = yes
 	major = yes
 	immediate = {
+		PRC = {
+			hidden_effect = {
+				country_event = {
+					id = prcs.3090
+					days = 10
+				}
+			}
+		}
 	}
 	option = {
 		name = nlnews.2.a
@@ -75,5 +83,45 @@ news_event = {
 	}
 	option = {
 		name = nlnews.3.a
+	}
+}
+news_event = {
+	id = nlnews.4
+	title = nlnews.4.t
+	desc = nlnews.4.d
+	picture = GFX_news_japan
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			scoped_play_song = "TFR_mu_tfr_the_dragons_roar"
+			JAP = {
+				set_politics = {
+                    ruling_party = nationalist
+                    elections_allowed = no
+                }
+                set_popularities = {
+                    nationalist = 100
+                }
+			}
+		}
+	}
+	option = {
+		name = nlnews.4.a
+		trigger = {
+			NOT = {
+				tag = PRC
+			}
+		}
+	}
+	option = {
+		trigger = {
+			tag = PRC
+		}
+		name = nlnews.4.b
+		PRC = {
+			add_war_support = 0.10
+		}
+		custom_effect_tooltip = PRC_NEW_LEFT_news_for_jap
 	}
 }
