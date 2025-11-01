@@ -10,9 +10,7 @@ shared_focus = {
     }
     available = {
         has_country_flag = PRC_for_policy_tree_available
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     allow_branch = {
         has_country_flag = Prc_NewLeft_focus_key
     }
@@ -65,26 +63,16 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         country_event = {
             id = china.1709
         }
         hidden_effect = {
             country_event = {
-                id = prcs.3106
-                days = 31
-            }
-            country_event = {
                 id = Chihong.17
                 days = 80
                 random_days = 50
-            }
-            country_event = {
-                id = prcs.3080
-                days = 10
             }
         }
         custom_effect_tooltip = PRC_revolutionary_tt
@@ -107,19 +95,13 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_ideas = PRC_Voice_of_the_People_idea
         hidden_effect = {
             country_event = {
                 id = Chihong.16
-                days = 7
-            }
-            country_event = {
-                id = prcs.3168
-                days = 0
+                days = 4
             }
         }
     }
@@ -139,9 +121,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_end_the_junta
         unlock_decision_tooltip = PRC_thailand_communist
@@ -169,9 +149,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_laos_seize_power
         unlock_decision_tooltip = PRC_khmer_rouge
@@ -193,9 +171,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_ideas = PRC_SEA_volunteer_limit
         unlock_decision_tooltip = PRC_PHIred_rebellion
@@ -219,9 +195,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_spring_thunder
         unlock_decision_tooltip = PRC_break_the_chains
@@ -251,9 +225,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_new_arab
         unlock_decision_tooltip = PRC_new_west_asia
@@ -274,12 +246,10 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         ISR = {
             has_war = yes
         }
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_free_Palestine
     }
@@ -302,9 +272,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_radiated_sun
     }
@@ -327,25 +295,9 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_unfreeze_DPRK
-        PRK = {
-            add_timed_idea = {
-                idea = PRK_korean_thaw_idea
-                days = 150
-            }
-            custom_effect_tooltip = after_idea_expires
-            custom_effect_tooltip = tooltip_white_line
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRK_Total_Control_idea
-                    add_idea = PRK_Total_Control_idea2
-                }
-            }
-        }
         country_event = {
             id = china.1715
         }
@@ -367,7 +319,6 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         OR = {
             AND = {
                 has_completed_focus = Shoot_the_sun
@@ -390,60 +341,7 @@ shared_focus = {
             }
         }
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        PRK = {
-            set_temp_variable = {
-                var = debt_var_temp
-                value = 75
-            }
-            add_stability = 0.05
-            set_temp_variable = {
-                var = military_development_var_temp
-                value = 0.25
-            }
-            add_military_development = yes
-            custom_effect_tooltip = tooltip_white_line
-            set_temp_variable = {
-                var = society_development_var_temp
-                value = 0.25
-            }
-            add_society_development = yes
-            custom_effect_tooltip = tooltip_white_line
-            set_temp_variable = {
-                var = industrial_development_var_temp
-                value = 0.25
-            }
-            add_industrial_development = yes
-            custom_effect_tooltip = tooltip_white_line
-            set_temp_variable = {
-                var = poverty_development_var_temp
-                value = 0.5
-            }
-            add_poverty_development = yes
-            custom_effect_tooltip = tooltip_white_line
-            set_temp_variable = {
-                var = debt_var_temp
-                value = -50
-            }
-            add_debt_with_inflation = yes
-            add_popularity = {
-                ideology = communist
-                popularity = 0.15
-            }
-            set_temp_variable = {
-                var = industrial_development_var_temp
-                value = 0.125
-            }
-            add_industrial_development = yes
-            custom_effect_tooltip = tooltip_white_line
-            set_temp_variable = {
-                var = poverty_development_var_temp
-                value = 0.125
-            }
-            add_poverty_development = yes
-        }
-        add_debt_with_inflation = yes
         unlock_decision_tooltip = PRC_DPRK_mechanized
     }
 }
@@ -465,9 +363,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_red_ROK
     }
@@ -490,9 +386,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_red_bhutan
         unlock_decision_tooltip = PRC_red_nepal
@@ -514,25 +408,8 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        if = {
-            limit = {
-                has_idea = PRC_bunker_focus_idea
-            }
-            modify_timed_idea = {
-                idea = PRC_bunker_focus_idea
-                days = 180
-            }
-        }
-        else = {
-            add_timed_idea = {
-                idea = PRC_bunker_focus_idea
-                days = 180
-            }
-        }
         unlock_decision_tooltip = PRC_unite_PAK
         unlock_decision_tooltip = PRC_bangladesh_revolution
         unlock_decision_tooltip = PRC_PAK_industry
@@ -556,21 +433,8 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        hidden_effect = {
-            every_state = {
-                limit = {
-                    OR = {
-                        region = 153
-                        region = 190
-                    }
-                }
-                set_demilitarized_zone = no
-            }
-        }
         unlock_decision_tooltip = PRC_reunite_india
         unlock_decision_tooltip = PRC_india_maoism
         set_variable = {
@@ -596,27 +460,10 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         country_event = {
-            id = prcs.3152
-            days = 0
-        }
-        hidden_effect = {
-            country_event = {
-                id = prcs.3155
-                days = 16
-            }
-            country_event = {
-                id = Chihong.81
-                days = 9
-            }
-            country_event = {
-                id = prcs.3162
-                days = 6
-            }
+            id = Chihong.81
         }
         set_country_flag = PRC_red_JAP_project
         unlock_decision_tooltip = PRC_JAP_intel
@@ -637,19 +484,8 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        country_event = {
-            id = prcs.3154
-            days = 16
-        }
-        JAP = {
-            custom_effect_tooltip = Japanese_Red_Army_infighting
-			add_political_power = -200
-			add_war_support = -0.1
-		}
         unlock_decision_tooltip = PRC_JAP_secret_united
     }
 }
@@ -672,18 +508,8 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        JAP = {
-			add_stability = -0.10
-            custom_effect_tooltip = Japanese_Red_Army_infighting
-		}
-        country_event = {
-            id = prcs.3160
-            days = 16
-        }
         set_country_flag = form_jap_red_army
         unlock_decision_tooltip = PRC_JAP_red_army
     }
@@ -703,9 +529,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_war_support = 0.05
         custom_effect_tooltip = Begonia_old_dreams_tt
@@ -730,9 +554,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_country_flag = PRC_mongolia_hetong_flag_1
         set_country_flag = PRC_mongolia_hetong_flag
@@ -757,9 +579,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_mongolia_war
         SOV = {
@@ -789,7 +609,6 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         SOV = {
             OR = {
                 has_government = communist
@@ -805,33 +624,28 @@ shared_focus = {
             }
         }
     }
-    cancel_if_invalid = yes
     completion_reward = {
         unlock_decision_tooltip = PRC_USSR_diplomacy
-        hidden_effect = {
-            country_event = {
-                id = prcs.14
-                days = 7
-            }
-            country_event = {
-                id = prcs.3107
-                days = 30
-            }
-            random_list = {
-                50 = {
-                    country_event = {
-                        id = prcs.17
-                        days = 9
-                    }
-                }
-                50 = {
-                    country_event = {
-                        id = prcs.16
-                        days = 9
-                    }
-                }
-            }
-        }
+		hidden_effect = {
+			country_event = {
+				id = prcs.14
+				days = 7
+			}
+			random_list = {
+				50 = {
+					country_event = {
+						id = prcs.17
+						days = 9
+					}
+				}
+				50 = {
+					country_event = {
+						id = prcs.16
+						days = 9
+					}
+				}
+			}
+		}
         SOV = {
             country_event = {
                 id = china.1718
@@ -859,7 +673,6 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         SOV = {
             OR = {
                 OR = {
@@ -881,32 +694,27 @@ shared_focus = {
             }
         }
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        hidden_effect = {
-            country_event = {
-                id = prcs.15
-                days = 7
-            }
-            country_event = {
-                id = prcs.3108
-                days = 30
-            }
-            random_list = {
-                50 = {
-                    country_event = {
-                        id = prcs.17
-                        days = 9
-                    }
-                }
-                50 = {
-                    country_event = {
-                        id = prcs.16
-                        days = 9
-                    }
-                }
-            }
-        }
+		hidden_effect = {
+			country_event = {
+				id = prcs.15
+				days = 7
+			}
+			random_list = {
+				50 = {
+					country_event = {
+						id = prcs.17
+						days = 9
+					}
+				}
+				50 = {
+					country_event = {
+						id = prcs.16
+						days = 9
+					}
+				}
+			}
+		}
         effect_tooltip = {
             country_event = china.1719
         }
@@ -917,7 +725,7 @@ shared_focus = {
 }
 shared_focus = {
     id = Moving_towards_victory		#宣战太约
-    icon = GFX_focus_PLA_party_commands_guns
+    icon = GFX_focus_PRC_new_left_chaozheshengli
     relative_position_id = Comrade_in_India
     x = -1
     y = 2
@@ -939,7 +747,6 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         if = {
             limit = {
                 has_country_flag = PRC_new_left_win
@@ -949,7 +756,6 @@ shared_focus = {
             has_completed_focus = PLA_The_iron_flow_miles
         }
     }
-    cancel_if_invalid = yes
     select_effect = {
         PRK = {
             add_ai_strategy = {
@@ -970,8 +776,6 @@ shared_focus = {
         }
     }
     completion_reward = {
-        custom_effect_tooltip = PRC_korean_war_picture_tt
-		custom_effect_tooltip = tooltip_white_line
         hidden_effect = {
             country_event = {
                 id = china.1722
@@ -1040,9 +844,7 @@ shared_focus = {
         factor = 50
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_country_flag = form_the_WLA
         unlock_decision_tooltip = Establish_a_unified_command_system

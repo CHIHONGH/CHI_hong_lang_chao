@@ -255,13 +255,13 @@ PRC_add_army_reform_progress = {
 		clamp_variable = {
 			var = PRC_army_reform_progress
 			min = 0
-			max = 1
+			max = 100
 		}
 		if = {
 			limit = {
 				check_variable = {
 					var = PRC_army_reform_progress
-					value = 0.99
+					value = 99
 					compare = greater_than_or_equals
 				}
 			}
@@ -2073,12 +2073,6 @@ PRC_dissolve_japan = {
 
 PRC_dissolve_india = {
 	set_global_flag = RAJ_india_dead
-	PRC = {
-		country_event = {
-			id = prcs.3050
-			days = 2
-		}
-	}
 	RAJ = {
 		#diplomatic_relation = {
 		#	country = BHU
