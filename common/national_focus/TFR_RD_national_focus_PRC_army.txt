@@ -10,17 +10,14 @@ shared_focus = {
     }
     available = {
         has_country_flag = PRC_military_tree_available
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
     allow_branch = {
         has_country_flag = Prc_NewLeft_focus_key
     }
-    cancel_if_invalid = yes
     #relative_position_id =
     completion_reward = {
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
-
         }
         army_experience = 50
         navy_experience = 50
@@ -60,9 +57,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_country_flag = PRC_jailed_for_corruption_flag
         country_event = prcs.1
@@ -144,6 +139,8 @@ shared_focus = {
         else = {
             add_ideas = PLA_pla_army_1
         }
+        unlock_decision_tooltip = PRC_enhance_ideological_education
+        unlock_decision_tooltip = PRC_strike_PLA_corruption
         custom_effect_tooltip = PLA_DZHQ_1
         custom_effect_tooltip = PLA_military_and_political_reform
     }
@@ -165,9 +162,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         hidden_effect = {
             if = {
@@ -214,6 +209,8 @@ shared_focus = {
             }
         }
         custom_effect_tooltip = PLA_DZHQ_2
+        unlock_decision_tooltip = PRC_dare_to_fight_prop
+        unlock_decision_tooltip = PRC_deepen_internationalist_education
     }
 }
 
@@ -233,10 +230,25 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
+        add_to_variable = {
+            PPRC_attack_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_defence_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_org_factor_var = 0.05
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign37
+            }
+        } 
+        unlock_decision_tooltip = PRC_stricten_standard
+        unlock_decision_tooltip = PRC_stricten_PLA_environment
     }
 }
 
@@ -256,9 +268,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_temp_variable = {
             var = military_development_var_temp
@@ -324,6 +334,8 @@ shared_focus = {
                 }
             }
         }
+        unlock_decision_tooltip = PRC_state_role_of_polizist
+        unlock_decision_tooltip = PRC_serve_the_people_prop
         custom_effect_tooltip = PLA_DZHQ_3
     }
 }
@@ -344,9 +356,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_temp_variable = {
             var = military_development_var_temp
@@ -368,6 +378,7 @@ shared_focus = {
                 add_idea = PLA_pl_JZGG_4
             }
         }
+        unlock_decision_tooltip = PRC_reform_the_international_troops
     }
 }
 
@@ -387,14 +398,8 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        country_event = {
-            id = prcs.3099
-            days = 0
-        }
         hidden_effect = {
             if = {
                 limit = {
@@ -415,6 +420,7 @@ shared_focus = {
                 }
             }
         }
+        unlock_decision_tooltip = PRC_proudly_serve_your_nation
         custom_effect_tooltip = PLA_DZHQ_4
     }
 }
@@ -441,10 +447,34 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
+        add_to_variable = {
+            PPRC_conscription_factor_var = 0.15
+        }
+        add_to_variable = {
+            PPRC_reinforce_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_org_factor_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_aircraft_upkeep_var = -0.05
+        }
+        add_to_variable = {
+            PPRC_ship_upkeep_var = -0.05
+        }
+        add_to_variable = {
+            PPRC_battalion_upkeep_var = -0.05
+        }   
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign38
+            }
+        } 
+        unlock_decision_tooltip = PRC_victory_towards_liberation
+        unlock_decision_tooltip = PRC_victory_towards_revolution
     }
 }
 
@@ -464,9 +494,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_temp_variable = {
             var = military_development_var_temp
@@ -502,9 +530,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_political_power = 150
         army_experience = 50
@@ -547,9 +573,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_tech_bonus = {
             name = PLA_New_LuJun_Xiangqianjin
@@ -612,9 +636,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_tech_bonus = {
             name = PLA_artillery_wins_that_integrating_information_and_fire
@@ -692,14 +714,8 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        country_event = {
-            id = prcs.3208
-            days = 0
-        }
         add_tech_bonus = {
             name = PLA_LianQingbudui_Gaige
             bonus = 0.75
@@ -773,9 +789,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         ###解锁特殊项目研究（陆军）
         if = {
@@ -833,14 +847,8 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        country_event = {
-            id = prcs.3089
-            days = 2
-        }
         air_experience = 50
         add_tech_bonus = {
             name = PLA_CiShiDai_KongJun
@@ -894,9 +902,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         random_owned_controlled_state = {
             add_extra_state_shared_building_slots = 2
@@ -981,14 +987,8 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
-        country_event = {
-            id = prcs.3085
-            days = 4
-        }
         set_temp_variable = {
             var = military_development_var_temp
             value = 0.1
@@ -1052,9 +1052,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         air_experience = 25
         set_temp_variable = {
@@ -1062,6 +1060,9 @@ shared_focus = {
             value = 0.05
         }
         add_military_development = yes
+        hidden_effect = {
+            country_event = prcs.3089
+        }
         if = {
             limit = {
                 has_idea = PLA_plaaf_air_3
@@ -1117,9 +1118,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         navy_experience = 50
         add_tech_bonus = {
@@ -1174,9 +1173,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_temp_variable = {
             var = debt_var_temp
@@ -1244,9 +1241,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_temp_variable = {
             var = debt_var_temp
@@ -1317,9 +1312,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_tech_bonus = {
             name = PLA_not_forget_the_traditions_of_the_Red_Army
@@ -1370,9 +1363,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         if = {
             limit = {
@@ -1537,9 +1528,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_tech_bonus = {
             name = PAL_XianDaiHua_DaoDanBuDui
@@ -1731,10 +1720,15 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
+        set_temp_variable = {
+            PRC_army_reform_progress_temp = 5
+        }
+        PRC_add_army_reform_progress = yes
+        set_technology = {
+            PLA_comprehensive_assistance_system = 1
+        }
     }
 }
 
@@ -1757,10 +1751,13 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
+        set_temp_variable = {
+            PRC_army_reform_progress_temp = 5
+        }
+        PRC_add_army_reform_progress = yes
+        add_ideas = PLA_dawn_breaked_oriented_wind
     }
 }
 
@@ -1792,9 +1789,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         set_temp_variable = {
             var = military_development_var_temp
@@ -1874,16 +1869,10 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         hidden_effect = {
             country_event = prcs.58
-            country_event = {
-                id = prcs.3169
-                days = 31
-            }
         }
         set_temp_variable = {
             var = military_development_var_temp
@@ -1944,9 +1933,7 @@ shared_focus = {
         base = 25
     }
     available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
-    cancel_if_invalid = yes
     completion_reward = {
         add_political_power = 75
         add_manpower = -32246
@@ -1972,10 +1959,6 @@ shared_focus = {
     prerequisite = {
         focus = PAL_Forge_the_sword_of_victory
     }
-    available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-    }
-    cancel_if_invalid = yes
     relative_position_id = PAL_Forge_the_sword_of_victory
     x = 0
     y = 1
@@ -2036,10 +2019,6 @@ shared_focus = {
     prerequisite = {
         focus = PAL_Arise_all_the_people_who_are_suffering
     }
-    available = {
-        has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-    }
-    cancel_if_invalid = yes
     relative_position_id = PAL_Arise_all_the_people_who_are_suffering
     x = 4
     y = 1

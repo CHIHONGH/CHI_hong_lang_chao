@@ -1,0 +1,672 @@
+scripted_gui = {
+	PRC_PLA_window = {
+		context_type = player_context
+		window_name = "RD_PLA_reform_window"
+		parent_window_name = "countrypoliticsview"
+		visible = {
+			tag = PRC
+			has_completed_focus = PLA_when_that_day_comes
+			NOT = {
+				has_country_flag = PLA_reform_gui_enabled
+			}
+		}
+		effects = {
+			#军事改革按钮合集
+			button_MR_1_click = {
+				add_political_power = -100
+				add_timed_idea = {
+					idea = PLA_button_MR_1
+					days = 365
+				}
+				set_country_flag = {
+					flag = button_MR_1_click_flag
+					value = 1
+					days = 365
+				}
+			}
+			button_MR_2_click = {
+				add_political_power = -100
+				add_timed_idea = {
+					idea = PLA_button_MR_2
+					days = 180
+				}
+				set_country_flag = {
+					flag = button_MR_2_click_flag
+					value = 1
+					days = 180
+				}
+			}
+			button_MR_3_click = {
+				add_political_power = -150
+				add_timed_idea = {
+					idea = PLA_button_MR_3
+					days = 365
+				}
+				set_country_flag = {
+					flag = button_MR_3_click_flag
+					value = 1
+					days = 365
+				}
+			}
+			button_MR_4_click = {
+				add_political_power = -150
+				add_timed_idea = {
+					idea = PLA_button_MR_4
+					days = 365
+				}
+				set_country_flag = {
+					flag = button_MR_4_click_flag
+					value = 1
+					days = 365
+				}
+			}
+			button_MR_5_click = {
+				add_political_power = -150
+				add_timed_idea = {
+					idea = PLA_button_MR_5
+					days = 365
+				}
+				set_country_flag = {
+					flag = button_MR_5_click_flag
+					value = 1
+					days = 365
+				}
+			}
+			button_MR_6_click = {
+				add_political_power = -100
+				add_command_power = -50
+				add_timed_idea = {
+					idea = PLA_button_MR_6
+					days = 365
+				}
+				set_country_flag = {
+					flag = button_MR_6_click_flag
+					value = 1
+					days = 365
+				}
+			}
+
+			#科研项目合集
+			RD_PLA_research_button_1_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_1
+					days = 125
+				}
+			}
+			RD_PLA_research_button_2_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_2
+					days = 125
+				}
+			}
+			RD_PLA_research_button_3_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_3
+					days = 125
+				}
+			}
+			RD_PLA_research_button_4_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_4
+					days = 125
+				}
+			}
+			RD_PLA_research_button_5_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_5
+					days = 125
+				}
+			}
+			RD_PLA_research_button_6_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_6
+					days = 125
+				}
+			}
+			RD_PLA_research_button_7_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_7
+					days = 125
+				}
+			}
+			RD_PLA_research_button_8_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_8
+					days = 125
+				}
+			}
+			RD_PLA_research_button_9_click = {
+				add_political_power = -25
+				set_country_flag = {
+					flag = RD_PLA_researching_flag
+					value = 1
+					days = 125
+				}
+				add_timed_idea = {
+					idea = RD_PLA_research_9
+					days = 125
+				}
+			}
+
+			#政治宣传合集
+			RD_PLA_political_button_1_click = {
+				add_political_power = -50
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_ing_1
+					value = 1
+					days = 100
+				}
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_CD_1
+					value = 1
+					days = 200
+				}
+				set_temp_variable = {
+					RD_PLA_ppgd_temp = 2
+				}
+				PLA_add_propaganda_effect = yes
+			}
+			RD_PLA_political_button_2_click = {
+				add_political_power = -50
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_ing_2
+					value = 1
+					days = 100
+				}
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_CD_2
+					value = 1
+					days = 200
+				}
+				set_temp_variable = {
+					RD_PLA_ppgd_temp = 3
+				}
+				PLA_add_propaganda_effect = yes
+			}
+			RD_PLA_political_button_3_click = {
+				add_political_power = -50
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_ing_3
+					value = 1
+					days = 100
+				}
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_CD_3
+					value = 1
+					days = 200
+				}
+				set_temp_variable = {
+					RD_PLA_ppgd_temp = 4
+				}
+				PLA_add_propaganda_effect = yes
+			}
+			RD_PLA_political_button_4_click = {
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_ing_4
+					value = 1
+					days = 100
+				}
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_CD_4
+					value = 1
+					days = 200
+				}
+				add_political_power = -50
+				set_temp_variable = {
+					RD_PLA_ppgd_temp = 5
+				}
+				PLA_add_propaganda_effect = yes
+			}
+			RD_PLA_political_button_5_click = {
+				add_political_power = -50
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_ing_5
+					value = 1
+					days = 100
+				}
+				set_country_flag = {
+					flag = RD_PLA_propaganda_flag_CD_5
+					value = 1
+					days = 200
+				}
+				set_temp_variable = {
+					RD_PLA_ppgd_temp = 6
+				}
+				PLA_add_propaganda_effect = yes
+			}
+
+			close_click = {
+				if = {
+					limit = { 
+						NOT = {
+							has_country_flag = PLA_reform_gui_enabled
+						}
+					}
+					set_country_flag = PLA_reform_gui_enabled
+				}
+				else = {
+					clr_country_flag = PLA_reform_gui_enabled
+				}
+			}
+		}
+		triggers = {
+
+			#军事改革决议按钮大合集
+			
+			button_MR_1_click_visible = {
+				NOT = {
+					has_country_flag = PLA_button_MR_1_flag	#已完成
+					has_country_flag = button_MR_1_click_flag	#进行中
+				}
+			}
+			button_MR_1_click_enabled = {
+				has_political_power > 99
+				NOT = {
+					has_country_flag = PLA_button_MR_1_flag
+					has_country_flag = button_MR_1_click_flag
+				}
+				has_completed_focus = PLA_reform_of_military_and_political_work
+			}
+			button_MR_1_0_visible = {
+				has_country_flag = button_MR_1_click_flag
+			}
+			button_MR_1_0_click_enabled = {
+				always = no
+			}
+			button_MR_1_1_visible = {
+				has_country_flag = PLA_button_MR_1_flag
+			}
+			button_MR_1_1_click_enabled = {
+				always = no
+			}
+
+
+			button_MR_2_click_visible = {
+				NOT = {
+					has_country_flag = PLA_button_MR_2_flag
+					has_country_flag = button_MR_2_click_flag
+				}
+			}
+			button_MR_2_click_enabled = {
+				has_political_power > 99
+				NOT = {
+					has_country_flag = PLA_button_MR_2_flag
+					has_country_flag = button_MR_2_click_flag
+				}
+				has_completed_focus = PLA_Strengthen_PLA_training
+			}
+			button_MR_2_0_visible = {
+				has_country_flag = button_MR_2_click_flag
+			}
+			button_MR_2_0_click_enabled = {
+				always = no
+			}
+			button_MR_2_1_visible = {
+				has_country_flag = PLA_button_MR_2_flag
+			}
+			button_MR_2_1_click_enabled = {
+				always = no
+			}
+
+			button_MR_3_click_visible = {
+				NOT = {
+					has_country_flag = PLA_button_MR_3_flag
+					has_country_flag = button_MR_3_click_flag
+				}
+			}
+			button_MR_3_click_enabled = {
+				has_political_power > 149
+				NOT = {
+					has_country_flag = PLA_button_MR_3_flag
+					has_country_flag = button_MR_3_click_flag
+				}
+				has_completed_focus = PLA_Mingji_Baiqiuen
+			}
+			button_MR_3_0_visible = {
+				has_country_flag = button_MR_3_click_flag
+			}
+			button_MR_3_0_click_enabled = {
+				always = no
+			}
+			button_MR_3_1_visible = {
+				has_country_flag = PLA_button_MR_3_flag
+			}
+			button_MR_3_1_click_enabled = {
+				always = no
+			}
+
+			button_MR_4_click_visible = {
+				NOT = {
+					has_country_flag = PLA_button_MR_4_flag
+					has_country_flag = button_MR_4_click_flag
+				}
+			}
+			button_MR_4_click_enabled = {
+				has_political_power > 149
+				NOT = {
+					has_country_flag = PLA_button_MR_4_flag
+					has_country_flag = button_MR_4_click_flag
+				}
+				has_completed_focus = PLA_MaiBu_Congtouyue
+			}
+			button_MR_4_0_visible = {
+				has_country_flag = button_MR_4_click_flag
+			}
+			button_MR_4_0_click_enabled = {
+				always = no
+			}
+			button_MR_4_1_visible = {
+				has_country_flag = PLA_button_MR_4_flag
+			}
+			button_MR_4_1_click_enabled = {
+				always = no
+			}
+			button_MR_4_2_visible = {
+				OR = {
+					has_country_flag = PLA_button_MR_5_flag
+					has_country_flag = button_MR_5_click_flag
+				}
+			}
+			button_MR_4_2_click_enabled = {
+				always = no
+			}
+
+			button_MR_5_click_visible = {
+				NOT = {
+					has_country_flag = PLA_button_MR_5_flag
+					has_country_flag = button_MR_5_click_flag
+				}
+			}
+			button_MR_5_click_enabled = {
+				has_political_power > 149
+				NOT = {
+					has_country_flag = PLA_button_MR_5_flag
+					has_country_flag = button_MR_5_click_flag
+				}
+				has_completed_focus = PLA_MaiBu_Congtouyue
+			}
+			button_MR_5_0_visible = {
+				has_country_flag = button_MR_5_click_flag
+			}
+			button_MR_5_0_click_enabled = {
+				always = no
+			}
+			button_MR_5_1_visible = {
+				has_country_flag = PLA_button_MR_5_flag
+			}
+			button_MR_5_1_click_enabled = {
+				always = no
+			}
+			button_MR_5_2_visible = {
+				OR = {
+					has_country_flag = PLA_button_MR_4_flag
+					has_country_flag = button_MR_4_click_flag
+				}
+			}
+			button_MR_5_2_click_enabled = {
+				always = no
+			}
+
+
+			button_MR_6_click_visible = {
+				NOT = {
+					has_country_flag = PLA_button_MR_6_flag
+					has_country_flag = button_MR_6_click_flag
+				}
+			}
+			button_MR_6_click_enabled = {
+				has_political_power > 99
+				command_power > 49
+				NOT = {
+					has_country_flag = PLA_button_MR_6_flag
+					has_country_flag = button_MR_6_click_flag
+				}
+				has_completed_focus = PLA_not_forget_the_traditions_of_the_Red_Army
+			}
+			button_MR_6_0_visible = {
+				has_country_flag = button_MR_6_click_flag
+			}
+			button_MR_6_0_click_enabled = {
+				always = no
+			}
+			button_MR_6_1_visible = {
+				has_country_flag = PLA_button_MR_6_flag
+			}
+			button_MR_6_1_click_enabled = {
+				always = no
+			}
+
+			#科研项目大合集
+			RD_PLA_research_button_1_visible = {
+				
+			}
+			RD_PLA_research_button_1_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_ghost_partially_succeeded
+				}
+			}
+			RD_PLA_research_button_2_visible = {
+
+			}
+			RD_PLA_research_button_2_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_nib_succeeded1
+				}
+			}
+			RD_PLA_research_button_3_visible = {
+
+			}
+			RD_PLA_research_button_3_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_swimmer_succeeded1
+				}
+			}
+			RD_PLA_research_button_4_visible = {
+
+			}
+			RD_PLA_research_button_4_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_impulse_succeeded
+				}
+			}
+			RD_PLA_research_button_5_visible = {
+
+			}
+			RD_PLA_research_button_5_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_dark_sword_succeeded1
+				}
+			}
+			RD_PLA_research_button_6_visible = {
+
+			}
+			RD_PLA_research_button_6_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_song_wencong_succeeded1
+				}
+			}
+			RD_PLA_research_button_7_visible = {
+
+			}
+			RD_PLA_research_button_7_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_flash_partially_succeeded1
+				}
+			}
+
+			RD_PLA_research_button_8_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_flash_partially_succeeded1
+				}
+			}
+
+			RD_PLA_research_button_9_click_enabled = {
+				has_political_power > 24
+				NOT = {
+					has_country_flag = RD_PLA_researching_flag
+					has_country_flag = PRC_project_flash_partially_succeeded1
+				}
+			}
+
+			RD_PLA_research_details_visible = {
+				has_country_flag = RD_PLA_researching_flag
+			}
+
+			#政治宣传大合集
+			RD_PLA_political_button_1_click_enabled = {
+				has_political_power > 49
+				NOT = {
+					has_country_flag = RD_PLA_propaganda_flag_CD_1
+					has_country_flag = RD_PLA_propaganda_flag_ing_1
+					AND = {
+						has_country_flag = RD_PLA_political_slot_left_occupied_flag
+						has_country_flag = RD_PLA_political_slot_middle_occupied_flag
+						has_country_flag = RD_PLA_political_slot_right_occupied_flag
+					}
+				}
+			}
+			RD_PLA_political_button_2_click_enabled = {
+				has_political_power > 49
+				NOT = {
+					has_country_flag = RD_PLA_propaganda_flag_CD_2
+					has_country_flag = RD_PLA_propaganda_flag_ing_2
+				}
+			}
+			RD_PLA_political_button_3_click_enabled = {
+				has_political_power > 49
+				NOT = {
+					has_country_flag = RD_PLA_propaganda_flag_CD_3
+					has_country_flag = RD_PLA_propaganda_flag_ing_3
+				}
+			}
+			RD_PLA_political_button_4_click_enabled = {
+				has_political_power > 49
+				NOT = {
+					has_country_flag = RD_PLA_propaganda_flag_CD_4
+					has_country_flag = RD_PLA_propaganda_flag_ing_4
+				}
+			}
+			RD_PLA_political_button_5_click_enabled = {
+				has_political_power > 49
+				NOT = {
+					has_country_flag = RD_PLA_propaganda_flag_CD_5
+					has_country_flag = RD_PLA_propaganda_flag_ing_5
+				}
+			}
+			RD_PLA_political_slot_time_left_visible = {
+				has_country_flag = RD_PLA_political_slot_left_occupied_flag
+			}
+			RD_PLA_political_slot_time_middle_visible = {
+				has_country_flag = RD_PLA_political_slot_middle_occupied_flag
+			}
+			RD_PLA_political_slot_time_right_visible = {
+				has_country_flag = RD_PLA_political_slot_right_occupied_flag
+			}
+		}
+		properties = {
+			RD_reform_bar = {
+				frame = PRC_army_reform_progress
+			}
+			RD_PLA_political_slot_left = {
+				frame = RD_PLA_political_slot_left_var
+			}
+			RD_PLA_political_slot_middle = {
+				frame = RD_PLA_political_slot_middle_var
+			}
+			RD_PLA_political_slot_right = {
+				frame = RD_PLA_political_slot_right_var
+			}
+			program_1 = {
+				image = "[GetProgram1PRC]"
+			}
+			program_2 = {
+				image = "[GetProgram2PRC]"
+			}
+			program_3 = {
+				image = "[GetProgram3PRC]"
+			}
+			program_4 = {
+				image = "[GetProgram4PRC]"
+			}
+			program_5 = {
+				image = "[GetProgram5PRC]"
+			}
+			program_6 = {
+				image = "[GetProgram6PRC]"
+			}
+			program_7 = {
+				image = "[GetProgram7PRC]"
+			}
+			program_8 = {
+				image = "[GetProgram8PRC]"
+			}
+			program_9 = {
+				image = "[GetProgram9PRC]"
+			}
+		}
+	}
+}

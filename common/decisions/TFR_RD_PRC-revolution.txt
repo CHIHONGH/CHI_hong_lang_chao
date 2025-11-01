@@ -229,16 +229,6 @@ PRC_export_revolution = {
         cost = 25
         days_remove = 20
         remove_effect = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.3043
-                    hours = 9
-                }
-                country_event = {
-                    id = prcs.3045
-                    dyas = 7
-                }
-            }
             SIA = {
                 add_popularity = {
                     ideology = communist
@@ -327,12 +317,6 @@ PRC_export_revolution = {
                 }
             }
             PRC = {
-                hidden_effect = {
-                    country_event = {
-                        id = prcs.3049
-                        days = 4
-                    }
-                }
                 add_to_variable = {
                     CPC_frame = 2
                 }
@@ -484,6 +468,11 @@ PRC_export_revolution = {
             CAM = {
                 JAP_leave_PEC = yes
                 set_cosmetic_tag = PRC_cam
+                create_country_leader = {
+                    name = CAM_Khieu_Samphan
+                    picture = GFX_CAM_Khieu_Samphan
+                    ideology = left_nationalism
+                }
                 set_party_name = {
                     ideology = communist
                     long_name = CAM_nationalist_party_long
@@ -1387,49 +1376,15 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            hidden_effect = {
-                PRK = {
-                    remove_ideas = {
-                        PRK_heavy_sanctions_idea
-                        PRK_Total_Control_idea
-                        PRK_Kim_Jae_ryong_hog
-                        PRK_Ri_Yong_ho_for
-                        PRK_O_Su_yong_eco
-                        PRK_Jong_Kyong_thaek_sec
-                        PRK_Choe_Pu_Il_int
-                    }
-                }
-                PRK = {
-                    set_popularities = {
-                        totalitarian_socialist = 100
-                    }
-                    create_country_leader = {
-                        name = "朝鲜军管委员会"
-                        desc = "POLITICS_CHAOXIAN_DESC"
-                        picture = "gfx/leaders/PRC/generals/PRC_army.png"
-                        ideology = left_wing_junta
-                    }
-                    remove_ideas = {
-                        PRK_heavy_sanctions_idea
-                        PRK_Total_Control_idea
-                        PRK_Kim_Jae_ryong_hog
-                        PRK_Ri_Yong_ho_for
-                        PRK_O_Su_yong_eco
-                        PRK_Jong_Kyong_thaek_sec
-                        PRK_Choe_Pu_Il_int
-                    }
-                    set_party_name = {
-                        ideology = totalitarian_socialist
-                        long_name = PRC_nationalist_party_long
-                        name = PRC_nationalist_party
-                    }
-                    inherit_technology = PRC
-                    set_cosmetic_tag = PRC_repolice_gonh
-                    set_politics = {
-                        ruling_party = totalitarian_socialist
-                        election_frequency = 60
-                        elections_allowed = no
-                    }
+            PRK = {
+                remove_ideas = {
+                    PRK_heavy_sanctions_idea
+                    PRK_Total_Control_idea
+                    PRK_Kim_Jae_ryong_hog
+                    PRK_Ri_Yong_ho_for
+                    PRK_O_Su_yong_eco
+                    PRK_Jong_Kyong_thaek_sec
+                    PRK_Choe_Pu_Il_int
                 }
             }
             add_to_variable = {
@@ -1442,15 +1397,6 @@ PRC_export_revolution = {
             }
             add_to_variable = {
                 PRC_Lib_Int_Dir_Var = 1
-            }
-            effect_tooltip = {
-                PRK = {
-                    set_party_name = {
-                        ideology = totalitarian_socialist
-                        long_name = PRC_nationalist_party_long
-                        name = PRC_nationalist_party
-                    }
-                }
             }
         }
         ai_will_do = {
@@ -1553,6 +1499,11 @@ PRC_export_revolution = {
                     elections_allowed = no
                 }
                 JAP_leave_PEC = yes
+                create_country_leader = {
+                    name = BHU_leaders
+                    picture = GFX_BHU_leaders
+                    ideology = marxism_leninism
+                }
                 hidden_effect = {
                     set_popularities = {
                         totalitarian_socialist = 10
@@ -1615,6 +1566,11 @@ PRC_export_revolution = {
                 }
             }
             NEP = {
+                create_country_leader = {
+                    name = NEP_jilan
+                    picture = GFX_NEP_JiLan
+                    ideology = maoism
+                }
                 hidden_effect = {
                     set_cosmetic_tag = PRC_repolice_gonh
                 }
@@ -2392,18 +2348,18 @@ PRC_export_revolution = {
         }
     }
     PRC_JAP_red_army_mission = {
-        icon = GFX_PRC_new_left_decision
-        activation = {
-            has_global_flag = pan_asian_war_ongoing
-        }
+		icon = GFX_PRC_new_left_decision
+		activation = {
+			has_global_flag = pan_asian_war_ongoing
+		}
         available = {
-            country_exists = JPL
-        }
-        selectable_mission = no
-        is_good = no
-        days_mission_timeout = 25
+			country_exists = JPL
+		}
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 25
         fire_only_once = yes
-        timeout_effect = {
+		timeout_effect = {
             ROOT = {
                 set_autonomy = {
                     target = JPL
@@ -2475,8 +2431,8 @@ PRC_export_revolution = {
                     type = annex_everything
                 }
             }
-        }
-    }
+		}
+	}
     PRC_JAP_red_army = {
         #红军
         icon = GFX_PRC_new_left_decision
@@ -2516,6 +2472,53 @@ PRC_export_revolution = {
             }
             add_to_variable = {
                 PRC_WLI_members_pp_cost = -5
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+    PRC_JAP_arms = {
+        #武装
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_country_flag = form_jap_red_army
+        }
+        visible = {
+            has_country_flag = form_jap_red_army
+        }
+        fire_only_once = no
+        cost = 50
+        days_remove = 70
+        days_re_enable = 10
+        remove_effect = {
+            custom_effect_tooltip = Japan_red_army_equipment
+            JPL = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 7500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 750
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = artillery_equipment
+                    amount = 750
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = motorized_equipment
+                    amount = 750
+                    producer = PRC
+                }
+                set_temp_variable = {
+                    var = military_development_var_temp
+                    value = 0.25
+                }
+                add_military_development = yes
             }
         }
         ai_will_do = {
@@ -2646,53 +2649,6 @@ PRC_export_revolution = {
 }
 
 PRC_assistance2communist = {
-    PRC_JAP_arms = {
-        #武装
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_country_flag = form_jap_red_army
-        }
-        visible = {
-            has_country_flag = form_jap_red_army
-        }
-        fire_only_once = no
-        cost = 50
-        days_remove = 70
-        days_re_enable = 10
-        remove_effect = {
-            custom_effect_tooltip = Japan_red_army_equipment
-            JPL = {
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment
-                    amount = 7500
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment
-                    amount = 750
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = artillery_equipment
-                    amount = 750
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = motorized_equipment
-                    amount = 750
-                    producer = PRC
-                }
-                set_temp_variable = {
-                    var = military_development_var_temp
-                    value = 0.25
-                }
-                add_military_development = yes
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
     #援助外国
     PRC_india_maoism = {
         #印共毛
