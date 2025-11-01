@@ -8163,7 +8163,7 @@ country_event = {
         name = china.258.a
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 5
+            value = 0.05
         }
         PRC_add_army_reform_progress = yes
         hidden_effect = {
@@ -8502,17 +8502,19 @@ country_event = {
         set_country_flag = PRC_project_ghost_partially_succeeded1
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_1_effect
+                remove_idea = PRC_pla_dummy_idea
+                add_idea = PRC_project_ghost_partially_succeeded_idea
             }
         }
         hidden_effect = {
-			add_to_variable = {
-				PRC_PLA_mw_recon_factor_var = 0.15
-			}
-			add_to_variable = {
-				PRC_PLA_mw_breakthrough_factor_var = 0.015
-			}
+            add_to_variable = {
+                var = PRC_pla_breakthrough_factor_dynamic_var
+                value = 0.015
+            }
+            add_to_variable = {
+                var = PRC_pla_recon_factor_dynamic_var
+                value = 0.15
+            }
         }
         add_tech_bonus = {
             name = PRC_ghost
@@ -8523,7 +8525,7 @@ country_event = {
         army_experience = 15
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 1.5
+            value = 0.015
         }
         PRC_add_army_reform_progress = yes
     }
@@ -8578,7 +8580,7 @@ country_event = {
         army_experience = 25
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 2
+            value = 0.02
         }
         PRC_add_army_reform_progress = yes
     }
@@ -8677,18 +8679,9 @@ country_event = {
             category = armor
         }
         army_experience = 25
-        add_to_variable = {
-			PRC_PLA_mw_terrain_factor_var = 0.1
-		}
-		effect_tooltip = {
-			swap_ideas = {
-				remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_3_effect
-			}
-		}
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 2
+            value = 0.02
         }
         PRC_add_army_reform_progress = yes
     }
@@ -8741,14 +8734,23 @@ country_event = {
         set_country_flag = PRC_project_impulse_succeeded1
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_4_effect
+                remove_idea = PRC_plan_dummy
+                add_idea = PRC_project_impulse_succeeded_idea
             }
         }
         hidden_effect = {
-			add_to_variable = {
-				PRC_PLA_mw_terrain_naval_damage_var = 0.05
-			}
+            add_to_variable = {
+                var = PRC_pla_navy_capital_ship_attack_factor_dynamic_var
+                value = 0.1
+            }
+            add_to_variable = {
+                var = PRC_pla_navy_screen_attack_factor_dynamic_var
+                value = 0.1
+            }
+            add_to_variable = {
+                var = PRC_pla_naval_damage_factor_dynamic_var
+                value = 0.05
+            }
         }
         add_tech_bonus = {
             name = PRC_impulse
@@ -8758,7 +8760,7 @@ country_event = {
         }
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 2
+            value = 0.02
         }
         PRC_add_army_reform_progress = yes
     }
@@ -8841,7 +8843,7 @@ country_event = {
         }
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 2
+            value = 0.02
         }
         PRC_add_army_reform_progress = yes
     }
@@ -8863,24 +8865,28 @@ country_event = {
         set_country_flag = PRC_project_flash_partially_succeeded1
         effect_tooltip = {
             swap_ideas = {
-				remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_7_effect
+                remove_idea = PRC_pla_dummy_idea
+                add_idea = PRC_project_flash_partially_succeeded_idea
             }
         }
         hidden_effect = {
             add_to_variable = {
-				var = PRC_PLA_army_infantry_factor
+                var = PRC_pla_army_infantry_attack_factor_dynamic_var
                 value = 0.05
             }
             add_to_variable = {
-                var = PRC_PLA_mw_breakthrough_factor_var
+                var = PRC_pla_army_infantry_defence_factor_dynamic_var
+                value = 0.05
+            }
+            add_to_variable = {
+                var = PRC_pla_breakthrough_factor_dynamic_var
                 value = 0.025
             }
         }
         army_experience = 15
         set_temp_variable = {
             var = PRC_army_reform_progress_temp
-            value = 1.5
+            value = 0.015
         }
         PRC_add_army_reform_progress = yes
     }
@@ -12948,182 +12954,6 @@ country_event = {
         }
     }
 }
-
-#Dragon in the Sky
-country_event = {
-	id = china.500
-	title = china.500.t
-	desc = china.500.d
-	picture = GFX_PRC_chengdu_j_36
-	
-	is_triggered_only = yes
-	immediate = {
-		clr_country_flag = PRC_military_project_researching
-	}
-	option = {
-		name = china.500.a
-		air_experience = 25
-		set_country_flag = PRC_project_song_wencong_succeeded1
-		if = {
-			limit = {
-				NOT = {
-					has_tech = modern_small_airframe
-				}
-			}
-			set_technology = {
-			    modern_small_airframe = 1
-			}
-		}
-		create_equipment_variant = {
-			name = "Chengdu J-36"
-			type = small_plane_airframe_4
-			modules = {
-				fixed_main_weapon_slot = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_3 = aircraft_cannon_1_1x
-				fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
-				engine_type_slot = engine_4_2x
-				special_type_slot_1 = hmg_defense_turret
-				special_type_slot_2 = ai_targeting_computer_small
-				special_type_slot_3 = radio_navigation_2
-				special_type_slot_4 = fuel_tanks_small
-				special_type_slot_5 = lmg_defense_turret_2x
-			}
-			icon = "GFX_PRC_j_36_eq2"
-		}
-		add_equipment_production = {
-			equipment = {
-				type = small_plane_airframe_4
-				creator = "PRC" 
-				version_name = "Chengdu J-36"
-			}
-			requested_factories = 10
-			efficiency = 100
-		}
-		add_equipment_to_stockpile = {
-			type = small_plane_airframe_4
-			variant_name = "Chengdu J-36"
-			amount = 50
-			producer = PRC
-		}
-		custom_effect_tooltip = PRC_project_song_wencong_succeeded_tt
-		add_tech_bonus = {
-			name = PRC_song_wencong
-			bonus = 1
-			uses = 1
-			category = light_air
-		}
-		set_temp_variable = {
-			var = PRC_army_reform_progress_temp
-			value = 3.5
-		}
-		PRC_add_army_reform_progress = yes
-		add_to_variable = {
-			PRC_PLA_mw_air_range_var = 0.1
-		}
-		add_to_variable = {
-			PRC_PLA_mw_air_superiority_efficiency_var = 0.05
-		}
-		effect_tooltip = {
-			swap_ideas = {
-				remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_6_effect
-			}
-		}
-	}
-}
-
-#玄武项目报告
-country_event = {
-	id = china.546
-	title = china.546.t
-	desc = china.546.d
-	is_triggered_only = yes
-	picture = GFX_PRC_type_100
-	option = {
-		name = china.546.a
-		army_experience = 15
-		add_tech_bonus = {
-			name = button_RS_8_text
-			bonus = 0.5
-			uses = 1
-			category = armor
-		}
-		set_temp_variable = {
-			var = PRC_army_reform_progress_temp
-			value = 3.5
-		}
-		PRC_add_army_reform_progress = yes
-		set_technology = {
-			main_battle_tank_chassis = 1
-		}
-		create_equipment_variant = {
-			name = "Type 100"
-			type = modern_tank_chassis_4
-			parent_version = 0
-			modules = {
-				main_armament_slot = tank_high_velocity_cannon_3
-				turret_type_slot = tank_modern_tank_turret
-				suspension_type_slot = tank_torsion_bar_suspension
-				armor_type_slot = tank_cast_armor
-				engine_type_slot = tank_gas_turbine_engine
-				special_type_slot_1 = tank_radio_2
-				special_type_slot_2 = auto_loader
-				special_type_slot_3 = empty
-				special_type_slot_4 = empty
-			}
-			upgrades = {
-				tank_nsb_engine_upgrade = 8
-				tank_nsb_armor_upgrade = 1
-			}
-		}
-		add_equipment_to_stockpile = {
-			type = modern_tank_chassis_4
-			amount = 50
-			variant_name = "Type 100"
-		}
-		set_technology = {
-			PLA_project_xuanwu = 1
-			popup = no
-		}
-		custom_effect_tooltip = PLA_project_xuanwu
-	}
-}
-
-#燎原项目报告
-country_event = {
-	id = china.547
-	title = china.547.t
-	desc = china.547.d
-	is_triggered_only = yes
-	picture = GFX_PRC_LY_1
-	option = {
-		name = china.547.a
-		navy_experience = 15
-		add_tech_bonus = {
-			name = button_RS_9_text
-			bonus = 0.5
-			uses = 1
-			category = naval_equipment
-		}
-		set_temp_variable = {
-			var = PRC_army_reform_progress_temp
-			value = 3.5
-		}
-		PRC_add_army_reform_progress = yes
-		add_to_variable = {
-			PRC_PLA_navy_anti_air_attack_factor = 0.1
-		}
-		effect_tooltip = {
-			swap_ideas = {
-				remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_8_effect
-			}
-		}
-	}
-}
-
 
 #GAW setup
 country_event = {
