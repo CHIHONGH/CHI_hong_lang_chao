@@ -56,7 +56,6 @@ country_event = {
         name = prcs.3003.b
         add_political_power = -50
         custom_effect_tooltip = PRC_tfr_nl_china_new_hkway_tt
-        add_ideas = PRC_Organizacion_del_Partido_idea
         country_event = {
             id = prcs.3006
             days = 180
@@ -642,6 +641,11 @@ country_event = {
     }
     option = {
         name = prcs.3017.b
+        country_event = {
+            id = prcs.3018
+            days = 13
+            random_days = 9
+        }
         custom_effect_tooltip = PRC_tfr_nl_china_heiyun_b_tt
         add_political_power = -50
         add_stability = -0.1
@@ -818,7 +822,7 @@ country_event = {
         effect_tooltip = {
             swap_ideas = {
                 remove_idea = PRC_party_rectification_campaign_empty
-                add_idea = PRC_PRC_party_rectification_campaign_xinzang
+                add_idea = PRC_party_rectification_campaign_xinzang
             }
         }
         add_to_variable = {
@@ -1247,7 +1251,7 @@ country_event = {
         name = prcs.3039.a
         country_event = {
             id = prcs.3040
-            days = 0
+            days = 2
         }
     }
 }
@@ -1811,7 +1815,6 @@ country_event = {
     id = prcs.3071
     title = prcs.3071.t
     desc = prcs.3071.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -2128,6 +2131,10 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3091.a
+        country_event = {
+            id = prcs.3092
+            days = 3
+        }
     }
 }
 country_event = {
@@ -2138,6 +2145,10 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3092.a
+        country_event = {
+            id = prcs.3093
+            days = 2
+        }
     }
 }
 country_event = {
@@ -2148,6 +2159,18 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3093.a
+        hidden_effect = {
+            JAP = {
+                country_event = {
+                    id = prcs.3094
+                    days = 3
+                }
+            }
+        }
+        country_event = {
+            id = prcs.3094
+            days = 2
+        }
     }
 }
 country_event = {
@@ -2157,7 +2180,19 @@ country_event = {
 
     is_triggered_only = yes
     option = {
-        name = prcs.3090.a
+        name = prcs.3094.a
+        trigger = {
+            tag = JAP
+        }
+        hidden_effect = {
+            JAP = {
+                add_to_faction = PTF
+            }
+            news_event = prcs.3118
+        }
+    }
+    option = {
+        name = prcs.3094.b
     }
 }
 country_event = {
@@ -2170,7 +2205,8 @@ country_event = {
         tag = PRC
     }
     option = {
-        name = prcs.3090.a
+        name = prcs.3095.a
+        custom_effect_tooltip = PRC_tfr_nl_china_jianchayijiangao_tt
         country_event = {
             id = prcs.3068
             days = 11
@@ -2485,11 +2521,8 @@ country_event = {
     id = prcs.3117
     title = prcs.3117.t
     desc = prcs.3117.d
-
+    picture = GFX_NYPD
     is_triggered_only = yes
-    trigger = {
-        tag = PRC
-    }
     option = {
         name = prcs.3117.a
     }
@@ -2498,7 +2531,6 @@ news_event = {
     id = prcs.3118
     title = prcs.3118.t
     desc = prcs.3118.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     major = yes
     option = {
@@ -2570,8 +2602,13 @@ country_event = {
     desc = prcs.3122.d
 
     is_triggered_only = yes
-    trigger = {
-        tag = PRC
+    immediate = {
+        hidden_effect = {
+            news_event = {
+                id = prcs.3167
+                days = 4
+            }
+        }
     }
     option = {
         name = prcs.3122.a
@@ -3631,6 +3668,7 @@ news_event = {
     desc = prcs.3167.d
     major = yes
     is_triggered_only = yes
+    picture = GFX_united_states_army
     trigger = {
         tag = PRC
     }
@@ -3690,7 +3728,6 @@ country_event = {
     id = prcs.3171
     title = prcs.3171.t
     desc = prcs.3171.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
 
@@ -3788,7 +3825,6 @@ country_event = {
     id = prcs.3172
     title = prcs.3172.t
     desc = prcs.3172.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
 
@@ -3881,7 +3917,6 @@ country_event = {
     id = prcs.3173
     title = prcs.3173.t
     desc = prcs.3173.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
 
@@ -3993,7 +4028,6 @@ country_event = {
     id = prcs.3174
     title = prcs.3174.t
     desc = prcs.3174.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
 
@@ -4019,7 +4053,6 @@ country_event = {
     id = prcs.3175
     title = prcs.3175.t
     desc = prcs.3175.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3175.a
@@ -4030,7 +4063,6 @@ country_event = {
     id = prcs.3176
     title = prcs.3176.t
     desc = prcs.3176.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3176.a
@@ -4042,7 +4074,6 @@ country_event = {
     id = prcs.3177
     title = prcs.3177.t
     desc = prcs.3177.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3177.a
@@ -4054,7 +4085,6 @@ country_event = {
     id = prcs.3178
     title = prcs.3178.t
     desc = prcs.3178.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3178.a
@@ -4070,7 +4100,6 @@ country_event = {
     id = prcs.3179
     title = prcs.3179.t
     desc = prcs.3179.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3179.a
@@ -4082,7 +4111,6 @@ country_event = {
     id = prcs.3180
     title = prcs.3180.t
     desc = prcs.3180.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3180.a
@@ -4094,7 +4122,6 @@ country_event = {
     id = prcs.3181
     title = prcs.3181.t
     desc = prcs.3181.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3181.a
@@ -4110,7 +4137,6 @@ country_event = {
     id = prcs.3182
     title = prcs.3182.t
     desc = prcs.3182.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3182.a
@@ -4122,7 +4148,6 @@ country_event = {
     id = prcs.3183
     title = prcs.3183.t
     desc = prcs.3183.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3183.a
@@ -4138,7 +4163,6 @@ country_event = {
     id = prcs.3184
     title = prcs.3184.t
     desc = prcs.3184.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3184.a
@@ -4166,7 +4190,6 @@ country_event = {
     id = prcs.3185
     title = prcs.3185.t
     desc = prcs.3185.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3185.a
@@ -4183,6 +4206,10 @@ country_event = {
             value = 0.05
         }
         PRC_add_influence_new = yes
+        country_event = {
+            id = prcs.3186
+            days = 3
+        }
     }
 }
 
@@ -4191,10 +4218,13 @@ country_event = {
     id = prcs.3186
     title = prcs.3186.t
     desc = prcs.3186.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3186.a
+        country_event = {
+            id = prcs.3187
+            days = 3
+        }
     }
 }
 
@@ -4203,10 +4233,13 @@ country_event = {
     id = prcs.3187
     title = prcs.3187.t
     desc = prcs.3187.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3187.a
+        country_event = {
+            id = prcs.3188
+            days = 5
+        }
     }
 }
 
@@ -4215,7 +4248,6 @@ country_event = {
     id = prcs.3188
     title = prcs.3188.t
     desc = prcs.3188.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3188.a
@@ -4232,7 +4264,6 @@ country_event = {
     id = prcs.3189
     title = prcs.3189.t
     desc = prcs.3189.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3189.a
@@ -4248,7 +4279,6 @@ country_event = {
     id = prcs.3190
     title = prcs.3190.t
     desc = prcs.3190.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3190.a
@@ -4260,7 +4290,6 @@ country_event = {
     id = prcs.3191
     title = prcs.3191.t
     desc = prcs.3191.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3191.a
@@ -4276,7 +4305,6 @@ country_event = {
     id = prcs.3192
     title = prcs.3192.t
     desc = prcs.3192.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3192.a
@@ -4292,7 +4320,6 @@ country_event = {
     id = prcs.3193
     title = prcs.3193.t
     desc = prcs.3193.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3193.a
@@ -4328,7 +4355,6 @@ country_event = {
     id = prcs.3194
     title = prcs.3194.t
     desc = prcs.3194.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3194.a
@@ -4441,7 +4467,6 @@ country_event = {
     id = prcs.3195
     title = prcs.3195.t
     desc = prcs.3195.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3195.a
@@ -4460,7 +4485,6 @@ country_event = {
     id = prcs.3196
     title = prcs.3196.t
     desc = prcs.3196.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3196.a
@@ -4478,7 +4502,6 @@ country_event = {
     id = prcs.3197
     title = prcs.3197.t
     desc = prcs.3197.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3197.a
@@ -4591,7 +4614,6 @@ country_event = {
     id = prcs.3198
     title = prcs.3198.t
     desc = prcs.3198.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
 
@@ -4697,7 +4719,6 @@ country_event = {
     id = prcs.3199
     title = prcs.3199.t
     desc = prcs.3199.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4718,7 +4739,6 @@ country_event = {
     id = prcs.3200
     title = prcs.3200.t
     desc = prcs.3200.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
 
@@ -4735,7 +4755,6 @@ country_event = {
     id = prcs.3201
     title = prcs.3201.t
     desc = prcs.3201.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4749,7 +4768,6 @@ country_event = {
     id = prcs.3202
     title = prcs.3202.t
     desc = prcs.3202.d
-    picture = GFX_ZHANWEIFU
 
     fire_only_once = yes
 
@@ -4770,14 +4788,12 @@ country_event = {
     id = prcs.3203
     title = prcs.3203.t
     desc = prcs.3203.d
-    picture = GFX_ZHANWEIFU
 
     fire_only_once = yes
 
     trigger = {
-        has_idea_with_trait = left_wing_economic_policy
         communism > 0.3
-        NOT = { has_country_flag = prcs_3203_fired }
+        date > 2024.1.1
     }
 
     mean_time_to_happen = {
@@ -4786,13 +4802,12 @@ country_event = {
 
     option = {
         name = prcs.3203.a
-        add_stability = -0.03
+        add_stability = 0.035
         add_political_power = -25
-        add_ideology_drift = {
+        add_popularity = {
             ideology = communism
-            value = -0.05
+            popularity = 0.05
         }
-        set_country_flag = prcs_3203_fired
     }
 }
 
@@ -4801,7 +4816,6 @@ country_event = {
     id = prcs.3204
     title = prcs.3204.t
     desc = prcs.3204.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4816,7 +4830,6 @@ country_event = {
     id = prcs.3205
     title = prcs.3205.t
     desc = prcs.3205.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4827,7 +4840,6 @@ country_event = {
     id = prcs.3206
     title = prcs.3206.t
     desc = prcs.3206.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4899,7 +4911,6 @@ country_event = {
     id = prcs.3208
     title = prcs.3208.t
     desc = prcs.3208.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4912,7 +4923,6 @@ country_event = {
     id = prcs.3209
     title = prcs.3209.t
     desc = prcs.3209.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4929,7 +4939,6 @@ country_event = {
     id = prcs.3210
     title = prcs.3210.t
     desc = prcs.3210.d
-    picture = GFX_ZHANWEIFU
 
     is_triggered_only = yes
     option = {
@@ -4946,7 +4955,6 @@ country_event = {
     id = prcs.3211
     title = prcs.3211.t
     desc = prcs.3211.d
-    picture = GFX_ZHANWEIFU
     is_triggered_only = yes
     option = {
         name = prcs.3211.a

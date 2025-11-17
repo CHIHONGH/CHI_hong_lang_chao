@@ -1,0 +1,547 @@
+focus_tree = {
+	id = NAX_focus
+	country = {
+		base = 0
+		modifier = {
+			add = 10
+			tag = NAX
+		}
+	}
+	default = no
+	#!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
+	focus = {
+		id = NAX_battle_for_liberation
+		icon = GFX_focus_NAX_battle_for_liberation
+		cost = 0.5
+		x = 4
+		y = 0
+		completion_reward = { 
+			declare_war_on = {
+				target = RAJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = JAP
+				type = annex_everything
+			}
+			hidden_effect = {
+				news_event = nlnews.5
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = NAX_rifles_on_load
+		icon = GFX_focus_NAX_rifles_on_load
+		cost = 1
+		x = -4
+		y = 1
+		relative_position_id = NAX_battle_for_liberation
+		prerequisite = {
+			focus = NAX_battle_for_liberation
+		}
+		completion_reward = {
+			custom_effect_tooltip = NAX_rifles_on_load_tooltip
+			hidden_effect = {
+				news_event = nlnews.6
+				PRC = {
+					add_to_faction = NAX
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	focus = {
+		id = NAX_mobilize_militia
+		icon = GFX_focus_NAX_mobilize_militia
+		cost = 2
+		x = -2
+		y = 1
+		relative_position_id = NAX_rifles_on_load
+		prerequisite = {
+			focus = NAX_rifles_on_load
+		}
+		completion_reward = {
+			random_controlled_state = {
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+					owner = NAX
+					count = 15
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAX_red_polia
+		icon = GFX_focus_NAX_red_polia
+		cost = 2
+		x = 0
+		y = 1
+		relative_position_id = NAX_mobilize_militia
+		prerequisite = {
+			focus = NAX_mobilize_militia
+		}
+		completion_reward = {
+			add_ideas = NAX_red_polia_idea
+		}
+	}
+	focus = {
+		id = NAX_reorganize_red_army
+		icon = GFX_focus_NAX_reorganize_red_army
+		cost = 2
+		x = 0
+		y = 1
+		relative_position_id = NAX_rifles_on_load
+		prerequisite = {
+			focus = NAX_rifles_on_load
+		}
+		completion_reward = {
+			random_controlled_state = {
+				create_unit = {
+					division = "name = \"Red Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.3"
+					owner = NAX
+					count = 10
+				}
+			}
+			NAX = {
+				add_equipment_to_stockpile = {
+                    type = infantry_equipment_1
+                    amount = 2500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = anti_tank_equipment_1
+                    amount = 600
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = anti_air_equipment_1
+                    amount = 400
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = motorized_equipment
+                    amount = 500
+                    producer = PRC
+                }
+			}
+		}
+	}
+	focus = {
+		id = NAX_burn_out_the_evil
+		icon = GFX_focus_NAX_burn_out_the_evil
+		cost = 2
+		x = 0
+		y = 2
+		relative_position_id = NAX_reorganize_red_army
+		prerequisite = {
+			focus = NAX_reorganize_red_army
+		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		id = NAX_unite_around_chairman_mao
+		icon = GFX_focus_NAX_unite_around_chairman_mao
+		cost = 2
+		x = 2
+		y = 1
+		relative_position_id = NAX_reorganize_red_army
+		prerequisite = {
+			focus = NAX_reorganize_red_army
+		}
+		completion_reward = {
+			PRC = {
+				give_guarantee = NAX
+			}
+			give_military_access = PRC
+			NAX = {
+				add_equipment_to_stockpile = {
+                    type = infantry_equipment_1
+                    amount = 1000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = anti_tank_equipment_1
+                    amount = 500
+                    producer = PRC
+                }
+			}
+		}
+	}
+	focus = {
+		id = NAX_crush_the_warlords
+		icon = GFX_focus_NAX_crush_the_warlords
+		cost = 2
+		x = 0
+		y = 1
+		relative_position_id = NAX_battle_for_liberation
+		prerequisite = {
+			focus = NAX_battle_for_liberation
+		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		id = NAX_revolutionary_intellectual
+		icon = GFX_focus_NAX_revolutionary_intellectual
+		cost = 2
+		x = -2
+		y = 1
+		relative_position_id = NAX_crush_the_warlords
+		prerequisite = {
+			focus = NAX_crush_the_warlords
+		}
+		completion_reward = {
+			add_manpower = 19000
+			NAX = {
+				add_equipment_to_stockpile = {
+                    type = infantry_equipment_1
+                    amount = 1000
+                    producer = PRC
+                }
+			}
+			random_controlled_state = {
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+					owner = NAX
+					count = 3
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAX_peoples_regime
+		icon = GFX_focus_NAX_peoples_regime
+		cost = 2
+		x = 0
+		y = 1
+		relative_position_id = NAX_crush_the_warlords
+		prerequisite = {
+			focus = NAX_crush_the_warlords
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.10
+			}
+		}
+	}
+	focus = {
+		id = NAX_unite_citizens
+		icon = GFX_focus_NAX_unite_citizens
+		cost = 2
+		x = 2
+		y = 1
+		relative_position_id = NAX_peoples_regime
+		prerequisite = {
+			focus = NAX_peoples_regime
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.045
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = NAX_order_of_revolution
+		icon = GFX_focus_NAX_order_of_revolution
+		cost = 2
+		x = 0
+		y = 2
+		relative_position_id = NAX_peoples_regime
+		prerequisite = {
+			focus = NAX_peoples_regime
+		}
+		completion_reward = {
+			add_stability = 0.10
+			every_state = {
+				limit = {
+					is_core_of = RAJ
+				}
+				add_compliance = 30
+				add_resistance = -30
+			}
+		}
+	}
+	focus = {
+		id = NAX_seed_of_revolution
+		icon = GFX_focus_NAX_seed_of_revolution
+		cost = 2
+		x = 4
+		y = 1
+		relative_position_id = NAX_battle_for_liberation
+		prerequisite = {
+			focus = NAX_battle_for_liberation
+		}
+		completion_reward = {
+			add_ideas = NAX_seed
+			set_temp_variable = {
+				var = poverty_development_var_temp 
+				value = 0.15
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = farming_development_var_temp 
+				value = 0.15
+			}
+			add_farming_development = yes
+			#括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
+			#value正值代表+ 负值代表减
+		}
+	}
+	focus = {
+		id = NAX_revolutionary_land_reform
+		icon = GFX_focus_NAX_revolutionary_land_reform
+		cost = 2
+		x = -1
+		y = 1
+		relative_position_id = NAX_seed_of_revolution
+		prerequisite = {
+			focus = NAX_seed_of_revolution
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = society_development_var_temp 
+				value = 0.20
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = farming_development_var_temp 
+				value = 0.10
+			}
+			add_farming_development = yes
+			#括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
+			#value正值代表+ 负值代表减
+			every_state = {
+				limit = {
+					is_core_of = RAJ
+				}
+				add_compliance = 15
+				add_resistance = -15
+			}
+			add_stability = 0,025
+		}
+	}
+	focus = {
+		id = NAX_control_factories
+		icon = GFX_focus_NAX_control_factories
+		cost = 2
+		x = 1
+		y = 1
+		relative_position_id = NAX_seed_of_revolution
+		prerequisite = {
+			focus = NAX_seed_of_revolution
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = industrial_development_var_temp 
+				value = 0.15
+			}
+			add_industrial_development = yes
+			#括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
+			#value正值代表+ 负值代表减
+			add_offsite_building = { type = arms_factory level = 2 }
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_ideas = NAX_factories
+		}
+	}
+	focus = {
+		id = NAX_rely_on_ourselves
+		icon = GFX_focus_NAX_rely_on_ourselves
+		cost = 2
+		x = 1
+		y = 1
+		relative_position_id = NAX_control_factories
+		prerequisite = {
+			focus = NAX_control_factories
+		}
+		completion_reward = {
+			1369 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			432 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAX_fuck_off_diseases
+		icon = GFX_focus_NAX_fuck_off_diseases
+		cost = 2
+		x = 0
+		y = 2
+		relative_position_id = NAX_seed_of_revolution
+		prerequisite = {
+			focus = NAX_seed_of_revolution
+		}
+		completion_reward = {
+			add_stability = 0.10
+			custom_effect_tooltip = NAX_new_en
+		}
+	}
+	focus = {
+		id = NAX_new_startup
+		icon = GFX_focus_NAX_new_startup
+		cost = 2
+		x = 0
+		y = 1
+		relative_position_id = NAX_fuck_off_diseases
+		prerequisite = {
+			focus = NAX_fuck_off_diseases
+		}
+		completion_reward = {
+			custom_effect_tooltip = NAX_new_en_1
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = NAX_clean_off_heng_river
+		icon = GFX_focus_NAX_clean_off_heng_river
+		cost = 1
+		x = 2
+		y = 1
+		relative_position_id = NAX_burn_out_the_evil
+		prerequisite = {
+			focus = NAX_burn_out_the_evil
+		}
+		prerequisite = {
+			focus = NAX_order_of_revolution
+		}
+		completion_reward = {
+			custom_effect_tooltip = NAX_clean_off_heng_river_tt
+			hidden_effect = {
+				435 = {
+					create_unit = {
+						division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+						owner = NAX
+						count = 5
+					}
+				}
+				1397 = {
+					create_unit = {
+						division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+						owner = NAX
+						count = 3
+					}
+				}
+			}
+			add_timed_idea = {
+				idea = BPGR
+				days = 10
+			}
+			every_state = {
+				limit = {
+					OR = { 
+						state = 437
+						state = 438
+						state = 1397
+						state = 435
+						state = 1398
+						state = 1399
+						state = 1371
+						state = 431
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAX_climbing_up_degan
+		icon = GFX_focus_NAX_climbing_up_degan
+		cost = 1
+		x = 2
+		y = 1
+		relative_position_id = NAX_order_of_revolution
+		prerequisite = {
+			focus = NAX_order_of_revolution
+		}
+		prerequisite = {
+			focus = NAX_new_startup
+		}
+		available = {
+			has_completed_focus = NAX_clean_off_heng_river
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			every_state = {
+				limit = {
+					OR = { 
+						state = 429
+						state = 427
+						state = 321
+						state = 372
+						state = 426
+						state = 425
+						state = 320
+						state = 423
+						state = 1418
+						state = 424
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAX_red_star_over_india
+		icon = GFX_focus_NAX_red_star_over_india
+		cost = 2
+		x = 0
+		y = 2
+		relative_position_id = NAX_order_of_revolution
+		prerequisite = {
+			focus = NAX_clean_off_heng_river
+		} 
+		prerequisite = {
+			focus = NAX_climbing_up_degan
+		}
+		available = {
+			has_full_control_of_state = 1370
+			has_full_control_of_state = 1398
+			has_full_control_of_state = 435
+			has_full_control_of_state = 1371
+			has_full_control_of_state = 431
+		}
+		completion_reward = {
+			add_stability = 0.25
+			random_controlled_state = {
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+					owner = NAX
+					count = 7
+				}
+			}
+		}
+	}
+}
