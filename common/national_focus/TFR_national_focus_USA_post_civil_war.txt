@@ -744,6 +744,18 @@ shared_focus = {
 				TOKEN = "[ROOT.GetTag]"
 			}
 		}
+		if = {
+			limit = { 
+				tag = PTF
+				has_completed_focus = USA_build_the_military_of_tomorrow
+			}
+			hidden_effect = {
+				load_focus_tree = PTF_American
+			}
+			effect_tooltip = {
+				focus_unlock = yes
+			}
+		}
 	}
 }
 
@@ -1150,6 +1162,17 @@ shared_focus = {
 		# 	unlock_decision_tooltip = USA_reassert_ourselves_decision
 		# }
 		unlock_decision_tooltip = USA_operation_gray_decision
+		if = {
+			limit = { 
+				tag = PTF
+				NOT = {
+					is_in_faction_with = JAP
+				}
+			}
+			JAP = {
+				add_to_faction = PTF
+			}
+		}
 		enable_wargoal_justification = yes
 	}
 }
@@ -1350,6 +1373,19 @@ shared_focus = {
 					}
 				}
 				TOKEN = "[ROOT.GetTag]"
+			}
+			
+		}
+		if = {
+			limit = { 
+				tag = PTF
+				has_completed_focus = USA_the_forgotten_farmlands
+			}
+			hidden_effect = {
+				load_focus_tree = PTF_American
+			}
+			effect_tooltip = {
+				focus_unlock = yes
 			}
 		}
 	}
