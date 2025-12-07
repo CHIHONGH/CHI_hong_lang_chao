@@ -7,7 +7,8 @@ focus_tree = {
 			tag = NAX
 		}
 	}
-	default = no
+
+	shared_focus = PRC_Southwestern_border_in_critical_condition
 	#!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
 	focus = {
 		id = NAX_battle_for_liberation
@@ -15,6 +16,9 @@ focus_tree = {
 		cost = 0.5
 		x = 4
 		y = 0
+		allow_branch = {
+			has_global_flag = pan_asian_war_ongoing
+		}
 		completion_reward = { 
 			declare_war_on = {
 				target = RAJ
