@@ -1,0 +1,53 @@
+add_namespace = nax
+news_event = {
+    id = nax.1
+    title = nax.1.t
+    desc = nax.1.d
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = nax.1.a
+    }
+}
+news_event = {
+    id = nax.2
+    title = nax.2.t
+    desc = nax.2.d
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = nax.2.a
+    }
+}
+
+country_event = {
+    id = nax.3
+    title = nax.3.t
+    desc = nax.3.d
+    is_triggered_only = yes
+    option = {
+        name = nax.3.a
+        if = {
+            limit = {
+                NAX = {
+                    has_country_flag = NAX_lost_indian_wool_war
+                }
+            }
+            news_event = {
+                id = nax.2
+                hours = 10
+            }
+        }
+        else_if = {
+            limit = {
+                NAX = {
+                    has_country_flag = NAX_win_indian_wool_war
+                }
+            }
+            news_event = {
+                id = nax.2
+                hours = 10
+            }
+        }
+    }
+}

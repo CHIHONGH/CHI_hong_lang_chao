@@ -2106,18 +2106,55 @@ PRC_dissolve_india = {
 			add_claim_by = LRJ
 		}
 	}
-	PRJ = {
-		transfer_state = 432
-		transfer_state = 1367
-		transfer_state = 789
-		transfer_state = 437
-		transfer_state = 1370
-		transfer_state = 1397
-		transfer_state = 1398
-		load_oob = "PRJ_civil_war"
-		set_capital = {
-			state = 1397
+	if = {
+		limit = {
+			NOT = {
+				country_exists = NAX
+			}
 		}
+		NAX = {
+			transfer_state = 1398
+			transfer_state = 1371
+			annex_country = {
+				target = BAN
+				transfer_troops = yes
+			}
+			set_capital = {
+				state = 1398
+			}
+			load_oob = "NAX_civil_war"
+			add_ideas = RAJ_indian_civil_war_idea
+			give_military_access = PRC
+			give_military_access = PAK
+		}
+	}
+	else_if = {
+		limit = { 
+			country_exists = NAX
+		}
+		NAX = {
+			transfer_state = 1398
+			transfer_state = 1371
+			transfer_state = 431
+			transfer_state = 435
+			transfer_state = 1083
+			annex_country = {
+				target = BAN
+				transfer_troops = yes
+			}
+			set_capital = {
+				state = 435
+			}
+			add_ideas = RAJ_indian_civil_war_idea
+			give_military_access = PRC
+			give_military_access = PAK
+		}
+	}
+	PRJ = {
+		transfer_state = 789
+		add_state_core = 789
+		load_oob = "PRJ_civil_war"
+		set_capital = { state = 789 }
 	}
 	PRC = {
 		country_event = china.456
@@ -2131,19 +2168,6 @@ PRC_dissolve_india = {
 		annex_country = {
 			target = SIK
 			transfer_troops = no
-		}
-	}
-	PRJ = {
-		set_politics = {
-			ruling_party = nationalist
-			last_election = "2016.11.8"
-			election_frequency = 48
-			elections_allowed = no
-		}
-		set_popularities = {
-			totalitarian_socialist = 33
-			nationalist = 34
-			libertarian_socialist = 33
 		}
 	}
 	PAK = {
@@ -2261,24 +2285,6 @@ PRC_dissolve_india = {
 		give_military_access = PRC
 		give_military_access = PAK
 	}
-	NAX = {
-		transfer_state = 435
-		transfer_state = 1372
-		transfer_state = 1371
-		1372 = {
-			add_core_of = NAX
-		}
-		435 = {
-			add_core_of = NAX
-		}
-		1371 = {
-			add_core_of = NAX
-		}
-		load_oob = "NAX_civil_war"
-		add_ideas = RAJ_indian_civil_war_idea
-		give_military_access = PRC
-		give_military_access = PAK
-	}
 	SLJ = {
 		transfer_state = 426
 		426 = {
@@ -2288,16 +2294,6 @@ PRC_dissolve_india = {
 		add_ideas = RAJ_indian_civil_war_idea
 		give_military_access = PRC
 		give_military_access = PAK
-	}
-	BAN = {
-		transfer_state = 431
-		transfer_state = 1369
-		give_military_access = PRC
-		give_military_access = PAK
-	}
-	BRM = {
-		transfer_state = 1366
-		transfer_state = 1368
 	}
 	RJN = {
 		transfer_state = 281

@@ -20,8 +20,8 @@ shared_focus = {
     completion_reward = {
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
-
         }
+        set_country_flag = PLA_reform_gui_enabled
         army_experience = 50
         navy_experience = 50
         air_experience = 50
@@ -2042,19 +2042,22 @@ shared_focus = {
         }
         add_military_development = yes
         add_society_development = yes
-        if = {
-            limit = {
-                has_idea = PLA_pl_JZGG_5
+        custom_effect_tooltip = PLA_DZHQ_4
+        hidden_effect = {
+            if = {
+                limit = {
+                    has_idea = PLA_pl_JZGG_5
+                }
+                swap_ideas = {
+                    remove_idea = PLA_pl_JZGG_5
+                    add_idea = PLA_pl_JZGG_6
+                }
             }
-            swap_ideas = {
-                remove_idea = PLA_pl_JZGG_5
-                add_idea = PLA_pl_JZGG_6
-            }
-        }
-        else = {
-            swap_ideas = {
-                remove_idea = PLA_pl_JZGG_4
-                add_idea = PLA_pl_JZGG_5
+            else = {
+                swap_ideas = {
+                    remove_idea = PLA_pl_JZGG_4
+                    add_idea = PLA_pl_JZGG_5
+                }
             }
         }
         custom_effect_tooltip = Chinese_military_reform_1_tt

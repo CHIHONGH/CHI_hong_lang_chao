@@ -1,13 +1,49 @@
 scripted_gui = {
+	RD_PLA_REFORM_OPEN_WINDOW = {
+		window_name = "RD_PLA_REFORM_OPEN_WINDOW" 
+		parent_window_name = decision_container
+		context_type = decision_category
+		ai_enabled = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		triggers = {
+			PRC_PLA_REFORM_OPEN_decisions_visible = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PLA_when_that_day_comes
+				}
+			}
+		}
+		effects = {
+			PRC_PLA_REFORM_OPEN_decisions_click = {
+				if = {
+					limit = { 
+						NOT = {
+							has_country_flag = PLA_reform_gui_enabled
+						}
+					}
+					set_country_flag = PLA_reform_gui_enabled
+				}
+				else = {
+					clr_country_flag = PLA_reform_gui_enabled
+				}
+			}
+		}
+	}
 	PRC_PLA_window = {
 		context_type = player_context
 		window_name = "RD_PLA_reform_window"
-		parent_window_name = "countrypoliticsview"
+		# parent_window_name = "countrypoliticsview"
 		visible = {
-			tag = PRC
-			has_completed_focus = PLA_when_that_day_comes
-			NOT = {
-				has_country_flag = PLA_reform_gui_enabled
+			AND = {
+				tag = PRC
+				has_completed_focus = PLA_when_that_day_comes
+				NOT = {
+					has_country_flag = PLA_reform_gui_enabled
+				}
 			}
 		}
 		effects = {

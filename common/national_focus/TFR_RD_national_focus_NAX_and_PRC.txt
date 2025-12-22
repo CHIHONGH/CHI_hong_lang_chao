@@ -52,6 +52,11 @@ joint_focus = {
     completion_reward_joint_originator = {
         custom_effect_tooltip = PRC_Mobilize_the_military_banners_tt
         custom_effect_tooltip = War_situation_PRC_tt
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 2.5
+        }
+        TFR_NAX_weapon_effects = yes
         hidden_effect = {
             1152 = {
                 create_unit = {
@@ -107,6 +112,11 @@ joint_focus = {
     relative_position_id = PRC_Mobilize_the_military
     completion_reward_joint_originator = {
         custom_effect_tooltip = PRC_Ensure_logistical_support_banners_tt
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 2.5
+        }
+        TFR_NAX_weapon_effects = yes
         add_equipment_to_stockpile = {
             type = light_mechanized_equipment_1
             amount = 1050
@@ -203,6 +213,11 @@ joint_focus = {
     }
     completion_reward_joint_originator = {
         custom_effect_tooltip = PRC_and_NAX_Supply_Coordination_banners_tt
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 5
+        }
+        TFR_NAX_weapon_effects = yes
         NAX = {
             set_temp_variable = {
                 var = military_development_var_temp
@@ -311,6 +326,11 @@ joint_focus = {
             focus_unlock = yes
         }
         custom_effect_tooltip = PRC_start_border_war_tt
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 5
+        }
+        TFR_NAX_weapon_effects = yes
         hidden_effect = {
             PRC = {
                 start_border_war = {
@@ -392,6 +412,11 @@ joint_focus = {
         custom_effect_tooltip = RAJ_Aggravate_internal_instability_in_India
         army_experience = 10
         set_country_flag = War_situation_flag
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var
+            value = 5
+        }
+        TFR_NAX_theory_effects = yes
         hidden_effect = {
             RAJ = {
                 add_stability = -0.50
@@ -451,6 +476,21 @@ joint_focus = {
     completion_reward_joint_originator = {
         custom_effect_tooltip = NAX_The_Liberation_War_banners_tt
         army_experience = 25
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var 
+            value = 3.5
+        }
+        TFR_NAX_theory_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_approval_rating_temp_var
+            value = 5
+        }
+        TFR_NAX_approval_rating_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_approval_rating_temp_var
+            value = 5
+        }
+        TFR_NAX_approval_rating_effects = yes
     }
     completion_reward = {
         custom_effect_tooltip = War_situation_tt
@@ -495,6 +535,17 @@ joint_focus = {
     completion_reward_joint_originator = {
         custom_effect_tooltip = NAX_Launch_a_guerrilla_war_banners_tt
         custom_effect_tooltip = NAX_Launch_a_guerrilla_war_tt
+        add_manpower = 9000
+        set_temp_variable = {
+            var = global.NAX_rd_approval_rating_temp_var
+            value = 10.5
+        }
+        TFR_NAX_approval_rating_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var
+            value = 7.5
+        }
+        TFR_NAX_theory_effects = yes
         damage_units = {
             state = 434
             damage = 0.15

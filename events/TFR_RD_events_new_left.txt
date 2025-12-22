@@ -2279,9 +2279,7 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = Chihong.42.a
-        CHI = {
-            add_manpower = -1
-        }
+        add_manpower = -1
         ai_chance = {
             base = 50
         }
@@ -3022,6 +3020,7 @@ country_event = {
         add_to_variable = {
             NAX_and_raj_war_var = 1
         }
+        set_country_flag = PRC_NAX_indian_wool_war_ongoing
         custom_effect_tooltip = NAX_raj_Guerrilla_war_2_tt
         country_event = {
             id = Chihong.92
@@ -3034,6 +3033,7 @@ country_event = {
         add_to_variable = {
             NAX_and_raj_war_var = 1
         }
+        set_country_flag = PRC_NAX_indian_wool_war_ongoing
         custom_effect_tooltip = NAX_raj_Guerrilla_war_3_tt
         country_event = {
             id = Chihong.93
@@ -3091,9 +3091,11 @@ country_event = {
         set_country_flag = NAX_raj_Guerrilla_war_flag
         set_country_flag = {
             flag = NAX_raj_Guerrilla_war_time_flag
-            days = 180
+            days = 120
         }
+        unlock_decision_category_tooltip = NAX_aiding_the_Naxalites_category
         hidden_effect = {
+		    activate_mission = NAX_Limited_Time_Mission
             NAX = {
                 complete_national_focus = PRC_Southwestern_border_in_critical_condition
             }
@@ -3129,9 +3131,11 @@ country_event = {
         set_country_flag = NAX_raj_Guerrilla_war_flag
         set_country_flag = {
             flag = NAX_raj_Guerrilla_war_time_flag
-            days = 180
+            days = 120
         }
+        unlock_decision_category_tooltip = NAX_aiding_the_Naxalites_category
         hidden_effect = {
+            activate_mission = NAX_Limited_Time_Mission
             NAX = {
                 complete_national_focus = PRC_Southwestern_border_in_critical_condition
             }
@@ -3190,11 +3194,6 @@ country_event = {
         name = Chihong.96.a
         add_to_variable = {
             War_situation_var = 1
-        }
-        NAX = {
-            add_to_variable = {
-                War_situation_var = 1
-            }
         }
         ai_chance = { factor = 1000 }
     }

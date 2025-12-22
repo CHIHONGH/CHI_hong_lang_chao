@@ -409,11 +409,6 @@ PRC_export_revolution = {
                         communist = 100
                     }
                 }
-                create_country_leader = {
-                    name = LAO_tonglun
-                    picture = "gfx/leaders/LAO_tonglun.png"
-                    ideology = left_nationalism
-                }
             }
             PRC = {
                 add_to_faction = LAO
@@ -684,6 +679,53 @@ PRC_export_revolution = {
                     }
                     priority = 0
                 }
+                division_template = {
+                    name = "Militia divisions"
+                    is_locked = no
+                    force_allow_recruiting = yes
+                    regiments = {
+                        militia = {
+                            x = 0
+                            y = 0
+                        }
+                        militia = {
+                            x = 0
+                            y = 1
+                        }
+                        militia = {
+                            x = 0
+                            y = 2
+                        }
+                        militia = {
+                            x = 0
+                            y = 3
+                        }
+                        militia = {
+                            x = 0
+                            y = 4
+                        }
+                    }
+                    priority = 0
+                }
+                division_template = {
+                    name = "Infantry Division"
+                    is_locked = no
+                    force_allow_recruiting = yes
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 0 y = 2 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 1 y = 2 }
+                        artillery_brigade = { x = 1 y = 3 }
+                    }
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                        artillery = { x = 0 y = 1 }
+                    }
+                    priority = 0
+                }
                 capital_scope = {
                     create_unit = {
                         division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
@@ -824,6 +866,25 @@ PRC_export_revolution = {
                     }
                     priority = 0
                 }
+                division_template = {
+                    name = "Infantry Division"
+                    is_locked = no
+                    force_allow_recruiting = yes
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 0 y = 2 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 1 y = 2 }
+                        artillery_brigade = { x = 1 y = 3 }
+                    }
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                        artillery = { x = 0 y = 1 }
+                    }
+                    priority = 0
+                }
                 capital_scope = {
                     create_unit = {
                         division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
@@ -947,6 +1008,7 @@ PRC_export_revolution = {
                 transfer_state = 721
                 add_state_core = 667
                 set_state_controller = 334
+                
                 division_template = {
                     name = "Militia divisions"
                     is_locked = no
@@ -972,6 +1034,25 @@ PRC_export_revolution = {
                             x = 0
                             y = 4
                         }
+                    }
+                    priority = 0
+                }
+                division_template = {
+                    name = "Infantry Division"
+                    is_locked = no
+                    force_allow_recruiting = yes
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 0 y = 2 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 1 y = 2 }
+                        artillery_brigade = { x = 1 y = 3 }
+                    }
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                        artillery = { x = 0 y = 1 }
                     }
                     priority = 0
                 }
@@ -1635,6 +1716,7 @@ PRC_export_revolution = {
                 PRC = {
                     add_to_faction = NEP
                 }
+                promote_character = NEP_jilan
                 set_politics = {
                     ruling_party = totalitarian_socialist
                     elections_allowed = no
@@ -1911,13 +1993,6 @@ PRC_export_revolution = {
                     ideology = communist
                     popularity = 0.1
                 }
-                PRC = {
-                    set_autonomy = {
-                        tag = PAK
-                        autonomy_state = autonomy_communist
-                    }
-                    freedom_level = 0.3
-                }
                 clr_country_flag = Pakistan_selected
             }
         }
@@ -2047,9 +2122,13 @@ PRC_export_revolution = {
         fire_only_once = yes
         cost = 100
         days_remove = 56
+        complete_effect = {
+            set_country_flag = PRC_reunite_red_india
+        }
         remove_effect = {
             custom_effect_tooltip = PRC_ina_1
-            set_country_flag = PRC_reunite_red_india
+            
+            add_political_power = 15
         }
         ai_will_do = {
             base = 10
