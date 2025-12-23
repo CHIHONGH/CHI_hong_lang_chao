@@ -3798,6 +3798,38 @@ PRC_ready_for_global_economy_destory_category = {
 }
 
 PRC_maoist_politburo_cat = {
+	PRC_clean_up_zangnan = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			AND = {
+				has_full_control_of_state = 434			#PRC_the_red_phoenix
+				NOT = {
+					has_country_flag = NAX_raj_Guerrilla_war_flag
+				}
+			}
+		}
+		available = {
+		}
+		cost = 200
+		fire_only_once = yes
+		days_remove = 60
+		highlight_states = {
+			highlight_state_targets = {
+				state = 434
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_state_core = 434
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
 	PRC_clean_up_kinmen = {
 		icon = GFX_PRC_soliders
 		allowed = {

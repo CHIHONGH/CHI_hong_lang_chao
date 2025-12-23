@@ -6,15 +6,15 @@ NAX_aiding_the_Naxalites_category = {
             custom_trigger_tooltip = {
                 tooltip = NAX_Limited_Time_Mission_tt
                 check_variable = {
-                    var = global.NAX_rd_theory_temp_var
+                    var = global.NAX_theory_var
                     value > 75
                 }
                 check_variable = {
-                    var = global.NAX_rd_approval_rating_temp_var
+                    var = global.NAX_approval_rating_var
                     value > 75
                 }
                 check_variable = {
-                    var = global.NAX_rd_weapon_temp_var
+                    var = global.NAX_weapon_var
                     value > 75
                 }
             }
@@ -32,8 +32,12 @@ NAX_aiding_the_Naxalites_category = {
         is_good = no
         timeout_effect = {
             custom_effect_tooltip = NAX_NAX_Limited_Time_Mission_tt
-            hidden_effect = {
+            NAX = {
                 set_country_flag = NAX_lost_indian_wool_war
+            }
+            hidden_effect = {
+                remove_mission = NAX_Nasser_Mass_Power
+                remove_mission = NAX_Limited_Time_Mission
                 country_event = {
                     id = nax.3
                     hours = 10
@@ -93,9 +97,13 @@ NAX_aiding_the_Naxalites_category = {
             }
         }
         complete_effect = {
-            set_country_flag = NAX_win_indian_wool_war
             custom_effect_tooltip = NAX_NAX_Limited_Time_Mission_tt
+            NAX = {
+                set_country_flag = NAX_win_indian_wool_war
+            }
             hidden_effect = {
+                remove_mission = NAX_Nasser_Mass_Power
+                remove_mission = NAX_Limited_Time_Mission
                 country_event = {
                     id = nax.3
                     hours = 10
@@ -123,12 +131,117 @@ NAX_aiding_the_Naxalites_category = {
 
     }
     NAX_Assisting_Nasser_with_weapons_and_equipment = {
-
+        priority = 100
+        icon = GFX_PRC_Reinforce_Communism
+        available = {
+            has_equipment = {
+                infantry_equipment > 999
+            }
+            has_completed_focus = PRC_and_NAX_Supply_Coordination
+        }
+        visible = {
+            has_country_flag = PRC_NAX_indian_wool_war_ongoing
+        }
+        cost = 35
+        days_remove = 5
+        days_re_enable = 3
+        fire_only_once = no
+        complete_effect = {
+            hidden_effect = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = -350
+                }
+            }
+            set_temp_variable = {
+                var = global.NAX_rd_weapon_temp_var
+                value = 8.5
+            }
+            TFR_NAX_weapon_effects = yes
+            NAX = {
+                add_war_support = 0.005
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 150
+                }
+            }
+        }
     }
     NAX_Guiding_Nasser_Theory = {
-
+        priority = 100
+        icon = GFX_PRC_Reinforce_Communism
+        available = {
+            has_completed_focus = PRC_Mobilize_the_military
+            has_political_power > 50
+        }
+        visible = {
+            has_country_flag = PRC_NAX_indian_wool_war_ongoing
+        }
+        cost = 50
+        days_remove = 5
+        days_re_enable = 3
+        fire_only_once = no
+        complete_effect = {
+            set_temp_variable = {
+                var = global.NAX_rd_theory_temp_var
+                value = 8.5
+            }
+            TFR_NAX_theory_effects = yes
+            if = {
+                limit = {
+                    NOT = {
+                        has_country_flag = NAX_popularity_party_flag
+                    }
+                }
+                set_country_flag = NAX_popularity_party_flag
+                NAX = {
+                    set_temp_variable = {
+                        coalition_partner_var_temp = token:communist
+                    }
+                    add_to_coalition = yes
+                }
+            }
+            else = {
+                NAX = {
+                    add_political_power = 15
+                    add_popularity = {
+                        ideology = communist
+                        popularity = 0.05
+                    }
+                    add_popularity = {
+                        ideology = totalitarian_socialist
+                        popularity = 0.05
+                    }
+                }
+            }
+        }
     }
     NAX_Nasser_Mass_Power = {
-
+        priority = 0
+        icon = GFX_PRC_Reinforce_Communism
+        available = {
+            NOT = {
+                has_country_flag = NAX_raj_Guerrilla_war_flag
+            }
+        }
+        activation = {
+            hidden_trigger = {
+                always = no
+            }
+        }
+        days_re_enable = 2
+        fire_only_once = no
+        is_good = no
+        days_mission_timeout = 5
+        timeout_effect = {
+            set_temp_variable = {
+                var = global.NAX_rd_approval_rating_temp_var
+                value = 5
+            }
+            TFR_NAX_approval_rating_effects = yes
+            NAX = {
+                add_stability = 0.005
+            }
+        }
     }
 }

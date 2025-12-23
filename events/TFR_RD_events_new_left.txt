@@ -3008,6 +3008,8 @@ country_event = {
         name = Chihong.90.a
         ai_chance = { factor = 10 }
         set_country_flag = NAX_War_whether_to_choose_flag
+        set_country_flag = NAX_raj_Guerrilla_war_flag
+        focus_unlock = yes
         custom_effect_tooltip = NAX_raj_Guerrilla_war_1_tt
         country_event = {
             id = Chihong.91
@@ -3020,7 +3022,8 @@ country_event = {
         add_to_variable = {
             NAX_and_raj_war_var = 1
         }
-        set_country_flag = PRC_NAX_indian_wool_war_ongoing
+        set_country_flag = NAX_raj_Guerrilla_war_flag
+        focus_unlock = yes
         custom_effect_tooltip = NAX_raj_Guerrilla_war_2_tt
         country_event = {
             id = Chihong.92
@@ -3033,7 +3036,8 @@ country_event = {
         add_to_variable = {
             NAX_and_raj_war_var = 1
         }
-        set_country_flag = PRC_NAX_indian_wool_war_ongoing
+        set_country_flag = NAX_raj_Guerrilla_war_flag
+        focus_unlock = yes
         custom_effect_tooltip = NAX_raj_Guerrilla_war_3_tt
         country_event = {
             id = Chihong.93
@@ -3052,7 +3056,12 @@ country_event = {
     is_triggered_only = yes
     immediate = {
         hidden_effect = {
-            focus_unlock = yes
+            NAX = {
+                transfer_state = 1369
+                1369 = {
+                    add_core_of = NAX
+                }
+            }
         }
     }
     option = {
@@ -3074,21 +3083,20 @@ country_event = {
     is_triggered_only = yes
     immediate = {
         hidden_effect = {
-            focus_unlock = yes
+            set_country_flag = PRC_NAX_indian_wool_war_ongoing
             NAX = {
-                set_country_flag = NAX_raj_Guerrilla_war_flag
-                focus_unlock = yes
                 transfer_state = 1369
                 1369 = {
                     add_core_of = NAX
                 }
+                set_country_flag = NAX_raj_Guerrilla_war_flag
+                focus_unlock = yes
             }
         }
     }
     option = {
         name = Chihong.92.a
         ai_chance = { factor = 100 }
-        set_country_flag = NAX_raj_Guerrilla_war_flag
         set_country_flag = {
             flag = NAX_raj_Guerrilla_war_time_flag
             days = 120
@@ -3114,21 +3122,20 @@ country_event = {
     is_triggered_only = yes
     immediate = {
         hidden_effect = {
-            focus_unlock = yes
+            set_country_flag = PRC_NAX_indian_wool_war_ongoing
             NAX = {
+                set_country_flag = NAX_raj_Guerrilla_war_flag
+                focus_unlock = yes
                 transfer_state = 1369
                 1369 = {
                     add_core_of = NAX
                 }
-                set_country_flag = NAX_raj_Guerrilla_war_flag
-                focus_unlock = yes
             }
         }
     }
     option = {
         name = Chihong.93.a
         ai_chance = { factor = 100 }
-        set_country_flag = NAX_raj_Guerrilla_war_flag
         set_country_flag = {
             flag = NAX_raj_Guerrilla_war_time_flag
             days = 120
@@ -3195,6 +3202,11 @@ country_event = {
         add_to_variable = {
             War_situation_var = 1
         }
+        NAX = {
+            add_to_variable = {
+                War_situation_var = 1
+            }
+        }
         ai_chance = { factor = 1000 }
     }
 }
@@ -3211,6 +3223,11 @@ country_event = {
         add_to_variable = {
             War_situation_var = 1
         }
+        NAX = {
+            add_to_variable = {
+                War_situation_var = 1
+            }
+        }
         ai_chance = { factor = 1000 }
     }
 }
@@ -3226,6 +3243,11 @@ country_event = {
         name = Chihong.98.a
         add_to_variable = {
             War_situation_var = 1
+        }
+        NAX = {
+            add_to_variable = {
+                War_situation_var = 1
+            }
         }
         ai_chance = { factor = 1000 }
     }

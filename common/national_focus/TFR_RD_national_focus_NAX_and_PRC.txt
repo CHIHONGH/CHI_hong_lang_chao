@@ -20,6 +20,11 @@ shared_focus = {
         hidden_effect = {
             NAX = {
                 add_war_support = 0.095
+                set_party_name = {
+                    ideology = communist
+                    long_name = NAX_nationalist_party_new_long
+                    name = NAX_nationalist_party_new
+                }
             }
         }
     }
@@ -52,6 +57,7 @@ joint_focus = {
     completion_reward_joint_originator = {
         custom_effect_tooltip = PRC_Mobilize_the_military_banners_tt
         custom_effect_tooltip = War_situation_PRC_tt
+        unlock_decision_tooltip = NAX_Guiding_Nasser_Theory
         set_temp_variable = {
             var = global.NAX_rd_weapon_temp_var
             value = 2.5
@@ -71,7 +77,7 @@ joint_focus = {
             cost_reduction = 0.35
             uses = 1
             category = land_doctrine
-        }	
+        }
         army_experience = -100
         set_temp_variable = {
             PRC_army_reform_progress_temp = 1.5
@@ -213,6 +219,7 @@ joint_focus = {
     }
     completion_reward_joint_originator = {
         custom_effect_tooltip = PRC_and_NAX_Supply_Coordination_banners_tt
+        unlock_decision_tooltip = NAX_Assisting_Nasser_with_weapons_and_equipment
         set_temp_variable = {
             var = global.NAX_rd_weapon_temp_var
             value = 5
@@ -225,11 +232,11 @@ joint_focus = {
             }
             add_military_development = yes
             add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.75
-				uses = 1
-				category = land_doctrine
-			}	
+                name = land_doc_bonus
+                cost_reduction = 0.75
+                uses = 1
+                category = land_doctrine
+            }
             add_equipment_to_stockpile = {
                 type = infantry_equipment_1
                 amount = 7500
@@ -339,9 +346,6 @@ joint_focus = {
                     attacker = {
                         state = 434
                         num_provinces = 4
-                        on_win = Chihong.98
-                        on_lose = Chihong.96
-                        on_cancel = Chihong.97
                     }
                     defender = {
                         state = 1152
@@ -390,7 +394,7 @@ joint_focus = {
         custom_trigger_tooltip = {
             tooltip = War_situation
             check_variable = {
-                War_situation_var = 3
+                War_situation_var = 4
             }
         }
     }
@@ -411,7 +415,6 @@ joint_focus = {
         custom_effect_tooltip = NAX_The_dawn_breaks_through_the_long_nightn_banners_tt
         custom_effect_tooltip = RAJ_Aggravate_internal_instability_in_India
         army_experience = 10
-        set_country_flag = War_situation_flag
         set_temp_variable = {
             var = global.NAX_rd_theory_temp_var
             value = 5
@@ -475,22 +478,28 @@ joint_focus = {
     relative_position_id = PRC_Southwestern_border_in_critical_condition
     completion_reward_joint_originator = {
         custom_effect_tooltip = NAX_The_Liberation_War_banners_tt
+        activate_mission_tooltip = NAX_Nasser_Mass_Power
+        hidden_effect = {
+            PRC = {
+                activate_mission = NAX_Nasser_Mass_Power
+            }
+        }
         army_experience = 25
         set_temp_variable = {
-            var = global.NAX_rd_theory_temp_var 
+            var = global.NAX_rd_weapon_temp_var
             value = 3.5
         }
+        TFR_NAX_weapon_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_approval_rating_temp_var
+            value = 5
+        }
+        TFR_NAX_approval_rating_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var
+            value = 5
+        }
         TFR_NAX_theory_effects = yes
-        set_temp_variable = {
-            var = global.NAX_rd_approval_rating_temp_var
-            value = 5
-        }
-        TFR_NAX_approval_rating_effects = yes
-        set_temp_variable = {
-            var = global.NAX_rd_approval_rating_temp_var
-            value = 5
-        }
-        TFR_NAX_approval_rating_effects = yes
     }
     completion_reward = {
         custom_effect_tooltip = War_situation_tt
@@ -641,6 +650,12 @@ joint_focus = {
         clr_country_flag = NAX_raj_Guerrilla_war_flag
         hidden_effect = {
             focus_unlock = yes
+            custom_effect_tooltip = NAX_win_war_tt
+            custom_effect_tooltip = tooltip_white_line
+            unlock_decision_tooltip = PRC_clean_up_zangnan
+            custom_effect_tooltip = NAX_lost_war_tt
+            custom_effect_tooltip = tooltip_white_line
+            unlock_decision_tooltip = PRC_clean_up_zangnan
             NAX = {
                 clr_country_flag = NAX_raj_Guerrilla_war_flag
                 focus_unlock = yes
