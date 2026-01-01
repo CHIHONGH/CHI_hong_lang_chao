@@ -2279,9 +2279,7 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = Chihong.42.a
-        CHI = {
-            add_manpower = -1
-        }
+        add_manpower = -1
         ai_chance = {
             base = 50
         }
@@ -2992,7 +2990,7 @@ country_event = {
     desc = Chihong.90.d
     picture = GFX_SOV_secret_documents
     mean_time_to_happen = {
-        days = 5
+        days = 35
     }
     fire_only_once = yes
     trigger = {
@@ -3009,6 +3007,10 @@ country_event = {
     option = {
         name = Chihong.90.a
         ai_chance = { factor = 10 }
+        set_country_flag = NAX_War_whether_to_choose_flag
+        set_country_flag = NAX_raj_Guerrilla_war_flag
+        focus_unlock = yes
+        custom_effect_tooltip = NAX_raj_Guerrilla_war_1_tt
         country_event = {
             id = Chihong.91
             days = 7
@@ -3017,6 +3019,12 @@ country_event = {
     option = {
         name = Chihong.90.b
         ai_chance = { factor = 30 }
+        add_to_variable = {
+            NAX_and_raj_war_var = 1
+        }
+        set_country_flag = NAX_raj_Guerrilla_war_flag
+        focus_unlock = yes
+        custom_effect_tooltip = NAX_raj_Guerrilla_war_2_tt
         country_event = {
             id = Chihong.92
             days = 10
@@ -3025,6 +3033,12 @@ country_event = {
     option = {
         name = Chihong.90.c
         ai_chance = { factor = 60 }
+        add_to_variable = {
+            NAX_and_raj_war_var = 1
+        }
+        set_country_flag = NAX_raj_Guerrilla_war_flag
+        focus_unlock = yes
+        custom_effect_tooltip = NAX_raj_Guerrilla_war_3_tt
         country_event = {
             id = Chihong.93
             days = 8
@@ -3040,10 +3054,22 @@ country_event = {
     picture = GFX_SOV_secret_documents
 
     is_triggered_only = yes
-
+    immediate = {
+        hidden_effect = {
+            NAX = {
+                transfer_state = 1369
+                1369 = {
+                    add_core_of = NAX
+                }
+            }
+        }
+    }
     option = {
         name = Chihong.91.a
         ai_chance = { factor = 100 }
+        hidden_effect = {
+            complete_national_focus = PRC_Southwestern_border_in_critical_condition
+        }
     }
 }
 
@@ -3055,10 +3081,34 @@ country_event = {
     picture = GFX_SOV_secret_documents
 
     is_triggered_only = yes
-
+    immediate = {
+        hidden_effect = {
+            set_country_flag = PRC_NAX_indian_wool_war_ongoing
+            NAX = {
+                transfer_state = 1369
+                1369 = {
+                    add_core_of = NAX
+                }
+                set_country_flag = NAX_raj_Guerrilla_war_flag
+                focus_unlock = yes
+            }
+        }
+    }
     option = {
         name = Chihong.92.a
         ai_chance = { factor = 100 }
+        set_country_flag = {
+            flag = NAX_raj_Guerrilla_war_time_flag
+            days = 120
+        }
+        unlock_decision_category_tooltip = NAX_aiding_the_Naxalites_category
+        hidden_effect = {
+		    activate_mission = NAX_Limited_Time_Mission
+            NAX = {
+                complete_national_focus = PRC_Southwestern_border_in_critical_condition
+            }
+            complete_national_focus = PRC_Southwestern_border_in_critical_condition
+        }
     }
 }
 
@@ -3070,10 +3120,136 @@ country_event = {
     picture = GFX_SOV_secret_documents
 
     is_triggered_only = yes
-
+    immediate = {
+        hidden_effect = {
+            set_country_flag = PRC_NAX_indian_wool_war_ongoing
+            NAX = {
+                set_country_flag = NAX_raj_Guerrilla_war_flag
+                focus_unlock = yes
+                transfer_state = 1369
+                1369 = {
+                    add_core_of = NAX
+                }
+            }
+        }
+    }
     option = {
         name = Chihong.93.a
         ai_chance = { factor = 100 }
+        set_country_flag = {
+            flag = NAX_raj_Guerrilla_war_time_flag
+            days = 120
+        }
+        unlock_decision_category_tooltip = NAX_aiding_the_Naxalites_category
+        hidden_effect = {
+            activate_mission = NAX_Limited_Time_Mission
+            NAX = {
+                complete_national_focus = PRC_Southwestern_border_in_critical_condition
+            }
+            complete_national_focus = PRC_Southwestern_border_in_critical_condition
+        }
+    }
+}
+
+# Chihong.94
+country_event = {
+    id = Chihong.94
+    title = Chihong.94.t
+    desc = Chihong.94.d
+    hidden = yes
+    timeout_days = 10
+    trigger = {
+        AND = {
+            has_completed_focus = PRC_Mobilize_the_military
+            has_country_flag = NAX_War_whether_to_choose_flag
+        }
+    }
+    fire_only_once = yes
+    mean_time_to_happen = {
+        days = 10
+    }
+    option = {
+        country_event = Chihong.95
+    }
+}
+
+# Chihong.95
+country_event = {
+    id = Chihong.95
+    title = Chihong.95.t
+    desc = Chihong.95.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.95.a
+        add_to_variable = {
+            War_situation_var = 1
+        }
+        ai_chance = { factor = 1000 }
+    }
+}
+
+country_event = {
+    id = Chihong.96
+    title = Chihong.96.t
+    desc = Chihong.96.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.96.a
+        add_to_variable = {
+            War_situation_var = 1
+        }
+        NAX = {
+            add_to_variable = {
+                War_situation_var = 1
+            }
+        }
+        ai_chance = { factor = 1000 }
+    }
+}
+
+country_event = {
+    id = Chihong.97
+    title = Chihong.97.t
+    desc = Chihong.97.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.97.a
+        add_to_variable = {
+            War_situation_var = 1
+        }
+        NAX = {
+            add_to_variable = {
+                War_situation_var = 1
+            }
+        }
+        ai_chance = { factor = 1000 }
+    }
+}
+
+country_event = {
+    id = Chihong.98
+    title = Chihong.98.t
+    desc = Chihong.98.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong.98.a
+        add_to_variable = {
+            War_situation_var = 1
+        }
+        NAX = {
+            add_to_variable = {
+                War_situation_var = 1
+            }
+        }
+        ai_chance = { factor = 1000 }
     }
 }
 

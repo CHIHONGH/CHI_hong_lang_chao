@@ -1,0 +1,682 @@
+#!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
+shared_focus = {
+    id = PRC_Southwestern_border_in_critical_condition
+    icon = GFX_focus_PRC_Southwestern_border_in_critical_condition
+    cost = 2
+    x = 9
+    y = 7
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+    allow_branch = {
+        has_country_flag = NAX_raj_Guerrilla_war_flag
+    }
+    completion_reward = {
+        clr_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        custom_effect_tooltip = PRC_Southwestern_border_in_critical_condition_tt
+        add_political_power = -50
+        hidden_effect = {
+            NAX = {
+                add_war_support = 0.095
+                set_party_name = {
+                    ideology = communist
+                    long_name = NAX_nationalist_party_new_long
+                    name = NAX_nationalist_party_new
+                }
+            }
+        }
+    }
+}
+joint_focus = {
+    id = PRC_Mobilize_the_military
+    icon = GFX_focus_PRC_Mobilize_the_military
+    cost = 3
+    x = -2
+    y = 1
+    ai_will_do = {
+        factor = 200
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = War_PRC
+            tag = PRC
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_Southwestern_border_in_critical_condition
+    }
+    relative_position_id = PRC_Southwestern_border_in_critical_condition
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = PRC_Mobilize_the_military_banners_tt
+        custom_effect_tooltip = War_situation_PRC_tt
+        unlock_decision_tooltip = NAX_Guiding_Nasser_Theory
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 2.5
+        }
+        TFR_NAX_weapon_effects = yes
+        hidden_effect = {
+            1152 = {
+                create_unit = {
+                    division = "division_template = \"特种作战旅\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                    owner = PRC
+                    count = 4
+                }
+            }
+        }
+        add_doctrine_cost_reduction = {
+            name = land_doc_bonus
+            cost_reduction = 0.35
+            uses = 1
+            category = land_doctrine
+        }
+        army_experience = -100
+        set_temp_variable = {
+            PRC_army_reform_progress_temp = 1.5
+        }
+        PRC_add_army_reform_progress = yes
+    }
+    completion_reward = {
+        custom_effect_tooltip = War_situation_tt
+        add_to_variable = {
+            War_situation_var = 1
+        }
+    }
+}
+joint_focus = {
+    id = PRC_Ensure_logistical_support
+    icon = GFX_focus_PRC_Ensure_logistical_support
+    cost = 2
+    x = -2
+    y = 1
+    ai_will_do = {
+        factor = 200
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = War_PRC
+            tag = PRC
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_Mobilize_the_military
+    }
+    relative_position_id = PRC_Mobilize_the_military
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = PRC_Ensure_logistical_support_banners_tt
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 2.5
+        }
+        TFR_NAX_weapon_effects = yes
+        add_equipment_to_stockpile = {
+            type = light_mechanized_equipment_1
+            amount = 1050
+        }
+        add_equipment_to_stockpile = {
+            type = motorized_equipment_1
+            amount = 350
+        }
+        add_doctrine_cost_reduction = {
+            name = air_doc_bonus
+            cost_reduction = 0.35
+            uses = 1
+            category = air_doctrine
+        }
+        add_timed_idea = {
+            idea = PRC_Ensure_logistical_support_ideas
+            days = 180
+        }
+        set_temp_variable = {
+            PRC_army_reform_progress_temp = 4.5
+        }
+        PRC_add_army_reform_progress = yes
+    }
+}
+joint_focus = {
+    id = PRC_and_NAX_Supply_Coordination
+    icon = GFX_focus_PRC_and_NAX_Supply_Coordination
+    cost = 2
+    x = 2
+    y = 1
+    ai_will_do = {
+        factor = 500
+        modifier = {
+            factor = 0
+            tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_Mobilize_the_military
+        focus = NAX_The_Liberation_War
+    }
+    available = {
+        OR = {
+            if = {
+                limit = {
+                    original_tag = PRC
+                }
+                custom_trigger_tooltip = {
+                    tooltip = War_whether_to_choose
+                    PRC = {
+                        check_variable = {
+                            NAX_and_raj_war_var = 0
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    original_tag = NAX
+                }
+                hidden_trigger = {
+                    always = no
+                }
+            }
+            AND = {
+                custom_trigger_tooltip = {
+                    tooltip = Supply_Coordination
+                    tag = PRC
+                }
+                custom_trigger_tooltip = {
+                    tooltip = War_situation
+                    check_variable = {
+                        War_situation_var = 2
+                    }
+                }
+            }
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    bypass = {
+        has_country_flag = NAX_War_whether_to_choose_flag
+    }
+    relative_position_id = PRC_Mobilize_the_military
+    completion_reward = {
+        custom_effect_tooltip = War_situation_tt
+        add_to_variable = {
+            War_situation_var = 1
+        }
+    }
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = PRC_and_NAX_Supply_Coordination_banners_tt
+        unlock_decision_tooltip = NAX_Assisting_Nasser_with_weapons_and_equipment
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 5
+        }
+        TFR_NAX_weapon_effects = yes
+        NAX = {
+            set_temp_variable = {
+                var = military_development_var_temp
+                value = 0.25
+            }
+            add_military_development = yes
+            add_doctrine_cost_reduction = {
+                name = land_doc_bonus
+                cost_reduction = 0.75
+                uses = 1
+                category = land_doctrine
+            }
+            add_equipment_to_stockpile = {
+                type = infantry_equipment_1
+                amount = 7500
+                producer = PRC
+            }
+            add_equipment_to_stockpile = {
+                type = anti_tank_equipment_1
+                amount = 300
+                producer = PRC
+            }
+            add_equipment_to_stockpile = {
+                type = anti_air_equipment_1
+                amount = 300
+                producer = PRC
+            }
+            add_equipment_to_stockpile = {
+                type = support_equipment
+                amount = 750
+                producer = PRC
+            }
+            add_equipment_to_stockpile = {
+                type = artillery_equipment
+                amount = 750
+                producer = PRC
+            }
+            add_equipment_to_stockpile = {
+                type = motorized_equipment
+                amount = 750
+                producer = PRC
+            }
+            if = {
+                limit = {
+                    has_dlc = "By Blood Alone"
+                }
+                add_equipment_to_stockpile = {
+                    type = small_plane_airframe_1
+                    variant_name = "Shenyang J-16"
+                    amount = 75
+                    producer = PRC
+                }
+            }
+            else_if = {
+                limit = {
+                    NOT = {
+                        has_dlc = "By Blood Alone"
+                    }
+                }
+                add_equipment_to_stockpile = {type = fighter_equipment_2 amount = 50 producer = PRC }
+            }
+        }
+    }
+}
+joint_focus = {
+    id = PRC_Operation_Thunder
+    icon = GFX_focus_PRC_Operation_Thunder
+    cost = 2
+    x = 0
+    y = 2
+    ai_will_do = {
+        factor = 200
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = War_PRC
+            tag = PRC
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_situation
+            check_variable = {
+                War_situation_var = 3
+            }
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_and_NAX_Supply_Coordination
+    }
+    prerequisite = {
+        focus = PRC_Ensure_logistical_support
+    }
+    relative_position_id = PRC_Mobilize_the_military
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = PRC_Operation_Thunder_banners_tt
+        if = {
+            limit = {
+                has_country_flag = NAX_War_whether_to_choose_flag
+            }
+            clr_country_flag = NAX_raj_Guerrilla_war_flag
+            focus_unlock = yes
+        }
+        custom_effect_tooltip = PRC_start_border_war_tt
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 5
+        }
+        TFR_NAX_weapon_effects = yes
+        hidden_effect = {
+            PRC = {
+                start_border_war = {
+                    change_state_after_war = yes
+                    minimum_duration_in_days = 75
+                    attacker = {
+                        state = 434
+                        num_provinces = 4
+                    }
+                    defender = {
+                        state = 1152
+                        num_provinces = 4
+                        on_win = Chihong.96
+                        on_lose = Chihong.98
+                        on_cancel = Chihong.97
+                        dig_in_factor = 0.25
+                    }
+                    combat_width = 120
+                }
+                set_border_war_data = {
+                    attacker = 434
+                    defender = 1152
+                    defender_modifier = 0.15
+                }
+            }
+        }
+    }
+    completion_reward = {
+        set_country_flag = War_situation_flag
+    }
+}
+joint_focus = {
+    id = NAX_The_dawn_breaks_through_the_long_nightn
+    icon = GFX_focus_NAX_The_dawn_breaks_through_the_long_nightn
+    cost = 2
+    x = 0
+    y = 2
+    ai_will_do = {
+        factor = 500
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = War_NAX
+            tag = NAX
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_whether_to_choose
+            PRC = {
+                check_variable = {
+                    NAX_and_raj_war_var = 1
+                }
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_situation
+            check_variable = {
+                War_situation_var = 4
+            }
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_and_NAX_Supply_Coordination
+    }
+    prerequisite = {
+        focus = NAX_Launch_a_guerrilla_war
+    }
+    relative_position_id = NAX_The_Liberation_War
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = NAX_The_dawn_breaks_through_the_long_nightn_banners_tt
+        custom_effect_tooltip = RAJ_Aggravate_internal_instability_in_India
+        army_experience = 10
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var
+            value = 5
+        }
+        TFR_NAX_theory_effects = yes
+        hidden_effect = {
+            RAJ = {
+                add_stability = -0.50
+                add_war_support = -0.50
+            }
+            every_state = {
+                limit = {
+                    state = 434
+                    state = 1367
+                    state = 432
+                    state = 1366
+                    state = 1369
+                    state = 1368
+                }
+                add_core_of = NAX
+            }
+        }
+    }
+    completion_reward = {
+        custom_effect_tooltip = NAX_The_advantage_is_on_my_side
+        add_political_power = 15
+    }
+}
+joint_focus = {
+    id = NAX_The_Liberation_War
+    icon = GFX_focus_NAX_The_Liberation_War
+    cost = 3
+    x = 2
+    y = 1
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = War_NAX
+            tag = NAX
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_whether_to_choose
+            PRC = {
+                check_variable = {
+                    NAX_and_raj_war_var = 1
+                }
+            }
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_Southwestern_border_in_critical_condition
+    }
+    relative_position_id = PRC_Southwestern_border_in_critical_condition
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = NAX_The_Liberation_War_banners_tt
+        activate_mission_tooltip = NAX_Nasser_Mass_Power
+        hidden_effect = {
+            PRC = {
+                activate_mission = NAX_Nasser_Mass_Power
+            }
+        }
+        army_experience = 25
+        set_temp_variable = {
+            var = global.NAX_rd_weapon_temp_var
+            value = 3.5
+        }
+        TFR_NAX_weapon_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_approval_rating_temp_var
+            value = 5
+        }
+        TFR_NAX_approval_rating_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var
+            value = 5
+        }
+        TFR_NAX_theory_effects = yes
+    }
+    completion_reward = {
+        custom_effect_tooltip = War_situation_tt
+        add_to_variable = {
+            War_situation_var = 1
+        }
+    }
+}
+joint_focus = {
+    id = NAX_Launch_a_guerrilla_war
+    icon = GFX_focus_NAX_Launch_a_guerrilla_war
+    cost = 2
+    x = 2
+    y = 1
+    ai_will_do = {
+        factor = 500
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = War_NAX
+            tag = NAX
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_whether_to_choose
+            PRC = {
+                check_variable = {
+                    NAX_and_raj_war_var = 1
+                }
+            }
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = NAX_The_Liberation_War
+    }
+    relative_position_id = NAX_The_Liberation_War
+    completion_reward_joint_originator = {
+        custom_effect_tooltip = NAX_Launch_a_guerrilla_war_banners_tt
+        custom_effect_tooltip = NAX_Launch_a_guerrilla_war_tt
+        add_manpower = 9000
+        set_temp_variable = {
+            var = global.NAX_rd_approval_rating_temp_var
+            value = 10.5
+        }
+        TFR_NAX_approval_rating_effects = yes
+        set_temp_variable = {
+            var = global.NAX_rd_theory_temp_var
+            value = 7.5
+        }
+        TFR_NAX_theory_effects = yes
+        damage_units = {
+            state = 434
+            damage = 0.15
+            org_damage = 0.15
+            str_damage = 0.15
+            ratio = yes
+            army = yes
+            navy = no
+        }
+        damage_units = {
+            state = 432
+            damage = 0.15
+            org_damage = 0.15
+            str_damage = 0.15
+            ratio = yes
+            army = yes
+            navy = no
+        }
+        NAX = {
+            random_state = {
+                limit = {
+                    is_core_of = RAJ
+                    is_controlled_by = RAJ
+                    state = 1367
+                }
+                damage_building = {
+                    type = infrastructure
+                    damage = 2
+                }
+            }
+            random_state = {
+                limit = {
+                    is_core_of = RAJ
+                    is_controlled_by = RAJ
+                    state = 432
+                }
+                damage_building = {
+                    type = infrastructure
+                    damage = 2
+                }
+            }
+        }
+    }
+    completion_reward = {
+        add_war_support = 0.10
+    }
+}
+joint_focus = {
+    id = PRC_and_NAX_Brothers_in_Arms
+    icon = GFX_focus_NAX_Brothers_in_Arms
+    cost = 2
+    x = 0
+    y = 4
+    ai_will_do = {
+        factor = 200
+    }
+    available = {
+        custom_trigger_tooltip = {
+            tooltip = Supply_Coordination
+            tag = NAX
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_whether_to_choose
+            PRC = {
+                check_variable = {
+                    NAX_and_raj_war_var = 1
+                }
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = War_situation_end
+            has_country_flag = War_situation_flag
+            check_variable = {
+                War_situation_var = 4
+            }
+        }
+    }
+    joint_trigger = {
+        OR = {
+            original_tag = PRC
+            original_tag = NAX
+        }
+    }
+    prerequisite = {
+        focus = PRC_Operation_Thunder
+    }
+    prerequisite = {
+        focus = NAX_The_dawn_breaks_through_the_long_nightn
+    }
+    relative_position_id = PRC_Southwestern_border_in_critical_condition
+    completion_reward = {
+        custom_effect_tooltip = PRC_and_NAX_Brothers_in_Arms_banners_tt
+        clr_country_flag = NAX_raj_Guerrilla_war_flag
+        hidden_effect = {
+            focus_unlock = yes
+            custom_effect_tooltip = NAX_win_war_tt
+            custom_effect_tooltip = tooltip_white_line
+            unlock_decision_tooltip = PRC_clean_up_zangnan
+            custom_effect_tooltip = NAX_lost_war_tt
+            custom_effect_tooltip = tooltip_white_line
+            unlock_decision_tooltip = PRC_clean_up_zangnan
+            NAX = {
+                clr_country_flag = NAX_raj_Guerrilla_war_flag
+                focus_unlock = yes
+                transfer_state = 1367
+                transfer_state = 432
+                transfer_state = 1366
+                transfer_state = 1369
+                transfer_state = 1368
+                every_state = {
+                    limit = {
+                        state = 1367
+                        state = 432
+                        state = 1366
+                        state = 1369
+                        state = 1368
+                    }
+                    add_core_of = NAX
+                }
+            }
+        }
+        set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        custom_effect_tooltip = Brothers_in_Arms_tt
+    }
+}

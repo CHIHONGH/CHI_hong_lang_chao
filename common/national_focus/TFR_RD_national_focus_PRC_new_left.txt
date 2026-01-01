@@ -12,10 +12,12 @@ focus_tree = {
     initial_show_position = { focus = PRC_nl_clean_house }
     #!gfx:interface\New_left_Collection_of_files\goals\PRC_goals.gfx
     #!gfx:interface\New_left_Collection_of_files\goals\RD_New_left_goals.gfx
+    #!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
 
     shared_focus = PRC_chinas_greatest_hour
     shared_focus = PLA_when_that_day_comes
     shared_focus = PRC_unfinished_revolution
+    shared_focus = PRC_Southwestern_border_in_critical_condition
     #重建台湾
     focus = {
         id = PRC_nl_ancestor_worship
@@ -29,8 +31,11 @@ focus_tree = {
         available = {
         }
         allow_branch = {
-            NOT = {
-                has_country_flag = Prc_NewLeft_focus_key
+            AND = {
+                tag = PRC
+                NOT = {
+                    has_country_flag = Prc_NewLeft_focus_key
+                }
             }
         }
         completion_reward = {
@@ -298,6 +303,7 @@ focus_tree = {
         cancel_if_invalid = yes
         completion_reward = {
             set_country_flag = head_of_gov_ui_enabled
+            set_country_flag = PRC_new_left_party_end_key
             hidden_effect = {
                 scoped_play_song = "legacy_15"
                 country_event = {
@@ -615,10 +621,6 @@ focus_tree = {
             }
             hidden_effect = {
                 remove_ideas = PRC_cadre_revolutionization_idea
-                country_event = {
-                    id = prcs.3204
-                    days = 30
-                }
             }
             custom_effect_tooltip = FRA_focus_select_effect_tt
             add_days_mission_timeout = {
@@ -954,7 +956,10 @@ focus_tree = {
                 PPRC_start_efficiency_var = 0.125
             }
             add_to_variable = {
-                PPRC_poverty_dev_var = 0.125
+                PPRC_poverty_dev_var = 0.012
+            }
+            add_to_variable = {
+                PPRC_poverty_dev_var = 0.005
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1962,6 +1967,7 @@ focus_tree = {
             }
         }
         completion_reward = {
+            clr_country_flag = PRC_new_left_party_end_key
             hidden_effect = {
                 scoped_play_song = "legacy_19"
             }
@@ -3190,13 +3196,7 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_reform_production_relation
         completion_reward = {
-            country_event = Chihong.12
             hidden_effect = {
-                country_event = {
-                    id = prcs.75
-                    days = 5
-                    random_days = 2
-                }
                 country_event = {
                     id = prcs.3103
                     days = 0
