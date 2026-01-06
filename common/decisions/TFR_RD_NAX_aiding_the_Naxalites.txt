@@ -225,15 +225,16 @@ NAX_aiding_the_Naxalites_category = {
             }
         }
         activation = {
-            hidden_trigger = {
-                always = no
-            }
+            has_completed_focus = NAX_The_Liberation_War
         }
         days_re_enable = 2
         fire_only_once = no
         is_good = no
         days_mission_timeout = 5
         timeout_effect = {
+            hidden_effect = {
+                remove_mission = NAX_Nasser_Mass_Power
+            }
             set_temp_variable = {
                 var = global.NAX_rd_approval_rating_temp_var
                 value = 5

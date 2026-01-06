@@ -27,128 +27,128 @@ on_actions = {
 			}
 		}
 	}
-	on_annex = {
-		effect = {
-			if = {
-				limit = { 
-					ROOT = {
-						original_tag = CPP
-					}
-					FROM = {
-						original_tag = PER
-					}
-				}
-				PRC = {
-					add_to_faction = CPP
-					add_to_variable = {
-						CPC_frame = 8
-					}
-					clamp_variable = {
-						var = CPC_frame
-						min = 0
-						max = 100
-					}
-					add_to_variable = {
-						PRC_Lib_Int_Dir_Var = 1
-					}
-				}
-				CPP = {
-					every_core_state = {
-						remove_core_of = PER
-					}
-				}
-			}
-			else_if = {
-				limit = { 
-					ROOT = {
-						original_tag = CPA
-					}
-					FROM = {
-						original_tag = TAL	
-					}
-					NOT = {
-						country_exists = AFG
-					}
-				}
-				PRC = {
-					add_to_faction = CPA
-					add_to_variable = {
-						CPC_frame = 8
-					}
-					clamp_variable = {
-						var = CPC_frame
-						min = 0
-						max = 100
-					}
-					add_to_variable = {
-						PRC_Lib_Int_Dir_Var = 1
-					}
-				}
-				CPA = {
-					every_core_state = {
-						remove_core_of = TAL
-						remove_core_of = AFG
-					}
-				}
-			}
-			else_if = {
-				limit = { 
-					ROOT = {
-						original_tag = CPA
-					}
-					FROM = {
-						original_tag = AFG
-					}
-					NOT = {
-						country_exists = TAL
-					}
-				}
-				PRC = {
-					add_to_faction = CPA
-					add_to_variable = {
-						CPC_frame = 8
-					}
-					clamp_variable = {
-						var = CPC_frame
-						min = 0
-						max = 100
-					}
-					add_to_variable = {
-						PRC_Lib_Int_Dir_Var = 1
-					}
-				}
-				CPA = {
-					every_core_state = {
-						remove_core_of = TAL
-						remove_core_of = AFG
-					}
-				}
-			}
-			else_if = {
-				limit = { 
-					ROOT = {
-						original_tag = PRT
-					}
-					FROM = {
-						original_tag = SIA
-					}
-				}
-				PRC = {
-					add_to_faction = PRT
-					add_to_variable = {
-						CPC_frame = 8
-					}
-					clamp_variable = {
-						var = CPC_frame
-						min = 0
-						max = 100
-					}
-					add_to_variable = {
-						PRC_Lib_Int_Dir_Var = 1
-					}
+	# on_annex = {
+	# 	effect = {
+	# 		# if = {
+	# 		# 	limit = { 
+	# 		# 		ROOT = {
+	# 		# 			original_tag = CPP
+	# 		# 		}
+	# 		# 		FROM = {
+	# 		# 			original_tag = PER
+	# 		# 		}
+	# 		# 	}
+	# 		# 	PRC = {
+	# 		# 		add_to_faction = CPP
+	# 		# 		add_to_variable = {
+	# 		# 			CPC_frame = 8
+	# 		# 		}
+	# 		# 		clamp_variable = {
+	# 		# 			var = CPC_frame
+	# 		# 			min = 0
+	# 		# 			max = 100
+	# 		# 		}
+	# 		# 		add_to_variable = {
+	# 		# 			PRC_Lib_Int_Dir_Var = 1
+	# 		# 		}
+	# 		# 	}
+	# 		# 	CPP = {
+	# 		# 		every_core_state = {
+	# 		# 			remove_core_of = PER
+	# 		# 		}
+	# 		# 	}
+	# 		# }
+	# 		else_if = {
+	# 			limit = { 
+	# 				ROOT = {
+	# 					original_tag = CPA
+	# 				}
+	# 				FROM = {
+	# 					original_tag = TAL	
+	# 				}
+	# 				NOT = {
+	# 					country_exists = AFG
+	# 				}
+	# 			}
+	# 			PRC = {
+	# 				add_to_faction = CPA
+	# 				add_to_variable = {
+	# 					CPC_frame = 8
+	# 				}
+	# 				clamp_variable = {
+	# 					var = CPC_frame
+	# 					min = 0
+	# 					max = 100
+	# 				}
+	# 				add_to_variable = {
+	# 					PRC_Lib_Int_Dir_Var = 1
+	# 				}
+	# 			}
+	# 			CPA = {
+	# 				every_core_state = {
+	# 					remove_core_of = TAL
+	# 					remove_core_of = AFG
+	# 				}
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				ROOT = {
+	# 					original_tag = CPA
+	# 				}
+	# 				FROM = {
+	# 					original_tag = AFG
+	# 				}
+	# 				NOT = {
+	# 					country_exists = TAL
+	# 				}
+	# 			}
+	# 			PRC = {
+	# 				add_to_faction = CPA
+	# 				add_to_variable = {
+	# 					CPC_frame = 8
+	# 				}
+	# 				clamp_variable = {
+	# 					var = CPC_frame
+	# 					min = 0
+	# 					max = 100
+	# 				}
+	# 				add_to_variable = {
+	# 					PRC_Lib_Int_Dir_Var = 1
+	# 				}
+	# 			}
+	# 			CPA = {
+	# 				every_core_state = {
+	# 					remove_core_of = TAL
+	# 					remove_core_of = AFG
+	# 				}
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				ROOT = {
+	# 					original_tag = PRT
+	# 				}
+	# 				FROM = {
+	# 					original_tag = SIA
+	# 				}
+	# 			}
+	# 			PRC = {
+	# 				add_to_faction = PRT
+	# 				add_to_variable = {
+	# 					CPC_frame = 8
+	# 				}
+	# 				clamp_variable = {
+	# 					var = CPC_frame
+	# 					min = 0
+	# 					max = 100
+	# 				}
+	# 				add_to_variable = {
+	# 					PRC_Lib_Int_Dir_Var = 1
+	# 				}
 					
-				}
-			}
-		}
-	}
+	# 			}
+	# 		}
+	# 	}
+	# }
 }
