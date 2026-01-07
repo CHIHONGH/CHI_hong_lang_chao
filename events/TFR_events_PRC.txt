@@ -60,10 +60,10 @@ country_event = {
 				id = china.288
 				days = 3
 			}
-			country_event = {
-				id = china.289
-				days = 30
-			}
+			#country_event = {
+			#	id = china.289
+			#	days = 30
+			#}
 			country_event = {
 				id = china.290
 				days = 40
@@ -9524,7 +9524,7 @@ country_event = {
 		}
 		add_stability = -0.015
 		swap_ideas = {
-			remove_idea = PRC_party_rectification_campaign_bf1
+			remove_idea = PRC_party_rectification_campaign_bf1f
 			add_idea = PRC_party_rectification_campaign_bf1b
 		}
 	}
@@ -9931,6 +9931,12 @@ country_event = {
 	option = {
 		name = china.303.a
 		add_stability = -0.025
+		hidden_effect = {
+			country_event = {
+				id = china.289
+				days = 30
+			}
+		}
 		random_owned_controlled_state = {
 			limit = {
 				is_core_of = ROOT
@@ -9997,7 +10003,7 @@ country_event = {
 		}
 		add_poverty_development = yes
 		swap_ideas = {
-			remove_idea = PRC_party_rectification_campaign_bf1b
+			remove_idea = PRC_party_rectification_campaign_bf1
 			add_idea = PRC_party_rectification_campaign_bf1f 
 		}
 	}
@@ -13043,40 +13049,6 @@ country_event = {
 	picture = GFX_PRC_type_100
 	option = {
 		name = china.546.a
-		navy_experience = 15
-		add_tech_bonus = {
-			name = button_RS_9_text
-			bonus = 0.5
-			uses = 1
-			category = naval_equipment
-		}
-		set_temp_variable = {
-			var = PRC_army_reform_progress_temp
-			value = 3.5
-		}
-		PRC_add_army_reform_progress = yes
-		add_to_variable = {
-			PRC_PLA_navy_anti_air_attack_factor = 0.1
-		}
-		effect_tooltip = {
-			swap_ideas = {
-				remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_8_effect
-			}
-		}
-		
-	}
-}
-
-#燎原项目报告
-country_event = {
-	id = china.547
-	title = china.547.t
-	desc = china.547.d
-	is_triggered_only = yes
-	picture = GFX_PRC_LY_1
-	option = {
-		name = china.547.a
 		army_experience = 15
 		add_tech_bonus = {
 			name = button_RS_8_text
@@ -13122,6 +13094,39 @@ country_event = {
 			popup = no
 		}
 		custom_effect_tooltip = PLA_project_xuanwu
+	}
+}
+
+#燎原项目报告
+country_event = {
+	id = china.547
+	title = china.547.t
+	desc = china.547.d
+	is_triggered_only = yes
+	picture = GFX_PRC_LY_1
+	option = {
+		name = china.547.a
+		navy_experience = 15
+		add_tech_bonus = {
+			name = button_RS_9_text
+			bonus = 0.5
+			uses = 1
+			category = naval_equipment
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 3.5
+		}
+		PRC_add_army_reform_progress = yes
+		add_to_variable = {
+			PRC_PLA_navy_anti_air_attack_factor = 0.1
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = RD_PLA_research_empty
+				add_idea = RD_PLA_research_8_effect
+			}
+		}
 	}
 }
 
