@@ -258,12 +258,6 @@ focus_tree = {
             }
             set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             hidden_effect = {
-                remove_dynamic_modifier	= {
-                    modifier = PRC_chinese_communist_party_dynamic
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_communist_party_of_china_dynamic
-                }
                 add_to_variable = {
                     var = PRC_cpc_academic_development_monthly_dynamic_var
                     value = 0.005
@@ -621,6 +615,10 @@ focus_tree = {
             }
             hidden_effect = {
                 remove_ideas = PRC_cadre_revolutionization_idea
+                country_event = {
+                    id = prcs.3204
+                    days = 30
+                }
             }
             custom_effect_tooltip = FRA_focus_select_effect_tt
             add_days_mission_timeout = {
@@ -3196,7 +3194,13 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_reform_production_relation
         completion_reward = {
+            country_event = Chihong.12
             hidden_effect = {
+                country_event = {
+                    id = prcs.75
+                    days = 5
+                    random_days = 2
+                }
                 country_event = {
                     id = prcs.3103
                     days = 0
