@@ -366,10 +366,22 @@ focus_tree = {
         }
         completion_reward = {
             hidden_effect = {
-                remove_ideas = PRC_chinese_communist_party_idea
-                add_dynamic_modifier = {
-                    modifier = PRC_chinese_communist_party_dynamic
+            remove_ideas = PRC_chinese_communist_party_idea
+            add_dynamic_modifier = {
+                    modifier = PRC_communist_party_of_china_dynamic
                 }
+            add_to_variable = {
+                var = PRC_cpc_stability_factor_dynamic_var
+                value = 0.15
+            }
+            add_to_variable = {
+                var = PRC_cpc_crypto_strength_dynamic_var
+                value = 1
+            }
+            add_to_variable = {
+                var = PRC_cpc_drift_defence_factor_dynamic_var
+                value = 0.25
+            }
 				country_event = {
 					id = prcs.3184
 					days = 2
@@ -892,9 +904,13 @@ focus_tree = {
                     add_idea = PRC_chinese_communist_party_CPC_st
                 }
             }
-            set_variable = {
-                PRC_cpc_stability_factor_dynamic_var = 0.05
-                PRC_cpc_crypto_strength_dynamic_var = -1
+            add_to_variable = {
+                var = PRC_cpc_stability_factor_dynamic_var
+                value = 0.05
+            }
+            add_to_variable = {
+                var = PRC_cpc_crypto_strength_dynamic_var
+                value = -1
             }
         }
         available = {
@@ -1816,10 +1832,10 @@ focus_tree = {
                 custom_effect_tooltip = PRC_shake_up_the_politburo_tt
             }
             hidden_effect = {
-                swap_ideas = {
-                    remove_idea = PRC_party_rectification_campaign_bf1f
-                    add_idea = PRC_party_rectification_campaign_bf1e
-                }
+                set_variable = {
+                    var = PRC_prcbf1_production_factory_efficiency_gain_factor_dynamic_var
+                    value = -0.125
+                 }
                 remove_ideas = PRC_food_safety_reforms_idea
                 country_event = {
                     id = prc_change.8

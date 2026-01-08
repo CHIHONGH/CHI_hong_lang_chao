@@ -60,10 +60,10 @@ country_event = {
 				id = china.288
 				days = 3
 			}
-			country_event = {
-				id = china.289
-				days = 30
-			}
+			#country_event = {
+			#	id = china.289
+			#	days = 30
+			#}
 			country_event = {
 				id = china.290
 				days = 40
@@ -95,7 +95,6 @@ country_event = {
 		focus_unlock = yes
 	}
 }
-
 
 #First COVID Death
 country_event = {
@@ -478,127 +477,133 @@ country_event = {
 
 #Taiwan war victory
 country_event = {
-    id = china.23
-    title = china.23.t
-    desc = {
-        text = china.23.d.1
-        trigger = {
-            has_country_flag = PRC_taiwanese_government_captured
-        }
-    }
-    desc = {
-        text = china.23.d.2
-        trigger = {
-            NOT = {
-                has_country_flag = PRC_taiwanese_government_captured
-            }
-        }
-    }
-    picture = GFX_PRC_hu_chunhua
-    is_triggered_only = yes
-    fire_only_once = yes
-    trigger = {
-        tag = PRC
-    }
-    immediate = {
-        hidden_effect = {
-            set_country_flag = PRC_first_committee_transition_flag
-            add_timed_idea = {
-                idea = PRC_chinese_triumphalism
-                days = 1000
-            }
-            transfer_state = 524
-            transfer_state = 1150
-            transfer_state = 1149
-            transfer_state = 1148
-            if = {
-                limit = {
-                    controls_state = 876
-                }
-                transfer_state = 876
-            }
-            add_war_support = 0.05
-            set_global_flag = PRC_taiwan_war_won
-            set_country_flag = PRC_new_left_win
-            PRC_end_taiwan_war = yes
-            annex_country = {
-                target = CHI
-                transfer_troops = no
-            }
-            add_ideas = lowest_conscription
-            add_ideas = low_training
-            set_country_leader_portrait = {
-                ideology = communist
-                portrait = GFX_PRC_Hu_chunhuab_Ruling_clothes
-            }
-            news_event = {
-                id = news.356
-                hours = 12
-            }
-            PRC = {
-                country_event = {
-                    id = prcs.3074
-                    days = 5
-                }
-                country_event = {
-                    id = prcs.3175
-                    days = 60
-                }
-            }
-            news_event = {
-                id = china.80
-                days = 70
-            }
-            load_focus_tree = china_new_left_focus
-            AST = {
-                country_event = {
-                    id = Australia.1
-                    days = 15
-                }
-            }
-            every_state = {
-                limit = {
-                    is_claimed_by = CHI
-                    NOT = {
-                        state = 524
-                        state = 1150
-                        state = 1149
-                        state = 1148
-                    }
-                }
-                remove_claim_by = CHI
-            }
-        }
-    }
-    option = {
-        name = china.23.a
-        add_ideas = PRC_he_junke_eco
-        add_ideas = PRC_wang_yi_for
-        add_ideas = PRC_chen_wenqing_int
-        add_ideas = PRC_zhang_jun_sec
-        effect_tooltip = {
-            focus_unlock = yes
-            transfer_state = 524
-            transfer_state = 1150
-            transfer_state = 1149
-            transfer_state = 1148
-            if = {
-                limit = {
-                    controls_state = 876
-                }
-                transfer_state = 876
-            }
-            add_war_support = 0.05
-            add_timed_idea = {
-                idea = PRC_chinese_triumphalism
-                days = 1000
-            }
-        }
-        swap_ideas = {
-            remove_idea = PRC_party_rectification_campaign_bf1e
-            add_idea = PRC_party_rectification_campaign_bf2
-        }
-    }
+	id = china.23
+	title = china.23.t
+	desc = {
+		text = china.23.d.1
+		trigger = {
+			has_country_flag = PRC_taiwanese_government_captured
+		}
+	}
+	desc = {
+		text = china.23.d.2
+		trigger = {
+			NOT = {
+				has_country_flag = PRC_taiwanese_government_captured
+			}
+		}
+	}
+	picture = GFX_PRC_hu_chunhua
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = PRC_first_committee_transition_flag
+			add_timed_idea = {
+				idea = PRC_chinese_triumphalism
+				days = 1000
+			}
+			transfer_state = 524
+			transfer_state = 1150
+			transfer_state = 1149
+			transfer_state = 1148
+			if = {
+				limit = {
+					controls_state = 876
+				}
+				transfer_state = 876
+			}
+			add_war_support = 0.05
+			set_global_flag = PRC_taiwan_war_won
+			set_country_flag = PRC_new_left_win
+			PRC_end_taiwan_war = yes
+			annex_country = {
+				target = CHI
+				transfer_troops = no
+			}
+			add_ideas = lowest_conscription
+			add_ideas = low_training
+			set_country_leader_portrait = {
+				ideology = communist
+				portrait = GFX_PRC_Hu_chunhuab_Ruling_clothes
+			}
+			news_event = {
+				id = news.356
+				hours = 12
+			}
+			PRC = {
+				country_event = {
+					id = prcs.3074
+					days = 5
+				}
+				country_event = {
+					id = prcs.3175
+					days = 60
+				}
+			}
+			news_event = {
+				id = china.80
+				days = 70
+			}
+			load_focus_tree = china_new_left_focus
+			AST = {
+				country_event = {
+					id = Australia.1
+					days = 15
+				}
+			}
+			every_state = {
+				limit = {
+					is_claimed_by = CHI
+					NOT = {
+						state = 524
+						state = 1150
+						state = 1149
+						state = 1148
+					}
+				}
+				remove_claim_by = CHI
+			}
+		}
+	}
+	option = {
+		name = china.23.a
+		add_ideas = PRC_he_junke_eco
+		add_ideas = PRC_wang_yi_for
+		add_ideas = PRC_chen_wenqing_int
+		add_ideas = PRC_zhang_jun_sec
+		effect_tooltip = {
+			focus_unlock = yes
+			transfer_state = 524
+			transfer_state = 1150
+			transfer_state = 1149
+			transfer_state = 1148
+			if = {
+				limit = {
+					controls_state = 876
+				}
+				transfer_state = 876
+			}
+			add_war_support = 0.05
+			add_timed_idea = {
+				idea = PRC_chinese_triumphalism
+				days = 1000
+			}
+			swap_ideas = {
+				remove_idea = PRC_party_rectification_campaign_bf1e
+				add_idea = PRC_party_rectification_campaign_bf2
+			}
+		}
+		hidden_effect = {
+			remove_dynamic_modifier = {
+				modifier = PRC_party_rectification_campaign_bf1_modifier
+			}
+			add_ideas = PRC_party_rectification_campaign_bf2
+		}
+	}
 }
 
 #Taiwan war loss
@@ -9523,10 +9528,16 @@ country_event = {
 			popularity = -0.03
 		}
 		add_stability = -0.015
-		swap_ideas = {
-			remove_idea = PRC_party_rectification_campaign_bf1
-			add_idea = PRC_party_rectification_campaign_bf1b
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_party_rectification_campaign_bf1f
+				add_idea = PRC_party_rectification_campaign_bf1b
+			}
 		}
+		set_variable = {
+     		var = PRC_prcbf1_industrial_capacity_factory_dynamic_var
+    		value = -0.15
+ 		}
 	}
 }
 
@@ -9931,6 +9942,12 @@ country_event = {
 	option = {
 		name = china.303.a
 		add_stability = -0.025
+		hidden_effect = {
+			country_event = {
+				id = china.289
+				days = 30
+			}
+		}
 		random_owned_controlled_state = {
 			limit = {
 				is_core_of = ROOT
@@ -9996,9 +10013,15 @@ country_event = {
 			value = -0.15
 		}
 		add_poverty_development = yes
-		swap_ideas = {
-			remove_idea = PRC_party_rectification_campaign_bf1b
-			add_idea = PRC_party_rectification_campaign_bf1f 
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_party_rectification_campaign_bf1
+				add_idea = PRC_party_rectification_campaign_bf1f
+			}
+		}
+		set_variable = {
+     		var = PRC_prcbf1_production_speed_buildings_factor_dynamic_var
+     		value = -0.1
 		}
 	}
 }
@@ -10194,7 +10217,7 @@ country_event = {
 	picture = GFX_SOV_secret_documents
 	is_triggered_only = yes
 	immediate = {
-		set_country_flag = PRC_SS_tips #国安警告
+		set_country_flag = PRC_SS_tips		#国安警告
 	}
 	option = {
 		name = china.311.a
@@ -10320,11 +10343,11 @@ country_event = {
 	picture = GFX_PRC_evergrande_crisis
 	trigger = {
 		tag = PRC
-        date > 2023.8.14
+		date > 2023.8.14
 		NOT = {
 			has_country_flag = PRC_qingsuanhengda_flag
 		}
-    }
+	}
 	fire_only_once = yes
 	immediate = {
 	}
@@ -10707,33 +10730,33 @@ country_event = {
 
 #PLA in California
 country_event = {
-    id = china.339
-    title = china.339.t
-    desc = china.339.d
-    picture = GFX_china_south_sea
-    is_triggered_only = yes
-    immediate = {
-    }
-    option = {
-        name = china.339.a
-        add_war_support = 0.02
-        set_temp_variable = {
-            var = military_development_var_temp
-            value = 0.075
-        }
-        add_military_development = yes
-        country_event = {
-            id = china.493
-            days = 50
-            random_days = 15
-        }
-        hidden_effect = {
-            country_event = {
-                id = Chihong.72
-                days = 20
-            }
-        }
-    }
+	id = china.339
+	title = china.339.t
+	desc = china.339.d
+	picture = GFX_china_south_sea
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = china.339.a
+		add_war_support = 0.02
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.075
+		}
+		add_military_development = yes
+		country_event = {
+			id = china.493
+			days = 50
+			random_days = 15
+		}
+		hidden_effect = {
+			country_event = {
+				id = Chihong.72
+				days = 20
+			}
+		}
+	}
 }
 
 #Rectify Principles of The Reform and Opening-up Economic Development
@@ -12955,7 +12978,6 @@ country_event = {
 	title = china.500.t
 	desc = china.500.d
 	picture = GFX_PRC_chengdu_j_36
-	
 	is_triggered_only = yes
 	immediate = {
 		clr_country_flag = PRC_military_project_researching
@@ -12971,7 +12993,7 @@ country_event = {
 				}
 			}
 			set_technology = {
-			    modern_small_airframe = 1
+				modern_small_airframe = 1
 			}
 		}
 		create_equipment_variant = {
@@ -12995,7 +13017,7 @@ country_event = {
 		add_equipment_production = {
 			equipment = {
 				type = small_plane_airframe_4
-				creator = "PRC" 
+				creator = "PRC"
 				version_name = "Chengdu J-36"
 			}
 			requested_factories = 10
@@ -13043,40 +13065,6 @@ country_event = {
 	picture = GFX_PRC_type_100
 	option = {
 		name = china.546.a
-		navy_experience = 15
-		add_tech_bonus = {
-			name = button_RS_9_text
-			bonus = 0.5
-			uses = 1
-			category = naval_equipment
-		}
-		set_temp_variable = {
-			var = PRC_army_reform_progress_temp
-			value = 3.5
-		}
-		PRC_add_army_reform_progress = yes
-		add_to_variable = {
-			PRC_PLA_navy_anti_air_attack_factor = 0.1
-		}
-		effect_tooltip = {
-			swap_ideas = {
-				remove_idea = RD_PLA_research_empty
-				add_idea = RD_PLA_research_8_effect
-			}
-		}
-		
-	}
-}
-
-#燎原项目报告
-country_event = {
-	id = china.547
-	title = china.547.t
-	desc = china.547.d
-	is_triggered_only = yes
-	picture = GFX_PRC_LY_1
-	option = {
-		name = china.547.a
 		army_experience = 15
 		add_tech_bonus = {
 			name = button_RS_8_text
@@ -13125,6 +13113,38 @@ country_event = {
 	}
 }
 
+#燎原项目报告
+country_event = {
+	id = china.547
+	title = china.547.t
+	desc = china.547.d
+	is_triggered_only = yes
+	picture = GFX_PRC_LY_1
+	option = {
+		name = china.547.a
+		navy_experience = 15
+		add_tech_bonus = {
+			name = button_RS_9_text
+			bonus = 0.5
+			uses = 1
+			category = naval_equipment
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 3.5
+		}
+		PRC_add_army_reform_progress = yes
+		add_to_variable = {
+			PRC_PLA_navy_anti_air_attack_factor = 0.1
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = RD_PLA_research_empty
+				add_idea = RD_PLA_research_8_effect
+			}
+		}
+	}
+}
 
 #GAW setup
 country_event = {
@@ -13448,49 +13468,49 @@ country_event = {
 
 #imminent japanese intervention
 country_event = {
-    id = china.1007
-    title = china.1007.t
-    desc = china.1007.d
-    picture = GFX_Japanese_army2
-    fire_only_once = yes
-    is_triggered_only = yes
-    trigger = {
-    }
-    immediate = {
-        hidden_effect = {
-            country_event = {
-                id = prcs.3071
-                days = 10
-            }
-            activate_mission = PRC_korean_war_joining
-            country_event = {
-                id = china.325
-                days = 7
-            }
-            country_event = {
-                id = china.327
-                days = 30
-            }
-            if = {
-                limit = {
-                    has_country_flag = PRC_new_left_win
-                    NOT = {
-                        has_country_flag = PRC_loji_overlord_flag
-                    }
-                }
-                country_event = {
-                    id = china.337
-                    days = 40
-                }
-            }
-        }
-    }
-    option = {
-        name = china.1007.a
-        effect_tooltip = {
-            activate_mission = PRC_korean_war_joining
-        }
-    }
+	id = china.1007
+	title = china.1007.t
+	desc = china.1007.d
+	picture = GFX_Japanese_army2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = prcs.3071
+				days = 10
+			}
+			activate_mission = PRC_korean_war_joining
+			country_event = {
+				id = china.325
+				days = 7
+			}
+			country_event = {
+				id = china.327
+				days = 30
+			}
+			if = {
+				limit = {
+					has_country_flag = PRC_new_left_win
+					NOT = {
+						has_country_flag = PRC_loji_overlord_flag
+					}
+				}
+				country_event = {
+					id = china.337
+					days = 40
+				}
+			}
+		}
+	}
+	option = {
+		name = china.1007.a
+		effect_tooltip = {
+			activate_mission = PRC_korean_war_joining
+		}
+	}
 }
 
 #the great asian war
@@ -14298,7 +14318,7 @@ country_event = {
 		custom_effect_tooltip = unrestricted_diplomacy_tt
 		set_country_flag = unrestricted_diplomacy_flag
 		if = {
-			limit = { 
+			limit = {
 				SOV = {
 					OR = {
 						has_government = communist
@@ -14310,7 +14330,7 @@ country_event = {
 			set_country_flag = PRC_Revolution_return_ending1
 		}
 		else_if = {
-			limit = { 
+			limit = {
 				APA = {
 					has_country_flag = APA_reunified_flag
 				}
@@ -14357,7 +14377,6 @@ country_event = {
 	is_triggered_only = yes
 	#或
 	trigger = {
-		
 	}
 	#通常trigger = { …… }与fire_only_once = yes搭配
 	fire_only_once = yes
