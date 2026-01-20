@@ -4381,6 +4381,33 @@ country_event = {
         add_to_variable = {
             PRC_mic_political_power_gain_dynamic_var = 0.03
         }
+        add_to_variable = {
+            PRC_mic_conscription_factor_dynamic_var = 0.4
+        }
+        add_to_variable = {
+            PRC_mic_consumer_goods_factor_dynamic_var = -0.05
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_start_efficiency_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_research_speed_factor_dynamic_var = 0.07
+        }
+        add_to_variable = {
+            PRC_mic_MODIFIER_TRADE_OPINION_FACTOR_dynamic_var = -0.15
+        }
+        add_to_variable = {
+            PRC_mic_business_value_factor_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_poverty_development_monthly_dynamic_var = -0.01
+
     }
     option = {
         name = prcs.3194.b
@@ -4401,13 +4428,34 @@ country_event = {
             PRC_mic_business_value_factor_dynamic_var = -0.05
         }
         add_to_variable = {
-            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.05
-        }
-        add_to_variable = {
             PRC_mic_personal_value_factor_dynamic_var = 0.02
         }
         add_to_variable = {
-            PRC_mic_poverty_development_monthly_dynamic_var = 0.02
+            PRC_mic_poverty_development_monthly_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_start_efficiency_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_conscription_factor_dynamic_var = 0.4
+        }
+        add_to_variable = {
+            PRC_mic_consumer_goods_factor_dynamic_var = -0.05
+        }
+        add_to_variable = {
+            PRC_mic_business_value_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.15
+        }
+        add_to_variable = {
+            PRC_mic_MODIFIER_TRADE_OPINION_FACTOR_dynamic_var = -0.15
+        }
+        add_to_variable = {
+            PRC_mic_research_speed_factor_dynamic_var = 0.07
         }
     }
     option = {
@@ -4423,7 +4471,15 @@ country_event = {
                 max = 10
             }
         }
-        PRC_crists_mission_timeout_effect = yes
+        if = {
+            limit = { 
+                OR = {
+                    has_dynamic_modifier = TFR_PRC_economic_crists
+                    has_dynamic_modifier = TFR_PRC_economic_crists_aftershocks
+                }
+            }
+            PRC_crists_mission_timeout_effect = yes
+        }
         add_political_power = -50
         set_temp_variable = {
             var = PRC_influence_lib_var_temp

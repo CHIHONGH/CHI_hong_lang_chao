@@ -219,7 +219,7 @@ PRC_nems_system = {
 		}
 		is_good = no
 		selectable_mission = no
-		days_mission_timeout = 30   #720
+		days_mission_timeout = 90   #720
 		timeout_effect = {
 			add_to_variable = {
 				var = NEMS_stability_factor_dynamic_var
@@ -227,7 +227,7 @@ PRC_nems_system = {
 			}
 			add_to_variable = {
 				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.75
+				value = 0.075
 			}
 			add_to_variable = {
 				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
@@ -251,7 +251,7 @@ PRC_nems_system = {
 			}
 			add_to_variable = {
 				var = NEMS_inflation_monthly_dynamic_var
-				value = -0.015
+				value = -0.003
 			}
 			add_to_variable = {
 				var = NEMS_misc_income_dynamic_var
@@ -292,6 +292,11 @@ PRC_nems_system = {
 					var = NEMS_production_lack_of_resource_penalty_factor_dynamic_var
 					value = -0.1
 				}
+				set_temp_variable = {
+					var = nems_jindu_rating_var_temp
+					value = 0.005
+				}
+				nems_jindu = yes
 				effect_tooltip = {
 					swap_ideas = {
 						remove_idea = PRC_NEMS0
@@ -323,6 +328,11 @@ PRC_nems_system = {
 					var = NEMS_academic_development_monthly_dynamic_var
 					value = 0.01
 				}
+				set_temp_variable = {
+					var = nems_jindu_rating_var_temp
+					value = 0.01
+				}
+				nems_jindu = yes
 				effect_tooltip = {
 					swap_ideas = {
 						remove_idea = PRC_NEMS0
@@ -372,16 +382,16 @@ PRC_nems_system = {
 			has_completed_focus = PRC_nl_national_IoT_construction
 		}
 		cost = 250
-		days_re_enable = 180
+		days_remove = 180
 		fire_only_once = yes
 		complete_effect = {
 			custom_effect_tooltip = PRC_nl_PRC_nl_spread_lot_tt
 			effect_tooltip = {
-					swap_ideas = {
-						remove_idea = PRC_NEMS0
-						add_idea = aidonghua_moxing_idea2
-					}
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = aidonghua_moxing_idea2
 				}
+			}
 			set_country_flag = PRC_nl_spread_lot_flag
 		}
 	}
@@ -2012,13 +2022,11 @@ PRC_dawn_project = {
 		fire_only_once = yes
 		cost = 50
 		days_remove = 120
-		complete_effect = {
+		remove_effect = {
 			unlock_decision_tooltip = PRC_asteroid_mining_programme_new_left
 			unlock_decision_tooltip = PRC_new_moon_race_programme_new_left
 			unlock_decision_tooltip = PRC_expand_satellite_launching_programme_new_left
 			set_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		remove_effect = {
 			hidden_effect = {
 				country_event = {
 					id = prcs.53
