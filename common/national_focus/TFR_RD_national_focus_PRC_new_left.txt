@@ -39,6 +39,15 @@ focus_tree = {
             }
         }
         completion_reward = {
+            if = {
+                limit = { 
+                    has_idea = early_mobilization
+                }
+                swap_ideas = {
+                    remove_idea = early_mobilization
+                    add_idea = civilian_mobilization
+                }
+            }
             remove_power_balance = {
                 id = PRC_power_balance
             }
