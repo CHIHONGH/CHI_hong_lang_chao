@@ -18,6 +18,12 @@ shared_focus = {
     cancel_if_invalid = yes
     #relative_position_id =
     completion_reward = {
+        if = {
+            limit = { 
+                has_idea = PRC_insufficient_understanding_of_modern_warfare_idea
+            }
+            remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+        }
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
         }
@@ -81,6 +87,9 @@ shared_focus = {
         hidden_effect = {
             add_ideas = PRC_party_commands_the_guns_1
             add_ideas = PRC_complacent_officers_spirit2
+        }
+        add_dynamic_modifier = {
+            modifier = PRC_PLA_masterwork_dynamic
         }
         if = {
             limit = {
@@ -293,11 +302,10 @@ shared_focus = {
             value = 0.1
         }
         add_military_development = yes
-        add_tech_bonus = {
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.5
             name = PLA_not_forget_the_traditions_of_the_Red_Army
-            bonus = 0.5
-            uses = 1
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
         if = {
             limit = {
@@ -625,11 +633,10 @@ shared_focus = {
         mio:PRC_poly_organization = {	###保利
             add_mio_funds = 1790
         }
-        add_tech_bonus = {
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.5
             name = PLA_New_LuJun_Xiangqianjin
-            bonus = 0.5
-            uses = 1
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
         custom_effect_tooltip = Chinese_military_reform_1_tt
         hidden_effect = {
@@ -794,11 +801,11 @@ shared_focus = {
             id = prcs.3208
             days = 0
         }
-        add_tech_bonus = {
-            name = PLA_LianQingbudui_Gaige
-            bonus = 0.75
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.75
             uses = 3
-            category = land_doctrine
+            name = PLA_LianQingbudui_Gaige
+            category = cat_old_land_doctrine
         }
         custom_effect_tooltip = Chinese_military_reform_1_tt
         hidden_effect = {
@@ -951,11 +958,11 @@ shared_focus = {
             days = 2
         }
         air_experience = 50
-        add_tech_bonus = {
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.75
             name = PLA_CiShiDai_KongJun
-            bonus = 0.75
             uses = 2
-            category = air_doctrine
+            category = cat_old_air_doctrine
         }
         custom_effect_tooltip = Chinese_military_reform_2_tt
         hidden_effect = {
@@ -1461,11 +1468,11 @@ shared_focus = {
     cancel_if_invalid = yes
     completion_reward = {
         navy_experience = 50
-        add_tech_bonus = {
-            name = PLA_not_forget_the_traditions_of_the_Red_Army
-            bonus = 0.75
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.75
             uses = 2
-            category = naval_doctrine
+            category = cat_old_naval_doctrine
+            name = PLA_not_forget_the_traditions_of_the_Red_Army
         }
         custom_effect_tooltip = Chinese_military_reform_3_tt
         hidden_effect = {
