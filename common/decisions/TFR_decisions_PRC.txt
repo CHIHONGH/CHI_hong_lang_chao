@@ -16742,24 +16742,27 @@ PRC_great_asian_war = {
 		}
 		cost = 35
 		fire_only_once = yes
-		days_remove = 50
+		days_remove = 210
 		complete_effect = {
 			custom_effect_tooltip = PRC_Invade_America_tt
 			add_timed_idea = {
 				idea = PRC_Invade_America_dec_idea
 				days = 50
 			}
+			hidden_effect = {
+				country_event = {
+					id = Chihong.71
+					days = 3
+				}
+			}
+		}
+		remove_effect = {
 			every_state = {
 				limit = {
 					is_core_of = PTF
 				}
 				remove_dynamic_modifier = {
 					modifier = PRC_unplanned_offensive
-				}
-			}
-			hidden_effect = {
-				country_event = {
-					id = Chihong.71
 				}
 			}
 		}
