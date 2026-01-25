@@ -32,7 +32,7 @@ shared_focus = {
 joint_focus = {
     id = PRC_Mobilize_the_military
     icon = GFX_focus_PRC_Mobilize_the_military
-    cost = 3
+    cost = 2
     x = -2
     y = 1
     ai_will_do = {
@@ -94,7 +94,7 @@ joint_focus = {
 joint_focus = {
     id = PRC_Ensure_logistical_support
     icon = GFX_focus_PRC_Ensure_logistical_support
-    cost = 2
+    cost = 3
     x = -2
     y = 1
     ai_will_do = {
@@ -292,7 +292,7 @@ joint_focus = {
 joint_focus = {
     id = PRC_Operation_Thunder
     icon = GFX_focus_PRC_Operation_Thunder
-    cost = 2
+    cost = 3
     x = 0
     y = 2
     ai_will_do = {
@@ -330,6 +330,7 @@ joint_focus = {
                 has_country_flag = NAX_War_whether_to_choose_flag
             }
             clr_country_flag = NAX_raj_Guerrilla_war_flag
+            set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             focus_unlock = yes
         }
         custom_effect_tooltip = PRC_start_border_war_tt
@@ -373,7 +374,7 @@ joint_focus = {
 joint_focus = {
     id = NAX_The_dawn_breaks_through_the_long_nightn
     icon = GFX_focus_NAX_The_dawn_breaks_through_the_long_nightn
-    cost = 2
+    cost = 3
     x = 0
     y = 2
     ai_will_do = {
@@ -447,7 +448,7 @@ joint_focus = {
 joint_focus = {
     id = NAX_The_Liberation_War
     icon = GFX_focus_NAX_The_Liberation_War
-    cost = 3
+    cost = 2
     x = 2
     y = 1
     ai_will_do = {
@@ -486,6 +487,9 @@ joint_focus = {
             }
         }
         army_experience = 25
+        PRC = {
+            set_country_flag = NAX_Nasser_Mass_Power_start_flag
+        }
         set_temp_variable = {
             var = global.NAX_rd_weapon_temp_var
             value = 3.5
@@ -512,7 +516,7 @@ joint_focus = {
 joint_focus = {
     id = NAX_Launch_a_guerrilla_war
     icon = GFX_focus_NAX_Launch_a_guerrilla_war
-    cost = 2
+    cost = 3
     x = 2
     y = 1
     ai_will_do = {
@@ -613,9 +617,27 @@ joint_focus = {
         factor = 200
     }
     available = {
-        custom_trigger_tooltip = {
-            tooltip = Supply_Coordination
-            tag = NAX
+        if = {
+            limit = {
+                NAX = {
+                    has_country_flag = NAX_win_indian_wool_war
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = Supply_Coordination
+                tag = NAX
+            }
+        }
+        else_if = {
+            limit = {
+                NAX = {
+                    has_country_flag = NAX_lost_indian_wool_war
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = Supply_Coordination
+                tag = PRC
+            }
         }
         custom_trigger_tooltip = {
             tooltip = War_whether_to_choose
@@ -627,10 +649,13 @@ joint_focus = {
         }
         custom_trigger_tooltip = {
             tooltip = War_situation_end
-            has_country_flag = War_situation_flag
-            check_variable = {
-                War_situation_var = 4
+            NAX = {
+                OR = {
+                    has_country_flag = NAX_win_indian_wool_war
+                    has_country_flag = NAX_lost_indian_wool_war
+                }
             }
+            has_country_flag = War_situation_flag
         }
     }
     joint_trigger = {
@@ -641,8 +666,6 @@ joint_focus = {
     }
     prerequisite = {
         focus = PRC_Operation_Thunder
-    }
-    prerequisite = {
         focus = NAX_The_dawn_breaks_through_the_long_nightn
     }
     relative_position_id = PRC_Southwestern_border_in_critical_condition
@@ -658,26 +681,76 @@ joint_focus = {
             custom_effect_tooltip = tooltip_white_line
             unlock_decision_tooltip = PRC_clean_up_zangnan
             NAX = {
-                clr_country_flag = NAX_raj_Guerrilla_war_flag
-                focus_unlock = yes
-                transfer_state = 1367
-                transfer_state = 432
-                transfer_state = 1366
-                transfer_state = 1369
-                transfer_state = 1368
-                every_state = {
+                if = {
                     limit = {
-                        state = 1367
-                        state = 432
-                        state = 1366
-                        state = 1369
-                        state = 1368
+                        has_country_flag = NAX_win_indian_wool_war
                     }
-                    add_core_of = NAX
+                    clr_country_flag = NAX_raj_Guerrilla_war_flag
+                    focus_unlock = yes
+                    transfer_state = 1367
+                    transfer_state = 432
+                    transfer_state = 1366
+                    transfer_state = 1369
+                    transfer_state = 1368
+                    every_state = {
+                        limit = {
+                            state = 1367
+                            state = 432
+                            state = 1366
+                            state = 1369
+                            state = 1368
+                        }
+                        add_core_of = NAX
+                    }
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = NAX_lost_indian_wool_war
+                    }
+                    clr_country_flag = NAX_raj_Guerrilla_war_flag
+                    focus_unlock = yes
+                    add_war_support = -0.10
+                    add_stability = -0.25
+                    hidden_effect = {
+                        every_state = {
+                            limit = {
+                                state = 1367
+                                state = 432
+                                state = 1366
+                                state = 1369
+                                state = 1368
+                            }
+                            add_core_of = NAX
+                        }
+                    }
                 }
             }
         }
         set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        custom_effect_tooltip = Brothers_in_Arms_tt
+        if = {
+            limit = { 
+                has_country_flag = NAX_win_indian_wool_war
+            }
+            custom_effect_tooltip = Brothers_in_Arms_tt
+        }
+        else_if = {
+            limit = { 
+                has_country_flag = NAX_lost_indian_wool_war
+            }
+            custom_effect_tooltip = Brothers_in_Arms_lost_tt
+        }
+        else_if = {
+            limit = { 
+                NAX = {
+                    NOT = {
+                        AND = {
+                            has_country_flag = NAX_win_indian_wool_war
+                            has_country_flag = NAX_lost_indian_wool_war
+                        }
+                    }
+                }
+            }
+            custom_effect_tooltip = Brothers_in_Arms_tt
+        }
     }
 }
