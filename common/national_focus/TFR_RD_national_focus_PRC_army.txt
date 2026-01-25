@@ -70,6 +70,12 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_complacent_officers_spirit
+                add_idea = PRC_complacent_officers_spirit2
+            }
+        }
         set_country_flag = PRC_jailed_for_corruption_flag
         country_event = prcs.1
         set_temp_variable = {
@@ -80,6 +86,7 @@ shared_focus = {
         add_ideas = PLA_pl_JZGG_1
         hidden_effect = {
             add_ideas = PRC_party_commands_the_guns_1
+            add_ideas = PRC_complacent_officers_spirit2
         }
         add_dynamic_modifier = {
             modifier = PRC_PLA_masterwork_dynamic
@@ -2228,6 +2235,18 @@ shared_focus = {
     x = 4
     y = 1
     completion_reward = {
+        effect_tooltip = {
+			remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+		}		
+		hidden_effect = {
+			remove_ideas = {
+				PRC_insufficient_understanding_of_modern_warfare_idea
+				PRC_insufficient_understanding_of_modern_warfare_idea2
+				PRC_insufficient_understanding_of_modern_warfare_idea3
+				PRC_insufficient_understanding_of_modern_warfare_idea4
+				PRC_insufficient_understanding_of_modern_warfare_idea5
+			}
+		}
         set_temp_variable = {
             PRC_army_reform_progress_temp = 15
         }
