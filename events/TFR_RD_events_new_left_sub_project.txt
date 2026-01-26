@@ -4379,151 +4379,103 @@ country_event = {
         PRC_add_influence_new = yes
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_idea
+                remove_idea = PRC_made_in_china_dummy_idea
                 add_idea = PRC_made_in_china_economics_5
             }
         }
         add_to_variable = {
             PRC_mic_political_power_gain_dynamic_var = 0.03
         }
-        add_to_variable = {
-            PRC_mic_conscription_factor_dynamic_var = 0.4
+    }
+    option = {
+        name = prcs.3194.b
+        custom_effect_tooltip = PRC_NEW_LEFT_lib_b_tt
+        add_political_power = -25
+        set_temp_variable = {
+            var = PRC_influence_new_var_temp
+            value = 0.05
+        }
+        PRC_add_influence_new = yes
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea
+                add_idea = PRC_made_in_china_economics_6
+            }
         }
         add_to_variable = {
-            PRC_mic_consumer_goods_factor_dynamic_var = -0.05
+            PRC_mic_business_value_factor_dynamic_var = -0.05
         }
         add_to_variable = {
-            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.05
+            PRC_mic_personal_value_factor_dynamic_var = 0.025
         }
         add_to_variable = {
-            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.1
+            PRC_mic_poverty_development_monthly_dynamic_var = 0.002
         }
         add_to_variable = {
-            PRC_mic_production_factory_start_efficiency_factor_dynamic_var = -0.1
-        }
-        add_to_variable = {
-            PRC_mic_research_speed_factor_dynamic_var = 0.07
-        }
-        add_to_variable = {
-            PRC_mic_MODIFIER_TRADE_OPINION_FACTOR_dynamic_var = -0.15
-        }
-        add_to_variable = {
-            PRC_mic_business_value_factor_dynamic_var = 0.1
-        }
-        add_to_variable = {
-            PRC_mic_poverty_development_monthly_dynamic_var = -0.01
-
-        }
-        option = {
-            name = prcs.3194.b
-            custom_effect_tooltip = PRC_NEW_LEFT_lib_b_tt
-            add_political_power = -25
-            set_temp_variable = {
-                var = PRC_influence_new_var_temp
-                value = 0.05
-            }
-            PRC_add_influence_new = yes
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_idea
-                    add_idea = PRC_made_in_china_economics_6
-                }
-            }
-            add_to_variable = {
-                PRC_mic_business_value_factor_dynamic_var = -0.05
-            }
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.02
-            }
-            add_to_variable = {
-                PRC_mic_poverty_development_monthly_dynamic_var = 0.01
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_start_efficiency_factor_dynamic_var = -0.1
-            }
-            add_to_variable = {
-                PRC_mic_conscription_factor_dynamic_var = 0.4
-            }
-            add_to_variable = {
-                PRC_mic_consumer_goods_factor_dynamic_var = -0.05
-            }
-            add_to_variable = {
-                PRC_mic_business_value_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.15
-            }
-            add_to_variable = {
-                PRC_mic_MODIFIER_TRADE_OPINION_FACTOR_dynamic_var = -0.15
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.07
-            }
-        }
-        option = {
-            name = prcs.3194.c
-            custom_effect_tooltip = PRC_NEW_LEFT_new_c_tt
-            hidden_effect = {
-                add_to_variable = {
-                    PRC_yuedu_jisuan = 1
-                }
-                clamp_variable = {
-                    var = PRC_yuedu_jisuan
-                    min = 0
-                    max = 10
-                }
-            }
-            if = {
-                limit = {
-                    OR = {
-                        has_dynamic_modifier = TFR_PRC_economic_crists
-                        has_dynamic_modifier = TFR_PRC_economic_crists_aftershocks
-                    }
-                }
-                PRC_crists_mission_timeout_effect = yes
-            }
-            add_political_power = -50
-            set_temp_variable = {
-                var = PRC_influence_lib_var_temp
-                value = -0.025
-            }
-            PRC_add_influence_lib = yes
-            set_temp_variable = {
-                var = PRC_influence_new_var_temp
-                value = 0.10
-            }
-            PRC_add_influence_new = yes
-            set_temp_variable = {
-                var = PRC_influence_cen_var_temp
-                value = -0.025
-            }
-            PRC_add_influence_cen = yes
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_party_rectification_campaign_empty
-                    add_idea = PRC_party_rectification_campaign_a
-                }
-            }
-            add_to_variable = {
-                PPRC_pp_g_var = 0.05
-            }
-            add_to_variable = {
-                PPRC_st_var = 0.05
-            }
-            add_to_variable = {
-                PPRC_start_efficiency_var = 0.05
-            }
-            add_to_variable = {
-                PPRC_max_efficiency_var = 0.05
-            }
-            add_to_variable = {
-                PPRC_poverty_dev_var = 0.003
-            }
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.05
         }
     }
+    option = {
+        name = prcs.3194.c
+        custom_effect_tooltip = PRC_NEW_LEFT_new_c_tt
+        hidden_effect = {
+            add_to_variable = {
+                PRC_yuedu_jisuan = 1
+            }
+            clamp_variable = {
+                var = PRC_yuedu_jisuan
+                min = 0
+                max = 10
+            }
+        }
+        if = {
+            limit = { 
+                OR = {
+                    has_dynamic_modifier = TFR_PRC_economic_crists
+                    has_dynamic_modifier = TFR_PRC_economic_crists_aftershocks
+                }
+            }
+            PRC_crists_mission_timeout_effect = yes
+        }
+        add_political_power = -50
+        set_temp_variable = {
+            var = PRC_influence_lib_var_temp
+            value = -0.025
+        }
+        PRC_add_influence_lib = yes
+        set_temp_variable = {
+            var = PRC_influence_new_var_temp
+            value = 0.10
+        }
+        PRC_add_influence_new = yes
+        set_temp_variable = {
+            var = PRC_influence_cen_var_temp
+            value = -0.025
+        }
+        PRC_add_influence_cen = yes
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_a
+            }
+        }
+        add_to_variable = {
+            PPRC_pp_g_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_start_efficiency_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_max_efficiency_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_poverty_dev_var = 0.003
+        }
+    }
+}
 
     # 利剑？
     country_event = {
