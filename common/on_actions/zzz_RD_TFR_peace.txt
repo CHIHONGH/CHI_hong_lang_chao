@@ -38,14 +38,7 @@ on_actions = {
                         }
                     }
                 }
-                MND = {
-                    white_peace = ROOT
-                    annex_country = {
-                        target = ROOT
-                        transfer_troops = no
-                    }
-                }
-                if = {
+                                if = {
                     limit = {
                         OR = {
                             AND = {
@@ -260,15 +253,6 @@ on_actions = {
                             }
                         }
                         BRM = {
-                            every_country = {
-                                limit = {
-                                    is_core_of = BRM
-                                }
-                                annex_country = {
-                                    target = FROM
-                                    transfer_troops = no
-                                }
-                            }
                             set_cosmetic_tag = PRC_repolice_gonh
                             set_politics = {
                                 ruling_party = totalitarian_socialist
@@ -278,6 +262,14 @@ on_actions = {
                             # country_event = { id = bur.5 }
                             clr_country_flag = pdto_member
                         }
+                    }
+                }
+
+                MND = {
+                    white_peace = ROOT
+                    annex_country = {
+                        target = ROOT
+                        transfer_troops = no
                     }
                 }
                 set_global_flag = skip_default_capitulation
