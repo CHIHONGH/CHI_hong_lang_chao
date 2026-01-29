@@ -1,0 +1,36 @@
+defined_text = {
+	name = BOMBINGBTNYN
+	text = {
+		trigger = {
+			check_variable = { ROOT.Bombing = 2 }
+		}
+		localization_key = "BOMBINGBTN_CLOSE"
+	}
+	text = {
+		localization_key = "BOMBINGBTN_OPEN"
+	}
+}
+defined_text = {
+	name = BOMBINGCHOOSE
+	text = {
+		trigger = {
+			OR = { check_variable = { ROOT.Bombing_choose = 0 } NOT = { has_variable = ROOT.Bombing_choose } }
+		}
+		localization_key = "BOMBINGUNCHOOSE"
+	}
+	text = {
+		localization_key = "BOMBINGWHCHOOSE"
+	}
+}
+defined_text = {
+	name = BOMBINGFIRE
+	text = {
+		trigger = {
+			var:Bombing_choose = { check_variable = { THIS.controller = PRC } }
+		}
+		localization_key = "BOMBINGFIREN"
+	}
+	text = {
+		localization_key = "BOMBINGFIREY"
+	}
+}

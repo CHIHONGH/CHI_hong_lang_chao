@@ -1,0 +1,34 @@
+scripted_gui = {
+	Bombing_underminimap_window = {
+		context_type = player_context window_name = "Bombing_underminimap_window" parent_window_name = "Bombing_underminimap_view"
+		visible = { tag = PRC }
+		effects = {
+		    Bombing_underminimap_button_click = { if = { limit = { check_variable = { ROOT.Bombing = 2 } } set_variable = { ROOT.Bombing = 1 } clear_variable = ROOT.Bombing_choose clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } } else = { set_variable = { ROOT.Bombing = 2 } } }
+		}
+	}
+	Bombing_main_window = {
+		context_type = player_context window_name = "Bombing_main_window" parent_window_name = "topbar_in"
+		visible = { check_variable = { ROOT.Bombing = 2 } }
+		effects = {
+		    Bombing_exitdbutton_click = { set_variable = { ROOT.Bombing = 1 } clear_variable = ROOT.Bombing_choose clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } }
+			Bombing_state_button_click = { set_variable = { ROOT.Bombing_choose = Bombing_state_index } add_to_variable = { ROOT.Bombing_choose = 1 } clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } set_variable = { ROOT.Bombing_array^Bombing_state_index = 1 } }
+			Bombing_fire_button_click = {} # 打击效果
+		}
+		triggers = {
+		    Bombing_state_button_visible = { OR = { check_variable = { THIS.owner = JAP } check_variable = { THIS.owner = RAJ } check_variable = { THIS.owner = AST } check_variable = { THIS.owner = PNG } check_variable = { THIS.owner = NZL } } }
+			Bombing_state_owner_visible = { check_variable = { ROOT.Bombing_array^Bombing_state_index = 1 } }
+		    Bombing_state_controller_visible = { check_variable = { THIS.controller = PRC } }
+			Bombing_state_TEST_visible = { always = no }
+			Bombing_fire_button_click_enabled = { NOT = { var:Bombing_choose = { check_variable = { THIS.controller = PRC } } } }
+		}
+		properties = {
+		    Bombing_state_button = { image = GFX_Bombing_state_button_[?THIS]_[?THIS.owner] }
+			Bombing_state_owner = { image = GFX_Bombing_state_owner_[?THIS]_[?THIS.owner] }
+		    Bombing_state_controller = { image = GFX_Bombing_state_controller_[?THIS]_[?THIS.controller] }
+		}
+		dynamic_lists = {
+		    Bombing_state_grid = { array = global.states entry_container = Bombing_state_entry change_scope = yes value = Bombing_state_value index = Bombing_state_index }
+		}
+	}
+}
+

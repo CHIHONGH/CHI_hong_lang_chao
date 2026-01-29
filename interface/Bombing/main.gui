@@ -1,0 +1,138 @@
+guiTypes = {
+    containerWindowType = {
+        name = "Bombing_main_window"
+        position = { x = 0 y = 0 }
+        size = { width = 1108 height = 720 }
+		Orientation = center
+		origo = center
+		clipping = no
+		moveable = no
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_BombingAir_bg"
+		}
+		iconType = {
+		    name = "Background"
+			spriteType = "GFX_browser_bg"
+			position = { x = 0 y = 0 }
+		}
+		instantTextboxType = {
+			name = "Bombing_Headline"
+			position = {x = 290 y = 19}
+			font = "VCR02_26"
+			text = "BOMBING"
+			maxWidth = 500
+			maxHeight = 23
+			format = center
+		}
+		buttonType = {
+			name = "Bombing_exitdbutton" 
+			position = {x = 1065 y = 15 }	
+			spriteType = "GFX_closebutton"
+			shortcut = "SPACE"
+			clicksound = click_close
+		}
+		containerWindowType = {
+            name = "Bombing_map_window"
+			background = {
+			    name = "Background"
+			    quadTextureSprite = "GFX_tiled_BombingBg_bg"
+		    }
+			position = { x = 24 y = 59 }
+			size = { width = 700 height = 602 }
+			margin = { top = 6 left = 6 bottom = 6 right = 6 }
+			drag_scroll = { left middle }
+			verticalScrollbar = "bottom_horizontal_slider_air"
+			horizontalScrollbar = "bottom_horizontal_slider_air"
+		    iconType = {
+		        name = "Bombing_map"
+			    spriteType = "GFX_Bombing_map"
+			    position = { x = -4400 y = -600 }
+				alwaystransparent = yes
+		    }
+			gridboxtype = {
+				name = "Bombing_state_grid"
+				position = { x = -4400 y = -600 }
+				size = { width = 1 height = 1 }
+				slotsize = { width = 0 height = 0 }
+				max_slots_horizontal = 30000 format = "UPPER_LEFT"
+			}
+			iconType = {
+		        name = "Bombing_mapover"
+			    spriteType = "GFX_Bombing_mapover"
+			    position = { x = -4400 y = -600 }
+				alwaystransparent = yes
+		    }
+		}
+		iconType = {
+		    name = "Bombing_tab"
+			spriteType = "GFX_diplo_action_bottom"
+			position = { x = 715 y = 56 }
+			scale = 0.72
+			alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "Bombing_tab_Headline"
+			position = {x = 715 y = 64}
+			font = "VCR02_26"
+			text = "BOMBINGTAB"
+			maxWidth = 377
+			maxHeight = 23
+			format = center
+		}
+		iconType = {
+		    name = "Bombing_slot"
+			spriteType = "GFX_focus_popup_bg"
+			position = { x = 724 y = 97 }
+			scale = 0.76
+			alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "Bombing_slot_Headline"
+			position = {x = 715 y = 133}
+			font = "VCR02_26"
+			text = "BOMBINGSLOT"
+			maxWidth = 377
+			maxHeight = 23
+			format = center
+		}
+		buttonType = {
+			name = "Bombing_fire_button"
+			spriteType = "GFX_add_national_goal_button"
+			position = { x = 770 y = 500 }
+			buttonText = "[BOMBINGFIRE]"
+			buttonFont = "VCR02_18"
+			clicksound = click_close
+		}
+    }
+	containerWindowType = {
+	    name = "Bombing_state_entry"
+		position = { x = 0 y = 0 }
+        size = { width = 5632 height = 2048 }
+		buttonType = {
+			name = "Bombing_state_button"
+			spriteType = "GFX_Bombing_Air"
+			position = { x = 0 y = 0 }
+			clicksound = click_close
+		}
+		iconType = {
+		    name = "Bombing_state_owner"
+			spriteType = "GFX_Bombing_Air"
+			position = { x = 0 y = 0 }
+		}
+		iconType = {
+		    name = "Bombing_state_controller"
+			spriteType = "GFX_Bombing_Air"
+			position = { x = 0 y = 0 }
+		}
+		instantTextboxType = {
+			name = "Bombing_state_TEST"
+			position = {x = 0 y = 91}
+			font = "VCR02_12"
+			text = "[?THIS.controller]"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+	}
+}
