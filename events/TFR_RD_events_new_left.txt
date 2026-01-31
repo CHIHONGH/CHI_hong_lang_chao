@@ -3453,6 +3453,81 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = china.1703.a
+        PRC = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -1071
+            }
+            add_income_with_inflation = yes
+        }
+        CPA = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = 571
+            }
+            add_income_with_inflation = yes
+            set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+            set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.20
+			}
+			add_poverty_development = yes
+            set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.20
+			}
+			add_society_development = yes
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = CPA
+				}
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.035
+        }
+        CPP = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = 500
+            }
+            add_income_with_inflation = yes
+            set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+            set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.20
+			}
+			add_poverty_development = yes
+            set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.20
+			}
+			add_society_development = yes
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = CPP
+				}
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.045
+        }
         hidden_effect = {
             if = {
                 limit = {
@@ -3484,6 +3559,34 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = china.1704.a
+        CPP = {
+            add_stability = 0.095
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+        }
+        CPA = {
+            add_stability = 0.085
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+        }
     }
 }
 
