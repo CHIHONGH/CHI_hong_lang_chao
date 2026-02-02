@@ -2011,9 +2011,6 @@ PRC_dawn_project = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -2432,4 +2429,145 @@ PRC_dawn_project = {
 			}
 		}
 	}
+	PRC_asteroid_mining_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.06
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -50
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_asteroid_mining_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_consumer_goods_factor_dynamic
+				value = -0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_income_growth_factor_dynamic
+				value = 0.065
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_business_value_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_lack_of_resource_penalty_factor_dynamic
+				value = -0.06
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_asteroid_mining_programme
+		cost = 100
+	}
+	PRC_new_moon_race_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = 0.1
+			consumer_goods_factor = 0.05
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -35
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_moon_landing_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.005
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_society_development_monthly_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_speed_infrastructure_factor_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_political_power_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_industrial_capacity_factory_dynamic
+				value = 0.05
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_new_moon_race_programme
+		cost = 100
+	}
+	PRC_expand_satellite_launching_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = -0.05
+			consumer_goods_factor = 0.02
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -20
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_expand_satellite_launching_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_factory_efficiency_gain_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_speed_buildings_factor_dynamic
+				value = 0.0125
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_income_growth_factor_dynamic
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_business_value_factor_dynamic
+				value = 0.015
+			}
+		}
+		days_remove = 180
+		days_re_enable = 365
+		icon = GFX_decision_PRC_expand_satellite_launching_programme
+		cost = 65
+	}
+
 }
