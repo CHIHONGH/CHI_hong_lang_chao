@@ -213,6 +213,10 @@ shared_focus = {
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	completion_reward = {
 		set_temp_variable = {
@@ -253,79 +257,6 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = USA_embrace_neutrality
-	icon = {
-		trigger = {
-			tag = NSM
-		}
-		value = GFX_focus_USA_embrace_neutrality_NSM
-	}
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_embrace_neutrality_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_embrace_neutrality
-	}
-	search_filters = {
-		FOCUS_FILTER_POLITICAL
-	}
-	relative_position_id = USA_back_in_business
-	available_if_capitulated = yes
-	dynamic = yes
-	x = -3
-	y = 1
-	cost = 10
-	prerequisite = {
-		focus = USA_back_in_business
-	}
-	ai_will_do = {
-		base = 20
-	}
-	completion_reward = {
-		set_temp_variable = {
-			var = society_development_var_temp
-			value = 0.25
-		}
-		add_society_development = yes
-		set_temp_variable = {
-			var = USA_reconstruction_progress_var_temp
-			value = 0.1
-		}
-		USA_add_reconstruction_progress = yes
-		custom_effect_tooltip = USA_embrace_neutrality_tooltip
-		effect_tooltip = {
-			meta_effect = {
-				text = {
-					swap_ideas = {
-						remove_idea = [TOKEN]
-						add_idea = USA_embrace_neutrality_idea
-					}
-				}
-				TOKEN = "[ROOT.USA_politics_dummy_idea_text]"
-			}
-		}
-		hidden_effect = {
-			set_variable = {
-				var = USA_reconstruction_cooldown_var
-				value = 87
-			}
-			meta_effect = {
-				text = {
-					add_to_variable = {
-						var = [TOKEN]_politics_stability_factor_dynamic_var
-						value = 0.1
-					}
-				}
-				TOKEN = "[ROOT.GetTag]"
-			}
-		}
-	}
-}
-
-shared_focus = {
 	id = USA_the_giant_wakes
 	icon = {
 		trigger = {
@@ -354,7 +285,7 @@ shared_focus = {
 	}
 	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
-	x = 3
+	x = 1
 	y = 1
 	cost = 10
 	prerequisite = {
@@ -362,6 +293,10 @@ shared_focus = {
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	completion_reward = {
 		add_political_power = 100
@@ -431,12 +366,16 @@ shared_focus = {
 	cost = 10
 	prerequisite = {
 		focus = USA_the_giant_wakes
-		focus = USA_embrace_neutrality
+		focus = USA_american_diplomatic_corps
 	}
 	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
@@ -510,6 +449,10 @@ shared_focus = {
 	available_if_capitulated = yes
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
@@ -603,6 +546,10 @@ shared_focus = {
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
@@ -736,21 +683,6 @@ shared_focus = {
 					}
 				}
 				TOKEN = "[ROOT.GetTag]"
-			}
-		}
-		if = {
-			limit = { 
-				tag = PTF	
-			}
-			custom_effect_tooltip = USA_war_with_PRC_tt
-			if = {
-				limit = { 
-					has_completed_focus = USA_build_the_military_of_tomorrow
-				}
-				hidden_effect = {
-					load_focus_tree = PTF_American
-					focus_unlock = yes
-				}
 			}
 		}
 	}
@@ -946,16 +878,20 @@ shared_focus = {
 	search_filters = {
 		FOCUS_FILTER_ANNEXATION
 	}
-	x = -1
-	y = 1
+	x = -2
+	y = 0
 	cost = 5
 	relative_position_id = USA_the_giant_wakes
 	available_if_capitulated = yes
 	prerequisite = {
-		focus = USA_the_giant_wakes
+		focus = USA_back_in_business
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 	}
@@ -1378,12 +1314,8 @@ shared_focus = {
 				tag = PTF	
 			}
 			custom_effect_tooltip = USA_war_with_PRC_tt
-			if = {
-				limit = { has_completed_focus = USA_the_forgotten_farmlands }
-				hidden_effect = {
-					load_focus_tree = PTF_American
-					focus_unlock = yes
-				}
+			hidden_effect = {
+				load_focus_tree = PTF_American
 			}
 		}
 	}
