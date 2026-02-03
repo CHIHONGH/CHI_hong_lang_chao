@@ -2179,16 +2179,36 @@ country_event = {
             tag = JAP
         }
         hidden_effect = {
-            JAP = {
-                add_to_faction = PTF
+            if = {
+                limit = { 
+                    JAP = {
+                        is_in_faction = yes
+                    }
+                }
+                JAP = {
+                    add_to_faction = PTF
+                }
             }
+            else = {
+                JAP = {
+                    create_faction = PDTO
+                    set_faction_leader = yes
+                    add_to_faction = PTF
+                }
+            }
+            
             news_event = prcs.3118
         }
     }
     option = {
         name = prcs.3094.b
         trigger = {
-            tag = PTF
+            tag = PRC
+        }
+        effect_tooltip = {
+            JAP = {
+                add_to_faction = PTF
+            }
         }
     }
 }
@@ -3510,7 +3530,7 @@ country_event = {
         effect_tooltip = {
             swap_ideas = {
                 remove_idea = PRC_party_rectification_campaign_empty
-                add_idea = PRC_PRC_nl_diyibu_e_idea
+                add_idea = PRC_nl_diyibu_e_idea
             }
         }
         add_to_variable = {
