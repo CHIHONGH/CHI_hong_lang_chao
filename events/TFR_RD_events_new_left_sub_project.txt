@@ -1079,10 +1079,6 @@ country_event = {
             PPRC_nt_drift_var = -0.05
         }
         custom_effect_tooltip = PRC_tfr_nl_china_baolei_b_tt
-        country_event = {
-            id = prcs.3034
-            days = 0
-        }
     }
 }
 
@@ -2183,16 +2179,36 @@ country_event = {
             tag = JAP
         }
         hidden_effect = {
-            JAP = {
-                add_to_faction = PTF
+            if = {
+                limit = { 
+                    JAP = {
+                        is_in_faction = yes
+                    }
+                }
+                JAP = {
+                    add_to_faction = PTF
+                }
             }
+            else = {
+                JAP = {
+                    create_faction = PDTO
+                    set_faction_leader = yes
+                    add_to_faction = PTF
+                }
+            }
+            
             news_event = prcs.3118
         }
     }
     option = {
         name = prcs.3094.b
         trigger = {
-            tag = PTF
+            tag = PRC
+        }
+        effect_tooltip = {
+            JAP = {
+                add_to_faction = PTF
+            }
         }
     }
 }
@@ -3514,7 +3530,7 @@ country_event = {
         effect_tooltip = {
             swap_ideas = {
                 remove_idea = PRC_party_rectification_campaign_empty
-                add_idea = PRC_PRC_nl_diyibu_e_idea
+                add_idea = PRC_nl_diyibu_e_idea
             }
         }
         add_to_variable = {
@@ -4783,15 +4799,9 @@ country_event = {
         title = prcs.3202.t
         desc = prcs.3202.d
 
+        is_triggered_only = yes
         fire_only_once = yes
 
-        trigger = {
-            date > 2025.4.1
-            tag = PRC
-        }
-        mean_time_to_happen = {
-            days = 2
-        }
         option = {
             name = prcs.3202.a
         }
@@ -4803,16 +4813,8 @@ country_event = {
         title = prcs.3203.t
         desc = prcs.3203.d
 
+        is_triggered_only = yes
         fire_only_once = yes
-
-        trigger = {
-            communism > 0.3
-            date > 2024.1.1
-        }
-
-        mean_time_to_happen = {
-            days = 300
-        }
 
         option = {
             name = prcs.3203.a
