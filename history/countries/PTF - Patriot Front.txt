@@ -2,9 +2,10 @@
 
 	oob = ""
 
-	set_research_slots = 1
-	set_convoys = 10
+	set_research_slots = 5
+	set_convoys = 50
 	set_stability = 0.6
+	set_war_support = 0.6
 
 	set_country_flag = shithole_country
 
@@ -533,12 +534,12 @@
 		}
 	}
 
-every_possible_country = {
-      limit = {
-            NOT =  { USA_is_civil_war_faction = yes }
-       }
-	add_opinion_modifier = { target = PTF modifier = opinion_fascistic_state }
-}
+	every_possible_country = {
+		limit = {
+				NOT =  { USA_is_civil_war_faction = yes }
+		}
+		add_opinion_modifier = { target = PTF modifier = opinion_fascistic_state }
+	}
 
 	add_opinion_modifier = {
 		target = ATW
@@ -548,4 +549,13 @@ every_possible_country = {
 	add_opinion_modifier = {
 		target = NSM
 		modifier = opinion_begruding_ally
+	}
+
+	add_offsite_building = {
+		type = industrial_complex
+		level = 20
+	}
+	add_offsite_building = {
+		type = arms_factory
+		level = 20
 	}
