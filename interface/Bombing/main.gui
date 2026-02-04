@@ -1,12 +1,14 @@
 guiTypes = {
     containerWindowType = {
         name = "Bombing_main_window"
-        position = { x = 0 y = 0 }
-        size = { width = 1108 height = 720 }
+        position = { x = 0 y = -40 }
+        size = { width = 1108 height = 800 }
 		Orientation = center
 		origo = center
 		clipping = no
-		moveable = no
+		moveable = yes
+		fade_time = 1000
+		fade_type = linear
 		background = {
 			name = "Background"
 			quadTextureSprite = "GFX_tiled_BombingAir_bg"
@@ -14,11 +16,30 @@ guiTypes = {
 		iconType = {
 		    name = "Background"
 			spriteType = "GFX_browser_bg"
-			position = { x = 0 y = 0 }
+			position = { x = 0 y = 80 }
+			alwaystransparent = yes
+		}
+		buttonType = {
+			name = "Bombing_fire_button"
+			spriteType = "GFX_add_national_goal_button"
+			position = { x = 770 y = 660 }
+			buttonText = "[BOMBINGFIRE]"
+			buttonFont = "VCR02_18"
+			clicksound = click_close
+		}
+		containerWindowType = {
+            name = "Bombing_information_view"
+            position = { x = 164 y = -20 }
+		    Orientation = center
+		}
+		containerWindowType = {
+            name = "Bombing_type_view"
+            position = { x = 164 y = -20 }
+		    Orientation = center
 		}
 		instantTextboxType = {
 			name = "Bombing_Headline"
-			position = {x = 290 y = 19}
+			position = {x = 290 y = 99}
 			font = "VCR02_26"
 			text = "BOMBING"
 			maxWidth = 500
@@ -27,7 +48,7 @@ guiTypes = {
 		}
 		buttonType = {
 			name = "Bombing_exitdbutton" 
-			position = {x = 1065 y = 15 }	
+			position = {x = 1065 y = 95 }	
 			spriteType = "GFX_closebutton"
 			shortcut = "SPACE"
 			clicksound = click_close
@@ -38,7 +59,7 @@ guiTypes = {
 			    name = "Background"
 			    quadTextureSprite = "GFX_tiled_BombingBg_bg"
 		    }
-			position = { x = 24 y = 59 }
+			position = { x = 24 y = 139 }
 			size = { width = 700 height = 602 }
 			margin = { top = 6 left = 6 bottom = 6 right = 6 }
 			drag_scroll = { left middle }
@@ -67,42 +88,64 @@ guiTypes = {
 		iconType = {
 		    name = "Bombing_tab"
 			spriteType = "GFX_diplo_action_bottom"
-			position = { x = 715 y = 56 }
+			position = { x = 715 y = 136 }
 			scale = 0.72
 			alwaystransparent = yes
 		}
 		instantTextboxType = {
 			name = "Bombing_tab_Headline"
-			position = {x = 715 y = 64}
+			position = {x = 722 y = 144}
 			font = "VCR02_26"
 			text = "BOMBINGTAB"
-			maxWidth = 377
+			maxWidth = 363
 			maxHeight = 23
 			format = center
 		}
 		iconType = {
 		    name = "Bombing_slot"
 			spriteType = "GFX_focus_popup_bg"
-			position = { x = 724 y = 97 }
+			position = { x = 724 y = 174 }
 			scale = 0.76
 			alwaystransparent = yes
 		}
 		instantTextboxType = {
 			name = "Bombing_slot_Headline"
-			position = {x = 715 y = 133}
+			position = { x = 722 y = 210 }
 			font = "VCR02_26"
 			text = "BOMBINGSLOT"
-			maxWidth = 377
+			maxWidth = 363
+			maxHeight = 23
+			format = center
+		}
+		iconType = {
+		    name = "Bombing_type"
+			spriteType = "GFX_focus_popup_bg"
+			position = { x = 724 y = 280 }
+			scale = 0.76
+			alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "Bombing_type_Headline"
+			position = { x = 722 y = 316 }
+			font = "VCR02_26"
+			text = "BOMBINGTYPE"
+			maxWidth = 363
 			maxHeight = 23
 			format = center
 		}
 		buttonType = {
-			name = "Bombing_fire_button"
-			spriteType = "GFX_add_national_goal_button"
-			position = { x = 770 y = 500 }
-			buttonText = "[BOMBINGFIRE]"
-			buttonFont = "VCR02_18"
+			name = "Bombing_typelist_button"
+			spriteType = "GFX_Bombing_btn1"
+			position = { x = 1031 y = 286 }
 			clicksound = click_close
+			frame = 1
+		}
+		buttonType = {
+			name = "Bombing_cancel_button"
+			spriteType = "GFX_Bombing_btn2"
+			position = { x = 1031 y = 180 }
+			clicksound = click_close
+			frame = 1
 		}
     }
 	containerWindowType = {
@@ -124,12 +167,139 @@ guiTypes = {
 		    name = "Bombing_state_controller"
 			spriteType = "GFX_Bombing_Air"
 			position = { x = 0 y = 0 }
+			alwaystransparent = yes
 		}
 		instantTextboxType = {
 			name = "Bombing_state_TEST"
 			position = {x = 0 y = 91}
 			font = "VCR02_12"
 			text = "[?THIS.controller]"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+	}
+	containerWindowType = {
+        name = "Bombing_type_window"
+        position = { x = 0 y = 0 }
+        size = { width = 370 height = 366 }	
+		show_position = { x=0 y =0 }
+		hide_position = { x = 0 y = -250 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 800	
+		clipping = yes
+		moveable = no
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+		}
+		margin = { top = 0 left = 0 bottom = 8 right = 0 }
+		gridboxtype = {
+			name = "Bombing_type_grid"
+			position = { x = 10 y = 10 }
+			size = { width = 1 height = 1 }
+			slotsize = { width = 100 height = 41 }
+			format = "UPPER_LEFT"
+			max_slots = { x = 1 y = 50 }
+		}
+		verticalScrollbar = right_vertical_slider
+		smooth_scrolling = yes
+		autohide_scrollbars = yes
+	}
+	containerWindowType = {
+	    name = "Bombing_type_entry"
+		position = { x = 0 y = 0 }
+        size = { width = 261 height = 34 }
+		buttonType = {
+			name = "Bombing_type_button"
+			spriteType = "GFX_Bombing_button_261x34_green"
+			position = { x = 0 y = 0 }
+			clicksound = click_close
+			buttonText = "[BOMBINGTYPEE]"
+			buttonFont = 1
+		}
+		scale = 1.265
+	}
+	containerWindowType = {
+        name = "Bombing_information_window"
+        position = { x = 0 y = 0 }
+        size = { width = 370 height = 286 }	
+		show_position = { x=0 y =0 }
+		hide_position = { x = 0 y = -250 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 800	
+		clipping = yes
+		moveable = no
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+		}
+		margin = { top = 0 left = 0 bottom = 8 right = 34 }
+		verticalScrollbar = right_vertical_slider
+		smooth_scrolling = yes
+		autohide_scrollbars = yes
+		instantTextboxType = {
+			name = "Bombing_information_population"
+			position = {x = 11 y = 10}
+			font = "VCR02_16"
+			text = "Bombing_IP"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "Bombing_information_owner"
+			position = {x = 141 y = 10}
+			font = "VCR02_16"
+			text = "Bombing_IO"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "Bombing_information_controller"
+			position = {x = 11 y = 28}
+			font = "VCR02_16"
+			text = "Bombing_IC"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		gridboxtype = {
+			name = "Bombing_building_grid"
+			position = { x = 0 y = 36 }
+			size = { width = 121 height = 50 }
+			slotsize = { width = 108 height = 47 }
+			format = "UPPER_LEFT"
+			max_slots = { x = 3 y = 10 }
+		}
+	}
+	containerWindowType = {
+	    name = "Bombing_building_entry"
+		position = { x = 0 y = 0 }
+        size = { width = 121 height = 50 }
+		iconType = {
+			name = "Bombing_building"
+			spriteType = "GFX_buildings_strip"
+			position = { x = 10 y = 10 }
+			frame = 1
+		}
+		instantTextboxType = {
+			name = "Bombing_building_name"
+			position = {x = 56 y = 14}
+			font = "VCR02_16"
+			text = "[BombingName]"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "Bombing_building_num"
+			position = {x = 58 y = 31}
+			font = "VCR02_20"
+			text = "[BombingNum]"
 			maxWidth = 500
 			maxHeight = 23
 			format = left

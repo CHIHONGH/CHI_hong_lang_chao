@@ -1,0 +1,55 @@
+on_actions = {
+    on_startup = {
+		effect = {
+			every_possible_country = {
+				clear_array = THIS.BombingTypeList clear_array = THIS.BombingBuildingList clear_variable = THIS.BombingTypeC clear_variable = THIS.BombingTypeListF
+				if = { limit = { tag = PRC }
+					add_to_array = { THIS.BombingTypeList = 1 } add_to_array = { THIS.BombingTypeList = 1 } add_to_array = { THIS.BombingTypeList = 1 } add_to_array = { THIS.BombingTypeList = 2 }
+				}
+				else = {
+					add_to_array = { THIS.BombingTypeList = 2 } add_to_array = { THIS.BombingTypeList = 2 } add_to_array = { THIS.BombingTypeList = 2 } add_to_array = { THIS.BombingTypeList = 2 }
+				}
+				for_each_loop = { value = v index = i array = THIS.BombingTypeList log = "Bombing: --typeList !name=[THIS.GetName] !tag=[THIS.GetTag] !index=[?i] !value=[?v]" }
+				set_variable = { THIS.BombingTypeC = 91 } log = "Bombing: --typeC !name=[THIS.GetName] !tag= [THIS.GetTag] !GOOD"
+				if = { limit = { has_country_flag = BombingUW }
+    		        clr_country_flag = BombingUW log = "Bombing: --Buw !name=[THIS.GetName] !tag= [THIS.GetTag] !clr"
+				}
+				set_variable = { THIS.BombingTypeListF = 1 } log = "Bombing: --typeList !name=[THIS.GetName] !tag= [THIS.GetTag] !F=[?THIS.BombingTypeListF]"
+				add_to_array = { THIS.BombingBuildingList = 1 }
+				add_to_array = { THIS.BombingBuildingList = 2 }
+				add_to_array = { THIS.BombingBuildingList = 3 }
+				add_to_array = { THIS.BombingBuildingList = 4 }
+				add_to_array = { THIS.BombingBuildingList = 5 }
+				add_to_array = { THIS.BombingBuildingList = 6 }
+				add_to_array = { THIS.BombingBuildingList = 7 }
+				add_to_array = { THIS.BombingBuildingList = 8 }
+				add_to_array = { THIS.BombingBuildingList = 9 }
+				add_to_array = { THIS.BombingBuildingList = 10 }
+				add_to_array = { THIS.BombingBuildingList = 11 }
+				add_to_array = { THIS.BombingBuildingList = 12 }
+				add_to_array = { THIS.BombingBuildingList = 13 }
+				add_to_array = { THIS.BombingBuildingList = 14 }
+				add_to_array = { THIS.BombingBuildingList = 15 }
+				add_to_array = { THIS.BombingBuildingList = 16 }
+				add_to_array = { THIS.BombingBuildingList = 17 }
+				add_to_array = { THIS.BombingBuildingList = 18 }
+				add_to_array = { THIS.BombingBuildingList = 19 }
+				#add_to_array = { THIS.BombingBuildingList = 20 }
+				#add_to_array = { THIS.BombingBuildingList = 21 }
+				#add_to_array = { THIS.BombingBuildingList = 22 }
+				#add_to_array = { THIS.BombingBuildingList = 23 }
+				add_to_array = { THIS.BombingBuildingList = 24 }
+				#add_to_array = { THIS.BombingBuildingList = 25 }
+				#add_to_array = { THIS.BombingBuildingList = 26 }
+				for_each_loop = { value = v index = i array = THIS.BombingBuildingList log = "Bombing: --bombingList !name=[THIS.GetName] !tag=[THIS.GetTag] !index=[?i] !value=[?v]" }
+			}
+			clear_array = global.BombingStateButtonVisible log = "Bombing: --BSBV -all !clr"
+			JAP = { add_to_array = { global.BombingStateButtonVisible = THIS } log = "Bombing: --BSBV !name=[THIS.GetName] !tag=[THIS.GetTag]" }
+			RAJ = { add_to_array = { global.BombingStateButtonVisible = THIS } log = "Bombing: --BSBV !name=[THIS.GetName] !tag=[THIS.GetTag]" }
+			AST = { add_to_array = { global.BombingStateButtonVisible = THIS } log = "Bombing: --BSBV !name=[THIS.GetName] !tag=[THIS.GetTag]" }
+			PNG = { add_to_array = { global.BombingStateButtonVisible = THIS } log = "Bombing: --BSBV !name=[THIS.GetName] !tag=[THIS.GetTag]" }
+			NZL = { add_to_array = { global.BombingStateButtonVisible = THIS } log = "Bombing: --BSBV !name=[THIS.GetName] !tag=[THIS.GetTag]" }
+			PRC = { set_country_flag = BombingUW log = "Bombing: --Buw !name=[THIS.GetName] !tag= [THIS.GetTag] !set" }
+		}
+	}
+}

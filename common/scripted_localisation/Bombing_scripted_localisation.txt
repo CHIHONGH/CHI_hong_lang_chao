@@ -26,11 +26,146 @@ defined_text = {
 	name = BOMBINGFIRE
 	text = {
 		trigger = {
-			var:Bombing_choose = { check_variable = { THIS.controller = PRC } }
+			var:Bombing_choose = { check_variable = { THIS.controller = ROOT } }
 		}
-		localization_key = "BOMBINGFIREN"
+		localization_key = "BOMBINGFIREN1"
+	}
+	text = {
+		trigger = {
+			NOT = { has_variable = ROOT.Bombing_choose }
+		}
+		localization_key = "BOMBINGFIREN2"
+	}
+	text = {
+		trigger = {
+			check_variable = { ROOT.BombingTypeC = 91 }
+		}
+		localization_key = "BOMBINGFIREN3"
+	}
+	text = {
+		trigger = {
+			check_variable = { ROOT.BombingTypeC = 2 }
+            NOT = { num_of_nukes > 0 }
+		}
+		localization_key = "BOMBINGFIREN4"
 	}
 	text = {
 		localization_key = "BOMBINGFIREY"
+	}
+}
+defined_text = {
+	name = BOMBINGTYPECHOOSE
+	text = {
+		localization_key = "BOMBINGTYPE[?BombingTypeC]"
+	}
+}
+defined_text = {
+	name = BOMBINGTYPEE
+	text = {
+		localization_key = "BOMBINGTYPE[?Bombing_type_index]"
+	}
+}
+defined_text = {
+	name = BOMBINGCHOOSEIP
+	text = {
+		trigger = {
+			OR = { check_variable = { ROOT.Bombing_choose = 0 } NOT = { has_variable = ROOT.Bombing_choose } }
+		}
+		localization_key = "BOMBINGUNCHOOSE"
+	}
+	text = {
+		localization_key = "BOMBINGWHCHOOSEIP"
+	}
+}
+defined_text = {
+	name = BOMBINGCHOOSEIO
+	text = {
+		trigger = {
+			OR = { check_variable = { ROOT.Bombing_choose = 0 } NOT = { has_variable = ROOT.Bombing_choose } }
+		}
+		localization_key = "BOMBINGUNCHOOSE"
+	}
+	text = {
+		trigger = {
+			OR = { is_in_faction_with = var:Bombing_choose_IO check_variable = { ROOT.Bombing_choose_IO = ROOT } }
+		}
+		localization_key = "BOMBINGWHCHOOSEIO2"
+	}
+	text = {
+		trigger = {
+			has_war_with = var:Bombing_choose_IO
+		}
+		localization_key = "BOMBINGWHCHOOSEIO1"
+	}
+	text = {
+		localization_key = "BOMBINGWHCHOOSEIO0"
+	}
+}
+defined_text = {
+	name = BOMBINGCHOOSEIC
+	text = {
+		trigger = {
+			OR = { check_variable = { ROOT.Bombing_choose = 0 } NOT = { has_variable = ROOT.Bombing_choose } }
+		}
+		localization_key = "BOMBINGUNCHOOSE"
+	}
+	text = {
+		trigger = {
+			OR = { is_in_faction_with = var:Bombing_choose_IC check_variable = { ROOT.Bombing_choose_IC = ROOT } }
+		}
+		localization_key = "BOMBINGWHCHOOSEIC2"
+	}
+	text = {
+		trigger = {
+			has_war_with = var:Bombing_choose_IC
+		}
+		localization_key = "BOMBINGWHCHOOSEIC1"
+	}
+	text = {
+		localization_key = "BOMBINGWHCHOOSEIC0"
+	}
+}
+defined_text = {
+	name = Bombing_choose_ICF
+	text = {
+		trigger = {
+			var:Bombing_choose_IC = { has_full_control_of_state = ROOT.Bombing_choose }
+			OR = { is_in_faction_with = var:Bombing_choose_IC check_variable = { ROOT.Bombing_choose_IC = ROOT } }
+		}
+		localization_key = "Bombing_choose_ICFY2"
+	}
+	text = {
+		trigger = {
+			var:Bombing_choose_IC = { has_full_control_of_state = ROOT.Bombing_choose }
+			has_war_with = var:Bombing_choose_IC
+		}
+		localization_key = "Bombing_choose_ICFY1"
+	}
+	text = {
+		trigger = {
+			var:Bombing_choose_IC = { has_full_control_of_state = ROOT.Bombing_choose }
+		}
+		localization_key = "Bombing_choose_ICFY0"
+	}
+	text = {
+		localization_key = "Bombing_choose_ICFN"
+	}
+}
+defined_text = {
+	name = BombingName
+	text = {
+		localization_key = "BombingName[?Bombing_building_value]"
+	}
+}
+defined_text = {
+	name = BombingNum
+	text = {
+		trigger = {
+			OR = { check_variable = { ROOT.Bombing_choose = 0 } NOT = { has_variable = ROOT.Bombing_choose } }
+		}
+		localization_key = "BOMBINGUNCHOOSE"
+	}
+	text = {
+		localization_key = "BombingNum[?Bombing_building_value]"
 	}
 }

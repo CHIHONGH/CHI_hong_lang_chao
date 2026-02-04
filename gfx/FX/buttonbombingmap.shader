@@ -65,18 +65,24 @@ PixelShader =
 		float4 main( VS_OUTPUT v ) : PDX_COLOR
 		{
 		    float4 OutColor = tex2D( MapTexture, v.vTexCoord );
-			
+				
 		#ifdef ANIMATED
 			OutColor = Animate(OutColor, v.vTexCoord, v.vAnimatedTexCoord, MaskTexture, AnimatedTexture, MaskTexture2, AnimatedTexture2);
 		#endif
 
 		#ifdef MASKING
-			float4 MaskColor = tex2D( MaskingTexture, v.vMaskingTexCoord );
+			float4 MaskColor = tex2D( MaskingTexture, v.vTexCoord );
 			OutColor.a *= MaskColor.a;
 		#endif
 
-			
 			OutColor *= Color;
+			
+			float vTime = 0.9 - saturate( (Time - AnimationTime) * 4 );
+			vTime *= vTime;
+			vTime = 0.9*0.9 - vTime;
+		    float4 MixColor = float4( 0.95, -0.15, 0.15, 0 ) * vTime;
+		    OutColor.rgb += ( -0.95 + OutColor.rgb ) * MixColor.rgb;
+			
 			return OutColor;
 		}
 	]]
@@ -86,18 +92,24 @@ PixelShader =
 		float4 main( VS_OUTPUT v ) : PDX_COLOR
 		{
 		    float4 OutColor = tex2D( MapTexture, v.vTexCoord );
-			
+				
 		#ifdef ANIMATED
 			OutColor = Animate(OutColor, v.vTexCoord, v.vAnimatedTexCoord, MaskTexture, AnimatedTexture, MaskTexture2, AnimatedTexture2);
 		#endif
 
 		#ifdef MASKING
-			float4 MaskColor = tex2D( MaskingTexture, v.vMaskingTexCoord );
+			float4 MaskColor = tex2D( MaskingTexture, v.vTexCoord );
 			OutColor.a *= MaskColor.a;
 		#endif
 
-			
 			OutColor *= Color;
+			
+			float vTime = 0.9 - saturate( (Time - AnimationTime) * 4 );
+			vTime *= vTime;
+			vTime = 0.9*0.9 - vTime;
+		    float4 MixColor = float4( 0.95, -0.15, 0.35, 0 ) * vTime;
+		    OutColor.rgb += ( -0.65 + OutColor.rgb ) * MixColor.rgb;
+			
 			return OutColor;
 		}
 	]]
@@ -122,8 +134,8 @@ PixelShader =
 			float vTime = 0.9 - saturate( (Time - AnimationTime) * 4 );
 			vTime *= vTime;
 			vTime = 0.9*0.9 - vTime;
-		    float4 MixColor = float4( 0.55, 0.15, -0.15, 0 ) * vTime;
-		    OutColor.rgb += ( -0.7 + OutColor.rgb ) * MixColor.rgb;
+		    float4 MixColor = float4( -0.95, -0.45, 0.65, 0 ) * vTime;
+		    OutColor.rgb += ( -0.95 + OutColor.rgb ) * MixColor.rgb;
 			
 			return OutColor;
 		}
