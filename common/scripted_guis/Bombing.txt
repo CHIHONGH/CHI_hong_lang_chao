@@ -1,9 +1,19 @@
 scripted_gui = {
-	Bombing_underminimap_window = {
-		context_type = player_context window_name = "Bombing_underminimap_window" parent_window_name = "Bombing_underminimap_view"
-		visible = { has_country_flag = BombingUW }
+	Bombing_control_window = {
+		context_type = player_context window_name = "Bombing_control_window" parent_window_name = "Bombing_control_view"
+		triggers = { 
+		    Bombing_control_button_visible = { has_country_flag = BombingUW }
+			Bombing_control_button_disabled_visible = { NOT = { has_country_flag = BombingUW } }
+			Bombing_control_button_toggle_icon_visible = { has_country_flag = BombingUW }
+			Bombing_control_button_disabled_click_enabled = { has_country_flag = BombingUW }
+		}
 		effects = {
-		    Bombing_underminimap_button_click = { if = { limit = { check_variable = { ROOT.Bombing = 2 } } set_variable = { ROOT.BombingTypeC = 91 } set_variable = { ROOT.BombingTypeListF = 1 } set_variable = { ROOT.Bombing = 1 } clear_variable = ROOT.Bombing_choose clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } } else = { set_variable = { ROOT.Bombing = 2 } } BombingBombingNumSE = yes }
+		    Bombing_control_button_click = { if = { limit = { check_variable = { ROOT.Bombing = 2 } } set_variable = { ROOT.BombingTypeC = 91 } set_variable = { ROOT.BombingTypeListF = 1 } set_variable = { ROOT.Bombing = 1 } clear_variable = ROOT.Bombing_choose clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } set_variable = { ROOT.Bombing_control_button_toggle_icon_frame = 0 } } else = { set_variable = { ROOT.Bombing = 2 } set_variable = { ROOT.Bombing_control_button_toggle_icon_frame = 4 } } BombingBombingNumSE = yes }
+		}
+		properties = {
+		    Bombing_control_button_toggle_icon = {
+			    frame = ROOT.Bombing_control_button_toggle_icon_frame
+			}
 		}
 	}
 	Bombing_main_window = {

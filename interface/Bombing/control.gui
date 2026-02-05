@@ -1,0 +1,50 @@
+guiTypes = {
+    containerWindowType = {
+        name = "Bombing_control_window"
+        position = { x = 0 y = 0 }
+        size = { width = 100 height = 100 }
+		clipping = no
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_BombingAir_bg"
+			alwaystransparent = yes
+		}
+		containerWindowType = {
+            name = "Bombing_control_button_window"
+			position = { x = 34 y = 36 }
+            size = { width = 100 height = 100 }
+		    clipping = no
+			iconType = {
+			    name = "Bombing_control_button_background"
+       		    position = { x = 0 y = 0 }
+			    spriteType = "GFX_raid_type_background_round"
+			}
+			buttonType = {
+			    name = "Bombing_control_button_disabled"
+       		    position = { x = 0 y = 0 }
+			    spriteType = "GFX_raid_category_small_Bombing_raids_disabled"
+				pdx_tooltip = "Bombing_underminimap_button_tt_dis"
+                pdx_tooltip_delayed = "Bombing_underminimap_button_tt_dis_long"
+				pdx_disabled_tooltip = "Bombing_underminimap_button_tt_dis"
+				pdx_disabled_tooltip_delayed = "Bombing_underminimap_button_tt_dis_long"
+				clicksound = click_close
+			}
+			buttonType = {
+				name = "Bombing_control_button"
+				spriteType = "GFX_raid_category_small_Bombing_raids"
+				position = { x = 0 y = 0 }
+				clicksound = click_close
+				pdx_tooltip = "Bombing_underminimap_button_tt"
+                pdx_tooltip_delayed = "Bombing_underminimap_button_tt_long"
+			}
+			iconType = {
+		  	    name = "Bombing_control_button_toggle_icon"
+          		position = { x = 16 y = 24 }
+         	    spriteType = "GFX_deploy_priority"
+           	    alwaystransparent = yes
+            	scale = 0.65
+            	frame = 0
+			}
+		}
+	}
+}
