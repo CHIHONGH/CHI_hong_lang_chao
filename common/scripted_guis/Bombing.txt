@@ -18,7 +18,7 @@ scripted_gui = {
 	}
 	Bombing_main_window = {
 		context_type = player_context window_name = "Bombing_main_window" parent_window_name = "topbar_in"
-		visible = { check_variable = { ROOT.Bombing = 2 } }
+		visible = { check_variable = { ROOT.Bombing = 2 } has_country_flag = BombingUW }
 		effects = {
 		    Bombing_exitdbutton_click = { set_variable = { ROOT.BombingTypeC = 91 } set_variable = { ROOT.BombingTypeListF = 1 } set_variable = { ROOT.Bombing = 1 } clear_variable = ROOT.Bombing_choose clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } var:Bombing_choose = { set_variable = { ROOT.Bombing_choose_IP = THIS.state_population_k } set_variable = { ROOT.Bombing_choose_IO = THIS.owner } set_variable = { ROOT.Bombing_choose_IC = THIS.controller } } BombingBombingNumSE = yes }
 			Bombing_state_button_click = { set_variable = { ROOT.Bombing_choose = Bombing_state_index } add_to_variable = { ROOT.Bombing_choose = 1 } clear_array = ROOT.Bombing_array for_each_loop = { array = global.states value = v add_to_array = { ROOT.Bombing_array = 2 } } set_variable = { ROOT.Bombing_array^Bombing_state_index = 1 } var:Bombing_choose = { set_variable = { ROOT.Bombing_choose_IP = THIS.state_population_k } set_variable = { ROOT.Bombing_choose_IO = THIS.owner } set_variable = { ROOT.Bombing_choose_IC = THIS.controller } } BombingBombingNumSE = yes }
