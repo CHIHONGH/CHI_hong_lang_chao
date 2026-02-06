@@ -22,15 +22,8 @@ country_event = {
     title = prcs.2.t
     desc = prcs.2.d
     picture = GFX_2025_xinchun
-    # is_triggered_only = yes
+    is_triggered_only = yes
     fire_only_once = yes
-    trigger = {
-        date > 2025.1.1
-        AND = {
-            tag = PRC
-            has_country_flag = PRC_pla_xibubianqu
-        }
-    }
     option = {
         name = prcs.2.a
     }
@@ -1431,7 +1424,6 @@ news_event = {
     is_triggered_only = yes
     major = yes
     option = {
-        set_country_flag = prc_allies_in_southeast_asia_flag_set
         name = prcs.81.a
     }
 }
@@ -1481,6 +1473,30 @@ country_event = {
         name = prcs.83.a
     }
 }
+
+country_event = {
+    id = prcs.84
+    title = prcs.84.t
+    desc = prcs.84.d
+    hidden = yes
+    trigger = {
+        tag = PRC
+        all_country_of = {
+            target = { ROP SRI SMA CAM VIN}
+            is_ally_with = PRC
+        }
+    }
+    fire_only_once = yes
+    timeout_days = 1
+    option = {
+        name = prcs.84.a
+        news_event = {
+            id = prcs.81
+            days = 10
+        }
+    }
+}
+
 
 country_event = {
     id = Chihong.1
