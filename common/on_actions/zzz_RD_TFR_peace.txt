@@ -690,6 +690,9 @@ on_actions = {
                             target = PHI
                             transfer_troops = no
                         }
+                        every_core_state = {
+                            remove_core_of = ROOT
+                        }
                     }
                     set_global_flag = skip_default_capitulation
                 }
@@ -930,7 +933,11 @@ on_actions = {
                         add_to_variable = {
                             PRC_Lib_Int_Dir_Var = 1
                         }
+                        transfer_state = 879
                         # clr_country_flag = PRC_spread_chinese_influence
+                    }
+                    879 = {
+                        add_core_of = PRC 
                     }
                     ROOT = {
                         set_popularities = {
