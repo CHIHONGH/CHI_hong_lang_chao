@@ -257,17 +257,20 @@ PRC_coronavirus_category = {
 				mission = PRC_control_the_coronavirus_mission
 				days = 75
 			}
-			add_stability = -0.05
 			if = {
 				limit = {
 					NOT = {
 						has_country_flag = PRC_PLA_in_wuhan_flag
 					}
 				}
+				add_stability = 0.05
 				country_event = {
 					id = china.300
 					hours = 6
 				}
+			}
+			else = {
+				add_stability = 0.015
 			}
 		}
 		remove_effect = {
