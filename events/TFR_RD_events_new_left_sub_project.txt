@@ -1807,6 +1807,7 @@ country_event = {
     id = prcs.3071
     title = prcs.3071.t
     desc = prcs.3071.d
+    picture = GFX_Event_Template35
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -2614,7 +2615,7 @@ country_event = {
     id = prcs.3122
     title = prcs.3122.t
     desc = prcs.3122.d
-
+    picture = GFX_Event_Template27
     is_triggered_only = yes
     immediate = {
         hidden_effect = {
@@ -3091,14 +3092,46 @@ country_event = {
     option = {
         trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
         name = prcs.3143.a
+        PRC = {
+            add_war_support = 0.025
+            add_political_power = 10
+        }
+        PTF = {
+            add_war_support = -0.15
+            add_political_power = -30
+            set_temp_variable = {
+				var = debt_var_temp
+				value = -192
+			}
+			add_debt = yes
+        }
     }
     option = {
         trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
         name = prcs.3143.b
+        PRC = {
+            add_political_power = -20
+        }
+        PTF = {
+            add_political_power = -20
+        }
     }
     option = {
         trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
         name = prcs.3143.c
+        PTF = {
+            add_war_support = 0.025
+            add_political_power = 10
+        }
+        PRC = {
+            add_war_support = -0.15
+            add_political_power = -30
+            set_temp_variable = {
+				var = debt_var_temp
+				value = -171
+			}
+			add_debt = yes
+        }
     }
 }
 ########没本地化的事件
