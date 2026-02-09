@@ -2633,9 +2633,8 @@ country_event = {
                     hours = 10
                 }
             }
-            set_country_flag = {
-                flag = prcs_nanhai_duigong
-                value = 1
+            set_variable = {
+                prcs_nanhai_duigong = 1
             }
             country_event = { id = prcs.3141 days = 2 }
         }
@@ -2651,11 +2650,10 @@ country_event = {
                 has_tech = short_range_missiles
             }  
         }
+        set_variable = {
+            prcs_nanhai_duigong = 0
+        }
         hidden_effect = {
-            set_country_flag = {
-                flag = prcs_nanhai_duigong
-                value = 0
-            }
             country_event = { id = prcs.3141 days = 2 }
         }
     }
@@ -2672,11 +2670,10 @@ country_event = {
                 has_tech = short_range_missiles
             }  
         }
+        set_variable = {
+            prcs_nanhai_duigong = -1
+        }
         hidden_effect = {
-            set_country_flag = {
-                flag = prcs_nanhai_duigong
-                value = -1
-            }
             country_event = { id = prcs.3141 days = 2 }
         }
     }
@@ -2694,11 +2691,10 @@ country_event = {
                 PRC.num_deployed_planes > PTF.num_deployed_planes
             }
         }
+        add_to_variable = {
+            prcs_nanhai_duigong = 1
+        }
         hidden_effect = {
-            modify_country_flag = {
-                flag = prcs_nanhai_duigong
-                value = 1
-            }
             country_event = { id = prcs.3146 days = 2 }
         }
     }
@@ -2710,10 +2706,6 @@ country_event = {
             }
         }
         hidden_effect = {
-            modify_country_flag = {
-                flag = prcs_nanhai_duigong
-                value = 0
-            }
             country_event = { id = prcs.3146 days = 2 }
         }
     }
@@ -2724,11 +2716,10 @@ country_event = {
                 PRC.num_deployed_planes < PTF.num_deployed_planes
             }
         }
+        add_to_variable = {
+            prcs_nanhai_duigong = -1
+        }
         hidden_effect = {
-            modify_country_flag = {
-                flag = prcs_nanhai_duigong
-                value = -1
-            }
             country_event = { id = prcs.3146 days = 2 }
         }
     }
@@ -2775,8 +2766,8 @@ country_event = {
 
     is_triggered_only = yes
     option = {
-        trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
         name = prcs.3143.a
+        trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
         PRC = {
             add_war_support = 0.025
             add_political_power = 10
@@ -2792,8 +2783,8 @@ country_event = {
         }
     }
     option = {
-        trigger = { has_country_flag = NHDG_Tie_hidden_flag }
         name = prcs.3143.b
+        trigger = { has_country_flag = NHDG_Tie_hidden_flag }
         PRC = {
             add_political_power = -20
         }
@@ -2802,8 +2793,8 @@ country_event = {
         }
     }
     option = {
-        trigger = { has_country_flag = NHDG_USA_victory_hidden_flag }
         name = prcs.3143.c
+        trigger = { has_country_flag = NHDG_USA_victory_hidden_flag }
         PTF = {
             add_war_support = 0.025
             add_political_power = 10
@@ -2848,47 +2839,37 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3146.a
+        if = {
+            limit = {
+                check_variable = {
+                    prcs_nanhai_duigong > 0
+                }
+            }
+            set_country_flag = NHDG_PRC_victory_hidden_flag
+        }
+        else_if = {
+            limit = {
+                check_variable = {
+                    prcs_nanhai_duigong = 0
+                }
+            }
+            set_country_flag = NHDG_Tie_hidden_flag
+        }
+        else_if = {
+            limit = {
+                check_variable = {
+                    prcs_nanhai_duigong < 0
+                }
+            }
+            set_country_flag = NHDG_USA_victory_hidden_flag         
+        }
         hidden_effect = {
-            if = {
-                limit = {
-                    has_country_flag = {
-                        flag = prcs_nanhai_duigong
-                        value = 2
-                    }
-                }
-                country_event = {
-                    id = prcs.3143
-                    days = 1
-                }
-                set_country_flag = NHDG_PRC_victory_hidden_flag
-            }
-            if = {
-                limit = {
-                    has_country_flag = {
-                        flag = prcs_nanhai_duigong
-                        value = 0
-                    }
-                }
-                country_event = {
-                    id = prcs.3143
-                    days = 1
-                }
-                set_country_flag = NHDG_Tie_hidden_flag
-            }
-            if = {
-                limit = {
-                    has_country_flag = {
-                        flag = prcs_nanhai_duigong
-                        value = -2
-                    }
-                }
-                country_event = {
-                    id = prcs.3143
-                    days = 1
-                }
-                set_country_flag = NHDG_USA_victory_hidden_flag
+            country_event = {
+                id = prcs.3143
+                days = 1
             }
         }
+        
     }
 }
 country_event = {
