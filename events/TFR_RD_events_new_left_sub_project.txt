@@ -2964,6 +2964,10 @@ country_event = {
     }
     option = {
         name = prcs.3140.a
+        trigger = {
+            has_tech = aa_hmg2
+            has_tech = short_range_missiles
+        }
         hidden_effect = {
             if = {
                 limit = {
@@ -2983,6 +2987,15 @@ country_event = {
     }
     option = {
         name = prcs.3140.b
+        trigger = {
+            check_variable = {
+                PRC.num_deployed_planes > PTF.num_deployed_planes
+            }
+            NOT = {
+                has_tech = aa_hmg2
+                has_tech = short_range_missiles
+            }  
+        }
         hidden_effect = {
             set_country_flag = {
                 flag = prcs_nanhai_duigong
@@ -2993,6 +3006,17 @@ country_event = {
     }
     option = {
         name = prcs.3140.c
+        trigger = {
+            NOT = {
+                check_variable = {
+                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                }
+            }
+            NOT = {
+                has_tech = aa_hmg2
+                has_tech = short_range_missiles
+            }  
+        }
         hidden_effect = {
             set_country_flag = {
                 flag = prcs_nanhai_duigong
@@ -3013,6 +3037,11 @@ country_event = {
     }
     option = {
         name = prcs.3141.a
+        trigger = {
+            check_variable = {
+                PRC.num_deployed_planes > PTF.num_deployed_planes
+            }
+        }
         hidden_effect = {
             modify_country_flag = {
                 flag = prcs_nanhai_duigong
@@ -3023,6 +3052,11 @@ country_event = {
     }
     option = {
         name = prcs.3141.b
+        trigger = {
+            check_variable = {
+                PRC.num_deployed_planes = PTF.num_deployed_planes
+            }
+        }
         hidden_effect = {
             modify_country_flag = {
                 flag = prcs_nanhai_duigong
@@ -3033,6 +3067,11 @@ country_event = {
     }
     option = {
         name = prcs.3141.c
+        trigger = {
+            check_variable = {
+                PRC.num_deployed_planes < PTF.num_deployed_planes
+            }
+        }
         hidden_effect = {
             modify_country_flag = {
                 flag = prcs_nanhai_duigong
@@ -3107,7 +3146,7 @@ country_event = {
         }
     }
     option = {
-        trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
+        trigger = { has_country_flag = NHDG_Tie_hidden_flag }
         name = prcs.3143.b
         PRC = {
             add_political_power = -20
@@ -3117,7 +3156,7 @@ country_event = {
         }
     }
     option = {
-        trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
+        trigger = { has_country_flag = NHDG_USA_victory_hidden_flag }
         name = prcs.3143.c
         PTF = {
             add_war_support = 0.025
