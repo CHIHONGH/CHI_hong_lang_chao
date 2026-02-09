@@ -277,6 +277,7 @@ PRC_export_revolution = {
         cost = 30
         days_remove = 15
         remove_effect = {
+            custom_effect_tooltip = PRC_Sia_tootip
             SIA = {
                 add_stability = -0.1
                 add_popularity = {
@@ -307,44 +308,43 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            PRT = {
-                set_cosmetic_tag = PRC_sia
-                transfer_state = 289
-                transfer_state = 724
-                transfer_state = 890
-                hidden_effect = {
+            custom_effect_tooltip = PRC_Sia_tootip
+            hidden_effect = {
+                PRT = {
+                    set_cosmetic_tag = PRC_sia
+                    transfer_state = 289
+                    transfer_state = 724
+                    transfer_state = 890
                     load_oob = "SIA_reserves"
+                    declare_war_on = {
+                        target = SIA
+                        type = civil_war
+                    }
                 }
-                declare_war_on = {
-                    target = SIA
-                    type = civil_war
+                SIA = {
+                    transfer_navy = {
+                        target = PRT
+                    }
+                    every_core_state = {
+                        add_core_of = PRT
+                    }
                 }
-            }
-            SIA = {
-                transfer_navy = {
-                    target = PRT
-                }
-                every_core_state = {
-                    add_core_of = PRT
-                }
-            }
-            PRC = {
-                hidden_effect = {
+                PRC = {
                     country_event = {
                         id = prcs.3049
                         days = 4
                     }
-                }
-                add_to_variable = {
-                    CPC_frame = 2
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+                    add_to_variable = {
+                        CPC_frame = 2
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
             }
             add_to_variable = {
@@ -620,141 +620,144 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            if = {
-                limit = {
+            custom_effect_tooltip = PRC_Mal_tootip
+            hidden_effect = {
+                if = {
+                    limit = {
+                        PHI = {
+                            is_in_faction_with = JAP
+                        }
+                    }
                     PHI = {
-                        is_in_faction_with = JAP
+                        leave_faction = yes
                     }
                 }
                 PHI = {
-                    leave_faction = yes
-                }
-            }
-            PHI = {
-                delete_unit = {
-                }
-            }
-            ROP = {
-                hidden_effect = {
-                    every_state = {
-                        limit = {
-                            is_owned_by = PHI
-                        }
-                        add_core_of = ROP
+                    delete_unit = {
                     }
                 }
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                create_country_leader = {
-                    name = "PHI_hesaixisong"
-                    picture = "gfx/leaders/PHI_hesaixisong.png"
-                    ideology = marxism_leninism
-                }
-                hidden_effect = {
-                    set_popularities = {
-                        communist = 100
-                    }
-                }
-                transfer_state = 627
-                transfer_state = 628
-                add_state_core = 627
-                division_template = {
-                    name = "Militia divisions"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        militia = {
-                            x = 0
-                            y = 0
-                        }
-                        militia = {
-                            x = 0
-                            y = 1
-                        }
-                        militia = {
-                            x = 0
-                            y = 2
-                        }
-                        militia = {
-                            x = 0
-                            y = 3
-                        }
-                        militia = {
-                            x = 0
-                            y = 4
+                ROP = {
+                    hidden_effect = {
+                        every_state = {
+                            limit = {
+                                is_owned_by = PHI
+                            }
+                            add_core_of = ROP
                         }
                     }
-                    priority = 0
-                }
-                division_template = {
-                    name = "Militia divisions"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        militia = {
-                            x = 0
-                            y = 0
-                        }
-                        militia = {
-                            x = 0
-                            y = 1
-                        }
-                        militia = {
-                            x = 0
-                            y = 2
-                        }
-                        militia = {
-                            x = 0
-                            y = 3
-                        }
-                        militia = {
-                            x = 0
-                            y = 4
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
+                    }
+                    create_country_leader = {
+                        name = "PHI_hesaixisong"
+                        picture = "gfx/leaders/PHI_hesaixisong.png"
+                        ideology = marxism_leninism
+                    }
+                    hidden_effect = {
+                        set_popularities = {
+                            communist = 100
                         }
                     }
-                    priority = 0
-                }
-                division_template = {
-                    name = "Infantry Division"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        motorized = { x = 0 y = 0 }
-                        motorized = { x = 0 y = 1 }
-                        motorized = { x = 0 y = 2 }
-                        motorized = { x = 1 y = 0 }
-                        motorized = { x = 1 y = 1 }
-                        motorized = { x = 1 y = 2 }
-                        artillery_brigade = { x = 1 y = 3 }
+                    transfer_state = 627
+                    transfer_state = 628
+                    add_state_core = 627
+                    division_template = {
+                        name = "Militia divisions"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            militia = {
+                                x = 0
+                                y = 0
+                            }
+                            militia = {
+                                x = 0
+                                y = 1
+                            }
+                            militia = {
+                                x = 0
+                                y = 2
+                            }
+                            militia = {
+                                x = 0
+                                y = 3
+                            }
+                            militia = {
+                                x = 0
+                                y = 4
+                            }
+                        }
+                        priority = 0
                     }
-                    support = {
-                        engineer = { x = 0 y = 0 }
-                        artillery = { x = 0 y = 1 }
+                    division_template = {
+                        name = "Militia divisions"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            militia = {
+                                x = 0
+                                y = 0
+                            }
+                            militia = {
+                                x = 0
+                                y = 1
+                            }
+                            militia = {
+                                x = 0
+                                y = 2
+                            }
+                            militia = {
+                                x = 0
+                                y = 3
+                            }
+                            militia = {
+                                x = 0
+                                y = 4
+                            }
+                        }
+                        priority = 0
                     }
-                    priority = 0
-                }
-                capital_scope = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = ROP
-                        count = 15
+                    division_template = {
+                        name = "Infantry Division"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            motorized = { x = 0 y = 0 }
+                            motorized = { x = 0 y = 1 }
+                            motorized = { x = 0 y = 2 }
+                            motorized = { x = 1 y = 0 }
+                            motorized = { x = 1 y = 1 }
+                            motorized = { x = 1 y = 2 }
+                            artillery_brigade = { x = 1 y = 3 }
+                        }
+                        support = {
+                            engineer = { x = 0 y = 0 }
+                            artillery = { x = 0 y = 1 }
+                        }
+                        priority = 0
                     }
-                }
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment_1
-                    amount = 10000
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment_1
-                    amount = 600
-                    producer = PRC
-                }
-                declare_war_on = {
-                    target = PHI
-                    type = annex_everything
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                            owner = ROP
+                            count = 15
+                        }
+                    }
+                    add_equipment_to_stockpile = {
+                        type = infantry_equipment_1
+                        amount = 10000
+                        producer = PRC
+                    }
+                    add_equipment_to_stockpile = {
+                        type = support_equipment_1
+                        amount = 600
+                        producer = PRC
+                    }
+                    declare_war_on = {
+                        target = PHI
+                        type = annex_everything
+                    }
                 }
             }
             add_to_variable = {
@@ -809,111 +812,114 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            if = {
-                limit = {
+            custom_effect_tooltip = PRC_Mal_tootip
+            hidden_effect = {
+                if = {
+                    limit = {
+                        MAL = {
+                            is_in_faction_with = JAP
+                        }
+                    }
                     MAL = {
-                        is_in_faction_with = JAP
+                        leave_faction = yes
                     }
                 }
-                MAL = {
-                    leave_faction = yes
-                }
-            }
-            SMA = {
-                hidden_effect = {
-                    every_state = {
-                        limit = {
-                            is_owned_by = MAL
-                        }
-                        add_core_of = SMA
-                    }
-                }
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                create_country_leader = {
-                    name = MAL_Husairi_bin_Ariffin
-                    picture = GFX_MAL_Husairi_bin_Ariffin
-                    ideology = marxism_leninism
-                }
-                hidden_effect = {
-                    set_popularities = {
-                        communist = 75
-                        totalitarian_socialist = 25
-                    }
-                }
-                transfer_state = 816
-                add_state_core = 816
-                transfer_state = 333
-                add_state_core = 333
-                division_template = {
-                    name = "Militia divisions"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        militia = {
-                            x = 0
-                            y = 0
-                        }
-                        militia = {
-                            x = 0
-                            y = 1
-                        }
-                        militia = {
-                            x = 0
-                            y = 2
-                        }
-                        militia = {
-                            x = 0
-                            y = 3
-                        }
-                        militia = {
-                            x = 0
-                            y = 4
+                SMA = {
+                    hidden_effect = {
+                        every_state = {
+                            limit = {
+                                is_owned_by = MAL
+                            }
+                            add_core_of = SMA
                         }
                     }
-                    priority = 0
-                }
-                division_template = {
-                    name = "Infantry Division"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        motorized = { x = 0 y = 0 }
-                        motorized = { x = 0 y = 1 }
-                        motorized = { x = 0 y = 2 }
-                        motorized = { x = 1 y = 0 }
-                        motorized = { x = 1 y = 1 }
-                        motorized = { x = 1 y = 2 }
-                        artillery_brigade = { x = 1 y = 3 }
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
                     }
-                    support = {
-                        engineer = { x = 0 y = 0 }
-                        artillery = { x = 0 y = 1 }
+                    create_country_leader = {
+                        name = MAL_Husairi_bin_Ariffin
+                        picture = GFX_MAL_Husairi_bin_Ariffin
+                        ideology = marxism_leninism
                     }
-                    priority = 0
-                }
-                capital_scope = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = SMA
-                        count = 10
+                    hidden_effect = {
+                        set_popularities = {
+                            communist = 75
+                            totalitarian_socialist = 25
+                        }
                     }
-                }
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment_1
-                    amount = 10000
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment_1
-                    amount = 600
-                    producer = PRC
-                }
-                declare_war_on = {
-                    target = MAL
-                    type = annex_everything
+                    transfer_state = 816
+                    add_state_core = 816
+                    transfer_state = 333
+                    add_state_core = 333
+                    division_template = {
+                        name = "Militia divisions"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            militia = {
+                                x = 0
+                                y = 0
+                            }
+                            militia = {
+                                x = 0
+                                y = 1
+                            }
+                            militia = {
+                                x = 0
+                                y = 2
+                            }
+                            militia = {
+                                x = 0
+                                y = 3
+                            }
+                            militia = {
+                                x = 0
+                                y = 4
+                            }
+                        }
+                        priority = 0
+                    }
+                    division_template = {
+                        name = "Infantry Division"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            motorized = { x = 0 y = 0 }
+                            motorized = { x = 0 y = 1 }
+                            motorized = { x = 0 y = 2 }
+                            motorized = { x = 1 y = 0 }
+                            motorized = { x = 1 y = 1 }
+                            motorized = { x = 1 y = 2 }
+                            artillery_brigade = { x = 1 y = 3 }
+                        }
+                        support = {
+                            engineer = { x = 0 y = 0 }
+                            artillery = { x = 0 y = 1 }
+                        }
+                        priority = 0
+                    }
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                            owner = SMA
+                            count = 10
+                        }
+                    }
+                    add_equipment_to_stockpile = {
+                        type = infantry_equipment_1
+                        amount = 10000
+                        producer = PRC
+                    }
+                    add_equipment_to_stockpile = {
+                        type = support_equipment_1
+                        amount = 600
+                        producer = PRC
+                    }
+                    declare_war_on = {
+                        target = MAL
+                        type = annex_everything
+                    }
                 }
             }
             add_to_variable = {
@@ -968,144 +974,148 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            if = {
-                limit = {
+            custom_effect_tooltip = PRC_Mal_tootip
+            hidden_effect = {
+                news_event = prcs.80
+                if = {
+                    limit = {
+                        INS = {
+                            is_in_faction_with = JAP
+                        }
+                    }
                     INS = {
-                        is_in_faction_with = JAP
+                        leave_faction = yes
                     }
                 }
                 INS = {
-                    leave_faction = yes
-                }
-            }
-            INS = {
-                delete_unit = {
-                }
-            }
-            SRI = {
-                hidden_effect = {
-                    every_state = {
-                        limit = {
-                            is_owned_by = INS
-                        }
-                        add_core_of = SRI
+                    delete_unit = {
                     }
                 }
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                create_country_leader = {
-                    name = INS_Dominggus_Oktavianus
-                    picture = GFX_INS_Dominggus_Oktavianus
-                    ideology = marxism_leninism
-                }
-                hidden_effect = {
-                    set_popularities = {
-                        communist = 50
-                        totalitarian_socialist = 30
-                        libertarian_socialist = 10
-                        social_democrat = 10
-                    }
-                }
-                transfer_state = 335
-                transfer_state = 667
-                transfer_state = 673
-                transfer_state = 668
-                transfer_state = 669
-                transfer_state = 738
-                transfer_state = 721
-                add_state_core = 667
-                set_state_controller = 334
-                
-                division_template = {
-                    name = "Militia divisions"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        militia = {
-                            x = 0
-                            y = 0
-                        }
-                        militia = {
-                            x = 0
-                            y = 1
-                        }
-                        militia = {
-                            x = 0
-                            y = 2
-                        }
-                        militia = {
-                            x = 0
-                            y = 3
-                        }
-                        militia = {
-                            x = 0
-                            y = 4
+                SRI = {
+                    hidden_effect = {
+                        every_state = {
+                            limit = {
+                                is_owned_by = INS
+                            }
+                            add_core_of = SRI
                         }
                     }
-                    priority = 0
-                }
-                division_template = {
-                    name = "Infantry Division"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        motorized = { x = 0 y = 0 }
-                        motorized = { x = 0 y = 1 }
-                        motorized = { x = 0 y = 2 }
-                        motorized = { x = 1 y = 0 }
-                        motorized = { x = 1 y = 1 }
-                        motorized = { x = 1 y = 2 }
-                        artillery_brigade = { x = 1 y = 3 }
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
                     }
-                    support = {
-                        engineer = { x = 0 y = 0 }
-                        artillery = { x = 0 y = 1 }
+                    create_country_leader = {
+                        name = INS_Dominggus_Oktavianus
+                        picture = GFX_INS_Dominggus_Oktavianus
+                        ideology = marxism_leninism
                     }
-                    priority = 0
-                }
-                capital_scope = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = SRI
-                        count = 8
+                    hidden_effect = {
+                        set_popularities = {
+                            communist = 50
+                            totalitarian_socialist = 30
+                            libertarian_socialist = 10
+                            social_democrat = 10
+                        }
                     }
-                }
-                667 = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = SRI
-                        count = 1
+                    transfer_state = 335
+                    transfer_state = 667
+                    transfer_state = 673
+                    transfer_state = 668
+                    transfer_state = 669
+                    transfer_state = 738
+                    transfer_state = 721
+                    add_state_core = 667
+                    set_state_controller = 334
+                    
+                    division_template = {
+                        name = "Militia divisions"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            militia = {
+                                x = 0
+                                y = 0
+                            }
+                            militia = {
+                                x = 0
+                                y = 1
+                            }
+                            militia = {
+                                x = 0
+                                y = 2
+                            }
+                            militia = {
+                                x = 0
+                                y = 3
+                            }
+                            militia = {
+                                x = 0
+                                y = 4
+                            }
+                        }
+                        priority = 0
                     }
-                }
-                721 = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = SRI
-                        count = 1
+                    division_template = {
+                        name = "Infantry Division"
+                        is_locked = no
+                        force_allow_recruiting = yes
+                        regiments = {
+                            motorized = { x = 0 y = 0 }
+                            motorized = { x = 0 y = 1 }
+                            motorized = { x = 0 y = 2 }
+                            motorized = { x = 1 y = 0 }
+                            motorized = { x = 1 y = 1 }
+                            motorized = { x = 1 y = 2 }
+                            artillery_brigade = { x = 1 y = 3 }
+                        }
+                        support = {
+                            engineer = { x = 0 y = 0 }
+                            artillery = { x = 0 y = 1 }
+                        }
+                        priority = 0
                     }
-                }
-                738 = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = SRI
-                        count = 1
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                            owner = SRI
+                            count = 8
+                        }
                     }
-                }
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment_1
-                    amount = 10000
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment_1
-                    amount = 600
-                    producer = PRC
-                }
-                declare_war_on = {
-                    target = INS
-                    type = annex_everything
+                    667 = {
+                        create_unit = {
+                            division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                            owner = SRI
+                            count = 1
+                        }
+                    }
+                    721 = {
+                        create_unit = {
+                            division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                            owner = SRI
+                            count = 1
+                        }
+                    }
+                    738 = {
+                        create_unit = {
+                            division = "division_template = \"Infantry Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                            owner = SRI
+                            count = 1
+                        }
+                    }
+                    add_equipment_to_stockpile = {
+                        type = infantry_equipment_1
+                        amount = 10000
+                        producer = PRC
+                    }
+                    add_equipment_to_stockpile = {
+                        type = support_equipment_1
+                        amount = 600
+                        producer = PRC
+                    }
+                    declare_war_on = {
+                        target = INS
+                        type = annex_everything
+                    }
                 }
             }
             add_to_variable = {
@@ -1134,7 +1144,6 @@ PRC_export_revolution = {
             add_to_variable = {
                 PRC_Lib_Int_Dir_Var = 1
             }
-            news_event = prcs.80
         }
         ai_will_do = {
             base = 10
@@ -1167,7 +1176,7 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            custom_effect_tooltip = PRC_Bhu_tootip
+            custom_effect_tooltip = PRC_Sig_tootip
             hidden_effect = {
                 SIG = {
                     set_cosmetic_tag = PRC_repolice_gonh
@@ -2032,50 +2041,49 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            BAN = {
-                remove_ideas = commonwealth_of_nations_member
-                hidden_effect = {
+            custom_effect_tooltip = PRC_Ban_tootip
+            hidden_effect = {
+                BAN = {
+                    remove_ideas = commonwealth_of_nations_member
                     set_cosmetic_tag = PRC_repolice_gonh
-                }
-                set_politics = {
-                    ruling_party = communist
-                    #last_election = 2019.3.24
-                    #election_frequency = 48
-                    elections_allowed = no
-                }
-                create_country_leader = {
-                    name = "孟加拉人民委员会"
-                    picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                    ideology = marxism_leninism
-                }
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                hidden_effect = {
+                    set_politics = {
+                        ruling_party = communist
+                        #last_election = 2019.3.24
+                        #election_frequency = 48
+                        elections_allowed = no
+                    }
+                    create_country_leader = {
+                        name = "孟加拉人民委员会"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = marxism_leninism
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
+                    }
                     set_popularities = {
                         totalitarian_socialist = 10
                         social_democrat = 10
                         libertarian_socialist = 20
                         communist = 10
                     }
+                    #set_cosmetic_tag = PRC_military_administration
+                    #add_ideas = PRC_unwilling_ally
+                    JAP_leave_PEC = yes
                 }
-                #set_cosmetic_tag = PRC_military_administration
-                #add_ideas = PRC_unwilling_ally
-                JAP_leave_PEC = yes
-            }
-            PRC = {
-                add_to_faction = BAN
-                add_to_variable = {
-                    CPC_frame = 3
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+                PRC = {
+                    add_to_faction = BAN
+                    add_to_variable = {
+                        CPC_frame = 3
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
             }
             add_to_variable = {
