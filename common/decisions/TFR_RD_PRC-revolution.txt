@@ -97,6 +97,7 @@ PRC_export_revolution = {
             }
         }
         remove_effect = {
+            custom_effect_tooltip = PRC_Brm_tootip
             add_to_variable = {
                 CPC_frame = 4
             }
@@ -107,12 +108,6 @@ PRC_export_revolution = {
             }
             add_to_variable = {
                 PRC_Lib_Int_Dir_Var = 1
-            }
-            hidden_effect = {
-                news_event = {
-                    id = prcs.50
-                    hours = 7
-                }
             }
             add_to_variable = {
                 PRC_WLI_consumer_factor = -0.01
@@ -134,6 +129,10 @@ PRC_export_revolution = {
             # }
             add_to_faction = MND
             hidden_effect = {
+                news_event = {
+                    id = prcs.50
+                    hours = 7
+                }
                 every_state = {
                     limit = {
                         is_core_of = BRM
@@ -142,28 +141,28 @@ PRC_export_revolution = {
                         modifier = BRM_peoples_war
                     }
                 }
-            }
-            every_country = {
-                limit = {
-                    OR = {
-                        tag = KNU
-                        tag = CNF
-                        tag = PDF
-                        tag = SSA
-                        tag = MOA
-                        tag = BRM
+                every_country = {
+                    limit = {
+                        OR = {
+                            tag = KNU
+                            tag = CNF
+                            tag = PDF
+                            tag = SSA
+                            tag = MOA
+                            tag = BRM
+                        }
                     }
-                }
-                MND = {
-                    declare_war_on = {
-                        target = PREV
-                        type = annex_everything
+                    MND = {
+                        declare_war_on = {
+                            target = PREV
+                            type = annex_everything
+                        }
                     }
-                }
-                PRC = {
-                    declare_war_on = {
-                        target = PREV
-                        type = annex_everything
+                    PRC = {
+                        declare_war_on = {
+                            target = PREV
+                            type = annex_everything
+                        }
                     }
                 }
             }
@@ -228,7 +227,15 @@ PRC_export_revolution = {
         fire_only_once = yes
         cost = 25
         days_remove = 20
+        complete_effect = {
+            hidden_effect = {
+                SIA = {
+                    leave_faction = yes
+                }
+            }
+        }
         remove_effect = {
+            custom_effect_tooltip = PRC_Sia_tootip
             hidden_effect = {
                 country_event = {
                     id = prcs.3043
@@ -236,7 +243,7 @@ PRC_export_revolution = {
                 }
                 country_event = {
                     id = prcs.3045
-                    dyas = 7
+                    days = 7
                 }
             }
             SIA = {
@@ -286,11 +293,6 @@ PRC_export_revolution = {
             has_completed_focus = Sparks_on_the_MekongRiver
         }
         visible = {
-            NOT = {
-                JAP = {
-                    is_in_faction_with = VIN
-                }
-            }
             has_completed_focus = Sparks_on_the_MekongRiver
             has_country_flag = Thailand_selected
             has_country_flag = THA_commies_reformed
@@ -372,11 +374,6 @@ PRC_export_revolution = {
             has_completed_focus = Adjust_path_in_Indochina
         }
         visible = {
-            NOT = {
-                JAP = {
-                    is_in_faction_with = VIN
-                }
-            }
             has_completed_focus = Adjust_path_in_Indochina
             has_country_flag = Laos_selected
         }
@@ -389,6 +386,13 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
+        complete_effect = {
+            hidden_effect = {
+                LAO = {
+                    leave_faction = yes
+                }
+            }
+        }
         remove_effect = {
             ROOT = {
                 set_autonomy = {
@@ -397,32 +401,33 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            LAO = {
-                JAP_leave_PEC = yes
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                set_cosmetic_tag = PRC_lao
-                hidden_effect = {
+            custom_effect_tooltip = PRC_Lao_tootip
+            hidden_effect = {
+                LAO = {
+                    JAP_leave_PEC = yes
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
+                    }
+                    set_cosmetic_tag = PRC_lao
                     promote_character = LAO_tonglun
                     set_popularities = {
                         communist = 100
                     }
                 }
-            }
-            PRC = {
-                add_to_faction = LAO
-                add_to_variable = {
-                    CPC_frame = 8
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+                PRC = {
+                    add_to_faction = LAO
+                    add_to_variable = {
+                        CPC_frame = 8
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
             }
             add_to_variable = {
@@ -452,11 +457,6 @@ PRC_export_revolution = {
             has_completed_focus = Adjust_path_in_Indochina
         }
         visible = {
-            NOT = {
-                JAP = {
-                    is_in_faction_with = VIN
-                }
-            }
             has_completed_focus = Adjust_path_in_Indochina
             has_country_flag = Cambodia_selected
         }
@@ -469,7 +469,15 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
+        complete_effect = {
+            hidden_effect = {
+                CAM = {
+                    leave_faction = yes
+                }
+            }
+        }
         remove_effect = {
+            custom_effect_tooltip = PRC_Cam_tootip
             ROOT = {
                 set_autonomy = {
                     target = CAM
@@ -477,19 +485,19 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            CAM = {
-                JAP_leave_PEC = yes
-                set_cosmetic_tag = PRC_cam
-                set_party_name = {
-                    ideology = communist
-                    long_name = CAM_nationalist_party_long
-                    name = CAM_nationalist_party
-                }
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                hidden_effect = {
+            hidden_effect = {
+                CAM = {
+                    JAP_leave_PEC = yes
+                    set_cosmetic_tag = PRC_cam
+                    set_party_name = {
+                        ideology = communist
+                        long_name = CAM_nationalist_party_long
+                        name = CAM_nationalist_party
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
+                    }
                     set_popularities = {
                         totalitarian_socialist = 10
                         social_democrat = 10
@@ -497,19 +505,19 @@ PRC_export_revolution = {
                         communist = 70
                     }
                 }
-            }
-            PRC = {
-                add_to_faction = CAM
-                add_to_variable = {
-                    CPC_frame = 8
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+                PRC = {
+                    add_to_faction = CAM
+                    add_to_variable = {
+                        CPC_frame = 8
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
             }
             add_to_variable = {
@@ -537,19 +545,9 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         available = {
             has_completed_focus = Adjust_path_in_Indochina
-            NOT = {
-                JAP = {
-                    is_in_faction_with = VIN
-                }
-            }
         }
         visible = {
             tag = PRC
-            NOT = {
-                JAP = {
-                    is_in_faction_with = VIN
-                }
-            }
             has_completed_focus = Adjust_path_in_Indochina
             has_country_flag = Vietnam_selected
         }
@@ -562,22 +560,32 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
+        complete_effect = {
+            hidden_effect = {
+                VIN = {
+                    leave_faction = yes
+                }
+            }
+        }
         remove_effect = {
-            PRC = {
-                declare_war_on = {
-                    target = VIN
-                    type = topple_government
-                }
-                add_to_variable = {
-                    CPC_frame = 2
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+            custom_effect_tooltip = PRC_Vin_tootip
+            hidden_effect = {
+                PRC = {
+                    declare_war_on = {
+                        target = VIN
+                        type = topple_government
+                    }
+                    add_to_variable = {
+                        CPC_frame = 2
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
             }
             hidden_effect = {
@@ -1159,25 +1167,24 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            SIG = {
-                hidden_effect = {
+            custom_effect_tooltip = PRC_Bhu_tootip
+            hidden_effect = {
+                SIG = {
                     set_cosmetic_tag = PRC_repolice_gonh
-                }
-                create_country_leader = {
-                    name = "新加坡人民委员会"
-                    picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                    ideology = marxism_leninism
-                }
-                set_party_name = {
-                    ideology = communist
-                    long_name = SIG_nationalist_party_long
-                    name = SIG_nationalist_party
-                }
-                set_politics = {
-                    ruling_party = communist
-                    elections_allowed = no
-                }
-                hidden_effect = {
+                    create_country_leader = {
+                        name = "新加坡人民委员会"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = marxism_leninism
+                    }
+                    set_party_name = {
+                        ideology = communist
+                        long_name = SIG_nationalist_party_long
+                        name = SIG_nationalist_party
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
+                    }
                     set_popularities = {
                         totalitarian_socialist = 10
                         social_democrat = 10
@@ -1185,19 +1192,19 @@ PRC_export_revolution = {
                         communist = 60
                     }
                 }
-            }
-            PRC = {
-                add_to_faction = SIG
-                add_to_variable = {
-                    CPC_frame = 4
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+                PRC = {
+                    add_to_faction = SIG
+                    add_to_variable = {
+                        CPC_frame = 4
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
             }
             add_to_variable = {
@@ -1418,32 +1425,33 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            declare_war_on = {
-                target = PRK
-                type = puppet_wargoal_focus
-            }
-            PRK = {
-                add_stability = -0.1
-            }
-            country_event = {
-                id = china.1711
-            }
+            custom_effect_tooltip = PRC_Prk_tootip
             hidden_effect = {
+                declare_war_on = {
+                    target = PRK
+                    type = puppet_wargoal_focus
+                }
+                PRK = {
+                    add_stability = -0.1
+                }
+                country_event = {
+                    id = china.1711
+                }
                 news_event = {
                     id = prcs.4
                     hours = 2
                 }
-            }
-            add_to_variable = {
-                CPC_frame = 3
-            }
-            clamp_variable = {
-                var = CPC_frame
-                min = 0
-                max = 100
-            }
-            add_to_variable = {
-                PRC_Lib_Int_Dir_Var = 1
+                add_to_variable = {
+                    CPC_frame = 3
+                }
+                clamp_variable = {
+                    var = CPC_frame
+                    min = 0
+                    max = 100
+                }
+                add_to_variable = {
+                    PRC_Lib_Int_Dir_Var = 1
+                }
             }
         }
         ai_will_do = {
@@ -1619,37 +1627,36 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            PRC = {
-                add_to_faction = BHU
-                add_to_variable = {
-                    CPC_frame = 1
+            custom_effect_tooltip = PRC_Bhu_tootip
+            hidden_effect = {
+                PRC = {
+                    add_to_faction = BHU
+                    add_to_variable = {
+                        CPC_frame = 1
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
-                }
-            }
-            BHU = {
-                hidden_effect = {
+                BHU = {
                     set_cosmetic_tag = PRC_repolice_gonh
-                }
-                set_party_name = {
-                    ideology = communist
-                    long_name = BHU_nationalist_party_long
-                    name = BHU_nationalist_party
-                }
-                set_politics = {
-                    ruling_party = communist
-                    #last_election = 2019.3.24
-                    #election_frequency = 48
-                    elections_allowed = no
-                }
-                JAP_leave_PEC = yes
-                hidden_effect = {
+                    set_party_name = {
+                        ideology = communist
+                        long_name = BHU_nationalist_party_long
+                        name = BHU_nationalist_party
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        #last_election = 2019.3.24
+                        #election_frequency = 48
+                        elections_allowed = no
+                    }
+                    JAP_leave_PEC = yes
                     set_popularities = {
                         totalitarian_socialist = 10
                         social_democrat = 10
@@ -1710,21 +1717,22 @@ PRC_export_revolution = {
                     PRC_Lib_Int_Dir_Var = 1
                 }
             }
-            NEP = {
-                hidden_effect = {
+            custom_effect_tooltip = PRC_Nep_tootip
+            hidden_effect = {
+                NEP = {
                     set_cosmetic_tag = PRC_repolice_gonh
-                }
-                PRC = {
-                    add_to_faction = NEP
-                }
-                promote_character = NEP_jilan
-                set_politics = {
-                    ruling_party = totalitarian_socialist
-                    elections_allowed = no
-                }
-                add_popularity = {
-                    ideology = totalitarian_socialist
-                    popularity = 0.1
+                    PRC = {
+                        add_to_faction = NEP
+                    }
+                    promote_character = NEP_jilan
+                    set_politics = {
+                        ruling_party = totalitarian_socialist
+                        elections_allowed = no
+                    }
+                    add_popularity = {
+                        ideology = totalitarian_socialist
+                        popularity = 0.1
+                    }
                 }
             }
         }
@@ -1764,34 +1772,33 @@ PRC_export_revolution = {
                     PRC_Lib_Int_Dir_Var = 1
                 }
             }
-            SRL = {
-                hidden_effect = {
+            custom_effect_tooltip = PRC_Srl_tootip
+            hidden_effect = {
+                SRL = {
                     set_cosmetic_tag = PRC_repolice_gonh
-                }
-                set_politics = {
-                    ruling_party = communist
-                    #last_election = 2019.3.24
-                    #election_frequency = 48
-                    elections_allowed = no
-                }
-                hidden_effect = {
+                    set_politics = {
+                        ruling_party = communist
+                        #last_election = 2019.3.24
+                        #election_frequency = 48
+                        elections_allowed = no
+                    }
                     set_popularities = {
                         totalitarian_socialist = 10
                         social_democrat = 10
                         libertarian_socialist = 20
                         communist = 10
                     }
+                    #set_cosmetic_tag = PRC_military_administration
+                    #add_ideas = PRC_unwilling_ally
+                    JAP_leave_PEC = yes
+                    create_country_leader = {
+                        name = "斯里兰卡人民委员会"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = marxism_leninism
+                    }
                 }
-                #set_cosmetic_tag = PRC_military_administration
-                #add_ideas = PRC_unwilling_ally
-                JAP_leave_PEC = yes
-                create_country_leader = {
-                    name = "斯里兰卡人民委员会"
-                    picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                    ideology = marxism_leninism
-                }
+                add_to_faction = SRL
             }
-            add_to_faction = SRL
             add_to_variable = {
                 PRC_WLI_consumer_factor = -0.01
             }
@@ -1945,56 +1952,59 @@ PRC_export_revolution = {
             }
         }
         remove_effect = {
-            country_event = Chihong.20
-            ROOT = {
-                set_autonomy = {
-                    target = PAK
-                    autonomous_state = autonomy_communist
-                    freedom_level = 0.3
+            custom_effect_tooltip = PRC_Pak_tootip
+            hidden_effect = {
+                country_event = Chihong.20
+                ROOT = {
+                    set_autonomy = {
+                        target = PAK
+                        autonomous_state = autonomy_communist
+                        freedom_level = 0.3
+                    }
                 }
-            }
-            PRC = {
-                add_to_faction = PAK
-                add_to_variable = {
-                    CPC_frame = 4
+                PRC = {
+                    add_to_faction = PAK
+                    add_to_variable = {
+                        CPC_frame = 4
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
                 }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
+                PAK = {
+                    remove_ideas = PAK_fervent_nationalism
+                    remove_ideas = commonwealth_of_nations_member
+                    set_cosmetic_tag = PAK_name
+                    set_politics = {
+                        ruling_party = communist
+                        last_election = 2019.3.24
+                        election_frequency = 48
+                        elections_allowed = yes
+                    }
+                    create_country_leader = {
+                        name = PAK_Imdar_Kazi
+                        picture = GFX_PAK_Imdar_Kazi
+                        ideology = marxism_leninism
+                    }
+                    add_popularity = {
+                        ideology = totalitarian_socialist
+                        popularity = 0.1
+                    }
+                    add_popularity = {
+                        ideology = libertarian_socialist
+                        popularity = 0.1
+                    }
+                    add_popularity = {
+                        ideology = communist
+                        popularity = 0.1
+                    }
+                    clr_country_flag = Pakistan_selected
                 }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
-                }
-            }
-            PAK = {
-                remove_ideas = PAK_fervent_nationalism
-                remove_ideas = commonwealth_of_nations_member
-                set_cosmetic_tag = PAK_name
-                set_politics = {
-                    ruling_party = communist
-                    last_election = 2019.3.24
-                    election_frequency = 48
-                    elections_allowed = yes
-                }
-                create_country_leader = {
-                    name = PAK_Imdar_Kazi
-                    picture = GFX_PAK_Imdar_Kazi
-                    ideology = marxism_leninism
-                }
-                add_popularity = {
-                    ideology = totalitarian_socialist
-                    popularity = 0.1
-                }
-                add_popularity = {
-                    ideology = libertarian_socialist
-                    popularity = 0.1
-                }
-                add_popularity = {
-                    ideology = communist
-                    popularity = 0.1
-                }
-                clr_country_flag = Pakistan_selected
             }
         }
         ai_will_do = {
