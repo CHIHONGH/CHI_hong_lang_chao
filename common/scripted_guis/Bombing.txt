@@ -36,9 +36,9 @@ scripted_gui = {
 			Bombing_fire_button_click_enabled = { NOT = { check_variable = { ROOT.BombingTypeC = 91 } } has_variable = ROOT.Bombing_choose NOT = { var:Bombing_choose = { check_variable = { THIS.controller = ROOT } } } if = { limit = { check_variable = { ROOT.BombingTypeC = 2 } } num_of_nukes > 0 } }
 		}
 		properties = {
-		    Bombing_state_button = { image = GFX_Bombing_state_button_[?THIS]_[?THIS.owner] }
-			Bombing_state_owner = { image = GFX_Bombing_state_owner_[?THIS]_[?THIS.owner] }
-		    Bombing_state_controller = { image = GFX_Bombing_state_controller_[?THIS]_[?THIS.controller] }
+		    Bombing_state_button = { image = GFX_Bombing_state_button_[?THIS.GetID]_[?THIS.owner.GetTag] }
+			Bombing_state_owner = { image = GFX_Bombing_state_owner_[?THIS.GetID]_[?THIS.owner.GetTag] }
+		    Bombing_state_controller = { image = GFX_Bombing_state_controller_[?THIS.GetID]_[?THIS.controller.GetTag] }
 			Bombing_typelist_button = { frame= ROOT.BombingTypeListF }
 		}
 		dynamic_lists = {
