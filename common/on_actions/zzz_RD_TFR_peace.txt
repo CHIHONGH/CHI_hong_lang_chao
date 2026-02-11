@@ -154,7 +154,6 @@ on_actions = {
                             OR = {
                                 original_tag = MND
                                 original_tag = PRC
-                                is_ally_with = PRC
                             }
                         }
                         ROOT = {
@@ -916,14 +915,16 @@ on_actions = {
                     # PRC kill VIN
                     limit = {
                         FROM = {
-                            original_tag = PRC
-                            is_ally_with = PRC
+                            OR = {
+                                original_tag = PRC
+                                is_ally_with = PRC
+                            }
                         }
                         ROOT = {
                             original_tag = VIN
                         }
                     }
-                    FROM = {
+                    PRC = {
                         white_peace = ROOT
                         set_autonomy = {
                             target = VIN
