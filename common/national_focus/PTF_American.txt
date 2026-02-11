@@ -4,6 +4,9 @@ focus_tree = {
         factor = 0
     }
     default = no
+    shared_focus = USA_liberate_the_great_north
+    shared_focus = USA_secure_the_south
+    shared_focus = USA_the_big_stick_policy
     #!gfx:interface/New_left_Collection_of_files/goals/PTF_national_focus.gfx
     focus = {
         id = PTF_soaring_white_eagle
@@ -49,10 +52,10 @@ focus_tree = {
             }
         }
         x = 0
-        y = 2
+        y = 3
         relative_position_id = PTF_soaring_white_eagle
         prerequisite = {
-            focus = PTF_soaring_white_eagle
+            focus = USA_the_big_stick_policy
         }
         ai_will_do = {
             factor = 50
@@ -190,16 +193,36 @@ focus_tree = {
             custom_effect_tooltip = PTF_unit_tt
             hidden_effect = {
                 # 世解(WLI)之内每有一个成员，获得三个编制为火星兵的师
-                every_country = {
-                    limit = {
-                        is_in_faction_with = PRC
+                #every_country = {
+                #    limit = {
+                #        is_in_faction_with = PRC
+                #    }
+                #    PTF = {
+                #        random_owned_controlled_state = {
+                #            create_unit = {
+                #                division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                #                owner = PTF
+                #                count = 3
+                #            }
+                #        }
+                #    }
+                #}
+                random_owned_controlled_state = {
+                    create_unit = {
+                        division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                        owner = PTF
+                        count = 3
                     }
-                    PTF = {
-                        random_owned_controlled_state = {
-                            create_unit = {
-                                division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
-                                owner = PTF
-                                count = 3
+                }
+                PRC = {
+                    every_allied_country = {
+                        PTF = {
+                            random_owned_controlled_state = {
+                                create_unit = {
+                                    division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                                    owner = PTF
+                                    count = 3
+                                }
                             }
                         }
                     }
@@ -235,12 +258,11 @@ focus_tree = {
             }
         }
         x = -2
-        y = 2
-        relative_position_id = PTF_defeated_but_unbowed
+        y = 1
         prerequisite = {
             focus = PTF_defeated_but_unbowed
         }
-        relative_position_id = PTF_forge_the_chain
+        relative_position_id = PTF_stranglehold
         ai_will_do = {
             factor = 50
         }
