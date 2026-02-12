@@ -1065,23 +1065,6 @@ shared_focus = {
 	}
 	available = {
 		USA_controls_all_cores_trigger = yes
-		if = {
-			limit = {
-				has_completed_focus = USA_the_giant_wakes
-			}
-			set_temp_variable = {
-				var = USA_reconstruction_progress_trigger_var_temp
-				value = 0.5
-			}
-			USA_has_reconstruction_progress_greater_than_or_equals = yes
-		}
-		else = {
-			set_temp_variable = {
-				var = USA_reconstruction_progress_trigger_var_temp
-				value = 0.9
-			}
-			USA_has_reconstruction_progress_greater_than_or_equals = yes
-		}
 	}
 	completion_reward = {
 		unlock_decision_tooltip = USA_join_nato_decision
