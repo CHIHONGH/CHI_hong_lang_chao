@@ -563,6 +563,7 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3017.a
+        set_country_flag = PRC_grassroots_lost
         hidden_effect = {
             country_event = {
                 id = prcs.3038
@@ -1064,6 +1065,7 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3037.a
+        set_country_flag = PRC_grassroots_win
         custom_effect_tooltip = PRC_tfr_nl_china_yuhoudezaochen_tt
         effect_tooltip = {
             swap_ideas = {
@@ -3288,6 +3290,7 @@ news_event = {
     desc = prcs.3163.d
     major = yes
     is_triggered_only = yes
+    Picture = GFX_United_states_news
     option = {
         name = prcs.3163.a
     }
@@ -3298,6 +3301,7 @@ news_event = {
     desc = prcs.3164.d
     major = yes
     is_triggered_only = yes
+    picture = GFX_United_states_Patriots_news
     option = {
         name = prcs.3164.a
     }
@@ -3308,6 +3312,7 @@ news_event = {
     desc = prcs.3165.d
     major = yes
     is_triggered_only = yes
+    picture = GFX_United_states_Ghost_news
     option = {
         name = prcs.3165.a
     }
@@ -3318,6 +3323,7 @@ news_event = {
     desc = prcs.3166.d
     major = yes
     is_triggered_only = yes
+    picture = GFX_United_states_Speech_news
     option = {
         name = prcs.3166.a
     }
@@ -4187,7 +4193,7 @@ country_event = {
         title = prcs.3197.t
         desc = prcs.3197.d
         is_triggered_only = yes
-        GFX_Event_Template92
+        picture = GFX_Event_Template92
         option = {
             name = prcs.3197.a
             custom_effect_tooltip = PRC_NEW_LEFT_reactionary_a_tt
@@ -4242,49 +4248,63 @@ country_event = {
             name = prcs.3197.b
             custom_effect_tooltip = PRC_NEW_LEFT_reactionary_b_tt
             custom_effect_tooltip = PRC_NEW_LEFT_reactionary_effect_tt
-            remove_mission = PRC_damage_from_reactionary_mission
-            add_to_variable = {
-                PPRC_pp_g_var = 0.05
+            custom_effect_tooltip = tooltip_white_line
+            if = {
+                limit = {
+                    has_country_flag = PRC_grassroots_lost
+                }
+                custom_effect_tooltip = PRC_grassroots_lost_tt
             }
-            add_to_variable = {
-                PPRC_pp_var = -0.05
-            }
-            add_to_variable = {
-                PPRC_st_var = -0.15
-            }
-            add_to_variable = {
-                PPRC_max_efficiency_var = 0.07
-            }
-            add_to_variable = {
-                PPRC_personal_value_var = 0.15
-            }
-            add_to_variable = {
-                PPRC_research_var = 0.15
-            }
-            add_to_variable = {
-                PPRC_ad_drift_var = -0.10
-            }
-            add_to_variable = {
-                PPRC_nt_drift_var = -0.15
-            }
-            add_to_variable = {
-                PPRC_ts_var = 0.05
-            }
-            add_to_variable = {
-                PPRC_ls_drift_var = 0.05
-            }
-            add_to_variable = {
-                PPRC_poverty_dev_var = 0.005
-            }
-            add_to_variable = {
-                PPRC_society_dev_var = 0.005
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_party_rectification_campaign_empty
-                    add_idea = PRC_party_rectification_campaign_b
+            else_if = {
+                limit = { 
+                    has_country_flag = PRC_grassroots_win
+                }
+                custom_effect_tooltip = PRC_grassroots_win_tt
+                custom_effect_tooltip = tooltip_white_line
+                add_to_variable = {
+                    PPRC_pp_g_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_pp_var = -0.05
+                }
+                add_to_variable = {
+                    PPRC_st_var = -0.15
+                }
+                add_to_variable = {
+                    PPRC_max_efficiency_var = 0.07
+                }
+                add_to_variable = {
+                    PPRC_personal_value_var = 0.15
+                }
+                add_to_variable = {
+                    PPRC_research_var = 0.15
+                }
+                add_to_variable = {
+                    PPRC_ad_drift_var = -0.10
+                }
+                add_to_variable = {
+                    PPRC_nt_drift_var = -0.15
+                }
+                add_to_variable = {
+                    PPRC_ts_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_ls_drift_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_poverty_dev_var = 0.005
+                }
+                add_to_variable = {
+                    PPRC_society_dev_var = 0.005
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_party_rectification_campaign_empty
+                        add_idea = PRC_party_rectification_campaign_b
+                    }
                 }
             }
+            remove_mission = PRC_damage_from_reactionary_mission
         }
         option = {
             name = prcs.3197.c

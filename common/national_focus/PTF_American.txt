@@ -6,7 +6,6 @@ focus_tree = {
     default = no
     shared_focus = USA_liberate_the_great_north
     shared_focus = USA_secure_the_south
-    shared_focus = USA_the_big_stick_policy
     #!gfx:interface/New_left_Collection_of_files/goals/PTF_national_focus.gfx
     focus = {
         id = PTF_soaring_white_eagle
@@ -23,7 +22,7 @@ focus_tree = {
             }
         }
         x = 6
-        y = 0
+        y = 2
         ai_will_do = {
             factor = 50
         }
@@ -55,7 +54,7 @@ focus_tree = {
         y = 3
         relative_position_id = PTF_soaring_white_eagle
         prerequisite = {
-            focus = USA_the_big_stick_policy
+            focus = PTF_the_new_marshal_plan
         }
         ai_will_do = {
             factor = 50
@@ -65,11 +64,124 @@ focus_tree = {
         }
     }
     focus = {
+        id = USA_liberate_the_great_north
+        icon = {
+            trigger = {
+                OR = {
+                    tag = USB
+                    tag = USC
+                }
+            }
+            value = GFX_focus_USA_liberate_the_great_north1
+        }
+        icon = {
+            trigger = {
+                tag = PTF
+            }
+            value = GFX_focus_USA_liberate_the_great_north_PTF
+        }
+        icon = {
+            value = GFX_focus_USA_liberate_the_great_north
+        }
+        search_filters = {
+            FOCUS_FILTER_ANNEXATION
+        }
+        x = -1
+        y = 1
+        relative_position_id = PTF_soaring_white_eagle
+        prerequisite = {
+            focus = PTF_soaring_white_eagle
+        }
+        cost = 5
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 20
+        }
+        available = {
+            USA_controls_all_cores_trigger = yes
+        }
+        bypass = {
+            CAN = {
+                OR = {
+                    exists = no
+                    is_subject_of = ROOT
+                    is_in_faction_with = ROOT
+                }
+            }
+            QUE = {
+                OR = {
+                    exists = no
+                    is_subject_of = ROOT
+                    is_in_faction_with = ROOT
+                }
+            }
+            USN = {
+                OR = {
+                    exists = no
+                    is_subject_of = ROOT
+                    is_in_faction_with = ROOT
+                }
+            }
+        }
+        completion_reward = {
+            unlock_decision_tooltip = USA_operation_crimson_decision
+            every_state = {
+                limit = {
+                    OR = {
+                        is_core_of = CAN
+                        is_core_of = QUE
+                        is_core_of = USN
+                    }
+                }
+                add_claim_by = ROOT
+            }
+        }
+    }
+    focus = {
+        id = USA_secure_the_south
+        icon = {
+            trigger = {
+                tag = PTF
+            }
+            value = GFX_focus_USA_secure_the_south_PTF
+        }
+        icon = {
+            value = GFX_focus_USA_secure_the_south
+        }
+        search_filters = {
+            FOCUS_FILTER_ANNEXATION
+        }
+        available_if_capitulated = yes
+        x = 1
+        y = 1
+        relative_position_id = PTF_soaring_white_eagle
+        prerequisite = {
+            focus = PTF_soaring_white_eagle
+        }
+        cost = 5
+        ai_will_do = {
+            base = 20
+        }
+        available = {
+            USA_controls_all_cores_trigger = yes
+        }
+        completion_reward = {
+            unlock_decision_tooltip = USA_operation_green_decision
+        }
+    }
+    focus = {
         id = PTF_the_new_marshal_plan
         icon = GFX_focus_PTF_the_new_marshal_plan
         cost = 4
+        prerequisite = {
+            focus = USA_liberate_the_great_north
+        }
+        prerequisite = {
+            focus = USA_secure_the_south
+        }
         completion_reward = {
             log = "[GetDateText]: [Root.GetName]: focus PTF_the_new_marshal_plan completion_reward"
+            unlock_decision_tooltip = USA_operation_gray_decision
             JAP = {
                 random_owned_controlled_state = {
                     add_building_construction = {
@@ -149,9 +261,6 @@ focus_tree = {
         }
         x = 6
         y = 4
-        prerequisite = {
-            focus = PTF_storming_back_into_tne_pacific
-        }
         ai_will_do = {
             factor = 70
         }
@@ -229,7 +338,7 @@ focus_tree = {
                 }
             }
         }
-        x = -1
+        x = -2
         y = 2
         prerequisite = {
             focus = PTF_freedom_of_navgation
@@ -260,7 +369,7 @@ focus_tree = {
         x = -2
         y = 1
         prerequisite = {
-            focus = PTF_defeated_but_unbowed
+            focus = PTF_freedom_of_navgation
         }
         relative_position_id = PTF_stranglehold
         ai_will_do = {
@@ -376,6 +485,9 @@ focus_tree = {
         prerequisite = {
             focus = PTF_oil_the_blade
         }
+        prerequisite = {
+            focus = PTF_the_final_crusade
+        }
         ai_will_do = {
             factor = 50
         }
@@ -389,7 +501,7 @@ focus_tree = {
         x = 0
         y = 2
         prerequisite = {
-            focus = PTF_the_new_marshal_plan
+            focus = PTF_storming_back_into_tne_pacific
         }
         relative_position_id = PTF_the_new_marshal_plan
         ai_will_do = {
@@ -737,8 +849,8 @@ focus_tree = {
         y = 2
         relative_position_id = PTF_stranglehold
         prerequisite = { focus = PTF_stranglehold }
-        prerequisite = { focus = PTF_project_jupiter }
         prerequisite = { focus = PTF_fortress_of_freedom }
+        prerequisite = { focus = PTF_defeated_but_unbowed }
         ai_will_do = {
             factor = 50
         }
