@@ -4,6 +4,8 @@ focus_tree = {
         factor = 0
     }
     default = no
+    shared_focus = USA_liberate_the_great_north
+    shared_focus = USA_secure_the_south
     #!gfx:interface/New_left_Collection_of_files/goals/PTF_national_focus.gfx
     focus = {
         id = PTF_soaring_white_eagle
@@ -20,7 +22,7 @@ focus_tree = {
             }
         }
         x = 6
-        y = 0
+        y = 2
         ai_will_do = {
             factor = 50
         }
@@ -49,10 +51,10 @@ focus_tree = {
             }
         }
         x = 0
-        y = 2
+        y = 3
         relative_position_id = PTF_soaring_white_eagle
         prerequisite = {
-            focus = PTF_soaring_white_eagle
+            focus = PTF_the_new_marshal_plan
         }
         ai_will_do = {
             factor = 50
@@ -62,11 +64,124 @@ focus_tree = {
         }
     }
     focus = {
+        id = USA_liberate_the_great_north
+        icon = {
+            trigger = {
+                OR = {
+                    tag = USB
+                    tag = USC
+                }
+            }
+            value = GFX_focus_USA_liberate_the_great_north1
+        }
+        icon = {
+            trigger = {
+                tag = PTF
+            }
+            value = GFX_focus_USA_liberate_the_great_north_PTF
+        }
+        icon = {
+            value = GFX_focus_USA_liberate_the_great_north
+        }
+        search_filters = {
+            FOCUS_FILTER_ANNEXATION
+        }
+        x = -1
+        y = 1
+        relative_position_id = PTF_soaring_white_eagle
+        prerequisite = {
+            focus = PTF_soaring_white_eagle
+        }
+        cost = 5
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 20
+        }
+        available = {
+            USA_controls_all_cores_trigger = yes
+        }
+        bypass = {
+            CAN = {
+                OR = {
+                    exists = no
+                    is_subject_of = ROOT
+                    is_in_faction_with = ROOT
+                }
+            }
+            QUE = {
+                OR = {
+                    exists = no
+                    is_subject_of = ROOT
+                    is_in_faction_with = ROOT
+                }
+            }
+            USN = {
+                OR = {
+                    exists = no
+                    is_subject_of = ROOT
+                    is_in_faction_with = ROOT
+                }
+            }
+        }
+        completion_reward = {
+            unlock_decision_tooltip = USA_operation_crimson_decision
+            every_state = {
+                limit = {
+                    OR = {
+                        is_core_of = CAN
+                        is_core_of = QUE
+                        is_core_of = USN
+                    }
+                }
+                add_claim_by = ROOT
+            }
+        }
+    }
+    focus = {
+        id = USA_secure_the_south
+        icon = {
+            trigger = {
+                tag = PTF
+            }
+            value = GFX_focus_USA_secure_the_south_PTF
+        }
+        icon = {
+            value = GFX_focus_USA_secure_the_south
+        }
+        search_filters = {
+            FOCUS_FILTER_ANNEXATION
+        }
+        available_if_capitulated = yes
+        x = 1
+        y = 1
+        relative_position_id = PTF_soaring_white_eagle
+        prerequisite = {
+            focus = PTF_soaring_white_eagle
+        }
+        cost = 5
+        ai_will_do = {
+            base = 20
+        }
+        available = {
+            USA_controls_all_cores_trigger = yes
+        }
+        completion_reward = {
+            unlock_decision_tooltip = USA_operation_green_decision
+        }
+    }
+    focus = {
         id = PTF_the_new_marshal_plan
         icon = GFX_focus_PTF_the_new_marshal_plan
         cost = 4
+        prerequisite = {
+            focus = USA_liberate_the_great_north
+        }
+        prerequisite = {
+            focus = USA_secure_the_south
+        }
         completion_reward = {
             log = "[GetDateText]: [Root.GetName]: focus PTF_the_new_marshal_plan completion_reward"
+            unlock_decision_tooltip = USA_operation_gray_decision
             JAP = {
                 random_owned_controlled_state = {
                     add_building_construction = {
@@ -80,11 +195,11 @@ focus_tree = {
                         instant_build = yes
                     }
                 }
-				set_temp_variable = {
-					var = society_development_var_temp
-					value = 0.15
-				}
-				add_society_development = yes
+                set_temp_variable = {
+                    var = society_development_var_temp
+                    value = 0.15
+                }
+                add_society_development = yes
             }
             AST = {
                 random_owned_controlled_state = {
@@ -99,11 +214,11 @@ focus_tree = {
                         instant_build = yes
                     }
                 }
-				set_temp_variable = {
-					var = society_development_var_temp
-					value = 0.15
-				}
-				add_society_development = yes
+                set_temp_variable = {
+                    var = society_development_var_temp
+                    value = 0.15
+                }
+                add_society_development = yes
             }
             NZL = {
                 random_owned_controlled_state = {
@@ -118,11 +233,11 @@ focus_tree = {
                         instant_build = yes
                     }
                 }
-				set_temp_variable = {
-					var = society_development_var_temp
-					value = 0.15
-				}
-				add_society_development = yes
+                set_temp_variable = {
+                    var = society_development_var_temp
+                    value = 0.15
+                }
+                add_society_development = yes
             }
             KOR = {
                 random_owned_controlled_state = {
@@ -137,18 +252,15 @@ focus_tree = {
                         instant_build = yes
                     }
                 }
-				set_temp_variable = {
-					var = society_development_var_temp
-					value = 0.15
-				}
-				add_society_development = yes
+                set_temp_variable = {
+                    var = society_development_var_temp
+                    value = 0.15
+                }
+                add_society_development = yes
             }
         }
         x = 6
         y = 4
-        prerequisite = {
-            focus = PTF_storming_back_into_tne_pacific
-        }
         ai_will_do = {
             factor = 70
         }
@@ -190,23 +302,43 @@ focus_tree = {
             custom_effect_tooltip = PTF_unit_tt
             hidden_effect = {
                 # 世解(WLI)之内每有一个成员，获得三个编制为火星兵的师
-                every_country = {
-                    limit = {
-                        is_in_faction_with = PRC
+                #every_country = {
+                #    limit = {
+                #        is_in_faction_with = PRC
+                #    }
+                #    PTF = {
+                #        random_owned_controlled_state = {
+                #            create_unit = {
+                #                division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                #                owner = PTF
+                #                count = 3
+                #            }
+                #        }
+                #    }
+                #}
+                random_owned_controlled_state = {
+                    create_unit = {
+                        division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                        owner = PTF
+                        count = 3
                     }
-                    PTF = {
-                        random_owned_controlled_state = {
-                            create_unit = {
-                                division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
-                                owner = PTF
-                                count = 3
+                }
+                PRC = {
+                    every_allied_country = {
+                        PTF = {
+                            random_owned_controlled_state = {
+                                create_unit = {
+                                    division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                                    owner = PTF
+                                    count = 3
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        x = -1
+        x = -2
         y = 2
         prerequisite = {
             focus = PTF_freedom_of_navgation
@@ -235,12 +367,11 @@ focus_tree = {
             }
         }
         x = -2
-        y = 2
-        relative_position_id = PTF_defeated_but_unbowed
+        y = 1
         prerequisite = {
-            focus = PTF_defeated_but_unbowed
+            focus = PTF_freedom_of_navgation
         }
-        relative_position_id = PTF_forge_the_chain
+        relative_position_id = PTF_stranglehold
         ai_will_do = {
             factor = 50
         }
@@ -308,7 +439,7 @@ focus_tree = {
                     }
                 }
             }
-            custom_effect_tooltip = "Adds 1 military factory and 1 naval dockyard to 3 random owned states."
+            custom_effect_tooltip = PTF_oil_the_blade_tt
             set_temp_variable = {
                 var = industrial_development_var_temp
                 value = 0.10
@@ -344,15 +475,18 @@ focus_tree = {
             set_technology = {
                 improved_small_airframe = 1
             }
-			hidden_effect = {
-				news_event = prcs.3165
-			}
+            hidden_effect = {
+                news_event = prcs.3165
+            }
         }
         x = -1
         y = 2
         relative_position_id = PTF_oil_the_blade
         prerequisite = {
             focus = PTF_oil_the_blade
+        }
+        prerequisite = {
+            focus = PTF_the_final_crusade
         }
         ai_will_do = {
             factor = 50
@@ -367,7 +501,7 @@ focus_tree = {
         x = 0
         y = 2
         prerequisite = {
-            focus = PTF_the_new_marshal_plan
+            focus = PTF_storming_back_into_tne_pacific
         }
         relative_position_id = PTF_the_new_marshal_plan
         ai_will_do = {
@@ -391,9 +525,9 @@ focus_tree = {
                             motorized = { x = 2 y = 0 }
                             motorized = { x = 2 y = 1 }
                         }
-                        
+
                         support = {
-                            engineer = { x = 0 y = 0 }              
+                            engineer = { x = 0 y = 0 }
                         }
                     }
                     capital_scope = {
@@ -416,9 +550,9 @@ focus_tree = {
                             motorized = { x = 2 y = 0 }
                             motorized = { x = 2 y = 1 }
                         }
-                        
+
                         support = {
-                            engineer = { x = 0 y = 0 }              
+                            engineer = { x = 0 y = 0 }
                         }
                     }
                     set_politics = {
@@ -434,7 +568,7 @@ focus_tree = {
                         }
                     }
                 }
-                AUS = {
+                AST = {
                     division_template = {
                         name = "usa marrun"
                         priority = 2
@@ -446,9 +580,9 @@ focus_tree = {
                             motorized = { x = 2 y = 0 }
                             motorized = { x = 2 y = 1 }
                         }
-                        
+
                         support = {
-                            engineer = { x = 0 y = 0 }              
+                            engineer = { x = 0 y = 0 }
                         }
                     }
                     set_politics = {
@@ -460,6 +594,36 @@ focus_tree = {
                         create_unit = {
                             division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
                             owner = AUS
+                            count = 3
+                        }
+                    }
+                }
+                RAJ = {
+                    division_template = {
+                        name = "usa marrun"
+                        priority = 2
+                        regiments = {
+                            motorized = { x = 0 y = 0 }
+                            motorized = { x = 0 y = 1 }
+                            motorized = { x = 1 y = 0 }
+                            motorized = { x = 1 y = 1 }
+                            motorized = { x = 2 y = 0 }
+                            motorized = { x = 2 y = 1 }
+                        }
+
+                        support = {
+                            engineer = { x = 0 y = 0 }
+                        }
+                    }
+                    set_politics = {
+                        ruling_party = authoritarian_democrat
+                        last_election = "2020.1.1"
+                        elections_allowed = no
+                    }
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                            owner = NZL
                             count = 3
                         }
                     }
@@ -476,9 +640,9 @@ focus_tree = {
                             motorized = { x = 2 y = 0 }
                             motorized = { x = 2 y = 1 }
                         }
-                        
+
                         support = {
-                            engineer = { x = 0 y = 0 }              
+                            engineer = { x = 0 y = 0 }
                         }
                     }
                     set_politics = {
@@ -685,8 +849,8 @@ focus_tree = {
         y = 2
         relative_position_id = PTF_stranglehold
         prerequisite = { focus = PTF_stranglehold }
-        prerequisite = { focus = PTF_project_jupiter }
         prerequisite = { focus = PTF_fortress_of_freedom }
+        prerequisite = { focus = PTF_defeated_but_unbowed }
         ai_will_do = {
             factor = 50
         }

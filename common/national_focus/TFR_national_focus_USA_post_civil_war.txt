@@ -241,6 +241,7 @@ shared_focus = {
 				limit = {
 					tag = PTF
 				}
+				remove_ideas = PTF_fast_recoring
 				country_event = ptf.137
 			}
 			meta_effect = {
@@ -285,9 +286,9 @@ shared_focus = {
 	}
 	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
-	x = 1
+	x = 2
 	y = 1
-	cost = 10
+	cost = 2
 	prerequisite = {
 		focus = USA_back_in_business
 	}
@@ -363,7 +364,7 @@ shared_focus = {
 	}
 	x = 0
 	y = 2
-	cost = 10
+	cost = 5
 	prerequisite = {
 		focus = USA_the_giant_wakes
 		focus = USA_american_diplomatic_corps
@@ -441,7 +442,7 @@ shared_focus = {
 	}
 	x = -1
 	y = 1
-	cost = 10
+	cost = 4
 	prerequisite = {
 		focus = USA_american_restoration_act
 	}
@@ -540,7 +541,7 @@ shared_focus = {
 	relative_position_id = USA_american_restoration_act	
 	x = 1
 	y = 1
-	cost = 10
+	cost = 4
 	prerequisite = {
 		focus = USA_american_restoration_act
 	}
@@ -611,7 +612,7 @@ shared_focus = {
 	}
 	x = 0
 	y = 2
-	cost = 10
+	cost = 5
 	relative_position_id = USA_those_in_need
 	available_if_capitulated = yes
 	prerequisite = {
@@ -706,7 +707,7 @@ shared_focus = {
 	relative_position_id = USA_those_in_need
 	x = 1
 	y = 1
-	cost = 10
+	cost = 5
 	prerequisite = {
 		focus = USA_those_in_need
 	}
@@ -828,13 +829,13 @@ shared_focus = {
 	search_filters = {
 		FOCUS_FILTER_ANNEXATION
 	}
-	x = 1
+	x = 0
 	y = 1
 	cost = 5
-	relative_position_id = USA_embrace_neutrality
+	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
 	prerequisite = {
-		focus = USA_embrace_neutrality
+		focus = USA_back_in_business
 	}
 	ai_will_do = {
 		base = 20
@@ -878,9 +879,9 @@ shared_focus = {
 	search_filters = {
 		FOCUS_FILTER_ANNEXATION
 	}
-	x = -2
+	x = -4
 	y = 0
-	cost = 5
+	cost = 3
 	relative_position_id = USA_the_giant_wakes
 	available_if_capitulated = yes
 	prerequisite = {
@@ -924,191 +925,177 @@ shared_focus = {
 # 	}
 # }
 
-shared_focus = {
-	id = USA_liberate_the_great_north
-	icon = {
-		trigger = {
-			OR = {
-				tag = USB
-				tag = USC
-			}
-		}
-		value = GFX_focus_USA_liberate_the_great_north1
-	}
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_liberate_the_great_north_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_liberate_the_great_north
-	}
-	search_filters = {
-		FOCUS_FILTER_ANNEXATION
-	}
-	x = -1
-	y = 1
-	cost = 5
-	relative_position_id = USA_safeguard_the_nation
-	available_if_capitulated = yes
-	prerequisite = {
-		focus = USA_safeguard_the_nation
-		focus = USA_american_diplomatic_corps
-	}
-	ai_will_do = {
-		base = 20
-	}
-	available = {
-		USA_controls_all_cores_trigger = yes
-	}
-	bypass = {
-		CAN = {
-			OR = {
-				exists = no
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-		QUE = {
-			OR = {
-				exists = no
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-		USN = {
-			OR = {
-				exists = no
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-	}
-	completion_reward = {
-		unlock_decision_tooltip = USA_operation_crimson_decision
-		every_state = {
-			limit = {
-				OR = {
-					is_core_of = CAN
-					is_core_of = QUE
-					is_core_of = USN
-				}
-			}
-			add_claim_by = ROOT
-		}
-	}
-}
+# shared_focus = {
+# 	id = USA_liberate_the_great_north
+# 	icon = {
+# 		trigger = {
+# 			OR = {
+# 				tag = USB
+# 				tag = USC
+# 			}
+# 		}
+# 		value = GFX_focus_USA_liberate_the_great_north1
+# 	}
+# 	icon = {
+# 		trigger = {
+# 			tag = PTF
+# 		}
+# 		value = GFX_focus_USA_liberate_the_great_north_PTF
+# 	}
+# 	icon = {
+# 		value = GFX_focus_USA_liberate_the_great_north
+# 	}
+# 	search_filters = {
+# 		FOCUS_FILTER_ANNEXATION
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = PTF_soaring_white_eagle
+# 	prerequisite = {
+# 		focus = PTF_soaring_white_eagle
+# 	}
+# 	cost = 5
+# 	available_if_capitulated = yes
+# 	ai_will_do = {
+# 		base = 20
+# 	}
+# 	available = {
+# 		USA_controls_all_cores_trigger = yes
+# 	}
+# 	bypass = {
+# 		CAN = {
+# 			OR = {
+# 				exists = no
+# 				is_subject_of = ROOT
+# 				is_in_faction_with = ROOT
+# 			}
+# 		}
+# 		QUE = {
+# 			OR = {
+# 				exists = no
+# 				is_subject_of = ROOT
+# 				is_in_faction_with = ROOT
+# 			}
+# 		}
+# 		USN = {
+# 			OR = {
+# 				exists = no
+# 				is_subject_of = ROOT
+# 				is_in_faction_with = ROOT
+# 			}
+# 		}
+# 	}
+# 	completion_reward = {
+# 		set_country_flag = USA_liberate_central_america_flag
+# 		unlock_decision_tooltip = USA_operation_crimson_decision
+# 		every_state = {
+# 			limit = {
+# 				OR = {
+# 					is_core_of = CAN
+# 					is_core_of = QUE
+# 					is_core_of = USN
+# 				}
+# 			}
+# 			add_claim_by = ROOT
+# 		}
+# 	}
+# }
 
-shared_focus = {
-	id = USA_secure_the_south
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_secure_the_south_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_secure_the_south
-	}
-	search_filters = {
-		FOCUS_FILTER_ANNEXATION
-	}
-	relative_position_id = USA_american_diplomatic_corps
-	available_if_capitulated = yes
-	x = 1
-	y = 1
-	cost = 5
-	prerequisite = {
-		focus = USA_safeguard_the_nation
-		focus = USA_american_diplomatic_corps
-	}
-	ai_will_do = {
-		base = 20
-	}
-	available = {
-		USA_controls_all_cores_trigger = yes
-	}
-	completion_reward = {
-		unlock_decision_tooltip = USA_operation_green_decision
-	}
-}
+# shared_focus = {
+# 	id = USA_secure_the_south
+# 	icon = {
+# 		trigger = {
+# 			tag = PTF
+# 		}
+# 		value = GFX_focus_USA_secure_the_south_PTF
+# 	}
+# 	icon = {
+# 		value = GFX_focus_USA_secure_the_south
+# 	}
+# 	search_filters = {
+# 		FOCUS_FILTER_ANNEXATION
+# 	}
+# 	available_if_capitulated = yes
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = PTF_soaring_white_eagle
+# 	prerequisite = {
+# 		focus = PTF_soaring_white_eagle
+# 	}
+# 	cost = 5
+# 	ai_will_do = {
+# 		base = 20
+# 	}
+# 	available = {
+# 		USA_controls_all_cores_trigger = yes
+# 	}
+# 	completion_reward = {
+# 		set_country_flag = USA_secure_the_south_flag
+# 		unlock_decision_tooltip = USA_operation_green_decision
+# 	}
+# }
 
-shared_focus = {
-	id = USA_the_big_stick_policy
-	icon = GFX_focus_USA_the_big_stick_policy
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_the_big_stick_policy_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_the_big_stick_policy
-	}
-	search_filters = {
-		FOCUS_FILTER_ANNEXATION
-	}
-	x = 0
-	y = 2
-	cost = 5
-	relative_position_id = USA_american_restoration_act
-	available_if_capitulated = yes
-	prerequisite = {
-		focus = USA_secure_the_south
-		focus = USA_liberate_the_great_north
-	}
-	ai_will_do = {
-		base = 100
-	}
-	available = {
-		USA_controls_all_cores_trigger = yes
-		if = {
-			limit = {
-				has_completed_focus = USA_the_giant_wakes
-			}
-			set_temp_variable = {
-				var = USA_reconstruction_progress_trigger_var_temp
-				value = 0.5
-			}
-			USA_has_reconstruction_progress_greater_than_or_equals = yes
-		}
-		else = {
-			set_temp_variable = {
-				var = USA_reconstruction_progress_trigger_var_temp
-				value = 0.9
-			}
-			USA_has_reconstruction_progress_greater_than_or_equals = yes
-		}
-	}
-	completion_reward = {
-		unlock_decision_tooltip = USA_join_nato_decision
-		unlock_decision_tooltip = USA_join_ptdo_decision
-		unlock_decision_tooltip = USA_reassert_ourselves_decision
-		# if = {
-		# 	limit = {
-		# 		NOT = {
-		# 			tag = USB
-		# 			tag = USC
-		# 		}
-		# 	}
-		# 	unlock_decision_tooltip = USA_reassert_ourselves_decision
-		# }
-		unlock_decision_tooltip = USA_operation_gray_decision
-		if = {
-			limit = { 
-				tag = PTF
-				NOT = {
-					is_in_faction_with = JAP
-				}
-			}
-			JAP = {
-				add_to_faction = PTF
-			}
-		}
-		enable_wargoal_justification = yes
-	}
-}
+# shared_focus = {
+# 	id = USA_the_big_stick_policy
+# 	icon = GFX_focus_USA_the_big_stick_policy
+# 	icon = {
+# 		trigger = {
+# 			tag = PTF
+# 		}
+# 		value = GFX_focus_USA_the_big_stick_policy_PTF
+# 	}
+# 	icon = {
+# 		value = GFX_focus_USA_the_big_stick_policy
+# 	}
+# 	search_filters = {
+# 		FOCUS_FILTER_ANNEXATION
+# 	}
+# 	x = 0
+# 	y = -1
+# 	cost = 5
+# 	relative_position_id = PTF_storming_back_into_tne_pacific
+# 	available_if_capitulated = yes
+# 	prerequisite = {
+# 		focus = PTF_soaring_white_eagle
+# 	}
+# 	prerequisite = {
+# 		focus = USA_liberate_the_great_north
+# 		focus = USA_secure_the_south
+# 	}
+# 	ai_will_do = {
+# 		base = 100
+# 	}
+# 	available = {
+# 		USA_controls_all_cores_trigger = yes
+# 	}
+# 	completion_reward = {
+# 		unlock_decision_tooltip = USA_join_nato_decision
+# 		unlock_decision_tooltip = USA_join_ptdo_decision
+# 		unlock_decision_tooltip = USA_reassert_ourselves_decision
+# 		# if = {
+# 		# 	limit = {
+# 		# 		NOT = {
+# 		# 			tag = USB
+# 		# 			tag = USC
+# 		# 		}
+# 		# 	}
+# 		# 	unlock_decision_tooltip = USA_reassert_ourselves_decision
+# 		# }
+# 		unlock_decision_tooltip = USA_operation_gray_decision
+# 		if = {
+# 			limit = { 
+# 				tag = PTF
+# 				NOT = {
+# 					is_in_faction_with = JAP
+# 				}
+# 			}
+# 			JAP = {
+# 				add_to_faction = PTF
+# 			}
+# 		}
+# 		enable_wargoal_justification = yes
+# 	}
+# }
 
 #Post-Civil War Military
 # shared_focus = {
@@ -1151,7 +1138,7 @@ shared_focus = {
 	}
 	x = -1
 	y = 1
-	cost = 10
+	cost = 5
 	relative_position_id = USA_hearts_of_industry
 	available_if_capitulated = yes
 	prerequisite = {
@@ -1239,7 +1226,7 @@ shared_focus = {
 	}
 	x = 0
 	y = 2
-	cost = 10
+	cost = 5
 	relative_position_id = USA_hearts_of_industry
 	available_if_capitulated = yes
 	prerequisite = {
@@ -1316,6 +1303,7 @@ shared_focus = {
 			custom_effect_tooltip = USA_war_with_PRC_tt
 			hidden_effect = {
 				load_focus_tree = PTF_American
+				focus_unlock = yes
 			}
 		}
 	}
