@@ -2,23 +2,6 @@ on_actions = {
     on_capitulation = {
         effect = {
             if = {
-                limit = {
-                    PRC = {
-                        NOT = {
-                            has_country_flag = prc_allies_in_southeast_asia_flag_set
-                        }
-                        is_ally_with = ROP
-                        is_ally_with = SRI
-                        is_ally_with = SMA
-                        is_ally_with = CAM
-                        is_ally_with = VIN
-                    }
-                }
-                PRC = {
-                    news_event = prcs.81
-                }
-            }
-            if = {
                 # PRC kill JAP
                 limit = {
                     FROM = {
@@ -426,6 +409,12 @@ on_actions = {
                         ROOT = {
                             original_tag = PTF
                         }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
                     }
                     FROM = {
                         end_puppet = PTF
@@ -707,6 +696,9 @@ on_actions = {
                             target = PHI
                             transfer_troops = no
                         }
+                        every_core_state = {
+                            remove_core_of = ROOT
+                        }
                     }
                     set_global_flag = skip_default_capitulation
                 }
@@ -923,13 +915,16 @@ on_actions = {
                     # PRC kill VIN
                     limit = {
                         FROM = {
-                            original_tag = PRC
+                            OR = {
+                                original_tag = PRC
+                                is_ally_with = PRC
+                            }
                         }
                         ROOT = {
                             original_tag = VIN
                         }
                     }
-                    FROM = {
+                    PRC = {
                         white_peace = ROOT
                         set_autonomy = {
                             target = VIN
@@ -947,7 +942,11 @@ on_actions = {
                         add_to_variable = {
                             PRC_Lib_Int_Dir_Var = 1
                         }
+                        transfer_state = 879
                         # clr_country_flag = PRC_spread_chinese_influence
+                    }
+                    879 = {
+                        add_core_of = PRC 
                     }
                     ROOT = {
                         set_popularities = {
@@ -998,363 +997,6 @@ on_actions = {
                     }
                     set_global_flag = skip_default_capitulation
                 }
-                # if = {
-                #     limit = {
-                #         FROM = {
-                #             OR = {
-                #                 original_tag = PRC
-                #                 is_ally_with = PRC
-                #                 is_ally_with = PAK
-                #             }
-                #         }
-                #         ROOT = {
-                #             original_tag = AFG
-                #         }
-                #     }
-                #     FROM = {
-                #         PRC = {
-                #             annex_country = {
-                #                 target = AFG
-                #                 transfer_troops = no
-                #             }
-                #         }
-                #         AFG = {
-                #             inherit_technology = PRC
-                #             set_cosmetic_tag = PRC_repolice_gonh
-                #             set_party_name = {
-                #                 ideology = communist
-                #                 long_name = PRC_nationalist_party_long
-                #                 name = PRC_nationalist_party_long
-                #             }
-                #             set_politics = {
-                #                 ruling_party = communist
-                #                 election_frequency = 60
-                #                 elections_allowed = yes
-                #             }
-                #             create_country_leader = {
-                #                 name = "阿富汗人民代表大会"
-                #                 desc = "POLITICS_ASTGW_DESC"
-                #                 picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                #                 expire = "1999.1.1"
-                #                 ideology = marxism_leninism
-                #             }
-                #         }
-                #     }
-                #     set_global_flag = skip_default_capitulation
-                # }
-                # if = {
-                #     limit = {
-                #         FROM = {
-                #             OR = {
-                #                 original_tag = PRC
-                #                 is_ally_with = PRC
-                #                 is_ally_with = PAK
-                #             }
-                #         }
-                #         ROOT = {
-                #             original_tag = TAL
-                #         }
-                #     }
-                #     FROM = {
-                #         PRC = {
-                #             annex_country = {
-                #                 target = TAL
-                #                 transfer_troops = no
-                #             }
-                #             release_autonomy = {
-                #                 target = TAL
-                #                 autonomous_state = autonomy_communist
-                #                 freedom_level = 0.1
-                #             }
-                #         }
-                #         TAL = {
-                #             inherit_technology = PRC
-                #             set_cosmetic_tag = PRC_repolice_gonh_1
-                #             set_party_name = {
-                #                 ideology = communist
-                #                 long_name = PRC_nationalist_party_long
-                #                 name = PRC_nationalist_party_long
-                #             }
-                #             set_politics = {
-                #                 ruling_party = communist
-                #                 election_frequency = 60
-                #                 elections_allowed = yes
-                #             }
-                #             create_country_leader = {
-                #                 name = "阿富汗人民代表大会"
-                #                 desc = "POLITICS_ASTGW_DESC"
-                #                 picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                #                 expire = "1999.1.1"
-                #                 ideology = marxism_leninism
-                #             }
-                #         }
-                #     }
-                #     set_global_flag = skip_default_capitulation
-                # }
-                # if = {
-                # 	# MND kill all
-                # 	limit = {
-                # 		FROM = {
-                # 			OR = {
-                # 				original_tag = MND
-                # 				original_tag = PRC
-                # 			}
-                # 		}
-                # 		ROOT = {
-                # 			OR = {
-                # 				original_tag = PDF
-                # 				original_tag = BRM
-                # 				original_tag = KNU
-                # 				original_tag = CNF
-                # 				original_tag = SSA
-                # 				original_tag = MOA
-                # 			}
-                # 		}
-                # 	}
-                # 	MND = {
-                # 		white_peace = ROOT
-                # 		annex_country = {
-                # 			target = ROOT
-                # 			transfer_troops = no
-                # 		}
-                # 	}
-                # 	if = {
-                # 		limit = {
-                # 			OR = {
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = PDF
-                # 					}
-                # 					NOT = {
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = BRM
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = CNF
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = KNU
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = SSA
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = MOA
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 			}
-                # 		}
-                # 		PRC = {
-                # 			puppet = BRM
-                # 		}
-                # 		BRM = {
-                # 			white_peace = FROM
-                # 			if = {
-                # 				limit = {
-                # 					PRC = {
-                # 						has_country_leader = {
-                # 							character = PRC_Hu_Chunhua
-                # 							ruling_only = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				set_popularities = {
-                # 					totalitarian_socialist = 75
-                # 					communist = 25
-                # 				}
-                # 			}
-                # 			annex_country = {
-                # 				target = MND
-                # 				transfer_troops = yes
-                # 			}
-                # 			every_state = {
-                # 				limit = {
-                # 					is_core_of = BRM
-                # 				}
-                # 				remove_core_of = PDF
-                # 				remove_core_of = CNF
-                # 				remove_core_of = KLA
-                # 				remove_core_of = KNU
-                # 				remove_core_of = SSA
-                # 				remove_core_of = MOA
-                # 				remove_core_of = MND
-                # 				remove_core_of = WAT
-                # 			}
-                # 			remove_ideas = {
-                # 				BRM_first_xiist_revolution
-                # 				BRM_ethnic_tensions
-                # 				BRM_national_ceasefire
-                # 				BRM_unstable_junta
-                # 				BRM_civil_war_idea
-                # 			}
-                # 			PRC = {
-                # 				clr_country_flag = PRC_myanmar_negotiations_flag
-                # 				add_to_faction = BRM
-                # 				every_country = {
-                # 					limit = {
-                # 						is_in_faction_with = BRM
-                # 						any_controlled_state = {
-                # 							NOT = {
-                # 								is_controlled_by = BRM
-                # 							}
-                # 							is_core_of = BRM
-                # 						}
-                # 					}
-                # 					every_controlled_state = {
-                # 						limit = {
-                # 							NOT = {
-                # 								is_controlled_by = BRM
-                # 							}
-                # 							is_core_of = BRM
-                # 						}
-                # 						transfer_state_to = BRM
-                # 						set_state_owner_to = BRM
-                # 						set_state_controller_to = BRM
-                # 					}
-                # 				}
-                # 			}
-                # 			BRM = {
-                # 				every_country = {
-                # 					limit = {
-                # 						is_core_of = BRM
-                # 					}
-                # 					annex_country = {
-                # 						target = FROM
-                # 						transfer_troops = no
-                # 					}
-                # 				}
-                # 				set_cosmetic_tag = PRC_repolice_gonh
-                # 				set_politics = {
-                # 					ruling_party = totalitarian_socialist
-                # 					elections_allowed = yes
-                # 					election_frequency = 48
-                # 				}
-                # 				create_country_leader = {
-                # 					name = "缅甸人民委员会"
-                # 					desc = "POLITICS_ASTGW_DESC"
-                # 					picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                # 					expire = "1999.1.1"
-                # 					ideology = left_wing_junta
-                # 				}
-                # 				# country_event = { id = bur.5 }
-                # 				clr_country_flag = pdto_member
-                # 				set_country_flag = eadi_member
-                # 			}
-                # 		}
-                # 	}
-                # 	set_global_flag = skip_default_capitulation
-                # }
             }
         }
     }

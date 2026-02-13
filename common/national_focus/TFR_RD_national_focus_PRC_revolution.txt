@@ -939,6 +939,9 @@ shared_focus = {
     x = -1
     y = 2
     cost = 7
+    will_lead_to_war_with = PTF
+    will_lead_to_war_with = JAP
+    will_lead_to_war_with = RAJ
     available_if_capitulated = yes
     prerequisite = {
         focus = Coordination_of_the_World_Liberation_Army
@@ -968,6 +971,23 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     select_effect = {
+        PTF = {
+            add_ai_strategy = {
+                type = prepare_for_war
+                id = PRC
+                value = 1000
+            }
+            add_ai_strategy = {
+                type = consider_weak
+                id = PRC
+                value = 1000
+            }
+            add_ai_strategy = {
+                type = conquer
+                id = PRC
+                value = 1000
+            }
+        }
         PRK = {
             add_ai_strategy = {
                 type = prepare_for_war

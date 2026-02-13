@@ -257,17 +257,20 @@ PRC_coronavirus_category = {
 				mission = PRC_control_the_coronavirus_mission
 				days = 75
 			}
-			add_stability = -0.05
 			if = {
 				limit = {
 					NOT = {
 						has_country_flag = PRC_PLA_in_wuhan_flag
 					}
 				}
+				add_stability = 0.05
 				country_event = {
 					id = china.300
 					hours = 6
 				}
+			}
+			else = {
+				add_stability = 0.015
 			}
 		}
 		remove_effect = {
@@ -14687,6 +14690,34 @@ PRC_pla_reformation = {
 			send_volunteer_size = 4
 		}
 	}
+	PRC_use_me_must_win = {
+		icon = generic_propaganda_campaigns
+		visible = {
+			has_completed_focus = PLA_Strengthen_PLA_training
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 60
+		modifier = {
+		}
+	}
+	PRC_like_splitting_bamboo = {
+		icon = generic_propaganda_campaigns
+		visible = {
+			has_completed_focus = PLA_Strengthen_PLA_training
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 60
+		modifier = {
+		}
+	}
 
 	PRC_strike_PLA_corruption = {
 		icon = GFX_PRC_centrist_decision
@@ -16213,7 +16244,7 @@ PRC_great_asian_war = {
 		available = {
 			always = no
 		}
-		days_mission_timeout = 35
+		days_mission_timeout = 10
 		activation = {
 			always = no
 		}
