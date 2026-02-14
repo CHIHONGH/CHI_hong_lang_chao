@@ -1961,6 +1961,10 @@ focus_tree = {
             nationalist < 0.1
             authoritarian_democrat < 0.1
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+            OR = {
+                has_country_flag = PRC_grassroots_lost
+                has_country_flag = PRC_grassroots_win
+            }
         }
         select_effect = {
             country_event = {
@@ -3143,9 +3147,6 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_automation_model
         completion_reward = {
-            hidden_effect = {
-                country_event = prcs.37
-            }
             add_days_mission_timeout = {
                 mission = zidonghua_moxing
                 days = -90
