@@ -2607,6 +2607,8 @@ country_event = {
 	}
 	option = {
 		name = china.74.a
+		add_stability = 0.05
+		add_political_power = 20
 		set_temp_variable = {
 			var = PRC_influence_cen_var_temp
 			value = 0.02
@@ -5143,7 +5145,13 @@ country_event = {
 	}
 	option = {
 		name = china.146.a
-		add_political_power = 5
+		add_political_power = 15
+		if = {
+			limit = { 
+				has_stability < 0.2
+			}
+			add_stability = 0.05
+		}
 		hidden_effect = {
 			country_event = {
 				id = china.146
@@ -9525,9 +9533,8 @@ country_event = {
 		name = china.289.a
 		add_popularity = {
 			ideology = communist
-			popularity = -0.03
+			popularity = -0.02
 		}
-		add_stability = -0.015
 		effect_tooltip = {
 			swap_ideas = {
 				remove_idea = PRC_party_rectification_campaign_bf1f
@@ -9555,9 +9562,9 @@ country_event = {
 		name = china.290.a
 		add_popularity = {
 			ideology = communist
-			popularity = -0.04
+			popularity = -0.02
 		}
-		add_stability = -0.035
+		add_stability = -0.02
 	}
 }
 
@@ -9576,7 +9583,7 @@ country_event = {
 		add_political_power = 50
 		add_popularity = {
 			ideology = communist
-			popularity = 0.025
+			popularity = 0.03
 		}
 	}
 }
@@ -9904,8 +9911,7 @@ country_event = {
 	}
 	option = {
 		name = china.301.a
-		add_stability = -0.015
-		add_political_power = -15
+		add_political_power = -5
 		add_days_mission_timeout = {
 			mission = PRC_control_the_coronavirus_mission
 			days = -15
@@ -9941,7 +9947,7 @@ country_event = {
 	}
 	option = {
 		name = china.303.a
-		add_stability = -0.025
+		add_stability = -0.02
 		hidden_effect = {
 			country_event = {
 				id = china.289
@@ -9970,47 +9976,14 @@ country_event = {
 				instant_build = yes
 			}
 		}
-		random_owned_controlled_state = {
-			limit = {
-				is_core_of = ROOT
-				industrial_complex > 4
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = -1
-				instant_build = yes
-			}
-		}
-		random_owned_controlled_state = {
-			limit = {
-				is_core_of = ROOT
-				industrial_complex > 4
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = -1
-				instant_build = yes
-			}
-		}
-		random_owned_controlled_state = {
-			limit = {
-				is_core_of = ROOT
-				industrial_complex > 4
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = -1
-				instant_build = yes
-			}
-		}
 		set_temp_variable = {
 			var = industrial_development_var_temp
-			value = -0.15
+			value = -0.1
 		}
 		add_industrial_development = yes
 		set_temp_variable = {
 			var = poverty_development_var_temp
-			value = -0.15
+			value = -0.1
 		}
 		add_poverty_development = yes
 		effect_tooltip = {
@@ -10404,7 +10377,7 @@ country_event = {
 	}
 	option = {
 		name = china.320.a
-		add_stability = -0.025
+		add_political_power = -15
 		1226 = {
 			damage_building = {
 				type = infrastructure
@@ -10505,8 +10478,12 @@ country_event = {
 	}
 	option = {
 		name = china.324.a
-		add_political_power = -35
-		add_stability = -0.05
+		add_political_power = -5
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = -0.025
+		}
+		add_industrial_development = yes
 	}
 }
 
@@ -13166,6 +13143,13 @@ country_event = {
 		name = china.999.a
 		PRC = {
 			create_faction = PRC_east_asian_defense_initative_faction
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
 			add_to_faction = LAO
 			add_to_faction = BRM
 			puppet = VIN
@@ -13193,6 +13177,13 @@ country_event = {
 		}
 		JAP = {
 			create_faction = PDTO
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
 			add_to_faction = AST
 			add_to_faction = INS
 			add_to_faction = MAL
