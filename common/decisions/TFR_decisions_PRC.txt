@@ -21832,24 +21832,20 @@ PRC_nl_expand_reform_category = {
 			tag = prc
 		}
 		available = {
-			dockyard > 100
+			dockyard > 99
 		}
 		activation = {
 			always = no
 		}
 		is_good = no
 		selectable_mission = no
+		fire_only_once = yes
 		timeout_effect = {
 		}
 		complete_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_shipbuilding_ingenuity2_idea
-				}
-			}
+			custom_effect_tooltip = NEMS_ingenuity_tt
 			add_to_variable = {
-				PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.2
+				NEMS_industrial_capacity_dockyard_dynamic_var = 0.2
 			}
 		}
 	}
