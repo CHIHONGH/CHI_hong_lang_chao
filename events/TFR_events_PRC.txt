@@ -5145,7 +5145,13 @@ country_event = {
 	}
 	option = {
 		name = china.146.a
-		add_political_power = 5
+		add_political_power = 15
+		if = {
+			limit = { 
+				has_stability < 0.2
+			}
+			add_stability = 0.05
+		}
 		hidden_effect = {
 			country_event = {
 				id = china.146
