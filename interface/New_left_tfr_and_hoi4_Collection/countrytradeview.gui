@@ -4,11 +4,11 @@ guiTypes = {
 	containerWindowType = {
 		name = "TFR_economy_button_container"
 		size = { width = 550 height = 950 }
-		position = { x=67  y=0 }
+		position = { x=0  y=0 }
 		
 		buttonType = {
 			name = "open_econ_button"
-			position = { x = 3 y = 4 }
+			position = { x = 13 y = 7 }
 			quadTextureSprite ="GFX_econ_switch_button"
 			Orientation = "UPPER_LEFT"
 			pdx_tooltip = "open_econ_button_tt"
@@ -19,13 +19,12 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "countrytradeview"
-		position = { x=-600 y=78}	
+		position = { x=-606 y=78}	
 		show_position = { x=-6 y =78 }
 		show_animation_type = decelerated
 		hide_animation_type = accelerated
 		animation_time = 300	
-		size = { width=620 height=100%% }
-		clipping = no
+		size = { width=550 height=100%% }
 		
 		#hide_sound = menu_close_window
 		show_sound = menu_open_window
@@ -38,13 +37,13 @@ guiTypes = {
 		iconType ={
 			name ="production_header_bg"
 			spriteType = "GFX_header_bg"
-			position = { x= -170 y = 6 }
+			position = { x= -248 y = 07 }
 			Orientation = "UPPER_LEFT"
 		}
 
 		instantTextboxType = {
 			name = "trade_title"
-			position = { x = 332 y = 8 }
+			position = { x = 275 y = 8 }
 			textureFile = ""
 			font = "VCR02_24"
 			borderSize = {x = 0 y = 0}
@@ -56,33 +55,33 @@ guiTypes = {
 
 		iconType = {
 			name = "trade_header"
-			position = { x = 46 y = 40 }
-			quadTextureSprite = "GFX_intel_header_bg"
+			position = { x = 12 y = 43 }
+			quadTextureSprite = "GFX_trade_header"
 		}	
 
 		iconType = {
 			name = "civilian_factory_icon"
-			position = { x = 236 y = 49 }
+			position = { x = 185 y = 49 }
 			spriteType = "GFX_non_available_factory_icon"
 			alwaystransparent = yes
 		}
 		
 		instantTextboxType = {
 			name = "civ_factories"
-			position = { x = 71 y = 52 }
-			font = "VCR02_14"
+			position = { x = 28 y = 53 }
+			font = "VCR02_12"
 			text = "TRADE_CIV_FACTORIES"
 			maxWidth = 150
 			maxHeight = 18
 			fixedsize = yes
-			format = center
+			format = right
 			alwaystransparent = yes
 		}
 		
 		instantTextboxType = {
 			name = "factories_total"
-			position = { x = 266 y = 53 }
-			font = "VCR02_14"
+			position = { x = 216 y = 53 }
+			font = "VCR02_12"
 			maxWidth = 45
 			maxHeight = 18
 			format = left
@@ -91,8 +90,8 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "factories_used"
-			position = { x = 311 y = 53 }
-			font = "VCR02_14"
+			position = { x = 268 y = 53 }
+			font = "VCR02_12"
 			maxWidth = 120
 			maxHeight = 18
 			format = center	
@@ -101,8 +100,8 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "factories_available"
-			position = { x = 434 y = 53 }
-			font = "VCR02_14"
+			position = { x = 388 y = 53 }
+			font = "VCR02_12"
 			maxWidth = 120
 			maxHeight = 18
 			format = center	
@@ -111,7 +110,7 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "econ_title"
-			position = { x = 75 y = 8 }
+			position = { x = 18 y = 8 }
 			textureFile = ""
 			font = "VCR02_24"
 			borderSize = {x = 0 y = 0}
@@ -123,7 +122,7 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "resources"
-			position = { x = 17 y = 75 }	
+			position = { x = 11 y = 75 }	
 			size = { width = 518 height = 156 }
 			verticalScrollbar = "right_vertical_slider"
 
@@ -201,10 +200,10 @@ guiTypes = {
 
 			gridBoxType = {
 				name = "resources_grid"
-				position = { x = 101 y = 0 }
+				position = { x = 90 y = 0 }
 				size = { width = 422 height = 100%% }
 				slotsize = { width = 68 height = 156 }
-				max_slots = { x = 7 y = 1 }
+				max_slots = { x = 6 y = 1 }
 				format = "UPPER_LEFT"
 			}
 		}
@@ -219,39 +218,38 @@ guiTypes = {
 		iconType ={
 			name ="trade_filter_bg"
 			spriteType = "GFX_trade_filter_bg"
-			position = { x= 13 y = 318 }
+			position = { x= 18 y = 318 }
 			Orientation = "UPPER_LEFT"
 		}
 		
 		buttonType = {
 			name = "sort_country"
-			position = {x=77 y=446}
-			quadTextureSprite ="GFX_trade_filter_btn_delivered"
+			position = {x=17 y=440}
+			quadTextureSprite ="GFX_trade_filter_btn_country"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "name"
-			position = { x = 51 y = 453 }
+			position = { x = 21 y = 447 }
 			font = "VCR02_12"
 			text = "TRADE_SORT_COUNTRY"
 			maxWidth = 160
 			maxHeight = 18
 			format = center		
 			fixedsize = yes
-			alwaystransparent = yes
 		}
 		
 		buttonType = {
 			name = "sort_export"
-			position = {x=247 y=446}
+			position = {x=187 y=440}
 			quadTextureSprite ="GFX_trade_filter_btn_export"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "export_label"
-			position = { x = 250 y = 453 }
+			position = { x = 190 y = 447 }
 			font = "VCR02_12"
 			text = "TRADE_SORT_EXPORT"
 			maxWidth = 90
@@ -263,14 +261,14 @@ guiTypes = {
 		
 		buttonType = {
 			name = "sort_request"
-			position = {x=352 y=446}
+			position = {x=285 y=440}
 			quadTextureSprite ="GFX_trade_filter_btn_delivered"
 			clicksound = click_scroll
 		}
 
 		instantTextboxType = {
 			name = "request_label"
-			position = { x = 352 y = 453 }
+			position = { x = 285 y = 447 }
 			font = "VCR02_12"
 			text = "TRADE_SORT_REQUEST"
 			maxWidth = 100
@@ -279,15 +277,25 @@ guiTypes = {
 			fixedsize = yes
 			alwaystransparent = yes
 		}
+
 		buttonType = {
 			name = "sort_convoys"
-			position = { x=470 y=446 }
-			size = { x = 138 y = 23 }
-			quadTextureSprite = "GFX_trade_filter_btn_delivered"
+			position = {x=389 y=440}
+			quadTextureSprite ="GFX_trade_filter_btn_convoy"
+			clicksound = click_scroll
+		}
+
+		instantTextboxType = {
+			name = "convoys_label"
+			position = { x=403 y=447 }
 			font = "VCR02_12"
-			buttontext = "TRADE_SORT_CONVOYS"
-			clicksound = click_default
-		}	
+			text = "TRADE_SORT_CONVOYS"
+			maxWidth = 66
+			maxHeight = 18
+			format = center	
+			fixedsize = yes	
+			alwaystransparent = yes
+		}
 		
 		containerWindowType = {
 			name = "filters"
@@ -324,8 +332,8 @@ guiTypes = {
 		
 		containerWindowType = {
 			name = "trade"
-			position = { x = 15 y = 473 }	
-			size = { width = 599 height = 100%% }
+			position = { x = 15 y = 467 }	
+			size = { width = 535 height = 100%% }
 			verticalScrollbar = "right_vertical_slider"
 			scroll_wheel_factor = 45
 			smooth_scrolling = yes
@@ -348,7 +356,7 @@ guiTypes = {
 		
 		buttonType = {
 			name = "close_button"
-			position = { x = -38 y = 8 }
+			position = { x = -43 y = 9 }
 			quadTextureSprite ="GFX_closebutton"
 			buttonFont = "VCR02_12"
 			shortcut = "ESCAPE"
@@ -603,7 +611,7 @@ guiTypes = {
 	
 	containerWindowType = {
 		name = "resources_info_entry"
-		position = { x = -10 y = 1 }	
+		position = { x = 0 y = 0 }	
 		size = { width = 150 height = 100 }
 		clipping = no
 		
@@ -687,7 +695,7 @@ guiTypes = {
 		
 		buttonType = {
 			name = "cancel_imports"
-			position = { x= 30 y= 173 }
+			position = { x= 28 y= 173 }
 			pdx_tooltip = "CANCEL_RESOURCE_IMPORT"
 			quadTextureSprite ="GFX_cancel_import_button"
 			clicksound = click_default
@@ -696,8 +704,8 @@ guiTypes = {
 	
 	containerWindowType = {
 		name = "resources_filter_entry"
-		position = { x = -1 y = 11 }
-		size = { width = 74 height = 50 }
+		position = { x = 0 y = 11 }
+		size = { width = 75 height = 50 }
 		clipping = no
 		
 		buttonType = {
@@ -710,14 +718,14 @@ guiTypes = {
 		iconType = {
 			name ="icon"
 			spriteType = "GFX_resources_strip"
-			position = { x= 30 y = 10 }
+			position = { x= 32 y = 12 }
 			alwaystransparent = yes
 		}
 	}
 	
 	containerWindowType = {
 		name = "filter_entry"
-		position = { x = 90 y = 0 }
+		position = { x = 45 y = -04 }
 		size = { width = 168 height = 50 }
 		clipping = no
 
@@ -729,7 +737,7 @@ guiTypes = {
 		
 		instantTextboxType = {
 			name = "name"
-			position = { x = 6 y = 7 }
+			position = { x = 6 y = 8 }
 			font = "VCR02_12"
 			text = "name"
 			maxWidth = 110
@@ -773,7 +781,7 @@ guiTypes = {
 			font = "VCR02_12"
 			text = "name"
 			vertical_alignment = center 			
-			maxWidth = 200
+			maxWidth = 130
 			maxHeight = 28
 			fixedsize = yes
 			alwaystransparent = yes
@@ -781,7 +789,7 @@ guiTypes = {
 		
 		instantTextboxType = {
 			name = "exported"
-			position = { x = 339 y = 14 }
+			position = { x = 272 y = 14 }
 			font = "VCR02_12"
 			text = ""
 			format = center
@@ -791,7 +799,7 @@ guiTypes = {
 		
 		instantTextboxType = {
 			name = "available_export"
-			position = { x = 234 y = 14 }
+			position = { x = 169 y = 14 }
 			font = "VCR02_12"
 			text = ""
 			format = center
@@ -801,7 +809,7 @@ guiTypes = {
 		
 		instantTextboxType = {
 			name = "convoys"
-			position = { x = 452 y = 14 }
+			position = { x = 390 y = 14 }
 			font = "VCR02_12"
 			text = ""
 			format = center
@@ -812,8 +820,8 @@ guiTypes = {
 	
 	containerWindowType = {
 		name = "econ_tab_window"
-		size = { width = 624 height = 1200}
-		position = { x=0  y=40 }
+		size = { width = 540 height = 1000}
+		position = { x=10  y=40 }
 		
 		background = {
 			name = "Background"		
@@ -839,17 +847,9 @@ guiTypes = {
 		iconType ={
 			name ="econ_tab_gdp_frame_3"
 			spriteType = "GFX_diplo_action_bottom"
-			position = {x=4 y=82}
+			position = {x=9 y=82}
 			Orientation = "UPPER_LEFT"
-			scale = 0.60
-		}
-			
-		iconType ={
-			name ="econ_tab_gdp_frame_33"
-			spriteType = "GFX_diplo_action_bottom"
-			position = {x=-317 y=82}
-			Orientation = "UPPER_RIGHT"
-			scale = 0.60
+			#scale = 0.55
 		}
 		
 		instantTextboxType = {
@@ -882,7 +882,7 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "total_debt"
-			position = { x = 372 y = 18 }
+			position = { x = 290 y = 18 }
 			textureFile = ""
 			font = "VCR02_18"
 			borderSize = {x = 0 y = 0}
@@ -896,7 +896,7 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "total_inflation"
-			position = { x = 372 y = 48 }
+			position = { x = 290 y = 48 }
 			textureFile = ""
 			font = "VCR02_18"
 			borderSize = {x = 0 y = 0}
@@ -910,7 +910,7 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "total_liquidity"
-			position = { x = 30 y = 87 }
+			position = { x = 30 y = 100 }
 			textureFile = ""
 			font = "VCR02_18"
 			borderSize = {x = 0 y = 0}
@@ -924,7 +924,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "auto_payment_checkbox"
-			position = { x = 320 y = 85 }
+			position = { x = 230 y = 98 }
 			quadTextureSprite = "GFX_generic_checkbox"
 			clicksound = decisions_ui_button
 			pdx_tooltip = "auto_payment_checkbox_tooltip"
@@ -933,7 +933,7 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "auto_payment_text"
-			position = { x = 355 y = 92 }
+			position = { x = 265 y = 108 }
 			textureFile = ""
 			font = "VCR02_14"
 			borderSize = { x = 0 y = 0 }
@@ -945,7 +945,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "bank_checkbox"
-			position = { x = 460 y = 85 }
+			position = { x = 370 y = 98 }
 			quadTextureSprite = "GFX_generic_checkbox"
 			clicksound = decisions_ui_button
 			pdx_tooltip = "bank_checkbox_tooltip"
@@ -954,7 +954,7 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "bank_text"
-			position = { x = 495 y = 92 }
+			position = { x = 405 y = 108 }
 			textureFile = ""
 			font = "VCR02_14"
 			borderSize = { x = 0 y = 0 }
@@ -969,7 +969,6 @@ guiTypes = {
 			spriteType = "GFX_economic_action_loan_background"
 			position = {x=17 y=134}
 			Orientation = "UPPER_LEFT"
-			scale = 1.07
 		}
 			
 		iconType ={
@@ -977,24 +976,24 @@ guiTypes = {
 			spriteType = "GFX_province_header"
 			position = {x=17 y=132}
 			Orientation = "UPPER_LEFT"
-			scale = 1.410
+			scale = 1.205
 		}
-			
+
 		instantTextboxType = {
 			name = "loans_text"
-			position = { x = 25 y = 140 }
+			position = { x = 30 y = 137 }
 			textureFile = ""
 			font = "VCR02_18"
 			borderSize = {x = 0 y = 0}
 			text = "loans_text"
-			maxWidth = 240
+			maxWidth = 200
 			maxHeight = 20
 			format = center
 		}
 
 		ButtonType = {
 			name = "gdp_1b_loan_button"
-			position = { x = 356 y = 140 }
+			position = { x = 275 y = 140 }
 			quadTextureSprite ="button_type_4"
 			buttonText = "gdp_1b_loan_button"
 			buttonFont = "VCR02_14"
@@ -1004,7 +1003,7 @@ guiTypes = {
 
 		ButtonType = {
 			name = "gdp_10b_loan_button"
-			position = { x = 356 y = 178 }
+			position = { x = 275 y = 175 }
 			quadTextureSprite ="button_type_4"
 			buttonText = "gdp_10b_loan_button"
 			buttonFont = "VCR02_14"
@@ -1014,7 +1013,7 @@ guiTypes = {
 
 		ButtonType = {
 			name = "gdp_50b_loan_button"
-			position = { x = 356 y = 216 }
+			position = { x = 275 y = 210 }
 			quadTextureSprite ="button_type_4"
 			buttonText = "gdp_50b_loan_button"
 			buttonFont = "VCR02_14"
@@ -1025,34 +1024,33 @@ guiTypes = {
 		iconType ={
 			name ="econ_tab_gdp_background_2"
 			spriteType = "GFX_economic_action_debt_background"
-			position = {x=17 y=254}
+			position = {x=17 y=244}
 			Orientation = "UPPER_LEFT"
-			scale = 1.07
 		}
 			
 		iconType ={
 			name ="econ_tab_gdp_frame_5"
 			spriteType = "GFX_province_header"
-			position = {x=17 y=252}
+			position = {x=17 y=242}
 			Orientation = "UPPER_LEFT"
-			scale = 1.410
+			scale = 1.205
 		}
 
 		instantTextboxType = {
 			name = "debt_payment_text"
-			position = { x = 25 y = 260 }
+			position = { x = 30 y = 247 }
 			textureFile = ""
 			font = "VCR02_18"
 			borderSize = {x = 0 y = 0}
 			text = "debt_payment_text"
-			maxWidth = 240
+			maxWidth = 200
 			maxHeight = 20
 			format = center
 		}
 
 		ButtonType = {
 			name = "gdp_1b_debt_payment_button"
-			position = { x = 356 y = 260 }
+			position = { x = 275 y = 250 }
 			quadTextureSprite ="button_type_4"
 			buttonText = "gdp_1b_debt_payment_button"
 			buttonFont = "VCR02_14"
@@ -1062,7 +1060,7 @@ guiTypes = {
 
 		ButtonType = {
 			name = "gdp_10b_debt_payment_button"
-			position = { x = 356 y = 298 }
+			position = { x = 275 y = 285 }
 			quadTextureSprite ="button_type_4"
 			buttonText = "gdp_10b_debt_payment_button"
 			buttonFont = "VCR02_14"
@@ -1072,7 +1070,7 @@ guiTypes = {
 
 		ButtonType = {
 			name = "gdp_50b_debt_payment_button"
-			position = { x = 356 y = 336 }
+			position = { x = 275 y = 320 }
 			quadTextureSprite ="button_type_4"
 			buttonText = "gdp_50b_debt_payment_button"
 			buttonFont = "VCR02_14"
@@ -1084,16 +1082,16 @@ guiTypes = {
 		iconType ={
 			name ="econ_tab_gdp_frame_6"
 			spriteType = "GFX_province_header"
-			position = {x=17 y=372}
+			position = {x=17 y=352}
 			Orientation = "UPPER_LEFT"
-			scale = 1.410
+			scale = 1.205
 		}
 		
 		#Economic Types
 		
 		containerWindowType = {
 			name = "TFR_economy_type_econ_tab_container"
-			position = { x = 500 y = 377 }
+			position = { x = 445 y = 357 }
 			size = { width = 68 height = 68 }
 			clipping = yes
 			
@@ -1111,13 +1109,6 @@ guiTypes = {
 				pdx_tooltip = "TFR_CAPITALISM_TT"
 				pdx_tooltip_delayed = "TFR_CAPITALISM_TT_LONG"
 			}		
-			iconType = {
-				name = "TFR_inclusive_capitalism_type_icon"
-				position = { x = 0 y = 0 }
-				spriteType = "GFX_inclusive_capitalism_economy"
-				pdx_tooltip = "TFR_INCLUSIVE_CAPITALISM_TT"
-				pdx_tooltip_delayed = "TFR_INCLUSIVE_CAPITALISM_TT_LONG"
-			}	
 			iconType = {
 				name = "TFR_american_capitalism_type_icon"
 				position = { x = 0 y = 0 }
@@ -1138,13 +1129,6 @@ guiTypes = {
 				spriteType = "GFX_oligopolistic_capitalism_economy"
 				pdx_tooltip = "TFR_OLIGOPOLY_CAPITALISM_TT"
 				pdx_tooltip_delayed = "TFR_OLIGOPOLY_CAPITALISM_TT_LONG"
-			}	
-			iconType = {
-				name = "TFR_cabal_economy_type_icon"
-				position = { x = 0 y = 0 }
-				spriteType = "GFX_bilderberg_system"
-				pdx_tooltip = "TFR_CABAL_ECONOMY_TT"
-				pdx_tooltip_delayed = "TFR_CABAL_ECONOMY_TT_LONG"
 			}	
 			iconType = {
 				name = "TFR_welfare_capitalism_type_icon"
@@ -1297,11 +1281,11 @@ guiTypes = {
 		
 		containerWindowType = {
 			name = "economy_type_loc_container"
-			position = { x = 257 y = 370 }
+			position = { x = 245 y = 350 }
 			
 			instantTextboxType = {
 				name = "economy_type"
-				position = { x = 65 y = 7 }
+				position = { x = 12 y = 7 }
 				font = "VCR02_14"
 				text = "economy_type"
 				maxWidth = 175
@@ -1313,11 +1297,11 @@ guiTypes = {
 		}
 		containerWindowType = {
 			name = "economy_type_name_container"
-			position = { x = 257 y = 395 }
+			position = { x = 245 y = 375 }
 			
 			instantTextboxType = {
 				name = "economy_name"
-				position = { x = 65 y = 7 }
+				position = { x = 12 y = 7 }
 				font = "VCR02_14"
 				text = "[GetEconomyType]"
 				maxWidth = 175
@@ -1330,12 +1314,12 @@ guiTypes = {
 		
 		instantTextboxType = {
 			name = "economic_actions_text"
-			position = { x = 25 y = 380 }
+			position = { x = 30 y = 357 }
 			textureFile = ""
 			font = "VCR02_18"
 			borderSize = {x = 0 y = 0}
 			text = "economic_actions_text"
-			maxWidth = 240
+			maxWidth = 200
 			maxHeight = 20
 			format = center
 		}
@@ -1352,12 +1336,12 @@ guiTypes = {
 		
 		containerWindowType = {
 			name = "economic_actions_window"
-			position = { x = 0 y = 425 }
+			position = { x = 0 y = 400 }
 			size = { width=520 height=100%% }
 			
 			containerWindowType = {
 				name = "economic_actions_list"
-				position = { x = 65 y = 10 }
+				position = { x = 10 y = 10 }
 				size = { width=100% height=-4 }
 				verticalScrollbar = "right_vertical_slider"
 				scroll_wheel_factor = 37
@@ -1392,7 +1376,7 @@ guiTypes = {
 		buttonType = {
 			name = "action_button"
 			position = { x = 0 y = 0 }
-			size = { width = 500 height = 62}
+			size = { width = 500 height = 62 }
 			quadTextureSprite = "GFX_tiled_peace_upper_bar"
 			pdx_tooltip = "economic_action_tooltip"
 			#pdx_tooltip_delayed = "economicaction_tt_delay"
