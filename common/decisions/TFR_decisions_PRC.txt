@@ -17332,10 +17332,29 @@ PRC_great_asian_war = {
 			AST = {
 				add_stability = -0.2
 				add_war_support = -0.3
-				country_event = {
-					id = Australia.19
-					days = 2
+				effect_tooltip = {
+					country_event = {
+						id = Australia.19
+						days = 2
+					}
 				}
+				hidden_effect = {
+					white_peace = AST
+					white_peace = PRC
+					if = {
+						limit = {
+							has_war_with = NZL
+						}
+						white_peace = NZL
+					}
+					add_days_mission_timeout = {
+						mission = PRC_GAW_war_exhaustion
+						days = 20
+					}
+				}
+			}
+			hidden_effect = {
+				puppet = AST
 			}
 		}
 		ai_will_do = {

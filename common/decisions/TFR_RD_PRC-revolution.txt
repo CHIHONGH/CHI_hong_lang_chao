@@ -129,6 +129,9 @@ PRC_export_revolution = {
             # }
             add_to_faction = MND
             hidden_effect = {
+                BRM = {
+                    leave_faction = yes
+                }
                 news_event = {
                     id = prcs.50
                     hours = 7
@@ -308,15 +311,17 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         complete_effect = {
-            hidden_effect = {
-                SIA = {
-                    leave_faction = yes
-                }
+            PRT = {
+                add_stability = -0.25
+                add_war_support = -0.50
             }
         }
         remove_effect = {
             custom_effect_tooltip = PRC_Sia_tootip
             hidden_effect = {
+                PRT = {
+                    leave_faction = yes
+                }
                 PRT = {
                     set_cosmetic_tag = PRC_sia
                     transfer_state = 289
@@ -393,13 +398,6 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
-        complete_effect = {
-            hidden_effect = {
-                LAO = {
-                    leave_faction = yes
-                }
-            }
-        }
         remove_effect = {
             ROOT = {
                 set_autonomy = {
@@ -410,6 +408,9 @@ PRC_export_revolution = {
             }
             custom_effect_tooltip = PRC_Lao_tootip
             hidden_effect = {
+                LAO = {
+                    leave_faction = yes
+                }
                 LAO = {
                     JAP_leave_PEC = yes
                     set_politics = {
@@ -476,13 +477,6 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
-        complete_effect = {
-            hidden_effect = {
-                CAM = {
-                    leave_faction = yes
-                }
-            }
-        }
         remove_effect = {
             custom_effect_tooltip = PRC_Cam_tootip
             ROOT = {
@@ -493,6 +487,9 @@ PRC_export_revolution = {
                 }
             }
             hidden_effect = {
+                CAM = {
+                    leave_faction = yes
+                }
                 CAM = {
                     JAP_leave_PEC = yes
                     set_cosmetic_tag = PRC_cam
@@ -567,17 +564,13 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
-        complete_effect = {
-            hidden_effect = {
-                JAP = {
-                    remove_from_faction = VIN
-                }
-            }
-        }
         remove_effect = {
             custom_effect_tooltip = PRC_Vin_tootip
             JAP_leave_PEC = yes
             hidden_effect = {
+                VIN = {
+                    leave_faction = yes
+                }
                 PRC = {
                     declare_war_on = {
                         target = VIN
@@ -1340,16 +1333,21 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
-        complete_effect = {
-            hidden_effect = {
-                end_puppet = PER
-                PER = {
-                    leave_faction = yes
-                }
-            }
-        }
         remove_effect = {
             country_event = Chihong.30
+            hidden_effect = {
+                every_country = {
+                    limit = {
+                        PER = {
+                            is_puppet_of = PREV
+                        }
+                    }
+                    end_puppet = PER
+                    PER = {
+                        leave_faction = yes
+                    }
+                }
+            }
             PER = {
                 dismantle_faction = yes
                 every_controlled_state = {
@@ -2279,16 +2277,27 @@ PRC_export_revolution = {
             }
         }
         on_map_mode = map_and_decisions_view
-        complete_effect = {
+        remove_effect = {
             hidden_effect = {
-                end_puppet = AFG
-                end_puppet = TAL
-                PER = {
-                    leave_faction = yes
+                every_country = {
+                    limit = {
+                        AFG = {
+                            is_puppet_of = PREV
+                        }
+                        TAL = {
+                            is_puppet_of = PREV
+                        }
+                    }
+                    end_puppet = AFG
+                    end_puppet = TAL
+                    TAL = {
+                        leave_faction = yes
+                    }
+                    AFG = {
+                        leave_faction = yes
+                    }
                 }
             }
-        }
-        remove_effect = {
             AFG = {
                 every_core_state = {
                     add_core_of = CPA
