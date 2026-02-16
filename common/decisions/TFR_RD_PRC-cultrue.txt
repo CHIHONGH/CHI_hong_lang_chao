@@ -404,11 +404,11 @@ PRC_Culture_Revital = {
 		icon = GFX_PRC_cylc_decision
 		visible = {
 			has_completed_focus = PRC_nl_proletarian_art_festival
-			has_completed_focus = Establishment_the_channel
 			has_country_flag = PRC_culture_enabled_flag
 		}
 		available = {
 			has_completed_focus = PRC_nl_proletarian_art_festival
+			has_completed_focus = Establishment_the_channel
 		}
 		cost = 50
 		days_remove = 14
@@ -1039,11 +1039,11 @@ PRC_Culture_Revital = {
 	PRC_disable_firewall = {
 		icon = GFX_PRC_liberal_decision
 		visible = {
-			has_completed_focus = PRC_nl_long_live_internationalism
+			has_completed_focus = PRC_nl_cosmos_red_tide
 			has_country_flag = PRC_reform_enabled_flag
 		}
 		available = {
-			has_completed_focus = PRC_nl_long_live_internationalism
+			has_completed_focus = PRC_nl_cosmos_red_tide
 		}
 		cost = 10
 		days_remove = 1
@@ -1510,7 +1510,7 @@ PRC_Rt_People_Democracy = {
 			has_country_flag = PRC_R_N_P_C
 		}
 		available = {
-			has_country_flag = PRC_Basic_land_reform
+			has_country_flag = PRC_grassroots_win
 		}
 		cost = 75
 		days_remove = 120
@@ -2301,7 +2301,7 @@ PRC_Youth_Ideological_Education = {
 				check_variable = {
 					var = party_popularity@libertarian_socialist
 					value = party_popularity@communist
-					compare = less_than_or_equals
+					compare = greater_than_or_equals
 				}
 			}
 			NOT = {
@@ -2638,7 +2638,11 @@ PRC_solve_economy_crisis = {
 		icon = GFX_FRA_Cover_Our_Tracks
 		cost = 0
 		ai_will_do = {
-			base = 10
+			base = 100
+			modifier = {
+				add = 100
+				has_political_power < 50
+			}
 		}
 		fire_only_once = yes
 		remove_effect = {
@@ -2852,6 +2856,9 @@ PRC_solve_economy_crisis = {
 			}
 			add_income_with_inflation = yes
 		}
+		ai_will_do = {
+			base = 10
+		}
 	}
 	PRC_common_emergency_reserve_fund = {
 		#(通用)紧急准备金
@@ -2879,6 +2886,9 @@ PRC_solve_economy_crisis = {
 				PRC_CM_fi = 1				#已动员次数+1
 			}
 			add_debt = yes
+		}
+		ai_will_do = {
+			base = 10
 		}
 	}
 	PRC_common_emergency_political_mobilization = {
@@ -2909,6 +2919,9 @@ PRC_solve_economy_crisis = {
 			PRC_add_influence_new = yes
 			add_political_power = 300
 		}
+		ai_will_do = {
+			base = 10
+		}
 	}
 	PRC_replace_inept_bureaucrats = {
 		#撤换失职官僚
@@ -2938,6 +2951,9 @@ PRC_solve_economy_crisis = {
 				value = 0.05
 			}
 			PRC_add_influence_new = yes
+		}
+		ai_will_do = {
+			base = 10
 		}
 	}
 	#########应急阶段第二阶段决议（已点完前面非通用五个）
@@ -3587,6 +3603,9 @@ PRC_ready_for_global_economy_destory_category = {
 			}
 			PRC_readiness_level_new = yes
 		}
+		ai_will_do = {
+			base = 100
+		}
 	}
 	PRC_decouple_from_dollar = {
 		#与美元脱钩
@@ -3604,6 +3623,9 @@ PRC_ready_for_global_economy_destory_category = {
 				value = 10
 			}
 			PRC_readiness_level_new = yes
+		}
+		ai_will_do = {
+			base = 100
 		}
 	}
 	PRC_emergency_currency_exchange = {
@@ -3643,6 +3665,9 @@ PRC_ready_for_global_economy_destory_category = {
 			}
 			PRC_readiness_level_new = yes
 		}
+		ai_will_do = {
+			base = 50
+		}
 	}
 	PRC_restrict_capital_outflows = {
 		#限制资本外流
@@ -3670,6 +3695,9 @@ PRC_ready_for_global_economy_destory_category = {
 			}
 			PRC_readiness_level_new = yes
 		}
+		ai_will_do = {
+			base = 50
+		}
 	}
 	PRC_local_debt_self_clearance = {
 		#地方债务自清
@@ -3692,6 +3720,9 @@ PRC_ready_for_global_economy_destory_category = {
 				value = 25
 			}
 			PRC_readiness_level_new = yes
+		}
+		ai_will_do = {
+			base = 20
 		}
 	}
 	PRC_storing_reserve_fund = {
@@ -3731,6 +3762,9 @@ PRC_ready_for_global_economy_destory_category = {
 			}
 			PRC_readiness_level_new = yes
 		}
+		ai_will_do = {
+			base = 10
+		}
 	}
 	PRC_crackdown_on_financial_speculation = {
 		icon = GFX_SOV_china_investment
@@ -3759,6 +3793,9 @@ PRC_ready_for_global_economy_destory_category = {
 				value = 0.05
 			}
 			PRC_add_influence_new = yes
+		}
+		ai_will_do = {
+			base = 10
 		}
 	}
 	PRC_strength_government_industrial_guidance = {
@@ -3793,6 +3830,9 @@ PRC_ready_for_global_economy_destory_category = {
 				value = 0.05
 			}
 			PRC_add_influence_new = yes
+		}
+		ai_will_do = {
+			base = 10
 		}
 	}
 }

@@ -212,7 +212,7 @@ focus_tree = {
             }
             random_owned_controlled_state = {
                 limit = {
-                    office_park > 0
+                    office_park > 1
                 }
                 remove_building = {
                     type = office_park
@@ -368,12 +368,24 @@ focus_tree = {
             hidden_effect = {
                 remove_ideas = PRC_chinese_communist_party_idea
                 add_dynamic_modifier = {
-                    modifier = PRC_chinese_communist_party_dynamic
+                    modifier = PRC_communist_party_of_china_dynamic
                 }
-				country_event = {
-					id = prcs.3184
-					days = 2
-				}
+                add_to_variable = {
+                    var = PRC_cpc_stability_factor_dynamic_var
+                    value = 0.15
+                }
+                add_to_variable = {
+                    var = PRC_cpc_crypto_strength_dynamic_var
+                    value = 1
+                }
+                add_to_variable = {
+                    var = PRC_cpc_drift_defence_factor_dynamic_var
+                    value = 0.25
+                }
+                country_event = {
+                    id = prcs.3184
+                    days = 2
+                }
             }
             clr_country_flag = PRC_first_committee_transition_flag
             set_country_flag = PRC_first_committee_transition_flag_1
@@ -807,7 +819,6 @@ focus_tree = {
             }
             add_industrial_development = yes
             PRC_decrease_oil = yes
-            unlock_decision_tooltip = PRC_finalize_recovery_from_the_oil_crisis
         }
         x = 1
         y = 1
@@ -892,9 +903,13 @@ focus_tree = {
                     add_idea = PRC_chinese_communist_party_CPC_st
                 }
             }
-            set_variable = {
-                PRC_cpc_stability_factor_dynamic_var = 0.05
-                PRC_cpc_crypto_strength_dynamic_var = -1
+            add_to_variable = {
+                var = PRC_cpc_stability_factor_dynamic_var
+                value = 0.05
+            }
+            add_to_variable = {
+                var = PRC_cpc_crypto_strength_dynamic_var
+                value = -1
             }
         }
         available = {
@@ -939,10 +954,10 @@ focus_tree = {
 
         completion_reward = {
             hidden_effect = {
-				country_event = {
-					id = prcs.3191
-					days = 0
-				}
+                country_event = {
+                    id = prcs.3191
+                    days = 0
+                }
                 country_event = {
                     id = prcs.3088
                     days = 8
@@ -1796,19 +1811,12 @@ focus_tree = {
         bypass = {
 
         }
-        select_effect = {
-            hidden_effect = {
-                country_event = {
-                    id = prc_change.9
-                    days = 4
-                }
-            }
-        }
         cancel_if_invalid = no
         available_if_capitulated = yes
         relative_position_id = prepare_for_20th_party_congress
         completion_reward = {
             custom_effect_tooltip = PRC_20big_effect
+           
             if = {
                 limit = {
                     has_country_flag = PRC_liberal_win
@@ -1816,14 +1824,18 @@ focus_tree = {
                 custom_effect_tooltip = PRC_shake_up_the_politburo_tt
             }
             hidden_effect = {
-                swap_ideas = {
-                    remove_idea = PRC_party_rectification_campaign_bf1f
-                    add_idea = PRC_party_rectification_campaign_bf1e
+                set_variable = {
+                    var = PPRC_efficiency_gain_var
+                    value = -0.125
                 }
                 remove_ideas = PRC_food_safety_reforms_idea
                 country_event = {
                     id = prc_change.8
                     hours = 5
+                }
+                country_event = {
+                    id = prc_change.13
+                    days = 3
                 }
                 news_event = {
                     id = china.252
@@ -3251,6 +3263,7 @@ shared_focus = {
         if = {
             limit = {
                 has_dlc = "No Step Back"
+                has_idea = PRC_complacent_officers_spirit
             }
             swap_ideas = {
                 remove_idea = PRC_complacent_officers_spirit

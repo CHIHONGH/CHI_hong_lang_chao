@@ -257,17 +257,20 @@ PRC_coronavirus_category = {
 				mission = PRC_control_the_coronavirus_mission
 				days = 75
 			}
-			add_stability = -0.05
 			if = {
 				limit = {
 					NOT = {
 						has_country_flag = PRC_PLA_in_wuhan_flag
 					}
 				}
+				add_stability = 0.05
 				country_event = {
 					id = china.300
 					hours = 6
 				}
+			}
+			else = {
+				add_stability = 0.015
 			}
 		}
 		remove_effect = {
@@ -4972,7 +4975,7 @@ PRC_gaizaodaxingqiye_category = {
 			set_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 		remove_effect = {
-			country_event = Chihong.6803
+			country_event = Chihong.7403
 			clr_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 	}
@@ -5004,7 +5007,7 @@ PRC_gaizaodaxingqiye_category = {
 			set_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 		remove_effect = {
-			country_event = Chihong.6801
+			country_event = Chihong.7401
 			clr_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 	}
@@ -5036,7 +5039,7 @@ PRC_gaizaodaxingqiye_category = {
 			set_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 		remove_effect = {
-			country_event = Chihong.6804
+			country_event = Chihong.7404
 			clr_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 	}
@@ -5068,7 +5071,7 @@ PRC_gaizaodaxingqiye_category = {
 			set_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 		remove_effect = {
-			country_event = Chihong.6805
+			country_event = Chihong.7405
 			clr_country_flag = PRC_nl_gaizaojinxing_flag
 		}
 	}
@@ -8979,146 +8982,6 @@ PRC_chinese_socialist_economy_cat = {
 				}
 			}
 		}
-	}
-	PRC_asteroid_mining_programme_new_left = {
-		visible = {
-			has_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		modifier = {
-			political_power_gain = -0.1
-			consumer_goods_factor = 0.06
-		}
-		fire_only_once = yes
-		complete_effect = {
-			set_temp_variable = {
-				var = income_var_temp
-				value = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_chinese_space_age_dummy
-					add_idea = PRC_chinese_space_age_asteroid_mining_programme
-				}
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_research_speed_factor_dynamic
-				value = 0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_consumer_goods_factor_dynamic
-				value = -0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_income_growth_factor_dynamic
-				value = 0.065
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_business_value_factor_dynamic
-				value = 0.015
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_lack_of_resource_penalty_factor_dynamic
-				value = -0.06
-			}
-		}
-		days_remove = 365
-		icon = GFX_decision_PRC_asteroid_mining_programme
-		cost = 100
-	}
-	PRC_new_moon_race_programme_new_left = {
-		visible = {
-			has_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		modifier = {
-			political_power_gain = 0.1
-			consumer_goods_factor = 0.05
-		}
-		fire_only_once = yes
-		complete_effect = {
-			set_temp_variable = {
-				var = income_var_temp
-				value = -35
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_chinese_space_age_dummy
-					add_idea = PRC_chinese_space_age_moon_landing_programme
-				}
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_research_speed_factor_dynamic
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_society_development_monthly_dynamic
-				value = 0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_speed_infrastructure_factor_dynamic
-				value = 0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_political_power_factor_dynamic
-				value = 0.015
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_industrial_capacity_factory_dynamic
-				value = 0.05
-			}
-		}
-		days_remove = 365
-		icon = GFX_decision_PRC_new_moon_race_programme
-		cost = 100
-	}
-	PRC_expand_satellite_launching_programme_new_left = {
-		visible = {
-			has_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		modifier = {
-			political_power_gain = -0.05
-			consumer_goods_factor = 0.02
-		}
-		complete_effect = {
-			set_temp_variable = {
-				var = income_var_temp
-				value = -20
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_chinese_space_age_dummy
-					add_idea = PRC_chinese_space_age_expand_satellite_launching_programme
-				}
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_factory_efficiency_gain_factor_dynamic
-				value = 0.015
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_speed_buildings_factor_dynamic
-				value = 0.0125
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_income_growth_factor_dynamic
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_business_value_factor_dynamic
-				value = 0.015
-			}
-		}
-		days_remove = 180
-		days_re_enable = 365
-		icon = GFX_decision_PRC_expand_satellite_launching_programme
-		cost = 65
 	}
 }
 
@@ -14820,6 +14683,34 @@ PRC_pla_reformation = {
 			send_volunteer_size = 4
 		}
 	}
+	PRC_use_me_must_win = {
+		icon = generic_propaganda_campaigns
+		visible = {
+			has_completed_focus = PLA_Strengthen_PLA_training
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 60
+		modifier = {
+		}
+	}
+	PRC_like_splitting_bamboo = {
+		icon = generic_propaganda_campaigns
+		visible = {
+			has_completed_focus = PLA_Strengthen_PLA_training
+			NOT = {
+				has_country_flag = PRC_pla_reform_ppgd_hide_flag
+			}
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 60
+		modifier = {
+		}
+	}
 
 	PRC_strike_PLA_corruption = {
 		icon = GFX_PRC_centrist_decision
@@ -16346,7 +16237,7 @@ PRC_great_asian_war = {
 		available = {
 			always = no
 		}
-		days_mission_timeout = 35
+		days_mission_timeout = 10
 		activation = {
 			always = no
 		}
@@ -16742,24 +16633,28 @@ PRC_great_asian_war = {
 		}
 		cost = 35
 		fire_only_once = yes
-		days_remove = 50
+		days_remove = 210
 		complete_effect = {
+			custom_effect_tooltip = PRC_operation_America_tt
 			custom_effect_tooltip = PRC_Invade_America_tt
 			add_timed_idea = {
 				idea = PRC_Invade_America_dec_idea
 				days = 50
 			}
+			hidden_effect = {
+				country_event = {
+					id = Chihong.71
+					days = 3
+				}
+			}
+		}
+		remove_effect = {
 			every_state = {
 				limit = {
 					is_core_of = PTF
 				}
 				remove_dynamic_modifier = {
 					modifier = PRC_unplanned_offensive
-				}
-			}
-			hidden_effect = {
-				country_event = {
-					id = Chihong.71
 				}
 			}
 		}
@@ -17437,10 +17332,29 @@ PRC_great_asian_war = {
 			AST = {
 				add_stability = -0.2
 				add_war_support = -0.3
-				country_event = {
-					id = Australia.19
-					days = 2
+				effect_tooltip = {
+					country_event = {
+						id = Australia.19
+						days = 2
+					}
 				}
+				hidden_effect = {
+					white_peace = AST
+					white_peace = PRC
+					if = {
+						limit = {
+							has_war_with = NZL
+						}
+						white_peace = NZL
+					}
+					add_days_mission_timeout = {
+						mission = PRC_GAW_war_exhaustion
+						days = 20
+					}
+				}
+			}
+			hidden_effect = {
+				puppet = AST
 			}
 		}
 		ai_will_do = {
@@ -21641,10 +21555,10 @@ PRC_loji_category = {
 			clr_country_flag = PRC_long_march_2_stage_flag
 			set_country_flag = PRC_long_march_3_stage_flag
 			get_current_government_type = yes
-			country_event = {
-				id = china.668
-				days = 5
-			}
+			#country_event = {
+			#	id = china.668
+			#	days = 5
+			#}
 		}
 	}
 	PRC_expand_data_banks_of_the_long_march = {
@@ -21937,24 +21851,20 @@ PRC_nl_expand_reform_category = {
 			tag = prc
 		}
 		available = {
-			dockyard > 100
+			dockyard > 99
 		}
 		activation = {
 			always = no
 		}
 		is_good = no
 		selectable_mission = no
+		fire_only_once = yes
 		timeout_effect = {
 		}
 		complete_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_made_in_china_dummy_idea0
-					add_idea = PRC_nl_shipbuilding_ingenuity2_idea
-				}
-			}
+			custom_effect_tooltip = NEMS_ingenuity_tt
 			add_to_variable = {
-				PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.2
+				NEMS_industrial_capacity_dockyard_dynamic_var = 0.2
 			}
 		}
 	}

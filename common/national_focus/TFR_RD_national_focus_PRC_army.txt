@@ -18,6 +18,12 @@ shared_focus = {
     cancel_if_invalid = yes
     #relative_position_id =
     completion_reward = {
+        if = {
+            limit = { 
+                has_idea = PRC_insufficient_understanding_of_modern_warfare_idea
+            }
+            remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+        }
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
         }
@@ -74,6 +80,9 @@ shared_focus = {
         add_ideas = PLA_pl_JZGG_1
         hidden_effect = {
             add_ideas = PRC_party_commands_the_guns_1
+        }
+        add_dynamic_modifier = {
+            modifier = PRC_PLA_masterwork_dynamic
         }
         if = {
             limit = {
@@ -141,6 +150,15 @@ shared_focus = {
         else = {
             add_ideas = PLA_pla_army_1
         }
+        if = {
+            limit = { 
+                has_idea = PRC_complacent_officers_spirit
+            }
+            swap_ideas = {
+                remove_idea = PRC_complacent_officers_spirit
+                add_idea = PRC_complacent_officers_spirit2
+            }
+        }
         unlock_decision_tooltip = PRC_enhance_ideological_education
         unlock_decision_tooltip = PRC_strike_PLA_corruption
         custom_effect_tooltip = PLA_DZHQ_1
@@ -206,7 +224,10 @@ shared_focus = {
                 add_idea = PLA_pl_JZGG_3
             }
         }
-        else = {
+        else_if = {
+            limit = {
+                has_idea = PLA_pl_JZGG_1
+            }
             swap_ideas = {
                 remove_idea = PLA_pl_JZGG_1
                 add_idea = PLA_pl_JZGG_2
@@ -283,11 +304,10 @@ shared_focus = {
             value = 0.1
         }
         add_military_development = yes
-        add_tech_bonus = {
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.5
             name = PLA_not_forget_the_traditions_of_the_Red_Army
-            bonus = 0.5
-            uses = 1
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
         if = {
             limit = {
@@ -307,7 +327,10 @@ shared_focus = {
                 add_idea = PLA_pl_JZGG_4
             }
         }
-        else = {
+        else_if = {
+            limit = {
+                has_idea = PLA_pl_JZGG_1
+            }
             swap_ideas = {
                 remove_idea = PLA_pl_JZGG_1
                 add_idea = PLA_pl_JZGG_2
@@ -382,7 +405,10 @@ shared_focus = {
                 add_idea = PLA_pl_JZGG_3
             }
         }
-        else = {
+        else_if = {
+            limit = {
+                has_idea = PLA_pl_JZGG_3
+            }
             swap_ideas = {
                 remove_idea = PLA_pl_JZGG_3
                 add_idea = PLA_pl_JZGG_4
@@ -531,6 +557,7 @@ shared_focus = {
             value = 150
         }
         add_debt_with_inflation = yes
+        custom_effect_tooltip = PLA_ShiYanxing_ZhuangBei_tt
     }
 }
 
@@ -609,11 +636,10 @@ shared_focus = {
         mio:PRC_poly_organization = {	###保利
             add_mio_funds = 1790
         }
-        add_tech_bonus = {
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.5
             name = PLA_New_LuJun_Xiangqianjin
-            bonus = 0.5
-            uses = 1
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
         custom_effect_tooltip = Chinese_military_reform_1_tt
         hidden_effect = {
@@ -778,11 +804,11 @@ shared_focus = {
             id = prcs.3208
             days = 0
         }
-        add_tech_bonus = {
-            name = PLA_LianQingbudui_Gaige
-            bonus = 0.75
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.75
             uses = 3
-            category = land_doctrine
+            name = PLA_LianQingbudui_Gaige
+            category = cat_old_land_doctrine
         }
         custom_effect_tooltip = Chinese_military_reform_1_tt
         hidden_effect = {
@@ -906,6 +932,7 @@ shared_focus = {
                 }
             }
         }
+        unlock_decision_tooltip = PRC_use_me_must_win
     }
 }
 
@@ -935,11 +962,11 @@ shared_focus = {
             days = 2
         }
         air_experience = 50
-        add_tech_bonus = {
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.75
             name = PLA_CiShiDai_KongJun
-            bonus = 0.75
             uses = 2
-            category = air_doctrine
+            category = cat_old_air_doctrine
         }
         custom_effect_tooltip = Chinese_military_reform_2_tt
         hidden_effect = {
@@ -1445,11 +1472,11 @@ shared_focus = {
     cancel_if_invalid = yes
     completion_reward = {
         navy_experience = 50
-        add_tech_bonus = {
-            name = PLA_not_forget_the_traditions_of_the_Red_Army
-            bonus = 0.75
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.75
             uses = 2
             category = naval_doctrine
+            name = PLA_not_forget_the_traditions_of_the_Red_Army
         }
         custom_effect_tooltip = Chinese_military_reform_3_tt
         hidden_effect = {
@@ -1985,7 +2012,10 @@ shared_focus = {
                 add_idea = PLA_pl_JZGG_6
             }
         }
-        else = {
+        else_if = {
+            limit = {
+                has_idea = PLA_pl_JZGG_4
+            }
             swap_ideas = {
                 remove_idea = PLA_pl_JZGG_4
                 add_idea = PLA_pl_JZGG_5
@@ -2054,7 +2084,10 @@ shared_focus = {
                     add_idea = PLA_pl_JZGG_6
                 }
             }
-            else = {
+            else_if = {
+                limit = {
+                    has_idea = PLA_pl_JZGG_4
+                }
                 swap_ideas = {
                     remove_idea = PLA_pl_JZGG_4
                     add_idea = PLA_pl_JZGG_5
@@ -2111,10 +2144,15 @@ shared_focus = {
                 add_idea = PRC_party_commands_the_guns_6
             }
         }
-        swap_ideas = {
-            remove_idea = PLA_pl_JZGG_6
-            add_idea = PLA_pl_JZGG_7
-        }
+        if = {
+            limit = { 
+                has_idea = PLA_pl_JZGG_6
+            }
+            swap_ideas = {
+                remove_idea = PLA_pl_JZGG_6
+                add_idea = PLA_pl_JZGG_7
+            }
+        }     
         custom_effect_tooltip = PLA_DZHQ_5
     }
 }
@@ -2201,6 +2239,18 @@ shared_focus = {
     x = 4
     y = 1
     completion_reward = {
+        effect_tooltip = {
+			remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+		}		
+		hidden_effect = {
+			remove_ideas = {
+				PRC_insufficient_understanding_of_modern_warfare_idea
+				PRC_insufficient_understanding_of_modern_warfare_idea2
+				PRC_insufficient_understanding_of_modern_warfare_idea3
+				PRC_insufficient_understanding_of_modern_warfare_idea4
+				PRC_insufficient_understanding_of_modern_warfare_idea5
+			}
+		}
         set_temp_variable = {
             PRC_army_reform_progress_temp = 15
         }
@@ -2225,5 +2275,6 @@ shared_focus = {
             remove_idea = PLA_plaaf_air_7
             add_idea = PLA_plaaf_air_8
         }
+        unlock_decision_tooltip = PRC_like_splitting_bamboo
     }
 }

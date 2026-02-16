@@ -39,6 +39,15 @@ focus_tree = {
             }
         }
         completion_reward = {
+            if = {
+                limit = { 
+                    has_idea = early_mobilization
+                }
+                swap_ideas = {
+                    remove_idea = early_mobilization
+                    add_idea = civilian_mobilization
+                }
+            }
             remove_power_balance = {
                 id = PRC_power_balance
             }
@@ -258,12 +267,6 @@ focus_tree = {
             }
             set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             hidden_effect = {
-                remove_dynamic_modifier	= {
-                    modifier = PRC_chinese_communist_party_dynamic
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_communist_party_of_china_dynamic
-                }
                 add_to_variable = {
                     var = PRC_cpc_academic_development_monthly_dynamic_var
                     value = 0.005
@@ -413,10 +416,10 @@ focus_tree = {
                 PPRC_ship_upkeep_var = 0.15
             }
             set_variable = {
-                PPRC_ad_drift_var = 0.5
+                PPRC_ad_drift_var = 0.4
             }
             set_variable = {
-                PPRC_nt_drift_var = 0.5
+                PPRC_nt_drift_var = 0.3
             }
             set_variable = {
                 PRC_RPD_st_var = -0.1
@@ -1398,7 +1401,10 @@ focus_tree = {
                 PSC_stability_var = 0.05
             }
             add_to_variable = {
-                PSC_st_weekly_var = -0.001
+                PSC_st_weekly_var = 0.001
+            }
+            add_to_variable = {
+                PSC_consumer_var = 0.1
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
@@ -1958,6 +1964,10 @@ focus_tree = {
             nationalist < 0.1
             authoritarian_democrat < 0.1
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+            OR = {
+                has_country_flag = PRC_grassroots_lost
+                has_country_flag = PRC_grassroots_win
+            }
         }
         select_effect = {
             country_event = {
@@ -2237,9 +2247,25 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_perfect_democratic_centralization
         completion_reward = {
-            country_event = {
-                id = prcs.3203
-                days = 7
+            custom_effect_tooltip = PRC_cadre_witharwal_system_tt
+            custom_effect_tooltip = tooltip_white_line
+            effect_tooltip = {
+                country_event = prcs.3203
+            }
+            hidden_effect = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = party_popularity@libertarian_socialist
+                            value = party_popularity@communist
+                            compare = less_than_or_equals
+                        }
+                    }
+                    country_event = {
+                        id = prcs.3203
+                        days = 7
+                    }
+                }
             }
             add_to_variable = {
                 PRC_cpc_political_power_gain_dynamic_var = -0.15
@@ -2657,7 +2683,6 @@ focus_tree = {
                 value = 0.05
             }
             hidden_effect = {
-                country_event = prcs.37
                 add_dynamic_modifier = {
                     modifier = PRC_research_dynamic
                 }
@@ -3124,9 +3149,6 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_automation_model
         completion_reward = {
-            hidden_effect = {
-                country_event = prcs.37
-            }
             add_days_mission_timeout = {
                 mission = zidonghua_moxing
                 days = -90
@@ -3196,12 +3218,6 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_reform_production_relation
         completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.3103
-                    days = 0
-                }
-            }
             unlock_decision_category_tooltip = PRC_nl_expand_reform_category
             unlock_decision_tooltip = PRC_nl_shipbuilding_ingenuity
             unlock_decision_tooltip = PRC_nl_food_safety_reforms
@@ -3524,19 +3540,9 @@ focus_tree = {
         completion_reward = {
             custom_effect_tooltip = zizhu_diedai_tt
 
-            #解锁读条民用工业迭代，军用工业迭代，海军生产迭代，科技研发迭代
-            set_country_flag = zizhu_diedai
-            set_variable = {
-                mingongshu0 = num_of_civilian_factories
-            }
-            set_variable = {
-                jungongshu0 = num_of_military_factories
-            }
-            set_variable = {
-                chuanwushu0 = num_of_naval_factories
-            }
-            set_variable = {
-                kejishu0 = num_researched_technologies
+            country_event = {
+                id = prcs.3212
+                days = 365
             }
         }
     }
