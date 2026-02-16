@@ -1,0 +1,518 @@
+focus_tree = {
+    id = dummy
+    country = {
+        factor = 0
+        modifier = {
+            add = 1
+            tag = PRC
+        }
+    }
+    default = no
+    #!gfx:interface\New_left_Collection_of_files\goals\PRC_goals.gfx
+    #!gfx:interface\New_left_Collection_of_files\goals\RD_New_left_goals.gfx
+
+    #重建国家计划委员会
+    focus = {
+        id = nl_PRC_reconstruct_planning_commission
+        icon = GFX_focus_PRC_reconstruct_planning_commission
+        cost = 5
+        x = 4
+        y = 0
+        completion_reward = { }
+    }
+
+    #科研机构再整合
+    focus = {
+        id = nl_PRC_integrate_research_institutions
+        icon = GFX_focus_PRC_integrate_research_institutions
+        cost = 5
+        x = -2
+        y = 1
+        relative_position_id = nl_PRC_reconstruct_planning_commission
+        prerequisite = {
+            focus = nl_PRC_reconstruct_planning_commission
+        }
+        completion_reward = { }
+    }
+
+    #产学研三结合
+    focus = {
+        id = nl_PRC_industry_education_research_combination
+        icon = GFX_focus_PRC_industry_education_research_combination
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_integrate_research_institutions
+        prerequisite = {
+            focus = nl_PRC_integrate_research_institutions
+        }
+        completion_reward = { }
+    }
+
+    #整合全国物流链
+    focus = {
+        id = nl_PRC_integrate_national_logistics_network
+        icon = GFX_focus_PRC_integrate_national_logistics_network
+        cost = 5
+        x = 1
+        y = 1
+        relative_position_id = nl_PRC_industry_education_research_combination
+        prerequisite = {
+            focus = nl_PRC_industry_education_research_combination
+        }
+        completion_reward = { }
+    }
+
+    # 新三大改造运动
+    focus = {
+        id = nl_PRC_new_three_major_transformations
+        icon = GFX_focus_PRC_new_three_major_transformations
+        cost = 5
+        x = 0
+        y = 1
+        relative_position_id = nl_PRC_reconstruct_planning_commission
+        prerequisite = {
+            focus = nl_PRC_reconstruct_planning_commission
+        }
+        completion_reward = { }
+    }
+
+    # 深化乡村振兴
+    focus = {
+        id = nl_PRC_deepen_rural_revitalization
+        icon = GFX_focus_PRC_deepen_rural_revitalization
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_new_three_major_transformations
+        prerequisite = {
+            focus = nl_PRC_new_three_major_transformations
+        }
+        completion_reward = { }
+    }
+
+    # 国家财政改革
+    focus = {
+        id = nl_PRC_reform_national_finance
+        icon = GFX_focus_PRC_reform_national_finance
+        cost = 5
+        x = 2
+        y = 1
+        relative_position_id = nl_PRC_reconstruct_planning_commission
+        prerequisite = {
+            focus = nl_PRC_reconstruct_planning_commission
+        }
+        completion_reward = { }
+    }
+
+    #社会保障普惠化
+    focus = {
+        id = nl_PRC_universal_social_security
+        icon = GFX_focus_PRC_universal_social_security
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_reform_national_finance
+        prerequisite = {
+            focus = nl_PRC_reform_national_finance
+        }
+        completion_reward = { }
+    }
+
+    # 城乡一体化建设新方法
+    focus = {
+        id = nl_PRC_urban_rural_integration_new_methods
+        icon = GFX_focus_PRC_urban_rural_integration_new_methods
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_new_three_major_transformations
+        prerequisite = {
+            focus = nl_PRC_deepen_rural_revitalization
+        }
+        prerequisite = {
+            focus = nl_PRC_universal_social_security
+        }
+        completion_reward = { }
+    }
+
+    # 全国社会服务一体化
+    focus = {
+        id = nl_PRC_national_social_service_integration
+        icon = GFX_focus_PRC_national_social_service_integration
+        cost = 5
+        x = 1
+        y = 1
+        relative_position_id = nl_PRC_reform_national_finance
+        prerequisite = {
+            focus = nl_PRC_reform_national_finance
+        }
+        completion_reward = { }
+    }
+
+    # 现代化社会服务体系
+    focus = {
+        id = nl_PRC_modern_social_service_system
+        icon = GFX_focus_PRC_modern_social_service_system
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_reform_national_finance
+        prerequisite = {
+            focus = nl_PRC_universal_social_security
+        }
+        prerequisite = {
+            focus = nl_PRC_national_social_service_integration
+        }
+        completion_reward = { }
+    }
+
+    # 布局“十五五”规划
+    focus = {
+        id = nl_PRC_PRC_layout_15th_five_year_plan
+        icon = GFX_focus_PRC_layout_15th_five_year_plan
+        cost = 5
+        x = 0
+        y = 1
+        relative_position_id = nl_PRC_urban_rural_integration_new_methods
+        prerequisite = {
+            focus = nl_PRC_integrate_national_logistics_network
+        }
+        prerequisite = {
+            focus = nl_PRC_modern_social_service_system
+        }
+        prerequisite = {
+            focus = nl_PRC_urban_rural_integration_new_methods
+        }
+        completion_reward = { }
+    }
+
+    # 推动产业革新
+    focus = {
+        id = nl_PRC_promote_industrial_innovation
+        icon = GFX_focus_PRC_promote_industrial_innovation
+        cost = 5
+        x = -5
+        y = 1
+        relative_position_id = nl_PRC_PRC_layout_15th_five_year_plan
+        prerequisite = {
+            focus = nl_PRC_PRC_layout_15th_five_year_plan
+        }
+        completion_reward = { }
+    }
+    
+    # 硅晶自给
+    focus = {
+        id = nl_PRC_silicon_self_sufficiency
+        icon = GFX_focus_PRC_silicon_self_sufficiency
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_promote_industrial_innovation
+        prerequisite = {
+            focus = nl_PRC_promote_industrial_innovation
+        }
+        completion_reward = { }
+    }
+
+    # 全国性工业物联网
+    focus = {
+        id = nl_PRC_national_industrial_iot
+        icon = GFX_focus_PRC_national_industrial_iot
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_silicon_self_sufficiency
+        prerequisite = {
+            focus = nl_PRC_silicon_self_sufficiency
+        }
+        completion_reward = { }
+    }
+
+    #触及曙光
+    focus = {
+        id = PRC_nl_dawn_project
+        icon = GFX_focus_PRC_touching_the_dawn
+        cost = 2
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_promote_industrial_innovation
+        prerequisite = {
+            focus = nl_PRC_promote_industrial_innovation
+        }
+        available = {
+            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        }
+
+        completion_reward = {
+            unlock_decision_category_tooltip = PRC_dawn_project
+        }
+    }
+
+    # 搭建信息化交易平台
+    focus = {
+        id = nl_PRC_info_trading_platform
+        icon = GFX_focus_PRC_info_trading_platform
+        cost = 5
+        x = 1
+        y = 1
+        relative_position_id = nl_PRC_promote_industrial_innovation
+        prerequisite = {
+            focus = nl_PRC_promote_industrial_innovation
+        }
+        completion_reward = { }
+    }
+
+    # 扩张信息基建
+    focus = {
+        id = nl_PRC_expand_info_infrastructure
+        icon = GFX_focus_PRC_expand_info_infrastructure
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_info_trading_platform
+        prerequisite = {
+            focus = nl_PRC_info_trading_platform
+        }
+        completion_reward = { }
+    }
+
+    # 算力长征
+    focus = {
+        id = nl_PRC_computing_power_long_march
+        icon = GFX_focus_PRC_computing_power_long_march
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = PRC_nl_dawn_project
+        prerequisite = {
+            focus = nl_PRC_national_industrial_iot
+            focus = nl_PRC_expand_info_infrastructure
+        }
+        completion_reward = { }
+    }
+
+    # 培正固本政策
+    focus = {
+        id = nl_PRC_rectify_and_strengthen_foundation
+        icon = GFX_focus_PRC_rectify_and_strengthen_foundation
+        cost = 5
+        x = 0
+        y = 1
+        relative_position_id = nl_PRC_PRC_layout_15th_five_year_plan
+        prerequisite = {
+            focus = nl_PRC_PRC_layout_15th_five_year_plan
+        }
+        completion_reward = { }
+    }
+
+    # 探索社会主义新村模式
+    focus = {
+        id = nl_PRC_new_socialist_countryside_construction
+        icon = GFX_focus_PRC_new_socialist_countryside_construction
+        cost = 5
+        x = -2
+        y = 1
+        relative_position_id = nl_PRC_rectify_and_strengthen_foundation
+        prerequisite = {
+            focus = nl_PRC_rectify_and_strengthen_foundation
+        }
+        completion_reward = { }
+    }
+
+    # 绿色智能农业
+    focus = {
+        id = nl_PRC_green_smart_agriculture
+        icon = GFX_focus_PRC_green_smart_agriculture
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_new_socialist_countryside_construction
+        prerequisite = {
+            focus = nl_PRC_info_trading_platform
+        }
+        prerequisite = {
+            focus = nl_PRC_new_socialist_countryside_construction
+        }
+        completion_reward = { }
+    }
+
+    # 海疆珍宝
+    focus = {
+        id = nl_PRC_sea_border_treasures
+        icon = GFX_focus_PRC_sea_border_treasures
+        cost = 5
+        x = 2
+        y = 1
+        relative_position_id = nl_PRC_rectify_and_strengthen_foundation
+        prerequisite = {
+            focus = nl_PRC_rectify_and_strengthen_foundation
+        }
+        completion_reward = { }
+    }
+
+    # 应用新型建筑模式
+    focus = {
+        id = nl_PRC_new_construction_methods
+        icon = GFX_focus_PRC_new_construction_methods
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_rectify_and_strengthen_foundation
+        prerequisite = {
+            focus = nl_PRC_rectify_and_strengthen_foundation
+        }
+        completion_reward = { }
+    }
+    
+    # 大国大城
+    focus = {
+        id = nl_PRC_great_country_great_cities
+        icon = GFX_focus_PRC_great_country_great_cities
+        cost = 5
+        x = 0
+        y = 2
+        relative_position_id = nl_PRC_new_construction_methods
+        prerequisite = {
+            focus = nl_PRC_new_construction_methods
+        }
+        completion_reward = { }
+    }
+
+    # 奠基劳工社会
+    focus = {
+        id = nl_PRC_founding_labor_society
+        icon = GFX_focus_PRC_founding_labor_society
+        cost = 5
+        x = 6
+        y = 1
+        relative_position_id = nl_PRC_PRC_layout_15th_five_year_plan
+        prerequisite = {
+            focus = nl_PRC_PRC_layout_15th_five_year_plan
+        }
+        completion_reward = { }
+    }
+
+    # 建设学习型社会
+    focus = {
+        id = nl_PRC_build_learning_society
+        icon = GFX_focus_PRC_build_learning_society
+        cost = 5
+        x = -2
+        y = 1
+        relative_position_id = nl_PRC_founding_labor_society
+        prerequisite = {
+            focus = nl_PRC_founding_labor_society
+        }
+        completion_reward = { }
+    }
+
+    # “锻造太阳”
+    focus = {
+        id = nl_PRC_forging_the_sun
+        icon = GFX_focus_PRC_forging_the_sun
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_build_learning_society
+        prerequisite = {
+            focus = nl_PRC_build_learning_society
+        }
+        completion_reward = { }
+    }
+
+    # 普及智能化生产设备
+    focus = {
+        id = nl_PRC_popularize_smart_production_tools
+        icon = GFX_focus_PRC_popularize_smart_production_tools
+        cost = 5
+        x = 1
+        y = 1
+        relative_position_id = nl_PRC_build_learning_society
+        prerequisite = {
+            focus = nl_PRC_build_learning_society
+        }
+        completion_reward = { }
+    }
+
+    # 重塑支持型社会
+    focus = {
+        id = nl_PRC_supportive_society
+        icon = GFX_focus_PRC_supportive_society
+        cost = 5
+        x = 2
+        y = 1
+        relative_position_id = nl_PRC_founding_labor_society
+        prerequisite = {
+            focus = nl_PRC_founding_labor_society
+        }
+        completion_reward = { }
+    }
+
+    # 鼓励互助生活方式
+    focus = {
+        id = nl_PRC_encourage_mutual_aid_lifestyle
+        icon = GFX_focus_PRC_encourage_mutual_aid_lifestyle
+        cost = 5
+        x = -1
+        y = 1
+        relative_position_id = nl_PRC_supportive_society
+        prerequisite = {
+            focus = nl_PRC_supportive_society
+        }
+        completion_reward = { }
+    }
+
+    # 信息化就业方式
+    focus = {
+        id = nl_PRC_informatized_employment
+        icon = GFX_focus_PRC_informatized_employment
+        cost = 5
+        x = 1
+        y = 1
+        relative_position_id = nl_PRC_supportive_society
+        prerequisite = {
+            focus = nl_PRC_supportive_society
+        }
+        completion_reward = { }
+    }
+
+    # 劳动革命
+    focus = {
+        id = nl_PRC_labor_revolution
+        icon = GFX_focus_PRC_labor_revolution
+        cost = 5
+        x = 0
+        y = 4
+        relative_position_id = nl_PRC_founding_labor_society
+        prerequisite = {
+            focus = nl_PRC_forging_the_sun
+            focus = nl_PRC_popularize_smart_production_tools
+        }
+        prerequisite = {
+            focus = nl_PRC_encourage_mutual_aid_lifestyle
+            focus = nl_PRC_informatized_employment
+        }
+        completion_reward = { }
+    }
+
+    ## 中国经济新时代
+    focus = {
+        id = nl_PRC_china_economic_new_era
+        icon = GFX_focus_PRC_china_economic_new_era
+        cost = 5
+        x = 0
+        y = 1
+        relative_position_id = nl_PRC_great_country_great_cities
+        prerequisite = {
+            focus = nl_PRC_computing_power_long_march
+        }
+        prerequisite = {
+            focus = nl_PRC_great_country_great_cities
+        }
+        prerequisite = {
+            focus = nl_PRC_labor_revolution
+        }
+        completion_reward = { }
+    }
+}
