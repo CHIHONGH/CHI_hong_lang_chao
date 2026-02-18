@@ -33,36 +33,22 @@ change_welfare_type_communism = {
 change_economy_type_auto_socialism = {
     custom_effect_tooltip = change_economy_type_auto_socialism_tt
     hidden_effect = {
-        if = {
-            limit = {
-                has_idea = mass_consumerism
-            }
-            add_ideas = auto_socialism
-        }
-        else_if = {
-            limit = {
-                has_idea = civilian_mobilization
-            }
-            add_ideas = auto_socialism
-        }
+       	remove_economy_types = yes
+        add_ideas = ZZZ_automation_socialism
     }
 }
 change_economy_type_auto_socialism1 = {
     custom_effect_tooltip = change_economy_type_auto_socialism1_tt
     hidden_effect = {
-        swap_ideas = {
-            remove_idea = auto_socialism
-            add_idea = auto_socialism1
-        }
+        remove_economy_types = yes
+        add_ideas = ZZZ_automation_socialism1
     }
 }
 change_economy_type_auto_communism = {
     custom_effect_tooltip = change_economy_type_auto_communism_tt
     hidden_effect = {
-        swap_ideas = {
-            remove_idea = auto_socialism1
-            add_idea = auto_communism
-        }
+        remove_economy_types = yes
+        add_ideas = ZZZ_automation_communism
     }
 }
 
