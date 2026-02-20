@@ -2638,7 +2638,10 @@ PRC_export_revolution = {
             hidden_effect = {
                 every_state = {
                     limit = {
-                        is_owned_by = JAP
+                        OR = {
+                            is_core_of = JAP
+                            is_owned_by = JAP
+                        }
                     }
                     add_core_of = JPL
                 }
