@@ -400,24 +400,6 @@ PRC_Culture_Revital = {
 			country_event = Chihong.37
 		}
 	}
-	PRC_invite_WLI_art_festival = {
-		icon = GFX_PRC_cylc_decision
-		visible = {
-			has_completed_focus = PRC_nl_proletarian_art_festival
-			has_country_flag = PRC_culture_enabled_flag
-		}
-		available = {
-			has_completed_focus = PRC_nl_proletarian_art_festival
-			has_completed_focus = Establishment_the_channel
-		}
-		cost = 50
-		days_remove = 14
-		fire_only_once = yes
-		remove_effect = {
-			custom_effect_tooltip = IPAF_effect_tt
-			set_country_flag = international_proletarian_art_festival_flag
-		}
-	}
 	#	宣传人民群众作品
 	PRC_propagate_PEOPLE_work = {
 		icon = GFX_decision_generic_propaganda_campaigns
@@ -488,6 +470,7 @@ PRC_Culture_Revital = {
 		cost = 50
 		days_remove = 60
 		days_re_enable = 60
+		fire_only_once = yes
 		remove_effect = {
 			if = {
 				limit = {
