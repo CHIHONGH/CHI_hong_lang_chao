@@ -1465,7 +1465,100 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
-        navy_experience = 50
+        navy_experience = -50
+        add_timed_idea = {
+			idea = PRC_creation_of_full_scale_missile_cruisers_idea
+			days = 250
+		}
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			set_technology = {
+				improved_ship_hull_heavy = 1
+			}
+			create_equipment_variant = {
+				name = "Type 057 Qiang"
+				type = ship_hull_heavy_3
+				parent_version = 0
+				modules = {
+					fixed_ship_battery_slot = ship_heavy_battery_2
+					fixed_ship_anti_air_slot = ship_anti_air_3
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_2
+					fixed_ship_radar_slot = ship_radar_2
+					fixed_ship_engine_slot = heavy_ship_engine_3
+					fixed_ship_secondaries_slot = ship_secondaries_2
+					fixed_ship_armor_slot = ship_armor_bb_2
+					front_1_custom_slot = ship_heavy_battery_2
+					mid_1_custom_slot = ship_airplane_launcher_2
+					mid_2_custom_slot = ship_heavy_battery_2
+					rear_1_custom_slot = ship_heavy_battery_2
+				}
+			}
+			add_equipment_production = {
+				equipment = {
+					type = ship_hull_heavy_3
+					creator = "PRC"
+					version_name = "Type 057 Qiang"
+				}
+				name = "Type 057 Qiang 1"
+				requested_factories = 5
+				progress = 0.2
+				amount = 1
+			}
+			add_equipment_production = {
+				equipment = {
+					type = ship_hull_heavy_3
+					creator = "PRC"
+					version_name = "Type 057 Qiang"
+				}
+				name = "Type 057 Qiang 2"
+				requested_factories = 5
+				progress = 0.2
+				amount = 1
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			add_equipment_production = {
+				equipment = {
+					type = battleship_3
+					creator = "PRC"
+				}
+				name = "Type 057 Qiang 1"
+				requested_factories = 1
+				progress = 0.2
+				amount = 1
+			}
+			add_equipment_production = {
+				equipment = {
+					type = battleship_3
+					creator = "PRC"
+				}
+				name = "Type 057 Qiang 2"
+				requested_factories = 1
+				progress = 0.2
+				amount = 1
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_doctrine_cost_reduction = {
+			name = PRC_creation_of_full_scale_missile_cruisers
+			cost_reduction = 0.75
+			uses = 3
+			category = cat_fleet_in_being
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 30
+		}
+		add_debt_with_inflation = yes
         add_doctrine_cost_reduction = {
             cost_reduction = 0.75
             uses = 2
