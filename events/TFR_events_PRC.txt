@@ -12930,7 +12930,66 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = china.700
+	title = china.700.t
+	desc = china.700.d
+	picture = GFX_event_prc_sun_jianguo1
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	#immediate = {
+	#}
+	option = {
+		name = china.700.a
+		navy_experience = 25
+		hidden_effect = {
+			PRC_sun_jianguo = {
+                unit_leader_event = {
+                    id = china.701
+                    days = 3
+                }
+            }
+		}
+	}
+}
+
 #Empire Burning
+unit_leader_event = {
+	id = china.701
+	title = china.701.t
+	desc = china.701.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = { #approved
+		name = china.701.a
+		mio:PRC_bohai_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+			complete_mio_trait = PRC_mio_cmc_funds
+			set_mio_flag = PRC_mio_flag_cmc_approve_ssn_funding
+		}
+		mio:PRC_csic_wuchang_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 10
+		}
+		add_debt_with_inflation = yes
+	}
+	option = {
+		name = china.701.b
+		mio:PRC_bohai_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+			complete_mio_trait = PRC_mio_Navy_Field_Test
+		}
+	}
+}
+
 country_event = {
 	id = china.493
 	title = china.493.t
@@ -12963,6 +13022,7 @@ country_event = {
 		name = china.500.a
 		air_experience = 25
 		set_country_flag = PRC_project_song_wencong_succeeded1
+		set_country_flag = PRC_project_song_wencong_success
 		if = {
 			limit = {
 				NOT = {
@@ -13039,7 +13099,7 @@ country_event = {
 	title = china.546.t
 	desc = china.546.d
 	is_triggered_only = yes
-	picture = GFX_PRC_type_100
+	picture = GFX_PLAN3 
 	immediate = {
 		set_country_flag = PRC_project_liao_yuan_succeed
 	}
