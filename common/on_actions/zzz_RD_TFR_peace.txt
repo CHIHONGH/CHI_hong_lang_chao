@@ -1,110 +1,6 @@
 on_actions = {
     on_capitulation = {
         effect = {
-            if = {
-                # PRC kill JAP
-                limit = {
-                    FROM = {
-                        OR = {
-                            original_tag = PRC
-                            is_ally_with = PRC
-                        }
-                    }
-                    ROOT = {
-                        original_tag = JAP
-                    }
-                }
-                FROM = {
-                    PRC = {
-                        every_country = {
-                            limit = {
-                                is_in_faction_with = JPL
-                                any_controlled_state = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                            }
-                            every_controlled_state = {
-                                limit = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                                transfer_state_to = JPL
-                                set_state_owner_to = JPL
-                                set_state_controller_to = JPL
-                            }
-                        }
-                    }
-                    white_peace = ROOT
-                }
-                set_global_flag = skip_default_capitulation
-            }
-            if = {
-                # JPL kill JAP
-                limit = {
-                    FROM = {
-                        OR = {
-                            original_tag = JPL
-                            is_ally_with = PRC
-                        }
-                    }
-                    ROOT = {
-                        original_tag = JAP
-                    }
-                }
-                FROM = {
-                    PRC = {
-                        every_country = {
-                            limit = {
-                                is_in_faction_with = JPL
-                                any_controlled_state = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                            }
-                            every_controlled_state = {
-                                limit = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                                transfer_state_to = JPL
-                                set_state_owner_to = JPL
-                                set_state_controller_to = JPL
-                            }
-                        }
-                    }
-                    JPL = {
-                        set_cosmetic_tag = PRC_shijieguoji_a
-                        set_politics = {
-                            ruling_party = communist
-                            elections_allowed = no
-                        }
-                        set_party_name = {
-                            ideology = communist
-                            long_name = PRC_nationalist_party_new_left_JPL
-                            name = PRC_nationalist_party_new_left_name_JPL
-                        }
-                        PRC = {
-                            add_to_faction = JPL
-                        }
-                        JAP_leave_PEC = yes
-                    }
-                    white_peace = ROOT
-                    annex_country = {
-                        target = JAP
-                        transfer_troops = no
-                    }
-                }
-                set_global_flag = skip_default_capitulation
-            }
             log = "[GetDateText]: FROM: [From.GetName] ROOT: [Root.GetName] on_capitulation"
             set_global_flag = show_peace_popup_alert
             FROM = {
@@ -147,6 +43,67 @@ on_actions = {
                     }
                 }
                 set_global_flag = war_won
+                if = {
+                    # PRC kill JAP
+                    limit = {
+                        FROM = {
+                            OR = {
+                                original_tag = PRC
+                                original_tag = JPL
+                                is_ally_with = PRC
+                            }
+                        }
+                        ROOT = {
+                            original_tag = JAP
+                        }
+                    }
+                    PRC = {
+                        every_country = {
+                            limit = {
+                                is_in_faction_with = JPL
+                                any_controlled_state = {
+                                    NOT = {
+                                        is_controlled_by = JPL
+                                    }
+                                    is_core_of = JPL
+                                }
+                            }
+                            every_controlled_state = {
+                                limit = {
+                                    NOT = {
+                                        is_controlled_by = JPL
+                                    }
+                                    is_core_of = JPL
+                                }
+                                transfer_state_to = JPL
+                                set_state_owner_to = JPL
+                                set_state_controller_to = JPL
+                            }
+                        }
+                    }
+                    JPL = {
+                        white_peace = ROOT
+                        annex_country = {
+                            target = ROOT
+                            transfer_troops = no
+                        }
+                        set_cosmetic_tag = PRC_shijieguoji_a
+                        set_politics = {
+                            ruling_party = communist
+                            elections_allowed = no
+                        }
+                        set_party_name = {
+                            ideology = communist
+                            long_name = PRC_nationalist_party_new_left_JPL
+                            name = PRC_nationalist_party_new_left_name_JPL
+                        }
+                        PRC = {
+                            add_to_faction = JPL
+                        }
+                        JAP_leave_PEC = yes
+                    }
+                    set_global_flag = skip_default_capitulation
+                }
                 if = {
                     # MND kill all
                     limit = {
