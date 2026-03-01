@@ -2235,6 +2235,7 @@ PRC_Youth_Ideological_Education = {
 		days_remove = 100
 		fire_only_once = yes
 		complete_effect = {
+			add_stability = 0.1
 			set_country_flag = PRC_opposition_suspended_flag
 		}
 		remove_effect = {
@@ -2252,6 +2253,9 @@ PRC_Youth_Ideological_Education = {
 			}
 			add_to_variable = {
 				PPRC_pp_factor_var = party_popularity@communist
+			}
+			add_to_variable = {
+				PPRC_research_var = party_popularity@social_democrat
 			}
 			add_to_variable = {
 				PPRC_poverty_dev_var = 0.008
@@ -2330,6 +2334,24 @@ PRC_Youth_Ideological_Education = {
 			}
 			add_to_variable = {
 				PPRC_expense_var = 0.05
+			}
+			add_to_variable = {
+				PPRC_resource_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_slot_var = 0.1
+			}
+			add_to_variable = {
+				PPRC_factory_output_var = party_popularity@libertarian_socialist
+			}
+			set_temp_variable = {
+				PPRC_attack_var_temp = party_popularity@totalitarian_socialist
+			}
+			multiply_temp_variable = {
+				PPRC_attack_var_temp = 0.5
+			}
+			add_to_variable = {
+				PPRC_attack_var = PPRC_attack_var_temp
 			}
 			effect_tooltip = {
 				swap_ideas = {
