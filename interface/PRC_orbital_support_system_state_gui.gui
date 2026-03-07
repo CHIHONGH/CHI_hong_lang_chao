@@ -1,0 +1,283 @@
+@x = 65
+
+guiTypes = {
+
+	containerwindowType = {
+		name = "RD_TFR_PRC_states_decisions_window"
+		Orientation = CENTER_LEFT
+		position = { x = 460 y = 1000 }
+		size = { width = 380 height= 620 }
+		moveable = no
+
+		show_animation_type = linear
+		hide_animation_type = linear
+		animation_time = 200
+		fade_time = 200
+		fade_type = linear #decelerated accelerated linear
+		show_position = { x = 460 y = 40 }
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_oss_stats_window_bg"
+		}
+
+		buttonType = {
+			name = "PRC_oss_miniwindow_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_PRC_oss_miniwindow_button"
+			shortcut = "ctrl+a"
+			#pdx_tooltip_delayed = ""
+			#clicksound = "ui_randomizer_click_04"
+		}
+
+		buttonType = {
+			name = "oss_spy_satellite"
+			position = { x = @x y = 70 }
+			quadTextureSprite = "GFX_PRC_oss_button"
+			buttonFont = "VCR02_18"
+			buttonText = "oss_spy_satellite_text"
+			pdx_tooltip = "oss_spy_satellite_click_tt"
+			pdx_tooltip_delayed = "oss_spy_satellite_click_disabled_tt"
+			#clicksound = "oss_ui_decrement"
+		}
+
+		iconType = {
+			name = "oss_spy_satellite_icon"
+			spriteType = "GFX_PRC_oss_button_2"
+			position = { x = @x y = 70 }
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "oss_ECM"
+			position = { x = @x y = 120 }
+			quadTextureSprite = "GFX_PRC_oss_button"
+			buttonFont = "VCR02_18"
+			buttonText = "oss_ECM_text"
+			pdx_tooltip = "oss_ECM_click_tt"
+			pdx_tooltip_delayed = "oss_ECM_click_disabled_tt"
+			#clicksound = "oss_ui_decrement"
+		}
+
+		iconType = {
+			name = "oss_ECM_icon"
+			spriteType = "GFX_PRC_oss_button_2"
+			position = { x = @x y = 120 }
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "oss_orbital_support"
+			position = { x = @x y = 170 }
+			quadTextureSprite = "GFX_PRC_oss_button"
+			buttonFont = "VCR02_18"
+			buttonText = "oss_orbital_support_text"
+			pdx_tooltip = "oss_orbital_support_click_tt"
+			pdx_tooltip_delayed = "oss_orbital_support_click_disabled_tt"
+			#clicksound = "oss_ui_decrement"
+		}
+
+		iconType = {
+			name = "oss_orbital_support_icon"
+			spriteType = "GFX_PRC_oss_button_2"
+			position = { x = @x y = 170 }
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "PRC_nuclear_code_button"
+			position = { x = 70 y = 280 }
+			quadTextureSprite = "GFX_PRC_oss_secret_key1"
+			buttonFont = "VCR02_24"
+			buttonText = "PRC_nuclear_code_button_tt"
+			pdx_tooltip = "PRC_nuclear_code_button_desc"
+			#pdx_tooltip_delayed = ""
+			#clicksound = "ui_randomizer_click_04"
+		}
+
+		buttonType = {
+			name = "oss_tactical_nuclerar_strike"
+			position = { x = 60 y = 260 } #x 90 -> down 170
+			quadTextureSprite = "GFX_PRC_tactical_nuclerar_weapon_button"
+			buttonFont = "VCR02_18"
+			buttonText = ""
+			pdx_tooltip = "oss_tactical_nuclerar_strike_click_tt"
+			pdx_tooltip_delayed = "PRC_thermonuclear_weapon_button_disabled_tt"
+			#clicksound = "oss_ui_decrement"
+		}
+
+		buttonType = {
+			name = "oss_thermonuclear_strike"
+			position = { x = 230 y = 260 }
+			quadTextureSprite = "GFX_PRC_thermonuclear_weapon_button"
+			buttonFont = "VCR02_18"
+			buttonText = ""
+			pdx_tooltip = "PRC_thermonuclear_weapon_button_tt"
+			pdx_tooltip_delayed = "PRC_thermonuclear_weapon_button_disabled_tt"
+			#clicksound = "oss_ui_decrement"
+		}
+
+		iconType = {
+			name = "oss_tactical_nuclerar_strike_icon"
+			spriteType = "GFX_PRC_tactical_nuclerar_weapon_button_2"
+			position = { x = 60 y = 260 }
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "oss_thermonuclear_strike_icon"
+			spriteType = "GFX_PRC_thermonuclear_weapon_button_2"
+			position = { x = 230 y = 260 }
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "oss_nuclear_force1_text" 
+			position = { x = 135 y = 445 } 
+			font = "VCR02_24" 
+			borderSize = {x = 0 y = 0} 
+			text = "oss_activate_nuclear_force_tt" 
+			maxWidth = 100
+			maxHeight = 24 
+			fixedsize = yes 
+			format = centre 
+		}
+
+		instantTextBoxType = {
+			name = "oss_nuclear_force3_text" 
+			position = { x = 65 y = 240 } 
+			font = "VCR01_30_glow" 
+			borderSize = {x = 0 y = 0} 
+			text = "oss_activate_nuclear_force3_tt" 
+			maxWidth = 240
+			maxHeight = 24 
+			fixedsize = yes 
+			format = centre 
+		}
+
+		instantTextBoxType = {
+			name = "oss_nuclear_force4_text" 
+			position = { x = 65 y = 340 } 
+			font = "VCR01_30_glow" 
+			borderSize = {x = 0 y = 0} 
+			text = "oss_activate_nuclear_force4_tt" 
+			maxWidth = 240
+			maxHeight = 24 
+			fixedsize = yes 
+			format = centre 
+		}
+
+		instantTextBoxType = {
+			name = "oss_nuclear_force5_text" 
+			position = { x = -20 y = 350 } 
+			font = "VCR02_24" 
+			borderSize = {x = 0 y = 0} 
+			text = "oss_activate_nuclear_force5_tt" 
+			maxWidth = 240
+			maxHeight = 24 
+			fixedsize = yes 
+			format = centre 
+		}
+
+		instantTextBoxType = {
+			name = "oss_nuclear_force6_text" 
+			position = { x = 150 y = 350 } 
+			font = "VCR02_24" 
+			borderSize = {x = 0 y = 0} 
+			text = "oss_activate_nuclear_force6_tt" 
+			maxWidth = 240
+			maxHeight = 24 
+			fixedsize = yes 
+			format = centre 
+		}
+
+		instantTextBoxType = {
+			name = "oss_nuclear_force2_text" 
+			position = { x = 65 y = 530 } 
+			font = "VCR02_24" 
+			borderSize = {x = 0 y = 0} 
+			text = "oss_activate_nuclear_force2_tt" 
+			maxWidth = 240
+			maxHeight = 24 
+			fixedsize = yes 
+			format = centre 
+		}
+		
+		iconType = {
+			name = "PRC_oss_secret_key2_icon_1"
+			spriteType = "GFX_PRC_oss_secret_key2"
+			position = { x = 60 y = 465 }
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "PRC_oss_secret_key2_icon_2"
+			spriteType = "GFX_PRC_oss_secret_key2"
+			position = { x = 240 y = 465 }
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "PRC_oss_secret_key_seal_icon"
+			spriteType = "GFX_PRC_oss_secret_key_seal"
+			position = { x = 25 y = 400 }
+		}
+
+		buttonType = {
+			name = "OSS_nuclear_triad1_button"
+			position = { x = 140 y = 450 }
+			quadTextureSprite = "GFX_OSS_nuclear_triad1"
+			pdx_tooltip_delayed = "oss_comprehensive_nuclear_strike_tt"
+			#clicksound = "ui_randomizer_click_04"
+		}
+
+		buttonType = {
+			name = "OSS_nuclear_triad2_button"
+			position = { x = 60 y = 440 }
+			quadTextureSprite = "GFX_OSS_nuclear_triad2"
+			#pdx_tooltip_delayed = ""
+			#clicksound = "ui_randomizer_click_04"
+		}
+
+		buttonType = {
+			name = "OSS_nuclear_triad3_button"
+			position = { x = 260 y = 440 }
+			quadTextureSprite = "GFX_OSS_nuclear_triad2"
+			#pdx_tooltip_delayed = ""
+			#clicksound = "ui_randomizer_click_04"
+		}
+
+		containerwindowType = {
+			name = "PRC_oss_win_window"
+			Orientation = CENTER_LEFT
+			position = { x = -5 y = -305 }
+
+			instantTextBoxType = {
+				name = "PRC_oss_win_window_title" 
+				position = { x = 0 y = 0 } 
+				font = "VCR01_30_glow" 
+				borderSize = {x = 0 y = 0} 
+				text = "PRC_oss_win_window_title_tt" 
+				maxWidth = 400
+				maxHeight = 24 
+				fixedsize = yes 
+				format = centre 
+			}
+		}
+	}
+
+	containerwindowType = {
+		name = "PRC_oss_enter_window"
+		Orientation = CENTER_LEFT
+		position = { x = 460 y = 40 }
+
+		buttonType = {
+			name = "PRC_oss_expandwindow_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_PRC_oss_expandwindow_button"
+			shortcut = "ctrl+a"
+			#pdx_tooltip_delayed = ""
+			#clicksound = "ui_randomizer_click_04"
+		}
+	}
+}

@@ -1,0 +1,184 @@
+PRC_oss_spy_satellite = {
+	controller = {
+		PRC = {
+			add_intel = {
+				target = PREV
+				civilian_intel = 40
+				army_intel = 20
+				navy_intel = 30
+				airforce_intel = 25
+			}
+			add_decryption = {
+				target = controller
+				ratio = 0.25
+			}
+		}
+	}
+	if = {
+		limit = {
+			controller = { original_tag = JAP }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_JAP
+				days = 180
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			controller = { original_tag = AST }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_AST
+				days = 180
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			controller = { original_tag = RAJ }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_RAJ
+				days = 180
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			controller = { original_tag = KOR }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_KOR
+				days = 180
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			controller = { original_tag = PTF }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_PTF
+				days = 180
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			controller = { original_tag = GER }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_GER
+				days = 180
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			controller = { original_tag = SOV }
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = oss_spy_satellite_surveillance_SOV
+				days = 180
+			}
+		}
+	}
+	else = {
+		controller = {
+			PRC = {
+				add_intel = {
+					target = PREV
+					civilian_intel = 120
+					army_intel = 120
+					navy_intel = 120
+					airforce_intel = 120
+				}
+				add_decryption = {
+					target = controller
+					ratio = 0.25
+				}
+			}
+		}
+	}
+}
+
+PRC_electronic_warfare = {
+	PRC = {
+		damage_units = {
+			state = PREV.This
+			limit = { has_war_with = PRC }
+			org_damage = 0.6
+			str_damage = 0.05
+			ratio = yes
+			army = yes
+			navy = yes
+		}
+	}
+	add_dynamic_modifier = {
+		modifier = PRC_ECM_state_modifier_1
+		scope = PRC
+		days = 30
+	}
+	add_dynamic_modifier = {
+		modifier = PRC_ECM_state_modifier_2
+		scope = This.controller
+		days = 30
+	}
+	controller = {
+		country_event = {
+			id = ChinaOSS.1
+			days = 0
+		}
+		add_political_power = -25
+	}
+}
+
+oss_orbital_support = {
+	PRC = {
+		division_template = {
+			name = "PRC Space Force"
+			#division_cap = 
+			#division_names_group = 
+			priority = 2
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 0 y = 3 }
+			}
+			support = {
+				military_police = { x = 0 y = 0 }
+			}
+		}
+		add_to_variable = { PRC_oss_space_armed_forces_num = -1 }
+	}
+	state_event = {
+		id = chinaOSS.101
+		days = 2
+		trigger_for = PRC
+	}
+}
+
+oss_tactical_nuclerar_strike = {
+	state_event = {
+		id = chinaOSS.102
+		days = 1
+		trigger_for = PRC
+	}
+}
+
+oss_thermonuclear_strike = {
+	state_event = {
+		id = chinaOSS.103
+		days = 1
+		trigger_for = PRC
+	}
+}

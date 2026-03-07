@@ -1,0 +1,68 @@
+﻿add_namespace = ChinaOSS
+
+country_event = {
+	id = ChinaOSS.1
+	is_triggered_only = yes
+	#hidden = yes
+	title = ChinaOSS.1.t
+    desc = ChinaOSS.1.desc
+    #picture = 
+    
+    option = {
+        name = ChinaOSS.1.a
+        effect_tooltip = {
+			add_political_power = -25
+			add_command_power = -10
+		}
+    }
+}
+
+state_event = {
+	id = ChinaOSS.101
+	is_triggered_only = yes
+	hidden = yes
+    
+    immediate = {
+		save_event_target_as = This_stats
+		event_target:This_stats = {
+			create_unit = {
+				division = "name = \"PRC Space Force\" division_template = \"PRC Space Force\" start_experience_factor = 1"
+				owner = PRC
+				count = 1
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+	}
+}
+
+state_event = {
+	id = ChinaOSS.102
+	is_triggered_only = yes
+	hidden = yes
+    
+    immediate = {
+		FROM = {
+			launch_nuke = {
+				state = FROM
+				use_nuke = no
+				nuke_type = nuclear_bomb
+			}
+		}
+	}
+}
+
+state_event = {
+	id = ChinaOSS.103
+	is_triggered_only = yes
+	hidden = yes
+    
+    immediate = {
+		FROM = {
+			launch_nuke = {
+				state = FROM
+				use_nuke = no
+				nuke_type = thermonuclear_bomb
+			}
+		}
+	}
+}
