@@ -1,6 +1,56 @@
 # 外交决议
 PRC_export_revolution = {
     #输出革命
+    PRC_rebuilding_lraq = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_country_flag = PRC_rebuilding_lraq_flag
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = PRC_rebuilding_lraq_tooltip
+                IRQ = {
+                    is_in_faction_with = PRC
+                }
+            }
+        }
+        fire_only_once = yes
+        cost = 350
+        days_remove = 70
+        complete_effect = {
+            hidden_effect = {
+                IRQ = {
+                    set_cosmetic_tag = IRQ_revolutionary_government
+                }
+            }
+        }
+        remove_effect = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -210
+            }
+            add_income_with_inflation = yes
+            IRQ = {
+                random_owned_controlled_state = {
+                    limit = {
+                        is_core_of = IRQ
+                    }
+                    add_extra_state_shared_building_slots = 1
+                    add_building_construction = {
+                        type = industrial_complex
+                        level = 1
+                        instant_build = yes
+                    }
+                }
+                add_stability = 0.35
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = 210
+                }
+                add_income_with_inflation = yes
+            }
+        }
+    }
     #缅甸
     PRC_contact_mynamar_comrades = {
         icon = GFX_PRC_new_left_decision
@@ -1347,6 +1397,17 @@ PRC_export_revolution = {
                         leave_faction = yes
                     }
                 }
+                every_country = {
+                    limit = {
+                        IRQ = {
+                            is_puppet_of = PREV
+                        }
+                    }
+                    end_puppet = IRQ
+                    IRQ = {
+                        leave_faction = yes
+                    }
+                }
             }
             PER = {
                 dismantle_faction = yes
@@ -1371,7 +1432,10 @@ PRC_export_revolution = {
                     target = PER
                     type = civil_war
                 }
-
+                declare_war_on = {
+                    target = IRQ
+                    type = annex_everything
+                }
             }
             add_to_variable = {
                 CPC_frame = 3
@@ -1595,19 +1659,47 @@ PRC_export_revolution = {
 			}
         }
         timeout_effect = {
+            division_template = {
+                name = "Militia divisions"
+                is_locked = no
+                force_allow_recruiting = yes
+                regiments = {
+                    militia = {
+                        x = 0
+                        y = 0
+                    }
+                    militia = {
+                        x = 0
+                        y = 1
+                    }
+                    militia = {
+                        x = 0
+                        y = 2
+                    }
+                    militia = {
+                        x = 0
+                        y = 3
+                    }
+                    militia = {
+                        x = 0
+                        y = 4
+                    }
+                }
+                priority = 0
+            }
             hidden_effect = {
                 remove_mission = PRC_red_ROK
             }
             869 = {
                 create_unit = {
-                    division = "name = \"Militia\" division_template = \"Militia Brigade\"  start_experience_factor = 0.1"
+                    division = "name = \"Militia\" division_template = \"Militia divisions\"  start_experience_factor = 0.1"
                     allow_spawning_on_enemy_provs = yes
                     owner = PRC
                 }
             }
             1412 = {
                 create_unit = {
-                    division = "name = \"Militia\" division_template = \"Militia Brigade\"  start_experience_factor = 0.1"
+                    division = "name = \"Militia\" division_template = \"Militia divisions\"  start_experience_factor = 0.1"
                     allow_spawning_on_enemy_provs = yes
                     owner = PRC
                     count = 2
@@ -1615,7 +1707,7 @@ PRC_export_revolution = {
             }
             1409 = {
                 create_unit = {
-                    division = "name = \"Militia\" division_template = \"Militia Brigade\"  start_experience_factor = 0.1"
+                    division = "name = \"Militia\" division_template = \"Militia divisions\"  start_experience_factor = 0.1"
                     allow_spawning_on_enemy_provs = yes
                     owner = PRC
                 }
@@ -3363,15 +3455,6 @@ PRC_assistance2communist = {
                 value = -3.5
             }
             add_income = yes
-            #hidden_effect = {
-            #	random_list = {
-            #		60 = {
-            #		}
-            #		40 = {
-            #			country_event = { id = china.153 days = 10 }
-            #		}
-            #	}
-            #}
             PAK = {
                 set_temp_variable = {
                     var = income_var_temp
@@ -3379,6 +3462,22 @@ PRC_assistance2communist = {
                 }
                 random_list = {
                     60 = {
+                        random_owned_controlled_state = {
+                            limit = {
+                                is_core_of = ROOT
+                                free_building_slots = {
+                                    building = industrial_complex
+                                    size > 1
+                                    include_locked = yes
+                                }
+                            }
+                            add_extra_state_shared_building_slots = 1
+                            add_building_construction = {
+                                type = industrial_complex
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
                     }
                     40 = {
                         random_owned_controlled_state = {
@@ -3405,17 +3504,6 @@ PRC_assistance2communist = {
                     value = 0.05
                 }
                 add_industrial_development = yes
-                if = {
-                    limit = {
-                        NOT = {
-                            has_idea = PRC_pakistan_industrial_support
-                        }
-                    }
-                    add_timed_idea = {
-                        idea = PRC_pakistan_industrial_support
-                        days = 70
-                    }
-                }
             }
         }
     }
@@ -3675,27 +3763,6 @@ PRC_assistance2communist = {
 
 PRC_ussr_diplomacy = {
     #对苏外交
-    PRC_USSR_diplomacy = {
-        #友好协商
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Lenins_promises
-        }
-        visible = {
-            has_completed_focus = Lenins_promises
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 15
-        modifier = {
-        }
-        complete_effect = {
-            custom_effect_tooltip = PRC_ussr_diplomacy_tt
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
     PRC_defense_north = {
         #修碉堡
         icon = GFX_PRC_new_left_decision
@@ -3935,26 +4002,6 @@ PRC_ussr_diplomacy = {
                     province = 3944
                 }
             }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    Recasting_China_Soviet_Friendship = {
-        #重铸中苏友谊
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = October_Revolution
-        }
-        visible = {
-            has_completed_focus = October_Revolution
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 15
-        modifier = {
-        }
-        complete_effect = {
         }
         ai_will_do = {
             base = 10
