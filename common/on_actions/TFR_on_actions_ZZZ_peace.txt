@@ -13189,14 +13189,42 @@ on_actions = {
 					}
 					set_global_flag = skip_default_capitulation
 				}
-								#							  #
-				# G R E A T  A S I A N  W A R # gaw
-				#							  #
-				
 				if = {
-					# THE PACIFIC WAR - EADI KILL PDTO
+					# Philippines Kill Civil War Tags
 					limit = {
-						has_global_flag = pan_asian_war_ongoing
+						FROM = {
+							OR = {
+								original_tag = PHI
+								original_tag = PRC
+								original_tag = JAP
+								is_ally_with = PRC
+								is_ally_with = JAP 
+							}
+						}
+						ROOT = {
+							OR = {
+								original_tag = NPA
+								original_tag = BAG
+								original_tag = VIS
+								original_tag = MIN
+								original_tag = TAG
+							}
+						}
+					}
+					FROM = {
+						white_peace = ROOT
+						PHI = {
+							annex_country = {
+								target = ROOT
+								transfer_troops = no
+							}
+						}
+					}
+					set_global_flag = skip_default_capitulation
+				}
+				if = {
+					# THE PACIFIC WAR - EADI KILL PDTO (last one alive version)
+					limit = {
 						FROM = {
 							OR = {
 								original_tag = PRC
@@ -13205,22 +13233,23 @@ on_actions = {
 						}
 						ROOT = {
 							OR = {
+								# original_tag = JAP
 								original_tag = AST
 								original_tag = RAJ
-								original_tag = KOR
 								original_tag = SIA
 								# original_tag = VIN
 								original_tag = LAO
 								original_tag = CAM
-								original_tag = BRM
-								original_tag = PHI
-								original_tag = INS
+								#original_tag = BRM
+								#original_tag = PHI
+								#original_tag = INS
 								original_tag = PNG
 								original_tag = NZL
-								original_tag = MAL
+								# original_tag = MAL
 								original_tag = BAN
 								original_tag = NEP
 								original_tag = BHU
+								original_tag = CHI
 								original_tag = KOR
 								original_tag = SIG
 							}
@@ -13234,28 +13263,6 @@ on_actions = {
 						load_focus_tree = generic_focus
 						add_ideas = PRC_unwilling_ally
 						clr_country_flag = pdto_member
-						every_country = {
-							limit = {
-								is_in_faction_with = ROOT
-								any_controlled_state = {
-									NOT = { is_controlled_by = ROOT }
-									is_core_of = ROOT
-									NOT = { is_core_of = PREV }
-								}
-							}
-							every_controlled_state = { 
-								limit = {
-									NOT = { is_controlled_by = ROOT }
-									is_core_of = ROOT
-									NOT = { is_core_of = PREV }
-								}
-								transfer_state_to = ROOT
-								set_state_owner_to = ROOT
-								set_state_controller_to = ROOT
-							}
-						}
-					}
-					ROOT = {
 						add_popularity = {
 							ideology = nationalist
 							popularity = 0.3
@@ -13267,10 +13274,24 @@ on_actions = {
 						set_party_name = { ideology = nationalist long_name = PRC_nationalist_party_long name = PRC_nationalist_party }
 						set_cosmetic_tag = PRC_military_administration
 						JAP_leave_PEC = yes
-						create_country_leader = {
-							expire = "1.1.1"
-							ideology = military_junta
-							traits = {
+						every_country = {
+							limit = {
+								is_in_faction_with = ROOT
+								any_controlled_state = {
+									NOT = { is_controlled_by = ROOT }
+									is_core_of = ROOT
+									NOT = { is_core_of = PREV }
+								}
+							}
+							every_controlled_state = {
+								limit = {
+									NOT = { is_controlled_by = ROOT }
+									is_core_of = ROOT
+									NOT = { is_core_of = PREV }
+								}
+								transfer_state_to = ROOT
+								set_state_owner_to = ROOT
+								set_state_controller_to = ROOT
 							}
 						}
 					}
@@ -13284,6 +13305,18 @@ on_actions = {
 							name = VIN_pepole
 							picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
 							ideology = left_wing_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = JAP
+							}
+						}
+						create_country_leader = {
+							name = PRC_He_Weidong
+							picture = "gfx/leaders/PRC/generals/He Weidong.png"
+							ideology = military_junta
 						}
 					}
 					else_if = {
@@ -13482,12 +13515,6 @@ on_actions = {
 						PRC = {
 							remove_from_faction = RAJ
 						}
-						every_country = {
-							limit = {
-								has_war_with = RAJ
-							}
-							white_peace = RAJ
-						}
 						PRC_dissolve_india = yes
 					}
 					if = {
@@ -13546,39 +13573,7 @@ on_actions = {
 					}
 					set_global_flag = skip_default_capitulation
 				}
-				if = {
-					# Philippines Kill Civil War Tags
-					limit = {
-						FROM = {
-							OR = {
-								original_tag = PHI
-								original_tag = PRC
-								original_tag = JAP
-								is_ally_with = PRC
-								is_ally_with = JAP 
-							}
-						}
-						ROOT = {
-							OR = {
-								original_tag = NPA
-								original_tag = BAG
-								original_tag = VIS
-								original_tag = MIN
-								original_tag = TAG
-							}
-						}
-					}
-					FROM = {
-						white_peace = ROOT
-						PHI = {
-							annex_country = {
-								target = ROOT
-								transfer_troops = no
-							}
-						}
-					}
-					set_global_flag = skip_default_capitulation
-				}
+				
 				if = {
 					# THE PACIFIC WAR - PDTO KILL EADI (last one alive version)
 					limit = {
@@ -15246,6 +15241,377 @@ on_actions = {
 			}
 			#FACTION PEACE DEALS GO HERE
 			else = {
+				
+				#							  #
+				# G R E A T  A S I A N  W A R # gaw
+				#							  #
+				
+				if = {
+					# THE PACIFIC WAR - EADI KILL PDTO
+					limit = {
+						has_global_flag = pan_asian_war_ongoing
+						FROM = {
+							OR = {
+								original_tag = PRC
+								is_ally_with = PRC
+							}
+						}
+						ROOT = {
+							OR = {
+								original_tag = AST
+								original_tag = RAJ
+								original_tag = KOR
+								original_tag = SIA
+								# original_tag = VIN
+								original_tag = LAO
+								original_tag = CAM
+								original_tag = BRM
+								original_tag = PHI
+								original_tag = INS
+								original_tag = PNG
+								original_tag = NZL
+								original_tag = MAL
+								original_tag = BAN
+								original_tag = NEP
+								original_tag = BHU
+								original_tag = CHI
+								original_tag = KOR
+								original_tag = SIG
+							}
+						}
+					}
+					FROM = {
+						puppet = ROOT
+						white_peace = ROOT
+					}
+					ROOT = {
+						load_focus_tree = generic_focus
+						add_ideas = PRC_unwilling_ally
+						clr_country_flag = pdto_member
+						every_country = {
+							limit = {
+								is_in_faction_with = ROOT
+								any_controlled_state = {
+									NOT = { is_controlled_by = ROOT }
+									is_core_of = ROOT
+									NOT = { is_core_of = PREV }
+								}
+							}
+							every_controlled_state = { 
+								limit = {
+									NOT = { is_controlled_by = ROOT }
+									is_core_of = ROOT
+									NOT = { is_core_of = PREV }
+								}
+								transfer_state_to = ROOT
+								set_state_owner_to = ROOT
+								set_state_controller_to = ROOT
+							}
+						}
+					}
+					ROOT = {
+						add_popularity = {
+							ideology = nationalist
+							popularity = 0.3
+						}
+						set_politics = {
+							ruling_party = nationalist
+							elections_allowed = no 
+						}
+						set_party_name = { ideology = nationalist long_name = PRC_nationalist_party_long name = PRC_nationalist_party }
+						set_cosmetic_tag = PRC_military_administration
+						JAP_leave_PEC = yes
+						create_country_leader = {
+							expire = "1.1.1"
+							ideology = military_junta
+							traits = {
+							}
+						}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = VIN
+							}
+						}
+						create_country_leader = {
+							name = VIN_pepole
+							picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+							ideology = left_wing_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = JAP
+							}
+						}
+						create_country_leader = {
+							name = PRC_He_Weidong
+							picture = "gfx/leaders/PRC/generals/He Weidong.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = AST
+							}
+						}
+						create_country_leader = {
+							name = PRC_Li_Qiaoming
+							picture = "gfx/leaders/PRC/generals/Li Qiaoming.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = LAO
+							}
+						}
+						create_country_leader = {
+							name = PRC_Han_Weiguo
+							picture = "gfx/leaders/PRC/generals/Han Weiguo.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = CAM
+							}
+						}
+						create_country_leader = {
+							name = PRC_Wu_Yanan
+							picture = "gfx/leaders/PRC/generals/Wu Yanan.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = SIA
+							}
+						}
+						create_country_leader = {
+							name = PRC_Huang_Ming
+							picture = "gfx/leaders/PRC/generals/Huang Ming.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = MAL
+							}
+						}
+						create_country_leader = {
+							name = PRC_Qin_Shengxiang
+							picture = "gfx/leaders/PRC/admirals/Qin Shengxiang.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = SIG
+							}
+						}
+						create_country_leader = {
+							name = PRC_Hu_Zhongming
+							picture = "gfx/leaders/PRC/admirals/Hu Zhongming.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = INS
+							}
+						}
+						create_country_leader = {
+							name = PRC_Ding_Laihang
+							picture = "gfx/leaders/PRC/generals/Ding Laihang.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = PHI
+							}
+						}
+						create_country_leader = {
+							name = PRC_Wang_Qiang
+							picture = "gfx/leaders/PRC/generals/Wang Qiang.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = PNG
+							}
+						}
+						create_country_leader = {
+							name = PRC_Chang_Dingqiu
+							picture = "gfx/leaders/PRC/generals/Chang Dingqiu.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = NZL
+							}
+						}
+						create_country_leader = {
+							name = PRC_Yi_Xiaoguang
+							picture = "gfx/leaders/PRC/generals/Yi Xiaoguang.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = BAN
+							}
+						}
+						create_country_leader = {
+							name = PRC_Li_Shangfu
+							picture = "gfx/leaders/PRC/generals/Li Shangfu.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = NEP
+							}
+						}
+						create_country_leader = {
+							name = PRC_Lin_Xiangyang
+							picture = "gfx/leaders/PRC/generals/Lin Xiangyang.png"
+							ideology = military_junta
+						}
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								original_tag = BHU
+							}
+						}
+						create_country_leader = {
+							name = PRC_Liu_Zhenli
+							picture = "gfx/leaders/PRC/generals/Liu Zhenli.png"
+							ideology = military_junta
+						}
+					}
+					else = {
+						create_country_leader = {
+							expire = "1.1.1"
+							ideology = military_junta
+							traits = {
+							}
+						}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = SIG
+							}
+						}
+						SIG = {
+							add_ideas = SIG_plan
+						}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = JAP
+							}
+						}
+						PRC = {
+							transfer_state = 876
+						}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = RAJ
+							}
+						}
+						FROM = {
+							end_puppet = RAJ
+						}
+						PRC = {
+							remove_from_faction = RAJ
+						}
+						every_country = {
+							limit = {
+								has_war_with = RAJ
+							}
+							white_peace = RAJ
+						}
+						PRC_dissolve_india = yes
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = AST
+							}
+						}
+						#set_global_flag = solstron_joins_the_pla
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = KOR
+							}
+						}
+						PRK = {
+							annex_country = {
+								target = KOR
+								transfer_troops = no
+							}
+						}
+						PRC = {
+							add_to_faction = PRK
+						}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									original_tag = CHI
+									original_tag = SIK
+									original_tag = TIB
+								}
+							}
+						}
+						PRC = {
+							annex_country = {
+								target = ROOT
+								transfer_troops = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								original_tag = SAJ
+							}
+						}
+						PAK = {
+							annex_country = {
+								target = SAJ
+								transfer_troops = no
+							}
+						}
+					}
+					set_global_flag = skip_default_capitulation
+				}
 				
 				if = {
 					# THE PACIFIC WAR - PDTO KILL EADI
