@@ -127,38 +127,28 @@ PRC_electronic_warfare = {
 		scope = PRC
 		days = 30
 	}
-	add_dynamic_modifier = {
-		modifier = PRC_ECM_state_modifier_2
-		scope = This.controller
-		days = 30
-	}
-	controller = {
-		country_event = {
-			id = ChinaOSS.1
-			days = 0
+	if = {
+		limit = {
+			NOT = {controller = {tag = PRC}}
 		}
-		add_political_power = -25
+		add_dynamic_modifier = {
+			modifier = PRC_ECM_state_modifier_2
+			scope = This.controller
+			days = 30
+		}
+		controller = {
+			country_event = {
+				id = ChinaOSS.1
+				days = 0
+			}
+			add_political_power = -25
+		}
 	}
 }
 
 oss_orbital_support = {
 	PRC = {
-		division_template = {
-			name = "PRC Space Force"
-			#division_cap = 
-			#division_names_group = 
-			priority = 2
-			regiments = {
-				infantry = { x = 0 y = 0 }
-				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }
-				infantry = { x = 0 y = 3 }
-			}
-			support = {
-				military_police = { x = 0 y = 0 }
-			}
-		}
-		add_to_variable = { PRC_oss_space_armed_forces_num = -1 }
+		add_to_variable = { PRC_oss_space_armed_forces_num = -3 }
 	}
 	state_event = {
 		id = chinaOSS.101
@@ -180,5 +170,217 @@ oss_thermonuclear_strike = {
 		id = chinaOSS.103
 		days = 1
 		trigger_for = PRC
+	}
+}
+
+oss_nuclear_counterattack = {
+	PRC = {
+		sound_effect = siren_sound_effect
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = RAJ_india_dead
+				}
+			}
+			launch_nuke = {
+				province = 2086
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 4915
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 12137
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 4516
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 4245
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 9975
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 1349
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 12182
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 10255
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 8087
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 8011
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 4344
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 10278
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 10274
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 4883
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 12307
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 9951
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 9973
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 12366
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 4104
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			launch_nuke = {
+				province = 10401
+				controller = RAJ
+				nuke_type = thermonuclear_bomb
+			}
+			RAJ =  {
+				add_ideas = RAJ_destroyed_country
+			}
+			#every_country = {
+			#	goto_state = 1379
+			#}
+		}
+		if = {
+			limit = {
+				OR = {
+					JAP = {
+						NOT = { is_subject_of = PRC }
+					}
+					JPL = {
+						NOT = { is_ally_with = PRC }
+					}
+					NOT = { country_exists = JPL }
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = JAP
+				}
+				PREV = {
+					launch_nuke = {
+						state = PREV.THIS
+						controller = JAP
+						nuke_type = thermonuclear_bomb
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					AST = {
+						NOT = { is_subject_of = PRC }
+					}
+					AST = {
+						NOT = { is_ally_with = PRC }
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = AST
+				}
+				PREV = {
+					launch_nuke = {
+						state = PREV.THIS
+						controller = AST
+						nuke_type = thermonuclear_bomb
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					country_exists = KOR
+					NOT = { country_exists = PRK }
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = KOR
+				}
+				PREV = {
+					launch_nuke = {
+						state = PREV.THIS
+						controller = KOR
+						nuke_type = thermonuclear_bomb
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					country_exists = PTF
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = PTF
+				}
+				PREV = {
+					launch_nuke = {
+						state = PREV.THIS
+						controller = PTF
+						nuke_type = thermonuclear_bomb
+					}
+				}
+			}
+		}
 	}
 }

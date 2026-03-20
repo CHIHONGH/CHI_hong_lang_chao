@@ -7,10 +7,16 @@ scripted_gui = {
 		visible = {
 			ROOT = { tag = PRC }
 			PRC = { NOT = { has_country_flag = PRC_oss_miniwindow } }
-			NOT = { controller = { is_controlled_by_ROOT_or_ally = yes } }
+			OR = {
+				NOT = { controller = { is_controlled_by_ROOT_or_ally = yes } }
+				AND = {
+					NOT = { is_fully_controlled_by = PRC }
+					is_controlled_by = PRC
+				}
+			}
 			#OR = {	#这里写条件
 				#has_country_flag = 
-				#has_completed_focus =
+				#has_completed_focus = PLA_orbital_drop_new
 			#}
 		}
 ##
@@ -40,7 +46,14 @@ scripted_gui = {
 				PRC_oss_spy_satellite = yes
 			}
 			oss_ECM_click = {#电子战
-				PRC = { add_political_power = -25 }
+				PRC = {
+					add_political_power = -10
+					add_equipment_to_stockpile = {
+						type = ballistic_missile_equipment_3
+						amount = -1
+						producer = PRC
+					}
+				}
 				set_state_flag = { 
 					flag = PRC_ECM_state
 					days = 30
@@ -55,19 +68,29 @@ scripted_gui = {
 						days = 2
 						value = 1
 					}
-				PRC = {
-					set_country_flag = { 
+					set_state_flag = { 
 						flag = PRC_orbital_support
 						days = 16
 						value = 1
 					}
+				PRC = {
+					#set_country_flag = { 
+					#	flag = PRC_orbital_support
+					#	days = 16
+					#	value = 1
+					#}
 				}
 				set_temp_variable = { oss_orbital_support_var = 2 }
 				oss_orbital_support = yes
 			}
 			oss_tactical_nuclerar_strike_click = {#战术核打击
 				PRC = {
-					add_command_power = -10
+					add_command_power = -5
+					add_equipment_to_stockpile = {
+						type = nuclear_missile_equipment_1
+						amount = -1
+						producer = PRC
+					}
 				}
 				set_state_flag = { 
 					flag = PRC_nuclear_strike_state
@@ -83,7 +106,12 @@ scripted_gui = {
 			}
 			oss_thermonuclear_strike_click = {#战略核打击
 				PRC = {
-					add_command_power = -25
+					add_command_power = -5
+					add_equipment_to_stockpile = {
+						type = nuclear_missile_equipment_2
+						amount = -1
+						producer = PRC
+					}
 				}
 				set_state_flag = { 
 					flag = PRC_nuclear_strike_state
@@ -129,7 +157,10 @@ scripted_gui = {
 				}
 			}
 			OSS_nuclear_triad1_button_click = {#毁灭一切
-				
+				every_country = {
+					news_event = ChinaOSS.2
+				}
+				oss_nuclear_counterattack = yes
 			}
 		}
 ##
@@ -140,35 +171,84 @@ scripted_gui = {
 			oss_spy_satellite_click_enabled = {
 				controller = { NOT = { has_country_flag = PRC_oss_spy_satellite_surveillance } }
 				PRC = { has_political_power > 100 }
+				NOT = {
+					is_fully_controlled_by = PRC
+					is_controlled_by = PRC
+				}
 			}
 			oss_ECM_click_enabled = {
 				NOT = { has_state_flag = PRC_ECM_state }
-				controller = { has_war_with = PRC }
-				PRC = { has_political_power > 40 }
+				OR = {
+					controller = { has_war_with = PRC }
+					AND = {
+						NOT = { is_fully_controlled_by = PRC }
+						is_controlled_by = PRC
+					}
+				}
+				PRC = {
+					has_political_power > 10
+					has_equipment = {
+						ballistic_missile_equipment_3 > 0
+					}
+				}
 			}
 			oss_orbital_support_click_enabled = {
-				controller = { has_war_with = PRC }
+				OR = {
+					controller = { has_war_with = PRC }
+					AND = {
+						NOT = { is_fully_controlled_by = PRC }
+						is_controlled_by = PRC
+					}
+				}
+				NOT = { has_state_flag = PRC_orbital_support }
 				PRC = {
-					NOT = { has_country_flag = PRC_orbital_support }
+					#NOT = { has_country_flag = PRC_orbital_support }
 					check_variable = { PRC_oss_space_armed_forces_num > 0 }
 				}
 			}
 			PRC_nuclear_code_button_click_enabled = {
-				#has_country_flag = has_oss_nuclear_code
+				#has_completed_focus = PRC_chinas_greatest_hour
 			}
 			oss_tactical_nuclerar_strike_click_enabled = {
-				PRC = { command_power > 25 }
+				PRC = {
+					command_power > 5
+					has_equipment = {
+						nuclear_missile_equipment_1 > 0
+					}
+				}
 				NOT = { has_state_flag = PRC_nuclear_strike_state }
 				controller = { has_war_with = PRC }
 			}
 			oss_thermonuclear_strike_click_enabled = {
 				NOT = { has_state_flag = PRC_nuclear_strike_state }
-				PRC = { command_power > 50 }
+				PRC = {
+					command_power > 5
+					has_equipment = {
+						nuclear_missile_equipment_2 > 0
+					}
+				}
 				controller = { has_war_with = PRC }
+			}
+			OSS_nuclear_triad2_button_click_enabled = {
+				PRC = {
+					OR = { #投降度大于50%或者死亡一千五百万人
+						surrender_progress > 0.5
+						casualties_k > 15000
+					}
+				}
+			}
+			OSS_nuclear_triad3_button_click_enabled = {
+				PRC = {
+					has_war = yes
+				}
 			}
 			OSS_nuclear_triad1_button_click_enabled = {
 				PRC = {
 					has_war = yes
+					OR = { #投降度大于50%或者死亡一千五百万人
+						surrender_progress > 0.5
+						casualties_k > 15000
+					}
 					check_variable = {
 						OSS_nuclear_triad2_button_var = 2
 					}
@@ -274,7 +354,7 @@ scripted_gui = {
 			NOT = { controller = { is_controlled_by_ROOT_or_ally = yes } }
 			#OR = {	#这里写条件
 				#has_country_flag = 
-				#has_completed_focus =
+				#has_completed_focus = PLA_orbital_drop_new
 			#}
 		}
 

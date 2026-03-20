@@ -1,0 +1,1001 @@
+USA_second_american_civil_war_category = {
+	USA_recruit_foreign_volunteers_decision = {
+		icon = generic_political_discourse
+		cost = ROOT.USA_recruit_foreign_volunteers_cost_var
+		days_remove = 35
+		days_re_enable = 105
+		visible = {
+			has_country_flag = USA_enable_recruit_foreign_volunteers_flag
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_recruiting_militia_flag
+			}
+			has_capitulated = no
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0.5
+				check_variable = {
+					var = ROOT.USA_recruit_foreign_volunteers_cost_var
+					value = 60
+					compare = greater_than_or_equals
+				}
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = {
+					var = ROOT.USA_recruit_foreign_volunteers_cost_var
+					value = 120
+					compare = greater_than_or_equals
+				}
+			}
+			modifier = {
+				factor = 0
+				check_variable = {
+					var = ROOT.USA_recruit_foreign_volunteers_cost_var
+					value = 240
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_raise_legitimacy_decision complete_effect"
+			custom_effect_tooltip = USA_raise_legitimacy_tooltip
+			hidden_effect = {
+				multiply_variable = {
+					var = ROOT.USA_recruit_foreign_volunteers_cost_var
+					value = 2
+				}
+			}
+			set_country_flag = {
+				flag = USA_recruiting_militia_flag
+				days = 35
+				value = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_raise_legitimacy_decision remove_effect"
+			random_controlled_state = {
+				limit = {
+					is_capital = yes
+				}
+				set_temp_variable = {
+					var = USA_recruit_militia_tooltip_var_temp
+					value = 3
+				}
+				custom_effect_tooltip = USA_raise_militia_state_tooltip
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = ROOT
+					}
+				}
+			}
+		}
+	}
+	USA_raise_legitimacy_decision = {
+		icon = generic_political_discourse
+		cost = ROOT.USA_raise_legitimacy_cost_var
+		days_remove = 35
+		days_re_enable = 70
+		visible = {
+			has_country_flag = USA_enable_raise_legitimacy_flag
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0.5
+				check_variable = {
+					var = ROOT.USA_raise_legitimacy_cost_var
+					value = 40
+					compare = greater_than_or_equals
+				}
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = {
+					var = ROOT.USA_raise_legitimacy_cost_var
+					value = 80
+					compare = greater_than_or_equals
+				}
+			}
+			modifier = {
+				factor = 0
+				check_variable = {
+					var = ROOT.USA_raise_legitimacy_cost_var
+					value = 160
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_raise_legitimacy_decision complete_effect"
+			custom_effect_tooltip = USA_raise_legitimacy_tooltip
+			hidden_effect = {
+				multiply_variable = {
+					var = ROOT.USA_raise_legitimacy_cost_var
+					value = 2
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_raise_legitimacy_decision remove_effect"
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.05
+			}
+			add_legit = yes
+		}
+	}
+}
+
+USA_recoring_category = {
+	USA_recruit_targeted_decision = {
+		icon = USA_recruit_militia
+		cost = recruit_pp_var
+		days_remove = recruit_militia_time_var
+		fire_only_once = yes
+		target_array = USA.coreable_states_capitals
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		allowed = {
+			USA_is_civil_war_faction = yes
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_claimed_by = ROOT
+					is_core_of = ROOT
+				}
+				is_controlled_by = ROOT
+			}
+		}
+		visible = {
+			has_global_flag = USA_american_civil_war_global
+			has_country_flag = USA_enable_militia_recruitment_flag
+			NOT = {
+				has_completed_focus = USB_rebirth
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_recruiting_militia_flag
+			}
+			USA_state_recruit_scripted_trigger = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_recruit_targeted_decision [FROM.GetName] complete_effect"
+			set_country_flag = {
+				flag = USA_recruiting_militia_flag
+				days = 35
+				value = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_recruit_targeted_decision [FROM.GetName] remove_effect"
+			clr_country_flag = USA_recruiting_militia_flag
+			USA_militia_recruitment_scripted_effect = yes
+		}
+		cancel_effect = {
+			clr_country_flag = USA_recruiting_militia_flag
+		}
+		#cancel_trigger = {
+		#	USA_state_coring_scripted_trigger = no
+		#}
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 10
+				USA_is_rival_tag = yes
+			}
+			modifier = {
+				add = -75
+				num_divisions > 140
+				NOT = {
+					tag = USC
+					tag = USB
+					num_divisions < 140
+				}
+			}
+		}
+	}
+	USA_reintegrate_targeted_decision = {
+		icon = USA_core_state
+		cost = recore_pp_var
+		days_remove = recore_time_var
+		fire_only_once = no
+		target_array = USA.coreable_states_capitals
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		allowed = {
+			USA_is_civil_war_faction = yes
+		}
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		available = {
+			USA_state_coring_scripted_trigger = yes
+		}
+		visible = {
+			USA_has_unified_theater = yes
+			NOT = {
+				has_completed_focus = USB_rebirth
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_reintegrate_targeted_decision [FROM.GetName] complete_effect"
+			use_coring_cost_reduction = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_reintegrate_targeted_decision [FROM.GetName] remove_effect"
+			USA_state_coring_scripted_effect = yes
+		}
+		cancel_trigger = {
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 2
+				check_variable = {
+					var = recore_pp_var
+					value = 45
+					compare = less_than_or_equals
+				}
+			}
+		}
+	}
+	USB_caligula_reintegrate_generic_targeted_decision = {
+		icon = USA_core_state
+		cost = recore_pp_var
+		days_remove = recore_time_var
+		fire_only_once = no
+		target_array = USA.coreable_states_capitals
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		allowed = {
+			tag = USB
+		}
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				OR = {
+					has_dynamic_modifier = {
+						modifier = USB_western_ward
+						scope = USB
+					}
+					has_dynamic_modifier = {
+						modifier = USB_southern_ward
+						scope = USB
+					}
+					has_dynamic_modifier = {
+						modifier = USB_michigan_ward
+						scope = USB
+					}
+					has_dynamic_modifier = {
+						modifier = USB_home_ward
+						scope = USB
+					}
+					has_dynamic_modifier = {
+						modifier = USB_northeastern_ward
+						scope = USB
+					}
+				}
+				NOT = {
+					is_core_of = ROOT
+					has_dynamic_modifier = {
+						modifier = USB_trump_ward
+						scope = USB
+					}
+				}
+			}
+		}
+		available = {
+			USA_state_coring_scripted_trigger = yes
+		}
+		visible = {
+			tag = USB
+			has_completed_focus = USB_rebirth
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_reintegrate_targeted_decision [FROM.GetName] complete_effect"
+			use_coring_cost_reduction = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_reintegrate_targeted_decision [FROM.GetName] remove_effect"
+			USA_state_coring_scripted_effect = yes
+		}
+		cancel_trigger = {
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 2
+				check_variable = {
+					var = recore_pp_var
+					value = 45
+					compare = less_than_or_equals
+				}
+			}
+		}
+	}
+	USB_caligula_reintegrate_trump_targeted_decision = {
+		icon = USA_core_state
+		cost = recore_pp_var
+		days_remove = recore_time_var
+		fire_only_once = no
+		target_array = USA.coreable_states_capitals
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		allowed = {
+			tag = USB
+		}
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				has_dynamic_modifier = {
+					modifier = USB_trump_ward
+					scope = USB
+				}
+				has_state_category = wasteland
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		available = {
+			USA_state_coring_scripted_trigger = yes
+		}
+		visible = {
+			tag = USB
+			has_completed_focus = USB_rebirth
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_reintegrate_targeted_decision [FROM.GetName] complete_effect"
+			use_coring_cost_reduction = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_reintegrate_targeted_decision [FROM.GetName] remove_effect"
+			USA_state_coring_scripted_effect = yes
+		}
+		cancel_trigger = {
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 2
+				check_variable = {
+					var = recore_pp_var
+					value = 45
+					compare = less_than_or_equals
+				}
+			}
+		}
+	}
+}
+
+USA_reconstruction_category = {
+	USA_restore_393_decision = {
+		icon = generic_plant_material
+		custom_cost_text = dx_more_than_45B
+		days_remove = 175
+		fire_only_once = yes
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 45
+				compare = greater_than_or_equals
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 393
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		visible = {
+			has_completed_focus = USA_american_restoration_act
+			controls_state = 393
+		}
+		available = {
+			393 = {
+				free_building_slots = {
+					building = arms_factory
+					size > 2
+					include_locked = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+		modifier = {
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -45
+				}
+				add_income = yes
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			393 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	USA_restore_1099_decision = {
+		icon = generic_plant_material
+		custom_cost_text = dx_more_than_60B
+		days_remove = 175
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 60
+				compare = greater_than_or_equals
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1099
+			}
+		}
+		visible = {
+			has_completed_focus = USA_american_restoration_act
+			controls_state = 1099
+		}
+		available = {
+			1099 = {
+				free_building_slots = {
+					building = office_park
+					size > 2
+					include_locked = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+		modifier = {
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -45
+				}
+				add_income = yes
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			1099 = {
+				increase_state_category = yes
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	USA_restore_1099_decision = {
+		icon = generic_plant_material
+		custom_cost_text = dx_more_than_45B
+		days_remove = 175
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 45
+				compare = greater_than_or_equals
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1099
+			}
+		}
+		visible = {
+			has_completed_focus = USA_american_restoration_act
+			controls_state = 1099
+		}
+		available = {
+			1099 = {
+				free_building_slots = {
+					building = office_park
+					size > 2
+					include_locked = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+		modifier = {
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -45
+				}
+				add_income = yes
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			1099 = {
+				increase_state_category = yes
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+USA_restoring_american_foreign_influence_category = {
+	USA_reassert_ourselves_decision = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_the_big_stick_policy
+			is_in_faction = no
+			# NOT = {
+			# 	tag = USC
+			# 	tag = USB
+			# }
+		}
+		available = {
+			USA_controls_all_cores_trigger = yes
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = USA_reconstruction_dynamic
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+			# modifier = {
+			# 	factor = 0
+			# 	tag = USC
+			# 	has_government = authoritarian_democrat
+			# }
+			# modifier = {
+			# 	factor = 2
+			# 	tag = USB
+			# }
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_join_nato_decision complete_effect"
+			if = {
+				limit = {
+					tag = APA
+				}
+				create_faction = APA_solidarity_pact_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+			}
+			else_if = {
+				limit = {
+					tag = NSM
+				}
+				create_faction = NSM_unity_pact_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+			}
+			else = {
+				create_faction = PTF_american_treaty_organization_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+			}
+		}
+	}
+	USA_join_nato_decision = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_the_big_stick_policy
+			is_in_faction = no
+			any_other_country = {
+				has_country_flag = NATO_current_leader
+			}
+		}
+		available = {
+			USA_controls_all_cores_trigger = yes
+			has_democratic_form_of_government = yes
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = USA_reconstruction_dynamic
+				}
+				any_other_country = {
+					has_country_flag = NATO_current_leader
+					has_war_with = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 0
+				tag = USC
+				has_government = authoritarian_democrat
+			}
+			modifier = {
+				factor = 2
+				tag = USB
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_join_nato_decision complete_effect"
+			custom_effect_tooltip = unfinished_content_tooltip
+			NATO_join_faction_effect = yes
+		}
+	}
+	USA_join_ptdo_decision = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_the_big_stick_policy
+			is_in_faction = no
+			JAP = {
+				is_faction_leader = yes
+				is_in_faction = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+		}
+		available = {
+			USA_controls_all_cores_trigger = yes
+			has_democratic_form_of_government = yes
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = USA_reconstruction_dynamic
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 0
+				tag = USB
+				has_government = authoritarian_democrat
+			}
+			modifier = {
+				factor = 2
+				tag = USC
+			}
+			modifier = {
+				add = 100
+				tag = PTF
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_join_nato_decision complete_effect"
+			custom_effect_tooltip = unfinished_content_tooltip
+			JAP = {
+				add_to_faction = ROOT
+			}
+		}
+	}
+	USA_operation_crimson_decision = {
+		icon = generic_prepare_civil_war
+		days_remove = 14
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_liberate_the_great_north
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = CAN
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_operation_crimson_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+			CAN = {
+				add_war_support = -0.90
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_operation_crimson_decision remove_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = QUE
+						tag = USN
+						tag = CAN
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+
+PTF_deal_with_USN = {
+		visible = {
+			has_completed_focus = USA_liberate_the_great_north
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = USN
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		icon = generic_prepare_civil_war
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		fire_only_once = yes
+		days_remove = 25
+		modifier = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			PTF = {
+				add_to_faction = USN
+			}
+			hidden_effect = {
+				country_event = {
+					id = ptf.1919
+					days = 1
+				}
+			}
+		}
+	}
+
+
+	USA_operation_green_decision = {
+		icon = generic_prepare_civil_war
+		days_remove = 14
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_secure_the_south
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = BRN
+							tag = BSK
+							tag = SIN
+							tag = CDJ
+							tag = GUC
+							tag = LFM
+							tag = ZAP
+							tag = MEX
+							tag = CAS
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_operation_green_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_operation_green_decision remove_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = BRN
+						tag = BSK
+						tag = SIN
+						tag = CDJ
+						tag = GUC
+						tag = LFM
+						tag = ZAP
+						tag = MEX
+						tag = CAS
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+	USA_operation_gray_decision = {
+		icon = generic_prepare_civil_war
+		days_remove = 14
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PTF_the_new_marshal_plan
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = ELS
+							tag = NIC
+							tag = GUA
+							tag = HON
+							tag = COS
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_operation_gray_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision USA_operation_gray_decision remove_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = ELS
+						tag = NIC
+						tag = GUA
+						tag = HON
+						tag = COS
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+}
+
+

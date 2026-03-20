@@ -1,0 +1,96 @@
+sub_units = {
+
+	Space_expeditionary_forces = {#星际远征军
+		sprite = mechanized
+		map_icon_category = infantry
+		can_be_parachuted = yes
+		transport = mechanized_equipment
+		
+		priority = 5000
+		active = no
+
+		type = {
+			mechanized
+		}
+	
+		group = mobile
+		
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_army
+		}
+		
+		combat_width = 4
+		
+		#Size Definitions
+		max_strength = 40
+		max_organisation = 75
+		default_morale = 1
+		manpower = 1500
+
+		#Misc Abilities
+		training_time = 300
+		suppression = 7
+		weight = 0.8
+		recon = 0.5
+		Initiative = 0.05
+		
+		supply_consumption = 0.12
+
+		essential = {
+			infantry_equipment
+			mechanized_equipment
+			support_equipment
+			exoskeleton_equipment
+		}
+		need = {
+			infantry_equipment = 400
+			exoskeleton_equipment = 150
+			support_equipment = 100
+			mechanized_equipment = 50
+		}
+		
+		plains = {
+			movement = 0.25
+		}
+		desert = {
+			movement = 0.25
+		}
+		mountain = {
+			attack = 0.5
+			movement = 0.25
+		}
+	    hills = {
+			attack = 0.25
+			movement = 0.25
+		}
+		river = {
+			attack = 0.6
+			movement = 0.50
+		}
+		amphibious = {
+			attack = 0.7
+		}
+		forest = {
+			attack = 0.15
+			movement = 0.25
+		}
+		urban = {
+			attack = 0.3
+			defence = 0.5
+			movement = 0.25
+		}
+		fort = {
+			attack = 0.25
+		}
+		marsh = {
+			attack = 0.4
+			movement = 0.25
+		}
+		jungle = {
+			attack = 0.3
+			movement = 0.25
+		}
+	}
+}
