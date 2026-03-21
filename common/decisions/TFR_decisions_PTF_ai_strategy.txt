@@ -1,0 +1,206 @@
+PTF_ai_strategy = {
+	PTF_add_new_equipment_designer = {
+		#icon = generic_industry
+		visible = {
+			original_tag = PTF
+		}
+
+		available = {
+			date > 2021.11.01
+			PRC = {
+				OR = {
+					has_country_flag = PTF_difficulty_Hard
+					has_country_flag = PTF_difficulty_Extremely_hard
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			create_equipment_variant = {
+				name = "Abrams X I"
+				type = modern_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_heavy_cannon_3
+					turret_type_slot = tank_unmanned_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension
+					armor_type_slot = tank_cast_armor
+					engine_type_slot = tank_gas_turbine_engine
+					special_type_slot_1 = tank_radio_3
+					special_type_slot_2 = auto_loader
+					special_type_slot_3 = smoke_launchers
+					special_type_slot_4 = electronic_warfare_system
+					special_type_slot_5 = gunner_thermal_2
+					special_type_slot_6 = active_protection_system
+					special_type_slot_7 = turret_mounted_atgm
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 18
+					tank_nsb_armor_upgrade = 12
+				}
+				icon = "gfx/interface/technologies/armor/MBT_2006_M1A2_Abrams.dds"
+			}
+
+			create_equipment_variant = {
+				name = "M10 Booker I"
+				type = light_tank_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon_3
+					turret_type_slot = tank_light_three_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_cast_armor
+					engine_type_slot = tank_gasoline_engine
+					special_type_slot_1 = tank_radio_3
+					special_type_slot_2 = turret_mounted_atgm
+					special_type_slot_3 = smoke_launchers
+					special_type_slot_4 = turret_mounted_atgm
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 12
+					tank_nsb_armor_upgrade = 8
+				}
+				icon = "gfx/interface/technologies/armor/LT_2000_M1128_Stryker.dds"
+			}
+
+			create_equipment_variant = {
+				name = "A-20 I"
+				type = small_plane_cas_airframe_4
+				modules = {
+					fixed_main_weapon_slot = medium_bomb_bay
+					fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+					fixed_auxiliary_weapon_slot_2 = medium_bomb_bay
+					fixed_auxiliary_weapon_slot_3 = medium_bomb_bay
+					fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
+					engine_type_slot = engine_4_2x
+					special_type_slot_1 = fuel_tanks_small
+					special_type_slot_2 = ai_targeting_computer_small
+					special_type_slot_3 = non_strategic_materials_small_3
+					special_type_slot_4 = non_strategic_materials_small_3
+					special_type_slot_5 = non_strategic_materials_small_3
+				}
+				icon = "GFX_USA_CAS2_medium"
+			}
+		}
+	}
+
+	USN_retire_warship = {
+		visible = {
+			original_tag = USN
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			transfer_navy = {
+				target = JAP
+			}
+		}
+	}
+
+	PTF_naval_ambition_I = {
+		visible = {
+			original_tag = PTF
+		}
+
+		available = {
+			PRC = {
+				has_country_flag = PTF_difficulty_Simple
+			}
+			NOT = { country_exists = USN }
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			PTF_naval_ambition_I_effect = yes
+		}
+	}
+
+	PTF_naval_ambition_II = {
+		visible = {
+			original_tag = PTF
+		}
+
+		available = {
+			PRC = {
+				has_country_flag = PTF_difficulty_Normal
+			}
+			NOT = { country_exists = USN }
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			PTF_naval_ambition_II_effect = yes
+		}
+	}
+
+	PTF_naval_ambition_III = {
+		visible = {
+			original_tag = PTF
+		}
+
+		available = {
+			PRC = {
+				OR = {
+					has_country_flag = PTF_difficulty_Hard
+					has_country_flag = PTF_difficulty_Extremely_hard
+				}
+			}
+			NOT = { country_exists = USN }
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			PTF_naval_ambition_III_effect = yes
+		}
+	}
+
+	PTF_naval_ambition_VI = {
+		visible = {
+			original_tag = PTF
+		}
+
+		available = {
+			is_debug = yes
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				PTF_naval_ambition_III_effect = yes
+				PTF_naval_ambition_III_effect = yes
+				PTF_naval_ambition_III_effect = yes
+				PTF_naval_ambition_III_effect = yes
+				PTF_naval_ambition_III_effect = yes
+			}
+		}
+	}
+}
