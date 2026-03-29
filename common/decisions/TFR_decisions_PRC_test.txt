@@ -78,6 +78,57 @@ debug_decisions = {
 		}
 	}
 
+	PRC_arsenal_ship_equipment_debug = {
+		visiable = {
+			original_tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				cruise_antiship_missile = 1
+				arsenal_ship_equipment = 1
+				early_ship_hull_heavy = 1
+				basic_ship_hull_heavy = 1
+				improved_ship_hull_heavy = 1
+				advanced_ship_hull_heavy = 1
+				ship_hull_super_heavy = 1
+				ship_hull_super_heavy_2 = 1
+				ship_hull_super_heavy_3 = 1
+				basic_heavy_armor_scheme = 1
+				improved_heavy_armor_scheme = 1
+
+				Tremendous_power = 1
+			}
+		
+			add_equipment_to_stockpile = {
+				type = cruise_antiship_missile_equipment_1
+				amount = 2000
+				producer = PRC
+			}
+		}
+	}
+
+	PRC_arsenal_ship_equipment_debug_2 = {
+		visiable = {
+			original_tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		days_remove = 120
+		modifier = {
+			carrier_capacity_penalty_reduction = -2
+			carrier_night_traffic = 1
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = cruise_antiship_missile_equipment_1
+				amount = 2000
+				producer = PRC
+			}
+		}
+	}
+
 	PRC_increase_national_nuclear_power_capability = {
 		visiable = {
 			original_tag = PRC
@@ -99,12 +150,12 @@ debug_decisions = {
 			}
 			add_equipment_to_stockpile = {
 				type = antiship_missile_equipment_3
-				amount = 1000
+				amount = 5000
 				producer = PRC
 			}
 			add_equipment_to_stockpile = {
 				type = ballistic_missile_equipment_3
-				amount = 1000
+				amount = 10000
 				producer = PRC
 			}
 			add_equipment_to_stockpile = {

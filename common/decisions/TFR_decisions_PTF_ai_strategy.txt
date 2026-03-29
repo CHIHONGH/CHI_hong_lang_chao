@@ -90,6 +90,63 @@ PTF_ai_strategy = {
 		}
 	}
 
+	PTF_add_new_naval_equipment_designer = {
+		#icon = generic_industry
+		visible = {
+			original_tag = PTF
+		}
+
+		available = {
+			date > 2021.11.01
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			## Missile Cruisers ##
+			create_equipment_variant = {
+				name = "Ticonderoga-class"
+				type = ship_hull_heavy_4
+				parent_version = 0
+				modules = {
+					fixed_ship_battery_slot = ship_heavy_battery_4
+					fixed_ship_anti_air_slot = ship_anti_air_4
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+					fixed_ship_radar_slot = ship_radar_4
+					fixed_ship_engine_slot = heavy_ship_engine_4
+					fixed_ship_secondaries_slot = ship_secondaries_3
+					fixed_ship_armor_slot = ship_armor_bb_3
+					front_1_custom_slot = ship_heavy_battery_4
+					mid_1_custom_slot = ship_heavy_battery_4
+					mid_2_custom_slot = ship_heavy_battery_4
+					mid_3_custom_slot = ship_heavy_battery_4
+					rear_1_custom_slot = ship_airplane_launcher_2
+				}
+			}
+			## Carriers ##
+			create_equipment_variant = {
+				name = "Nimitz-class"
+				type = ship_hull_carrier_3
+				parent_version = 0
+				modules = {
+					fixed_ship_deck_slot_1 = ship_deck_space
+					fixed_ship_deck_slot_2 = ship_deck_space
+					fixed_ship_anti_air_slot = ship_anti_air_4
+					fixed_ship_radar_slot = ship_radar_4
+					fixed_ship_engine_slot = carrier_ship_engine_4
+					fixed_ship_secondaries_slot = empty
+					front_1_custom_slot = ship_deck_space
+					mid_1_custom_slot = ship_deck_space
+					mid_2_custom_slot = ship_deck_space
+				}
+			}
+		}
+	}
+
 	USN_retire_warship = {
 		visible = {
 			original_tag = USN
