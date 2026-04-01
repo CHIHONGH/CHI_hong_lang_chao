@@ -1,0 +1,250 @@
+focus_tree = {
+    id = APC_liberation_tree
+    country = {
+        factor = 0
+    }
+    default = no
+
+    # --- 根节点 ---
+    focus = {
+        id = APC_day_of_liberation
+        icon = GFX_goal_unknown
+        x = 8
+        y = 0
+        cost = 3
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_day_of_liberation completed"
+        }
+    }
+
+    # --- 左侧分支：召唤同志 ---
+    focus = {
+        id = APC_summon_comrades
+        icon = GFX_goal_unknown
+        x = 4
+        y = 1
+        cost = 3
+        prerequisite = { focus = APC_day_of_liberation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_summon_comrades completed"
+        }
+    }
+
+    focus = {
+        id = APC_guide_allied_military
+        icon = GFX_goal_unknown
+        x = 3
+        y = 2
+        cost = 3
+        prerequisite = { focus = APC_summon_comrades }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_guide_allied_military completed"
+        }
+    }
+
+    focus = {
+        id = APC_solve_reactionaries
+        icon = GFX_goal_unknown
+        x = 5
+        y = 2
+        cost = 3
+        prerequisite = { focus = APC_summon_comrades }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_solve_reactionaries completed"
+        }
+    }
+
+    focus = {
+        id = APC_international_brigades
+        icon = GFX_goal_unknown
+        x = 4
+        y = 3
+        cost = 3
+        prerequisite = { focus = APC_guide_allied_military focus = APC_solve_reactionaries }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_international_brigades completed"
+        }
+    }
+
+    focus = {
+        id = APC_hundred_millions_one_heart
+        icon = GFX_goal_unknown
+        x = 4
+        y = 4
+        cost = 3
+        prerequisite = { focus = APC_international_brigades }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_hundred_millions_one_heart completed"
+        }
+    }
+
+    # --- 中间分支：开场行动 ---
+    focus = {
+        id = APC_opening_action_korea
+        icon = GFX_goal_unknown
+        x = 8
+        y = 2
+        cost = 3
+        prerequisite = { focus = APC_day_of_liberation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_opening_action_korea completed"
+        }
+    }
+
+    focus = {
+        id = APC_operation_downfall_japan
+        icon = GFX_goal_unknown
+        x = 7
+        y = 3
+        cost = 3
+        prerequisite = { focus = APC_opening_action_korea }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_operation_downfall_japan completed"
+        }
+    }
+
+    focus = {
+        id = APC_dive_action_india
+        icon = GFX_goal_unknown
+        x = 9
+        y = 3
+        cost = 3
+        prerequisite = { focus = APC_opening_action_korea }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_dive_action_india completed"
+        }
+    }
+
+    focus = {
+        id = APC_flip_action_anzac
+        icon = GFX_goal_unknown
+        x = 8
+        y = 4
+        cost = 3
+        prerequisite = { focus = APC_operation_downfall_japan focus = APC_dive_action_india }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_flip_action_anzac completed"
+        }
+    }
+
+    focus = {
+        id = APC_final_act_usa
+        icon = GFX_goal_unknown
+        x = 8
+        y = 5
+        cost = 3
+        prerequisite = { focus = APC_flip_action_anzac }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_final_act_usa completed"
+        }
+    }
+
+    # --- 右侧分支：解放军最高战备 ---
+    focus = {
+        id = APC_pla_max_readiness
+        icon = GFX_goal_unknown
+        x = 12
+        y = 1
+        cost = 3
+        prerequisite = { focus = APC_day_of_liberation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_pla_max_readiness completed"
+        }
+    }
+
+    focus = {
+        id = APC_wartime_production
+        icon = GFX_goal_unknown
+        x = 11
+        y = 2
+        cost = 3
+        prerequisite = { focus = APC_pla_max_readiness }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_wartime_production completed"
+        }
+    }
+
+    focus = {
+        id = APC_coastal_defense
+        icon = GFX_goal_unknown
+        x = 13
+        y = 2
+        cost = 3
+        prerequisite = { focus = APC_pla_max_readiness }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_coastal_defense completed"
+        }
+    }
+
+    focus = {
+        id = APC_mobilize_militia
+        icon = GFX_goal_unknown
+        x = 12
+        y = 3
+        cost = 3
+        prerequisite = { focus = APC_wartime_production focus = APC_coastal_defense }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_mobilize_militia completed"
+        }
+    }
+
+    focus = {
+        id = APC_trial_by_fire
+        icon = GFX_goal_unknown
+        x = 12
+        y = 4
+        cost = 3
+        prerequisite = { focus = APC_mobilize_militia }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus APC_trial_by_fire completed"
+        }
+    }
+}
