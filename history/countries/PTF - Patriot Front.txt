@@ -105,9 +105,8 @@ set_technology = {
 
 	## Doctrines ##
 	mass_assault = 1
-	fleet_in_being = 1
 	air_superiority = 1
-	PTF_Tide_of_Iron = 1
+	Tide_of_Iron = 1
 
 	#Armor
 	gwtank_chassis = 1
@@ -355,42 +354,42 @@ if = {
 	#*耗材*#
 
 	## Missile Cruisers ##
-	create_equipment_variant = {
-		name = "Ticonderoga-class"
-		type = ship_hull_heavy_4
-		parent_version = 0
-		modules = {
-			fixed_ship_battery_slot = ship_heavy_battery_4
-			fixed_ship_anti_air_slot = ship_anti_air_4
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_3
-			fixed_ship_radar_slot = ship_radar_4
-			fixed_ship_engine_slot = heavy_ship_engine_4
-			fixed_ship_secondaries_slot = ship_secondaries_3
-			fixed_ship_armor_slot = ship_armor_bb_3
-			front_1_custom_slot = ship_heavy_battery_4
-			mid_1_custom_slot = ship_heavy_battery_4
-			mid_2_custom_slot = ship_heavy_battery_4
-			mid_3_custom_slot = ship_heavy_battery_4
-			rear_1_custom_slot = ship_airplane_launcher_2
-		}
-	}
-	## Carriers ##
-	create_equipment_variant = {
-		name = "Nimitz-class"
-		type = ship_hull_carrier_3
-		parent_version = 0
-		modules = {
-			fixed_ship_deck_slot_1 = ship_deck_space
-			fixed_ship_deck_slot_2 = ship_deck_space
-			fixed_ship_anti_air_slot = ship_anti_air_4
-			fixed_ship_radar_slot = ship_radar_4
-			fixed_ship_engine_slot = carrier_ship_engine_4
-			fixed_ship_secondaries_slot = empty
-			front_1_custom_slot = ship_deck_space
-			mid_1_custom_slot = ship_deck_space
-			mid_2_custom_slot = ship_deck_space
-		}
-	}
+	#create_equipment_variant = {
+	#	name = "Ticonderoga-class"
+	#	type = ship_hull_heavy_4
+	#	parent_version = 0
+	#	modules = {
+	#		fixed_ship_battery_slot = ship_heavy_battery_4
+	#		fixed_ship_anti_air_slot = ship_anti_air_4
+	#		fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+	#		fixed_ship_radar_slot = ship_radar_4
+	#		fixed_ship_engine_slot = heavy_ship_engine_4
+	#		fixed_ship_secondaries_slot = ship_secondaries_3
+	#		fixed_ship_armor_slot = ship_armor_bb_3
+	#		front_1_custom_slot = ship_heavy_battery_4
+	#		mid_1_custom_slot = ship_heavy_battery_4
+	#		mid_2_custom_slot = ship_heavy_battery_4
+	#		mid_3_custom_slot = ship_heavy_battery_4
+	#		rear_1_custom_slot = ship_airplane_launcher_2
+	#	}
+	#}
+	### Carriers ##
+	#create_equipment_variant = {
+	#	name = "Nimitz-class"
+	#	type = ship_hull_carrier_3
+	#	parent_version = 0
+	#	modules = {
+	#		fixed_ship_deck_slot_1 = ship_deck_space
+	#		fixed_ship_deck_slot_2 = ship_deck_space
+	#		fixed_ship_anti_air_slot = ship_anti_air_4
+	#		fixed_ship_radar_slot = ship_radar_4
+	#		fixed_ship_engine_slot = carrier_ship_engine_4
+	#		fixed_ship_secondaries_slot = empty
+	#		front_1_custom_slot = ship_deck_space
+	#		mid_1_custom_slot = ship_deck_space
+	#		mid_2_custom_slot = ship_deck_space
+	#	}
+	#}
 	## Submarines ##
 	#从水下发动攻击是小人行为！#
 }
@@ -505,8 +504,8 @@ if = {
 			engine_type_slot = engine_4_1x
 			special_type_slot_1 = fuel_tanks_small
 			special_type_slot_2 = ai_targeting_computer_small
-			special_type_slot_3 = ai_targeting_computer_small
-			special_type_slot_4 = ai_targeting_computer_small
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
 			special_type_slot_5 = empty
 		}
 		icon = "GFX_USA_fighter4_medium"
@@ -526,10 +525,27 @@ if = {
 			special_type_slot_2 = ai_targeting_computer_small
 			special_type_slot_3 = non_strategic_materials_small_3
 			special_type_slot_4 = non_strategic_materials_small_3
-			special_type_slot_5 = empty
+			special_type_slot_5 = non_strategic_materials_small_3
 		}
 		icon = "GFX_USA_CAS2_medium"
 	}
+
+	#create_equipment_variant = {
+    #    name = "F-75 D"
+    #    type = cv_small_plane_cas_airframe_4
+    #    modules = {
+    #        fixed_main_weapon_slot = medium_bomb_bay
+	#		fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+	#		fixed_auxiliary_weapon_slot_2 = medium_bomb_bay
+	#		engine_type_slot = engine_4_2x
+	#		special_type_slot_1 = fuel_tanks_small
+	#		special_type_slot_2 = ai_targeting_computer_small
+	#		special_type_slot_3 = non_strategic_materials_small_3
+	#		special_type_slot_4 = non_strategic_materials_small_3
+	#		special_type_slot_5 = empty
+    #    }
+    #    icon = "GFX_USA_fighter5_medium"
+    #}
 
 	create_equipment_variant = {
 		name = "F-75 C"
@@ -541,12 +557,29 @@ if = {
 			engine_type_slot = engine_4_1x
 			special_type_slot_1 = fuel_tanks_small
 			special_type_slot_2 = ai_targeting_computer_small
-			special_type_slot_3 = non_strategic_materials_small_3
+			special_type_slot_3 = ai_targeting_computer_small
 			special_type_slot_4 = non_strategic_materials_small_3
-			special_type_slot_5 = empty
+			special_type_slot_5 = non_strategic_materials_small_3
 		}
 		icon = "GFX_USA_fighter3_medium"
 	}
+
+	create_equipment_variant = {
+        name = "F-75 B"
+        type = cv_small_plane_airframe_4
+        modules = {
+            fixed_main_weapon_slot = aircraft_cannon_1_1x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+			engine_type_slot = engine_4_1x
+			special_type_slot_1 = ai_targeting_computer_small
+			special_type_slot_2 = ai_targeting_computer_small
+			special_type_slot_3 = ai_targeting_computer_small
+			special_type_slot_4 = ai_targeting_computer_small
+			special_type_slot_5 = ai_targeting_computer_small
+        }
+        icon = "GFX_USA_fighter5_medium"
+    }
 	
 	create_equipment_variant = {
 		name = "B-2" 
