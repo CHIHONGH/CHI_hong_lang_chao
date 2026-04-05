@@ -18,12 +18,6 @@ shared_focus = {
     cancel_if_invalid = yes
     #relative_position_id =
     completion_reward = {
-        if = {
-            limit = { 
-                has_idea = PRC_insufficient_understanding_of_modern_warfare_idea
-            }
-            remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
-        }
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
         }
@@ -892,6 +886,9 @@ shared_focus = {
         mio:PRC_dajiang_organization = {	###大疆
             add_mio_funds = 1790
         }
+        unlock_decision_tooltip = PRC_unmanned_mechanized_upgrade
+        unlock_decision_tooltip  = PRC_heavy_paratrooper_upgrade
+        unlock_decision_tooltip  = PRC_heavy_synthetic_battalion_upgrade
         ###解锁特殊项目研究（陆军）
         custom_effect_tooltip = Chinese_military_reform_1_tt
         hidden_effect = {
@@ -1122,6 +1119,9 @@ shared_focus = {
             var = military_development_var_temp
             value = 0.1
         }
+        set_technology = {
+            unmanned_aircraft = 1
+        }
         add_military_development = yes
         custom_effect_tooltip = Chinese_military_reform_2_tt
         hidden_effect = {
@@ -1322,9 +1322,13 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
+        set_technology = {
+            cruise_antiship_missile = 1
+            arsenal_ship_equipment = 1
+        }
         set_temp_variable = {
             var = debt_var_temp
-            value = 150
+            value = 450
         }
         add_debt_with_inflation = yes
         add_tech_bonus = {
@@ -1334,6 +1338,7 @@ shared_focus = {
             category = bb_tech
         }
         custom_effect_tooltip = Chinese_military_reform_3_tt
+        custom_effect_tooltip = PRC_AG_weapons_tt
         hidden_effect = {
             if = {
                 limit = {
@@ -1471,7 +1476,102 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
-        navy_experience = 50
+        country_event = { id = china.700 }
+        navy_experience = -50
+        add_timed_idea = {
+			idea = PRC_creation_of_full_scale_missile_cruisers_idea
+			days = 250
+		}
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			set_technology = {
+				improved_ship_hull_heavy = 1
+                Tremendous_power = 1
+			}
+			create_equipment_variant = {
+				name = "Type 057 Qiang"
+				type = ship_hull_heavy_3
+				parent_version = 0
+				modules = {
+					fixed_ship_battery_slot = ship_heavy_battery_2
+					fixed_ship_anti_air_slot = ship_anti_air_3
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_2
+					fixed_ship_radar_slot = ship_radar_2
+					fixed_ship_engine_slot = heavy_ship_engine_3
+					fixed_ship_secondaries_slot = ship_secondaries_2
+					fixed_ship_armor_slot = ship_armor_bb_2
+					front_1_custom_slot = ship_heavy_battery_2
+					mid_1_custom_slot = ship_airplane_launcher_2
+					mid_2_custom_slot = ship_heavy_battery_2
+					rear_1_custom_slot = ship_heavy_battery_2
+				}
+			}
+			add_equipment_production = {
+				equipment = {
+					type = ship_hull_heavy_3
+					creator = "PRC"
+					version_name = "Type 057 Qiang"
+				}
+				name = "Type 057 Qiang 1"
+				requested_factories = 5
+				progress = 0.2
+				amount = 1
+			}
+			add_equipment_production = {
+				equipment = {
+					type = ship_hull_heavy_3
+					creator = "PRC"
+					version_name = "Type 057 Qiang"
+				}
+				name = "Type 057 Qiang 2"
+				requested_factories = 5
+				progress = 0.2
+				amount = 1
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			add_equipment_production = {
+				equipment = {
+					type = battleship_3
+					creator = "PRC"
+				}
+				name = "Type 057 Qiang 1"
+				requested_factories = 1
+				progress = 0.2
+				amount = 1
+			}
+			add_equipment_production = {
+				equipment = {
+					type = battleship_3
+					creator = "PRC"
+				}
+				name = "Type 057 Qiang 2"
+				requested_factories = 1
+				progress = 0.2
+				amount = 1
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_doctrine_cost_reduction = {
+			name = PRC_creation_of_full_scale_missile_cruisers
+			cost_reduction = 0.75
+			uses = 3
+			category = cat_fleet_in_being
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 30
+		}
+		add_debt_with_inflation = yes
         add_doctrine_cost_reduction = {
             cost_reduction = 0.75
             uses = 2
@@ -1931,6 +2031,9 @@ shared_focus = {
         set_temp_variable = {
             PRC_army_reform_progress_temp = 5
         }
+        set_technology = {
+            advanced_ballistic_missile = 1
+        }
         PRC_add_army_reform_progress = yes
         add_ideas = PLA_dawn_breaked_oriented_wind
     }
@@ -2195,9 +2298,43 @@ shared_focus = {
         add_to_variable = {
             rocket_army_ability = 1
         }
-        custom_effect_tooltip = PLA_rocket_force_tt
         custom_effect_tooltip = Chinese_military_reform_1_tt
+        custom_effect_tooltip = PLA_rocket_force_tt
         hidden_effect = {
+            set_technology = {
+                body_armor8 = 1
+            }
+            division_template = {
+				name = "PRC Space Armed Forces"
+				is_locked = yes
+				#division_cap = 
+				#division_names_group = 
+				priority = 2
+				regiments = {
+					Space_expeditionary_forces = { x = 0 y = 0 }
+					Space_expeditionary_forces = { x = 0 y = 1 }
+					Space_expeditionary_forces = { x = 0 y = 2 }
+					Space_expeditionary_forces = { x = 0 y = 3 }
+					Space_expeditionary_forces = { x = 1 y = 0 }
+					Space_expeditionary_forces = { x = 1 y = 1 }
+					Space_expeditionary_forces = { x = 1 y = 2 }
+					Space_expeditionary_forces = { x = 1 y = 3 }
+					Space_expeditionary_forces = { x = 2 y = 0 }
+					Space_expeditionary_forces = { x = 2 y = 1 }
+					Space_expeditionary_forces = { x = 2 y = 2 }
+					Space_expeditionary_forces = { x = 2 y = 3 }
+					Space_expeditionary_forces = { x = 3 y = 0 }
+					#Space_expeditionary_forces = { x = 3 y = 1 }
+					#Space_expeditionary_forces = { x = 3 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+            add_to_variable = {
+                var = PRC_oss_space_armed_forces_num
+                value = 12
+			}
             if = {
                 limit = {
                     has_idea = PLA_pla_army_9

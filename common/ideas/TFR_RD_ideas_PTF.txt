@@ -1,118 +1,791 @@
-	ideas = {
-		country = {
-			
-			PTF_anti_revolutionary_idea = {
-			    picture = KOR_recent_cyberattack
-			    traits = {
-			        ZZZ_blank_idea_trait
-			    }
-				
-				allowed = {
-				    always = no
-				}
-				modifier = {
-					political_power_factor = 0.5
-					stability_factor = 0.25
-					war_support_factor = 0.25
-					weekly_manpower = 1000
-					max_surrender_limit_offset = 0.3
-					army_attack_factor = 0.15
-					army_defence_factor = 0.1
-					breakthrough_factor = 0.15
-					army_core_defence_factor = 0.15
-					army_org_factor = 0.1
-					army_morale_factor = 0.15
-					army_strength_factor = 0.1
-					army_fuel_capacity_factor = 0.2
-					army_defence_against_minor_factor = 0.1
-					grant_medal_cost_factor = -0.4
-					supply_consumption_factor = -0.25
-					army_fuel_consumption_factor = -0.4
-					air_fuel_consumption_factor = -0.4
-					planning_speed = 0.1
-					max_planning_factor = 0.1
-					max_dig_in_factor = 0.1
-					dig_in_speed_factor = 0.1
-					cas_damage_reduction = 0.1
-					org_loss_when_moving = -0.1
-					org_loss_at_low_org_factor = -0.1
-					industry_air_damage_factor = -0.2
-					industrial_capacity_factory = 0.2
-					pocket_penalty = -0.2
-					terrain_penalty_reduction = 0.25
-					research_speed_factor = 0.25
-					production_speed_buildings_factor = 0.1
-					production_speed_supply_node_factor = 0.5
-					production_speed_rail_way_factor = 0.5
-					line_change_production_efficiency_factor = 0.1
-					experience_gain_army_unit_factor = 0.1
-					experience_loss_factor = -0.1
-					training_time_army_factor = -0.1
-					production_factory_max_efficiency_factor = 0.2
-					production_factory_efficiency_gain_factor = 0.2
-					production_factory_start_efficiency_factor = 0.1
-					farming_development_monthly = 0.01
-					academic_development_monthly = 0.01
-					society_development_monthly = 0.01
-					military_development_monthly = 0.01
-					production_lack_of_resource_penalty_factor = -0.2
-					ai_focus_aggressive_factor = 0.2
-					naval_invasion_prep_speed = 5
-					country_resource_oil = 30
-					country_resource_aluminium = 50
-					country_resource_chromium = 50
-					country_resource_rubber = 40
-					country_resource_steel = 50
-					country_resource_tungsten = 40
-				}
-				equipment_bonus = {
-					infantry_equipment = {
-						build_cost_ic = -0.05
+ideas = {
+	country = {
+
+		PTF_Counter_revolutionary_center_I_idea = {
+			cancel = {
+				PRC = {
+					NOT = {
+						has_country_flag = PTF_difficulty_Simple
 					}
-					small_plane_airframe = {
-						build_cost_ic = -0.2
-					}
-					medium_plane_airframe = {
-						build_cost_ic = -0.25
-					}
-					large_plane_airframe = {
-						build_cost_ic = -0.3
-					}
-				}
-				research_bonus = {
-					infantry_tech = 0.05
-					electronics = 0.1
-					industry = 0.2
 				}
 			}
+			allowed = {
+				always = yes
+			}
 
-			
+			removal_cost = -1
 
+			modifier = {
+				political_power_factor = 0.5
+				political_power_gain = 1
+				research_speed_factor = 0.5
+				monthly_population = 0.2
+				war_support_factor = 0.5
+				weekly_casualties_war_support = 0.01
+				weekly_bombing_war_support = 0.01
+				weekly_convoys_war_support = 0.025
+				supply_node_range = 0.5
+				war_stability_factor = 0.4
+				max_surrender_limit_offset = 0.2
+				#weekly_manpower = 2000
 
-
-		}
-			
-
-		hidden_ideas = {
-			PTF_fast_recoring = {
-				picture = KOR_recent_cyberattack
-			    traits = {
-			        ZZZ_blank_idea_trait
-			    }
+				industrial_capacity_factory = 0.5
+				industrial_capacity_dockyard = 0.5
+				production_factory_max_efficiency_factor = 0.5
 				
-				allowed = {
-				    always = no
-				}
-				
-				modifier = {
-					political_power_factor = 0.25
-					resistance_decay = 0.25
-					resistance_target = -0.25
-					required_garrison_factor = -0.25
-					starting_compliance = 0.1
-					compliance_growth = 0.5
-				}
+				line_change_production_efficiency_factor = 0.5
+				production_factory_start_efficiency_factor = 0.5
+				production_speed_buildings_factor = 0.5
+				production_lack_of_resource_penalty_factor = -0.25
+				local_resources_factor = 0.25
+				consumer_goods_factor = -0.25
+
+				army_intel_to_others = -15
+				airforce_intel_to_others = -15
+				civilian_intel_to_others = -25
+				navy_intel_to_others = -10
+				forced_surrender_limit = -0.25
+
+				farming_development_monthly = 0.01
+				academic_development_monthly = 0.01
+				society_development_monthly = 0.01
+				military_development_monthly = 0.01
+				poverty_development_monthly = -0.025
+				justify_war_goal_time = -0.5
+			}
+
+			targeted_modifier = { #对中国加20%攻防
+				tag = PRC
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+				breakthrough_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = APA
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+				breakthrough_bonus_against = 0.1
 			}
 		}
 
+		PTF_Counter_revolutionary_center_II_idea = {
+			cancel = {
+				PRC = {
+					NOT = {
+						has_country_flag = PTF_difficulty_Normal
+					}
+				}
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 0.5
+				political_power_gain = 2
+				research_speed_factor = 1
+				monthly_population = 0.2
+				war_support_factor = 0.5
+				weekly_casualties_war_support = 0.01
+				weekly_bombing_war_support = 0.01
+				weekly_convoys_war_support = 0.025
+				supply_node_range = 0.75
+				war_stability_factor = 0.5
+				max_surrender_limit_offset = 0.4
+				#weekly_manpower = 5000
+
+				industrial_capacity_factory = 1
+				industrial_capacity_dockyard = 1.25
+				production_factory_max_efficiency_factor = 1
+				line_change_production_efficiency_factor = 1
+				production_factory_start_efficiency_factor = 1
+				production_speed_buildings_factor = 1
+				production_lack_of_resource_penalty_factor = -0.5
+				local_resources_factor = 0.5
+				consumer_goods_factor = -0.5
+
+				army_intel_to_others = -20
+				airforce_intel_to_others = -20
+				civilian_intel_to_others = -30
+				navy_intel_to_others = -25
+
+				farming_development_monthly = 0.025 #贫困每月倒退2.5%，其他增长2.5%
+				academic_development_monthly = 0.025
+				society_development_monthly = 0.025
+				military_development_monthly = 0.025
+				poverty_development_monthly = -0.025
+				justify_war_goal_time = -0.5
+			}
+
+			targeted_modifier = { #对中国加35%攻防
+				tag = PRC
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.1
+				breakthrough_bonus_against = 0.4
+			}
+			targeted_modifier = {
+				tag = APA
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.1
+				breakthrough_bonus_against = 0.4
+			}
+		}
+
+		PTF_Counter_revolutionary_center_III_idea = {
+			cancel = {
+				PRC = {
+					NOT = {
+						OR = {
+							has_country_flag = PTF_difficulty_Hard
+							has_country_flag = PTF_difficulty_Extremely_hard
+						}
+					}
+				}
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 2
+				political_power_gain = 2
+				research_speed_factor = 1.5
+				monthly_population = 0.2
+				stability_factor = 1
+				stability_weekly = 0.005
+				war_support_factor = 1
+				war_support_weekly = 0.005
+				weekly_casualties_war_support = 0.01
+				weekly_bombing_war_support = 0.01
+				weekly_convoys_war_support = 0.025
+				supply_node_range = 2
+				war_stability_factor = 0.5
+				max_surrender_limit_offset = 0.5
+				#weekly_manpower = 10000
+
+				industrial_capacity_factory = 1.5
+				industrial_capacity_dockyard = 2
+				production_factory_max_efficiency_factor = 1.5
+				line_change_production_efficiency_factor = 1.5
+				production_factory_start_efficiency_factor = 1.5
+				production_speed_buildings_factor = 1.5
+				production_lack_of_resource_penalty_factor = -0.9
+				local_resources_factor = 1
+				consumer_goods_factor = -0.5
+
+				army_intel_to_others = -25
+				airforce_intel_to_others = -25
+				civilian_intel_to_others = -40
+				navy_intel_to_others = -30
+
+				farming_development_monthly = 0.025 #贫困每月倒退2.5%，其他增长2.5%
+				academic_development_monthly = 0.025
+				society_development_monthly = 0.025
+				military_development_monthly = 0.025
+				poverty_development_monthly = -0.025
+				justify_war_goal_time = -0.5
+			}
+
+			targeted_modifier = { #对中国和APA加50%攻防
+				tag = PRC
+				attack_bonus_against = 0.25
+				defense_bonus_against = 0.2
+				breakthrough_bonus_against = 0.5
+			}
+			targeted_modifier = {
+				tag = APA
+				attack_bonus_against = 0.25
+				defense_bonus_against = 0.2
+				breakthrough_bonus_against = 0.5
+			}
+		}
+
+		PTF_Fascist_military_revolution_I_idea = {
+			cancel = {
+				PRC = {
+					NOT = {
+						has_country_flag = PTF_difficulty_Simple
+					}
+				}
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				ai_desired_divisions_factor = 2
+				ai_focus_aggressive_factor = 2
+				army_strength_factor = 0.05
+				army_org_factor = 0.1
+				naval_invasion_prep_speed = 4
+				max_planning = 0.1
+				max_planning_factor = 0.25
+				planning_speed = 0.5
+				max_training = 0.2
+				no_supply_grace = 24
+				org_loss_when_moving = -0.15
+				out_of_supply_factor = -0.15
+				planning_decay_rate_factor = -0.25
+				special_forces_attack_factor = 0.05
+				supply_consumption_factor = -0.25
+				training_time_factor = -0.2
+				experience_gain_army_unit_factor = 0.1
+				air_attack_factor = 0.15
+				air_agility_factor = 0.15
+				air_defence_factor = 0.15
+				army_armor_attack_factor = 0.5
+				#army_armor_speed_factor = 0.1
+				air_mission_xp_gain_factor = 0.1
+				air_mission_efficiency = 0.1
+				air_superiority_bonus_in_combat = 0.2
+				max_command_power = 20
+				max_command_power_mult = 0.1
+				command_power_gain = 0.5
+				recon_factor = 0.1
+				#terrain_penalty_reduction = 0.25
+				army_bonus_air_superiority_factor = 0.1
+				experience_loss_factor = -0.25
+				#land_reinforce_rate = 0.1
+				army_org_regain = 0.25
+				initiative_factor = 0.12
+				coordination_bonus = 0.12
+
+				navy_capital_ship_attack_factor = 0.1
+				navy_capital_ship_defence_factor = 0.1
+				naval_torpedo_damage_reduction_factor = 0.25
+				screening_without_screens = 0.25
+				screening_efficiency = 2
+				naval_detection = 0.25
+				navy_submarine_detection_factor = 2
+				positioning = 0.25
+				navy_org_factor = 0.25
+				naval_supply_consumption_factor = -0.75
+				navy_anti_air_attack_factor = 0.1
+				naval_speed_factor = 0.1
+				experience_gain_navy_factor = 0.25
+			}
+
+			equipment_bonus = { #7.5折坦克
+				infantry_equipment = {
+					build_cost_ic = -0.2
+				}
+				armor = {
+					build_cost_ic = -0.25
+					reliability = 1.25
+					armor_value = 0.5
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.25
+					reliability = 0.25
+				}
+				capital_ship = {
+					build_cost_ic = -0.25
+					hg_armor_piercing = 0.15
+					reliability = 1
+				}
+				carrier = {
+					build_cost_ic = -0.25
+					reliability = 1
+				}
+				small_plane_airframe = {
+					build_cost_ic = -0.25
+					reliability = 0.25
+				}
+			}
+		}
+
+		PTF_Fascist_military_revolution_II_idea = {
+			cancel = {
+				PRC = {
+					NOT = {
+						has_country_flag = PTF_difficulty_Normal
+					}
+				}
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				ai_desired_divisions_factor = 5
+				ai_focus_aggressive_factor = 2
+				army_strength_factor = 0.1
+				army_org_factor = 0.1
+				attrition_for_controller = -0.15
+				naval_invasion_prep_speed = 4
+				max_planning = 0.2
+				max_planning_factor = 0.3
+				planning_speed = 1
+				max_training = 0.25
+				no_supply_grace = 72
+				org_loss_when_moving = -0.25
+				out_of_supply_factor = -0.25
+				planning_decay_rate_factor = -0.5
+				special_forces_attack_factor = 0.05
+				supply_consumption_factor = -0.4
+				training_time_factor = -0.3
+				experience_gain_army_unit_factor = 0.25
+				air_ace_generation_chance_factor = 0.1
+				air_range_factor = 0.2
+				air_attack_factor = 0.2
+				air_agility_factor = 0.2
+				air_defence_factor = 0.2
+				army_armor_attack_factor = 0.75
+				#army_armor_speed_factor = 0.2
+				air_mission_xp_gain_factor = 0.25
+				air_mission_efficiency = 0.2
+				air_superiority_bonus_in_combat = 0.25
+				max_command_power = 60
+				max_command_power_mult = 0.25
+				command_power_gain = 1
+				recon_factor = 0.2
+				#terrain_penalty_reduction = 0.5
+				air_power_projection_factor = 0.1
+				air_weather_penalty = -0.1
+				army_bonus_air_superiority_factor = 0.1
+				air_accidents_factor = -0.25
+				experience_loss_factor = -0.25
+				#land_reinforce_rate = 0.1
+				army_org_regain = 0.5
+				initiative_factor = 0.25
+				coordination_bonus = 0.25
+
+				naval_damage_factor = 0.1
+				navy_capital_ship_attack_factor = 0.2
+				navy_capital_ship_defence_factor = 0.2
+				naval_torpedo_damage_reduction_factor = 0.45
+				screening_without_screens = 0.45
+				screening_efficiency = 2
+				naval_detection = 0.5
+				navy_submarine_detection_factor = 2
+				positioning = 0.25
+				navy_org_factor = 0.5
+				naval_supply_consumption_factor = -0.75
+				navy_anti_air_attack_factor = 0.2
+				naval_speed_factor = 0.1
+				experience_gain_navy_factor = 0.25
+			}
+
+			equipment_bonus = { #半价坦克
+				infantry_equipment = {
+					build_cost_ic = -0.25
+				}
+				armor = {
+					build_cost_ic = -0.5
+					reliability = 1.25
+					armor_value = 1
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.25
+					reliability = 0.25
+				}
+				capital_ship = {
+					build_cost_ic = -0.5
+					hg_armor_piercing = 0.25
+					reliability = 1
+				}
+				carrier = {
+					build_cost_ic = -0.5
+					carrier_size = 5
+					reliability = 1
+				}
+				small_plane_airframe = {
+					build_cost_ic = -0.5
+					reliability = 0.25
+				}
+			}
+		}
+
+		PTF_Fascist_military_revolution_III_idea = {
+			cancel = {
+				PRC = {
+					NOT = {
+						OR = {
+							has_country_flag = PTF_difficulty_Hard
+							has_country_flag = PTF_difficulty_Extremely_hard
+						}
+					}
+				}
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				ai_desired_divisions_factor = 10
+				ai_focus_aggressive_factor = 2
+				ai_focus_naval_air_factor = 0.5
+				ai_focus_naval_factor = 0.25
+				army_strength_factor = 0.25
+				army_org_factor = 0.5
+				attrition_for_controller = -0.75
+				naval_invasion_prep_speed = 6
+				max_planning = 0.5
+				max_planning_factor = 0.5
+				planning_speed = 5
+				max_training = 0.25
+				no_supply_grace = 336
+				org_loss_when_moving = -0.5
+				out_of_supply_factor = -0.5
+				planning_decay_rate_factor = -0.85
+				special_forces_attack_factor = 0.1
+				supply_consumption_factor = -0.75
+				training_time_factor = -0.3
+				experience_gain_army_unit_factor = 0.5
+				air_ace_generation_chance_factor = 0.25
+				air_range_factor = 0.35
+				air_attack_factor = 0.35
+				air_agility_factor = 0.35
+				air_defence_factor = 0.35
+				army_armor_attack_factor = 1
+				#army_armor_speed_factor = 0.25
+				air_mission_xp_gain_factor = 0.5
+				air_mission_efficiency = 0.5
+				air_superiority_bonus_in_combat = 0.25
+				max_command_power = 100
+				max_command_power_mult = 0.5
+				command_power_gain = 5
+				recon_factor = 0.5
+				army_org_regain = 0.75
+				#terrain_penalty_reduction = 0.75
+				air_power_projection_factor = 0.1
+				air_weather_penalty = -0.25
+				army_bonus_air_superiority_factor = 0.1
+				air_accidents_factor = -0.75
+				experience_loss_factor = -0.25
+				#land_reinforce_rate = 0.2
+				initiative_factor = 0.5
+				coordination_bonus = 0.5
+
+				naval_damage_factor = 0.25
+				navy_capital_ship_attack_factor = 0.4
+				navy_capital_ship_defence_factor = 0.4
+				naval_torpedo_damage_reduction_factor = 0.75
+				screening_without_screens = 0.75
+				screening_efficiency = 2
+				naval_detection = 0.75
+				navy_submarine_detection_factor = 2
+				positioning = 0.5
+				navy_org_factor = 0.75
+				naval_supply_consumption_factor = -0.95
+				navy_anti_air_attack_factor = 0.3
+				naval_speed_factor = 0.25
+				experience_gain_navy_factor = 0.5
+			}
+			equipment_bonus = { #军备甩卖
+				infantry_equipment = {
+					build_cost_ic = -0.1
+				}
+				armor = {
+					build_cost_ic = -0.75
+					reliability = 1.25
+					armor_value = 1.5
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.25
+					reliability = 0.25
+				}
+				capital_ship = {
+					build_cost_ic = -0.5
+					hg_armor_piercing = 0.5
+					reliability = 1
+				}
+				carrier = {
+					build_cost_ic = -0.5
+					carrier_size = 10
+					reliability = 1
+				}
+				small_plane_airframe = {
+					build_cost_ic = -0.75
+					reliability = 0.25
+				}
+			}
+		}
+
+		PTF_American_Defense_idea = {
+
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				land_night_attack = 0.1
+				army_core_defence_factor = 0.25
+				air_detection = 0.25
+				supply_combat_penalties_on_core_factor = -0.5
+				#weekly_manpower = 1000
+				#conscription = 0.05
+				#conscription_factor = 0.1
+				naval_strike_attack_factor = 0.25
+				naval_strike_targetting_factor = 0.1
+			}
+		}
+
+		PTF_Anti_communist_fortress_idea = {
+			
+			cancel = {
+				PRC = {
+					NOT = {
+						OR = {
+							has_country_flag = PTF_difficulty_Normal
+							has_country_flag = PTF_difficulty_Hard
+							has_country_flag = PTF_difficulty_Extremely_hard
+						}
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				dig_in_speed = 3
+				max_dig_in = 10
+				max_dig_in_factor = 0.25
+				#army_core_attack_factor = 0.2
+				#army_core_defence_factor = 0.2
+				#cas_damage_reduction = 0.5
+				air_cas_present_factor = 0.18
+				air_defence_factor = 0.15
+				air_attack_factor = 0.1
+				pocket_penalty = -0.15
+				#enemy_army_bonus_air_superiority_factor = -0.35
+			}
+		}
+
+		PTF_End_of_communism_idea = {
+
+			cancel = {
+				PRC = { NOT = { has_country_flag = PTF_difficulty_Extremely_hard } }
+				PTF = { has_idea = PTF_popular_uprising_idea }
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_strength_factor = 0.5
+				army_org_factor = 0.5
+				#army_speed_factor = 0.5
+				army_attack_factor = 0.5
+				breakthrough_factor = 1
+				army_attack_speed_factor = 0.75
+				max_dig_in = 5
+				max_dig_in_factor = 0.25
+				#air_range_factor = 0.25
+				air_attack_factor = 0.5
+				air_agility_factor = 0.5
+				air_defence_factor = 0.5
+				experience_loss_factor = -0.25
+				army_org_regain = 0.5
+				no_supply_grace = 3360
+				naval_damage_factor = 0.25
+				navy_org_factor = 0.5
+				naval_heavy_gun_hit_chance_factor = 0.5
+				naval_detection = 0.25
+				naval_speed_factor = 0.25 #呼！速度超快
+				navy_capital_ship_attack_factor = 0.5
+				navy_capital_ship_defence_factor = 0.5
+				naval_torpedo_damage_reduction_factor = 0.25
+				screening_without_screens = 0.25
+				#weekly_manpower = 10000
+
+				industrial_capacity_factory = 2
+				industrial_capacity_dockyard = 2
+			}
+
+			targeted_modifier = { #对中国和APA加25%攻
+				tag = PRC
+				attack_bonus_against = 0.25
+				defense_bonus_against = 0.25
+				breakthrough_bonus_against = 0.5
+			}
+			targeted_modifier = {
+				tag = APA
+				attack_bonus_against = 0.25
+				defense_bonus_against = 0.25
+				breakthrough_bonus_against = 0.5
+			}
+		}
+
+		PTF_popular_uprising_idea = { #死亡2000w 揭竿而起
+
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = -0.75
+				army_defence_factor = -0.75
+				breakthrough_factor = -0.75
+				army_org_factor = -0.75
+				army_core_attack_factor = -0.25
+				army_core_defence_factor = -0.25
+
+				war_support_factor = -1
+				war_stability_factor = -1
+				war_support_weekly = -0.025
+				stability_weekly = -0.025
+
+				industrial_capacity_factory = -1
+				industrial_capacity_dockyard = -1
+			}
+		}
+
+		PTF_publicly_oppose_war_idea = { #死亡1000w 公开反战
+
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = -0.5
+				army_defence_factor = -0.5
+				breakthrough_factor = -0.5
+				army_org_factor = -0.5
+				army_core_attack_factor = -0.15
+				army_core_defence_factor = -0.15
+
+				war_support_factor = -0.75
+				war_stability_factor = -0.75
+
+				industrial_capacity_factory = -0.6
+				industrial_capacity_dockyard = -0.6
+			}
+		}
+
+		PTF_fear_of_war_idea = { #死亡500w 畏惧战争
+
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = -0.25
+				army_defence_factor = -0.25
+				breakthrough_factor = -0.25
+
+				war_support_factor = -0.5
+				war_stability_factor = -0.5
+
+				industrial_capacity_factory = -0.5
+				industrial_capacity_dockyard = -0.5
+			}
+		}
+
+		PTF_war_weariness_idea = { #死亡200w 厌战情绪
+
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = -0.15
+				army_defence_factor = -0.15
+				breakthrough_factor = -0.15
+
+				war_support_factor = -0.15
+				war_stability_factor = -0.15
+
+				industrial_capacity_factory = -0.25
+				industrial_capacity_dockyard = -0.25
+			}
+		}
 	}
+
+	hidden_ideas = {
+		PTF_hidden_idea = {				
+			allowed = {
+				always = yes
+			}
+			
+			modifier = {
+				#industrial_capacity_dockyard = 1
+				fuel_gain_factor = 10
+				army_fuel_capacity_factor = 5000
+				country_resource_oil = 10000
+				country_resource_aluminium = 5000
+				country_resource_chromium = 8000
+				country_resource_rubber = 5000
+				country_resource_steel = 10000
+				country_resource_tungsten = 5000
+				personal_expense_factor = -0.75 #个人消费 -75%
+				battalion_upkeep_factor = -0.75 #陆军维护 -75%
+				aircraft_upkeep_factor = -0.75 #空军维护 -75%
+				ship_upkeep_factor = -0.75 #海军维护 -75%
+				military_factory_upkeep_factor = -0.75 #军工维护 -75%
+				dockyard_upkeep_factor = -0.75 #船坞维护 -75%
+				interest_rate_factor = -0.75 #利率系数 -75%
+				business_value_factor = 0.5 #商业产值 +50%
+				personal_value_factor = 1.2 #个人产值 +1.2
+				inflation_monthly = -0.001 #月度通胀 -0.1%
+				expense_growth_factor = -0.5 #月度支出 -50%
+				tax_personal_rate = 2 #个税税率 +200% 把税收到90年后
+				misc_income = 50 #杂项收入
+				production_factory_efficiency_gain_factor = 100
+				factory_energy_consumption = -1
+				required_garrison_factor = -0.75
+				resistance_activity = -0.5
+				resistance_target = -0.2
+				compliance_growth = 2
+				#air_fuel_consumption_factor = -0.9
+				#army_fuel_consumption_factor = -0.9
+				#navy_fuel_consumption_factor = -0.9
+				experience_gain_army = 1
+				experience_gain_air = 1
+				experience_gain_navy = 1
+
+				experience_gain_army_unit = 50
+				navy_max_range_factor = 2
+				naval_accidents_chance = -2
+				naval_attrition = -2
+				repair_speed_factor = 5
+				naval_retreat_speed = 1 #调头战神
+				#convoy_retreat_speed = 1
+				#naval_detection = 7 #假装自己有个雷达加成
+				navy_visibility = -0.62
+				#naval_speed_factor = 0.75 #呼！速度超快
+			}
+		}
+
+		PTF_nationalist_sentiment_idea = {
+
+			cancel = {
+				PRC = { has_war_with = PTF }
+			}
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = 1200
+
+			targeted_modifier = {
+				tag = PRC
+				attack_bonus_against = 50
+				defense_bonus_against = 50
+				breakthrough_bonus_against = 50
+			}
+		}
+	}
+}

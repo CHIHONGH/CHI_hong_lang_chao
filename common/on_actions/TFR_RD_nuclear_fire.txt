@@ -1,0 +1,435 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			1332 = {
+				set_state_flag = is_1332 #东京
+			}
+			531 = {
+				set_state_flag = is_531 #京都
+			}
+			783 = {
+				set_state_flag = is_783 #胡志明
+			}
+			289 = {
+				set_state_flag = is_289 #曼谷
+			}
+			1379 = {
+				set_state_flag = is_1379 #德里
+			}
+			1387 = {
+				set_state_flag = is_1387 #雅加达
+			}
+			285 = {
+				set_state_flag = is_285 #悉尼
+			}
+			1041 = {
+				set_state_flag = is_1041 #首尔
+			}
+			629 = {
+				set_state_flag = is_629 #夏威夷
+			}
+			932 = {
+				set_state_flag = is_932 #旧金山
+			}
+			1298 = {
+				set_state_flag = is_1298 #洛杉矶
+			}
+			931 = {
+				set_state_flag = is_931 #华盛顿特区
+			}
+			918 = {
+				set_state_flag = is_918 #纽约
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						has_state_flag = is_1332 #东京
+					}
+					clr_state_flag = is_1332
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 100
+						}
+						news_event = news.528
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -60
+						}
+					}
+					set_global_flag = PRC_tokyo_nuked_flag
+					hidden_effect = {
+						if = {
+							limit = {
+								NOT = {
+									PRC = { has_country_flag = PRC_used_nukes }
+								}
+							}
+							JAP = {
+								country_event = {
+									id = jap.61
+									days = 1
+								}
+							}
+						}
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+						PRC = {set_country_flag = PRC_used_nukes}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_531 #京都
+					}
+					clr_state_flag = is_531
+					PRC = {
+						set_country_flag = PRC_used_nukes
+						news_event = news.529
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 20
+						}
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -60
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_783 #胡志明
+					}
+					clr_state_flag = is_783
+					PRC = {
+						set_country_flag = PRC_used_nukes
+						news_event = news.530
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 15
+						}
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -15
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -15
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -15
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_289 #曼谷
+					}
+					clr_state_flag = is_289
+					PRC = {
+						set_country_flag = PRC_used_nukes
+						news_event = news.531
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 15
+						}
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -15
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -15
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -15
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_1379 #德里
+					}
+					clr_state_flag = is_1379
+					PRC = {
+						set_global_flag = PRC_dehli_bombed
+						set_country_flag = PRC_used_nukes
+						news_event = news.532
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 60
+						}
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -60
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_1387 #雅加达
+					}
+					clr_state_flag = is_1387
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 20
+						}
+						set_country_flag = PRC_used_nukes
+						news_event = news.533
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -20
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -20
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -20
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_285 #悉尼
+					}
+					clr_state_flag = is_285
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 60
+						}
+						set_country_flag = PRC_used_nukes
+						news_event = news.534
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -60
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_1041 #首尔
+					}
+					clr_state_flag = is_1401
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 60
+						}
+						set_country_flag = PRC_used_nukes
+						news_event = news.535
+					}
+					JAP = {
+						add_days_mission_timeout = {
+							mission = JAP_GAW_war_exhaustion
+							days = -60
+						}
+					}
+					hidden_effect = {
+						AST = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+						RAJ = {
+							add_days_mission_timeout = {
+								mission = JAP_GAW_war_exhaustion
+								days = -60
+							}
+						}
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_629 #夏威夷
+					}
+					clr_state_flag = is_629
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 60
+						}
+						news_event = ChinaOSS.8
+					}
+					PTF = {
+						add_stability = -0.1
+						add_war_support = -0.2
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_932 #旧金山
+					}
+					clr_state_flag = is_932
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 60
+						}
+						news_event = ChinaOSS.6
+					}
+					PTF = {
+						add_stability = -0.1
+						add_war_support = -0.2
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_1298 #洛杉矶
+					}
+					clr_state_flag = is_1298
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 60
+						}
+						news_event = ChinaOSS.7
+					}
+					PTF = {
+						add_stability = -0.1
+						add_war_support = -0.2
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_931 #华盛顿特区
+					}
+					clr_state_flag = is_931
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 100
+						}
+						news_event = ChinaOSS.5
+					}
+					PTF = {
+						add_stability = -0.25
+						add_war_support = -0.25
+					}
+				}
+
+				if = {
+					limit = {
+						has_state_flag = is_918 #纽约
+					}
+					clr_state_flag = is_918
+					PRC = {
+						add_days_mission_timeout = {
+							mission = PRC_GAW_war_exhaustion
+							days = 100
+						}
+						news_event = ChinaOSS.4
+					}
+					PTF = {
+						add_stability = -0.25
+						add_war_support = -0.25
+					}
+				}
+			}
+		}
+	}
+}

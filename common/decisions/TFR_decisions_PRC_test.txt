@@ -10,15 +10,41 @@ debug_decisions = {
 			load_focus_tree = china_focus
 		}
 	}
+	PRC_pupet = {
+		icon = generic_industry
+		visible = {
+		}
 
-	PTF_American_focus = {
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_on_continent = australia
+					is_owned_by = PTF
+				}
+				transfer_state_to = APA
+			}
+		}
+	}
+
+	PTF_American = {
 		icon = generic_industry
 		visible = {
 			is_debug = yes
 		}
 
 		complete_effect = {
-			load_focus_tree = PTF_American
+			PRC_PTF_gaw = yes
+		}
+	}
+
+	PTF_gaw = {
+		icon = generic_industry
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			PRC_chinas_victory_in_the_gaw_nl = yes
 		}
 	}
 
@@ -34,6 +60,143 @@ debug_decisions = {
 				var = stability_factor
 				value = 0.05
 				tooltip = CPC_dynamic_modifiers_loc
+			}
+		}
+	}
+
+	PRC_train_the_space_armed_forces_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = PRC_oss_space_armed_forces_num
+				value = 300
+			}
+		}
+	}
+
+	PRC_arsenal_ship_equipment_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				cruise_antiship_missile = 1
+				arsenal_ship_equipment = 1
+				early_ship_hull_heavy = 1
+				basic_ship_hull_heavy = 1
+				improved_ship_hull_heavy = 1
+				advanced_ship_hull_heavy = 1
+				ship_hull_super_heavy = 1
+				ship_hull_super_heavy_2 = 1
+				ship_hull_super_heavy_3 = 1
+				basic_heavy_armor_scheme = 1
+				improved_heavy_armor_scheme = 1
+
+				Tremendous_power = 1
+			}
+		
+			add_equipment_to_stockpile = {
+				type = cruise_antiship_missile_equipment_1
+				amount = 2000
+				producer = PRC
+			}
+		}
+	}
+
+	PRC_heavy_paratrooper_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				heavy_paratrooper = 1
+			}
+		}
+	}
+
+	PRC_unmanned_aircraft_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				unmanned_aircraft = 1
+			}
+		}
+	}
+
+	PRC_unmanned_mechanized_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				unmanned_mechanized = 1
+			}
+		}
+	}
+
+	PRC_heavy_synthetic_battalion_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				heavy_synthetic_battalion = 1
+			}
+		}
+	}
+
+	PRC_increase_national_nuclear_power_capability = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			add_political_power = 2000
+			add_command_power = 500
+			set_technology = {
+				advanced_ballistic_missile = 1
+			}
+			add_equipment_to_stockpile = {
+				type = nuclear_missile_equipment_1
+				amount = 1000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = nuclear_missile_equipment_2
+				amount = 1000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = antiship_missile_equipment_3
+				amount = 5000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = ballistic_missile_equipment_3
+				amount = 10000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = sam_missile_equipment_2
+				amount = 1000
+				producer = PRC
 			}
 		}
 	}

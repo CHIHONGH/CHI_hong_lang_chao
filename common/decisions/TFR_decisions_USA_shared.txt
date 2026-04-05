@@ -208,7 +208,7 @@ USA_recoring_category = {
 		#	USA_state_coring_scripted_trigger = no
 		#}
 		ai_will_do = {
-			base = 100
+			base = 1000
 			modifier = {
 				factor = 10
 				USA_is_rival_tag = yes
@@ -630,15 +630,36 @@ USA_restoring_american_foreign_influence_category = {
 					tag = APA
 				}
 				create_faction = APA_solidarity_pact_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
 			}
 			else_if = {
 				limit = {
 					tag = NSM
 				}
 				create_faction = NSM_unity_pact_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
 			}
 			else = {
 				create_faction = PTF_american_treaty_organization_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
 			}
 		}
 	}
@@ -758,10 +779,6 @@ USA_restoring_american_foreign_influence_category = {
 		}
 		ai_will_do = {
 			base = 1000
-			modifier = {
-				factor = 0
-				has_war = no
-			}
 		}
 		modifier = {
 		}
@@ -771,6 +788,9 @@ USA_restoring_american_foreign_influence_category = {
 				flag = war_justification_flag
 				days = 14
 				value = 1
+			}
+			CAN = {
+				add_war_support = -0.90
 			}
 		}
 		remove_effect = {
@@ -876,10 +896,6 @@ PTF_deal_with_USN = {
 		}
 		ai_will_do = {
 			base = 1000
-			modifier = {
-				factor = 0
-				has_war = no
-			}
 		}
 		modifier = {
 		}
@@ -948,10 +964,6 @@ PTF_deal_with_USN = {
 		}
 		ai_will_do = {
 			base = 1000
-			modifier = {
-				factor = 0
-				has_war = yes
-			}
 		}
 		modifier = {
 		}
