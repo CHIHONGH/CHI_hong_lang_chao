@@ -2,6 +2,7 @@ scripted_gui = {
 
 	RD_TFR_PRC_states_decisions_window = {#窗口：省份决议
 		context_type = selected_state_context
+		parent_window_token = selected_state_view
 		window_name = "RD_TFR_PRC_states_decisions_window"
 ##
 		visible = {
@@ -39,7 +40,7 @@ scripted_gui = {
 							navy_intel = 40
 							airforce_intel = 25
 						}
-						add_political_power = -100
+						add_political_power = oss_spy_satellite_click_pp_var?-100
 					}
 				}
 				set_temp_variable = { oss_spy_satellite_var = 2 }
@@ -47,7 +48,7 @@ scripted_gui = {
 			}
 			oss_ECM_click = {#电子战
 				PRC = {
-					add_political_power = -10
+					add_political_power = oss_ECM_click_pp_var?-20
 					add_equipment_to_stockpile = {
 						type = ballistic_missile_equipment_3
 						amount = -1

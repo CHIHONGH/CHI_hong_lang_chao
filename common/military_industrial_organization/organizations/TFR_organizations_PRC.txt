@@ -1825,7 +1825,7 @@ PRC_hudong_shipyard_organization = {
 			production_resource_need_factor = 0.05
 		}
 		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.25
+			military_industrial_organization_funds_gain = 0.20
 		}
 
 		on_complete = {
@@ -2500,3 +2500,1837 @@ PRC_hudong_shipyard_organization = {
 #		has_dlc = "Arms Against Tyranny"
 #	}
 #}
+
+#missile equipment
+PRC_CASC_organization = {
+	icon = GFX_PRC_mio_CASC_RD
+	background = GFX_mio_CASC_background
+	allowed = {	
+		tag = PRC 
+	    has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = { controls_state = 608 } #beijing
+	}
+
+	tree_header_text = {
+        text = sam_missile_equipment_loc_key
+        x = 3
+    }
+
+	tree_header_text = {
+        text = ballistic_missile_equipment_loc_key
+        x = 4
+    }
+
+	tree_header_text = {
+        text = guided_missile_equipment_loc_key
+        x = 5
+    }
+
+	tree_header_text = {
+        text = carrier_rocket_loc_key
+        x = 1
+    }
+
+	equipment_type = {
+		guided_missile_equipment
+		ballistic_missile_equipment
+		nuclear_missile_equipment
+		sam_missile_equipment
+	}
+
+	research_categories = {
+		nuclear
+	}
+
+	initial_trait = {
+		name = PRC_CASC_subtitle
+
+		organization_modifier = {
+			military_industrial_organization_design_team_assign_cost = -0.5
+		}
+		production_bonus = {
+			production_capacity_factor = 0.05		
+		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.05
+		}
+	}
+
+	trait = {#弹道导弹 --航空一院
+		token = PRC_mio_trait_hangkong1_yuan
+		name = PRC_mio_trait_hangkong1_yuan
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+
+		position = { x = 4 y = 0 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 12
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#弹道导弹 --机动发射平台
+		token = PRC_mio_trait_mobile_firing_platform
+		name = PRC_mio_trait_mobile_firing_platform
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+
+		relative_position_id = PRC_mio_trait_hangkong1_yuan
+
+		all_parents = { PRC_mio_trait_hangkong1_yuan }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.1
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#弹道导弹 --高超音速滑翔弹头
+		token = PRC_mio_trait_Hypersonic_glide_warhead
+		name = PRC_mio_trait_Hypersonic_glide_warhead
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		relative_position_id = PRC_mio_trait_mobile_firing_platform
+
+		all_parents = { PRC_mio_trait_mobile_firing_platform }
+
+		position = { x = -1 y = 1 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.2
+			air_agility = 0.2
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#弹道导弹 --分导式多弹头技术
+		token = PRC_mio_trait_mirv_technique
+		name = PRC_mio_trait_mirv_technique
+		icon = GFX_generic_mio_trait_icon_strategic_attack
+
+		relative_position_id = PRC_mio_trait_mobile_firing_platform
+
+		all_parents = { PRC_mio_trait_mobile_firing_platform }
+
+		position = { x = 1 y = 1 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.15
+			naval_strike_attack = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#弹道导弹 --区域拒止
+		token = PRC_mio_trait_area_denial
+		name = PRC_mio_trait_area_denial
+		icon = GFX_generic_mio_trait_icon_torpedo_attack
+
+		relative_position_id = PRC_mio_trait_mirv_technique
+
+		all_parents = { PRC_mio_trait_mirv_technique }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.10
+			naval_strike_attack = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#弹道导弹 --全球打击
+		token = PRC_mio_trait_CPGS
+		name = PRC_mio_trait_CPGS
+		icon = GFX_generic_mio_trait_icon_naval_range
+
+		relative_position_id = PRC_mio_trait_Hypersonic_glide_warhead
+
+		all_parents = { PRC_mio_trait_Hypersonic_glide_warhead }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_range = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#弹道导弹 --精确制导
+		token = PRC_mio_trait_precision_guided
+		name = PRC_mio_trait_precision_guided
+		icon = GFX_generic_mio_department_icon_tank_general_spg
+
+		relative_position_id = PRC_mio_trait_CPGS
+
+		all_parents = { PRC_mio_trait_CPGS PRC_mio_trait_area_denial }
+
+		position = { x = 1 y = 0 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.15
+			naval_strike_attack = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 48
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	
+	trait = {#巡航导弹 --投资航天三院
+		token = PRC_mio_trait_hangkong3_yuan
+		name = PRC_mio_trait_hangkong3_yuan
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+
+		position = { x = 5 y = 0 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 12
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#巡航导弹 --低空突防飞行控制
+		token = PRC_mio_trait_low_altitude_penetration
+		name = PRC_mio_trait_low_altitude_penetration
+		icon = GFX_generic_mio_trait_icon_air_agility
+
+		relative_position_id = PRC_mio_trait_hangkong3_yuan
+		all_parents = { PRC_mio_trait_hangkong3_yuan }
+
+		position = { x = 1 y = 1 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_agility = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#巡航导弹 --多平台发射能力
+		token = PRC_mio_trait_Multi_platform_launch_capability
+		name = PRC_mio_trait_Multi_platform_launch_capability
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+
+		relative_position_id = PRC_mio_trait_hangkong3_yuan
+		all_parents = { PRC_mio_trait_hangkong3_yuan }
+
+		position = { x = 2 y = 1 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#巡航导弹 --饱和打击战术
+		token = PRC_mio_trait_saturation_attack_tactics
+		name = PRC_mio_trait_saturation_attack_tactics
+		icon = GFX_tfr_mio_icon_UAV_cruise_missile
+
+		relative_position_id = PRC_mio_trait_Multi_platform_launch_capability
+		all_parents = { PRC_mio_trait_Multi_platform_launch_capability }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.25
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#巡航导弹 --隐身巡航导弹技术
+		token = PRC_mio_trait_stealth_cruise_missile
+		name = PRC_mio_trait_stealth_cruise_missile
+		icon = GFX_generic_mio_trait_icon_surface_visibility
+
+		relative_position_id = PRC_mio_trait_low_altitude_penetration
+		all_parents = { PRC_mio_trait_low_altitude_penetration }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_agility = 0.25
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#巡航导弹 --远程精确打击
+		token = PRC_mio_trait_remote_precision_strike
+		name = PRC_mio_trait_remote_precision_strike
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = PRC_mio_trait_stealth_cruise_missile
+		any_parent = { PRC_mio_trait_stealth_cruise_missile PRC_mio_trait_saturation_attack_tactics }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.1
+			naval_strike_attack = 0.1
+			air_range = 0.25
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 21
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#防空导弹 --投资航天二院
+		token = PRC_mio_trait_hangkong2_yuan
+		name = PRC_mio_trait_hangkong2_yuan
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+
+		position = { x = 3 y = 0 }
+
+		limit_to_equipment_type = { 
+			sam_missile_equipment
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 12
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#防空导弹 --机动式防空网络
+		token = PRC_mio_trait_Mobile_air_defense_network
+		name = PRC_mio_trait_Mobile_air_defense_network
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+
+		relative_position_id = PRC_mio_trait_hangkong2_yuan
+		any_parent = { PRC_mio_trait_hangkong2_yuan }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			sam_missile_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#防空导弹 --多层防空体系整合
+		token = PRC_mio_trait_Multi_layer_air_defense_system_integration
+		name = PRC_mio_trait_Multi_layer_air_defense_system_integration
+		icon = GFX_generic_mio_department_icon_plane_cas_combat
+
+		relative_position_id = PRC_mio_trait_hangkong2_yuan
+		any_parent = { PRC_mio_trait_hangkong2_yuan }
+
+		position = { x = -1 y = 1 }
+
+		limit_to_equipment_type = { 
+			sam_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_attack = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#防空导弹 --相控阵雷达引导
+		token = PRC_mio_trait_Phased_array_radar_guidance
+		name = PRC_mio_trait_Phased_array_radar_guidance
+		icon = GFX_tfr_mio_icon_Phased_radar
+
+		relative_position_id = PRC_mio_trait_Multi_layer_air_defense_system_integration
+		any_parent = { PRC_mio_trait_Multi_layer_air_defense_system_integration }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			sam_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_attack = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#防空导弹 --高空高速目标拦截
+		token = PRC_mio_trait_High-altitude_high-speed_target_interception
+		name = PRC_mio_trait_High-altitude_high-speed_target_interception
+		icon = GFX_generic_mio_department_icon_plane_heavy_combat
+
+		relative_position_id = PRC_mio_trait_Phased_array_radar_guidance
+		all_parents = { PRC_mio_trait_Phased_array_radar_guidance }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			sam_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_attack = 0.10
+			air_range = 0.25
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#战略威慑力量现代化
+		token = PRC_mio_trait_Modernization_strategic_deterrence_forces
+		name = PRC_mio_trait_Modernization_strategic_deterrence_forces
+		icon = GFX_tfr_mio_icon_aiming
+
+		relative_position_id = PRC_mio_trait_precision_guided
+		all_parents = {
+			PRC_mio_trait_High-altitude_high-speed_target_interception
+			PRC_mio_trait_remote_precision_strike
+			PRC_mio_trait_precision_guided
+		}
+		available = {
+			FROM = { has_completed_focus = PAL_Dongfeng_YaDaoXiFeng }
+		}
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			sam_missile_equipment
+			guided_missile_equipment
+			ballistic_missile_equipment
+		}
+
+		equipment_bonus = {
+			air_attack = 0.1
+			air_range = 0.1
+			air_bombing = 0.1
+			naval_strike_attack = 0.1
+			build_cost_ic = -0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 42
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#运载火箭
+		token = PRC_mio_trait_rocket_upgrade
+		name = PRC_mio_trait_rocket_upgrade
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+
+		position = { x = 1 y = 0 }
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 12
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#快速发射能力
+		token = PRC_mio_trait_rapid_launch
+		name = PRC_mio_trait_rapid_launch
+		icon = GFX_generic_mio_trait_icon_naval_speed
+
+		relative_position_id = PRC_mio_trait_rocket_upgrade
+		all_parents = { PRC_mio_trait_rocket_upgrade }
+		position = { x = -1 y = 2 }
+		available = {
+			FROM = { has_completed_focus = PLA_orbital_drop_new }
+		}
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 120
+			    }
+			    add_debt_with_inflation = yes
+				custom_effect_tooltip = PRC_mio_trait_rapid_launch_tt
+				set_variable = {
+					PRC.space_forces_training_days_var = 75
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#重型火箭运载工程
+		token = PRC_mio_trait_Heavy_lift_Rocket_Launching_Engineering
+		name = PRC_mio_trait_Heavy_lift_Rocket_Launching_Engineering
+		icon = GFX_tfr_mio_icon_electri_engine
+
+		relative_position_id = PRC_mio_trait_rocket_upgrade
+		all_parents = { PRC_mio_trait_rocket_upgrade }
+		position = { x = 0 y = 1 }
+		available = {
+			FROM = { has_completed_focus = PLA_orbital_drop_new }
+		}
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 240
+			    }
+			    add_debt_with_inflation = yes
+				custom_effect_tooltip = PRC_mio_trait_Heavy_lift_Rocket_Launching_Engineering_tt
+				set_country_flag = mio_trait_Heavy_lift_Rocket_Launching_Engineering_flag
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#天基侦察网络
+		token = PRC_mio_trait_Space_based_reconnaissance_network
+		name = PRC_mio_trait_Space_based_reconnaissance_network
+		icon = GFX_tfr_mio_icon_UAV_investigation_unit
+		special_trait_background = yes
+		relative_position_id = PRC_mio_trait_rocket_upgrade
+		all_parents = { PRC_mio_trait_rocket_upgrade }
+		position = { x = 0 y = 3 }
+		available = {
+			FROM = { has_completed_focus = PLA_orbital_drop_new }
+		}
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 800
+			    }
+			    add_debt_with_inflation = yes
+				custom_effect_tooltip = PRC_mio_trait_Space_based_reconnaissance_network_tt
+				hidden_effect = {
+					608 = {
+						set_building_level = {
+							type = radar_station
+							level = 100
+							instant_build = yes
+						}
+					}
+					1421 = {
+						set_building_level = {
+							type = radar_station
+							level = 100
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#规模化生产1
+		token = PRC_mio_trait_scale_production_1
+		name = PRC_mio_trait_scale_production_1
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		special_trait_background = yes
+
+		relative_position_id = PRC_mio_trait_hangkong1_yuan
+		any_parent = {
+			PRC_mio_trait_hangkong1_yuan
+			PRC_mio_trait_hangkong2_yuan
+			PRC_mio_trait_hangkong3_yuan
+		}
+
+		available = {
+			FROM = {has_tech = improved_machine_tools }
+		}
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+			sam_missile_equipment
+			ballistic_missile_equipment
+		}
+		visible = {
+			check_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 0?0
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_efficiency_cap_factor = 0.05
+			production_resource_need_factor = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 20
+			    }
+			    add_debt_with_inflation = yes
+			}
+			set_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 1
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#规模化生产2
+		token = PRC_mio_trait_scale_production_2
+		name = PRC_mio_trait_scale_production_2
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		special_trait_background = yes
+
+
+		relative_position_id = PRC_mio_trait_hangkong1_yuan
+		any_parent = {
+			PRC_mio_trait_hangkong1_yuan
+			PRC_mio_trait_hangkong2_yuan
+			PRC_mio_trait_hangkong3_yuan
+		}
+
+		available = {
+			FROM = {has_tech = advanced_machine_tools }
+		}
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+			sam_missile_equipment
+			ballistic_missile_equipment
+		}
+		visible = {
+			check_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 1
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_efficiency_cap_factor = 0.05
+			production_resource_need_factor = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 40
+			    }
+			    add_debt_with_inflation = yes
+			}
+			set_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 2
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#规模化生产3
+		token = PRC_mio_trait_scale_production_3
+		name = PRC_mio_trait_scale_production_3
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		special_trait_background = yes
+
+		relative_position_id = PRC_mio_trait_hangkong1_yuan
+		any_parent = {
+			PRC_mio_trait_hangkong1_yuan
+			PRC_mio_trait_hangkong2_yuan
+			PRC_mio_trait_hangkong3_yuan
+		}
+
+		available = {
+			FROM = {has_tech = assembly_line_production }
+		}
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+			sam_missile_equipment
+			ballistic_missile_equipment
+		}
+		visible = {
+			check_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 2
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_efficiency_cap_factor = 0.05
+			production_resource_need_factor = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 40
+			    }
+			    add_debt_with_inflation = yes
+			}
+			set_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 3
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#规模化生产4
+		token = PRC_mio_trait_scale_production_4
+		name = PRC_mio_trait_scale_production_4
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		special_trait_background = yes
+
+		relative_position_id = PRC_mio_trait_hangkong1_yuan
+		any_parent = {
+			PRC_mio_trait_hangkong1_yuan
+			PRC_mio_trait_hangkong2_yuan
+			PRC_mio_trait_hangkong3_yuan
+		}
+
+		available = {
+			FROM = {
+				OR = {
+					has_tech = streamlined_line
+					has_tech = flexible_line
+				}
+			}
+		}
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+			sam_missile_equipment
+			ballistic_missile_equipment
+		}
+		visible = {
+			check_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 3
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_efficiency_cap_factor = 0.05
+			production_resource_need_factor = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 40
+			    }
+			    add_debt_with_inflation = yes
+			}
+			set_variable = {
+				FROM.PRC_mio_trait_scale_production_var = 4
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#规模化量产
+		token = PRC_mio_trait_scale_production_5
+		name = PRC_mio_trait_scale_production_5
+		icon = GFX_tfr_mio_icon_electronic_countermeasure
+		special_trait_background = yes
+
+		relative_position_id = PRC_mio_trait_hangkong1_yuan
+		any_parent = {
+			PRC_mio_trait_hangkong1_yuan
+			PRC_mio_trait_hangkong2_yuan
+			PRC_mio_trait_hangkong3_yuan
+		}
+
+		available = {
+			FROM = {has_tech = industrial_software }
+		}
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = { 
+			guided_missile_equipment
+			sam_missile_equipment
+			ballistic_missile_equipment
+		}
+		visible = {
+			check_variable = {
+				FROM.PRC_mio_trait_scale_production_var > 3
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+			production_efficiency_cap_factor = 0.1
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 100
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#军民融合生产体系
+		token = PRC_mio_trait_Military_civilian_integrated_production_system
+		name = PRC_mio_trait_Military_civilian_integrated_production_system
+		icon = GFX_generic_mio_trait_icon_unique
+		special_trait_background = yes
+
+		position = { x = 9 y = 0 }
+
+		organization_modifier = {
+			military_industrial_organization_size_up_requirement = -0.25
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 4
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#模块化导弹设计
+		token = PRC_mio_trait_Modular_missile_design
+		name = PRC_mio_trait_Modular_missile_design
+		icon = GFX_tfr_mio_icon_digital_processing
+		special_trait_background = yes
+
+		position = { x = 9 y = 1 }
+
+		limit_to_equipment_type = { 
+			ballistic_missile_equipment
+			sam_missile_equipment
+			guided_missile_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 24
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#军事卫星部署体系
+		token = PRC_mio_trait_Military_satellite_deployment_system
+		name = PRC_mio_trait_Military_satellite_deployment_system
+		icon = GFX_tfr_mio_icon_radar_detection
+		special_trait_background = yes
+
+		position = { x = 9 y = 2 }
+		available = {
+			FROM = {
+				has_completed_focus = PLA_orbital_drop_new
+			}
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 150
+			    }
+			    add_debt_with_inflation = yes
+				custom_effect_tooltip = Military_satellite_deployment_system_tt
+				set_variable = {
+					oss_spy_satellite_click_pp_var = -75
+				}
+				set_variable = {
+					oss_spy_satellite_click_pp_abs_var = 75
+				}
+				set_variable = {
+					oss_ECM_click_pp_var = -10
+				}
+				set_variable = {
+					oss_ECM_click_pp_abs_var = 10
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+}
+
+
+
+PRC_unitree_robotics_organization = {
+	icon = GFX_PRC_mio_unitree_robotics
+	background = GFX_mio_Unitree_background
+	allowed = {	
+		tag = PRC 
+	    has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = { controls_state = 1220 } #hangzhou
+	}
+
+	equipment_type = {
+		exoskeleton_equipment
+	}
+
+	research_categories = {
+		infantry_weapons
+		infantry_tech
+	}
+
+	initial_trait = {
+		name = PRC_exoskeleton_subtitle
+
+		equipment_bonus = {
+			maximum_speed = 0.08
+			soft_attack = 0.05
+		}
+		production_bonus = {
+			production_capacity_factor = 0.1	
+		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.25
+		}
+	}
+
+	tree_header_text = {
+		text = power_system_loc_key
+		x = 0
+	}
+
+	tree_header_text = {
+		text = Individual_soldier_exoskeleton_loc_key
+		x = 5
+	}
+
+	trait = {#动力辅助负载
+		token = PRC_mio_trait_Power_assiste_load
+		name = PRC_mio_trait_Power_assiste_load
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x = 0 y = 0 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		available = {
+			FROM = {
+				OR = {
+					has_tech = body_armor6
+					has_tech = body_armor8
+				}
+			}
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 2
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#高效能源管理系统
+		token = PRC_mio_trait_Efficient_Energy_Management_System
+		name = PRC_mio_trait_Efficient_Energy_Management_System
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+
+		all_parents = { PRC_mio_trait_Power_assiste_load }
+		relative_position_id = PRC_mio_trait_Power_assiste_load
+		position = { x = 0 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 4
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#战场感知
+		token = PRC_mio_trait_Battlefield_perception
+		name = PRC_mio_trait_Battlefield_perception
+		icon = GFX_generic_mio_trait_icon_detection
+
+		position = { x = 3 y = 0 }
+
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		available = {
+			FROM = {
+				OR = {
+					has_tech = body_armor6
+					has_tech = body_armor8
+				}
+			}
+		}
+
+		equipment_bonus = {
+			recon = 450
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 2
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#单兵作战网络化
+		token = PRC_mio_trait_Individual_soldier_networked_operation
+		name = PRC_mio_trait_Individual_soldier_networked_operation
+		icon = GFX_generic_mio_department_icon_infantry_quality
+
+		all_parents = { PRC_mio_trait_Battlefield_perception }
+		relative_position_id = PRC_mio_trait_Battlefield_perception
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			defense = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 12
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#人机协同作战
+		token = PRC_mio_trait_Human_machine_collaborative_operations
+		name = PRC_mio_trait_Human_machine_collaborative_operations
+		icon = GFX_tfr_mio_icon_UAV_combat_unit
+
+		all_parents = { PRC_mio_trait_Individual_soldier_networked_operation }
+		relative_position_id = PRC_mio_trait_Individual_soldier_networked_operation
+		position = { x = 0 y = 2 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.10
+			hard_attack = 0.10
+			breakthrough = 0.25
+			build_cost_ic = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 68
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#下一代单兵作战体系
+		token = PRC_mio_trait_The_next_generation_individual_combat_system
+		name = PRC_mio_trait_The_next_generation_individual_combat_system
+		icon = GFX_generic_mio_trait_icon_max_strength
+
+		all_parents = { PRC_mio_trait_Human_machine_collaborative_operations PRC_mio_trait_Weapon_integration_interface }
+		relative_position_id = PRC_mio_trait_Human_machine_collaborative_operations
+		position = { x = 2 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			max_organisation = 200
+			max_strength = 100
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 250
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#单兵外骨骼系统
+		token = PRC_mio_trait_Individual_oldier_exoskeleton_system
+		name = PRC_mio_trait_Individual_oldier_exoskeleton_system
+		icon = GFX_generic_mio_trait_icon_weight
+
+		position = { x = 6 y = 0 }
+
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		available = {
+			FROM = {
+				OR = {
+					has_tech = body_armor6
+					has_tech = body_armor8
+				}
+			}
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 2
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#高机动性外骨骼
+		token = PRC_mio_trait_High_mobility_exoskeleton
+		name = PRC_mio_trait_High_mobility_exoskeleton
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		mutually_exclusive = {PRC_mio_trait_Heavy_Assault_Exoskeleton}
+		all_parents = { PRC_mio_trait_Individual_oldier_exoskeleton_system }
+		relative_position_id = PRC_mio_trait_Individual_oldier_exoskeleton_system
+		position = { x = -1 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+			armor_value = -0.15
+			build_cost_ic = -0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 4
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#重型突击外骨骼
+		token = PRC_mio_trait_Heavy_Assault_Exoskeleton
+		name = PRC_mio_trait_Heavy_Assault_Exoskeleton
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		mutually_exclusive = {PRC_mio_trait_High_mobility_exoskeleton}
+		all_parents = { PRC_mio_trait_Individual_oldier_exoskeleton_system }
+		relative_position_id = PRC_mio_trait_Individual_oldier_exoskeleton_system
+		position = { x = 1 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			maximum_speed = -0.25
+			armor_value = 0.15
+			breakthrough = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 6
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#山地作战增强系统
+		token = PRC_mio_trait_Mountain_Warfare_Enhancement_System
+		name = PRC_mio_trait_Mountain_Warfare_Enhancement_System
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		any_parent = { PRC_mio_trait_Heavy_Assault_Exoskeleton PRC_mio_trait_High_mobility_exoskeleton }
+		relative_position_id = PRC_mio_trait_Heavy_Assault_Exoskeleton
+		position = { x = 0 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+			reliability = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 25
+			    }
+			    add_debt_with_inflation = yes
+
+				set_technology = {
+					Mountain_Warfare_Enhancement_System = 1
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#城市作战套件
+		token = PRC_mio_trait_Urban_Warfare_Kit
+		name = PRC_mio_trait_Urban_Warfare_Kit
+		icon = GFX_generic_mio_department_icon_mechanized
+
+		any_parent = { PRC_mio_trait_Heavy_Assault_Exoskeleton PRC_mio_trait_High_mobility_exoskeleton }
+		relative_position_id = PRC_mio_trait_High_mobility_exoskeleton
+		position = { x = 0 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			breakthrough = 0.10
+			defense = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 25
+			    }
+			    add_debt_with_inflation = yes
+
+				set_technology = {
+					Urban_Warfare_Kit = 1
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#武器集成接口
+		token = PRC_mio_trait_Weapon_integration_interface
+		name = PRC_mio_trait_Weapon_integration_interface
+		icon = GFX_generic_mio_department_icon_tank_general_at
+
+		any_parent = { PRC_mio_trait_Heavy_Assault_Exoskeleton PRC_mio_trait_High_mobility_exoskeleton }
+		relative_position_id = PRC_mio_trait_Heavy_Assault_Exoskeleton
+		position = { x = -1 y = 2 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			hard_attack = 0.35
+			ap_attack = 0.25
+			build_cost_ic = 0.05
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 6
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#外骨骼规模化生产
+		token = PRC_mio_trait_Mass_production_of_exoskeletons
+		name = PRC_mio_trait_Mass_production_of_exoskeletons
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 1 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+		available = {
+			FROM = {
+				OR = {
+					has_tech = body_armor6
+					has_tech = body_armor8
+				}
+			}
+			date > 2024.12.01
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.20
+			production_capacity_factor = 0.15
+			#production_cost_factor = -0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 100
+			    }
+			    add_debt_with_inflation = yes
+			}
+			if = {
+				limit = {
+					1220 = {
+						free_building_slots = {
+							building = arms_factory
+							size > 3
+							include_locked = yes
+						}
+					}
+				}
+				1220 = {
+					add_building_construction = {
+						type = arms_factory
+						level = 4
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 4
+				}
+			}
+			else = {
+				random_state = {
+					limit = {
+						is_core_of = PRC
+						is_controlled_by = PRC
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						check_variable = { state_population_k > 500 }
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 2
+				}
+				random_state = {
+					limit = {
+						is_core_of = PRC
+						is_controlled_by = PRC
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						check_variable = { state_population_k > 500 }
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 2
+				}
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#模块化机器人平台
+		token = PRC_mio_trait_Modular_robot_platform
+		name = PRC_mio_trait_Modular_robot_platform
+		icon = GFX_tfr_mio_icon_integrated_production
+		special_trait_background = yes
+		position = { x = 9 y = 0 }
+		limit_to_equipment_type = { 
+			exoskeleton_equipment
+		}
+
+		available = {
+			date > 2022.01.01
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 120
+			    }
+			    add_debt_with_inflation = yes
+			}
+
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+}

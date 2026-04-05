@@ -65,8 +65,8 @@ debug_decisions = {
 	}
 
 	PRC_train_the_space_armed_forces_debug = {
-		visiable = {
-			original_tag = PRC
+		visible = {
+			tag = PRC
 			is_debug = yes
 			#has_completed_focus = 
 		}
@@ -79,8 +79,8 @@ debug_decisions = {
 	}
 
 	PRC_arsenal_ship_equipment_debug = {
-		visiable = {
-			original_tag = PRC
+		visible = {
+			tag = PRC
 			is_debug = yes
 			#has_completed_focus = 
 		}
@@ -109,35 +109,70 @@ debug_decisions = {
 		}
 	}
 
-	PRC_arsenal_ship_equipment_debug_2 = {
-		visiable = {
-			original_tag = PRC
+	PRC_heavy_paratrooper_debug = {
+		visible = {
+			tag = PRC
 			is_debug = yes
 			#has_completed_focus = 
 		}
-		days_remove = 120
-		modifier = {
-			carrier_capacity_penalty_reduction = -2
-			carrier_night_traffic = 1
+		complete_effect = {
+			set_technology = {
+				heavy_paratrooper = 1
+			}
+		}
+	}
+
+	PRC_unmanned_aircraft_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
 		}
 		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = cruise_antiship_missile_equipment_1
-				amount = 2000
-				producer = PRC
+			set_technology = {
+				unmanned_aircraft = 1
+			}
+		}
+	}
+
+	PRC_unmanned_mechanized_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				unmanned_mechanized = 1
+			}
+		}
+	}
+
+	PRC_heavy_synthetic_battalion_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+			#has_completed_focus = 
+		}
+		complete_effect = {
+			set_technology = {
+				heavy_synthetic_battalion = 1
 			}
 		}
 	}
 
 	PRC_increase_national_nuclear_power_capability = {
-		visiable = {
-			original_tag = PRC
+		visible = {
+			tag = PRC
 			is_debug = yes
 			#has_completed_focus = 
 		}
 		complete_effect = {
 			add_political_power = 2000
 			add_command_power = 500
+			set_technology = {
+				advanced_ballistic_missile = 1
+			}
 			add_equipment_to_stockpile = {
 				type = nuclear_missile_equipment_1
 				amount = 1000

@@ -23,6 +23,7 @@ equipments = {
 		interface_category = interface_category_air
 				
 		reliability = 0.95
+		#air_defence = 10000
 
 		# Air vs Navy - high damage / low hit chance / hard to hurt
 		#naval_strike_attack = 1.5
@@ -61,10 +62,15 @@ equipments = {
 		picture = PRC_sam_missile_equipment_2
 
 		archetype = sam_missile_equipment
-		parent = sam_missile_equipment_1
+		#parent = sam_missile_equipment_1
 		is_buildable = yes
 		one_use_only = yes
 		sprite = missile_default
+
+		allow_mission_type = {
+			#INTERCEPTION
+			sam_mission
+		}
 		
 		air_range = 3000
 		maximum_speed = 22000

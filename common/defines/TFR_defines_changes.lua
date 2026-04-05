@@ -125,9 +125,9 @@
 	NDefines.NMilitary.PLAN_BLITZ_OPTIMISM = 0.3						-- increased from 0.2 ; Additional combat balance value in favor of blitzing side when considering targets (not a combat bonus, just offsets planning)
 	
 	NDefines.NAir.STRATEGIC_BOMBER_NUKE_AIR_SUPERIORITY = 1 -0.75
-	NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 10000 -- 红色黎明NAir标记
-	NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 10000 -- 红色黎明NAir标记
-	NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 10000 -- 红色黎明NAir标记
+	NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 25000 -- 红色黎明NAir标记
+	NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 25000 -- 红色黎明NAir标记
+	NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 25000 -- 红色黎明NAir标记
 	NDefines.NAir.AIR_WING_MAX_STATS_SPEED = 50000 -- 红色黎明NAir标记
 	NDefines.NAir.AIR_WING_MAX_STATS_BOMBING = 1000 -- 红色黎明NAir标记
 	NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.01
@@ -184,17 +184,15 @@
 		0.0, -- NAVAL_PATROL
 	}
 
-	NDefines.NAir.AIR_NAVAL_KAMIKAZE_DAMAGE_MULT = 25 						--20.0 自杀式袭击伤害倍率 #机械胜过热血，孩子们！
-	NDefines.NAir.AIR_NAVAL_KAMIKAZE_LOSSES_MULT = 10					 	--4.0 自杀式袭击损失倍率
-	NDefines.NAir.BASE_KAMIKAZE_DAMAGE = 1 									--2.0 自杀式袭击最低伤亡
+	--NDefines.NAir.AIR_NAVAL_KAMIKAZE_DAMAGE_MULT = 25 						--20.0 自杀式袭击伤害倍率 #机械胜过热血，孩子们！
+	--NDefines.NAir.AIR_NAVAL_KAMIKAZE_LOSSES_MULT = 10					 	--4.0 自杀式袭击损失倍率
+	--NDefines.NAir.BASE_KAMIKAZE_DAMAGE = 1 									--2.0 自杀式袭击最低伤亡
 	NDefines.NAir.BIGGEST_AGILITY_FACTOR_DIFF = 8                         	-- 4 高机动的伤害增益奖励上限
 	NDefines.NAir.BIGGEST_SPEED_FACTOR_DIFF = 20                           	-- 3.5 高速度的伤害增益奖励上限
 	NDefines.NAir.COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 0.99                -- 0.65 高速度的减伤奖励上限
 
 	--NDefines.NIntel.DYNAMIC_INTEL_SOURCE_EVENT_MAXIMUMS = { 100, 100, 100, 100 },
 	--NDefines.NIntel.DYNAMIC_INTEL_SOURCE_EVENT_ABSOLUTE_MAXIMUMS = { 150, 150, 150, 150 }
-
-	--NDefines.NBuildings.SAM_MISSION_SUPERIORITY = 50.0,      -- 5 地空导弹的空中优势
 	
 	NDefines.NNavy.MAX_SUBMARINES_PER_AUTO_TASK_FORCE = 10 -- 30
 	NDefines.NNavy.BEST_CAPITALS_TO_CARRIER_RATIO = 4 -- 1
@@ -532,6 +530,9 @@
 	NDefines.NBuildings.MAX_SHARED_SLOTS = 25 -- 25
 	NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.2 -- 0.2
 	NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.1   -- 0.2
+	NDefines.NBuildings.ROCKETSITE_CAPACITY_MULT = 100   -- 100 红色黎明NBuildings标记
+	NDefines.NBuildings.SAM_MISSION_SUPERIORITY = 50.0      -- 5 红色黎明NBuildings标记 #地空导弹的空中优势
+	NDefines.NBuildings.RADAR_RANGE_MAX = 10000  --红色黎明NBuildings标记 #雷达最大范围
 
 	NDefines.NTechnology.BASE_RESEARCH_POINTS_SAVED = 30.0 -- 30
 	NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 3	-- 2
