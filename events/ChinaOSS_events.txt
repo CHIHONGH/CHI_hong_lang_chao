@@ -1,0 +1,230 @@
+﻿add_namespace = ChinaOSS
+
+country_event = {
+	id = ChinaOSS.1
+	is_triggered_only = yes
+	#hidden = yes
+	title = ChinaOSS.1.t
+    desc = ChinaOSS.1.desc
+    #picture = 
+    
+    option = {
+        name = ChinaOSS.1.a
+        effect_tooltip = {
+			add_political_power = -25
+			add_command_power = -10
+		}
+    }
+}
+
+news_event = {
+	id = ChinaOSS.2
+	is_triggered_only = yes
+    fire_only_once = yes
+	title = {
+        text = ChinaOSS.2.t.a
+        trigger = {
+            tag = PRC
+        }
+    }
+    title = {
+        text = ChinaOSS.2.t
+    }
+	desc = {
+        text = ChinaOSS.2.desc.a
+        trigger = {
+            tag = PRC
+        }
+    }
+    desc = {
+        text = ChinaOSS.2.desc
+    }
+	#picture =
+
+	option = {
+        name = ChinaOSS.2.b
+        trigger = {
+            NOT = { tag = PRC }
+        }
+    }
+    option = {
+        name = ChinaOSS.2.c
+    }
+}
+
+country_event = {
+	id = ChinaOSS.3
+	is_triggered_only = yes
+    fire_only_once = yes
+	#hidden = yes
+	title = ChinaOSS.3.t
+    desc = ChinaOSS.3.desc
+    #picture = 
+    
+    option = {
+        name = ChinaOSS.3.a
+    }
+}
+
+news_event = {
+	id = ChinaOSS.4
+	is_triggered_only = yes
+    fire_only_once = yes
+    title = {
+        text = ChinaOSS.4.t
+    }
+    desc = {
+        text = ChinaOSS.4.desc
+    }
+	#picture =
+
+    option = {
+        name = ChinaOSS.4.a
+    }
+}
+
+news_event = {
+	id = ChinaOSS.5
+	is_triggered_only = yes
+    fire_only_once = yes
+    title = {
+        text = ChinaOSS.5.t
+    }
+    desc = {
+        text = ChinaOSS.5.desc
+    }
+	picture = GFX_event_nuke
+
+    option = {
+        name = ChinaOSS.5.a
+    }
+}
+
+news_event = {
+	id = ChinaOSS.6
+	is_triggered_only = yes
+    fire_only_once = yes
+    title = {
+        text = ChinaOSS.6.t
+    }
+    desc = {
+        text = ChinaOSS.6.desc
+    }
+	picture = GFX_event_nuke
+
+    option = {
+        name = ChinaOSS.6.a
+    }
+}
+
+news_event = {
+	id = ChinaOSS.7
+	is_triggered_only = yes
+    fire_only_once = yes
+    title = {
+        text = ChinaOSS.7.t
+    }
+    desc = {
+        text = ChinaOSS.7.desc
+    }
+	picture = GFX_event_nuke
+
+    option = {
+        name = ChinaOSS.7.a
+    }
+}
+
+news_event = {
+	id = ChinaOSS.8
+	is_triggered_only = yes
+    fire_only_once = yes
+    title = {
+        text = ChinaOSS.8.t
+    }
+    desc = {
+        text = ChinaOSS.8.desc
+    }
+	picture = GFX_event_nuke
+
+    option = {
+        name = ChinaOSS.8.a
+    }
+}
+
+state_event = {
+	id = ChinaOSS.101
+	is_triggered_only = yes
+	hidden = yes
+    
+    immediate = {
+		save_event_target_as = This_stats
+		event_target:This_stats = {
+			create_unit = {
+				division = "name = \"PRC Space Armed Forces\" division_template = \"PRC Space Armed Forces\" start_experience_factor = 1"
+				owner = PRC
+				count = 3
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+	}
+}
+
+state_event = {
+	id = ChinaOSS.102
+	is_triggered_only = yes
+	hidden = yes
+    
+    immediate = {
+		FROM = {
+			launch_nuke = {
+				state = FROM
+				use_nuke = no
+				nuke_type = nuclear_bomb
+			}
+		}
+	}
+}
+
+state_event = {
+	id = ChinaOSS.103
+	is_triggered_only = yes
+	hidden = yes
+    
+    immediate = {
+		FROM = {
+			launch_nuke = {
+				state = FROM
+				use_nuke = no
+				nuke_type = thermonuclear_bomb
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ChinaOSS.104
+	is_triggered_only = yes
+	#hidden = yes
+    fire_only_once = yes
+	title = ChinaOSS.104.t
+    desc = ChinaOSS.104.desc
+    picture = GFX_china_space_assault
+    
+    option = {
+        name = ChinaOSS.104.a
+    }
+}
+
+country_event = {
+	id = ChinaOSS.105
+	is_triggered_only = yes
+	#hidden = yes
+    fire_only_once = yes
+	title = ChinaOSS.105.t
+    desc = ChinaOSS.105.desc
+    picture = GFX_china_interceptor_missile
+    
+    option = {
+        name = ChinaOSS.105.a
+    }
+}
