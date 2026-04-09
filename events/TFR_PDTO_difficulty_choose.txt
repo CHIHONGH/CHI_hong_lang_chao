@@ -1,0 +1,159 @@
+﻿add_namespace = choose
+
+country_event = {
+	id = choose.1
+	title = choose.1.t
+	desc = choose.1.de
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = PRC
+	}
+
+	#picture = 
+
+	option = {
+		name = choose.1.a
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = PTF_choose_Simple
+		hidden_effect = {
+			set_country_flag = PTF_difficulty_Simple
+		}
+	}
+	option = {
+		name = choose.1.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = PTF_choose_Normal
+		hidden_effect = {
+			set_country_flag = PTF_difficulty_Normal
+		}
+	}
+	option = {
+		name = choose.1.c
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = PTF_choose_Hard
+		hidden_effect = {
+			set_country_flag = PTF_difficulty_Hard
+		}
+	}
+	option = {
+		name = choose.1.d
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = PTF_choose_Extremely_hard
+		hidden_effect = {
+			set_country_flag = PTF_difficulty_Extremely_hard
+		}
+	}
+}
+
+country_event = {
+	id = choose.2
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = PTF
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				PRC = {
+					has_country_flag = PTF_difficulty_Simple
+				}
+			}
+			add_ideas = {
+				PTF_Fascist_military_revolution_I_idea
+				PTF_Counter_revolutionary_center_I_idea
+			}
+		}
+		if = {
+			limit = {
+				PRC = {
+					has_country_flag = PTF_difficulty_Normal
+				}
+			}
+			add_ideas = {
+				PTF_Fascist_military_revolution_II_idea
+				PTF_Counter_revolutionary_center_II_idea
+				PTF_Anti_communist_fortress_idea
+			}
+		}
+		if = {
+			limit = {
+				PRC = {
+					has_country_flag = PTF_difficulty_Hard
+				}
+			}
+			add_ideas = {
+				PTF_Fascist_military_revolution_III_idea
+				PTF_Counter_revolutionary_center_III_idea
+				PTF_Anti_communist_fortress_idea
+			}
+		}
+		if = {
+			limit = {
+				PRC = {
+					has_country_flag = PTF_difficulty_Extremely_hard
+				}
+			}
+			add_ideas = {
+				PTF_Fascist_military_revolution_III_idea
+				PTF_Counter_revolutionary_center_III_idea
+				PTF_Anti_communist_fortress_idea
+				PTF_End_of_communism_idea
+			}
+		}
+
+		set_technology = {
+			Tide_of_Iron = 1
+		}
+		
+	}
+}
+
+#country_event = {
+#	id = choose.3
+#	hidden = yes
+#	#fire_only_once = yes
+#
+#	trigger = {
+#		tag = PTF
+#		date > 2022.02.01
+#		any_country = {
+#			has_dynamic_modifier = {
+#				modifier = USA_battle_for_america_dynamic
+#    			scope = This
+#			}
+#			NOT = { original_tag = PTF }
+#		}
+#	}
+#
+#	immediate = {
+#		any_country = {
+#			if = {
+#				limit = {
+#					any_country = {
+#						has_dynamic_modifier = {
+#							modifier = USA_battle_for_america_dynamic
+#							scope = This
+#						}
+#					}
+#				}
+#				declare_war_on = {
+#					target = PTF
+#					type = annex_everything
+#				}
+#			}
+#		}
+#	}
+#}

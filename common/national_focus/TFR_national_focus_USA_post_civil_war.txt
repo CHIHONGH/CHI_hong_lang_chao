@@ -1233,10 +1233,33 @@ shared_focus = {
 		focus = USA_hearts_of_industry
 	}
     ai_will_do = {
-        factor = 1000
+        factor = 0
+        modifier = {
+			add = 1000
+			OR = {
+                date > 2026.06.01
+                PRC = {
+                    OR = {
+                        has_shine_effect_on_focus = Moving_towards_victory
+                        has_completed_focus = Moving_towards_victory
+                        has_war_with = JAP
+                    }
+                }
+                #JAP = { has_active_mission = JAP_korean_war_joining }
+            }
+		}
+        modifier = {
+			add = 20
+			PRC = {
+                has_completed_focus = PLA_The_iron_flow_miles
+            }
+		}
     }
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
+		#PRC = {
+        #    has_completed_focus = PLA_The_iron_flow_miles
+        #}
 	}
 	completion_reward = {
 		set_temp_variable = {

@@ -2357,6 +2357,9 @@ country_event = {
                 PRC = {
                     add_to_faction = PRK
                 }
+                PRK = {
+                    set_country_flag = eadi_member
+                }
                 news_event = news.346
             }
             declare_war_on = {
@@ -2630,7 +2633,7 @@ country_event = {
         name = prcs.3140.a
         trigger = {
             has_tech = aa_hmg2
-            has_tech = short_range_missiles
+            #has_tech = short_range_missiles
         }
         hidden_effect = {
             if = {
@@ -2656,7 +2659,7 @@ country_event = {
             }
             NOT = {
                 has_tech = aa_hmg2
-                has_tech = short_range_missiles
+                #has_tech = short_range_missiles
             }  
         }
         set_variable = {
@@ -2676,7 +2679,7 @@ country_event = {
             }
             NOT = {
                 has_tech = aa_hmg2
-                has_tech = short_range_missiles
+                #has_tech = short_range_missiles
             }  
         }
         set_variable = {
@@ -2696,8 +2699,14 @@ country_event = {
     option = {
         name = prcs.3141.a
         trigger = {
-            check_variable = {
-                PRC.num_deployed_planes > PTF.num_deployed_planes
+            OR = {
+                check_variable = {
+                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                }
+                has_tech = {
+                    modern_air_defense_systems = 1
+                    advanced_ballistic_missile = 1
+                }
             }
         }
         add_to_variable = {

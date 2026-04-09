@@ -29,9 +29,32 @@ shared_focus = {
     x = 0
     y = 14
     ai_will_do = {
-        factor = 1000
+        factor = 0
+        modifier = {
+			add = 1000
+			OR = {
+                date > 2029.01.01
+                PRC = {
+                    OR = {
+                        has_shine_effect_on_focus = Moving_towards_victory
+                        has_completed_focus = Moving_towards_victory
+                        has_war_with = JAP
+                    }
+                }
+                JAP = { has_active_mission = JAP_korean_war_joining }
+            }
+		}
+        modifier = {
+			add = 20
+			PRC = {
+                has_completed_focus = PLA_The_iron_flow_miles
+            }
+		}
     }
     available = {
+        PRC = {
+            has_completed_focus = PLA_The_iron_flow_miles
+        }
     }
 }
 shared_focus = {
@@ -40,6 +63,9 @@ shared_focus = {
     cost = 2 # 28 days = 4 cost
     completion_reward = {
         log = "[GetDateText]: [Root.GetName]: focus PTF_storming_back_into_tne_pacific completion_reward"
+        PTF = {
+            set_faction_leader = yes
+        } # ptf成为太约领袖
         set_temp_variable = {
             var = military_development_var_temp
             value = 0.20
