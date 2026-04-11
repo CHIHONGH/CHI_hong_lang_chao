@@ -2513,7 +2513,6 @@ country_event = {
             id = prcs.3133
             days = 7
         }
-        custom_effect_tooltip = PRC_tfr_nl_china_taikongjunhaizaizuo_tt
     }
 }
 country_event = {
@@ -2524,7 +2523,6 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3133.a
-        custom_effect_tooltip = PRC_tfr_nl_china_taikongjunguihaizaizuo_tt
     }
 }
 country_event = {
@@ -2629,18 +2627,20 @@ country_event = {
     option = {
         name = prcs.3140.a
         trigger = {
-            has_tech = aa_hmg2
-            #has_tech = short_range_missiles
+            PRC = {
+                OR = {
+                    has_tech = fighter_equipment_8
+                    has_tech = unmanned_aircraft
+                    check_variable = {
+                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    }
+                }
+            }
         }
         hidden_effect = {
-            if = {
-                limit = {
-                    has_tech = fighter_equipment_8
-                }
-                country_event = {
-                    id = prcs.3142
-                    hours = 10
-                }
+            country_event = {
+                id = prcs.3142
+                hours = 10
             }
             set_variable = {
                 prcs_nanhai_duigong = 1
@@ -2654,10 +2654,14 @@ country_event = {
             check_variable = {
                 PRC.num_deployed_planes > PTF.num_deployed_planes
             }
-            NOT = {
-                has_tech = aa_hmg2
-                #has_tech = short_range_missiles
-            }  
+            PRC = {
+                NOT = {
+                    OR = {
+                        has_tech = fighter_equipment_8
+                        has_tech = unmanned_aircraft
+                    }
+                } 
+            } 
         }
         set_variable = {
             prcs_nanhai_duigong = 0
@@ -2668,17 +2672,7 @@ country_event = {
     }
     option = {
         name = prcs.3140.c
-        trigger = {
-            NOT = {
-                check_variable = {
-                    PRC.num_deployed_planes > PTF.num_deployed_planes
-                }
-            }
-            NOT = {
-                has_tech = aa_hmg2
-                #has_tech = short_range_missiles
-            }  
-        }
+        
         set_variable = {
             prcs_nanhai_duigong = -1
         }
@@ -2696,14 +2690,9 @@ country_event = {
     option = {
         name = prcs.3141.a
         trigger = {
-            OR = {
-                check_variable = {
-                    PRC.num_deployed_planes > PTF.num_deployed_planes
-                }
-                has_tech = {
-                    modern_air_defense_systems = 1
-                    advanced_ballistic_missile = 1
-                }
+            PRC = {
+                has_tech = modern_air_defense_systems
+                has_tech = advanced_ballistic_missile
             }
         }
         add_to_variable = {
@@ -2716,8 +2705,14 @@ country_event = {
     option = {
         name = prcs.3141.b
         trigger = {
+            NOT = {
+                PRC = {
+                    has_tech = modern_air_defense_systems
+                    has_tech = advanced_ballistic_missile
+                }
+            }
             check_variable = {
-                PRC.num_deployed_planes = PTF.num_deployed_planes
+                PRC.num_deployed_planes > PTF.num_deployed_planes
             }
         }
         hidden_effect = {
@@ -2726,11 +2721,7 @@ country_event = {
     }
     option = {
         name = prcs.3141.c
-        trigger = {
-            check_variable = {
-                PRC.num_deployed_planes < PTF.num_deployed_planes
-            }
-        }
+        
         add_to_variable = {
             prcs_nanhai_duigong = -1
         }

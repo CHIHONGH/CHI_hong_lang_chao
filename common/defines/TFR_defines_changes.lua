@@ -531,7 +531,7 @@
 	NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.2 -- 0.2
 	NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.1   -- 0.2
 	NDefines.NBuildings.ROCKETSITE_CAPACITY_MULT = 100   -- 100 红色黎明NBuildings标记
-	NDefines.NBuildings.SAM_MISSION_SUPERIORITY = 50.0      -- 5 红色黎明NBuildings标记 #地空导弹的空中优势
+	NDefines.NBuildings.SAM_MISSION_SUPERIORITY = 25.0      -- 5 红色黎明NBuildings标记 #地空导弹的空中优势
 	NDefines.NBuildings.RADAR_RANGE_MAX = 10000  --红色黎明NBuildings标记 #雷达最大范围
 
 	NDefines.NTechnology.BASE_RESEARCH_POINTS_SAVED = 30.0 -- 30

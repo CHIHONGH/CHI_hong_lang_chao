@@ -296,21 +296,19 @@ buildings = {
 	rocket_site = {
 		show_on_map = 1
 		base_cost = 8000
-		per_level_extra_cost = 400
+		per_level_extra_cost = 800
 		icon_frame = 12
-		damage_factor = 0.1
 		rocket_production = 0
 		rocket_launch_capacity = 1
-		value = 0
-		tags = {
-		}
+		value = 1
+		#damage_factor = 0		# This building can't be damaged by regular strat bombing
+		tags = {}
 		infrastructure_construction_effect = yes
-		#gun_emplacement = yes
 		disabled_in_dmz = yes
 		spawn_point = rocket_site_spawn
 		level_cap = {
 			state_max = 8
-			shares_slots = no
+			shares_slots = yes
 			exclusive_with = mega_gun_emplacement
 		}
 	}
