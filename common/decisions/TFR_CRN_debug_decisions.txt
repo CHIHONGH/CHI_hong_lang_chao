@@ -1,0 +1,85 @@
+# TFR_中俄谈判 - 调试决议
+debug_decisions = {
+
+	########################################################################
+	# 启动中俄外东北-图瓦谈判
+	########################################################################
+	TFR_CRN_start_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			NOT = { has_global_flag = TFR_CRN_negotiation_accessible }
+			country_exists = SOV
+		}
+		complete_effect = {
+			set_global_flag = TFR_CRN_negotiation_accessible
+		}
+	}
+
+	########################################################################
+	# 重置谈判（清空全部变量和旗标）
+	########################################################################
+	TFR_CRN_reset_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			OR = {
+				has_global_flag = TFR_CRN_negotiation_ended
+				has_global_flag = TFR_CRN_negotiation_active
+			}
+			country_exists = SOV
+		}
+		complete_effect = {
+			clr_global_flag = TFR_CRN_negotiation_ended
+			clr_global_flag = TFR_CRN_negotiation_accessible
+			clr_global_flag = TFR_CRN_negotiation_active
+			SOV = {
+				clear_variable = TFR_CRN_desperation
+				clear_variable = TFR_CRN_negotiation_days
+			}
+		}
+	}
+
+	########################################################################
+	# 强制设置 SOV 绝望度
+	########################################################################
+	TFR_CRN_set_desperation_debug = {
+		icon = generic_research
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			country_exists = SOV
+		}
+		complete_effect = {
+			SOV = { set_variable = { var = TFR_CRN_desperation value = 100 } }
+		}
+	}
+
+	########################################################################
+	# 强制完成全部购买（8省全部转交 + 核心）
+	########################################################################
+	TFR_CRN_force_all_debug = {
+		icon = generic_communism
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			country_exists = SOV
+		}
+		complete_effect = {
+			329 = { TFR_CRN_transfer_state = yes }
+			408 = { TFR_CRN_transfer_state = yes }
+			1328 = { TFR_CRN_transfer_state = yes }
+			657 = { TFR_CRN_transfer_state = yes }
+			409 = { TFR_CRN_transfer_state = yes }
+			560 = { TFR_CRN_transfer_state = yes }
+			1293 = { TFR_CRN_transfer_state = yes }
+			537 = { TFR_CRN_transfer_state = yes }
+		}
+	}
+}

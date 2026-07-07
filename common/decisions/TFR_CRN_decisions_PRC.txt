@@ -1,0 +1,318 @@
+# TFR_中俄谈判 - PRC 谈判决议
+# 购买外东北+图瓦，8省固定顺序，100天限时
+# 绝望度由 SOV 战况驱动
+# 大棒：外交施压 / 经济制裁 / 边境军演（冷却制，无需轮次）
+# 萝卜：每买一省 PRC 付赎金，SOV 得增益
+
+TFR_CRN_negotiation_category = {
+
+	########################################################################
+	# 100 天计时器 — 谈判开始后激活，超时关闭购买通道
+	########################################################################
+	TFR_CRN_timer = {
+		icon = generic_timer
+		allowed = { tag = PRC }
+		activation = { always = no }
+		available = { always = no }
+		selectable_mission = no
+		days_mission_timeout = 100
+		timeout_effect = {
+			set_global_flag = TFR_CRN_negotiation_ended
+			clr_global_flag = TFR_CRN_negotiation_active
+			news_event = { id = TFR_CRN.9 }
+		}
+	}
+
+	########################################################################
+	# 启动谈判 — 激活 100 天倒计时
+	########################################################################
+	TFR_CRN_start_negotiation = {
+		icon = generic_political_discourse
+		cost = 25
+		fire_only_once = yes
+		visible = {
+			NOT = { has_global_flag = TFR_CRN_negotiation_accessible }
+			country_exists = SOV
+		}
+		available = {
+			SOV = { has_war = yes }
+			NOT = { has_global_flag = TFR_CRN_negotiation_accessible }
+		}
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			SOV = { TFR_CRN_init_negotiation = yes }
+			activate_mission = TFR_CRN_timer
+		}
+	}
+
+	########################################################################
+	# 大棒 1 — 外交照会施压（冷却 20天）
+	########################################################################
+	TFR_CRN_diplomatic_pressure = {
+		icon = generic_political_discourse
+		cost = 25
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = { TFR_CRN_negotiation_can_trade = yes }
+		ai_will_do = { factor = 0 }
+		days_remove = 20
+		complete_effect = {
+			SOV = {
+				add_to_variable = { var = TFR_CRN_desperation value = 10 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { TFR_CRN_desperation = 100 } }
+			}
+		}
+	}
+
+	########################################################################
+	# 大棒 2 — 经济制裁威胁（冷却 30天，SOV 贸易惩罚）
+	########################################################################
+	TFR_CRN_economic_sanctions = {
+		icon = generic_resistance
+		cost = 50
+		targeted_modifier = {
+			tag = SOV
+			trade_opinion_factor = -0.3
+		}
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = { TFR_CRN_negotiation_can_trade = yes }
+		ai_will_do = { factor = 0 }
+		days_remove = 30
+		complete_effect = {
+			SOV = {
+				add_to_variable = { var = TFR_CRN_desperation value = 15 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { TFR_CRN_desperation = 100 } }
+			}
+		}
+	}
+
+	########################################################################
+	# 大棒 3 — 边境军事演习（冷却 45天，+世界紧张度，-SOV 稳定）
+	########################################################################
+	TFR_CRN_border_exercise = {
+		icon = generic_army_leadership
+		cost = 75
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = { TFR_CRN_negotiation_can_trade = yes }
+		ai_will_do = { factor = 0 }
+		days_remove = 45
+		complete_effect = {
+			add_tension = 0.5
+			SOV = { add_stability = -0.03 }
+			SOV = {
+				add_to_variable = { var = TFR_CRN_desperation value = 20 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { TFR_CRN_desperation = 100 } }
+			}
+		}
+	}
+
+	########################################################################
+	# ↓↓↓ 以下 8 省按固定顺序购买，后一省依赖前一省已买 ↓↓↓
+	# 购买提示改用 custom_effect_tooltip，不弹新闻刷屏
+	########################################################################
+
+	# 1 — 唐努乌梁海（图瓦），PP 50
+	TFR_CRN_buy_tuva = {
+		icon = generic_diplomacy
+		cost = 50
+		fire_only_once = yes
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 20 compare = greater_than_or_equals } }
+			329 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_tuva
+			SOV = { add_political_power = 50 }
+			329 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+	}
+
+	# 2 — 海参崴，PP 50 + 贸易优惠
+	TFR_CRN_buy_vladivostok = {
+		icon = generic_diplomacy
+		cost = 50
+		fire_only_once = yes
+		targeted_modifier = {
+			tag = SOV
+			trade_cost_for_target_factor = -0.5
+		}
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 25 compare = greater_than_or_equals } }
+			329 = { is_core_of = PRC }
+			408 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		days_remove = 90
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_vladivostok
+			SOV = { add_political_power = 50 }
+			408 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+	}
+
+	# 3 — 海兰泡，PP 60 + 民用工厂 ×1（90天）
+	TFR_CRN_buy_south_amur = {
+		icon = generic_military_industrial_complex
+		cost = 60
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 1 }
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 35 compare = greater_than_or_equals } }
+			408 = { is_core_of = PRC }
+			1328 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		days_remove = 90
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_south_amur
+			SOV = { add_political_power = 60 }
+			SOV = { add_offsite_building = { type = industrial_complex level = 8 } }
+			1328 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+		remove_effect = {
+			SOV = { add_offsite_building = { type = industrial_complex level = -8 } }
+		}
+	}
+
+	# 4 — 奇穆尼窝集，PP 60 + 装备（send_equipment）
+	TFR_CRN_buy_birobidzhan = {
+		icon = generic_research
+		cost = 60
+		fire_only_once = yes
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 45 compare = greater_than_or_equals } }
+			1328 = { is_core_of = PRC }
+			657 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_birobidzhan
+			SOV = { add_political_power = 60 }
+			send_equipment = { equipment = infantry_equipment amount = 20000 target = SOV }
+			send_equipment = { equipment = support_equipment amount = 4000 target = SOV }
+			send_equipment = { equipment = light_mechanized_equipment amount = 280 target = SOV }
+			send_equipment = { equipment = mechanized_equipment amount = 120 target = SOV }
+			send_equipment = { equipment = modern_tank_artillery_chassis amount = 100 target = SOV }
+			send_equipment = { equipment = modern_tank_chassis amount = 100 target = SOV }
+			657 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+	}
+
+	# 5 — 伯力，PP 70 + 军用工厂 ×1（90天）
+	TFR_CRN_buy_khabarovsk = {
+		icon = generic_military_industrial_complex
+		cost = 70
+		fire_only_once = yes
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 55 compare = greater_than_or_equals } }
+			657 = { is_core_of = PRC }
+			409 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		days_remove = 90
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_khabarovsk
+			SOV = { add_political_power = 70 }
+			SOV = { add_offsite_building = { type = arms_factory level = 8 } }
+			409 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+		remove_effect = {
+			SOV = { add_offsite_building = { type = arms_factory level = -8 } }
+		}
+	}
+
+	# 6 — 庙街，PP 80 + 人力
+	TFR_CRN_buy_nikolayevsk = {
+		icon = generic_army_leadership
+		cost = 80
+		fire_only_once = yes
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 65 compare = greater_than_or_equals } }
+			409 = { is_core_of = PRC }
+			560 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_nikolayevsk
+			SOV = { add_political_power = 80 }
+			send_equipment = { equipment = infantry_equipment amount = 15000 target = SOV }
+			SOV = { add_manpower = 15000 }
+			560 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+	}
+
+	# 7 — 外兴安岭，PP 90 + 生成部队（远东国际志愿旅 ×3 在布里亚特）
+	TFR_CRN_buy_amur = {
+		icon = generic_war
+		cost = 90
+		fire_only_once = yes
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 75 compare = greater_than_or_equals } }
+			560 = { is_core_of = PRC }
+			1293 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_tooltip_amur
+			SOV = { add_political_power = 90 }
+			# 装备支援塞给 SOV（送装备 + 送人）
+			send_equipment = { equipment = infantry_equipment amount = 20000 target = SOV }
+			send_equipment = { equipment = support_equipment amount = 4000 target = SOV }
+			send_equipment = { equipment = modern_tank_chassis amount = 500 target = SOV }
+			send_equipment = { equipment = modern_tank_artillery_chassis amount = 500 target = SOV }
+			add_manpower = -15000
+			# 在布里亚特为 SOV 生成 3 支远东国际志愿旅（精锐）
+			564 = {
+				create_unit = {
+					division = "name = \"Far East International Volunteer Brigade\" division_template = \"Far East International Volunteer Brigade\" start_experience_factor = 1"
+					owner = SOV
+					count = 3
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			1293 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+		}
+	}
+
+	# 8 — 库页岛，PP 100（最终里程碑，弹新闻）
+	TFR_CRN_buy_sakhalin = {
+		icon = generic_diplomacy
+		cost = 100
+		fire_only_once = yes
+		visible = { TFR_CRN_negotiation_can_trade = yes }
+		available = {
+			TFR_CRN_negotiation_can_trade = yes
+			SOV = { check_variable = { var = TFR_CRN_desperation value = 85 compare = greater_than_or_equals } }
+			1293 = { is_core_of = PRC }
+			537 = { is_core_of = SOV }
+		}
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			SOV = { add_political_power = 100 }
+			537 = { TFR_CRN_transfer_state = yes }
+			SOV = { TFR_CRN_calc_desperation = yes }
+			news_event = { id = TFR_CRN.10 }
+		}
+	}
+}

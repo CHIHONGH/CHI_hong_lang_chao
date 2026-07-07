@@ -1,0 +1,127 @@
+# TFR_中蒙谈判 - 脚本 GUI
+# 旗标驱动会谈记录，决策类别嵌入用
+
+scripted_gui = {
+	TFR_CMRN_negotiation_gui = {
+		window_name = "TFR_CMRN_negotiation_gui_window"
+		context_type = decision_category
+
+		triggers = {
+			top_folder_button_click_enabled = {
+				set_temp_variable = { folder_frame = 1 }
+				set_temp_variable = { flag_y = 16 }
+			}
+
+			# PRC 槽 1（最新，y=320）—— 新记录最先进入
+			prc_s1_1_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 1 } }
+			prc_s1_2_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 2 } }
+			prc_s1_3_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 3 } }
+			prc_s1_4_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 4 } }
+			prc_s1_5_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 5 } }
+			prc_s1_6_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 6 } }
+			prc_s1_7_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 7 } }
+			prc_s1_8_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 8 } }
+			prc_s1_9_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 9 } }
+			prc_s1_10_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 10 } }
+			prc_s1_11_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 11 } }
+			prc_s1_12_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 12 } }
+			prc_s1_13_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 13 } }
+			prc_s1_14_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 14 } }
+			prc_s1_15_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 15 } }
+			prc_s1_16_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 16 } }
+			prc_s1_17_visible = { check_variable = { TFR_CMRN_prc_convo_slot1 = 17 } }
+
+			# PRC 槽 2（中间，y=380）
+			prc_s2_1_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 1 } }
+			prc_s2_2_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 2 } }
+			prc_s2_3_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 3 } }
+			prc_s2_4_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 4 } }
+			prc_s2_5_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 5 } }
+			prc_s2_6_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 6 } }
+			prc_s2_7_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 7 } }
+			prc_s2_8_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 8 } }
+			prc_s2_9_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 9 } }
+			prc_s2_10_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 10 } }
+			prc_s2_11_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 11 } }
+			prc_s2_12_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 12 } }
+			prc_s2_13_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 13 } }
+			prc_s2_14_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 14 } }
+			prc_s2_15_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 15 } }
+			prc_s2_16_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 16 } }
+			prc_s2_17_visible = { check_variable = { TFR_CMRN_prc_convo_slot2 = 17 } }
+
+			# PRC 槽 3（最旧，y=440）—— 最旧记录
+			prc_s3_1_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 1 } }
+			prc_s3_2_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 2 } }
+			prc_s3_3_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 3 } }
+			prc_s3_4_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 4 } }
+			prc_s3_5_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 5 } }
+			prc_s3_6_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 6 } }
+			prc_s3_7_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 7 } }
+			prc_s3_8_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 8 } }
+			prc_s3_9_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 9 } }
+			prc_s3_10_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 10 } }
+			prc_s3_11_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 11 } }
+			prc_s3_12_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 12 } }
+			prc_s3_13_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 13 } }
+			prc_s3_14_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 14 } }
+			prc_s3_15_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 15 } }
+			prc_s3_16_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 16 } }
+			prc_s3_17_visible = { check_variable = { TFR_CMRN_prc_convo_slot3 = 17 } }
+			prc_convo_17_visible = { has_global_flag = TFR_CMRN_war_declared }
+
+			# MON 槽 1（最新，y=320）—— 新记录最先进入
+			mon_s1_1_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 1 } }
+			mon_s1_2_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 2 } }
+			mon_s1_3_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 3 } }
+			mon_s1_4_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 4 } }
+			mon_s1_5_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 5 } }
+			mon_s1_6_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 6 } }
+			mon_s1_7_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 7 } }
+			mon_s1_8_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 8 } }
+			mon_s1_9_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 9 } }
+			mon_s1_10_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 10 } }
+			mon_s1_11_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 11 } }
+			mon_s1_12_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 12 } }
+			mon_s1_13_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 13 } }
+			mon_s1_14_visible = { check_variable = { TFR_CMRN_mon_convo_slot1 = 14 } }
+
+			# MON 槽 2（中间，y=380）
+			mon_s2_1_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 1 } }
+			mon_s2_2_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 2 } }
+			mon_s2_3_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 3 } }
+			mon_s2_4_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 4 } }
+			mon_s2_5_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 5 } }
+			mon_s2_6_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 6 } }
+			mon_s2_7_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 7 } }
+			mon_s2_8_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 8 } }
+			mon_s2_9_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 9 } }
+			mon_s2_10_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 10 } }
+			mon_s2_11_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 11 } }
+			mon_s2_12_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 12 } }
+			mon_s2_13_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 13 } }
+			mon_s2_14_visible = { check_variable = { TFR_CMRN_mon_convo_slot2 = 14 } }
+
+			# MON 槽 3（最旧，y=440）—— 最旧记录
+			mon_s3_1_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 1 } }
+			mon_s3_2_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 2 } }
+			mon_s3_3_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 3 } }
+			mon_s3_4_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 4 } }
+			mon_s3_5_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 5 } }
+			mon_s3_6_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 6 } }
+			mon_s3_7_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 7 } }
+			mon_s3_8_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 8 } }
+			mon_s3_9_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 9 } }
+			mon_s3_10_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 10 } }
+			mon_s3_11_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 11 } }
+			mon_s3_12_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 12 } }
+			mon_s3_13_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 13 } }
+			mon_s3_14_visible = { check_variable = { TFR_CMRN_mon_convo_slot3 = 14 } }
+		}
+
+		properties = {
+			tendency_progbar = { frame = MON:TFR_CMRN_tendency_frame }
+			influence_progbar = { frame = MON:TFR_CMRN_influence_frame }
+		}
+	}
+}
