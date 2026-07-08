@@ -1,3 +1,37 @@
+PRC_wofo_MON = {
+    add_to_variable = { PRC_at_MON = PRC_at_dingdongji }
+    custom_effect_tooltip = PRC_dagoujiao
+    clamp_variable = {
+        var = PRC_at_MON
+        min = 0
+        max = 100
+    }
+}
+
+change_welfare_type_communism = {
+    custom_effect_tooltip = rich_communism_tt
+    hidden_effect = {
+        add_ideas = communist_great_rich
+    }
+}
+
+change_economy_type_auto_socialism = {
+    custom_effect_tooltip = change_economy_type_auto_socialism_tt
+    hidden_effect = {
+       	remove_economy_types = yes
+        add_ideas = ZZZ_automation_socialism
+    }
+}
+
+change_economy_type_auto_communism = {
+    custom_effect_tooltip = change_economy_type_auto_communism_tt
+    hidden_effect = {
+        remove_economy_types = yes
+        add_ideas = ZZZ_automation_communism
+        add_ideas = auto_communism
+    }
+}
+
 remove_economy_types = {
     remove_ideas = {
         ZZZ_capitalist_economy
@@ -25,7 +59,9 @@ remove_economy_types = {
         ZZZ_left_corporatism
         ZZZ_liberal_corporatism
         ZZZ_OGAS
-        ZZZ_ogas
+        ZZZ_automation_socialism
+        ZZZ_automation_socialism1
+        ZZZ_automation_communism
     }
 }
 
@@ -34,21 +70,21 @@ change_economy_type_OGAS_economy = {
     hidden_effect = {
         remove_economy_types = yes
         add_ideas = ZZZ_OGAS
-        add_dynamic_modifier = {
-            modifier = PRC_OGAS_dynamic
-        }
-        add_to_variable = {
-            var = ogas_consumer_goods_factor_dynamic_var
-            value = 0.05
-        }
-        add_to_variable = {
-            var = ogas_production_factory_max_efficiency_factor_dynamic_var
-            value = 0.05
-        }
-        add_to_variable = {
-            var = ogas_production_factory_efficiency_gain_factor_dynamic_var
-            value = -0.1
-        }
+        # add_dynamic_modifier = {
+        #     modifier = PRC_OGAS_dynamic
+        # }
+        # add_to_variable = {
+        #     var = ogas_consumer_goods_factor_dynamic_var
+        #     value = 0.05
+        # }
+        # add_to_variable = {
+        #     var = ogas_production_factory_max_efficiency_factor_dynamic_var
+        #     value = 0.05
+        # }
+        # add_to_variable = {
+        #     var = ogas_production_factory_efficiency_gain_factor_dynamic_var
+        #     value = -0.1
+        # }
     }
 }
 
@@ -56,6 +92,7 @@ PRC_gaw_start = {
     every_state = {
         limit = {
             OR = {
+                is_core_of = PTF
                 state = 787
                 state = 1132
                 state = 440
@@ -208,6 +245,10 @@ PRC_gaw_start = {
         }
     }
     AST = {
+        country_event = {
+            id = Australia_gaw.1
+            hours = 6
+        }
         activate_mission = JAP_GAW_war_exhaustion
         PRC_GAW_check_faction_members = yes
         add_dynamic_modifier = {
@@ -381,6 +422,7 @@ PRC_gaw_start = {
     }
     PTF = {
         load_focus_tree = PTF_saint_george_de_dragon_tree
+        focus_unlock = yes
     }
 }
 
@@ -406,13 +448,19 @@ PRC_chinas_victory_in_the_gaw_nl = {
             }
         }
         AST = {
+            create_country_leader = {
+                name = "澳大利亚人民代表大会"
+                desc = "POLITICS_CHAOXIAN_DESC"
+                picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                ideology = post_leftism
+            }
             set_cosmetic_tag = PRC_repolice_gonh
             set_politics = {
-                ruling_party = communist
+                ruling_party = libertarian_socialist
                 elections_allowed = no
             }
             set_popularities = {
-                communist = 100
+                libertarian_socialist = 100
             }
         }
     }
@@ -424,6 +472,12 @@ PRC_chinas_victory_in_the_gaw_nl = {
         }
         PNG = {
             set_cosmetic_tag = PRC_repolice_gonh
+            create_country_leader = {
+                name = "巴布几内亚人民代表大会"
+                desc = "POLITICS_CHAOXIAN_DESC"
+                picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                ideology = marxism_leninism
+            }
             set_politics = {
                 ruling_party = communist
                 elections_allowed = no
@@ -440,9 +494,15 @@ PRC_chinas_victory_in_the_gaw_nl = {
             }
         }
         NZL = {
+            create_country_leader = {
+                name = "新西兰人民代表大会"
+                desc = "POLITICS_CHAOXIAN_DESC"
+                picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                ideology = marxism_leninism
+            }
             set_cosmetic_tag = PRC_repolice_gonh
             set_politics = {
-                ruling_party = communist
+                ruling_party = social_democrat
                 elections_allowed = no
             }
             set_popularities = {
@@ -455,6 +515,13 @@ PRC_chinas_victory_in_the_gaw_nl = {
             has_country_flag = pdto_member
         }
         clr_country_flag = pdto_member
+        PRC = {
+            set_autonomy = {
+                target = PREV
+                autonomous_state = autonomy_communist
+                freedom_level = 0.1
+            }
+        }
     }
     every_country = {
         limit = {
@@ -474,7 +541,16 @@ PRC_chinas_victory_in_the_gaw_nl = {
 }
 
 PRC_PTF_gaw = {
+    PTF = {
+        load_focus_tree = generic_focus
+        add_ideas = GER_national_catastrophe
+        release = MEX
+        release = CAN
+    }
     APA = {
+        set_politics = {
+            ruling_party = totalitarian_socialist
+        }
         add_country_leader_role = {
             character = APA_donald_courter_char
             promote_leader = yes
@@ -484,18 +560,29 @@ PRC_PTF_gaw = {
                 }
             }
         }
-        set_politics = {
-            ruling_party = totalitarian_socialist
-        }
         load_focus_tree = generic_focus
         set_party_name = {
             ideology = totalitarian_socialist
-            long_name = APA_perp_resistance_long
-            name = APA_perp_resistance
+            long_name = APA_nationalist_party_new_left_long
+            name = APA_nationalist_party_new_left
         }
         add_popularity = {
             ideology = totalitarian_socialist
             popularity = 0.5
+        }
+        every_state = {
+            limit = {
+                is_on_continent = australia
+                is_owned_by = PTF
+            }
+            transfer_state_to = APA
+            add_core_of = APA
+        }
+        every_state = {
+            limit = {
+                is_core_of = PTF
+            }
+            add_core_of = APA
         }
         transfer_state = 932
         transfer_state = 1039

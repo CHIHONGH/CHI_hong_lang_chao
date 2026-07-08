@@ -1,4 +1,174 @@
 PRC_new_left_pla_reformation = {
+	#太空军训练
+	PRC_train_the_space_armed_forces = {
+		icon = GFX_PRC_rocket_strike
+		days_remove = space_forces_training_days_var?100
+
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_orbital_drop_new
+			NOT = { has_country_flag = mio_trait_Heavy_lift_Rocket_Launching_Engineering_flag }
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			has_manpower > 20000
+			command_power > 30	
+		}
+		available = {
+			has_manpower > 20000
+			command_power > 30
+		}
+		modifier = {
+			industrial_capacity_factory = -0.25
+			civilian_factory_use = 20
+            #consumer_goods_factor = 0.2
+			training_time_army = 0.1
+        }
+
+		complete_effect = {
+			add_manpower = -20000
+			add_command_power = -30
+		}
+        remove_effect = {
+            add_to_variable = {
+				var = PRC_oss_space_armed_forces_num
+				value = 12
+				tooltip = add_oss_space_armed_forces_num_tt
+			}
+        }
+	}
+	PRC_train_the_space_armed_forces_2 = {
+		icon = GFX_PRC_rocket_strike
+		days_remove = space_forces_training_days_var?100
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_orbital_drop_new
+			has_country_flag = mio_trait_Heavy_lift_Rocket_Launching_Engineering_flag
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			has_manpower > 17000
+			command_power > 30	
+		}
+		available = {
+			has_manpower > 17000
+			command_power > 30
+		}
+		modifier = {
+			industrial_capacity_factory = -0.15
+			civilian_factory_use = 10
+            #consumer_goods_factor = 0.2
+			training_time_army = 0.1
+        }
+
+		complete_effect = {
+			add_manpower = -17000
+			add_command_power = -30
+		}
+        remove_effect = {
+            add_to_variable = {
+				var = PRC_oss_space_armed_forces_num
+				value = 12
+				tooltip = add_oss_space_armed_forces_num_tt
+			}
+        }
+	}
+	PRC_heavy_paratrooper_upgrade = {
+		icon = GFX_PRC_soliders
+		days_remove = 30
+		fire_only_once = yes
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_HengSaoQianJun
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			command_power > 30	
+		}
+		available = {
+			command_power > 30
+		}
+		available = {
+			OR = {
+				has_tech = body_armor6
+				has_tech = body_armor8
+			}
+		}
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			custom_override_tooltip = {
+				tooltip = PRC_heavy_paratrooper_upgrade_tt
+				set_technology = {
+					heavy_paratrooper = 1
+				}
+			}
+		}
+	}
+	PRC_unmanned_mechanized_upgrade = {
+		icon = GFX_PRC_soliders
+		days_remove = 30
+		fire_only_once = yes
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_HengSaoQianJun
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			command_power > 30	
+		}
+		available = {
+			command_power > 30
+		}
+		available = {
+			OR = {
+				has_tech = body_armor6
+				has_tech = body_armor8
+			}
+		}
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			custom_override_tooltip = {
+				tooltip = PRC_unmanned_mechanized_upgrade_tt
+				set_technology = {
+					unmanned_mechanized = 1
+				}
+			}
+		}
+	}
+	PRC_heavy_synthetic_battalion_upgrade = {
+		icon = GFX_PRC_soliders
+		days_remove = 30
+		fire_only_once = yes
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_HengSaoQianJun
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			command_power > 30	
+		}
+		available = {
+			command_power > 30
+		}
+		available = {
+			has_tech = tank_destroyer1
+		}
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			custom_override_tooltip = {
+				tooltip = PRC_heavy_synthetic_battalion_upgrade_tt
+				set_technology = {
+					heavy_synthetic_battalion = 1
+				}
+			}
+		}
+	}
 	#原版再利用
 	PRC_accelerated_officer_training_programs = {
 		icon = GFX_PRC_soliders
@@ -184,26 +354,6 @@ PRC_new_left_pla_reformation = {
 		remove_effect = {
 			clr_country_flag = PRC_thunder_gods_mountain_flag
 			clr_country_flag = PRC_thunder_god_program_in_progress
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PLA_dummy_general_staff
-					add_idea = PRC_thunder_gods_mountains_idea_general_staff
-				}
-			}
-			hidden_effect = {
-				add_to_variable = {
-					var = PRC_new_left_acclimatization_cold_climate_gain_factor_dynamic_var
-					value = 0.2
-				}
-				add_to_variable = {
-					var = PRC_new_left_pla_training_time_factor_dynamic_var
-					value = 0.1
-				}
-				add_to_variable = {
-					var = PRC_new_left_terrain_penalty_reduction_dynamic_var
-					value = 0.05
-				}
-			}
 			set_temp_variable = {
 				var = PRC_army_reform_progress_temp
 				value = 5
@@ -417,138 +567,6 @@ PRC_new_left_pla_reformation = {
 		}
 		ai_will_do = {
 			base = 5
-		}
-	}
-	#总参谋部
-	PLA_synthesis = {
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_commanders_reinforce
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 35
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PLA_dummy_general_staff
-					add_idea = PLA_general_staff_7
-				}
-			}
-			hidden_effect = {
-				add_to_variable = {
-					var = PLA_new_left_initiative_factor_dynamic_var
-					value = 0.2
-				}
-				add_to_variable = {
-					var = PLA_new_left_land_reinforce_rate_dynamic_var
-					value = 0.02
-				}
-				add_to_variable = {
-					var = PLA_new_left_air_cas_present_factor_dynamic_var
-					value = 0.2
-				}
-			}
-		}
-	}
-	PLA_academy_adjustment = {
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_talents_education
-		}
-		fire_only_once = yes
-		cost = 100
-		days_remove = 56
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PLA_dummy_general_staff
-					add_idea = PLA_general_staff_8
-				}
-			}
-			hidden_effect = {
-				add_to_variable = {
-					var = PLA_new_left_training_time_factor_dynamic_var
-					value = 0.1
-				}
-				add_to_variable = {
-					var = PLA_new_left_army_attack_factor_dynamic_var
-					value = 0.025
-				}
-				add_to_variable = {
-					var = PLA_new_left_naval_damage_factor_dynamic_var
-					value = 0.025
-				}
-				add_to_variable = {
-					var = PLA_new_left_air_attack_factor_dynamic_var
-					value = 0.025
-				}
-				add_to_variable = {
-					var = PLA_new_left_supply_consumption_factor_dynamic_var
-					value = -0.05
-				}
-			}
-		}
-	}
-	PLA_command_technical = {
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_talents_education
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 28
-		remove_effect = {
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
-				uses = 1
-				category = naval_doctrine
-			}
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
-				uses = 1
-				category = air_doctrine
-			}
-		}
-	}
-	PLA_peoples_warfare = {
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PLA_talents_education
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 28
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PLA_dummy_general_staff
-					add_idea = PLA_general_staff_9
-				}
-			}
-			hidden_effect = {
-				add_to_variable = {
-					var = PLA_new_left_war_stability_factor_dynamic_var
-					value = 0.2
-				}
-				add_to_variable = {
-					var = PLA_new_left_industry_free_repair_factor_dynamic_var
-					value = 1
-				}
-			}
 		}
 	}
 	#研发

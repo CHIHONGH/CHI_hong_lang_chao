@@ -1,0 +1,109 @@
+#Ideas
+## NEW SHIT ##
+NSM_change_fractured_movement_var = {
+	#custom_effect_tooltip = NSM_change_fractured_movement_var_tt
+	effect_tooltip = {
+		swap_ideas = {
+			remove_idea = NSM_fractured_movement_idea
+			add_idea = NSM_fractured_movement_idea1
+		}
+	}
+	hidden_effect = {
+		add_to_variable = {
+			var = NSM_fractured_movement_political_power_gain_dynamic_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = NSM_fractured_movement_stability_factor_dynamic_var
+			value = 0.05
+		}
+	}
+}
+
+#Civil War
+NSM_add_to_coalition = {
+	NSM = {
+		add_to_faction = FROM
+		custom_effect_tooltip = USA_add_to_coalition_tooltip
+		hidden_effect = {
+			every_enemy_country = {
+				declare_war_on = {
+					target = FROM
+					type = civil_war
+				}
+			}
+		}
+	}
+	hidden_effect = {
+		every_enemy_country = {
+			every_other_country = {
+				limit = {
+					is_in_faction_with = FROM
+				}
+				add_to_war = {
+					targeted_alliance = FROM
+					enemy = PREV
+					hostility_reason = asked_to_join
+				}
+			}
+		}
+	}
+}
+
+NSM_leave_national_front = {
+	leave_faction = yes
+	set_country_flag = NSM_left_faction_flag
+	if = {
+		limit = {
+			NOT = {
+				tag = ATW
+			}
+		}
+		every_other_country = {
+			limit = {
+				USA_is_nationalist_tag = yes
+				is_in_faction = yes
+			}
+			declare_war_on = {
+				target = ROOT
+				type = civil_war
+			}
+		}
+	}
+}
+
+NSM_national_conference_effect = {
+	custom_effect_tooltip = NSM_national_conference_tooltip
+	hidden_effect = {
+		PTF = {
+			country_event = {
+				id = ptf.3
+			}
+		}
+	}
+}
+
+#Debug
+NSM_local_theatre_win_debug_effect = {
+	every_other_country = {
+		limit = {
+			exists = yes
+			NOT = {
+				tag = NSM
+			}
+			OR = {
+				tag = HUM
+				tag = NSM
+				tag = HWM
+				tag = BMF
+				tag = MIM
+			}
+		}
+		every_controlled_state = {
+			transfer_state_to = NSM
+		}
+	}
+	country_event = {
+		id = nsm.26
+	}
+}

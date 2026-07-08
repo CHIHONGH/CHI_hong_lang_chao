@@ -1,0 +1,196 @@
+focus_tree = {
+	id = PRK_focus_tree
+	country = {
+		factor = 0
+	}
+	default = no
+
+	# --- 根国策 ---
+	focus = {
+		id = PRK_sunrise_time
+		icon = GFX_goal_unknown
+		x = 10
+		y = 0
+		cost = 0
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+	}
+
+	# --- 第一层分支 ---
+	focus = {
+		id = PRK_peoples_volunteer_army
+		icon = GFX_goal_unknown
+		x = -5
+		y = 1
+		cost = 0
+		relative_position_id = PRK_sunrise_time
+		prerequisite = { focus = PRK_sunrise_time }
+	}
+
+	focus = {
+		id = PRK_anti_imp_bastion
+		icon = GFX_goal_unknown
+		x = -3
+		y = 1
+		cost = 0
+		relative_position_id = PRK_sunrise_time
+		prerequisite = { focus = PRK_sunrise_time }
+	}
+
+	focus = {
+		id = PRK_blood_sun_setting
+		icon = GFX_goal_unknown
+		x = -1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_sunrise_time
+		prerequisite = { focus = PRK_sunrise_time }
+	}
+
+	focus = {
+		id = PRK_return_to_seoul
+		icon = GFX_goal_unknown
+		x = 2
+		y = 1
+		cost = 0
+		relative_position_id = PRK_sunrise_time
+		prerequisite = { focus = PRK_sunrise_time }
+	}
+
+	focus = {
+		id = PRK_brothers_cooperation
+		icon = GFX_goal_unknown
+		x = 5
+		y = 1
+		cost = 0
+		relative_position_id = PRK_sunrise_time
+		prerequisite = { focus = PRK_sunrise_time }
+	}
+
+	# --- 第二层分支 ---
+	focus = {
+		id = PRK_logistics_battlefield
+		icon = GFX_goal_unknown
+		x = 0
+		y = 1
+		cost = 0
+		relative_position_id = PRK_peoples_volunteer_army
+		prerequisite = { focus = PRK_peoples_volunteer_army }
+	}
+
+	focus = {
+		id = PRK_no_mercy
+		icon = GFX_goal_unknown
+		x = 1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_anti_imp_bastion
+		prerequisite = { focus = PRK_anti_imp_bastion }
+		prerequisite = { focus = PRK_blood_sun_setting }
+	}
+
+	focus = {
+		id = PRK_southern_revolution
+		icon = GFX_goal_unknown
+		x = -1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_return_to_seoul
+		prerequisite = { focus = PRK_return_to_seoul }
+	}
+
+	focus = {
+		id = PRK_master_of_sabotage
+		icon = GFX_goal_unknown
+		x = 1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_return_to_seoul
+		prerequisite = { focus = PRK_return_to_seoul }
+	}
+
+	focus = {
+		id = PRK_sun_and_moon
+		icon = GFX_goal_unknown
+		x = 0
+		y = 1
+		cost = 0
+		relative_position_id = PRK_brothers_cooperation
+		prerequisite = { focus = PRK_brothers_cooperation }
+	}
+
+	# --- 第三层分支 ---
+	focus = {
+		id = PRK_not_an_inch
+		icon = GFX_goal_unknown
+		x = -1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_logistics_battlefield
+		prerequisite = { focus = PRK_logistics_battlefield }
+	}
+
+	focus = {
+		id = PRK_by_any_means
+		icon = GFX_goal_unknown
+		x = 1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_logistics_battlefield
+		prerequisite = { focus = PRK_logistics_battlefield }
+	}
+
+	focus = {
+		id = PRK_national_grudge_settled
+		icon = GFX_goal_unknown
+		x = 0
+		y = 1
+		cost = 0
+		relative_position_id = PRK_no_mercy
+		prerequisite = { focus = PRK_no_mercy }
+	}
+
+	focus = {
+		id = PRK_unification_of_land
+		icon = GFX_goal_unknown
+		x = 1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_southern_revolution
+		prerequisite = { focus = PRK_southern_revolution }
+		prerequisite = { focus = PRK_master_of_sabotage }
+	}
+
+	focus = {
+		id = PRK_toward_the_future
+		icon = GFX_goal_unknown
+		x = 0
+		y = 1
+		cost = 0
+		relative_position_id = PRK_sun_and_moon
+		prerequisite = { focus = PRK_sun_and_moon }
+	}
+
+	# --- 终极国策 ---
+	focus = {
+		id = PRK_world_devouring_flames
+		icon = GFX_goal_unknown
+		x = -1
+		y = 1
+		cost = 0
+		relative_position_id = PRK_by_any_means
+		prerequisite = { focus = PRK_not_an_inch }
+		prerequisite = { focus = PRK_by_any_means }
+	}
+
+	focus = {
+		id = PRK_eternal_glory
+		icon = GFX_goal_unknown
+		x = 2
+		y = 1
+		cost = 0
+		relative_position_id = PRK_national_grudge_settled
+		prerequisite = { focus = PRK_national_grudge_settled }
+		prerequisite = { focus = PRK_unification_of_land }
+	}
+}

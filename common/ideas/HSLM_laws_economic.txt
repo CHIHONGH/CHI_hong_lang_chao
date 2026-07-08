@@ -1,62 +1,7 @@
 ideas = {
-	# 隐藏经济体制民族精神
 	economy = {
 		law = yes
 		use_list_view = yes
-		auto_socialism = {
-			picture = auto_socialism
-			removal_cost = -1
-			level = 7
-			cancel_if_invalid = no
-			default = yes
-			allowed_to_remove = {
-			}
-			allowed = {
-				tag = PRC
-			}
-			available = {
-				has_completed_focus = PRC_nl_industry_five
-			}
-			visible = {
-				has_completed_focus = PRC_nl_industry_five
-				NOT = {
-					has_country_flag = PRC_nl_condition_jingji15_flag
-				}
-			}
-			modifier = {
-				consumer_goods_factor = 0.2
-				stability_weekly = 0.002
-				business_value_factor = 0.15
-				personal_value_factor = 0.15
-				production_speed_buildings_factor = 0.1
-			}
-		}
-		auto_socialism1 = {
-			picture = auto_socialism
-			removal_cost = -1
-			level = 7
-			cancel_if_invalid = no
-			default = yes
-			allowed_to_remove = {
-			}
-			allowed = {
-				tag = PRC
-			}
-			available = {
-				has_completed_focus = PRC_nl_industry_five
-			}
-			visible = {
-				has_country_flag = PRC_nl_condition_jingji15_flag
-			}
-			modifier = {
-				consumer_goods_factor = 0.2
-				stability_weekly = 0.002
-				business_value_factor = 0.25
-				personal_value_factor = 0.15
-				production_speed_buildings_factor = 0.15
-				industrial_development_monthly = 0.01
-			}
-		}
 		auto_communism = {
 			picture = auto_communism
 			removal_cost = -1
@@ -73,7 +18,7 @@ ideas = {
 			}
 			visible = {
 				tag = PRC
-				has_completed_focus = PRC_nl_new_era_angang_constitution
+				has_completed_focus = PRC_nl_new_sky
 			}
 			modifier = {
 				consumer_goods_factor = 0.15
@@ -104,6 +49,22 @@ ideas = {
 				production_speed_buildings_factor = 0.1
 			}
 		}
+		ZZZ_automation_socialism1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = 0.2
+				stability_weekly = 0.002
+				business_value_factor = 0.25
+				personal_value_factor = 0.15
+				production_speed_buildings_factor = 0.15
+				industrial_development_monthly = 0.01
+			}
+		}
 		ZZZ_automation_communism = {
 			allowed = {
 				always = no
@@ -131,7 +92,7 @@ ideas = {
 			removal_cost = -1
 			cost = 100
 			level = 1
-			picture = laws_welfare5
+			picture = auto_socialism
 			allowed = {
 				tag = PRC
 			}

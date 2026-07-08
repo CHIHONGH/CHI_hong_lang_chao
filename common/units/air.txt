@@ -1,12 +1,14 @@
 sub_units = {
-	attack_helicopter = {		###武装直升机
+	attack_helicopter = {
 		sprite = attack_helicopter
 		priority = 1
 		active = yes
-		type = { fighter cas }
+		type = { fighter cas naval_bomber }
 		need = { attack_helicopter_equipment = 1 }
-		categories = { category_helicopter }
+		categories = { category_helicopter category_nav_bomber }
 		land_air_wing_size = 100
+		carrier_air_wing_size = 10
+		mega_carrier_air_wing_size = 10
 	}
 
 	suicide_craft = {
@@ -19,7 +21,7 @@ sub_units = {
 		land_air_wing_size = 100
 	}
 	
-	fighter = {		###多用途飞机（歼-10C）（歼-20）（歼-16）
+	fighter = {
 		sprite = light_plane
 		priority = 1
 		active = yes
@@ -40,7 +42,7 @@ sub_units = {
 		land_air_wing_size = 100
 	}
 	
-	cas = {		###对地攻击机（歼轰-7）
+	cas = {
 		sprite = light_cas
 		priority = 2
 		active = yes
@@ -50,7 +52,7 @@ sub_units = {
 		land_air_wing_size = 100
 	}
 	
-	cv_cas = {		###多用途近距支援机（SU-30MKK）
+	cv_cas = {
 		sprite = light_plane
 		priority = 2
 		active = yes
@@ -72,7 +74,7 @@ sub_units = {
 		mega_carrier_air_wing_size = 10
 	}
 	
-	cv_nav_bomber = {		
+	cv_nav_bomber = {
 		sprite = light_plane
 		priority = 3
 		active = yes
@@ -84,7 +86,7 @@ sub_units = {
 		mega_carrier_air_wing_size = 10
 	}
 	
-	tac_bomber = {		###战术轰炸机
+	tac_bomber = {
 		sprite = medium_plane
 		priority = 4
 		active = yes
@@ -95,7 +97,7 @@ sub_units = {
 		mega_carrier_air_wing_size = 10
 	}
 	
-	strat_bomber = {		###战略轰炸机
+	strat_bomber = {
 		sprite = heavy_plane
 		priority = 5
 		active = yes
@@ -128,7 +130,7 @@ sub_units = {
 		mega_carrier_air_wing_size = 10
 	}
 	
-	transport_plane = {		###运输机
+	transport_plane = {
 		sprite = heavy_plane
 		priority = 6
 		active = yes
@@ -153,6 +155,7 @@ sub_units = {
 		type = missile
 		need = { guided_missile_equipment = 1 }
 		land_air_wing_size = 100
+		carrier_air_wing_size = 12
 	}
 	
 	explosive_ammo = {
@@ -171,7 +174,7 @@ sub_units = {
 		type = ballistic_missile
 		need = { ballistic_missile_equipment = 1 }
 		land_air_wing_size = 100
-		carrier_air_wing_size = 10
+		carrier_air_wing_size = 4
 	}
 	
 	nuclear_missile = {

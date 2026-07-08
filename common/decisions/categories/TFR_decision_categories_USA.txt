@@ -1,0 +1,267 @@
+USA_balance_of_power_category = {
+	allowed = {
+		tag = USA
+	}
+}
+
+USA_counting_heads_category = {
+	icon = power_struggle
+	visible_when_empty = yes
+	allowed = {
+		tag = USA
+	}
+	visible = {
+		has_country_flag = USA_counting_heads_flag
+	}
+	priority = 3
+}
+
+USA_congress_category = {
+	icon = USA_capitol_hill
+	visible_when_empty = yes
+	allowed = {
+		tag = USA
+	}
+	visible = {
+		NOT = {
+			has_global_flag = USA_shattered_union_global
+		}
+	}
+	priority = 5
+}
+
+USA_2020_election_category = {
+	icon = GFX_decision_category_USA_elections
+	#picture = GFX_decision_category_USA_elections  
+	visible_when_empty = yes
+	allowed = {
+		tag = USA
+	}
+	visible = {
+		NOT = {
+			has_global_flag = USA_shattered_union_global
+		}
+	}
+	priority = 4
+}
+
+USA_fighting_coronavirus = {
+	icon = USA_covid_category
+	visible_when_empty = yes
+	visible = {
+		has_country_flag = USA_coronavirus_strikes
+	}
+	allowed = {
+		original_tag = USA
+	}
+	on_map_area = {
+		state = 936
+		state = 982
+		state = 372
+		state = 1013
+		state = 1009
+		state = 1017
+		state = 1024
+		state = 363
+		state = 1001
+		state = 1070
+		state = 795
+		state = 794
+		state = 357
+		state = 793
+		state = 360
+		state = 395
+		state = 1073
+		state = 373
+		state = 1081
+		state = 941
+		state = 385
+		state = 387
+		state = 382
+		state = 1100
+		state = 1096
+		state = 388
+		state = 376
+		state = 983
+		state = 961
+		state = 383
+		state = 374
+		state = 629
+		state = 463
+		state = 931
+		state = 381
+		state = 384
+		state = 390
+		state = 389
+		state = 391
+		state = 392
+		state = 394
+		state = 396
+		state = 261
+		state = 358
+		state = 792
+		state = 359
+		state = 361
+		state = 896
+		state = 368
+		name = USA_fighting_coronavirus_tooltip
+		zoom = 250
+	}
+	priority = 2
+}
+
+USA_deal_with_the_movement = {
+	icon = generic_crisis
+	picture = GFX_decision_cat_usa_movement
+	visible_when_empty = yes
+	visible = {
+		OR = {
+			check_variable = {
+				var = USA_the_movement_states_loc_var
+				value = 0
+				compare = greater_than
+			}
+			has_country_flag = USA_the_movement_flag
+		}
+	}
+	allowed = {
+		original_tag = USA
+	}
+	on_map_area = {
+		state = 358
+		state = 357
+		state = 1069
+		state = 1068
+		state = 931
+		state = 1070
+		state = 261
+		state = 393
+		state = 1093
+		state = 1099
+		state = 391
+		state = 394
+		state = 1036
+		state = 993
+		state = 941
+		state = 932
+		state = 1039
+		state = 930
+		state = 952
+		state = 1097
+		state = 1100
+		state = 382
+		state = 376
+		state = 960
+		state = 959
+		state = 961
+		state = 958
+		state = 957
+		state = 956
+		state = 978
+		state = 1009
+		state = 1012
+		state = 1017
+		state = 937
+		state = 939
+		state = 940
+		state = 1092
+		state = 1005
+		state = 1023
+		state = 1008
+		state = 368
+		state = 1000
+		name = USA_deal_with_the_movement_tooltip
+		zoom = 250
+	}
+	priority = 1
+}
+
+USA_second_american_civil_war_category = {
+	icon = USA_civil_war
+	visible_when_empty = yes
+	allowed = {
+		USA_is_civil_war_faction = yes
+	}
+	visible = {
+		has_global_flag = USA_shattered_union_global
+	}
+	priority = 9
+}
+
+USA_recoring_category = {
+	icon = generic_recore
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			tag = USB
+			tag = USC
+			tag = NSM
+			tag = BLA
+			tag = APA
+			tag = LOS
+			tag = PTF
+			tag = ATW
+			tag = GMA
+			tag = BRN
+			tag = CAC
+		}
+	}
+	visible = {
+		OR = {
+			has_global_flag = USA_american_civil_war_global
+			has_global_flag = USA_american_civil_war_over_global
+		}
+	}
+	priority = 8
+	on_map_area = {
+		name = USA_deal_with_the_movement_tooltip
+		zoom = 250
+	}
+}
+
+USA_reconstruction_category = {
+	icon = USA_reconstruction
+	priority = 10
+	allowed = {
+		USA_is_rival_tag = yes
+		NOT = {
+			tag = ATW
+		}
+	}
+	visible = {
+		has_global_flag = USA_american_civil_war_over_global
+		has_completed_focus = USA_back_in_business
+	}
+}
+
+USA_restoring_american_foreign_influence_category = {
+	icon = generic_recore
+	priority = 9
+	allowed = {
+		USA_is_rival_tag = yes
+		NOT = {
+			tag = ATW
+		}
+	}
+	visible = {
+		has_global_flag = USA_american_civil_war_over_global
+		OR = {
+			has_completed_focus = USA_safeguard_the_nation
+			has_completed_focus = USA_american_diplomatic_corps
+			has_completed_focus = PTF_soaring_white_eagle
+		}
+	}
+}
+
+#USA_volunteer_recruitment_category = {
+#	icon = generic_recore
+#	priority = 7
+#	allowed = {
+#		USA_is_rival_tag = yes
+#		#always = no #Temp disabled becuz lagg
+#	}
+#	visible = {
+#		has_country_flag = USA_enable_militia_recruitment_flag
+#		has_global_flag = USA_american_civil_war_global
+#	}
+#}
