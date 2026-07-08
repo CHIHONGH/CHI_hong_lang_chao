@@ -22,15 +22,8 @@ country_event = {
     title = prcs.2.t
     desc = prcs.2.d
     picture = GFX_2025_xinchun
-    # is_triggered_only = yes
+    is_triggered_only = yes
     fire_only_once = yes
-    trigger = {
-        date > 2025.1.1
-        AND = {
-            tag = PRC
-            has_country_flag = PRC_pla_xibubianqu
-        }
-    }
     option = {
         name = prcs.2.a
     }
@@ -121,6 +114,23 @@ news_event = {
     }
     option = {
         name = prcs.7.a
+        hidden_effect = {
+            ROP = {
+                set_capital = {
+                    state = 1274
+                }
+            }
+            SRI = {
+                set_capital = {
+                    state = 1387
+                }
+            }
+            SMA = {
+                set_capital = {
+                    state = 1386
+                }
+            }
+        }
     }
 }
 
@@ -588,6 +598,10 @@ country_event = {
 
     option = {
         name = prcs.36.a
+        hidden_effect = {
+            set_country_flag = PRC_china_gaw_victor
+            focus_unlock = yes
+        }
         if = {
             limit = {
                 check_variable = {
@@ -954,13 +968,7 @@ country_event = {
     title = prcs.56.t
     desc = prcs.56.d
     picture = GFX_PRC_PRK_train
-    fire_only_once = yes
-    trigger = {
-        tag = PRC
-        PRK = {
-            is_ally_with = PRC
-        }
-    }
+    is_triggered_only = yes
     option = {
         name = prcs.56.a
         country_event = prcs.57
@@ -1091,7 +1099,7 @@ country_event = {
     id = prcs.64
     title = prcs.64.t
     desc = prcs.64.d
-    picture = GFX_PRC_tank_stars
+    picture = GFX_PRC_type_100
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -1433,7 +1441,6 @@ news_event = {
     is_triggered_only = yes
     major = yes
     option = {
-        set_country_flag = prc_allies_in_southeast_asia_flag_set
         name = prcs.81.a
     }
 }
@@ -1483,6 +1490,55 @@ country_event = {
         name = prcs.83.a
     }
 }
+
+country_event = {
+    id = prcs.84
+    title = prcs.84.t
+    desc = prcs.84.d
+    hidden = yes
+    trigger = {
+        tag = PRC
+        ROP = {
+            is_in_faction_with = PRC
+        }
+        SRI = {
+            is_in_faction_with = PRC
+        }
+        SMA = {
+            is_in_faction_with = PRC
+        }
+        CAM = {
+            is_in_faction_with = PRC
+        }
+        VIN = {
+            is_in_faction_with = PRC
+        }
+    }
+    fire_only_once = yes
+    timeout_days = 1
+    mean_time_to_happen = {
+        days = 5
+    }
+    option = {
+        name = prcs.84.a        
+        news_event = {
+            id = prcs.81
+            days = 10
+        }
+    }
+}
+
+country_event = {
+    id = prcs.85
+    title = prcs.85.t
+    desc = prcs.85.d
+    is_triggered_only = yes
+    picture = GFX_game_start_keep_in_mind_event
+    option = {
+        name = prcs.85.a
+    }
+}
+
 
 country_event = {
     id = Chihong.1
@@ -2046,11 +2102,15 @@ country_event = {
     id = Chihong.31
     title = Chihong.31.t
     desc = Chihong.31.desc
-    picture = GFX_Chihong31_event
+    picture = GFX_Event_Template108
     fire_only_once = yes
     trigger = {
         tag = PRC
         country_exists = ATW
+        has_global_flag = USA_american_civil_war_global
+    }
+    mean_time_to_happen = {
+        days = 25
     }
     option = {
         name = Chihong.31.a
@@ -2068,7 +2128,7 @@ country_event = {
     id = Chihong.32
     title = Chihong.32.t
     desc = Chihong.32.desc
-    picture = GFX_Chihong32_event
+    picture = GFX_Event_Template109
     is_triggered_only = yes
     option = {
         name = Chihong.32.a
@@ -2086,7 +2146,7 @@ country_event = {
     id = Chihong.33
     title = Chihong.33.t
     desc = Chihong.33.desc
-    picture = GFX_Chihong33_event
+    picture = GFX_Event_Template110
     is_triggered_only = yes
     option = {
         name = Chihong.33.a
@@ -2104,7 +2164,7 @@ country_event = {
     id = Chihong.34
     title = Chihong.34.t
     desc = Chihong.34.desc
-    picture = GFX_Chihong34_event
+    picture = GFX_Event_Template111
     is_triggered_only = yes
     option = {
         name = Chihong.34.a
@@ -2122,7 +2182,7 @@ country_event = {
     id = Chihong.35
     title = Chihong.35.t
     desc = Chihong.35.desc
-    picture = GFX_Chihong35_event
+    picture = GFX_Event_Template112
     is_triggered_only = yes
     option = {
         name = Chihong.35.a
@@ -2736,6 +2796,9 @@ country_event = {
 
     option = {
         name = Chihong.71.a
+        hidden_effect = {
+            load_oob = PRC_usa_seattle
+        }
     }
 }
 
@@ -3205,10 +3268,12 @@ country_event = {
 
     option = {
         name = Chihong.96.a
+        set_country_flag = War_situation_flag
         add_to_variable = {
             War_situation_var = 1
         }
         NAX = {
+            set_country_flag = War_situation_flag
             add_to_variable = {
                 War_situation_var = 1
             }
@@ -3227,9 +3292,11 @@ country_event = {
     option = {
         name = Chihong.97.a
         add_to_variable = {
+            set_country_flag = War_situation_flag
             War_situation_var = 1
         }
         NAX = {
+            set_country_flag = War_situation_flag
             add_to_variable = {
                 War_situation_var = 1
             }
@@ -3248,10 +3315,12 @@ country_event = {
     option = {
         name = Chihong.98.a
         add_to_variable = {
+            set_country_flag = War_situation_flag
             War_situation_var = 1
         }
         NAX = {
             add_to_variable = {
+                set_country_flag = War_situation_flag
                 War_situation_var = 1
             }
         }
@@ -3441,6 +3510,81 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = china.1703.a
+        PRC = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -1071
+            }
+            add_income_with_inflation = yes
+        }
+        CPA = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = 571
+            }
+            add_income_with_inflation = yes
+            set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+            set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.20
+			}
+			add_poverty_development = yes
+            set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.20
+			}
+			add_society_development = yes
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = CPA
+				}
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.035
+        }
+        CPP = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = 500
+            }
+            add_income_with_inflation = yes
+            set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+            set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.20
+			}
+			add_poverty_development = yes
+            set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.20
+			}
+			add_society_development = yes
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = CPP
+				}
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.045
+        }
         hidden_effect = {
             if = {
                 limit = {
@@ -3472,6 +3616,34 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = china.1704.a
+        CPP = {
+            add_stability = 0.095
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+        }
+        CPA = {
+            add_stability = 0.085
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+        }
     }
 }
 
@@ -3823,7 +3995,7 @@ country_event = {
     id = china.1722
     title = china.1722.t
     desc = china.1722.d
-    picture = GFX_red_patriotism
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3840,7 +4012,7 @@ country_event = {
     id = china.1723
     title = china.1723.t
     desc = china.1723.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3857,7 +4029,7 @@ country_event = {
     id = china.1724
     title = china.1724.t
     desc = china.1724.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3874,7 +4046,7 @@ country_event = {
     id = china.1725
     title = china.1725.t
     desc = china.1725.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3891,7 +4063,7 @@ country_event = {
     id = china.1726
     title = china.1726.t
     desc = china.1726.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3908,7 +4080,7 @@ country_event = {
     id = china.1727
     title = china.1727.t
     desc = china.1727.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3925,7 +4097,7 @@ country_event = {
     id = china.1728
     title = china.1728.t
     desc = china.1728.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3942,7 +4114,7 @@ country_event = {
     id = china.1729
     title = china.1729.t
     desc = china.1729.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -4022,6 +4194,9 @@ country_event = {
             }
             329 = {
                 remove_core_of = SOV
+                remove_dynamic_modifier = {
+                    modifier = SOV_republic_of_russia
+                }
             }
             560 = {
                 remove_core_of = SOV
@@ -4525,7 +4700,7 @@ country_event = {
     }
 
     option = {
-        name = Chihong.7302.d
+        name = Chihong.7302.f
         custom_effect_tooltip = Chihong_7302_tt1
         subtract_from_variable = {
             nationalization_var_1 = 1
@@ -5227,7 +5402,7 @@ country_event = {
     }
 
     option = {
-        name = Chihong.7304.d
+        name = Chihong.7304.f
         custom_effect_tooltip = Chihong_7304_tt1
         subtract_from_variable = {
             nationalization_var_1 = 1
@@ -5916,7 +6091,7 @@ country_event = {
     }
 
     option = {
-        name = Chihong.7301.d
+        name = Chihong.7301.f
         custom_effect_tooltip = Chihong_7301_tt1
         subtract_from_variable = {
             nationalization_var_1 = 1
@@ -6602,7 +6777,7 @@ country_event = {
     }
 
     option = {
-        name = Chihong.7303.d
+        name = Chihong.7303.f
         custom_effect_tooltip = Chihong_7303_tt1
         subtract_from_variable = {
             nationalization_var_1 = 1
@@ -7288,7 +7463,7 @@ country_event = {
     }
 
     option = {
-        name = Chihong.7305.d
+        name = Chihong.7305.f
         custom_effect_tooltip = Chihong_7305_tt1
         subtract_from_variable = {
             nationalization_var_1 = 1

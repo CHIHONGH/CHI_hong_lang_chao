@@ -1,1501 +1,1559 @@
 capital = 608
- set_temp_variable = { PRC_at_dingdongji = 5 }
- ####################################
- set_variable = { CPC_st_var = 0.15 }
- set_variable = { CPC_drift_defence_factor_var = 0.25 }
- set_variable = { CPC_crypto_strength_var = 1 }
- set_variable = { personal_value_factor = 0.2 }
+set_temp_variable = { PRC_at_dingdongji = 5 }
+####################################
+set_variable = { CPC_st_var = 0.15 }
+set_variable = { CPC_drift_defence_factor_var = 0.25 }
+set_variable = { CPC_crypto_strength_var = 1 }
+set_variable = { personal_value_factor = 0.2 }
 
- #set_variable = {  =  }
+#set_variable = {  =  }
 
 
 #  add_dynamic_modifier = {
 #      modifier = PRC_corrupt_bureaucrats
 #  }
- 
- complete_national_focus = lockdown_wuhan
- ###################################
- #oob = "PRC_2020"
- if = {
-     limit = {
-         NOT = {
-             has_dlc = "No Step Back"
-         }
-     }
-     set_oob = "PRC_2020"
- }
 
- if = {
-     limit = {
-         has_dlc = "No Step Back"
-     }
-     set_oob = "PRC_2020_nsb"
- }
+complete_national_focus = lockdown_wuhan
+###################################
+#oob = "PRC_2020"
+if = {
+    limit = {
+        NOT = {
+            has_dlc = "No Step Back"
+        }
+    }
+    set_oob = "PRC_2020"
+}
 
- if = {
-     limit = { has_dlc = "Man the Guns" }
-     set_naval_oob = "PRC_2000_naval_mtg"
-     else = {
-         set_naval_oob = "PRC_2000_naval_legacy"
-     }
- }
- send_embargo = CHI
- add_dynamic_modifier = {
-     modifier = PRC_made_in_china_dynamic
- }
+if = {
+    limit = {
+        has_dlc = "No Step Back"
+    }
+    set_oob = "PRC_2020_nsb"
+}
 
- add_dynamic_modifier = {
-     modifier = PRC_nl_jingji3_d3C0_dynamic
- }
-
- add_dynamic_modifier = {
-     modifier = PRC_nl_jingji5_d0_dynamic
- }
-
- add_dynamic_modifier = {
-     modifier = PRC_chinese_enviroment_dynamic
- }
-
- set_variable = {
-     var = PRC_mic_recruitable_population_factor_dynamic_var
-     value = -0.20
- }
-
- set_variable = {
-     var = PRC_mic_poverty_development_monthly_dynamic_var
-     value = 0.01
- }
-
- set_variable = {
-     var = PRC_mic_business_value_dynamic_var
-     value = -0.10
- }
-
- set_variable = {
-     var = PRC_mic_faction_trade_opinion_factor_dynamic_var
-     value = 0.15
- }
-
- set_variable = {
-     var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
-     value = -0.10
- }
-
- set_variable = {
-     var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
-     value = -0.05
- }
-
- set_variable = {
-     var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
-     value = 0.10
- }
-
- set_variable = {
-     var = PRC_mic_consumer_goods_factor_dynamic_var
-     value = 0.05
- }
-
- set_variable = {
-     var = PRC_mic_research_speed_factor_dynamic_var
-     value = -0.07
- }
-
- set_variable = {
-     var = PRC_ce_personal_expense_factor_dynamic_var
-     value = 0.10
- }
-
- set_variable = {
-     var = PRC_ce_society_development_monthly_dynamic_var
-     value = -0.01
- }
-
- set_variable = {
-     var = PRC_ce_industrial_capacity_factory_dynamic_var
-     value = 0.10
- }
-
- set_variable = {
-     var = PRC_ce_income_growth_factor_dynamic_var
-     value = -0.10
- }
-
- set_variable = {
-     var = PRC_ce_production_speed_buildings_factor_dynamic_var
-     value = 0.10
- }
-
- set_variable = {
-     var = PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var
-     value = 0.0
- }
+if = {
+    limit = { has_dlc = "Man the Guns" }
+    set_naval_oob = "PRC_2000_naval_mtg"
+    else = {
+        set_naval_oob = "PRC_2000_naval_legacy"
+    }
+}
 
 
- #Enviroment
+send_embargo = CHI
+add_dynamic_modifier = {
+    modifier = PRC_made_in_china_dynamic
+}
+add_dynamic_modifier = {
+    modifier = PRC_party_rectification_campaign_another_dynamic
+}
+add_dynamic_modifier = {
+    modifier = PRC_nl_jingji3_d3C0_dynamic
+}
 
- set_variable = {
-     var = PRC_enviromental_progress
-     value = 0.4
- }
+add_dynamic_modifier = {
+    modifier = PRC_nl_jingji5_d0_dynamic
+}
 
- activate_mission = PRC_meet_2020_goal
+add_dynamic_modifier = {
+    modifier = PRC_chinese_enviroment_dynamic
+}
 
- #NPC
+set_variable = {
+    var = PRC_mic_recruitable_population_factor_dynamic_var
+    value = -0.20
+}
 
- set_variable = {
-     var = PRC_approval_rating_var
-     value = 0.75
- }
+set_variable = {
+    var = PRC_mic_poverty_development_monthly_dynamic_var
+    value = 0.01
+}
 
- #SE Asia
+set_variable = {
+    var = PRC_mic_business_value_dynamic_var
+    value = -0.10
+}
 
- set_variable = {
-     var = global.PRC_influence_CAM_var
-     value = 0.65
- }
+set_variable = {
+    var = PRC_mic_faction_trade_opinion_factor_dynamic_var
+    value = 0.15
+}
 
- set_variable = {
-     var = global.PRC_influence_INS_var
-     value = 0.1
- }
+set_variable = {
+    var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+    value = -0.10
+}
 
- set_variable = {
-     var = global.PRC_influence_LAO_var
-     value = 0.7
- }
+set_variable = {
+    var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+    value = -0.05
+}
 
- set_variable = {
-     var = global.PRC_influence_MAL_var
-     value = 0.25
- }
+set_variable = {
+    var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+    value = 0.10
+}
 
- set_variable = {
-     var = global.PRC_influence_BRM_var
-     value = 0.3
- }
+set_variable = {
+    var = PRC_mic_consumer_goods_factor_dynamic_var
+    value = 0.05
+}
 
- set_variable = {
-     var = global.PRC_influence_PHI_var
-     value = 0.1
- }
+set_variable = {
+    var = PRC_mic_research_speed_factor_dynamic_var
+    value = -0.07
+}
 
- set_variable = {
-     var = global.PRC_influence_SIG_var
-     value = 0.3
- }
+set_variable = {
+    var = PRC_ce_personal_expense_factor_dynamic_var
+    value = 0.10
+}
 
- set_variable = {
-     var = global.PRC_influence_SIA_var
-     value = 0.4
- }
+set_variable = {
+    var = PRC_ce_society_development_monthly_dynamic_var
+    value = -0.01
+}
 
- set_variable = {
-     var = global.PRC_influence_VIN_var
-     value = 0.3
- }
+set_variable = {
+    var = PRC_ce_industrial_capacity_factory_dynamic_var
+    value = 0.10
+}
 
- set_variable = {
+set_variable = {
+    var = PRC_ce_income_growth_factor_dynamic_var
+    value = -0.10
+}
+
+set_variable = {
+    var = PRC_ce_production_speed_buildings_factor_dynamic_var
+    value = 0.10
+}
+
+set_variable = {
+    var = PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var
+    value = 0.0
+}
+
+#党的组织：盘根错节
+
+set_variable = {
+    var = PPRC_pp_g_var
+    value = -0.15
+}
+
+set_variable = {
+    var = PPRC_pp_var
+    value = 0.15
+}
+
+set_variable = {
+    var = PPRC_st_var
+    value = -0.15
+}
+
+set_variable = {
+    var = PPRC_consumer_num_var
+    value = 0.2
+}
+
+set_variable = {
+    var = PPRC_business_value_var
+    value = -0.2
+}
+
+set_variable = {
+    var = PPRC_expense_var
+    value = 0.25
+}
+
+set_variable = {
+    var = PPRC_research_var
+    value = -0.15
+}
+
+set_variable = {
+    var = PPRC_attack_var
+    value = -0.025
+}
+
+set_variable = {
+    var = PPRC_reinforce_var
+    value = -0.10
+}
+
+set_variable = {
+    var = PPRC_conscription_factor_var
+    value = -0.15
+}
+#Enviroment
+
+set_variable = {
+    var = PRC_enviromental_progress
+    value = 0.4
+}
+
+activate_mission = PRC_meet_2020_goal
+
+#NPC
+
+set_variable = {
+    var = PRC_approval_rating_var
+    value = 0.75
+}
+
+#SE Asia
+
+set_variable = {
+    var = global.PRC_influence_CAM_var
+    value = 0.65
+}
+
+set_variable = {
+    var = global.PRC_influence_INS_var
+    value = 0.1
+}
+
+set_variable = {
+    var = global.PRC_influence_LAO_var
+    value = 0.7
+}
+
+set_variable = {
+    var = global.PRC_influence_MAL_var
+    value = 0.25
+}
+
+set_variable = {
+    var = global.PRC_influence_BRM_var
+    value = 0.3
+}
+
+set_variable = {
+    var = global.PRC_influence_PHI_var
+    value = 0.1
+}
+
+set_variable = {
+    var = global.PRC_influence_SIG_var
+    value = 0.3
+}
+
+set_variable = {
+    var = global.PRC_influence_SIA_var
+    value = 0.4
+}
+
+set_variable = {
+    var = global.PRC_influence_VIN_var
+    value = 0.3
+}
+
+set_variable = {
     var = RD_PLA_political_slot_left_var
     value = 1
- }
- set_variable = {
+}
+set_variable = {
     var = RD_PLA_political_slot_middle_var
     value = 1
- }
- set_variable = {
+}
+set_variable = {
     var = RD_PLA_political_slot_right_var
     value = 1
- }
+}
 
- set_variable = {
+set_variable = {
     RD_PLA_political_available_slots = 3
- }
+}
 
- add_dynamic_modifier = {
-     modifier = PRC_influence_nat_dynamic
- }
- add_dynamic_modifier = {
-     modifier = PRC_influence_cen_dynamic
- }
- add_dynamic_modifier = {
-     modifier = PRC_influence_lib_dynamic
- }
- add_dynamic_modifier = {
-     modifier = PRC_influence_new_dynamic
- }
-
-
-
- set_research_slots = 4
- set_convoys = 1150
-
- set_stability = 0.8
- set_war_support = 0.2
-
- set_country_flag = developed_country
- set_country_flag = PRC_has_coronavirus
- #set_country_flag = PRC_no_side_flag #unused
- set_country_flag = PRC_internal_factions_enabled_flag
-
- set_variable = { var = PRC_influence_var value = 0.10 }
-
-
- set_variable = {
-     var = Diplomats_Var
-     value = 3
- }
-
-
- ###############
- set_technology = {
-     ## Infantry ##
-     infantry_weapons1 = 1
-     infantry_weapons2 = 1
-     infantry_weapons3 = 1
-     motorised_infantry = 1
-     infantry_rifle_upgrade = 1
-     infantry_rifle_upgrade2 = 1
-     upgraded_infantry_weapons1 = 1
-     support_weapons = 1
-     support_weapons2 = 1
-     night_vision = 1
-     night_vision2 = 1
-     body_armor = 1
-     body_armor2 = 1
-     camouflage = 1
-     camouflage2 = 1
-     camouflage3 = 1
-     marines = 1
-     tech_mountaineers = 1
-     tech_rangers = 1
-     paratroopers = 1
-     basic_train = 1
-
-     ## Support Companies ##
-     tech_support = 1
-     tech_engineers = 1
-     tech_recon = 1
-     tech_field_hospital = 1
-     tech_logistics_company = 1
-     tech_military_police = 1
-     tech_signal_company = 1
-     tech_maintenance_company = 1
-
-     ## Armor ##
-     mechanised_infantry1 = 1
-     mechanised_infantry2 = 1
-     light_mechanized_infantry1 = 1
-     light_mechanized_infantry2 = 1
-     amphibious_mechanized_infantry1 = 1
-
-     ## Artillery ##
-     gw_artillery = 1
-     artillery1 = 1
-     interwar_antitank = 1
-     interwar_antiair = 1
-     rocket_artillery = 1
-     self_propelled_aa1 = 1
-     interwar_artillery = 1
-     sp_artillery1 = 1
-     antitank1 = 1
-     antitank2 = 1
-     antiair1 = 1
-     antiair2 = 1
-
-     ## Air ##
-     attack_helicopter_1 = 1
-     utility_helicopter_1 = 1
-
-     ## Engineering ##
-     electronic_mechanical_engineering = 1
-     power_plants = 1
-     nuclear_reactors = 1
-     energy_farms = 1
-     #nukes = 1
-
-     ## Industry ##
-     basic_machine_tools = 1
-     fuel_silos = 1
-     fuel_refining = 1
-
-     ## Doctrines ##
-     mass_assault = 1
-     fleet_in_being = 1
-     air_superiority = 1
- }
-
- if = {
-     limit = {
-         NOT = {
-             has_dlc = "Man the Guns"
-         }
-     }
-     set_technology = {
-         early_destroyer = 1
-         basic_destroyer = 1
-         early_light_cruiser = 1
-         basic_light_cruiser = 1
-         early_heavy_cruiser = 1
-         basic_heavy_cruiser = 1
-         improved_heavy_cruiser = 1
-         early_submarine = 1
-         basic_submarine = 1
-         early_carrier = 1
-         basic_carrier = 1
-
-     }
- }
- if = {
-     limit = {
-         has_dlc = "Man the Guns"
-     }
-     set_technology = {
-         early_ship_hull_light = 1
-         basic_ship_hull_light = 1
-         early_ship_hull_cruiser = 1
-         basic_ship_hull_cruiser = 1
-         early_ship_hull_heavy = 1
-         basic_ship_hull_heavy = 1
-         #ship_hull_super_heavy1 = 1
-         early_ship_hull_carrier = 1
-         basic_ship_hull_carrier = 1
-         early_ship_hull_submarine = 1
-         basic_ship_hull_submarine = 1
-         smoke_generator = 1
-         sonar = 1
-         basic_depth_charges = 1
-         improved_airplane_launcher = 1
-         basic_cruiser_armor_scheme = 1
-         basic_heavy_armor_scheme = 1
-         basic_torpedo = 1
-         basic_battery = 1
-         basic_light_battery = 1
-         basic_medium_battery = 1
-         basic_heavy_battery = 1
-         #basic_secondary_battery = 1
-         mtg_transport = 1
-         basic_naval_mines = 1
-         submarine_mine_laying = 1
-     }
- }
-
- if = {
-     limit = {
-         NOT = { has_dlc = "No Step Back" }
-     }
-     set_technology = {
-         main_battle_tank1 = 1
-         main_battle_tank2 = 1
-         main_battle_tank3 = 1
-         light_tank1 = 1
-         light_tank2 = 1
-         amphibious_tank1 = 1
-         amphibious_mechanized_infantry1 = 1
-     }
- }
- if = {
-     limit = {
-         has_dlc = "No Step Back"
-     }
-     set_technology = {
-         gwtank_chassis = 1
-         basic_light_tank_chassis = 1
-         basic_medium_tank_chassis = 1
-         improved_medium_tank_chassis = 1
-         engine_tech_1 = 1
-         amphibious_tank_chassis = 1
-         amphibious_mechanized_infantry1 = 1
-         apds_tech = 1
-         turret_mounted_mg_tech = 1
-         heat_tech = 1
-         turret_mounted_atgm_tech = 1
-         apfsds_tech = 1
-         armor_tech_1 = 1
-         armor_tech_2 = 1
-         auto_loader_tech = 1
-         legacy_armor_designs = 1
-         auto_cannon_tech = 1
-     }
- }
-
- if = {
-     limit = { has_dlc = "By Blood Alone" }
-     set_air_oob = "PRC_2020_air_bba"
-     set_technology = {
-         aa_lmg = 1
-         aa_cannon_1 = 1
-         aa_hmg = 1
-         engines_1 = 1
-         engines_2 = 1
-         early_bombs = 1
-         guided_bombs = 1
-         aircraft_construction = 1
-         survivability_studies = 1
-         iw_small_airframe = 1
-         basic_small_airframe = 1
-         improved_small_airframe = 1
-         iw_medium_airframe = 1
-         basic_medium_airframe = 1
-         iw_large_airframe = 1
-         basic_large_airframe = 1
-     }
-     else = {
-         set_air_oob = "PRC_2020_air_legacy"
-         set_technology = {
-             CAS1 = 1
-             CAS2 = 1
-             fighter1 = 1
-             fighter2 = 1
-             fighter3 = 1
-             cv_fighter1 = 1
-             cv_fighter2 = 1
-             naval_bomber1 = 1
-             naval_bomber2 = 1
-             naval_bomber3 = 1
-             cv_naval_bomber1 = 1
-             strategic_bomber1 = 1
-             strategic_bomber2 = 1
-             scout_plane1 = 1
-             transport_plane2 = 1
-         }
-     }
- }
-
- if = {
-     limit = {
-         has_dlc = "La Resistance"
-     }
-     create_intelligence_agency = yes
- }
-
- create_equipment_variant = { name = "歼-6" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 2 plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = yes }
- create_equipment_variant = { name = "歼-7" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 5 plane_engine_upgrade = 5 plane_reliability_upgrade = 5 } obsolete = yes }
- create_equipment_variant = { name = "轰-5" type = strat_bomber_equipment_1  obsolete = yes }
-
- #Ideas
- add_ideas = {
-     PRC_chinese_communist_party_idea
-     PRC_personal_expense_factor_fix
-     PRC_the_separatist_problem
-     PRC_coronavirus_pandemic_idea4
-     PRC_party_rectification_campaign_bf1
-     #Ministers
-     PRC_li_keqiang_hog
-     PRC_yang_jiechi_for
-     PRC_liu_he_eco
-     PRC_zhao_leji_sec
-     PRC_guo_shengkun_int
-     PRC_wei_fenghe
-     #Laws
-     mass_consumerism
-     higher_trade
-     high_taxes
-     medium_safety
-     high_female_service
-     high_racial_integration
-     general_exemptions
-     PRC_party_commands_the_guns
-
-     #army spirits
-     PRC_complacent_officers_spirit
+add_dynamic_modifier = {
+    modifier = PRC_influence_nat_dynamic
+}
+add_dynamic_modifier = {
+    modifier = PRC_influence_cen_dynamic
+}
+add_dynamic_modifier = {
+    modifier = PRC_influence_lib_dynamic
+}
+add_dynamic_modifier = {
+    modifier = PRC_influence_new_dynamic
+}
 
 
 
-     low_immigration
-     higher_race
-     medium_female
-     higher_police
-     high_academic
-     high_farming
-     medium_poverty
-     high_industry
-     higher_military
- }
+set_research_slots = 4
+set_convoys = 1150
 
- #Events
- country_event = {
-     id = china.1
-     days = 1
- }
- country_event = {
-     id = prcs.3199
-     days = 100
- }
- #618 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+set_stability = 0.8
+set_war_support = 0.2
 
- #617 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+set_country_flag = developed_country
+set_country_flag = PRC_has_coronavirus
+#set_country_flag = PRC_no_side_flag #unused
+set_country_flag = PRC_internal_factions_enabled_flag
 
- #287 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+set_variable = { var = PRC_influence_var value = 0.10 }
 
- #619 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
 
- #788 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+set_variable = {
+    var = Diplomats_Var
+    value = 3
+}
 
- #322 = {
- #	start_resistance = yes
- #	set_compliance = 20
- #	set_resistance = 25
- #	set_garrison_strength = 2.0
- #}
 
- #618 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+###############
+set_technology = {
+    ## Infantry ##
+    infantry_weapons1 = 1
+    infantry_weapons2 = 1
+    infantry_weapons3 = 1
+    motorised_infantry = 1
+    infantry_rifle_upgrade = 1
+    infantry_rifle_upgrade2 = 1
+    infantry_rifle_upgrade3 = 1
+    infantry_rifle_upgrade4 = 1
+    upgraded_infantry_weapons1 = 1
+    support_weapons = 1
+    support_weapons2 = 1
+    support_weapons3 = 1
+    night_vision = 1
+    night_vision2 = 1
+    body_armor = 1
+    body_armor2 = 1
+    camouflage = 1
+    camouflage2 = 1
+    camouflage3 = 1
+    marines = 1
+    tech_mountaineers = 1
+    tech_rangers = 1
+    paratroopers = 1
+    basic_train = 1
 
- #326 = {
- #	start_resistance = yes
- #	set_compliance = 60
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Support Companies ##
+    tech_support = 1
+    tech_engineers = 1
+    tech_recon = 1
+    tech_field_hospital = 1
+    tech_logistics_company = 1
+    tech_military_police = 1
+    tech_signal_company = 1
+    tech_maintenance_company = 1
 
- #1158 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Armor ##
+    mechanised_infantry1 = 1
+    mechanised_infantry2 = 1
+    light_mechanized_infantry1 = 1
+    light_mechanized_infantry2 = 1
+    amphibious_mechanized_infantry1 = 1
 
- #1159 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Artillery ##
+    gw_artillery = 1
+    artillery1 = 1
+    interwar_antitank = 1
+    interwar_antiair = 1
+    rocket_artillery = 1
+    self_propelled_aa1 = 1
+    interwar_artillery = 1
+    sp_artillery1 = 1
+    antitank1 = 1
+    antitank2 = 1
+    antiair1 = 1
+    antiair2 = 1
 
- #1160 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Air ##
+    attack_helicopter_1 = 1
+    utility_helicopter_1 = 1
 
- #1161 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Engineering ##
+    electronic_mechanical_engineering = 1
+    radio = 1
+    power_plants = 1
+    nuclear_reactors = 1
+    energy_farms = 1
+    #nukes = 1
 
- #1162 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Industry ##
+    basic_machine_tools = 1
+    synth_oil_experiments = 1
+    fuel_silos = 1
+    fuel_refining = 1
 
- #1163 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Doctrines ##
+    mass_assault = 1
+    fleet_in_being = 1
+    air_superiority = 1
 
- #1164 = {
- #	start_resistance = yes
- #	set_compliance = 10
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
- #1165 = {
- #	start_resistance = yes
- #	set_compliance = 30
- #	set_resistance = 35
- #	set_garrison_strength = 2.0
- #}
+    ## Guided Missile ##
+    suicide_drone_tech1 = 1
+    base_ballistic_missile = 1
+    improved_ballistic_missile = 1
+    #advanced_ballistic_missile = 1
+    modern_air_defense_systems = 1
+    Nuclear_Missiles = 1
+}
 
- #1155 = {
- #	start_resistance = yes
- #	set_compliance = 40
- #	set_resistance = 25
- #	set_garrison_strength = 2.0
- #}
- #1153 = {
- #	start_resistance = yes
- #	set_compliance = 40
- #	set_resistance = 25
- #	set_garrison_strength = 2.0
- #}
- #1156 = {
- #	start_resistance = yes
- #	set_compliance = 40
- #	set_resistance = 25
- #	set_garrison_strength = 2.0
- #}
- 1157 = {
-     start_resistance = yes
-     set_compliance = 40
-     set_resistance = 25
-     set_garrison_strength = 2.0
- }
- #1152 = {
- #	start_resistance = yes
- #	set_compliance = 40
- #	set_resistance = 25
- #	set_garrison_strength = 2.0
- #}
- 1154 = {
-     start_resistance = yes
-     set_compliance = 40
-     set_resistance = 25
-     set_garrison_strength = 2.0
- }
+if = {
+    limit = {
+        NOT = {
+            has_dlc = "Man the Guns"
+        }
+    }
+    set_technology = {
+        early_destroyer = 1
+        basic_destroyer = 1
+        early_light_cruiser = 1
+        basic_light_cruiser = 1
+        early_heavy_cruiser = 1
+        basic_heavy_cruiser = 1
+        improved_heavy_cruiser = 1
+        early_submarine = 1
+        basic_submarine = 1
+        early_carrier = 1
+        basic_carrier = 1
 
- 617 = {
-     start_resistance = yes
-     set_compliance = 10
-     set_resistance = 35
-     set_garrison_strength = 2.0
- }
+    }
+}
+if = {
+    limit = {
+        has_dlc = "Man the Guns"
+    }
+    set_technology = {
+        early_ship_hull_light = 1
+        basic_ship_hull_light = 1
+        early_ship_hull_cruiser = 1
+        basic_ship_hull_cruiser = 1
+        early_ship_hull_heavy = 1
+        basic_ship_hull_heavy = 1
+        #ship_hull_super_heavy1 = 1
+        early_ship_hull_carrier = 1
+        basic_ship_hull_carrier = 1
+        early_ship_hull_submarine = 1
+        basic_ship_hull_submarine = 1
+        smoke_generator = 1
+        sonar = 1
+        basic_depth_charges = 1
+        improved_airplane_launcher = 1
+        basic_cruiser_armor_scheme = 1
+        basic_heavy_armor_scheme = 1
+        basic_torpedo = 1
+        basic_battery = 1
+        basic_light_battery = 1
+        basic_medium_battery = 1
+        basic_heavy_battery = 1
+        #basic_secondary_battery = 1
+        mtg_transport = 1
+        basic_naval_mines = 1
+        submarine_mine_laying = 1
+    }
+}
 
- #326 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #729 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1166 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #621 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #612 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
+if = {
+    limit = {
+        NOT = { has_dlc = "No Step Back" }
+    }
+    set_technology = {
+        main_battle_tank1 = 1
+        main_battle_tank2 = 1
+        main_battle_tank3 = 1
+        light_tank1 = 1
+        light_tank2 = 1
+        amphibious_tank1 = 1
+        amphibious_mechanized_infantry1 = 1
+    }
+}
+if = {
+    limit = {
+        has_dlc = "No Step Back"
+    }
+    set_technology = {
+        gwtank_chassis = 1
+        basic_light_tank_chassis = 1
+        basic_medium_tank_chassis = 1
+        improved_medium_tank_chassis = 1
+        engine_tech_1 = 1
+        amphibious_tank_chassis = 1
+        amphibious_mechanized_infantry1 = 1
+        apds_tech = 1
+        turret_mounted_mg_tech = 1
+        heat_tech = 1
+        turret_mounted_atgm_tech = 1
+        apfsds_tech = 1
+        armor_tech_1 = 1
+        armor_tech_2 = 1
+        auto_loader_tech = 1
+        legacy_armor_designs = 1
+        auto_cannon_tech = 1
+    }
+}
 
- #Xinjiang
- #287 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #617 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #618 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #619 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1158 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1159 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1160 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1161 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1162 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1163 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1164 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1165 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
+if = {
+    limit = { has_dlc = "By Blood Alone" }
+    set_air_oob = "PRC_2020_air_bba"
+    set_technology = {
+        aa_lmg = 1
+        aa_cannon_1 = 1
+        aa_hmg = 1
+        engines_1 = 1
+        engines_2 = 1
+        early_bombs = 1
+        guided_bombs = 1
+        aircraft_construction = 1
+        survivability_studies = 1
+        iw_small_airframe = 1
+        basic_small_airframe = 1
+        improved_small_airframe = 1
+        iw_medium_airframe = 1
+        basic_medium_airframe = 1
+        iw_large_airframe = 1
+        basic_large_airframe = 1
+    }
+    else = {
+        set_air_oob = "PRC_2020_air_legacy"
+        set_technology = {
+            CAS1 = 1
+            CAS2 = 1
+            fighter1 = 1
+            fighter2 = 1
+            fighter3 = 1
+            cv_fighter1 = 1
+            cv_fighter2 = 1
+            naval_bomber1 = 1
+            naval_bomber2 = 1
+            naval_bomber3 = 1
+            cv_naval_bomber1 = 1
+            strategic_bomber1 = 1
+            strategic_bomber2 = 1
+            scout_plane1 = 1
+            transport_plane2 = 1
+        }
+    }
+}
 
- #Tibet
- #788 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #322 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1153 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1155 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1156 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1157 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1152 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
- #1154 = {
- #	add_dynamic_modifier = { modifier = autonomous_state }
- #}
+if = {
+    limit = {
+        has_dlc = "La Resistance"
+    }
+    create_intelligence_agency = yes
+}
 
- #give_guarantee = PRK
+create_equipment_variant = { name = "歼-6" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 2 plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = yes }
+create_equipment_variant = { name = "歼-7" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 5 plane_engine_upgrade = 5 plane_reliability_upgrade = 5 } obsolete = yes }
+create_equipment_variant = { name = "轰-5" type = strat_bomber_equipment_1  obsolete = yes }
 
- add_opinion_modifier = {
-     target = JAP
-     modifier = past_japanese_war_crimes
- }
+#Ideas
+add_ideas = {
+    PRC_chinese_communist_party_idea
+    PRC_personal_expense_factor_fix
+    PRC_the_separatist_problem
+    PRC_coronavirus_pandemic_idea4
+    #Ministers
+    PRC_li_keqiang_hog
+    PRC_yang_jiechi_for
+    PRC_liu_he_eco
+    PRC_zhao_leji_sec
+    PRC_guo_shengkun_int
+    PRC_wei_fenghe
+    #Laws
+    mass_consumerism
+    higher_trade
+    high_taxes
+    medium_safety
+    high_female_service
+    high_racial_integration
+    general_exemptions
+    PRC_party_commands_the_guns
 
- add_opinion_modifier = {
-     target = USA
-     modifier = chinese_american_rivalry
- }
+    #army spirits
+    PRC_complacent_officers_spirit
 
- set_politics = {
-     ruling_party = communist
-     last_election = "2018.1.1"
-     election_frequency = 48
-     elections_allowed = no
- }
 
- set_popularities = {
-     communist = 70
-     libertarian_socialist = 4
-     social_democrat = 6
-     social_liberal = 3
-     market_liberal = 6
-     authoritarian_democrat = 5
-     conservative = 6
- }
- # 外国领导人的激活代码
- CAM = {
-    recruit_character = CAM_Khieu_Samphan
- }
- BHU = {
-    recruit_character = BHU_leaders
- }
- NEP = {
-    recruit_character = NEP_jilan
- }
- VIN = {
+
+    low_immigration
+    higher_race
+    medium_female
+    higher_police
+    high_academic
+    high_farming
+    medium_poverty
+    high_industry
+    higher_military
+}
+
+#Events
+country_event = {
+    id = china.1
+    days = 1
+}
+country_event = {
+    id = prcs.3199
+    days = 100
+}
+country_event = {
+    id = prcs.2
+    days = 1825
+}
+#618 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#617 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#287 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#619 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#788 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#322 = {
+#	start_resistance = yes
+#	set_compliance = 20
+#	set_resistance = 25
+#	set_garrison_strength = 2.0
+#}
+
+#618 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#326 = {
+#	start_resistance = yes
+#	set_compliance = 60
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1158 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1159 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1160 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1161 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1162 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1163 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1164 = {
+#	start_resistance = yes
+#	set_compliance = 10
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+#1165 = {
+#	start_resistance = yes
+#	set_compliance = 30
+#	set_resistance = 35
+#	set_garrison_strength = 2.0
+#}
+
+#1155 = {
+#	start_resistance = yes
+#	set_compliance = 40
+#	set_resistance = 25
+#	set_garrison_strength = 2.0
+#}
+#1153 = {
+#	start_resistance = yes
+#	set_compliance = 40
+#	set_resistance = 25
+#	set_garrison_strength = 2.0
+#}
+#1156 = {
+#	start_resistance = yes
+#	set_compliance = 40
+#	set_resistance = 25
+#	set_garrison_strength = 2.0
+#}
+1157 = {
+    start_resistance = yes
+    set_compliance = 40
+    set_resistance = 25
+    set_garrison_strength = 2.0
+}
+#1152 = {
+#	start_resistance = yes
+#	set_compliance = 40
+#	set_resistance = 25
+#	set_garrison_strength = 2.0
+#}
+1154 = {
+    start_resistance = yes
+    set_compliance = 40
+    set_resistance = 25
+    set_garrison_strength = 2.0
+}
+
+617 = {
+    start_resistance = yes
+    set_compliance = 10
+    set_resistance = 35
+    set_garrison_strength = 2.0
+}
+
+#326 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#729 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1166 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#621 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#612 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+
+#Xinjiang
+#287 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#617 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#618 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#619 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1158 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1159 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1160 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1161 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1162 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1163 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1164 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1165 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+
+#Tibet
+#788 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#322 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1153 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1155 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1156 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1157 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1152 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+#1154 = {
+#	add_dynamic_modifier = { modifier = autonomous_state }
+#}
+
+#give_guarantee = PRK
+
+add_opinion_modifier = {
+    target = JAP
+    modifier = past_japanese_war_crimes
+}
+
+add_opinion_modifier = {
+    target = USA
+    modifier = chinese_american_rivalry
+}
+
+set_politics = {
+    ruling_party = communist
+    last_election = "2018.1.1"
+    election_frequency = 48
+    elections_allowed = no
+}
+
+set_popularities = {
+    communist = 70
+    libertarian_socialist = 4
+    social_democrat = 6
+    social_liberal = 3
+    market_liberal = 6
+    authoritarian_democrat = 5
+    conservative = 6
+}
+# 外国领导人的激活代码
+VIN = {
     recruit_character = VIN_Vo_Van_Thuong
- }
- BRM = {
+}
+LAO = {
+    recruit_character = LAO_tonglun
+}
+CAM = {
+    recruit_character = CAM_Khieu_Samphan
+}
+BHU = {
+    recruit_character = BHU_leaders
+}
+NEP = {
+    recruit_character = NEP_jilan
+}
+BRM = {
     recruit_character = BRM_Nini_Jue
- }
- recruit_character = PRC_xi_jinping
- recruit_character = PRC_Hu_Chunhua
- recruit_character = PRC_wang_yang
- recruit_character = PRC_cheng_wenqing
- recruit_character = PRC_li_zuocheng
- recruit_character = PRC_hao_mingjin
- recruit_character = PRC_wu_weihua
- recruit_character = PRC_wan_gang
- recruit_character = PRC_long_march
- recruit_character = PRC_chen_bingde
- recruit_character = PRC_Han_Weiguo
- recruit_character = PRC_Xu_Qiliang
- recruit_character = PRC_Wang_Xiubin
- recruit_character = PRC_Wu_Yanan
- recruit_character = PRC_Huang_Ming
- recruit_character = PRC_Ding_Laihang
- recruit_character = PRC_Wang_Qiang
- recruit_character = PRC_he_wei
- recruit_character = PRC_Li_Yuchao
- recruit_character = PRC_He_Weidong
- recruit_character = PRC_Li_Qiaoming
- recruit_character = PRC_Li_Shangfu
- recruit_character = PRC_Lin_Xiangyang
- recruit_character = PRC_Liu_Zhenli
- recruit_character = PRC_Wang_Haijiang
- recruit_character = PRC_Wu_Shenzhou
- recruit_character = PRC_Xu_Deqing
- recruit_character = PRC_Xu_Qiling
- recruit_character = PRC_Zhang_Shengmin
- recruit_character = PRC_Zhang_Youxia
- recruit_character = PRC_Zhao_Zongqi
- recruit_character = PRC_Zhu_Shengling
- #recruit_character = PRC_chang_wanquan
- #recruit_character = PRC_song_puxuan
- recruit_character = PRC_Chang_Dingqiu
- recruit_character = PRC_Yi_Xiaoguang
- recruit_character = PRC_Hu_Zhongming
- recruit_character = PRC_li_xianyu
- recruit_character = PRC_wei_fenghe
- recruit_character = PRC_wang_ning
- recruit_character = PRC_Qin_Shengxiang
- recruit_character = PRC_Shen_Jinlong
- recruit_character = PRC_yuan_yubai
- #recruit_character = PRC_zhu_qiu
- recruit_character = PRC_hsia_sun
- recruit_character = PRC_luo_jin
- #recruit_character = PRC_luo_wu
- recruit_character = PRC_lu_hao
- recruit_character = PRC_bo_xilai
- recruit_character = PRC_wang_yi
- recruit_character = PRC_liao_peng
- recruit_character = PRC_hu_wu
- recruit_character = PRC_zhu_shen
- recruit_character = PRC_cheng_lu
- recruit_character = PRC_Miao_Hua
- recruit_character = PRC_Dong_Jun
- recruit_character = PRC_Li_Yujie
- recruit_character = PRC_Wang_Hai
- recruit_character = PRC_Zheng_Jianbang
- recruit_character = PRC_Ding_Zhongli
- recruit_character = PRC_Xie_Fuzhan
- recruit_character = PRC_Liu_Qibao
- recruit_character = PRC_chen_jining
- recruit_character = PRC_CPC_RL
- recruit_character = PRC_CPC_CB
- recruit_character = PRC_Mao_Yuanxin
- recruit_character = PRC_ciu_zhiyuan
- recruit_character = PRC_wang_wenbin
- recruit_character = PRC_yin_yong
- recruit_character = PRC_wen_yunsong
- recruit_character = PRC_man_guangzhi
- recruit_character = PRC_ultimate_npc
+}
+recruit_character = PRC_xi_jinping
+recruit_character = PRC_Hu_Chunhua
+recruit_character = PRC_wang_yang
+recruit_character = PRC_cheng_wenqing
+recruit_character = PRC_li_zuocheng
+recruit_character = PRC_hao_mingjin
+recruit_character = PRC_wu_weihua
+recruit_character = PRC_wan_gang
+recruit_character = PRC_long_march
+recruit_character = PRC_Han_Weiguo
+recruit_character = PRC_Xu_Qiliang
+recruit_character = PRC_Wang_Xiubin
+recruit_character = PRC_Wu_Yanan
+recruit_character = PRC_Huang_Ming
+recruit_character = PRC_Ding_Laihang
+recruit_character = PRC_Wang_Qiang
+recruit_character = PRC_he_wei
+recruit_character = PRC_Li_Yuchao
+recruit_character = PRC_He_Weidong
+recruit_character = PRC_Li_Qiaoming
+recruit_character = PRC_Li_Shangfu
+recruit_character = PRC_Lin_Xiangyang
+recruit_character = PRC_Liu_Zhenli
+recruit_character = PRC_Wang_Haijiang
+recruit_character = PRC_Wu_Shenzhou
+recruit_character = PRC_Xu_Deqing
+recruit_character = PRC_Xu_Qiling
+recruit_character = PRC_Zhang_Shengmin
+recruit_character = PRC_Zhang_Youxia
+recruit_character = PRC_Zhao_Zongqi
+recruit_character = PRC_Zhu_Shengling
+#recruit_character = PRC_chang_wanquan
+#recruit_character = PRC_song_puxuan
+recruit_character = PRC_Chang_Dingqiu
+recruit_character = PRC_Yi_Xiaoguang
+recruit_character = PRC_Hu_Zhongming
+recruit_character = PRC_li_xianyu
+recruit_character = PRC_wei_fenghe
+recruit_character = PRC_wang_ning
+recruit_character = PRC_Qin_Shengxiang
+recruit_character = PRC_Shen_Jinlong
+recruit_character = PRC_yuan_yubai
+#recruit_character = PRC_zhu_qiu
+recruit_character = PRC_hsia_sun
+recruit_character = PRC_luo_jin
+#recruit_character = PRC_luo_wu
+recruit_character = PRC_lu_hao
+recruit_character = PRC_bo_xilai
+recruit_character = PRC_wang_yi
+recruit_character = PRC_liao_peng
+recruit_character = PRC_hu_wu
+recruit_character = PRC_zhu_shen
+recruit_character = PRC_cheng_lu
+recruit_character = PRC_Miao_Hua
+recruit_character = PRC_Dong_Jun
+recruit_character = PRC_Li_Yujie
+recruit_character = PRC_Wang_Hai
+recruit_character = PRC_Zheng_Jianbang
+recruit_character = PRC_Ding_Zhongli
+recruit_character = PRC_Xie_Fuzhan
+recruit_character = PRC_Liu_Qibao
+recruit_character = PRC_chen_jining
+recruit_character = PRC_CPC_RL
+recruit_character = PRC_CPC_CB
+recruit_character = PRC_Mao_Yuanxin
+recruit_character = PRC_ciu_zhiyuan
+recruit_character = PRC_wang_wenbin
+recruit_character = PRC_yin_yong
+recruit_character = PRC_wen_yunsong
+recruit_character = PRC_man_guangzhi
+recruit_character = PRC_ultimate_npc
 
- activate_advisor = PRC_Xu_Qiliang_air_chief
+activate_advisor = PRC_Xu_Qiliang_air_chief
 
- #Events
- country_event = {
-     id = china.34
-     days = 45
- }
+#Events
+country_event = {
+    id = china.34
+    days = 45
+}
 
- ### VARIANTS ###
- # 2000 Start #
- if = {
-     limit = { not = { has_dlc = "Man the Guns" } }
+### VARIANTS ###
+# 2000 Start #
+if = {
+    limit = { not = { has_dlc = "Man the Guns" } }
 
- }
- if = {
-     limit = { has_dlc = "Man the Guns" }
-     ## Carriers ##
-     create_equipment_variant = { #Carrier 1
-         name = "辽宁舰"
-         type = ship_hull_carrier_conversion_bb
-         parent_version = 0
-         name_group = Province_namegroup
-         modules = {
-             fixed_ship_deck_slot_1 = ship_deck_space
-             fixed_ship_deck_slot_2 = ship_deck_space
-             fixed_ship_anti_air_slot = empty
-             fixed_ship_radar_slot = empty
-             fixed_ship_engine_slot = carrier_ship_engine_1
-             fixed_ship_secondaries_slot = empty
-             mid_1_custom_slot = ship_deck_space
-         }
-         obsolete = no
-         icon = "GFX_PRC_carrier_1"
-     }
-     create_equipment_variant = { #Carrier Shandong
-         name = "山东舰"
-         type = ship_hull_carrier_conversion_bb
-         name_group = Province_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_deck_slot_1 = ship_deck_space
-             fixed_ship_deck_slot_2 = ship_deck_space
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = carrier_ship_engine_1
-             fixed_ship_secondaries_slot = empty
-             mid_1_custom_slot = ship_deck_space
-         }
-         obsolete = no
-         icon = "GFX_PRC_carrier_1"
-     }
-     create_equipment_variant = { #Carrier Fujian
-         name = "福建舰"
-         type = ship_hull_carrier_1
-         name_group = Province_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_deck_slot_1 = ship_deck_space
-             fixed_ship_deck_slot_2 = ship_deck_space
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = carrier_ship_engine_2
-             fixed_ship_secondaries_slot = empty
-             mid_1_custom_slot = ship_deck_space
-         }
-         obsolete = no
-         icon = "GFX_PRC_carrier_2"
-     }
+}
+if = {
+    limit = { has_dlc = "Man the Guns" }
+    ## Carriers ##
+    create_equipment_variant = { #Carrier 1
+        name = "辽宁舰"
+        type = ship_hull_carrier_conversion_bb
+        parent_version = 0
+        name_group = Province_namegroup
+        modules = {
+            fixed_ship_deck_slot_1 = ship_deck_space
+            fixed_ship_deck_slot_2 = ship_deck_space
+            fixed_ship_anti_air_slot = empty
+            fixed_ship_radar_slot = empty
+            fixed_ship_engine_slot = carrier_ship_engine_1
+            fixed_ship_secondaries_slot = empty
+            mid_1_custom_slot = ship_deck_space
+        }
+        obsolete = no
+        icon = "GFX_PRC_carrier_1"
+    }
+    create_equipment_variant = { #Carrier Shandong
+        name = "山东舰"
+        type = ship_hull_carrier_conversion_bb
+        name_group = Province_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_deck_slot_1 = ship_deck_space
+            fixed_ship_deck_slot_2 = ship_deck_space
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = carrier_ship_engine_1
+            fixed_ship_secondaries_slot = empty
+            mid_1_custom_slot = ship_deck_space
+        }
+        obsolete = no
+        icon = "GFX_PRC_carrier_1"
+    }
+    create_equipment_variant = { #Carrier Fujian
+        name = "福建舰"
+        type = ship_hull_carrier_1
+        name_group = Province_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_deck_slot_1 = ship_deck_space
+            fixed_ship_deck_slot_2 = ship_deck_space
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = carrier_ship_engine_2
+            fixed_ship_secondaries_slot = empty
+            mid_1_custom_slot = ship_deck_space
+        }
+        obsolete = no
+        icon = "GFX_PRC_carrier_2"
+    }
 
-     ## 导弹驱逐舰 ##
-     create_equipment_variant = {
-         name = "055型导弹驱逐舰"
-         type = ship_hull_heavy_2
-         name_group = THEME_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_heavy_battery_2
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = heavy_ship_engine_2
-             fixed_ship_secondaries_slot = ship_secondaries_2
-             fixed_ship_armor_slot = ship_armor_bb_2
-             front_1_custom_slot = empty
-             mid_1_custom_slot = ship_airplane_launcher_2
-             mid_2_custom_slot = empty
-             rear_1_custom_slot = ship_heavy_battery_2
-         }
-         icon = "GFX_PRC_missile_cruisers_2"
-     }
+    ## 导弹驱逐舰 ##
+    create_equipment_variant = {
+        name = "055型导弹驱逐舰"
+        type = ship_hull_heavy_2
+        name_group = THEME_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_heavy_battery_2
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = heavy_ship_engine_2
+            fixed_ship_secondaries_slot = ship_secondaries_2
+            fixed_ship_armor_slot = ship_armor_bb_2
+            front_1_custom_slot = empty
+            mid_1_custom_slot = ship_airplane_launcher_2
+            mid_2_custom_slot = empty
+            rear_1_custom_slot = ship_heavy_battery_2
+        }
+        icon = "GFX_PRC_missile_cruisers_2"
+    }
 
-     ## 轻型护卫舰 ##
-     create_equipment_variant = { #Corvette 2
-         name = "037-II型导弹艇"
-         type = ship_hull_light_2
-         name_group = THEME_SM_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_light_battery_1
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = empty
-             fixed_ship_engine_slot = light_ship_engine_2
-             fixed_ship_torpedo_slot = ship_torpedo_1
-             mid_1_custom_slot = ship_torpedo_1
-             rear_1_custom_slot = ship_depth_charge_1
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = { #Corvette 2
-         name = "056型护卫舰"
-         type = ship_hull_light_2
-         name_group = THEME_SM_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_light_battery_2
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = ship_sonar_2
-             fixed_ship_engine_slot = light_ship_engine_2
-             fixed_ship_torpedo_slot = ship_torpedo_2
-             mid_1_custom_slot = ship_torpedo_1
-             rear_1_custom_slot = ship_depth_charge_1
-         }
-         icon = "GFX_PRC_corvette_2"
-     }
-     create_equipment_variant = { #Corvette 056A
-         name = "056A型护卫舰"
-         type = ship_hull_light_2
-         name_group = THEME_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_light_battery_2
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-             fixed_ship_radar_slot = ship_radar_2
-             fixed_ship_engine_slot = light_ship_engine_2
-             fixed_ship_torpedo_slot = ship_torpedo_2
-             mid_1_custom_slot = ship_torpedo_2
-             rear_1_custom_slot = ship_depth_charge_2
-         }
-         icon = "GFX_PRC_corvette_2"
-     }
+    ## 轻型护卫舰 ##
+    create_equipment_variant = { #Corvette 2
+        name = "037-II型导弹艇"
+        type = ship_hull_light_2
+        name_group = THEME_SM_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = empty
+            fixed_ship_engine_slot = light_ship_engine_2
+            fixed_ship_torpedo_slot = ship_torpedo_1
+            mid_1_custom_slot = ship_torpedo_1
+            rear_1_custom_slot = ship_depth_charge_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = { #Corvette 2
+        name = "056型护卫舰"
+        type = ship_hull_light_2
+        name_group = THEME_SM_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = ship_sonar_2
+            fixed_ship_engine_slot = light_ship_engine_2
+            fixed_ship_torpedo_slot = ship_torpedo_2
+            mid_1_custom_slot = ship_torpedo_1
+            rear_1_custom_slot = ship_depth_charge_1
+        }
+        icon = "GFX_PRC_corvette_2"
+    }
+    create_equipment_variant = { #Corvette 056A
+        name = "056A型护卫舰"
+        type = ship_hull_light_2
+        name_group = THEME_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+            fixed_ship_radar_slot = ship_radar_2
+            fixed_ship_engine_slot = light_ship_engine_2
+            fixed_ship_torpedo_slot = ship_torpedo_2
+            mid_1_custom_slot = ship_torpedo_2
+            rear_1_custom_slot = ship_depth_charge_2
+        }
+        icon = "GFX_PRC_corvette_2"
+    }
 
 
-     ## 护卫舰 ##
-     create_equipment_variant = { #Frigate 1
-         name = "053H1G型护卫舰"
-         type = ship_hull_cruiser_1
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_light_medium_battery_1
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = empty
-             fixed_ship_engine_slot = cruiser_ship_engine_1
-             fixed_ship_armor_slot = empty
-             fixed_ship_secondaries_slot = ship_secondaries_1
-             mid_1_custom_slot = empty
-             mid_2_custom_slot = empty
-             rear_1_custom_slot = empty
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = { #Frigate 2
-         name = "053H3型护卫舰"
-         type = ship_hull_cruiser_1
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_light_medium_battery_1
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = empty
-             fixed_ship_engine_slot = cruiser_ship_engine_1
-             fixed_ship_armor_slot = empty
-             fixed_ship_secondaries_slot = ship_secondaries_1
-             front_1_custom_slot = ship_light_medium_battery_1
-             mid_1_custom_slot = empty
-             mid_2_custom_slot = empty
-             rear_1_custom_slot = ship_airplane_launcher_1
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = {
-         name = "054A型护卫舰"
-         type = ship_hull_cruiser_2
-         name_group = THEME_SM_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_light_medium_battery_2
-             fixed_ship_anti_air_slot = ship_anti_air_2
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = cruiser_ship_engine_2
-             fixed_ship_armor_slot = empty
-             fixed_ship_secondaries_slot = ship_secondaries_2
-             mid_1_custom_slot = ship_secondaries_2
-             mid_2_custom_slot = empty
-             rear_1_custom_slot = ship_airplane_launcher_1
-         }
-         icon = "GFX_PRC_Frigate_2"
-     }
-     ### 驱逐舰 ###
-     create_equipment_variant = { #Destroyer 051B
-         name = "051B型驱逐舰"
-         type = ship_hull_cruiser_1
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_medium_battery_1
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = empty
-             fixed_ship_engine_slot = cruiser_ship_engine_1
-             fixed_ship_armor_slot = empty
-             mid_1_custom_slot = empty
-             mid_2_custom_slot = ship_anti_air_1
-             rear_1_custom_slot = empty
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = { #Destroyer 051C
-         name = "051C型驱逐舰"
-         type = ship_hull_cruiser_1
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_medium_battery_1
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = cruiser_ship_engine_1
-             fixed_ship_armor_slot = ship_armor_cruiser_1
-             mid_1_custom_slot = ship_secondaries_1
-             mid_2_custom_slot = empty
-             rear_1_custom_slot = empty
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = {
-         name = "现代级导弹驱逐舰"
-         type = ship_hull_cruiser_1
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_medium_battery_1
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = cruiser_ship_engine_1
-             fixed_ship_armor_slot = ship_armor_cruiser_1
-             mid_1_custom_slot = ship_secondaries_1
-             mid_2_custom_slot = ship_medium_battery_1
-             rear_1_custom_slot = ship_anti_air_1
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = { #Destroyer 052C
-         name = "052C型驱逐舰"
-         type = ship_hull_cruiser_2
-         name_group = THEME_SM_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_medium_battery_2
-             fixed_ship_anti_air_slot = ship_anti_air_1
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-             fixed_ship_radar_slot = empty
-             fixed_ship_engine_slot = cruiser_ship_engine_2
-             fixed_ship_armor_slot = ship_armor_cruiser_1
-             mid_1_custom_slot = ship_airplane_launcher_1
-             mid_2_custom_slot = ship_anti_air_1
-             rear_1_custom_slot = empty
-         }
-         icon = "GFX_PRC_destroyer_2"
-     }
-     create_equipment_variant = { #Destroyer 052D
-         name = "052D型驱逐舰"
-         type = ship_hull_cruiser_2
-         name_group = THEME_SM_CITIES_namegroup
-         parent_version = 0
-         modules = {
-             fixed_ship_battery_slot = ship_medium_battery_2
-             fixed_ship_anti_air_slot = ship_anti_air_2
-             fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-             fixed_ship_radar_slot = ship_radar_1
-             fixed_ship_engine_slot = cruiser_ship_engine_2
-             fixed_ship_armor_slot = ship_armor_cruiser_1
-             mid_1_custom_slot = ship_secondaries_1
-             mid_2_custom_slot = ship_medium_battery_2
-             rear_1_custom_slot = ship_airplane_launcher_2
-         }
-         icon = "GFX_PRC_destroyer_2"
-     }
+    ## 护卫舰 ##
+    create_equipment_variant = { #Frigate 1
+        name = "053H1G型护卫舰"
+        type = ship_hull_cruiser_1
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_1
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = empty
+            fixed_ship_engine_slot = cruiser_ship_engine_1
+            fixed_ship_armor_slot = empty
+            fixed_ship_secondaries_slot = ship_secondaries_1
+            mid_1_custom_slot = empty
+            mid_2_custom_slot = empty
+            rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = { #Frigate 2
+        name = "053H3型护卫舰"
+        type = ship_hull_cruiser_1
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_1
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = empty
+            fixed_ship_engine_slot = cruiser_ship_engine_1
+            fixed_ship_armor_slot = empty
+            fixed_ship_secondaries_slot = ship_secondaries_1
+            front_1_custom_slot = ship_light_medium_battery_1
+            mid_1_custom_slot = empty
+            mid_2_custom_slot = empty
+            rear_1_custom_slot = ship_airplane_launcher_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "054A型护卫舰"
+        type = ship_hull_cruiser_2
+        name_group = THEME_SM_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_2
+            fixed_ship_anti_air_slot = ship_anti_air_2
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = cruiser_ship_engine_2
+            fixed_ship_armor_slot = empty
+            fixed_ship_secondaries_slot = ship_secondaries_2
+            mid_1_custom_slot = ship_secondaries_2
+            mid_2_custom_slot = empty
+            rear_1_custom_slot = ship_airplane_launcher_1
+        }
+        icon = "GFX_PRC_Frigate_2"
+    }
+    ### 驱逐舰 ###
+    create_equipment_variant = { #Destroyer 051B
+        name = "051B型驱逐舰"
+        type = ship_hull_cruiser_1
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = empty
+            fixed_ship_engine_slot = cruiser_ship_engine_1
+            fixed_ship_armor_slot = empty
+            mid_1_custom_slot = empty
+            mid_2_custom_slot = ship_anti_air_1
+            rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = { #Destroyer 051C
+        name = "051C型驱逐舰"
+        type = ship_hull_cruiser_1
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = cruiser_ship_engine_1
+            fixed_ship_armor_slot = ship_armor_cruiser_1
+            mid_1_custom_slot = ship_secondaries_1
+            mid_2_custom_slot = empty
+            rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "现代级导弹驱逐舰"
+        type = ship_hull_cruiser_1
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = cruiser_ship_engine_1
+            fixed_ship_armor_slot = ship_armor_cruiser_1
+            mid_1_custom_slot = ship_secondaries_1
+            mid_2_custom_slot = ship_medium_battery_1
+            rear_1_custom_slot = ship_anti_air_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = { #Destroyer 052C
+        name = "052C型驱逐舰"
+        type = ship_hull_cruiser_2
+        name_group = THEME_SM_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_2
+            fixed_ship_anti_air_slot = ship_anti_air_1
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+            fixed_ship_radar_slot = empty
+            fixed_ship_engine_slot = cruiser_ship_engine_2
+            fixed_ship_armor_slot = ship_armor_cruiser_1
+            mid_1_custom_slot = ship_airplane_launcher_1
+            mid_2_custom_slot = ship_anti_air_1
+            rear_1_custom_slot = empty
+        }
+        icon = "GFX_PRC_destroyer_2"
+    }
+    create_equipment_variant = { #Destroyer 052D
+        name = "052D型驱逐舰"
+        type = ship_hull_cruiser_2
+        name_group = THEME_SM_CITIES_namegroup
+        parent_version = 0
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_2
+            fixed_ship_anti_air_slot = ship_anti_air_2
+            fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+            fixed_ship_radar_slot = ship_radar_1
+            fixed_ship_engine_slot = cruiser_ship_engine_2
+            fixed_ship_armor_slot = ship_armor_cruiser_1
+            mid_1_custom_slot = ship_secondaries_1
+            mid_2_custom_slot = ship_medium_battery_2
+            rear_1_custom_slot = ship_airplane_launcher_2
+        }
+        icon = "GFX_PRC_destroyer_2"
+    }
 
-     ## 潜艇 ##
-     create_equipment_variant = { #Diesel Sub 1
-         name = "039型常规动力潜艇"
-         type = ship_hull_submarine_1
-         parent_version = 0
-         modules = {
-             fixed_ship_torpedo_slot = ship_torpedo_sub_2
-             fixed_ship_engine_slot = sub_ship_engine_1
-             rear_1_custom_slot = ship_torpedo_sub_1
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = {
-         name = "094A型核潜艇"
-         type = ship_hull_submarine_2
-         parent_version = 0
-         modules = {
-             fixed_ship_torpedo_slot = ship_torpedo_sub_2
-             fixed_ship_engine_slot = sub_ship_engine_1
-             rear_1_custom_slot = ship_torpedo_sub_1
-         }
-     }
-     create_equipment_variant = { #Diesel Sub 2
-         name = "基洛级潜艇"
-         type = ship_hull_submarine_1
-         parent_version = 0
-         modules = {
-             fixed_ship_torpedo_slot = ship_torpedo_sub_1
-             fixed_ship_engine_slot = sub_ship_engine_1
-             rear_1_custom_slot = ship_torpedo_sub_1
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = { #Diesel Sub 3
-         name = "035型常规动力潜艇"
-         type = ship_hull_submarine_1
-         parent_version = 0
-         modules = {
-             fixed_ship_torpedo_slot = ship_torpedo_sub_1
-             fixed_ship_engine_slot = sub_ship_engine_1
-             rear_1_custom_slot = empty
-         }
-         obsolete = yes
-     }
-     create_equipment_variant = { #Nuclear Sub 1
-         name = "092型战略导弹核潜艇"
-         type = ship_hull_submarine_2
-         parent_version = 0
-         modules = {
-             fixed_ship_torpedo_slot = ship_torpedo_sub_2
-             fixed_ship_engine_slot = sub_ship_engine_2
-             rear_1_custom_slot = ship_torpedo_sub_1
-         }
-     }
-     create_equipment_variant = { #Nuclear Sub 2
-         name = "091型攻击核潜艇"
-         type = ship_hull_submarine_2
-         parent_version = 0
-         modules = {
-             fixed_ship_torpedo_slot = ship_torpedo_sub_2
-             fixed_ship_engine_slot = sub_ship_engine_2
-             rear_1_custom_slot = ship_torpedo_sub_2
-         }
-     }
+    ## 潜艇 ##
+    create_equipment_variant = { #Diesel Sub 1
+        name = "039型常规动力潜艇"
+        type = ship_hull_submarine_1
+        parent_version = 0
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+            fixed_ship_engine_slot = sub_ship_engine_1
+            rear_1_custom_slot = ship_torpedo_sub_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "094A型核潜艇"
+        type = ship_hull_submarine_2
+        parent_version = 0
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+            fixed_ship_engine_slot = sub_ship_engine_1
+            rear_1_custom_slot = ship_torpedo_sub_1
+        }
+    }
+    create_equipment_variant = { #Diesel Sub 2
+        name = "基洛级潜艇"
+        type = ship_hull_submarine_1
+        parent_version = 0
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+            fixed_ship_engine_slot = sub_ship_engine_1
+            rear_1_custom_slot = ship_torpedo_sub_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = { #Diesel Sub 3
+        name = "035型常规动力潜艇"
+        type = ship_hull_submarine_1
+        parent_version = 0
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+            fixed_ship_engine_slot = sub_ship_engine_1
+            rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = { #Nuclear Sub 1
+        name = "092型战略导弹核潜艇"
+        type = ship_hull_submarine_2
+        parent_version = 0
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+            fixed_ship_engine_slot = sub_ship_engine_2
+            rear_1_custom_slot = ship_torpedo_sub_1
+        }
+    }
+    create_equipment_variant = { #Nuclear Sub 2
+        name = "091型攻击核潜艇"
+        type = ship_hull_submarine_2
+        parent_version = 0
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+            fixed_ship_engine_slot = sub_ship_engine_2
+            rear_1_custom_slot = ship_torpedo_sub_2
+        }
+    }
 
- }
+}
 
- if = {
-     limit = {
-         has_dlc = "No Step Back"
-     }
-     create_equipment_variant = {
-         name = "ZTD-05两栖战车"
-         type = amphibious_tank_chassis_1
-         parent_version = 0
-         modules = {
-             main_armament_slot = tank_small_cannon
-             turret_type_slot = tank_light_two_man_tank_turret
-             suspension_type_slot = tank_christie_suspension
-             armor_type_slot = tank_riveted_armor
-             engine_type_slot = tank_gasoline_engine
-             special_type_slot_1 = tank_radio_1
-             special_type_slot_2 = smoke_launchers
-             special_type_slot_3 = empty
-             special_type_slot_4 = empty
-         }
-         upgrades = {
-             tank_nsb_engine_upgrade = 2
-             tank_nsb_armor_upgrade = 3
-         }
-         icon = "gfx/interface/technologies/armor/PRC_light_tank1.png"
-     }
-     create_equipment_variant = {
-         name = "ZTZ-96B主战坦克"
-         type = modern_tank_chassis_1
-         parent_version = 0
-         modules = {
-             main_armament_slot = tank_high_velocity_cannon_2
-             turret_type_slot = tank_modern_tank_turret
-             suspension_type_slot = tank_torsion_bar_suspension
-             armor_type_slot = tank_riveted_armor
-             engine_type_slot = tank_diesel_engine
-             special_type_slot_1 = tank_radio_1
-             special_type_slot_2 = smoke_launchers
-             special_type_slot_3 = auto_loader
-             special_type_slot_4 = sloped_armor
-         }
-         upgrades = {
-             tank_nsb_engine_upgrade = 9
-             tank_nsb_armor_upgrade = 4
-         }
-         icon = "gfx/interface/technologies/armor/PRC_modern_tank6.dds"
-     }
-     create_equipment_variant = {
-         name = "ZTZ-99A主战坦克"
-         type = modern_tank_chassis_2
-         parent_version = 0
-         modules = {
-             main_armament_slot = tank_high_velocity_cannon_2
-             turret_type_slot = tank_modern_tank_turret
-             suspension_type_slot = tank_torsion_bar_suspension
-             armor_type_slot = tank_cast_armor
-             engine_type_slot = tank_gas_turbine_engine
-             special_type_slot_1 = tank_radio_1
-             special_type_slot_2 = auto_loader
-             special_type_slot_3 = empty
-             special_type_slot_4 = empty
-         }
-         upgrades = {
-             tank_nsb_engine_upgrade = 8
-             tank_nsb_armor_upgrade = 1
-         }
-         icon = "gfx/interface/technologies/armor/PRC_modern_tank7.png"
-     }
-     create_equipment_variant = {
-         name = "ZTQ-15轻型坦克"
-         type = light_tank_chassis_1
-         parent_version = 0
-         modules = {
-             main_armament_slot = tank_small_cannon
-             turret_type_slot = tank_light_two_man_tank_turret
-             suspension_type_slot = tank_christie_suspension
-             armor_type_slot = tank_riveted_armor
-             engine_type_slot = tank_gasoline_engine
-             special_type_slot_1 = tank_radio_1
-             special_type_slot_2 = extra_ammo_storage
-             special_type_slot_3 = smoke_launchers
-             special_type_slot_4 = empty
-         }
-         upgrades = {
-             tank_nsb_engine_upgrade = 3
-             tank_nsb_armor_upgrade = 2
-         }
-         icon = "gfx/interface/technologies/armor/PRC_light_tank3.dds"
-     }
- }
+if = {
+    limit = {
+        has_dlc = "No Step Back"
+    }
+    create_equipment_variant = {
+        name = "ZTD-05两栖战车"
+        type = amphibious_tank_chassis_1
+        parent_version = 0
+        modules = {
+            main_armament_slot = tank_small_cannon
+            turret_type_slot = tank_light_two_man_tank_turret
+            suspension_type_slot = tank_christie_suspension
+            armor_type_slot = tank_riveted_armor
+            engine_type_slot = tank_gasoline_engine
+            special_type_slot_1 = tank_radio_1
+            special_type_slot_2 = smoke_launchers
+            special_type_slot_3 = empty
+            special_type_slot_4 = empty
+        }
+        upgrades = {
+            tank_nsb_engine_upgrade = 2
+            tank_nsb_armor_upgrade = 3
+        }
+        icon = "gfx/interface/technologies/armor/PRC_light_tank1.png"
+    }
+    create_equipment_variant = {
+        name = "ZTZ-96B主战坦克"
+        type = modern_tank_chassis_1
+        parent_version = 0
+        modules = {
+            main_armament_slot = tank_high_velocity_cannon_2
+            turret_type_slot = tank_modern_tank_turret
+            suspension_type_slot = tank_torsion_bar_suspension
+            armor_type_slot = tank_riveted_armor
+            engine_type_slot = tank_diesel_engine
+            special_type_slot_1 = tank_radio_1
+            special_type_slot_2 = smoke_launchers
+            special_type_slot_3 = auto_loader
+            special_type_slot_4 = sloped_armor
+        }
+        upgrades = {
+            tank_nsb_engine_upgrade = 9
+            tank_nsb_armor_upgrade = 4
+        }
+        icon = "gfx/interface/technologies/armor/PRC_modern_tank6.dds"
+    }
+    create_equipment_variant = {
+        name = "ZTZ-99A主战坦克"
+        type = modern_tank_chassis_2
+        parent_version = 0
+        modules = {
+            main_armament_slot = tank_high_velocity_cannon_2
+            turret_type_slot = tank_modern_tank_turret
+            suspension_type_slot = tank_torsion_bar_suspension
+            armor_type_slot = tank_cast_armor
+            engine_type_slot = tank_gas_turbine_engine
+            special_type_slot_1 = tank_radio_1
+            special_type_slot_2 = auto_loader
+            special_type_slot_3 = empty
+            special_type_slot_4 = empty
+        }
+        upgrades = {
+            tank_nsb_engine_upgrade = 8
+            tank_nsb_armor_upgrade = 1
+        }
+        icon = "gfx/interface/technologies/armor/PRC_modern_tank7.png"
+    }
+    create_equipment_variant = {
+        name = "ZTQ-15轻型坦克"
+        type = light_tank_chassis_1
+        parent_version = 0
+        modules = {
+            main_armament_slot = tank_small_cannon
+            turret_type_slot = tank_light_two_man_tank_turret
+            suspension_type_slot = tank_christie_suspension
+            armor_type_slot = tank_riveted_armor
+            engine_type_slot = tank_gasoline_engine
+            special_type_slot_1 = tank_radio_1
+            special_type_slot_2 = extra_ammo_storage
+            special_type_slot_3 = smoke_launchers
+            special_type_slot_4 = empty
+        }
+        upgrades = {
+            tank_nsb_engine_upgrade = 3
+            tank_nsb_armor_upgrade = 2
+        }
+        icon = "gfx/interface/technologies/armor/PRC_light_tank3.dds"
+    }
+}
 
- if = {
-     limit = {
-         has_dlc = "By Blood Alone"
-     }
-     create_equipment_variant = {
-         name = "歼-15T“飞鲨”"
-         type = cv_small_plane_naval_bomber_airframe_1
-         modules = {
-             fixed_main_weapon_slot = torpedo_mounting
-             fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_2_1x
-             special_type_slot_1 = hmg_defense_turret
-             special_type_slot_2 = hmg_defense_turret
-         }
-         icon = "GFX_PRC_J15_fly_shark"
-     }
+if = {
+    limit = {
+        has_dlc = "By Blood Alone"
+    }
+    create_equipment_variant = {
+        name = "歼-15T“飞鲨”"
+        type = cv_small_plane_naval_bomber_airframe_1
+        modules = {
+            fixed_main_weapon_slot = torpedo_mounting
+            fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_2_1x
+            special_type_slot_1 = hmg_defense_turret
+            special_type_slot_2 = hmg_defense_turret
+        }
+        icon = "GFX_PRC_J15_fly_shark"
+    }
 
-     create_equipment_variant = {
-         name = "歼-7"
-         type = small_plane_airframe_0
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = empty
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_1_1x
-             special_type_slot_1 = empty
-         }
-         obsolete = yes
-         icon = "GFX_PRC_j7"
-     }
+    create_equipment_variant = {
+        name = "歼-7"
+        type = small_plane_airframe_0
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = empty
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_1_1x
+            special_type_slot_1 = empty
+        }
+        obsolete = yes
+        icon = "GFX_PRC_j7"
+    }
 
-     create_equipment_variant = {
-         name = "歼-8"
-         type = small_plane_airframe_0
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_1_2x
-             special_type_slot_1 = empty
-         }
-         obsolete = yes
-         icon = "GFX_PRC_fighter3_medium"
-     }
+    create_equipment_variant = {
+        name = "歼-8"
+        type = small_plane_airframe_0
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = bomb_locks
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_1_2x
+            special_type_slot_1 = empty
+        }
+        obsolete = yes
+        icon = "GFX_PRC_fighter3_medium"
+    }
 
-     create_equipment_variant = {
-         name = "强-5"
-         type = small_plane_airframe_0
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_1_2x
-             special_type_slot_1 = empty
-         }
-         obsolete = yes
-         icon = "GFX_PRC_CAS1_medium"
-     }
+    create_equipment_variant = {
+        name = "强-5"
+        type = small_plane_airframe_0
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = bomb_locks
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_1_2x
+            special_type_slot_1 = empty
+        }
+        obsolete = yes
+        icon = "GFX_PRC_CAS1_medium"
+    }
 
-     create_equipment_variant = {
-         name = "歼-10C"
-         type = small_plane_airframe_0
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_1_1x
-             special_type_slot_1 = empty
-         }
-         obsolete = yes
-         icon = "GFX_PRC_j10"
-     }
+    create_equipment_variant = {
+        name = "歼-10C"
+        type = small_plane_airframe_0
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = bomb_locks
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_1_1x
+            special_type_slot_1 = empty
+        }
+        obsolete = yes
+        icon = "GFX_PRC_j10"
+    }
 
-     create_equipment_variant = {
-         name = "歼-11B"
-         type = small_plane_airframe_0
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_1_1x
-             special_type_slot_1 = empty
-         }
-         obsolete = yes
-         icon = "GFX_PRC_j11"
-     }
+    create_equipment_variant = {
+        name = "歼-11B"
+        type = small_plane_airframe_0
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = bomb_locks
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_1_1x
+            special_type_slot_1 = empty
+        }
+        obsolete = yes
+        icon = "GFX_PRC_j11"
+    }
 
-     create_equipment_variant = {
-         name = "歼-16“炸弹卡车”"
-         type = small_plane_airframe_1
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_2 = light_mg_4x
-             fixed_auxiliary_weapon_slot_3 = light_mg_4x
-             engine_type_slot = engine_1_2x
-             special_type_slot_1 = hmg_defense_turret
-         }
-         icon = "GFX_PRC_fighter4_medium"
-     }
+    create_equipment_variant = {
+        name = "歼-16“炸弹卡车”"
+        type = small_plane_airframe_1
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_2 = light_mg_4x
+            fixed_auxiliary_weapon_slot_3 = light_mg_4x
+            engine_type_slot = engine_1_2x
+            special_type_slot_1 = hmg_defense_turret
+        }
+        icon = "GFX_PRC_fighter4_medium"
+    }
 
-     create_equipment_variant = {
-         name = "歼-20“威龙”"
-         type = small_plane_airframe_2
-         modules = {
-             fixed_main_weapon_slot = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
-             fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
-             engine_type_slot = engine_2_2x
-             special_type_slot_1 = hmg_defense_turret
-             special_type_slot_2 = ai_targeting_computer_small
-             special_type_slot_3 = radio_navigation_1
-         }
-         icon = "GFX_PRC_fighter5_medium"
-     }
+    create_equipment_variant = {
+        name = "歼-20“威龙”"
+        type = small_plane_airframe_2
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+            fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
+            engine_type_slot = engine_2_2x
+            special_type_slot_1 = hmg_defense_turret
+            special_type_slot_2 = ai_targeting_computer_small
+            special_type_slot_3 = radio_navigation_1
+        }
+        icon = "GFX_PRC_fighter5_medium"
+    }
 
-     create_equipment_variant = {
-         name = "歼轰-7“飞豹”"
-         type = small_plane_cas_airframe_1
-         modules = {
-             fixed_main_weapon_slot = bomb_locks
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
-             engine_type_slot = engine_2_1x
-             special_type_slot_1 = hmg_defense_turret
-             special_type_slot_2 = hmg_defense_turret
-         }
-         icon = "GFX_PRC_CAS2_medium"
-     }
+    create_equipment_variant = {
+        name = "Su-30MKK"
+        type = small_plane_cas_airframe_1
+        modules = {
+            fixed_main_weapon_slot = light_mg_4x
+            fixed_auxiliary_weapon_slot_1 = light_mg_4x
+            fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+            engine_type_slot = engine_2_1x
+            special_type_slot_1 = hmg_defense_turret
+            special_type_slot_2 = hmg_defense_turret
+        }
+        icon = "GFX_PRC_Su30MKK"
+    }
 
-     create_equipment_variant = {
-         name = "Su-30MKK"
-         type = small_plane_cas_airframe_1
-         modules = {
-             fixed_main_weapon_slot = light_mg_4x
-             fixed_auxiliary_weapon_slot_1 = light_mg_4x
-             fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
-             engine_type_slot = engine_2_1x
-             special_type_slot_1 = hmg_defense_turret
-             special_type_slot_2 = hmg_defense_turret
-         }
-         icon = "GFX_PRC_Su30MKK"
-     }
+    create_equipment_variant = {
+        name = "轰-5"
+        type = large_plane_airframe_0
+        modules = {
+            fixed_main_weapon_slot = aircraft_cannon_1_2x
+            fixed_auxiliary_weapon_slot_1 = bomb_locks
+            fixed_auxiliary_weapon_slot_2 = empty
+            engine_type_slot = engine_2_3x
+            special_type_slot_1 = empty
+            special_type_slot_2 = empty
+        }
+        obsolete = yes
+        icon = "GFX_USA_strategic_bomber2_medium"
+    }
 
-     create_equipment_variant = {
-         name = "轰-5"
-         type = large_plane_airframe_0
-         modules = {
-             fixed_main_weapon_slot = aircraft_cannon_1_2x
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = empty
-             engine_type_slot = engine_2_3x
-             special_type_slot_1 = empty
-             special_type_slot_2 = empty
-         }
-         obsolete = yes
-         icon = "GFX_USA_strategic_bomber2_medium"
-     }
+    create_equipment_variant = {
+        name = "轰-6K“战神”"
+        type = large_plane_airframe_1
+        modules = {
+            fixed_main_weapon_slot = aircraft_cannon_1_2x
+            fixed_auxiliary_weapon_slot_1 = bomb_locks
+            fixed_auxiliary_weapon_slot_2 = bomb_locks
+            engine_type_slot = engine_2_6x
+            special_type_slot_1 = empty
+            special_type_slot_2 = empty
+            special_type_slot_3 = bomb_sights_1
 
-     create_equipment_variant = {
-         name = "轰-6K“战神”"
-         type = large_plane_airframe_1
-         modules = {
-             fixed_main_weapon_slot = aircraft_cannon_1_2x
-             fixed_auxiliary_weapon_slot_1 = bomb_locks
-             fixed_auxiliary_weapon_slot_2 = bomb_locks
-             engine_type_slot = engine_2_6x
-             special_type_slot_1 = empty
-             special_type_slot_2 = empty
-             special_type_slot_3 = bomb_sights_1
-
-         }
-         icon = "GFX_PRC_H6"
-     }
- }
+        }
+        icon = "GFX_PRC_H6"
+    }
+}

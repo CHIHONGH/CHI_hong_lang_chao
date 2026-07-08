@@ -220,24 +220,32 @@ NAX_aiding_the_Naxalites_category = {
         priority = 0
         icon = GFX_PRC_Reinforce_Communism
         available = {
-            NOT = {
-                has_country_flag = NAX_raj_Guerrilla_war_flag
+            custom_trigger_tooltip = {
+                tooltip = NAX_indian_wool_war_tt
+                NAX = {
+                    OR = {
+                        has_country_flag = NAX_win_indian_wool_war
+                        has_country_flag = NAX_lost_indian_wool_war
+                    }
+                }
             }
         }
         activation = {
-            has_completed_focus = NAX_The_Liberation_War
+            has_country_flag = NAX_Nasser_Mass_Power_start_flag
         }
-        days_re_enable = 2
+        days_re_enable = 1
         fire_only_once = no
         is_good = no
-        days_mission_timeout = 5
+        days_mission_timeout = 2
+        selectable_mission = no
+        war_with_on_timeout = RAJ
+        complete_effect = {
+            clr_country_flag = NAX_Nasser_Mass_Power_start_flag
+        }
         timeout_effect = {
-            hidden_effect = {
-                remove_mission = NAX_Nasser_Mass_Power
-            }
             set_temp_variable = {
                 var = global.NAX_rd_approval_rating_temp_var
-                value = 5
+                value = 12.5
             }
             TFR_NAX_approval_rating_effects = yes
             NAX = {
