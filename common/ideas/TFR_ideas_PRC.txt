@@ -1,5 +1,39 @@
 ideas = {
 	hidden_ideas = {
+		JAP_balance_sheet = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				surrender_limit = -0.2
+			}
+			targeted_modifier = {
+				tag = JPL
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.05
+				breakthrough_bonus_against = -0.1
+			}
+		}
+		PTF_balance_sheet = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				surrender_limit = -0.2
+			}
+			targeted_modifier = {
+				tag = JPL
+				attack_bonus_against = -0.2
+				defense_bonus_against = -0.1
+				breakthrough_bonus_against = -0.2
+			}
+		}
 		PRC_nationalist_insurgency = {
 			picture = PRC_hong_kong_protests
 			allowed = {
@@ -6640,6 +6674,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				naval_doctrine_cost_factor = -0.1
+				naval_mastery_gain_factor = 0.2
 				amphibious_invasion = 0.2
 				invasion_preparation = -0.5
 				naval_damage_factor = 0.2
@@ -6655,6 +6691,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				land_doctrine_cost_factor = -0.1
+				land_mastery_gain_factor = 0.2
 				training_time_army_factor = -0.35
 			}
 		}
@@ -6669,11 +6707,17 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_attack_factor = -0.2
-				army_defence_factor = -0.2
-				breakthrough_factor = -0.1
-				air_cas_efficiency = -0.2
+				# army_attack_factor = -0.2
+				# army_defence_factor = -0.2
+				# breakthrough_factor = -0.1
+				# air_cas_efficiency = -0.2
+				# experience_loss_factor = 0.15
+				land_mastery_gain_factor = -0.3
+				air_mastery_gain_factor = -0.3
+				naval_mastery_gain_factor = -0.3
+				experience_gain_army_unit_factor = -0.15
 				experience_loss_factor = 0.15
+				land_doctrine_cost_factor = 0.3
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea2 = {
@@ -6687,11 +6731,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_attack_factor = -0.125
-				army_defence_factor = -0.125
-				breakthrough_factor = -0.075
-				air_cas_efficiency = -0.125
-				experience_loss_factor = 0.075
+				land_mastery_gain_factor = -0.24
+				air_mastery_gain_factor = -0.24
+				naval_mastery_gain_factor = -0.24
+				experience_gain_army_unit_factor = -0.12
+				experience_loss_factor = 0.12
+				land_doctrine_cost_factor = 0.24
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea3 = {
@@ -6705,10 +6750,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_attack_factor = -0.125
-				breakthrough_factor = -0.075
-				air_cas_efficiency = -0.1
-				experience_loss_factor = 0.05
+				land_mastery_gain_factor = -0.18
+				air_mastery_gain_factor = -0.18
+				naval_mastery_gain_factor = -0.18
+				experience_gain_army_unit_factor = -0.09
+				experience_loss_factor = 0.09
+				land_doctrine_cost_factor = 0.18
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea4 = {
@@ -6722,9 +6769,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_defence_factor = -0.125
-				air_cas_efficiency = -0.1
-				experience_loss_factor = 0.05
+				land_mastery_gain_factor = -0.12
+				air_mastery_gain_factor = -0.12
+				naval_mastery_gain_factor = -0.12
+				experience_gain_army_unit_factor = -0.06
+				experience_loss_factor = 0.06
+				land_doctrine_cost_factor = 0.12
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea5 = {
@@ -6738,8 +6788,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				air_cas_efficiency = -0.1
-				experience_loss_factor = 0.025
+				land_mastery_gain_factor = -0.06
+				air_mastery_gain_factor = -0.06
+				naval_mastery_gain_factor = -0.06
+				experience_gain_army_unit_factor = -0.03
+				experience_loss_factor = 0.03
+				land_doctrine_cost_factor = 0.06
 			}
 		}
 		PRC_final_offensive_idea = {
@@ -9361,13 +9415,13 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				stability_factor = 0.075
-				political_power_factor = 0.15
-				consumer_goods_factor = 0.075
-				industrial_capacity_factory = -0.2
-				industrial_capacity_dockyard = -0.2
+				stability_factor = 0.05
+				political_power_factor = 0.25
+				consumer_goods_factor = 0.05
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
 				production_speed_industrial_complex_factor = -0.1
-				production_speed_arms_factory_factor = -0.3
+				production_speed_arms_factory_factor = -0.2
 			}
 		}
 		PRC_fatal_mistake_idea = {
