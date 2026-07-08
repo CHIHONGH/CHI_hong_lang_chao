@@ -11345,7 +11345,7 @@ PRC_indo_pakistan_war = {
 					add_equipment_to_stockpile = {
 						type = small_plane_airframe_1
 						variant_name = "Shenyang J-16"
-						amount = 75
+						amount = 100
 						producer = PRC
 					}
 				}
@@ -11357,7 +11357,7 @@ PRC_indo_pakistan_war = {
 					}
 					add_equipment_to_stockpile = {
 						type = fighter_equipment_2
-						amount = 50
+						amount = 100
 						producer = PRC
 					}
 				}
@@ -11389,12 +11389,12 @@ PRC_indo_pakistan_war = {
 			PAK = {
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_2
-					amount = 2500
+					amount = 3000
 					producer = PRC
 				}
 				add_equipment_to_stockpile = {
 					type = support_equipment_1
-					amount = 750
+					amount = 1000
 					producer = PRC
 				}
 				add_equipment_to_stockpile = {
@@ -11427,6 +11427,10 @@ PRC_indo_pakistan_war = {
 		complete_effect = {
 		}
 		remove_effect = {
+			PAK = {
+				army_experience = 50
+				air_experience = 25
+			}
 			PRC_Zhao_Zongqi = {
 				set_nationality = PAK
 			}
@@ -11462,6 +11466,20 @@ PRC_indo_pakistan_war = {
 				}
 			}
 		}
+		modifier = {
+			air_superiority_efficiency = 0.1
+			air_superiority_bonus_in_combat = 0.1
+			combat_width_factor = -0.1
+			terrain_penalty_reduction = 0.25
+			army_speed_factor = 0.1
+			no_supply_grace = 12
+			supply_consumption_factor = -0.1
+			max_planning_factor = 0.2
+			army_attack_speed_factor = 0.1
+			army_non_core_defence_factor = -0.1
+			land_mastery_gain_factor = 0.2
+			combat_entrenchment = -0.2
+		}
 		remove_effect = {
 			hidden_effect = {
 				country_event = {
@@ -11496,6 +11514,20 @@ PRC_indo_pakistan_war = {
 					days = 100
 				}
 			}
+		}
+		modifier = {
+			air_superiority_efficiency = 0.1
+			air_superiority_bonus_in_combat = 0.1
+			combat_width_factor = -0.1
+			terrain_penalty_reduction = 0.25
+			army_speed_factor = 0.1
+			max_planning_factor = 0.2
+			no_supply_grace = 12
+			supply_consumption_factor = -0.1
+			army_attack_speed_factor = 0.1
+			army_non_core_defence_factor = -0.1
+			land_mastery_gain_factor = 0.2
+			combat_entrenchment = -0.2
 		}
 		remove_effect = {
 			#country_event = { id = china.141 } ##причем тут этот ивент наху
