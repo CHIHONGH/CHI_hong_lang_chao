@@ -1,0 +1,1697 @@
+PRC_target_taiwan = {
+	enable = {
+		tag = PRC
+		country_exists = CHI
+	}
+	abort_when_not_enabled = yes
+	allowed = {
+      	tag = PRC
+    }
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 400
+	}
+	ai_strategy = {
+		type = invade
+		id = "CHI"
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "JAP"
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = invade
+		id = "AST"
+		value = -1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = CHI
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = taiwan_okinawa
+		value = 1000
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = oceania
+		value = -1000
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = pacific
+		value = -1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 1451
+	    value = 1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 1148
+	    value = 1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 1150
+	    value = 1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 1451
+	    value = 1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 524
+	    value = 1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 1149
+	    value = 100
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 876
+	    value = 75
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 526
+	    value = 75
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 645
+	    value = -1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 645
+	    value = -1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 711
+	    value = -1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 712
+	    value = -1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 528
+	    value = -1000
+	}
+
+	ai_strategy = {
+	    type = front_unit_request
+	    tag = CHI
+	    value = 125
+	}
+}
+
+JAP_support_CHI = {
+	enable = {
+		tag = JAP
+		has_war = no
+	}
+	abort_when_not_enabled = yes
+	#abort = {
+	#	has_war = yes
+	#	has_war_with = PRC
+	#	date > 2020.1.1
+	#}
+
+	ai_strategy = {
+		type = support
+		id = "CHI"
+		value = 300
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "CHI"
+		value = 900
+	}
+}
+AST_support_CHI = {
+	enable = {
+		tag = AST
+		has_war = no
+	}
+	abort_when_not_enabled = yes
+	#abort = {
+	#	has_war = yes
+	#	has_war_with = PRC
+	#	date > 2020.1.1
+	#}
+
+	ai_strategy = {
+		type = support
+		id = "CHI"
+		value = 300
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "CHI"
+		value = 900
+	}
+}
+PRC_support_PAK = {
+	enable = {
+		tag = PRC
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = PAK
+	}
+
+	ai_strategy = {
+		type = support
+		id = "PAK"
+		value = 300
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PAK"
+		value = 900
+	}
+}
+PRC_counter_insurgencies = {
+	enable = {
+		tag = PRC
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+	}
+
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "XIN"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "TAR"
+		value = 900
+	}
+}
+
+PRC_prepare_for_war = {
+	enable = {
+		tag = PRC
+		has_completed_focus = PRC_the_final_opportunity
+		NOT = {
+			OR = {
+				has_global_flag = PRC_taiwan_war_lost
+				has_global_flag = PRC_taiwan_war_won
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	allowed = {
+      	tag = PRC
+    }
+	ai_strategy = {
+	    type = prepare_for_war
+	    id = CHI
+	    value = 100
+	}
+}
+
+JAP_drop_kinmen = {
+	enable = {
+		tag = JAP
+		has_active_mission = JAP_free_kinmen_island
+	}
+	abort_when_not_enabled = yes
+	allowed = {
+      	tag = JAP
+    }	
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 648
+	    value = 1000
+	}
+}
+
+PDTO_prepare_for_war = {
+	enable = {
+		OR = {
+			tag = CHI
+			tag = JAP
+			tag = AST
+		}
+		PRC = {
+			has_completed_focus = PRC_the_final_opportunity
+		}
+		NOT = {
+			OR = {
+				has_global_flag = PRC_taiwan_war_lost
+				has_global_flag = PRC_taiwan_war_won
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	allowed = {
+      	OR = {
+			tag = CHI
+			tag = JAP
+			tag = AST
+		}
+    }
+	ai_strategy = {
+	    type = prepare_for_war
+	    id = PRC
+	    value = 50
+	}
+	ai_strategy = {
+	    type = area_priority
+	    id = taiwan_okinawa
+	    value = 100
+	}
+	ai_strategy = {
+	    type = garrison
+	    value = 75
+	}
+}
+
+PRC_dont_support_nato = {
+	enable = {
+		tag = PRC
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "UKR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GER"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "EST"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "LAT"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "LIT"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PLD"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ITA"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ROM"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "HUN"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "BUL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRE"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "TUR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SLO"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "CZE"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "DEN"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "NOR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "HOL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "BEL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "LUX"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "FRA"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ENG"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "POR"
+		value = -900
+	}
+}
+
+Empire_PRC_dont_support_Western = {
+	enable = {
+		tag = PRC
+		has_country_flag = PRC_giga_mega_secret_empire_path
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SOV"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GER"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ITA"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "FRA"
+		value = -900
+	}
+	ai_strategy = {
+		type = support
+		id = "SOV"
+		value = -900
+	}
+	ai_strategy = {
+		type = support
+		id = "GER"
+		value = -900
+	}
+	ai_strategy = {
+		type = support
+		id = "ITA"
+		value = -900
+	}
+	ai_strategy = {
+		type = support
+		id = "FRA"
+		value = -900
+	}}
+
+PRC_naval_role_ratios_1 = { #改动标记
+	allowed = {
+		original_tag = PRC
+		has_dlc = "Man the Guns"
+	}
+	enable = {
+		tag = PRC
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 5
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = -500
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = -500
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 3
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = 2
+	}
+}
+
+PRC_naval_role_ratios_2 = { #改动标记
+	allowed = {
+		original_tag = PRC
+		has_dlc = "Man the Guns"
+	}
+	enable = {
+		tag = PRC
+		has_completed_focus = PAL_retrieve_electromagnetic_arsenal_ship
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = 100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 10
+	}
+}
+
+JAP_naval_role_ratios = {
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Man the Guns"
+	}
+	enable = {
+		tag = JAP
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = 25
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 120
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 75
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = 10
+	}
+}
+
+PRC_good_spamming = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		NOT = {
+			date > 2031.1.1
+			has_war = no
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 5000
+	}
+}
+
+PRC_stop_spamming = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		date > 2031.1.1
+		has_war = no
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = force_build_armies
+		value = -1000
+	}
+}
+
+PRC_arabian_help = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		country_exists = ROC
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = send_volunteers_desire
+	    id = ROC
+	    value = 100
+	}
+}
+
+PRC_cw_build_armies = {
+	allowed = {
+		chinese_civil_war_tag = yes
+	}
+	enable = {
+		has_global_flag = PRC_china_collapse
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_build_armies
+		value = 150
+	}
+}
+
+PRC_cw_no_garrison = {
+	allowed = {
+		chinese_civil_war_tag = yes
+	}
+	enable = {
+		has_global_flag = PRC_china_collapse
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = garrison
+		value = -999
+	}
+}
+
+NCM_rush_against_maoists = {
+	allowed = {
+		tag = NCM
+	}
+	enable = {
+		has_global_flag = PRC_china_collapse
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = SHA
+		value = 150
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = SHA
+		}
+		ratio = 1
+   		ordertype = front
+   		execution_type = rush
+		value = 150
+	}
+}
+
+RAJ_great_northern_offensive_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_idea = RAJ_great_northern_offensive
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = PRC
+		value = 100
+	}
+	ai_strategy = {
+		type = conquer
+		id = NEP
+		value = 75
+	}
+	ai_strategy = {
+		type = conquer
+		id = BHU
+		value = 75
+	}
+	ai_strategy = {
+	    type = area_priority
+	    id = northern_india
+	    value = 125
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = NEP
+		}
+		ratio = 0.15
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = BHU
+		}
+		ratio = 0.15
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = PRC
+		}
+		ratio = 0.2
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_operation_cariappa_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_idea = RAJ_operation_cariappa_idea
+		has_war_with = PAK
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = PAK
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = PAK
+		}
+		ratio = 0.2
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_operation_manekshaw_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_idea = RAJ_operation_manekshaw_idea
+		has_war_with = BAN
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = BAN
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = BAN
+		}
+		ratio = 0.1
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_return_burma_to_india_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_idea = PRC_burma_offensive_idea
+		has_war_with = BRM
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = BRM
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = BRM
+		}
+		ratio = 0.15
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_invade_nepal_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_completed_focus = RAJ_invade_nepal
+		has_war_with = NEP
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = NEP
+		}
+		ratio = 0.15
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+	ai_strategy = {
+		type = conquer
+		id = NEP
+		value = 100
+	}
+}
+
+RAJ_retake_bhutan_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_completed_focus = RAJ_retake_bhutan
+		has_war_with = BAN
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = BAN
+		}
+		ratio = 0.1
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+	ai_strategy = {
+		type = conquer
+		id = BAN
+		value = 100
+	}
+}
+
+RAJ_operation_shambhala_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_completed_focus = RAJ_operation_shambhala
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = front_control
+	    state_trigger = {
+	        is_core_of = TIB
+	    }
+	    ratio = 0.2
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_invade_eastern_turkestan_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_completed_focus = RAJ_invade_eastern_turkestan
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = front_control
+	    state_trigger = {
+	        is_core_of = SIK
+	    }
+	    ratio = 0.2
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_march_on_xibei_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_completed_focus = RAJ_march_on_xibei
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = front_control
+	    state_trigger = {
+	        region = 200
+	    }
+	    ratio = 0.2
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_xinan_offensive_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_completed_focus = RAJ_xinan_offensive
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = front_control
+	    state_trigger = {
+	        OR = {
+				region = 144
+				region = 216
+			}
+	    }
+	    ratio = 0.2
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_to_the_sea_strategy = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		has_idea = RAJ_to_the_sea_idea
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = conquer
+		id = PRC
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = PRC
+		}
+		ratio = 0.7
+   		ordertype = front
+   		execution_type = rush
+		value = 100
+	}
+}
+
+RAJ_start_spamming = {
+	allowed = {
+		original_tag = RAJ
+	}
+	enable = {
+		date > 2027.1.1
+	}
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = force_build_armies
+		value = 150
+	}
+}
+
+RAJ_dont_support_nato = {
+	enable = {
+		original_tag = RAJ
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "UKR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GER"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "EST"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "LAT"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "LIT"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PLD"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ITA"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ROM"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "HUN"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "BUL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRE"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "TUR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SLO"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "CZE"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "DEN"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "NOR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "HOL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "BEL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "LUX"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "FRA"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ENG"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "POR"
+		value = -900
+	}
+}
+
+PRC_help_myanmar = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		BRM = {
+			exists = yes
+			has_war = yes
+			NOT = {
+				is_ally_with = JAP
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = send_volunteers_desire
+	    id = BRM
+	    value = 100
+	}
+}
+
+JAP_help_myanmar = {
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		PDF = {
+			exists = yes
+			has_war = yes
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+	    type = send_volunteers_desire
+	    id = PDF
+	    value = 100
+	}
+}
+
+PRC_in_naval_war = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		has_war_with = JAP
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = dockyard
+		value = 100
+	}
+}
+
+PRC_finish_japan_off = { #改动标记
+	allowed = {
+		OR = {
+			original_tag = PRC
+			original_tag = PRK
+		}
+	}
+	enable = {
+		has_war_with = JAP
+		has_global_flag = pan_asian_war_ongoing
+		has_global_flag = eadi_land_jap
+		has_manpower > 0
+		#activate every 25 days, then pause for another 25
+		set_temp_variable = { frequency = global.num_days }
+		modulo_temp_variable = { frequency = 50 }
+		check_variable = { frequency > 25 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = JAP
+		priority = 150
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 154
+		value = 5000
+	}
+}
+
+PRC_zero_days_end = { #endsieg
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		surrender_progress > 0.15
+		stockpile_ratio = { archetype = infantry_equipment ratio < 0.1 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = JAP
+		priority = 150
+		ordertype = front
+		execute_order = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = RAJ
+		priority = 100
+		ordertype = front
+		execute_order = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = KOR
+		priority = 100
+		ordertype = front
+		execute_order = no
+	}
+}
+
+PRC_destroy_invasion_beachheads = { #改动标记
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		has_global_flag = pan_asian_war_ongoing
+		OR = {
+			NOT = { has_full_control_of_state = 1394 }
+			NOT = { has_full_control_of_state = 609 }
+			NOT = { has_full_control_of_state = 1157 }
+			NOT = { has_full_control_of_state = 1232 }
+			NOT = { has_full_control_of_state = 1426 }
+			NOT = { has_full_control_of_state = 597 }
+			NOT = { has_full_control_of_state = 1427 }
+			NOT = { has_full_control_of_state = 1229 }
+			NOT = { has_full_control_of_state = 1393 }
+			NOT = { has_full_control_of_state = 1420 }
+			NOT = { has_full_control_of_state = 598 }
+			NOT = { has_full_control_of_state = 1228 }
+			NOT = { has_full_control_of_state = 1429 }
+			NOT = { has_full_control_of_state = 613 }
+			NOT = { has_full_control_of_state = 1215 }
+			NOT = { has_full_control_of_state = 1220 }
+			NOT = { has_full_control_of_state = 596 }
+			NOT = { has_full_control_of_state = 1219 }
+			NOT = { has_full_control_of_state = 595 }
+			NOT = { has_full_control_of_state = 1218 }
+			NOT = { has_full_control_of_state = 1431 }
+			NOT = { has_full_control_of_state = 1206 }
+			NOT = { has_full_control_of_state = 326 }
+			NOT = { has_full_control_of_state = 1395 }
+			NOT = { has_full_control_of_state = 592 }
+			NOT = { has_full_control_of_state = 728 }
+			NOT = { has_full_control_of_state = 593 }
+			NOT = { has_full_control_of_state = 591 }
+		}
+		has_war_with = JAP
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+		state = 1394
+		state = 609
+		state = 1157
+		state = 1232
+		state = 1426
+		state = 597
+		state = 1427
+		state = 1229
+		state = 1393
+		state = 1420
+		state = 598
+		state = 1228
+		state = 1429
+		state = 613
+		state = 1215
+		state = 1220
+		state = 596
+		state = 1219
+		state = 595
+		state = 1218
+		state = 1431
+		state = 1206
+		state = 326
+		state = 1395
+		state = 592
+		state = 728
+		state = 593
+		state = 591
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		state = 1394
+		state = 609
+		state = 1157
+		state = 1232
+		state = 1426
+		state = 597
+		state = 1427
+		state = 1229
+		state = 1393
+		state = 1420
+		state = 598
+		state = 1228
+		state = 1429
+		state = 613
+		state = 1215
+		state = 1220
+		state = 596
+		state = 1219
+		state = 595
+		state = 1218
+		state = 1431
+		state = 1206
+		state = 326
+		state = 1395
+		state = 592
+		state = 728
+		state = 593
+		state = 591
+		priority = 200
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}
+
+PRC_you_shall_not_pass = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		has_navy_size = { size > 0 }
+		has_war_with = JAP
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_convoy_raid_region
+		id = 77
+		value = 100
+	}
+	ai_strategy = {
+		type = naval_convoy_raid_region
+		id = 76
+		value = 400
+	}
+	ai_strategy = {
+		type = naval_convoy_raid_region
+		id = 90
+		value = 350
+	}
+	ai_strategy = {
+		type = naval_convoy_raid_region
+		id = 79
+		value = 150
+	}
+	ai_strategy = {
+		type = naval_convoy_raid_region
+		id = 75
+		value = 200
+	}
+}
+
+PRC_pp_spending = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		has_political_power < 300
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = decision
+		value = 200
+	}
+}
+
+PRC_civilian_and_office_buildup = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		date < 2025.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 1000
+	}
+	ai_strategy = {
+		type = building_target
+		id = office_park
+		value = -500
+	}
+}
+
+PRC_military_buildup = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		date > 2025.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 200
+	}
+	ai_strategy = {
+		type = building_target
+		id = dockyard
+		value = 80
+	}
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 30
+	}
+}
+
+#naval_unit_role_ratios_PRC = {
+#	allowed = {
+#		original_tag = PRC
+#	}
+#	enable = { always = yes }
+#	abort_when_not_enabled = yes
+#
+#	ai_strategy = {
+#		type = role_ratio
+#		id = naval_submarine
+#		value = 50
+#	}
+#
+#	ai_strategy = {
+#		type = role_ratio
+#		id = naval_screen
+#		value = 50
+#	}
+#
+#	ai_strategy = {
+#		type = role_ratio
+#		id = naval_cruiser_light
+#		value = 75
+#	}
+#}
+
+PRC_i_need_convoys = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = { stockpile_ratio = { archetype = convoy ratio < 100 } }
+	abort = { stockpile_ratio = { archetype = convoy ratio > 500 } }
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = convoy
+		value = 5
+	}
+}
+
+PRC_expert_ai = { #中国AI生产策略
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		always = yes
+	}
+
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = attack_helicopter_equipment
+		value = -500
+	}
+
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = medium_plane_airframe
+		value = -500
+	}
+
+	ai_strategy = { #
+		type = equipment_variant_production_factor
+		id = artillery_equipment
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = fighter
+		value = 80
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = cas
+		value = 50
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = naval_bomber
+		value = 50
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = 1
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = artillery
+		value = -80
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 100
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = cas
+		value = 45
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = fighter
+		value = 45
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = naval_bomber
+		value = 20
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = cv_nav_bomber
+		value = 100
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = armor
+		value = 200
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = infantry
+		value = -50
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = marines
+		value = -25
+	}
+
+	ai_strategy = {
+		type = equipment_stockpile_surplus_ratio
+		value = 5
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories_archetype
+		id = modern_tank_equipment
+		value = 5
+	}
+}
+
+PRC_no_cv_fighter = { #
+	allowed = {
+      	original_tag = PRC
+    }
+	enable = {
+		has_equipment = {
+			cv_small_plane_airframe_4 > 1
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = unit_ratio
+		id = cv_fighter
+		value = -200
+	}
+
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = cv_small_plane_airframe
+		value = -200
+	}
+}
+
+PRC_Hamster = { #
+	allowed = {
+      	original_tag = PRC
+    }
+	enable = {
+		num_divisions > 1000
+		NOT = { has_war = yes }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_stockpile_surplus_ratio
+		value = 20
+	}
+}

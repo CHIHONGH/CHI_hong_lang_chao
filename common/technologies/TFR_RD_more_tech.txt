@@ -1,29 +1,193 @@
 technologies = {
 
-	cruise_antiship_missile = {
-		enable_equipments = {
-			cruise_antiship_missile_equipment_1
-			#cruise_antiship_missile_equipment_2
-		}
-		enable_equipment_modules = {
-			ship_missile_launcher
-		}
-		categories = {
-			nuclear
-		}
-		research_cost = 1
-		start_year = 2005
+	PLA_army_intelligence_reform_tech = {
+		#allow = {
+		#	always = no
+		#}
+		#下条为拥有验证该科技是否生效
+		#political_power_gain = 10
+		#似乎可生效
+		category_recon = { 
+			recon = 2 
+		} 
+		#mot_recon = { 
+		#	recon = 2 
+		#} 
+		#armored_car_recon = { 
+		#	recon = 2 
+		#} 
+		#light_tank_recon = { 
+		#	recon = 2 
+		#} 
 
+		categories = {
+			armor
+		}
 		ai_will_do = {
 			factor = 0
 		}
 	}
+	PLA_plan_first_tech = {
+		#allow = {
+		#	always = no
+		#}
+		#下条为拥有验证该科技是否生效
+		#political_power_gain = 10
+		#似乎可生效
+		naval_light_gun_hit_chance_factor = 0.05	#轻炮命中率,能直接用吗...
+		naval_heavy_gun_hit_chance_factor = 0.1 	#重炮命中率，似乎不能直接写
+		#mot_recon = { 
+		#	recon = 2 
+		#} 
+		#armored_car_recon = { 
+		#	recon = 2 
+		#} 
+		#light_tank_recon = { 
+		#	recon = 2 
+		#} 
+
+		categories = {
+			armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	PLA_elite_marine_corps_tech = {
+		marine = { 
+			army_org = 10
+			#forest = {
+			#	attack = -0.2
+			#	movement = -0.4
+			#}
+			#mountain = {
+			#	attack = -0.1
+			#}
+			#plains = {
+			#	attack = -0.1
+			#	movement = -0.1
+			#}
+			#jungle = {
+			#	attack = -0.3
+			#	movement = -0.4
+			#}
+			#urban = {
+			#	attack = -0.4
+			#	defence = -0.1
+			#}
+			#marsh = {
+			#	attack = 0.3
+			#}
+			river = {
+				attack = 0.2
+				movement = 0.2
+			}
+			amphibious = {
+				attack = 0.3
+			}
+		} 
+		amphibious_armor = { 
+			army_org = 10 
+			river = {
+				attack = 0.2
+				movement = 0.2
+			}
+			amphibious = {
+				attack = 0.3
+			}
+		} 
+		amphibious_mechanized = { 
+			army_org = 10 
+			river = {
+				attack = 0.2
+				movement = 0.2
+			}
+			amphibious = {
+				attack = 0.3
+			}
+		} 
+		engineer = { 
+			river = {
+				attack = 0.1
+				movement = 0.1
+			}
+			amphibious = {
+				attack = 0.3
+			}
+		} 
+		armored_car = {  
+			river = {
+				attack = 0.1
+				movement = 0.1
+			}
+			amphibious = {
+				attack = 0.3
+			}
+		} 
+
+		categories = {
+			armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	PLA_KUNPENG_tech = {
+		amphibious_armor = { 
+			army_org = 10 
+			armor_value = 0.5
+			hardness = 0.2 #装甲率?
+			breakthrough_factor = 0.3
+			supply_consumption_factor = -0.1
+		} 
+		amphibious_mechanized = { 
+			army_org = 10 
+			armor_value = 0.5
+			hardness = 0.2 #装甲率?
+			breakthrough_factor = 0.3
+			supply_consumption_factor = -0.1
+		} 
+
+		categories = {
+			armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	PLA_comprehensive_assistance_system = {
+		category_support_battalions = {
+			max_organisation = 10
+			max_strength = 10
+			supply_consumption = -0.05
+		}
+
+		category_front_line = {
+			initiative_factor = 0.1
+			supply_consumption_factor = -0.1
+		}
+		
+	}
+	PLA_project_xuanwu = {
+		category_all_armor = {
+			armor_value = 0.1
+			reliability = 0.1
+		}
+
+		categories = {
+			armor
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
 	arsenal_ship_equipment = {
 		enable_equipment_modules = {
 			ship_missile_launcher
 		}
 		categories = {
-			nuclear
+			naval_equipment
 		}
 		research_cost = 1
 		start_year = 2005
@@ -35,14 +199,13 @@ technologies = {
 
 	Tremendous_power = {
 		
-		carrier_capacity_penalty_reduction = -0.25
-		carrier_night_traffic = 1
-		air_carrier_night_penalty_reduction_factor = 1
-		sortie_efficiency = 0.5
+		carrier_night_traffic = 0.5
+		air_carrier_night_penalty_reduction_factor = 0.5
+		sortie_efficiency = 0.25
 		carrier_sortie_hours_delay = -2
 
 		categories = {
-			nuclear
+			naval_equipment
 		}
 		research_cost = 1
 		start_year = 2005
@@ -52,45 +215,75 @@ technologies = {
 		}
 	}
 
-	heavy_paratrooper = {
+	synthetic_battalion_tech = {
+		enable_sub_units = {
+			heavy_synthetic_battalion
+			medium_synthetic_battalion
+			light_synthetic_battalion
+		}
+		categories = {
+			armor
+			infantry_tech
+		}
+		research_cost = 1
+		start_year = 2016
 
-		paratrooper = {
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	exoskeleton_reinforcement = {
+
+		light_synthetic_battalion = {
 			need = {
-				exoskeleton_equipment = 150
+				exoskeleton_equipment = 200
 			}
-			max_strength = 5
+			max_dig_in = 0.5
+			default_morale = 0.1
+			plains = {
+				attack = 0.05
+				defence = 0.1
+			}
+			desert = {
+				attack = 0.05
+				defence = 0.1
+			}
+		}
+		medium_synthetic_battalion = {
+			need = {
+				exoskeleton_equipment = 200
+			}
 			max_organisation = 10
-			hardness = 0.5
-			maximum_speed = -0.2
-		}
-
-		categories = {
-			nuclear
-		}
-		research_cost = 1
-		start_year = 2005
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
-	unmanned_mechanized = {
-
-		mechanized = {
-			need = {
-				exoskeleton_equipment = 250
+			default_morale = 0.1
+			mountain = {
+				attack = 0.05
+				defence = 0.1
 			}
-			max_organisation = 60
-			ap_attack = 0.1
-			hardness = 0.33
+			hills = {
+				attack = 0.05
+			}
+		}
+		heavy_synthetic_battalion = {
+			need = {
+				exoskeleton_equipment = 200
+			}
+			max_organisation = 10
+			default_morale = 0.1
+			mountain = {
+				attack = 0.05
+				defence = 0.1
+			}
+			hills = {
+				attack = 0.05
+			}
 		}
 
 		categories = {
-			nuclear
+			armor
 		}
 		research_cost = 1
-		start_year = 2005
+		start_year = 2028
 
 		ai_will_do = {
 			factor = 0
@@ -103,7 +296,7 @@ technologies = {
 		}
 
 		categories = {
-			nuclear
+			air_equipment
 		}
 		research_cost = 1
 		start_year = 2005
@@ -113,47 +306,46 @@ technologies = {
 		}
 	}
 
-	heavy_synthetic_battalion = {
-		modern_armor = {
-			need = {
-				modern_tank_chassis = 38
-				support_equipment = 14
-				modern_tank_destroyer_chassis = 42
-			}
-			max_strength = 2
-			soft_attack = 0.5
-			hard_attack = 0.8
-			breakthrough = 0.5
-			defence = 0.5
-			air_attack = 0.6
-			#ap_attack = 0.2
-			recon = 0.5
-			maximum_speed = -0.4
-		}
+	# heavy_synthetic_battalion = {
+	# 	modern_armor = {
+	# 		need = {
+	# 			modern_tank_chassis = 38
+	# 			support_equipment = 14
+	# 			modern_tank_destroyer_chassis = 42
+	# 		}
+	# 		max_strength = 2
+	# 		soft_attack = 0.5
+	# 		hard_attack = 0.8
+	# 		breakthrough = 0.5
+	# 		defence = 0.5
+	# 		air_attack = 0.6
+	# 		#ap_attack = 0.2
+	# 		recon = 0.5
+	# 		maximum_speed = -0.4
+	# 	}
 
-		categories = {
-			nuclear
-		}
-		research_cost = 1
-		start_year = 2005
+	# 	categories = {
+	# 		nuclear
+	# 	}
+	# 	research_cost = 1
+	# 	start_year = 2005
 
-		ai_will_do = {
-			factor = 0
-		}
-	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
 	Urban_Warfare_Kit = {
 		exoskeleton_support = {
 			urban = {
 				attack = 0.2
 				defence = 0.2
-				movement = 0.15
 			}
-			max_strength = 25
+			max_strength = 15
 		}
 
 		categories = {
-			nuclear
+			infantry_tech
 		}
 		research_cost = 1
 		start_year = 2005
@@ -166,20 +358,84 @@ technologies = {
 	Mountain_Warfare_Enhancement_System = {
 		exoskeleton_support = {
 			mountain = {
-				attack = 0.31
-				defence = 0.16
-				movement = 0.25
+				attack = 0.20
+				defence = 0.20
+				movement = 0.10
 			}
 			hills = {
-				attack = 0.10
+				attack = 0.05
 			}
 			forest = {
-				attack = 0.10
+				attack = 0.05
 			}
 		}
 
 		categories = {
-			nuclear
+			infantry_tech
+		}
+		research_cost = 1
+		start_year = 2005
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	super_heavylift_helicopter = {
+		exoskeleton_support = {
+			mountain = {
+				attack = 0.20
+				defence = 0.20
+				movement = 0.10
+			}
+			hills = {
+				attack = 0.05
+			}
+			forest = {
+				attack = 0.05
+			}
+		}
+
+		categories = {
+			helicopter_tech
+		}
+		research_cost = 1
+		start_year = 2005
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	super_heavylift_helicopter = {
+
+		equipment_bonus = {
+			utility_helicopter_equipment = {
+				build_cost = 0.2
+			}
+		}
+		light_synthetic_battalion = {
+			mountain = {
+				attack = 0.1
+				defence = 0.1
+				movement = 0.1
+			}
+			max_strength = 5
+			supply_consumption = -0.01
+		}
+		paratrooper = {
+			mountain = {
+				attack = 0.15
+				defence = 0.15
+				movement = 0.1
+			}
+			supply_consumption = -0.01
+		}
+
+		supply_consumption_factor = -0.05
+
+		categories = {
+			helicopter_tech
 		}
 		research_cost = 1
 		start_year = 2005
@@ -198,6 +454,7 @@ technologies = {
 				add = yes
 				display_as_percentage = no
 			}
+			initiative = 1
 
 			plains = {
 				attack = 0.20
@@ -250,7 +507,7 @@ technologies = {
 			}
 		}
 
-		spaa_company = { #激光防空
+		spaa_company = { #超级防空
 			air_attack = 2
 			#entrenchment = 5
 		}

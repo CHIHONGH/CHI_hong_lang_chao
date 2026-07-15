@@ -1,0 +1,305 @@
+# PRC MIO 隐藏民族精神合集
+# 由各 MIO trait on_complete 触发 add_idea
+# 替代 equipment_bonus / modifier = {} / variable + dynamic_modifier 体系
+# 解决装备变体分裂问题和 tooltip 自动显示
+
+ideas = {
+
+	hidden_ideas = {
+
+		# ════════════════════════════════════════
+		# 中国航天科技集团 (CASC) — 导弹
+		# ════════════════════════════════════════
+
+		# ─── 弹道导弹线 ───
+		PRC_missile_hangkong1_yuan_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { reliability = 0.05 }
+			}
+		}
+
+		PRC_missile_hypersonic_glide_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { maximum_speed = 0.20 air_agility = 0.20 }
+			}
+		}
+
+		PRC_missile_mirv_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { air_bombing = 0.15 naval_strike_attack = 0.10 }
+			}
+		}
+
+		PRC_missile_area_denial_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { air_bombing = 0.10 naval_strike_attack = 0.15 }
+			}
+		}
+
+		PRC_missile_cpgs_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { air_range = 0.10 }
+			}
+		}
+
+		PRC_missile_precision_guided_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { air_bombing = 0.15 naval_strike_attack = 0.15 }
+			}
+		}
+
+		# ─── 巡航导弹线 ───
+		PRC_missile_hangkong3_yuan_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				guided_missile_equipment = { reliability = 0.05 }
+			}
+		}
+
+		PRC_missile_low_altitude_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				guided_missile_equipment = { air_agility = 0.15 }
+			}
+		}
+
+		PRC_missile_stealth_cruise_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				guided_missile_equipment = { air_agility = 0.25 }
+			}
+		}
+
+		PRC_missile_remote_precision_strike_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				guided_missile_equipment = { air_bombing = 0.10 naval_strike_attack = 0.10 air_range = 0.25 }
+			}
+		}
+
+		# ─── 防空导弹线 ───
+		PRC_missile_hangkong2_yuan_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				sam_missile_equipment = { reliability = 0.05 }
+			}
+		}
+
+		PRC_missile_multi_layer_air_defense_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				sam_missile_equipment = { air_attack = 0.15 }
+			}
+		}
+
+		PRC_missile_phased_array_radar_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				sam_missile_equipment = { air_attack = 0.15 }
+			}
+		}
+
+		PRC_missile_high_altitude_intercept_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				sam_missile_equipment = { air_attack = 0.10 air_range = 0.25 }
+			}
+		}
+
+		# ─── 跨线终极 ───
+		PRC_missile_strategic_deterrence_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			equipment_bonus = {
+				ballistic_missile_equipment = { air_attack = 0.10 air_range = 0.10 air_bombing = 0.10 naval_strike_attack = 0.10 }
+				guided_missile_equipment = { air_attack = 0.10 air_range = 0.10 air_bombing = 0.10 naval_strike_attack = 0.10 }
+				sam_missile_equipment = { air_attack = 0.10 air_range = 0.10 air_bombing = 0.10 naval_strike_attack = 0.10 }
+			}
+		}
+
+		# ════════════════════════════════════════
+		# 国家电网 (Power Grid)
+		# ════════════════════════════════════════
+
+		# ─── 发电与输电 ───
+		PRC_power_grid_basic_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { factory_energy_consumption = -0.07 }
+		}
+
+		PRC_power_grid_eff_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { energy_gain_factor = 0.03 local_resources_factor = 0.10 }
+		}
+
+		PRC_power_grid_uhv_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { local_resources_factor = 0.15 }
+		}
+
+		PRC_power_grid_national_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { global_building_slots_factor = 0.15 industrial_capacity_factory = 0.04 industrial_capacity_dockyard = 0.04 }
+		}
+
+		# ─── 市场化改革 ───
+		PRC_power_grid_reform_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { industrial_capacity_dockyard = 0.05 consumer_goods_factor = -0.08 }
+		}
+
+		# ─── 节能与调度 ───
+		PRC_power_grid_demand_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { factory_energy_consumption = -0.04 energy_gain_factor = 0.02 }
+		}
+
+		PRC_power_grid_storage_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { factory_energy_consumption = -0.04 energy_gain_factor = 0.02 }
+		}
+
+		PRC_power_grid_dispatch_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { factory_energy_consumption = -0.04 energy_gain_factor = 0.02 }
+		}
+
+		# ─── 跨线终极 ───
+		PRC_power_grid_global_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { global_building_slots_factor = 0.10 industrial_capacity_factory = 0.08 industrial_capacity_dockyard = 0.12 }
+		}
+
+		# ════════════════════════════════════════
+		# 中国国家铁路集团 (Railway)
+		# ════════════════════════════════════════
+
+		# ─── 高铁网络优化工程 ───
+		PRC_railway_network_optimization_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { misc_income = 5 }
+		}
+
+		# ─── 线路攻坚 ───
+		PRC_railway_line_construction_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { business_value_factor = 0.02 misc_income = 5 }
+		}
+
+		# ─── 枢纽升级 ───
+		PRC_railway_hub_upgrade_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { supply_consumption_factor = -0.05 }
+		}
+
+		# ─── 智慧运维 ───
+		PRC_railway_smart_maintenance_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { business_value_factor = 0.04 }
+		}
+
+		# ─── 智能配置 ───
+		PRC_railway_smart_config_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { production_speed_buildings_factor = 0.08 }
+		}
+
+		# ─── 川藏铁路 ───
+		PRC_railway_sichuan_tibet_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { supply_consumption_factor = -0.05 }
+		}
+
+		# ─── 综合枢纽 ───
+		PRC_railway_comprehensive_hub_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { supply_consumption_factor = -0.05 misc_income = 5 }
+		}
+
+		# ─── 数字孪生 ───
+		PRC_railway_digital_twin_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { business_value_factor = 0.02 research_speed_factor = 0.05 }
+		}
+
+		# ─── 商业运营 ───
+		PRC_railway_commercial_operation_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { business_value_factor = 0.03 misc_income = 5 }
+		}
+
+		# ─── 5G+北斗应用 ───
+		PRC_railway_5g_beidou_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { research_speed_factor = 0.1 }
+		}
+
+		# ─── 跨国联运实验 ───
+		PRC_railway_international_railway_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { production_speed_buildings_factor = 0.08 }
+		}
+
+		# ─── 城市群轨道网 ───
+		PRC_railway_urban_rail_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { business_value_factor = 0.04 }
+		}
+
+		# ─── 智能检测系统 ───
+		PRC_railway_inspection_system_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { business_value_factor = 0.03 }
+		}
+
+		# ─── 快速部署 ───
+		PRC_railway_army_deployment_idea = {
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = { army_speed_factor = 0.1 }
+		}
+
+	}
+}

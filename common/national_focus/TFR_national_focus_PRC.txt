@@ -358,15 +358,15 @@ focus_tree = {
                 }
                 add_to_variable = {
                     var = PRC_cpc_stability_factor_dynamic_var
-                    value = 0.15
+                    value = 0.15        # 【效果】稳定度 +15%（CPC修正）
                 }
                 add_to_variable = {
                     var = PRC_cpc_crypto_strength_dynamic_var
-                    value = 1
+                    value = 1           # 【效果】加密/机构强度 +1（CPC修正）
                 }
                 add_to_variable = {
                     var = PRC_cpc_drift_defence_factor_dynamic_var
-                    value = 0.25
+                    value = 0.25        # 【效果】意识形态漂移防御 +25%（CPC修正）
                 }
                 country_event = {
                     id = prcs.3184
@@ -379,14 +379,14 @@ focus_tree = {
             add_stability = -0.1
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.1
+                value = 0.1         # 【临时】新左派影响力度量 +10%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes         # 【脚本效果】增加新左派影响力（读上方 temp）
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.2
+                value = -0.2        # 【临时】建制派影响力度量 -20%
             }
-            PRC_add_influence_cen = yes
+            PRC_add_influence_cen = yes         # 【脚本效果】减少建制派影响力（读上方 temp）
             country_event = {
                 id = prc_change.4
                 days = 5
@@ -435,15 +435,15 @@ focus_tree = {
                     add_idea = PRC_made_in_china_dummy_idea5
                 }
             }
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes       # 【脚本效果】减少石油产量
             add_political_power = 50
-            increase_welfare = yes
+            increase_welfare = yes          # 【脚本效果】增加福利
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】建制派影响力度量 -5%
             }
-            PRC_add_influence_cen = yes
-            decrease_taxes = yes
+            PRC_add_influence_cen = yes     # 【脚本效果】减少建制派影响力
+            decrease_taxes = yes            # 【脚本效果】减税
             hidden_effect = {
                 country_event = {
                     id = xjp.101
@@ -486,25 +486,25 @@ focus_tree = {
                     add_idea = PRC_made_in_china_dummy_idea5
                 }
             }
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes     # 【脚本效果】减少石油产量
             set_temp_variable = {
                 var = PRC_influence_lib_var_temp
-                value = 0.025
+                value = 0.025       # 【临时】自由派影响力度量 +2.5%
             }
-            PRC_add_influence_lib = yes
+            PRC_add_influence_lib = yes     # 【脚本效果】增加自由派影响力
             set_temp_variable = {
                 var = industrial_development_var_temp
-                value = 0.075
+                value = 0.075       # 【临时】工业发展进度度量 +7.5%
             }
-            add_industrial_development = yes
+            add_industrial_development = yes    # 【脚本效果】增加工业发展
             hidden_effect = {
                 add_to_variable = {
                     var = PRC_mic_industrial_capacity_factory_dynamic_var
-                    value = 0.025
+                    value = 0.025       # 【效果】工厂产能 +2.5%（MIC修正）
                 }
                 add_to_variable = {
                     var = PRC_mic_min_export_dynamic_var
-                    value = -0.05
+                    value = -0.05       # 【效果】最低出口系数 -5%（MIC修正；越低资源出口越少）
                 }
             }
 
@@ -627,16 +627,16 @@ focus_tree = {
             hidden_effect = {
                 add_to_variable = {
                     var = PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var
-                    value = 0.25
+                    value = 0.25        # 【效果】核反应堆建造速度 +25%（MIC修正）
                 }
                 add_to_variable = {
                     var = PRC_mic_production_speed_energy_farm_factor_dynamic_var
-                    value = 0.25
+                    value = 0.25        # 【效果】能源农场建造速度 +25%（MIC修正）
                 }
             }
             set_temp_variable = {
                 var = PRC_enviromental_progress_temp
-                value = 0.025
+                value = 0.025       # 【临时】环保进度度量 +2.5%
             }
             PRC_add_enviromental_progress = yes
             every_controlled_state = {
@@ -667,7 +667,7 @@ focus_tree = {
             hidden_effect = {
                 add_to_variable = {
                     var = PRC_mic_production_speed_energy_farm_factor_dynamic_var
-                    value = 0.25
+                    value = 0.25        # 【效果】能源农场建造速度 +25%（MIC修正）
                 }
             }
         }
@@ -700,15 +700,15 @@ focus_tree = {
         completion_reward = {
             add_political_power = 70
             unlock_decision_tooltip = PRC_kashgar_oil_contract
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes     # 【脚本效果】减少石油产量
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.025
+                value = 0.025       # 【临时】新左派影响力度量 +2.5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             set_temp_variable = {
                 var = PRC_enviromental_progress_temp
-                value = -0.025
+                value = -0.025      # 【临时】环保进度度量 -2.5%
             }
         }
         x = 1
@@ -738,15 +738,15 @@ focus_tree = {
         available_if_capitulated = yes
         relative_position_id = exploit_domestic_oil
         completion_reward = {
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes     # 【脚本效果】减少石油产量
             set_temp_variable = {
                 var = PRC_enviromental_progress_temp
-                value = 0.05
+                value = 0.05        # 【临时】环保进度度量 +5%
             }
-            PRC_add_enviromental_progress = yes
+            PRC_add_enviromental_progress = yes    # 【脚本效果】增加环保进度
             set_temp_variable = {
                 var = debt_var_temp
-                value = 75
+                value = 75          # 【临时】债务度量 +75
             }
             add_debt_with_inflation = yes
         }
@@ -784,9 +784,9 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = industrial_development_var_temp
-                value = 0.15
+                value = 0.15        # 【临时】工业发展进度度量 +15%
             }
-            add_industrial_development = yes
+            add_industrial_development = yes    # 【脚本效果】增加工业发展
             PRC_decrease_oil = yes
         }
         x = 1
@@ -855,17 +855,17 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】建制派影响力度量 -5%
             }
-            PRC_add_influence_cen = yes
+            PRC_add_influence_cen = yes     # 【脚本效果】减少建制派影响力
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.1
+                value = 0.1         # 【临时】新左派影响力度量 +10%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             add_popularity = {
                 ideology = libertarian_socialist
-                popularity = 0.05
+                popularity = 0.05    # 【效果】自由社会主义支持度 +5%
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -875,11 +875,11 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_stability_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】稳定度 +5%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_crypto_strength_dynamic_var
-                value = -1
+                value = -1          # 【效果】加密/机构强度 -1（CPC修正）
             }
         }
         available = {
@@ -988,7 +988,7 @@ focus_tree = {
 
             set_temp_variable = {
                 var = debt_var_temp
-                value = 147
+                value = 147            # 【临时】债务度量 +147
             }
             add_debt = yes
             effect_tooltip = {
@@ -999,11 +999,11 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_stability_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】稳定度 +5%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_consumer_goods_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】消费品系数 +5%（CPC修正；越高民用工厂占比越大）
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1013,26 +1013,26 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_stability_factor_dynamic_var
-                value = 0.03
+                value = 0.03        # 【效果】稳定度 +3%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_consumer_goods_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】消费品系数 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_monthly_population_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】月度人口增长 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_personal_expense_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】个人开支系数 +5%（MIC修正；越高消费越高）
             }
 
             set_temp_variable = {
                 var = poverty_development_var_temp
-                value = 0.15
+                value = 0.15        # 【临时】扶贫发展进度度量 +15%
             }
-            add_poverty_development = yes
+            add_poverty_development = yes   # 【脚本效果】增加扶贫发展
         }
         x = 2
         y = 1
@@ -1062,7 +1062,7 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = debt_var_temp
-                value = 23
+                value = 23             # 【临时】债务度量 +23
             }
             add_debt = yes
             effect_tooltip = {
@@ -1073,19 +1073,19 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_consumer_goods_factor_dynamic_var
-                value = 0.03
+                value = 0.03        # 【效果】消费品系数 +3%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_monthly_population_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】月度人口增长 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_personal_value_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】个人价值系数 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_business_value_factor_dynamic_var
-                value = -0.025
+                value = -0.025      # 【效果】商业价值系数 -2.5%（MIC修正；越低商业活力越差）
             }
 
             add_stability = 0.05
@@ -1093,12 +1093,12 @@ focus_tree = {
             add_ideas = PRC_food_safety_reforms_idea
             set_temp_variable = {
                 var = society_development_var_temp
-                value = 0.05
+                value = 0.05        # 【临时】社会发展进度度量 +5%
             }
             add_society_development = yes
             set_temp_variable = {
                 var = farming_development_var_temp
-                value = 0.075
+                value = 0.075       # 【临时】农业发展进度度量 +7.5%
             }
             add_farming_development = yes
         }
@@ -1136,15 +1136,15 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_production_speed_buildings_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】建筑速度 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_expense_growth_factor_dynamic_var
-                value = -0.025
+                value = -0.025      # 【效果】开支增长系数 -2.5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_business_value_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】商业价值系数 +5%（MIC修正）
             }
 
             random_owned_controlled_state = {
@@ -1175,7 +1175,7 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = debt_var_temp
-                value = 192
+                value = 192            # 【临时】债务度量 +192
             }
             add_debt = yes
         }
@@ -1210,7 +1210,7 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = PRC_influence_lib_var_temp
-                value = -0.02
+                value = -0.02       # 【临时】自由派影响力度量 -2%
             }
             PRC_add_influence_lib = yes
             effect_tooltip = {
@@ -1221,15 +1221,15 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_party_popularity_stability_factor_dynamic_var
-                value = 0.1
+                value = 0.1         # 【效果】政党支持度稳定系数 +10%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_consumer_goods_factor_dynamic_var
-                value = -0.05
+                value = -0.05       # 【效果】消费品系数 -5%（CPC修正；越低工厂越能转军工）
             }
             set_temp_variable = {
                 var = debt_var_temp
-                value = 74
+                value = 74             # 【临时】债务度量 +74
             }
             add_debt = yes
             add_manpower = -262
@@ -1302,15 +1302,15 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = debt_var_temp
-                value = 186
+                value = 186           # 【临时】债务度量 +186
             }
-            add_debt = yes
+            add_debt = yes            # 【脚本效果】增加国家债务
             add_stability = 0.03
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.05
+                value = 0.05           # 【临时】新左派影响力度量 +5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes   # 【脚本效果】增加新左派影响力
 
             add_timed_idea = {
                 idea = PRC_stimulate_economy_idea
@@ -1355,11 +1355,11 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_poverty_development_monthly_dynamic_var
-                value = 0.005
+                value = 0.005       # 【效果】月度扶贫发展 +0.5%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_society_development_monthly_dynamic_var
-                value = 0.005
+                value = 0.005       # 【效果】月度社会发展 +0.5%（CPC修正）
             }
 
             add_political_power = -50
@@ -1413,14 +1413,14 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.08
+                value = 0.08        # 【临时】新左派影响力度量 +8%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             set_temp_variable = {
                 var = PRC_approval_rating_var_temp
-                value = 0.05
+                value = 0.05        # 【临时】政党支持率度量 +5%
             }
-            PRC_add_party_approval = yes
+            PRC_add_party_approval = yes    # 【脚本效果】增加政党支持率
             custom_effect_tooltip = absorb_leftist_opposition_tt
         }
         x = -1
@@ -1451,7 +1451,7 @@ focus_tree = {
         completion_reward = {
             add_to_variable = {
                 var = PRC_cpc_political_power_gain_dynamic_var
-                value = 0.03
+                value = 0.03        # 【效果】月度政治点获得 +3%（CPC修正）
             }
             add_stability = 0.10
             effect_tooltip = {
@@ -1468,7 +1468,7 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_personal_expense_factor_dynamic_var
-                value = -0.05
+                value = -0.05       # 【效果】个人开支系数 -5%（MIC修正）
             }
             add_political_power = -100
             add_popularity = {
@@ -1478,14 +1478,14 @@ focus_tree = {
 
             set_temp_variable = {
                 var = PRC_influence_nat_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】民族派影响力度量 -5%
             }
-            PRC_add_influence_nat = yes
+            PRC_add_influence_nat = yes     # 【脚本效果】减少民族派影响力
             set_temp_variable = {
                 var = PRC_influence_lib_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】自由派影响力度量 -5%
             }
-            PRC_add_influence_lib = yes
+            PRC_add_influence_lib = yes     # 【脚本效果】减少自由派影响力
         }
         x = -3
         y = 1
@@ -1518,7 +1518,7 @@ focus_tree = {
         completion_reward = {
             add_to_variable = {
                 var = PRC_cpc_drift_defence_factor_dynamic_var
-                value = -0.1
+                value = -0.1        # 【效果】意识形态漂移防御 -10%（CPC修正；越高越不易被转化）
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1567,9 +1567,9 @@ focus_tree = {
             add_stability = -0.075
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.05
+                value = 0.05         # 【临时】新左派影响力度量 +5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             add_popularity = {
                 ideology = libertarian_socialist
                 popularity = 0.03
@@ -1615,9 +1615,9 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.1
+                value = 0.1          # 【临时】新左派影响力度量 +10%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             hidden_effect = {
                 country_event = {
                     id = prcs.3101
@@ -1671,14 +1671,14 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】建制派影响力度量 -5%
             }
-            PRC_add_influence_cen = yes
+            PRC_add_influence_cen = yes     # 【脚本效果】减少建制派影响力
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.05
+                value = 0.05         # 【临时】新左派影响力度量 +5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             hidden_effect = {
                 add_country_leader_role = {
                     character = PRC_Hu_Chunhua
@@ -4916,6 +4916,11 @@ shared_focus = {
             country_event = {
                 id = ChinaOSS.105
                 days = 20
+                random_hours = 12
+            }
+            country_event = {
+                id = ChinaOSS.3
+                days = 10
                 random_hours = 12
             }
         }

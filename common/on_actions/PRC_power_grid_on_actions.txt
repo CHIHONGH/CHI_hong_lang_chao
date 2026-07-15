@@ -1,0 +1,12 @@
+on_actions = {
+	on_weekly_PRC = {
+		effect = {
+			set_temp_variable = { var = funds_temp value = PRC.resource_produced@coal }
+			add_to_temp_variable = { funds_temp = PRC.resource_imported@coal }
+			add_to_temp_variable = { funds_temp = PRC.resource_exported@coal }
+			mio:PRC_china_power_grid_organization = {
+				add_mio_funds = funds_temp
+			}
+		}
+	}
+}

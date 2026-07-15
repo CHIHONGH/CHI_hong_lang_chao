@@ -129,7 +129,7 @@
 	NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 25000 -- 红色黎明NAir标记
 	NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 25000 -- 红色黎明NAir标记
 	NDefines.NAir.AIR_WING_MAX_STATS_SPEED = 50000 -- 红色黎明NAir标记
-	NDefines.NAir.AIR_WING_MAX_STATS_BOMBING = 1000 -- 红色黎明NAir标记
+	NDefines.NAir.AIR_WING_MAX_STATS_BOMBING = 99999 -- 红色黎明NAir标记
 	NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.01
 	NDefines.NAir.ACCIDENT_CHANCE_CARRIER_MULT = 1
 	NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 0.5
@@ -301,8 +301,8 @@
 	NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1.5 -- multiplies hit chance of depth charges
 	NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 2 	-- multiplies damage of depth charges
 	NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 24.0	-- hit profile for depth charges
-	NDefines.NNavy.CARRIER_STACK_PENALTY = 2
-	NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.5
+	NDefines.NNavy.CARRIER_STACK_PENALTY = 999 --红色黎明标记 取消航母堆叠惩罚
+	NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0 --红色黎明标记 取消航母堆叠惩罚
 	NDefines.NNavy.CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0 -- 0
 	NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 6
 	NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 24 -- 8 -- hours where all get to attack
@@ -531,7 +531,7 @@
 	NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.2 -- 0.2
 	NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.1   -- 0.2
 	NDefines.NBuildings.ROCKETSITE_CAPACITY_MULT = 100   -- 100 红色黎明NBuildings标记
-	NDefines.NBuildings.SAM_MISSION_SUPERIORITY = 50.0      -- 5 红色黎明NBuildings标记 #地空导弹的空中优势
+	NDefines.NBuildings.SAM_MISSION_SUPERIORITY = 25.0      -- 5 红色黎明NBuildings标记 #地空导弹的空中优势
 	NDefines.NBuildings.RADAR_RANGE_MAX = 10000  --红色黎明NBuildings标记 #雷达最大范围
 
 	NDefines.NTechnology.BASE_RESEARCH_POINTS_SAVED = 30.0 -- 30
