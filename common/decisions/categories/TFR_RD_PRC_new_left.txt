@@ -1,5 +1,46 @@
+PRC_nems_system = {
+	icon = GFX_PRC_NEMS
+	visible_when_empty = yes
+	allowed = {
+		tag = PRC
+	}
+	visible = {
+		NOT = {
+			has_country_flag = PRC_nl_NEMS_model_end_flag
+		}
+		has_completed_focus = PRC_nl_automation_model
+	}
+	priority = 99
+}
+
+PRC_dawn_project = {
+	icon = GFX_PRC_maoist_politburo_icon
+	visible_when_empty = yes
+	allowed = {
+		tag = PRC
+	}
+	visible = {
+		has_completed_focus = PRC_nl_dawn_project
+	}
+	priority = 99
+}
+
+PRC_maoist_politburo_new_left = {
+	icon = GFX_decision_category_PRC_maoist_politburo_icon   
+    #picture = GFX_decision_cat_PRC_internal_factions
+    visible_when_empty = yes
+    priority = 5
+
+    allowed = {
+    	tag = PRC
+    }
+    visible = {
+    	has_completed_focus = PRC_nl_ancestor_worship
+    }
+}
+
 PRC_export_revolution = {
-	icon = GFX_PRC_gaw_cat
+	icon = GFX_decision_category_PRC_maoist_politburo_icon
 	visible_when_empty = yes
 	allowed = {
 		tag = PRC
@@ -12,7 +53,7 @@ PRC_export_revolution = {
 }
 
 PRC_assistance2communist = {
-	icon = GFX_PRC_gaw_cat
+	icon = GFX_PRC_new_left_decision
 	visible_when_empty = yes
 	allowed = {
 		tag = PRC
@@ -24,36 +65,21 @@ PRC_assistance2communist = {
 }
 
 PRC_ussr_diplomacy = {
-	icon = GFX_PRC_gaw_cat
+	icon = GFX_PRC_new_left_decision
 	allowed = {
 		tag = PRC
 	}
 	visible = {
 		has_country_flag = sov_diplomacy
+		NOT = {
+			OR = {
+				has_country_flag = PRC_defense_eastnorth
+				has_country_flag = PRC_defense_westnorth
+				has_country_flag = PRC_defense_north
+			}
+		}
 	}
 	priority = 196
-}
-
-PRC_The_Mexican_Dream = {
-	icon = GFX_PRC_gaw_cat
-	allowed = {
-		tag = PRC
-	}
-	visible = {
-		has_completed_focus = The_Mexican_Dream
-	}
-	priority = 195
-}
-
-PRC_Global_Red_Tide_cat = {
-	icon = GFX_PRC_gaw_cat
-	allowed = {
-		tag = PRC
-	}
-	visible = {
-		has_completed_focus = Global_Red_Tide
-	}
-	priority = 194
 }
 
 PRC_mongolia_hetong = {
@@ -87,23 +113,13 @@ PRC_new_left_pla_reformation = {
     priority = 5
 }
 
-PRC_Culture_Revital = {
-	icon = GFX_PRC_gaw_cat
-	allowed = {
-		tag = PRC
-	}
-	visible = {
-		has_completed_focus = PRC_nl_social_reeducation
-	}
-	priority = 3
-}
 PRC_Rt_People_Democracy = {
 	icon = GFX_PRC_new_left_decision
 	allowed = {
 		tag = PRC
 	}
 	visible = {
-		has_completed_focus = PRC_nl_clean_house
+		has_country_flag = PRC_clean_house_start
 	}
 	priority = 2
 }
@@ -113,7 +129,7 @@ PRC_Youth_Ideological_Education = {
 		tag = PRC
 	}
 	visible = {
-		has_completed_focus = PRC_nl_cadre_revolutionization
+		has_country_flag = PRC_ideological_education_flag
 	}
 	priority = 1
 }
@@ -124,7 +140,7 @@ PRC_ready_for_global_economy_destory_category = {
 	icon = GFX_PRC_anti_western
 	visible = {
 		has_country_flag = PRC_SS_tips		#国安警告
-		not = {
+		NOT = {
 			has_country_flag = PRC_wall_street_death			#华尔街崩溃
 		}
 	}
@@ -145,4 +161,28 @@ PRC_solve_economy_crisis = {
 	}
 	priority = 100
 	visible_when_empty = yes
+}
+
+PRC_gaizaodaxingqiye_category = { #决议组：改造国内大型企业
+	icon = GFX_decision_category_PRC_internal_factions_icon
+	picture = GFX_decision_cat_PRC_enviroment
+	allowed = {
+		tag = PRC
+	}
+	visible = {
+        has_completed_focus = PRC_nl_reform_production_relation
+	}
+	priority = 5
+}
+
+PRC_nl_expand_reform_category = { #决议组：拓展改革
+	icon = GFX_decision_category_PRC_internal_factions_icon
+	picture = GFX_decision_cat_PRC_enviroment
+	allowed = {
+		tag = PRC
+	}
+	visible = {
+        has_completed_focus = PRC_nl_China_shocks_world
+	}
+	priority = 5
 }

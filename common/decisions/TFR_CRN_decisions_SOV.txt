@@ -1,0 +1,250 @@
+# TFR_中俄谈判 - SOV 谈判决议
+# 苏方在谈判中可采取的回应策略
+# 回应次数受 PRC 本轮行动次数限制（SOVvar < PRCvar）
+
+TFR_CRN_sov_negotiation_category = {
+
+	########################################################################
+	# 第 1 轮 — SOV 回应：唐努乌梁海与滨海边疆
+	########################################################################
+
+	# 冷淡回应
+	TFR_CRN_sov_cold_response_r1 = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_1_active }
+		available = {
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_cold_response
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 1 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 1 }
+			TFR_CRN_shift_sov_convo = yes
+			subtract_from_variable = { var = TFR_CRN_concession_willingness value = 3 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness < 0 } } set_variable = { var = TFR_CRN_concession_willingness value = 0 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 1 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# 有限合作
+	TFR_CRN_sov_limited_coop_r1 = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_1_active }
+		available = {
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_limited_coop
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 2 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 2 }
+			TFR_CRN_shift_sov_convo = yes
+			add_to_variable = { var = TFR_CRN_concession_willingness value = 5 }
+			subtract_from_variable = { var = TFR_CRN_desperation value = 2 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+			if = { limit = { check_variable = { TFR_CRN_desperation < 0 } } set_variable = { var = TFR_CRN_desperation value = 0 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 2 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	# 断然拒绝
+	TFR_CRN_sov_outright_reject_r1 = {
+		icon = generic_resistance
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_1_active }
+		available = {
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_outright_reject
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 3 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 3 }
+			TFR_CRN_shift_sov_convo = yes
+			subtract_from_variable = { var = TFR_CRN_concession_willingness value = 8 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness < 0 } } set_variable = { var = TFR_CRN_concession_willingness value = 0 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 3 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	########################################################################
+	# 第 2 轮 — SOV 回应：黑龙江沿岸
+	########################################################################
+
+	# 外交抗议
+	TFR_CRN_sov_diplomatic_protest_r2 = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CRN_round_2_active
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_diplomatic_protest
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 4 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 4 }
+			TFR_CRN_shift_sov_convo = yes
+			subtract_from_variable = { var = TFR_CRN_concession_willingness value = 3 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness < 0 } } set_variable = { var = TFR_CRN_concession_willingness value = 0 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 4 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	# 部分让步
+	TFR_CRN_sov_partial_concession_r2 = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CRN_round_2_active
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_partial_concession
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 5 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 5 }
+			TFR_CRN_shift_sov_convo = yes
+			add_to_variable = { var = TFR_CRN_concession_willingness value = 7 }
+			subtract_from_variable = { var = TFR_CRN_desperation value = 3 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+			if = { limit = { check_variable = { TFR_CRN_desperation < 0 } } set_variable = { var = TFR_CRN_desperation value = 0 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 5 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	# 以拖待变
+	TFR_CRN_sov_stall_r2 = {
+		icon = generic_resistance
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CRN_round_2_active
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_stall
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 6 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 6 }
+			TFR_CRN_shift_sov_convo = yes
+			subtract_from_variable = { var = TFR_CRN_concession_willingness value = 5 }
+			add_to_variable = { var = TFR_CRN_desperation value = 3 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness < 0 } } set_variable = { var = TFR_CRN_concession_willingness value = 0 } }
+			if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 6 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	########################################################################
+	# 第 3 轮 — SOV 回应：外兴安岭与库页岛
+	########################################################################
+
+	# 屈服
+	TFR_CRN_sov_submit_r3 = {
+		icon = generic_communism
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CRN_round_3_active
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_submit
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 7 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 7 }
+			TFR_CRN_shift_sov_convo = yes
+			add_to_variable = { var = TFR_CRN_concession_willingness value = 15 }
+			add_to_variable = { var = TFR_CRN_desperation value = 5 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+			if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 7 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	# 讨价还价
+	TFR_CRN_sov_bargain_r3 = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CRN_round_3_active
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_bargain
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 8 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 8 }
+			TFR_CRN_shift_sov_convo = yes
+			add_to_variable = { var = TFR_CRN_concession_willingness value = 5 }
+			add_to_variable = { var = TFR_CRN_desperation value = 5 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+			if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 8 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	# 威胁破裂
+	TFR_CRN_sov_threaten_rupture_r3 = {
+		icon = generic_war
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CRN_round_3_active
+			check_variable = { TFR_CRN_sov_round_actions < TFR_CRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_threaten_rupture
+			add_to_variable = { var = TFR_CRN_sov_round_actions value = 1 }
+			set_variable = { var = TFR_CRN_sov_last_convo_idx value = 9 }
+			set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 9 }
+			TFR_CRN_shift_sov_convo = yes
+			subtract_from_variable = { var = TFR_CRN_concession_willingness value = 10 }
+			if = { limit = { check_variable = { TFR_CRN_concession_willingness < 0 } } set_variable = { var = TFR_CRN_concession_willingness value = 0 } }
+			PRC = {
+				set_variable = { var = TFR_CRN_sov_convo_last_idx_temp value = 9 }
+				TFR_CRN_shift_sov_convo = yes
+			}
+		}
+		ai_will_do = { factor = 4 }
+	}
+}

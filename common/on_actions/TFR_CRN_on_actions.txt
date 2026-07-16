@@ -1,0 +1,20 @@
+# TFR_中俄谈判 - on_actions
+# SOV 解体后备：欧陆战争和平会议后无条件割让剩余外东北领土
+
+on_actions = {
+	# SOV 在第二次欧陆战争后作为战败方 → 无条件割让外东北
+	on_peaceconference_ended = {
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = Second_European_War_Outcome
+						option = Second_European_War_Outcome_NATO
+					}
+					NOT = { country_exists = SOV }
+				}
+				TFR_CRN_sov_collapse_transfer = yes
+			}
+		}
+	}
+}

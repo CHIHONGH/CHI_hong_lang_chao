@@ -1,12 +1,36 @@
 # TFR_中俄谈判 - 脚本触发器
-# 可复用的条件判断
 
 ##############################################################################
-# 谈判是否活跃 + SOV 还存在
+# 谈判进行中 + SOV 存在
 ##############################################################################
 TFR_CRN_negotiation_can_trade = {
 	has_global_flag = TFR_CRN_negotiation_active
 	has_global_flag = TFR_CRN_negotiation_accessible
 	NOT = { has_global_flag = TFR_CRN_negotiation_ended }
 	country_exists = SOV
+}
+
+##############################################################################
+# 第1轮活跃 + SOV 存在
+##############################################################################
+TFR_CRN_round_1_can_trade = {
+	TFR_CRN_negotiation_can_trade = yes
+	has_global_flag = TFR_CRN_round_1_active
+	has_global_flag = TFR_CRN_PRC_made_first_move
+}
+
+##############################################################################
+# 第2轮活跃 + SOV 存在
+##############################################################################
+TFR_CRN_round_2_can_trade = {
+	TFR_CRN_negotiation_can_trade = yes
+	has_global_flag = TFR_CRN_round_2_active
+}
+
+##############################################################################
+# 第3轮活跃 + SOV 存在
+##############################################################################
+TFR_CRN_round_3_can_trade = {
+	TFR_CRN_negotiation_can_trade = yes
+	has_global_flag = TFR_CRN_round_3_active
 }

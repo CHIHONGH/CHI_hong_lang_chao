@@ -18,6 +18,7 @@ shared_focus = {
         custom_effect_tooltip = PRC_Southwestern_border_in_critical_condition_tt
         add_political_power = -50
         hidden_effect = {
+            scoped_play_song = "S01 - Brain Dead"
             NAX = {
                 add_war_support = 0.095
                 set_party_name = {
@@ -76,7 +77,7 @@ joint_focus = {
             name = land_doc_bonus
             cost_reduction = 0.35
             uses = 1
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
         army_experience = -100
         set_temp_variable = {
@@ -135,7 +136,7 @@ joint_focus = {
             name = air_doc_bonus
             cost_reduction = 0.35
             uses = 1
-            category = air_doctrine
+            category = cat_old_air_doctrine
         }
         add_timed_idea = {
             idea = PRC_Ensure_logistical_support_ideas
@@ -235,7 +236,7 @@ joint_focus = {
                 name = land_doc_bonus
                 cost_reduction = 0.75
                 uses = 1
-                category = land_doctrine
+                category = cat_old_land_doctrine
             }
             add_equipment_to_stockpile = {
                 type = infantry_equipment_1
@@ -694,11 +695,13 @@ joint_focus = {
                     transfer_state = 1368
                     every_state = {
                         limit = {
-                            state = 1367
-                            state = 432
-                            state = 1366
-                            state = 1369
-                            state = 1368
+                            OR = {
+                                state = 1367
+                                state = 432
+                                state = 1366
+                                state = 1369
+                                state = 1368
+                            }
                         }
                         add_core_of = NAX
                     }
@@ -714,11 +717,13 @@ joint_focus = {
                     hidden_effect = {
                         every_state = {
                             limit = {
-                                state = 1367
-                                state = 432
-                                state = 1366
-                                state = 1369
-                                state = 1368
+                                OR = {
+                                    state = 1367
+                                    state = 432
+                                    state = 1366
+                                    state = 1369
+                                    state = 1368
+                                }
                             }
                             add_core_of = NAX
                         }

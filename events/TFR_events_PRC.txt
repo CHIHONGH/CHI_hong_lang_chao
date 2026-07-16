@@ -4081,112 +4081,112 @@ country_event = {
 	}
 }
 
-country_event = {
-	#National People's Congress votes on Federalization
-	id = china.123
-	title = china.123.t
-	desc = china.123.d
-	picture = GFX_prc_megacity1
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-	}
-	option = {
-		name = china.123.a
-		effect_tooltip = {
-		}
-		hidden_effect = {
-			IF = {
-				LIMIT = {
-					check_variable = {
-						var = PRC_approval_rating_var_temp
-						value < 0.3
-					}
-				}
-				country_event = {
-					id = china.124
-					days = 1
-				}
-			}
-			IF = {
-				LIMIT = {
-					check_variable = {
-						var = PRC_approval_rating_var_temp
-						value > 0.3
-					}
-				}
-				country_event = {
-					id = china.125
-					days = 2
-				}
-			}
-		}
-	}
-}
+# country_event = {
+# 	#National People's Congress votes on Federalization
+# 	id = china.123
+# 	title = china.123.t
+# 	desc = china.123.d
+# 	picture = GFX_prc_megacity1
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 	}
+# 	option = {
+# 		name = china.123.a
+# 		effect_tooltip = {
+# 		}
+# 		hidden_effect = {
+# 			IF = {
+# 				LIMIT = {
+# 					check_variable = {
+# 						var = PRC_approval_rating_var_temp
+# 						value < 0.3
+# 					}
+# 				}
+# 				country_event = {
+# 					id = china.124
+# 					days = 1
+# 				}
+# 			}
+# 			IF = {
+# 				LIMIT = {
+# 					check_variable = {
+# 						var = PRC_approval_rating_var_temp
+# 						value > 0.3
+# 					}
+# 				}
+# 				country_event = {
+# 					id = china.125
+# 					days = 2
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 
-country_event = {
-	#Attempted Hardliner coup!
-	id = china.124
-	title = china.124.t
-	desc = china.124.d
-	picture = GFX_prc_megacity1
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-	}
-	option = {
-		name = china.124.a
-		1222 = {
-			set_demilitarized_zone = yes
-		}
-		1215 = {
-			set_demilitarized_zone = yes
-		}
-		1220 = {
-			set_demilitarized_zone = yes
-		}
-		596 = {
-			set_demilitarized_zone = yes
-		}
-		600 = {
-			set_demilitarized_zone = yes
-		}
-		595 = {
-			set_demilitarized_zone = yes
-		}
-		1218 = {
-			set_demilitarized_zone = yes
-		}
-		592 = {
-			set_demilitarized_zone = yes
-		}
-		591 = {
-			set_demilitarized_zone = yes
-		}
-		set_politics = {
-			ruling_party = totalitarian_socialist
-			elections_allowed = no
-			last_election = "2000.1.1"
-			election_frequency = 48
-		}
-		add_country_leader_role = {
-			character = PRC_li_zuocheng
-			promote_leader = yes
-			country_leader = {
-				ideology = left_wing_junta
-				expire = "2099.1.1.1"
-				traits = {
-				}
-			}
-		}
-		hidden_effect = {
-			country_event = {
-				#WANG YANG and Cabinet SHOT
-				id = china.1242
-			}
-		}
-	}
-}
+# country_event = {
+# 	#Attempted Hardliner coup!
+# 	id = china.124
+# 	title = china.124.t
+# 	desc = china.124.d
+# 	picture = GFX_prc_megacity1
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 	}
+# 	option = {
+# 		name = china.124.a
+# 		1222 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		1215 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		1220 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		596 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		600 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		595 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		1218 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		592 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		591 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		set_politics = {
+# 			ruling_party = totalitarian_socialist
+# 			elections_allowed = no
+# 			last_election = "2000.1.1"
+# 			election_frequency = 48
+# 		}
+# 		add_country_leader_role = {
+# 			character = PRC_li_zuocheng
+# 			promote_leader = yes
+# 			country_leader = {
+# 				ideology = left_wing_junta
+# 				expire = "2099.1.1.1"
+# 				traits = {
+# 				}
+# 			}
+# 		}
+# 		hidden_effect = {
+# 			country_event = {
+# 				#WANG YANG and Cabinet SHOT
+# 				id = china.1242
+# 			}
+# 		}
+# 	}
+# }
 
 country_event = {
 	#WANG YANG and Cabinet SHOT
@@ -4890,7 +4890,7 @@ country_event = {
 		add_doctrine_cost_reduction = {
 			cost_reduction = 0.75
 			uses = 1
-			category = land_doctrine
+			category = cat_old_land_doctrine
 		}
 	}
 	option = {
@@ -12930,7 +12930,66 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = china.700
+	title = china.700.t
+	desc = china.700.d
+	picture = GFX_event_prc_sun_jianguo1
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	#immediate = {
+	#}
+	option = {
+		name = china.700.a
+		navy_experience = 25
+		hidden_effect = {
+			PRC_sun_jianguo = {
+                unit_leader_event = {
+                    id = china.701
+                    days = 3
+                }
+            }
+		}
+	}
+}
+
 #Empire Burning
+unit_leader_event = {
+	id = china.701
+	title = china.701.t
+	desc = china.701.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = { #approved
+		name = china.701.a
+		mio:PRC_bohai_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+			complete_mio_trait = PRC_mio_cmc_funds
+			set_mio_flag = PRC_mio_flag_cmc_approve_ssn_funding
+		}
+		mio:PRC_csic_wuchang_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 10
+		}
+		add_debt_with_inflation = yes
+	}
+	option = {
+		name = china.701.b
+		mio:PRC_bohai_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+			complete_mio_trait = PRC_mio_Navy_Field_Test
+		}
+	}
+}
+
 country_event = {
 	id = china.493
 	title = china.493.t
@@ -12963,6 +13022,7 @@ country_event = {
 		name = china.500.a
 		air_experience = 25
 		set_country_flag = PRC_project_song_wencong_succeeded1
+		set_country_flag = PRC_project_song_wencong_success
 		if = {
 			limit = {
 				NOT = {
@@ -13039,7 +13099,7 @@ country_event = {
 	title = china.546.t
 	desc = china.546.d
 	is_triggered_only = yes
-	picture = GFX_PRC_type_100
+	picture = GFX_PLAN3 
 	immediate = {
 		set_country_flag = PRC_project_liao_yuan_succeed
 	}
@@ -13143,6 +13203,13 @@ country_event = {
 		name = china.999.a
 		PRC = {
 			create_faction = PRC_east_asian_defense_initative_faction
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
 			add_to_faction = LAO
 			add_to_faction = BRM
 			puppet = VIN
@@ -13170,6 +13237,13 @@ country_event = {
 		}
 		JAP = {
 			create_faction = PDTO
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
 			add_to_faction = AST
 			add_to_faction = INS
 			add_to_faction = MAL

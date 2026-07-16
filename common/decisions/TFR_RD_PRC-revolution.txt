@@ -1,6 +1,56 @@
 # 外交决议
 PRC_export_revolution = {
     #输出革命
+    PRC_rebuilding_lraq = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_country_flag = PRC_rebuilding_lraq_flag
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = PRC_rebuilding_lraq_tooltip
+                IRQ = {
+                    is_in_faction_with = PRC
+                }
+            }
+        }
+        fire_only_once = yes
+        cost = 350
+        days_remove = 70
+        complete_effect = {
+            hidden_effect = {
+                IRQ = {
+                    set_cosmetic_tag = IRQ_revolutionary_government
+                }
+            }
+        }
+        remove_effect = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -210
+            }
+            add_income_with_inflation = yes
+            IRQ = {
+                random_owned_controlled_state = {
+                    limit = {
+                        is_core_of = IRQ
+                    }
+                    add_extra_state_shared_building_slots = 1
+                    add_building_construction = {
+                        type = industrial_complex
+                        level = 1
+                        instant_build = yes
+                    }
+                }
+                add_stability = 0.35
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = 210
+                }
+                add_income_with_inflation = yes
+            }
+        }
+    }
     #缅甸
     PRC_contact_mynamar_comrades = {
         icon = GFX_PRC_new_left_decision
@@ -319,7 +369,7 @@ PRC_export_revolution = {
         remove_effect = {
             custom_effect_tooltip = PRC_Sia_tootip
             hidden_effect = {
-                PRT = {
+                SIA = {
                     leave_faction = yes
                 }
                 PRT = {
@@ -1347,6 +1397,17 @@ PRC_export_revolution = {
                         leave_faction = yes
                     }
                 }
+                every_country = {
+                    limit = {
+                        IRQ = {
+                            is_puppet_of = PREV
+                        }
+                    }
+                    end_puppet = IRQ
+                    IRQ = {
+                        leave_faction = yes
+                    }
+                }
             }
             PER = {
                 dismantle_faction = yes
@@ -1371,7 +1432,10 @@ PRC_export_revolution = {
                     target = PER
                     type = civil_war
                 }
-
+                declare_war_on = {
+                    target = IRQ
+                    type = annex_everything
+                }
             }
             add_to_variable = {
                 CPC_frame = 3
@@ -1517,9 +1581,9 @@ PRC_export_revolution = {
                         totalitarian_socialist = 100
                     }
                     create_country_leader = {
-                        name = "朝鲜军管委员会"
+                        name = "朝鲜人民代表大会"
                         desc = "POLITICS_CHAOXIAN_DESC"
-                        picture = "gfx/leaders/PRC/generals/PRC_army.png"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
                         ideology = left_wing_junta
                     }
                     remove_ideas = {
@@ -1533,8 +1597,8 @@ PRC_export_revolution = {
                     }
                     set_party_name = {
                         ideology = totalitarian_socialist
-                        long_name = PRC_nationalist_party_long
-                        name = PRC_nationalist_party
+                        long_name = PRK_nationalist_party_new_left_long
+                        name = PRK_nationalist_party_new_left
                     }
                     inherit_technology = PRC
                     set_cosmetic_tag = PRK_repolice_gonh
@@ -1560,8 +1624,8 @@ PRC_export_revolution = {
                 PRK = {
                     set_party_name = {
                         ideology = totalitarian_socialist
-                        long_name = PRC_nationalist_party_long
-                        name = PRC_nationalist_party
+                        long_name = PRK_nationalist_party_new_left_long
+                        name = PRK_nationalist_party_new_left
                     }
                 }
             }
@@ -1595,19 +1659,47 @@ PRC_export_revolution = {
 			}
         }
         timeout_effect = {
+            division_template = {
+                name = "Militia divisions"
+                is_locked = no
+                force_allow_recruiting = yes
+                regiments = {
+                    militia = {
+                        x = 0
+                        y = 0
+                    }
+                    militia = {
+                        x = 0
+                        y = 1
+                    }
+                    militia = {
+                        x = 0
+                        y = 2
+                    }
+                    militia = {
+                        x = 0
+                        y = 3
+                    }
+                    militia = {
+                        x = 0
+                        y = 4
+                    }
+                }
+                priority = 0
+            }
             hidden_effect = {
                 remove_mission = PRC_red_ROK
             }
             869 = {
                 create_unit = {
-                    division = "name = \"Militia\" division_template = \"Militia Brigade\"  start_experience_factor = 0.1"
+                    division = "name = \"Militia\" division_template = \"Militia divisions\"  start_experience_factor = 0.1"
                     allow_spawning_on_enemy_provs = yes
                     owner = PRC
                 }
             }
             1412 = {
                 create_unit = {
-                    division = "name = \"Militia\" division_template = \"Militia Brigade\"  start_experience_factor = 0.1"
+                    division = "name = \"Militia\" division_template = \"Militia divisions\"  start_experience_factor = 0.1"
                     allow_spawning_on_enemy_provs = yes
                     owner = PRC
                     count = 2
@@ -1615,7 +1707,7 @@ PRC_export_revolution = {
             }
             1409 = {
                 create_unit = {
-                    division = "name = \"Militia\" division_template = \"Militia Brigade\"  start_experience_factor = 0.1"
+                    division = "name = \"Militia\" division_template = \"Militia divisions\"  start_experience_factor = 0.1"
                     allow_spawning_on_enemy_provs = yes
                     owner = PRC
                 }
@@ -2304,13 +2396,6 @@ PRC_export_revolution = {
                 }
             }
             CPA = {
-                hidden_effect = {
-                    set_party_name = {
-                        ideology = totalitarian_socialist
-                        long_name = PER_communist_party_a
-                        name = PER_communist_party_a
-                    }
-                }
                 transfer_state = 267
                 transfer_state = 415
                 transfer_state = 824
@@ -2645,7 +2730,10 @@ PRC_export_revolution = {
             hidden_effect = {
                 every_state = {
                     limit = {
-                        is_owned_by = JAP
+                        OR = {
+                            is_core_of = JAP
+                            is_owned_by = JAP
+                        }
                     }
                     add_core_of = JPL
                 }
@@ -2816,6 +2904,7 @@ PRC_assistance2communist = {
         remove_effect = {
             custom_effect_tooltip = Japan_red_army_equipment
             JPL = {
+                add_war_support = 0.025
                 add_equipment_to_stockpile = {
                     type = infantry_equipment
                     amount = 7500
@@ -2889,16 +2978,15 @@ PRC_assistance2communist = {
             has_completed_focus = Moisturizing_things_silently
         }
         visible = {
-            OR = {
-                TAL = {
-                    has_government = communist
+            AND = {
+                country_exists = CPP
+                country_exists = CPA
+                CPA = {
+                    has_war = no
                 }
-                AFG = {
-                    has_government = communist
+                CPP = {
+                    has_war = no
                 }
-            }
-            PER = {
-                has_government = communist
             }
             has_completed_focus = Moisturizing_things_silently
         }
@@ -2906,6 +2994,7 @@ PRC_assistance2communist = {
         cost = 25
         days_remove = 15
         modifier = {
+            civilian_factory_use = 30
         }
         complete_effect = {
             set_temp_variable = {
@@ -2925,27 +3014,20 @@ PRC_assistance2communist = {
                         value = 179
                     }
                     add_income_with_inflation = yes
-                }
-            }
-            else_if = {
-                limit = {
-                    country_exists = AFG
-                }
-                AFG = {
-                    set_temp_variable = {
-                        var = income_var_temp
-                        value = 179
-                    }
-                    add_income_with_inflation = yes
-                }
-                else = {
-                    TAL = {
-                        set_temp_variable = {
-                            var = income_var_temp
-                            value = 179
+                    random_owned_controlled_state = {
+                        limit = {
+                            is_core_of = CPA
                         }
-                        add_income_with_inflation = yes
+                        add_extra_state_shared_building_slots = 2
+                        add_building_construction = {
+                            type = industrial_complex
+                            level = 2
+                            instant_build = yes
+                        }
                     }
+                    add_research_slot = 1
+                    add_stability = 0.25
+                    add_ideas = PRC_arab_ideas
                 }
             }
             if = {
@@ -2954,18 +3036,41 @@ PRC_assistance2communist = {
                 }
                 CPP = {
                     set_temp_variable = {
+                        var = industrial_development_var_temp
+                        value = 0.15
+                    }
+                    add_industrial_development = yes
+                    set_temp_variable = {
+                        var = poverty_development_var_temp
+                        value = 0.10
+                    }
+                    add_poverty_development = yes
+                    set_temp_variable = {
+                        var = society_development_var_temp
+                        value = 0.10
+                    }
+                    add_society_development = yes
+                    random_owned_controlled_state = {
+                        limit = {
+                            is_core_of = CPP
+                        }
+                        add_extra_state_shared_building_slots = 2
+                        add_building_construction = {
+                            type = industrial_complex
+                            level = 2
+                            instant_build = yes
+                        }
+                    }
+                    set_temp_variable = {
                         var = income_var_temp
                         value = 179
                     }
                     add_income_with_inflation = yes
+                    add_research_slot = 1
+                    add_stability = 0.25
+                    add_ideas = PRC_arab_ideas
+                    
                 }
-            }
-            else = {
-                set_temp_variable = {
-                    var = income_var_temp
-                    value = 179
-                }
-                add_income_with_inflation = yes
             }
         }
         ai_will_do = {
@@ -3367,15 +3472,6 @@ PRC_assistance2communist = {
                 value = -3.5
             }
             add_income = yes
-            #hidden_effect = {
-            #	random_list = {
-            #		60 = {
-            #		}
-            #		40 = {
-            #			country_event = { id = china.153 days = 10 }
-            #		}
-            #	}
-            #}
             PAK = {
                 set_temp_variable = {
                     var = income_var_temp
@@ -3383,6 +3479,22 @@ PRC_assistance2communist = {
                 }
                 random_list = {
                     60 = {
+                        random_owned_controlled_state = {
+                            limit = {
+                                is_core_of = ROOT
+                                free_building_slots = {
+                                    building = industrial_complex
+                                    size > 1
+                                    include_locked = yes
+                                }
+                            }
+                            add_extra_state_shared_building_slots = 1
+                            add_building_construction = {
+                                type = industrial_complex
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
                     }
                     40 = {
                         random_owned_controlled_state = {
@@ -3409,17 +3521,6 @@ PRC_assistance2communist = {
                     value = 0.05
                 }
                 add_industrial_development = yes
-                if = {
-                    limit = {
-                        NOT = {
-                            has_idea = PRC_pakistan_industrial_support
-                        }
-                    }
-                    add_timed_idea = {
-                        idea = PRC_pakistan_industrial_support
-                        days = 70
-                    }
-                }
             }
         }
     }
@@ -3679,27 +3780,6 @@ PRC_assistance2communist = {
 
 PRC_ussr_diplomacy = {
     #对苏外交
-    PRC_USSR_diplomacy = {
-        #友好协商
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Lenins_promises
-        }
-        visible = {
-            has_completed_focus = Lenins_promises
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 15
-        modifier = {
-        }
-        complete_effect = {
-            custom_effect_tooltip = PRC_ussr_diplomacy_tt
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
     PRC_defense_north = {
         #修碉堡
         icon = GFX_PRC_new_left_decision
@@ -3939,135 +4019,6 @@ PRC_ussr_diplomacy = {
                     province = 3944
                 }
             }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    Recasting_China_Soviet_Friendship = {
-        #重铸中苏友谊
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = October_Revolution
-        }
-        visible = {
-            has_completed_focus = October_Revolution
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 15
-        modifier = {
-        }
-        complete_effect = {
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-}
-
-PRC_The_Mexican_Dream = {
-    #对墨西哥决议
-    Assisting_the_industry_and_agriculture = {
-        #援建
-        icon = GFX_PRC_new_left_decision
-        available = {
-        }
-        visible = {
-            has_completed_focus = Two_red_flags
-            country_exists = ZAP
-        }
-        fire_only_once = no
-        cost = 25
-        days_remove = 70
-        days_re_enable = 30
-        remove_effect = {
-            ZAP = {
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_send_ZAP_weapens = {
-        #送武器
-        icon = GFX_PRC_new_left_decision
-        available = {
-        }
-        visible = {
-            has_completed_focus = Two_red_flags
-            country_exists = ZAP
-        }
-        fire_only_once = no
-        cost = 25
-        days_remove = 70
-        days_re_enable = 30
-        remove_effect = {
-            ZAP = {
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_Implement_dedrugging = {
-        #实施去毒品化
-        icon = GFX_PRC_new_left_decision
-        available = {
-        }
-        visible = {
-            has_completed_focus = Two_red_flags
-            country_exists = ZAP
-        }
-        fire_only_once = no
-        cost = 25
-        days_remove = 70
-        days_re_enable = 30
-        remove_effect = {
-            ZAP = {
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_Promote_ZAP_peace_with_government = {
-        #推动与政府军和统
-        icon = GFX_PRC_new_left_decision
-        available = {
-        }
-        visible = {
-            has_completed_focus = Two_red_flags
-            country_exists = ZAP
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 70
-        remove_effect = {
-            ZAP = {
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-}
-
-PRC_Global_Red_Tide_cat = {
-    #寰宇赤潮
-    PRC_Global_Red_Tide = {
-        #革命总动员
-        icon = GFX_PRC_new_left_decision
-        available = {
-        }
-        visible = {
-            has_completed_focus = Two_red_flags
-            country_exists = ZAP
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 70
-        remove_effect = {
         }
         ai_will_do = {
             base = 10

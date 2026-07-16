@@ -1,13 +1,12 @@
-version="1.15.*"
+version="1.17.*"
 tags={
-	"Map"
-	"Utilities"
-	"Events"
 	"Alternative History"
+	"Events"
+	"Map"
 }
 dependencies={
 	"The Fire Rises"
 }
-name="烈焰升腾：红色黎明"
-supported_version="1.16.*"
-remote_file_id="3439263175"
+name="烈焰升腾：红色黎明 先遣版"
+supported_version="1.19.1.0"
+remote_file_id="3747675390"

@@ -1,79 +1,319 @@
-# TFR_中俄谈判 - 核心脚本效果
-# namespace: TFR_CRN
+# TFR_中俄谈判 - 脚本效果文件
+# 三轮谈判制：唐努乌梁海与滨海边疆 / 黑龙江沿岸 / 外兴安岭与库页岛
+# 变量全部存在 SOV 作用域下
 
 ##############################################################################
-# 谈判初始化 — 由调试决议触发
-# 设置全局旗标 + SOV 初始变量
+# 谈判初始化 — PRC 启动谈判时，对 SOV 调用
 ##############################################################################
 TFR_CRN_init_negotiation = {
 	set_global_flag = TFR_CRN_negotiation_active
 	set_global_flag = TFR_CRN_negotiation_accessible
-	PRC = { set_country_flag = TFR_CRN_PRC_started_negotiation }
-	SOV = {
-		set_variable = { var = TFR_CRN_desperation value = 0 }
-		set_variable = { var = TFR_CRN_negotiation_days value = 0 }
+	set_global_flag = TFR_CRN_round_1_active
+	set_global_flag = TFR_CRN_PRC_made_first_move
+	PRC = {
+		set_country_flag = TFR_CRN_PRC_started_negotiation
+		activate_mission = TFR_CRN_round_1_timer
 	}
+	set_variable = { var = TFR_CRN_desperation value = 0 }
+	set_variable = { var = TFR_CRN_concession_willingness value = 5 }
+	set_variable = { var = TFR_CRN_negotiation_round value = 1 }
+	set_variable = { var = TFR_CRN_prc_round_actions value = 0 }
+	set_variable = { var = TFR_CRN_sov_round_actions value = 0 }
+	set_variable = { var = TFR_CRN_prc_convo_slot1 value = 0 }
+	set_variable = { var = TFR_CRN_prc_convo_slot2 value = 0 }
+	set_variable = { var = TFR_CRN_prc_convo_slot3 value = 0 }
+	set_variable = { var = TFR_CRN_sov_convo_slot1 value = 0 }
+	set_variable = { var = TFR_CRN_sov_convo_slot2 value = 0 }
+	set_variable = { var = TFR_CRN_sov_convo_slot3 value = 0 }
+	PRC = {
+		set_variable = { var = TFR_CRN_prc_convo_slot1 value = 0 }
+		set_variable = { var = TFR_CRN_prc_convo_slot2 value = 0 }
+		set_variable = { var = TFR_CRN_prc_convo_slot3 value = 0 }
+	}
+	TFR_CRN_calc_desperation = yes
 	news_event = { id = TFR_CRN.1 }
 }
 
 ##############################################################################
-# 计算 SOV 绝望度 — 每次 PRC 打开决议面板 / 点击购买前重算
+# 计算 SOV 绝望度 — 基于战争形势自动重算
 # 运行在 SOV 作用域
+# 绝望度来源不稳定，主依赖战争形势 + 每轮小幅叠加
 ##############################################################################
 TFR_CRN_calc_desperation = {
 	set_temp_variable = { CRN_desp = 0 }
 	
-	# SOV 在战争中
+	# SOV 在战争中 +10
 	if = { limit = { has_war = yes } add_to_temp_variable = { CRN_desp = 10 } }
 	
-	# 投降倾向（0~100% → 0~40）
+	# 投降倾向（0~100% → 0~35）
 	set_temp_variable = { CRN_surrender = surrender_progress }
-	multiply_temp_variable = { CRN_surrender = 0.4 }
+	multiply_temp_variable = { CRN_surrender = 0.35 }
 	round_variable = CRN_surrender
 	add_to_temp_variable = { CRN_desp = CRN_surrender }
 	
-	# 战争伤亡对战争支持度的冲击（has_casualties_war_support 0~100 → 0~30）
+	# 战争伤亡对战争支持度的冲击（0~100 → 0~25）
 	set_temp_variable = { CRN_casualties = has_casualties_war_support }
-	multiply_temp_variable = { CRN_casualties = 0.3 }
+	multiply_temp_variable = { CRN_casualties = 0.25 }
 	round_variable = CRN_casualties
 	add_to_temp_variable = { CRN_desp = CRN_casualties }
 	
-	# 稳定度（低于 100% 开始扣，0% 扣 20）
+	# 稳定度惩罚（低于 100% 开始扣，最多扣 15）
 	set_temp_variable = { CRN_stab = stability }
 	multiply_temp_variable = { CRN_stab = 100 }
-	subtract_from_temp_variable = { CRN_stab = 100 }   # 低于 100% 的部分
-	if = { limit = { check_temp_variable = { CRN_stab < 0 } } set_temp_variable = { CRN_stab = 0 } }
-	if = { limit = { check_temp_variable = { CRN_stab > 20 } } set_temp_variable = { CRN_stab = 20 } }
+	subtract_from_temp_variable = { CRN_stab = 100 }
+	multiply_temp_variable = { CRN_stab = -1 }  # 翻转为正数惩罚
+	if = { limit = { check_variable = { CRN_stab < 0 } } set_temp_variable = { CRN_stab = 0 } }
+	if = { limit = { check_variable = { CRN_stab > 15 } } set_temp_variable = { CRN_stab = 15 } }
 	round_variable = CRN_stab
 	add_to_temp_variable = { CRN_desp = CRN_stab }
 	
-	# 谈判天数加成（每天 +0.5，最多 +50）
-	add_to_variable = { var = TFR_CRN_negotiation_days value = 1 }
-	set_temp_variable = { CRN_days = TFR_CRN_negotiation_days }
-	multiply_temp_variable = { CRN_days = 0.5 }
-	if = { limit = { check_temp_variable = { CRN_days > 50 } } set_temp_variable = { CRN_days = 50 } }
-	round_variable = CRN_days
-	add_to_temp_variable = { CRN_desp = CRN_days }
-	
 	# 钳位 0~100
-	if = { limit = { check_temp_variable = { CRN_desp < 0 } } set_temp_variable = { CRN_desp = 0 } }
-	if = { limit = { check_temp_variable = { CRN_desp > 100 } } set_temp_variable = { CRN_desp = 100 } }
+	if = { limit = { check_variable = { CRN_desp < 0 } } set_temp_variable = { CRN_desp = 0 } }
+	if = { limit = { check_variable = { CRN_desp > 100 } } set_temp_variable = { CRN_desp = 100 } }
 	
 	set_variable = { var = TFR_CRN_desperation value = CRN_desp }
+	
+	# 追加已通过的轮次奖励：每通过一轮 +5
+	if = { limit = { has_global_flag = TFR_CRN_round_1_success } add_to_variable = { var = TFR_CRN_desperation value = 5 } }
+	if = { limit = { has_global_flag = TFR_CRN_round_2_success } add_to_variable = { var = TFR_CRN_desperation value = 5 } }
+	if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { TFR_CRN_desperation = 100 } }
 }
 
 ##############################################################################
-# 领土转交核心逻辑 — 调用前需确定购买的省 ID
-# 调用前需在 PRC 作用域
-# 参数：TFR_CRN_transfer_state_target（省ID）
+# 轮次计数器归零 — 每轮结束时调用（设在 SOV 上）
+##############################################################################
+TFR_CRN_reset_round_counters = {
+	set_variable = { var = TFR_CRN_prc_round_actions value = 0 }
+	set_variable = { var = TFR_CRN_sov_round_actions value = 0 }
+	set_variable = { var = TFR_CRN_prc_convo_slot1 value = 0 }
+	set_variable = { var = TFR_CRN_prc_convo_slot2 value = 0 }
+	set_variable = { var = TFR_CRN_prc_convo_slot3 value = 0 }
+	set_variable = { var = TFR_CRN_sov_convo_slot1 value = 0 }
+	set_variable = { var = TFR_CRN_sov_convo_slot2 value = 0 }
+	set_variable = { var = TFR_CRN_sov_convo_slot3 value = 0 }
+	PRC = {
+		set_variable = { var = TFR_CRN_prc_convo_slot1 value = 0 }
+		set_variable = { var = TFR_CRN_prc_convo_slot2 value = 0 }
+		set_variable = { var = TFR_CRN_prc_convo_slot3 value = 0 }
+		set_variable = { var = TFR_CRN_sov_convo_slot1 value = 0 }
+		set_variable = { var = TFR_CRN_sov_convo_slot2 value = 0 }
+		set_variable = { var = TFR_CRN_sov_convo_slot3 value = 0 }
+	}
+	TFR_CRN_calc_desperation = yes
+}
+
+##############################################################################
+# 会谈记录 3 槽队列 — PRC 会话（运行在 SOV 作用域）
+##############################################################################
+TFR_CRN_shift_prc_convo = {
+	set_variable = { var = TFR_CRN_prc_convo_slot3 value = TFR_CRN_prc_convo_slot2 }
+	set_variable = { var = TFR_CRN_prc_convo_slot2 value = TFR_CRN_prc_convo_slot1 }
+	set_variable = { var = TFR_CRN_prc_convo_slot1 value = TFR_CRN_prc_convo_last_idx_temp }
+}
+
+##############################################################################
+# 会谈记录 3 槽队列 — PRC 会话（运行在 PRC 作用域）
+##############################################################################
+TFR_CRN_shift_prc_convo_local = {
+	set_variable = { var = TFR_CRN_prc_convo_slot3 value = TFR_CRN_prc_convo_slot2 }
+	set_variable = { var = TFR_CRN_prc_convo_slot2 value = TFR_CRN_prc_convo_slot1 }
+	set_variable = { var = TFR_CRN_prc_convo_slot1 value = TFR_CRN_prc_convo_last_idx_temp }
+}
+
+##############################################################################
+# 会谈记录 3 槽队列 — SOV 会话
+##############################################################################
+TFR_CRN_shift_sov_convo = {
+	set_variable = { var = TFR_CRN_sov_convo_slot3 value = TFR_CRN_sov_convo_slot2 }
+	set_variable = { var = TFR_CRN_sov_convo_slot2 value = TFR_CRN_sov_convo_slot1 }
+	set_variable = { var = TFR_CRN_sov_convo_slot1 value = TFR_CRN_sov_convo_last_idx_temp }
+}
+
+##############################################################################
+# 轮次判定 — 检查当前轮次是否达标（由 timer timeout 调用）
+# 成功 → 设置 round_X_success flag → 推进到下一轮
+# 失败 → 设置 round_X_failed → 结束谈判 → 交付已成功轮次的领土
+##############################################################################
+TFR_CRN_round_settlement = {
+	# === 第 1 轮判定 ===
+	if = {
+		limit = {
+			has_global_flag = TFR_CRN_round_1_active
+			NOT = { has_global_flag = TFR_CRN_round_1_complete }
+		}
+		if = {
+			limit = {
+				check_variable = { var = TFR_CRN_desperation value = 10 compare = greater_than_or_equals }
+				check_variable = { var = TFR_CRN_concession_willingness value = 20 compare = greater_than_or_equals }
+			}
+			# 第1轮成功
+			set_global_flag = TFR_CRN_round_1_success
+			set_global_flag = TFR_CRN_round_1_complete
+			clr_global_flag = TFR_CRN_round_1_active
+			set_global_flag = TFR_CRN_round_2_active
+			set_variable = { var = TFR_CRN_negotiation_round value = 2 }
+			TFR_CRN_reset_round_counters = yes
+			PRC = { clr_country_flag = TFR_CRN_PRC_r1_repeat_used }
+			PRC = { activate_mission = TFR_CRN_round_2_timer }
+			news_event = { id = TFR_CRN.2 }
+		}
+		else = {
+			# 第1轮失败
+			set_global_flag = TFR_CRN_round_1_failed
+			set_global_flag = TFR_CRN_round_1_complete
+			clr_global_flag = TFR_CRN_round_1_active
+			set_global_flag = TFR_CRN_negotiation_failed
+			clr_global_flag = TFR_CRN_negotiation_active
+			TFR_CRN_final_delivery = yes
+			news_event = { id = TFR_CRN.4 }
+		}
+	}
+	# === 第 2 轮判定 ===
+	else_if = {
+		limit = {
+			has_global_flag = TFR_CRN_round_2_active
+			NOT = { has_global_flag = TFR_CRN_round_2_complete }
+		}
+		if = {
+			limit = {
+				check_variable = { var = TFR_CRN_desperation value = 20 compare = greater_than_or_equals }
+				check_variable = { var = TFR_CRN_concession_willingness value = 45 compare = greater_than_or_equals }
+			}
+			# 第2轮成功
+			set_global_flag = TFR_CRN_round_2_success
+			set_global_flag = TFR_CRN_round_2_complete
+			clr_global_flag = TFR_CRN_round_2_active
+			set_global_flag = TFR_CRN_round_3_active
+			set_variable = { var = TFR_CRN_negotiation_round value = 3 }
+			TFR_CRN_reset_round_counters = yes
+			PRC = { clr_country_flag = TFR_CRN_PRC_r2_repeat_used }
+			PRC = { activate_mission = TFR_CRN_round_3_timer }
+			news_event = { id = TFR_CRN.3 }
+		}
+		else = {
+			# 第2轮失败
+			set_global_flag = TFR_CRN_round_2_failed
+			set_global_flag = TFR_CRN_round_2_complete
+			clr_global_flag = TFR_CRN_round_2_active
+			set_global_flag = TFR_CRN_negotiation_failed
+			clr_global_flag = TFR_CRN_negotiation_active
+			TFR_CRN_final_delivery = yes
+			news_event = { id = TFR_CRN.4 }
+		}
+	}
+	# === 第 3 轮判定 ===
+	else_if = {
+		limit = {
+			has_global_flag = TFR_CRN_round_3_active
+			NOT = { has_global_flag = TFR_CRN_round_3_complete }
+		}
+		if = {
+			limit = {
+				check_variable = { var = TFR_CRN_desperation value = 30 compare = greater_than_or_equals }
+				check_variable = { var = TFR_CRN_concession_willingness value = 65 compare = greater_than_or_equals }
+			}
+			# 第3轮成功
+			set_global_flag = TFR_CRN_round_3_success
+			set_global_flag = TFR_CRN_round_3_complete
+			clr_global_flag = TFR_CRN_round_3_active
+			set_global_flag = TFR_CRN_negotiation_success
+			clr_global_flag = TFR_CRN_negotiation_active
+			PRC = { clr_country_flag = TFR_CRN_PRC_r3_repeat_used }
+			TFR_CRN_final_delivery = yes
+			news_event = { id = TFR_CRN.5 }
+		}
+		else = {
+			# 第3轮失败
+			set_global_flag = TFR_CRN_round_3_failed
+			set_global_flag = TFR_CRN_round_3_complete
+			clr_global_flag = TFR_CRN_round_3_active
+			set_global_flag = TFR_CRN_negotiation_failed
+			clr_global_flag = TFR_CRN_negotiation_active
+			TFR_CRN_final_delivery = yes
+			news_event = { id = TFR_CRN.4 }
+		}
+	}
+}
+
+##############################################################################
+# 最终领土交付 — 根据成功轮次一次性转交领土
+# 第1轮: 图瓦(329) + 海参崴(408)
+# 第2轮: 庙街(560) + 伯力(409) + 奇穆尼窝集(657) + 海兰泡(1328)
+# 第3轮: 外兴安岭(1293) + 库页岛(537)
+##############################################################################
+TFR_CRN_final_delivery = {
+	# 交付第1轮领土（如果第1轮成功）
+	if = {
+		limit = { has_global_flag = TFR_CRN_round_1_success }
+		PRC = {
+			329 = { TFR_CRN_transfer_state = yes }
+			408 = { TFR_CRN_transfer_state = yes }
+		}
+	}
+	# 交付第2轮领土（如果第2轮成功）
+	if = {
+		limit = { has_global_flag = TFR_CRN_round_2_success }
+		PRC = {
+			560 = { TFR_CRN_transfer_state = yes }
+			409 = { TFR_CRN_transfer_state = yes }
+			657 = { TFR_CRN_transfer_state = yes }
+			1328 = { TFR_CRN_transfer_state = yes }
+		}
+	}
+	# 交付第3轮领土（如果第3轮成功）
+		if = {
+			limit = { has_global_flag = TFR_CRN_round_3_success }
+			PRC = {
+				1293 = { TFR_CRN_transfer_state = yes }
+				537 = { TFR_CRN_transfer_state = yes }
+			}
+		}
+		# 外兴安岭回归新闻（第3轮成功时）
+		if = { limit = { has_global_flag = TFR_CRN_round_3_success } news_event = { id = TFR_CRN.8 days = 2 } }
+		# 全部8州回归终章新闻
+		if = {
+			limit = {
+				has_global_flag = TFR_CRN_round_1_success
+				has_global_flag = TFR_CRN_round_2_success
+				has_global_flag = TFR_CRN_round_3_success
+			}
+			news_event = { id = TFR_CRN.10 days = 5 }
+		}
+	set_global_flag = TFR_CRN_negotiation_ended
+}
+
+##############################################################################
+# 领土转交核心逻辑 — 去 SOV 核心 + PRC 加核心 + 转移所有权/控制权
+# 调用前需在 PRC 作用域下，当前作用域为州
 ##############################################################################
 TFR_CRN_transfer_state = {
-	# SOV 去核心
-	SOV = { PREV = { remove_core_of = SOV } }
-	# PRC 加核心 + 转移所有权
-	PREV = {
-		add_core_of = PRC
-		set_controller = PRC
-		set_owner = PRC
+	remove_core_of = SOV
+	add_core_of = PRC
+	transfer_state_to = PRC
+}
+
+##############################################################################
+# SOV 解体后备 — 欧陆战争和平会议后无条件割让剩余领土
+# 由 on_action 触发，遍历全部 8 州
+##############################################################################
+TFR_CRN_sov_collapse_transfer = {
+	PRC = {
+		# 图瓦 329
+		if = { limit = { 329 = { NOT = { is_core_of = PRC } } } 329 = { TFR_CRN_transfer_state = yes } }
+		# 海参崴 408
+		if = { limit = { 408 = { NOT = { is_core_of = PRC } } } 408 = { TFR_CRN_transfer_state = yes } }
+		# 庙街 560
+		if = { limit = { 560 = { NOT = { is_core_of = PRC } } } 560 = { TFR_CRN_transfer_state = yes } }
+		# 伯力 409
+		if = { limit = { 409 = { NOT = { is_core_of = PRC } } } 409 = { TFR_CRN_transfer_state = yes } }
+		# 奇穆尼窝集 657
+		if = { limit = { 657 = { NOT = { is_core_of = PRC } } } 657 = { TFR_CRN_transfer_state = yes } }
+		# 海兰泡 1328
+		if = { limit = { 1328 = { NOT = { is_core_of = PRC } } } 1328 = { TFR_CRN_transfer_state = yes } }
+		# 外兴安岭 1293
+		if = { limit = { 1293 = { NOT = { is_core_of = PRC } } } 1293 = { TFR_CRN_transfer_state = yes } }
+		# 库页岛 537
+		if = { limit = { 537 = { NOT = { is_core_of = PRC } } } 537 = { TFR_CRN_transfer_state = yes } }
+		news_event = { id = TFR_CRN.11 }
 	}
 }

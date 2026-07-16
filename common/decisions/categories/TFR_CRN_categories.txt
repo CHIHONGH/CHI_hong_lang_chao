@@ -1,6 +1,6 @@
 # TFR_中俄谈判 - 决策类别
 
-# PRC 中俄谈判类别
+# PRC 中俄谈判类别（含 GUI 显示绝望度和让步意愿）
 TFR_CRN_negotiation_category = {
 	icon = GFX_goal_generic_diplomacy
 	picture = GFX_decision_cat_PRC_chinas_liberalization
@@ -14,5 +14,23 @@ TFR_CRN_negotiation_category = {
 	visible = {
 		has_global_flag = TFR_CRN_negotiation_accessible
 		country_exists = SOV
+	}
+
+	scripted_gui = TFR_CRN_negotiation_gui
+}
+
+# SOV 谈判决议类别（苏联视角，AI 回应）
+TFR_CRN_sov_negotiation_category = {
+	icon = GFX_goal_generic_diplomacy
+	picture = GFX_decision_cat_PRC_chinas_liberalization
+	visibility_when_empty = yes
+	priority = 45
+
+	allowed = {
+		tag = SOV
+	}
+
+	visible = {
+		has_global_flag = TFR_CRN_negotiation_accessible
 	}
 }

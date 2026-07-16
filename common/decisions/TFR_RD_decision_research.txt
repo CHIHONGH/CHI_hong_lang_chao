@@ -1,32 +1,6 @@
 PRC_nems_system = {
-	fanduipai_zunao = {
-		icon = GFX_PRC_Power_Through_the_Chairman
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			always = no
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 100
-		timeout_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = -0.02
-			}
-			nems_jindu = yes
-			activate_mission = fanduipai_zunao
-		}
-	}
 	yu_fanduipai_hezuo = {
 		icon = GFX_PRC_Power_Through_the_Chairman
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -51,9 +25,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -67,9 +38,6 @@ PRC_nems_system = {
 			}
 			nems_jindu = yes
 			hidden_effect = {
-				add_dynamic_modifier = {
-					modifier = PRC_NEMS_dynamic
-				}
 				add_to_variable = {
 					var = NEMS_stability_factor_dynamic_var
 					value = 0.05
@@ -108,7 +76,10 @@ PRC_nems_system = {
 				}
 			}
 			effect_tooltip = {
-				add_ideas = PRC_NEMS
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS
+				}
 			}
 		}
 	}
@@ -117,13 +88,10 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
-			has_completed_focus = PRC_nl_maoist_vision
+			has_completed_focus = PRC_nl_building_foundation_of_model
 		}
 		cost = 10
 		days_remove = 15
@@ -148,13 +116,10 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
-			has_completed_focus = PRC_nl_adopting_ASPR_experience
+			has_completed_focus = PRC_nl_state_enterprise_pilot_operations
 		}
 		cost = 20
 		days_remove = 30
@@ -179,13 +144,10 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
-			has_completed_focus = PRC_nl_sensor_network_deployment
+			has_completed_focus = PRC_nl_comprehensive_social_integration
 		}
 		cost = 30
 		days_remove = 120
@@ -263,6 +225,7 @@ PRC_nems_system = {
 					add_idea = aidonghua_moxing_idea
 				}
 			}
+			set_country_flag = PRC_nl_NEMS_model_end_flag
 			set_country_flag = zidonghua_moxed
 			if = {
 				limit = {
@@ -454,9 +417,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -489,13 +449,10 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
-			has_completed_focus = PRC_nl_decentralized_construction
+			has_completed_focus = PRC_nl_national_IoT_construction
 		}
 		cost = 150
 		days_remove = 150
@@ -520,9 +477,6 @@ PRC_nems_system = {
 	}
 	guangzhou_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -599,9 +553,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -672,9 +623,6 @@ PRC_nems_system = {
 	}
 	wuhan_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -751,9 +699,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -824,9 +769,6 @@ PRC_nems_system = {
 	}
 	chongqing_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -903,9 +845,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -976,9 +915,6 @@ PRC_nems_system = {
 	}
 	wulumuqi_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1054,9 +990,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1126,9 +1059,6 @@ PRC_nems_system = {
 	}
 	taibei_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1204,9 +1134,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1276,9 +1203,6 @@ PRC_nems_system = {
 	}
 	wulan_baotuo_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1359,9 +1283,6 @@ PRC_nems_system = {
 	}
 	haishenwan_jiedian = {
 		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1483,9 +1404,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1539,9 +1457,6 @@ PRC_nems_system = {
 	}
 	hua_zhong = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1601,9 +1516,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1657,9 +1569,6 @@ PRC_nems_system = {
 	}
 	hua_dong = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1719,9 +1628,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1775,9 +1681,6 @@ PRC_nems_system = {
 	}
 	xi_bei = {
 		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1837,9 +1740,6 @@ PRC_nems_system = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1894,7 +1794,7 @@ PRC_nems_system = {
 	apply_nems_to_other_states = {
 		icon = GFX_PRC_loji_decision_icon
 		visible = {
-			has_completed_focus = PRC_nl_integrate_long_march_AI
+			has_completed_focus = PRC_nl_long_march_plan
 		}
 		target_trigger = {
 			NOT = {
@@ -1920,9 +1820,6 @@ PRC_nems_system = {
 PRC_dawn_project = {
 	zhiyao_yimiao = {
 		icon = GFX_PRC_Negotiate_with_the_Fuerdai
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -1970,9 +1867,6 @@ PRC_dawn_project = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -1984,7 +1878,6 @@ PRC_dawn_project = {
 		complete_effect = {
 		}
 		remove_effect = {
-			custom_effect_tooltip = PRC_military_tree_opened_tt
 			set_country_flag = PRC_military_tree_available
 			add_to_variable = {
 				var = rd_production_factory_max_efficiency_factor_var
@@ -2019,6 +1912,14 @@ PRC_dawn_project = {
 		fire_only_once = yes
 		cost = 50
 		days_remove = 120
+		complete_effect = {
+			custom_effect_tooltip = PRC_chinese_space_age_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = PRC_chinese_space_age_dynamic
+				}
+			}
+		}
 		remove_effect = {
 			unlock_decision_tooltip = PRC_asteroid_mining_programme_new_left
 			unlock_decision_tooltip = PRC_new_moon_race_programme_new_left
@@ -2035,9 +1936,6 @@ PRC_dawn_project = {
 	}
 	liangzi_jisuan = {
 		icon = GFX_computers
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -2078,9 +1976,6 @@ PRC_dawn_project = {
 	}
 	xinnengyuan_chuneng = {
 		icon = GFX_PRC_atomic_nuclear
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -2151,9 +2046,6 @@ PRC_dawn_project = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -2192,9 +2084,6 @@ PRC_dawn_project = {
 	}
 	chaodao_cailiao = {
 		icon = GFX_PRC_railroad_train
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -2237,9 +2126,6 @@ PRC_dawn_project = {
 	}
 	haiyang_ziyuan = {
 		icon = GFX_PRC_chinese_enviroment_cat
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}
@@ -2311,9 +2197,6 @@ PRC_dawn_project = {
 		allowed = {
 			tag = PRC
 		}
-		allowed = {
-			tag = PRC
-		}
 		available = {
 		}
 		visible = {
@@ -2366,9 +2249,6 @@ PRC_dawn_project = {
 	}
 	sidai_hefanying = {
 		icon = GFX_PRC_atomic_nuclear
-		allowed = {
-			tag = PRC
-		}
 		allowed = {
 			tag = PRC
 		}

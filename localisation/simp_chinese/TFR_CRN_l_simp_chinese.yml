@@ -1,89 +1,258 @@
-l_simp_chinese:
+﻿l_simp_chinese:
 
  # ========== 类别 ==========
- TFR_CRN_negotiation_category:0 "外东北-图瓦领土回归谈判"
+ TFR_CRN_negotiation_category:0 "中俄边境谈判"
+ TFR_CRN_sov_negotiation_category:0 "中俄边境谈判（[SOV.GetName]视角）"
 
  # ========== 旗标/条件本地化 ==========
  TFR_CRN_negotiation_active:0 "谈判进行中"
  TFR_CRN_negotiation_ended:0 "§R谈判已结束§!"
  TFR_CRN_negotiation_accessible:0 "谈判机制已启用"
- TFR_CRN_PRC_started_negotiation:0 "已启动领土谈判"
+ TFR_CRN_negotiation_failed:0 "谈判失败"
+ TFR_CRN_negotiation_success:0 "谈判成功"
+ TFR_CRN_PRC_started_negotiation:0 "已启动边境谈判"
 
- # ========== 决议名 & 描述 ==========
- TFR_CRN_start_negotiation:0 "开启外东北-图瓦领土回归谈判"
- TFR_CRN_start_negotiation_desc:0 "第二次欧陆战争正在欧洲肆虐，俄罗斯东西两线承压。此时不拿回故土，更待何时？\n\n启动后将有 100 天窗口期，期间可按顺序购买各州。俄罗斯的绝望度越高，愿意卖的州越多。"
+ # ========== 三轮旗标 ==========
+ TFR_CRN_round_1_active:0 "第1轮：唐努乌梁海与滨海边疆"
+ TFR_CRN_round_2_active:0 "第2轮：黑龙江沿岸"
+ TFR_CRN_round_3_active:0 "第3轮：外兴安岭与库页岛"
+ TFR_CRN_round_1_success:0 "第1轮成功"
+ TFR_CRN_round_2_success:0 "第2轮成功"
+ TFR_CRN_round_3_success:0 "第3轮成功"
+ TFR_CRN_round_1_complete:0 "第1轮已完成"
+ TFR_CRN_round_2_complete:0 "第2轮已完成"
+ TFR_CRN_round_3_complete:0 "第3轮已完成"
+ TFR_CRN_round_1_failed:0 "第1轮失败"
+ TFR_CRN_round_2_failed:0 "第2轮失败"
+ TFR_CRN_round_3_failed:0 "第3轮失败"
+ TFR_CRN_PRC_made_first_move:0 "中方已递交照会"
 
- # — 大棒 —
- TFR_CRN_diplomatic_pressure:0 "外交照会施压"
- TFR_CRN_diplomatic_pressure_desc:0 "通过外交渠道对俄施压，暗示如果俄罗斯在领土问题上继续拖延，中方将重新评估双边关系。\n\n§Y效果：§!SOV 绝望度 +10\n冷却 20 天"
+ # ========== Timer 计时器 ==========
+ TFR_CRN_round_1_timer:0 "第1轮谈判"
+ TFR_CRN_round_1_timer_desc:0 "唐努乌梁海与滨海边疆谈判进行中"
+ TFR_CRN_round_2_timer:0 "第2轮谈判"
+ TFR_CRN_round_2_timer_desc:0 "黑龙江沿岸谈判进行中"
+ TFR_CRN_round_3_timer:0 "第3轮谈判"
+ TFR_CRN_round_3_timer_desc:0 "外兴安岭与库页岛谈判进行中"
 
- TFR_CRN_economic_sanctions:0 "经济制裁威胁"
- TFR_CRN_economic_sanctions_desc:0 "放出风声：如果俄罗斯在远东领土问题上不让步，中方可能限制双边贸易、收紧投资审查。经济上的寒意比西伯利亚的冬天更难熬。\n\n§Y效果：§!SOV 绝望度 +15 + 贸易影响力 -30%\n冷却 30 天"
+ # ========== PRC 决议名 & 描述 ==========
+ # — 第1轮：大棒 —
+ TFR_CRN_diplomatic_note_r1:0 "递交外交照会"
+ TFR_CRN_diplomatic_note_r1_desc:0 "通过正式外交渠道向[SOV.GetName]递交关于唐努乌梁海与海参崴地区主权问题的照会。言辞克制但立场坚定。\n每轮限1次。"
 
- TFR_CRN_border_exercise:0 "中俄边境联合军事演习"
- TFR_CRN_border_exercise_desc:0 "在黑龙江沿岸和内蒙古边境地区举行大规模军事演习。名为'联合反恐演练'，实为提醒莫斯科——远东的军力对比已经变了。\n\n§Y效果：§!世界紧张度 +0.5%，SOV 稳定度 -3%，SOV 绝望度 +20\n冷却 45 天"
+ TFR_CRN_reopen_tuva:0 "重审唐努乌梁海置制"
+ TFR_CRN_reopen_tuva_desc:0 "援引清《大清一统志》对唐努乌梁海的明确记载，以及1944年[SOV.GetName]吞并图瓦人民共和国未经中国承认的事实，正式要求将图瓦归还中国。"
 
- # — 购买 —
- TFR_CRN_buy_tuva:0 "赎回唐努乌梁海"
- TFR_CRN_buy_tuva_desc:0 "唐努乌梁海——自清末已脱离中国的故土。提议以经济补偿换取俄罗斯承认中国对该地区的主权。\n\n§Y赎金：§!50 PP"
+ # — 第1轮：萝卜 —
+ TFR_CRN_vladivostok_port:0 "海参崴联合港务协定"
+ TFR_CRN_vladivostok_port_desc:0 "提议将海参崴港设为中俄联合管理港口，中方提供港口扩建资金，俄方给予中方船只优先通行权和贸易优惠。"
 
- TFR_CRN_buy_vladivostok:0 "赎回海参崴"
- TFR_CRN_buy_vladivostok_desc:0 "符拉迪沃斯托克——俄国人叫它'统治东方'，我们叫它海参崴。这座不冻港在一个半世纪前被《北京条约》割让。\n\n§Y赎金：§!50 PP + 贸易优惠 90天"
+ TFR_CRN_coastal_development:0 "滨海边疆区经济补偿"
+ TFR_CRN_coastal_development_desc:0 "向俄方提供滨海边疆区基础设施建设援助，包括公路、电力和通讯网络升级。以经济发展换取领土回归。"
 
- TFR_CRN_buy_south_amur:0 "赎回海兰泡"
- TFR_CRN_buy_south_amur_desc:0 "海兰泡——位于黑龙江左岸，与黑河隔江相望。1900年庚子俄难中，数千中国平民在此惨遭屠杀。今天，我们以和平的方式让这片土地回家。\n\n§Y赎金：§!60 PP + 民用工厂 90天"
+ # — 第2轮：大棒 —
+ TFR_CRN_diplomatic_pressure_r2:0 "外交施压"
+ TFR_CRN_diplomatic_pressure_r2_desc:0 "在谈判桌上加大对俄施压力度。提醒对方——黑龙江沿岸的历史旧账还没有清算。\n每轮限1次。"
 
- TFR_CRN_buy_birobidzhan:0 "赎回奇穆尼窝集"
- TFR_CRN_buy_birobidzhan_desc:0 "比罗比詹——犹太自治州的首府，但在这片土地上曾经生活着中国的赫哲和鄂伦春先民。\n\n§Y赎金：§!60 PP + 军备物资"
+ TFR_CRN_64_villages:0 "江东六十四屯索赔案"
+ TFR_CRN_64_villages_desc:0 "1900年，海兰泡及江东六十四屯的中国居民遭俄军屠杀，约七千人遇难。俄方违约吞并江东六十四屯——瑷珲条约原规定此地永久由中国管辖。正式提出索赔和历史清算。"
 
- TFR_CRN_buy_khabarovsk:0 "赎回伯力"
- TFR_CRN_buy_khabarovsk_desc:0 "伯力——以17世纪沙俄侵略者哈巴罗夫命名的地方。每一次翻开地图看到这个名字，都是一道伤疤。今天我们来还历史一个公道。\n\n§Y赎金：§!70 PP + 军用工厂 90天"
+ TFR_CRN_reopen_aigun:0 "重审瑷珲条约边界条款"
+ TFR_CRN_reopen_aigun_desc:0 "1858年《瑷珲条约》是沙皇俄国在第二次鸦片战争中趁火打劫的产物。俄方在江东六十四屯问题上违约在先，该条约的边界条款效力可被挑战。"
 
- TFR_CRN_buy_nikolayevsk:0 "赎回庙街"
- TFR_CRN_buy_nikolayevsk_desc:0 "庙街——黑龙江入海口上的重镇，庙街之名来源于清朝在此设立的庙街巡检司。拿回这里，就拿到了黑龙江的入海口。\n\n§Y赎金：§!80 PP + 装备与人力支援"
+ TFR_CRN_reopen_cr_1929:0 "重审1929年中东路事件"
+ TFR_CRN_reopen_cr_1929_desc:0 "1929年张学良收回中东铁路后，[SOV.GetName]红军入侵满洲，强迫中国签署《伯力协定》恢复[SOV.GetName]对中东铁路的控制。该协定为军事压力下签订，法律效力存疑。"
 
- TFR_CRN_buy_amur:0 "赎回外兴安岭"
- TFR_CRN_buy_amur_desc:0 "外兴安岭——《尼布楚条约》中确立的中俄东段边界标志。这片广袤的山林地带承载着太多的历史记忆。\n\n§Y赎金：§!90 PP + 派遣'远东国际志愿旅'"
+ # — 第2轮：萝卜 —
+ TFR_CRN_amur_aid:0 "黑龙江沿岸经济援助"
+ TFR_CRN_amur_aid_desc:0 "向[SOV.GetName]远东地区提供大规模经济援助，包括轻步兵装备、支援设备和轻型机械化装备，帮助俄军在欧洲战场维持战斗力。"
 
- TFR_CRN_buy_sakhalin:0 "赎回库页岛"
- TFR_CRN_buy_sakhalin_desc:0 "库页岛——中国第一大岛，自唐以来的中国领土，在20世纪之交被日俄争夺后终落入俄手。这是整个外东北版图上最后一块拼图。\n\n§Y赎金：§!100 PP"
+ TFR_CRN_far_east_investment:0 "远东基础设施投资"
+ TFR_CRN_far_east_investment_desc:0 "在[SOV.GetName]远东地区大规模投资建设民用和军事工业设施。以经济纽带换取领土问题的突破。"
 
- # ========== 购买完成 tooltip（替代原新闻事件） ==========
- TFR_CRN_tooltip_tuva:0 "§G唐努乌梁海回归中国§!\n经过外交谈判，俄罗斯联邦政府已正式同意将唐努乌梁海（图瓦）的主权移交中华人民共和国。这片自清朝末年以后便游离于中国版图之外的土地，终于在和平的旗帜下回归祖国。"
- TFR_CRN_tooltip_vladivostok:0 "§G海参崴回归中国§!\n符拉迪沃斯托克——俄罗斯在远东最大的港口城市——正式移交中华人民共和国。作为交换条件，中方将为俄罗斯提供优惠贸易待遇。这座被俄国人称为'统治东方'的城市，从此有了它真正的名字：海参崴。"
- TFR_CRN_tooltip_south_amur:0 "§G海兰泡回归中国§!\n黑龙江左岸的重镇海兰泡已正式移交。作为补偿，中方将在未来 90 天内向俄罗斯提供民用工业设施支持。1900年的血债，今天以和平的方式了结了。"
- TFR_CRN_tooltip_birobidzhan:0 "§G奇穆尼窝集回归中国§!\n比罗比詹正式回归中国。中方同时向俄方移交了一批军备物资，以帮助俄军在欧洲战场坚持抗战。"
- TFR_CRN_tooltip_khabarovsk:0 "§G伯力回归中国§!\n哈巴罗夫斯克——以殖民者命名迄今依然是俄罗斯远东最大城市之一的伯力——已回归中国。中国将在未来 90 天内向俄罗斯提供军事工业支持。伯力不再是一个殖民者的名字。"
- TFR_CRN_tooltip_nikolayevsk:0 "§G庙街回归中国§!\n庙街——黑龙江入海口的最后一座重镇——正式回归中国。中国同时向俄罗斯提供装备和人力援助。至此从海兰泡到庙街，整个黑龙江下游已全部回到中国的怀抱。"
- TFR_CRN_tooltip_amur:0 "§G外兴安岭回归中国§!\n外兴安岭正式回归。与此同时，一支由'国际志愿者'组成的精锐部队——远东国际志愿旅——出现在布里亚特共和国的土地上。没有人知道他们从哪里来。"
+ # — 第3轮：大棒 —
+ TFR_CRN_ultimatum_r3:0 "最后通牒"
+ TFR_CRN_ultimatum_r3_desc:0 "在谈判桌上提出中方最终立场——外兴安岭和库页岛必须回归。没有任何妥协余地。\n每轮限1次。"
+
+ TFR_CRN_nerchinsk:0 "援引尼布楚条约法理"
+ TFR_CRN_nerchinsk_desc:0 "1689年《尼布楚条约》确认外兴安岭以南、黑龙江以北为中国领土。这是中国与欧洲国家间第一个平等条约，法理地位远高于其后在不平等条件下签署的瑷珲条约和北京条约。"
+
+ TFR_CRN_sakhalin_sovereignty:0 "库页岛主权未定论"
+ TFR_CRN_sakhalin_sovereignty_desc:0 "清朝从未正式割让库页岛给任何国家。日俄两国在库页岛的争夺恰恰说明该岛主权存在争议，中国作为原宗主国有权参与最终的领土安排。"
+
+ # — 第3轮：萝卜 —
+ TFR_CRN_sakhalin_development:0 "萨哈林油气联合开发"
+ TFR_CRN_sakhalin_development_desc:0 "提议建立中俄萨哈林（库页岛）油气联合开发公司，中方提供资金和技术，俄方以资源入股。这是自尼布楚条约以来——对俄国人最有诚意的经济提议了。"
+
+ TFR_CRN_far_east_strategic:0 "远东战略援助协定"
+ TFR_CRN_far_east_strategic_desc:0 "这不再是经济援助——这是战略投资。向[SOV.GetName]提供现代化装甲装备、军事技术和人力支援，以交换外兴安岭和库页岛的领土归属。作为协议的一部分，三支精锐的'远东国际志愿旅'将部署在布里亚特。\n\n欧洲的战争需要[SOV.GetName]活着，但活着的[SOV.GetName]需要付出代价。"
+
+ # ========== SOV 决议名 & 描述 ==========
+ # — 第1轮 —
+ TFR_CRN_sov_cold_response_r1:0 "冷淡回应"
+ TFR_CRN_sov_cold_response_r1_desc:0 "以克制的措辞回应中方照会，强调[SOV.GetName]的领土完整不容谈判。"
+
+ TFR_CRN_sov_limited_coop_r1:0 "有限合作"
+ TFR_CRN_sov_limited_coop_r1_desc:0 "在海参崴港口使用权等经济议题上开放有限合作空间。在不触及主权的前提下，港口事务好商量。"
+
+ TFR_CRN_sov_outright_reject_r1:0 "断然拒绝"
+ TFR_CRN_sov_outright_reject_r1_desc:0 "中方对唐努乌梁海和海参崴的历史主张毫无依据。[SOV.GetName]对此不予讨论。"
+
+ # — 第2轮 —
+ TFR_CRN_sov_diplomatic_protest_r2:0 "外交抗议"
+ TFR_CRN_sov_diplomatic_protest_r2_desc:0 "就中方在黑龙江沿岸问题上的历史主张提出外交抗议。中方的指控是对中俄两国现有友好关系的损害。"
+
+ TFR_CRN_sov_partial_concession_r2:0 "部分让步"
+ TFR_CRN_sov_partial_concession_r2_desc:0 "在边界重划等部分议题上做出有限妥协。但[SOV.GetName]不会无条件放弃黑龙江以北的任何领土。"
+
+ TFR_CRN_sov_stall_r2:0 "以拖待变"
+ TFR_CRN_sov_stall_r2_desc:0 "设立联合委员会、强调分阶段推进，用外交辞令消磨中方耐心。"
+
+ # — 第3轮 —
+ TFR_CRN_sov_submit_r3:0 "屈服"
+ TFR_CRN_sov_submit_r3_desc:0 "接受了中方的全部要求。外兴安岭和库页岛的主权将移交给中华人民共和国。"
+
+ TFR_CRN_sov_bargain_r3:0 "讨价还价"
+ TFR_CRN_sov_bargain_r3_desc:0 "接受部分条件但拒绝全部——库页岛可以讨论，外兴安岭不能碰。"
+
+ TFR_CRN_sov_threaten_rupture_r3:0 "威胁破裂"
+ TFR_CRN_sov_threaten_rupture_r3_desc:0 "克里姆林宫发出最后警告：若中方一意孤行，[SOV.GetName]将退出全部谈判。"
+
+ # ========== Custom Effect Tooltip ==========
+ # 大棒
+ TFR_CRN_effect_diplomatic_note_r1:0 "§G中方外交筹码 +8§!"
+ TFR_CRN_effect_reopen_tuva:0 "§G中方外交筹码 +12§!"
+ TFR_CRN_effect_diplomatic_pressure_r2:0 "§G中方外交筹码 +10§!"
+ TFR_CRN_effect_64_villages:0 "§G中方外交筹码 +15§!"
+ TFR_CRN_effect_reopen_aigun:0 "§G中方外交筹码 +12§!"
+ TFR_CRN_effect_reopen_cr_1929:0 "§G中方外交筹码 +15§!，世界紧张度 +0.3%"
+ TFR_CRN_effect_ultimatum_r3:0 "§G中方外交筹码 +12§!"
+ TFR_CRN_effect_nerchinsk:0 "§G中方外交筹码 +8§!"
+ TFR_CRN_effect_sakhalin_sovereignty:0 "§G中方外交筹码 +10§!"
+
+ # 萝卜
+ TFR_CRN_effect_vladivostok_port:0 "§G[SOV.GetName]让步意愿 +15§!"
+ TFR_CRN_effect_coastal_development:0 "§G[SOV.GetName]让步意愿 +20§!"
+ TFR_CRN_effect_amur_aid:0 "§G[SOV.GetName]让步意愿 +18§!"
+ TFR_CRN_effect_far_east_investment:0 "§G[SOV.GetName]让步意愿 +22§!"
+ TFR_CRN_effect_sakhalin_development:0 "§G[SOV.GetName]让步意愿 +20§!"
+ TFR_CRN_effect_far_east_strategic:0 "§G[SOV.GetName]让步意愿 +25§!"
+
+ # SOV tooltips
+ TFR_CRN_effect_sov_cold_response:0 "§R让步意愿 -3§!"
+ TFR_CRN_effect_sov_limited_coop:0 "§G让步意愿 +5§!，§R外交筹码 -2§!"
+ TFR_CRN_effect_sov_outright_reject:0 "§R让步意愿 -8§!"
+ TFR_CRN_effect_sov_diplomatic_protest:0 "§R让步意愿 -3§!"
+ TFR_CRN_effect_sov_partial_concession:0 "§G让步意愿 +7§!，§R外交筹码 -3§!"
+ TFR_CRN_effect_sov_stall:0 "§R让步意愿 -5§!，§G外交筹码 +3§!"
+ TFR_CRN_effect_sov_submit:0 "§G让步意愿 +15§!，§G外交筹码 +5§!"
+ TFR_CRN_effect_sov_bargain:0 "§G让步意愿 +5§!，§G外交筹码 +5§!"
+ TFR_CRN_effect_sov_threaten_rupture:0 "§R让步意愿 -10§!"
 
  # ========== 事件 ==========
  # 1 — 谈判开始
- TFR_CRN.1.t:0 "外东北-图瓦领土回归谈判启动"
- TFR_CRN.1.d:0 "中华人民共和国政府已正式向俄罗斯联邦提出启动领土回归谈判。\n\n第一次欧陆战争的伤痕未愈，第二次欧陆战争的炮火已在欧洲燃起。俄罗斯东西两线受敌，国力日衰。在这样的历史时刻，我们选择以外交手段，而不是武力，来解决两国间存在已久的领土问题。\n\n谈判窗口为 100 天。俄罗斯面临的战争压力越大，愿意出售的领土就越多。"
- TFR_CRN.1.a:0 "开始谈判。"
+ TFR_CRN.1.t:0 "中俄边境谈判启动"
+ TFR_CRN.1.d:0 "中华人民共和国政府已正式向[SOV.GetName]提出启动边境历史遗留问题的谈判。\n\n谈判将分三轮进行：\n\n第一轮——§Y唐努乌梁海与滨海边疆§!：讨论图瓦（唐努乌梁海）和海参崴的主权归属。\n第二轮——§Y黑龙江沿岸§!：讨论庙街、伯力、奇穆尼窝集和海兰泡四地的归属。\n第三轮——§Y外兴安岭与库页岛§!：讨论外兴安岭和库页岛的归属。\n\n每轮谈判成功后方可进入下一轮。失败的轮次所涉领土将无法通过谈判收回。\n\n谈判方式分为两类：\n§R大棒§!（边界法理施压）—— 增加中方外交筹码\n§G萝卜§!（经济援助补偿）—— 增加[SOV.GetName]的领土让步意愿"
+ TFR_CRN.1.a:0 "历史给了我们一个窗口。"
 
- # 8 — 外兴安岭
+ # 2 — 第2轮开始
+ TFR_CRN.2.t:0 "黑龙江沿岸谈判开启"
+ TFR_CRN.2.d:0 "唐努乌梁海与滨海边疆的谈判已经成功。图瓦和海参崴的回归已成定局。\n\n现在进入第二阶段：§Y黑龙江沿岸§!。黑龙江以北、从海兰泡到庙街的广袤土地——这是1858年《瑷珲条约》中失去的最大一块领土，也是中俄边境历史中最沉痛的一页。\n\n谈判桌上，中方代表团拿出了江东六十四屯的历史档案。俄方代表团的表情比黑龙江的冰面还要冷。\n\n但他们的战争还在打。他们需要我们的援助。"
+ TFR_CRN.2.a:0 "继续前行。"
+
+ # 3 — 第3轮开始
+ TFR_CRN.3.t:0 "外兴安岭与库页岛谈判开启"
+ TFR_CRN.3.d:0 "黑龙江沿岸的谈判已经成功。庙街、伯力、奇穆尼窝集和海兰泡的回归板上钉钉。\n\n谈判进入了最后也是最艰难的阶段：§Y外兴安岭与库页岛§!。\n\n外兴安岭——1689年《尼布楚条约》曾经确认的最东端边界。库页岛——中国第一大岛，清朝从未正式割让，却被日俄反复争夺后落入[SOV.GetName]之手。\n\n这两块领土是外东北回归版图上最遥远、也最具有象征意义的拼图。莫斯科方面已经感到了前所未有的压力——而欧洲的战火让他们没有多少选择了。"
+ TFR_CRN.3.a:0 "最后一搏。"
+
+ # 4 — 谈判失败
+ TFR_CRN.4.t:0 "中俄边境谈判中止"
+ TFR_CRN.4.d:0 "外交谈判未能达成全部目标。\n\n已达成协议的领土将按照协议移交中国。未达成协议的部分则暂时搁置——在这轮谈判中，我们已经走到了[SOV.GetName]愿意走的最远处。\n\n但历史不会停滞。只要[SOV.GetName]在这场战争中继续失血，谈判的窗口也许还会再次打开。"
+ TFR_CRN.4.a:0 "拿到多少是多少。"
+
+ # 5 — 谈判全部成功
+ TFR_CRN.5.t:0 "外东北全部回归中国"
+ TFR_CRN.5.d:0 "三轮谈判，全部成功。\n\n从唐努乌梁海到海参崴，从黑龙江沿岸的每一座城市到外兴安岭的群山，从中国第一大岛库页岛到黑龙江的入海口庙街——1858年以来失去的外东北领土，已在外交谈判桌上全部回归中华人民共和国。\n\n在最后一轮谈判结束时，莫斯科的谈判代表默默签署了最后一份文件。据说他签字时，手在发抖。\n\n这不是征服。这不是复仇。这是一百六十多年来，第一次有人以和平的方式，把历史纠正了。"
+ TFR_CRN.5.a:0 "历史记住了这一天。"
+
+ # 8 — 外兴安岭回归
  TFR_CRN.8.t:0 "外兴安岭回归中国"
- TFR_CRN.8.d:0 "外兴安岭——这片《尼布楚条约》中确认的中国领土，正式回归中华人民共和国。\n\n与此同时，一支由'国际志愿者'组成的精锐部队——远东国际志愿旅——出现在布里亚特共和国的土地上。这些'志愿者'装备着最现代化的武器，将作为'外国友军'协助俄军在欧洲战场作战。\n\n没有人知道他们从哪里来。"
+ TFR_CRN.8.d:0 "外兴安岭——这片《尼布楚条约》中确认的中国领土，正式回归中华人民共和国。\n\n中国将向[SOV.GetName]提供一笔不菲的经济援助和装备支援，作为领土转交的补偿。与此同时，一支由'国际志愿者'组成的精锐部队也已出现在西伯利亚的铁路沿线。\n\n这些'志愿者'装备着最现代化的武器，没有人知道他们从哪里来。但他们的枪口，对准了欧洲的方向。"
  TFR_CRN.8.a:0 "为了和平。"
 
- # 9 — 超时
- TFR_CRN.9.t:0 "外东北-图瓦谈判窗口关闭"
- TFR_CRN.9.d:0 "一百天的谈判窗口已经关闭。\n\n有些历史机遇，错过了就是错过了。"
- TFR_CRN.9.a:0 "功亏一篑。"
-
- # 10 — 库页岛
+ # 10 — 库页岛回归
  TFR_CRN.10.t:0 "库页岛回归中国——外东北全部回归"
- TFR_CRN.10.d:0 "库页岛——外东北地区最后一块回归中国版图的土地，已正式完成主权移交。\n\n从唐努乌梁海到海参崴，从海兰泡到庙街，从外兴安岭到库页岛——自1858年《瑷珲条约》和1860年《北京条约》以来，中国失去了一百多年的外东北领土，已在和平的谈判桌上全部收回。\n\n这不是征服。这是迟到百年的一场握手。"
+ TFR_CRN.10.d:0 "库页岛——外东北地区最后一块回归中国版图的土地，已正式完成主权移交。\n\n从唐努乌梁海到海参崴，从海兰泡到庙街，从外兴安岭到库页岛——自1858年《瑷珲条约》和1860年《北京条约》以来，中国失去了一百多年的外东北领土，已在和平的谈判桌上全部收回。\n\n在克里姆林宫的签字仪式上，中国代表团的负责人拿起笔，停顿了三秒。这三秒，是一百六十年。\n\n然后他签下了名字。\n\n这不是征服。这不是复仇。这是迟到百年的一场握手。"
  TFR_CRN.10.a:0 "历史记住了这一天。"
+
+ # 11 — SOV解体领土割让
+ TFR_CRN.11.t:0 "外东北剩余领土无条件回归"
+ TFR_CRN.11.d:0 "那个曾经横跨欧亚大陆的巨人解体了。\n\n随着第二次欧陆战争的落幕，这个红色帝国轰然崩塌。在随后的和平会议上，外东北地区剩余未解决的领土问题得到了最终处理。\n\n那些在谈判中未能收回的土地，如今以历史意想不到的方式回到了中国的怀抱。\n\n这就是历史——当强者倒下时，被掩埋的真相总会浮出水面。"
+ TFR_CRN.11.a:0 "尘埃落定。"
 
  # ========== 调试决议 ==========
  TFR_CRN_start_debug:0 "§Y[调试]§! 启动中俄谈判"
- TFR_CRN_start_debug_desc:0 "设置 TFR_CRN_negotiation_accessible 旗标，使谈判类别可见。"
- TFR_CRN_reset_debug:0 "§Y[调试]§! 重置谈判"
- TFR_CRN_reset_debug_desc:0 "清空所有谈判相关的变量和旗标。"
- TFR_CRN_set_desperation_debug:0 "§Y[调试]§! 设 SOV 绝望度为 100"
- TFR_CRN_set_desperation_debug_desc:0 "将 SOV 的 TFR_CRN_desperation 强制设为 100，可用于快速测试购买流程。"
+ TFR_CRN_start_debug_desc:0 "直接初始化谈判，使谈判类别可见并开始第1轮。"
+ TFR_CRN_reset_debug:0 "§Y[调试]§! 重启谈判"
+ TFR_CRN_reset_debug_desc:0 "清空所有谈判相关的变量和旗标，恢复谈判前状态。"
+ TFR_CRN_set_desperation_debug:0 "§Y[调试]§! 设 SOV 外交筹码 = 100"
+ TFR_CRN_set_desperation_debug_desc:0 "将 SOV 的外交筹码强制设为 100。"
+ TFR_CRN_set_concession_debug:0 "§Y[调试]§! 设 SOV 让步意愿 = 100"
+ TFR_CRN_set_concession_debug_desc:0 "将 SOV 的让步意愿强制设为 100。"
  TFR_CRN_force_all_debug:0 "§Y[调试]§! 强制全部 8 省回归"
- TFR_CRN_force_all_debug_desc:0 "跳过购买流程，直接让全部 8 省转交 PRC。"
+ TFR_CRN_force_all_debug_desc:0 "跳过谈判，直接让全部 8 省转交 PRC。"
+ TFR_CRN_view_vars_debug:0 "§Y[调试]§! 查看 SOV 当前谈判变量"
+ TFR_CRN_view_vars_debug_desc:0 "在 tooltip 中显示外交筹码和让步意愿的当前值。"
+ TFR_CRN_debug_view_vars:0 "§Y当前 SOV 变量：§!\n外交筹码：§R[SOV.TFR_CRN_desperation]§!\n让步意愿：§G[SOV.TFR_CRN_concession_willingness]§!\n当前轮次：§Y[SOV.TFR_CRN_negotiation_round]§!\nPRC 行动：§Y[SOV.TFR_CRN_prc_round_actions]§!\nSOV 行动：§Y[SOV.TFR_CRN_sov_round_actions]§!"
+
+ TFR_CRN_skip_round_debug:0 "§Y[调试]§! 跳过本轮"
+ TFR_CRN_skip_round_debug_desc:0 "立即触发当前活跃的轮次计时器。"
+
+ # ========== GUI 标签 ==========
+ TFR_CRN_label_soviet:0 "苏方"
+ TFR_CRN_label_russian:0 "俄方"
+ TFR_CRN_name_soviet:0 "苏联"
+ TFR_CRN_name_russian:0 "俄罗斯"
+ TFR_CRN_desp_label_soviet:0 "中方外交筹码"
+ TFR_CRN_desp_label_russian:0 "中方外交筹码"
+ TFR_CRN_conc_label_soviet:0 "苏联让步意愿"
+ TFR_CRN_conc_label_russian:0 "俄罗斯让步意愿"
+ TFR_CRN_help_tooltip:0 "§Y外东北谈判说明§!\n谈判分三轮进行，每轮有 50 天时间。\n中方先手提出要求，苏方随后回应。\n每轮结束时，外交筹码和让步意愿均达标方可推进。\n\n§R大棒（边界法理施压）§!：增加中方外交筹码，获取渠道少。\n§G萝卜（经济援助补偿）§!：增加[SOV.GetName]让步意愿，是谈判主力。\n\n若某轮失败，谈判立即终止，已成功轮次的领土照常交付。"
+ TFR_CRN_desperation_label:0 "中方外交筹码"
+ TFR_CRN_concession_label:0 "[SOV.TFR_CRN_GetSovConcessionLabel]"
+ TFR_CRN_desperation_value:0 "[?SOV:TFR_CRN_desperation|.0]%"
+ TFR_CRN_concession_value:0 "[?SOV:TFR_CRN_concession_willingness|.0]%"
+ TFR_CRN_round_title_r1:0 "§Y唐努乌梁海与滨海边疆谈判§!"
+ TFR_CRN_round_title_r2:0 "§Y黑龙江沿岸谈判§!"
+ TFR_CRN_round_title_r3:0 "§Y外兴安岭与库页岛谈判§!"
+ TFR_CRN_round_title_dynamic:0 "[SOV.TFR_CRN_GetRoundTitle]"
+ TFR_CRN_conversation_prc_label:0 "中方代表团"
+ TFR_CRN_conversation_sov_label:0 "[SOV.TFR_CRN_GetSovFactionLabel]代表团"
+
+ # ========== 中方会谈文本（15条）==========
+ TFR_CRN_convo_prc_1:0 "中华人民共和国政府就唐努乌梁海及海参崴之主权归属，正式向俄方提出交涉。此为照会全文。"
+ TFR_CRN_convo_prc_2:0 "唐努乌梁海自康熙年间即隶属中国，设旗置制。1944年之吞并，中国政府从未予以承认。"
+ TFR_CRN_convo_prc_3:0 "俄方在西线的处境，中方十分清楚。黑龙江沿岸的问题拖延至今——继续拖下去，对谁更不利，请俄方斟酌。"
+ TFR_CRN_convo_prc_4:0 "1900年海兰泡惨案，七千中国平民遇难。瑷珲条约所保证之"永远居住"权利，系俄方先行违反。中方现正式提出索赔。"
+ TFR_CRN_convo_prc_5:0 "1858年《瑷珲条约》签署于英法联军攻陷大沽之际，1900年俄方又违约在先。该约之边界条款，法理效力存疑。"
+ TFR_CRN_convo_prc_6:0 "1929年《伯力协定》系贵国军队占领满洲期间所迫签。以武力胁迫达成之协议，国际法上不受保护。"
+ TFR_CRN_convo_prc_7:0 "中方在此明确最终立场：外兴安岭与库页岛之主权必须归还。此事不容谈判。"
+ TFR_CRN_convo_prc_8:0 "1689年《尼布楚条约》为两国间首个平等条约。该约明确规定外兴安岭以南属中国——此系三百年来之历史法理。"
+ TFR_CRN_convo_prc_9:0 "库页岛——中国历代王朝从未签署任何割让条约。日俄两国间之争夺，不能取代中国作为原宗主国之权利。"
+ TFR_CRN_convo_prc_10:0 "中方提议：海参崴港由双方联合管理。中方负责投资扩建，俄方保留现有驻泊权——通行权与利益对等分配。"
+ TFR_CRN_convo_prc_11:0 "中方愿提供滨海边疆区基础设施援助方案——公路、电网、通讯。经济合作先行，政治问题可随之推进。"
+ TFR_CRN_convo_prc_12:0 "两万支步枪、四千套支援装备、两百台轻机械化车辆——首批物资已在运送途中。用以支持俄军在欧洲战场之作战。"
+ TFR_CRN_convo_prc_13:0 "中方将在远东地区投资建设民用及军用工业设施。战争结束后，上述设施无偿移交俄方。"
+ TFR_CRN_convo_prc_14:0 "萨哈林油气资源联合开发——中方提供资金与技术，俄方以资源入股。此乃自尼布楚以来最务实之经济提议。"
+ TFR_CRN_convo_prc_15:0 "三百辆现代坦克、三百辆自行火炮。一万五千名技术顾问。外加三个整编旅——已部署于布里亚特。他们的任务，是协助俄军稳定西线。"
+
+ # ========== 苏方会谈文本（9条）==========
+ TFR_CRN_convo_sov_1:0 "俄方对中方照会表示遗憾。俄罗斯联邦之领土完整不容谈判。"
+ TFR_CRN_convo_sov_2:0 "……港口事务方面，俄方愿意探讨联合管理之可行性。前提是主权归属不做变更。"
+ TFR_CRN_convo_sov_3:0 "唐努乌梁海之地位早已确定。海参崴系俄罗斯领土。此二项议题不予讨论。"
+ TFR_CRN_convo_sov_4:0 "中方就黑龙江沿岸所提之指控，俄方认为缺乏事实依据。我国正式提出外交抗议。"
+ TFR_CRN_convo_sov_5:0 "边界重划中涉及之技术性问题，双方可寻求共识。但黑龙江以北之主权归属，俄方立场不变。"
+ TFR_CRN_convo_sov_6:0 "俄方提议：设立中俄联合历史研究委员会，首先厘清史实。领土问题可在此框架下分阶段推进。"
+ TFR_CRN_convo_sov_7:0 "……中方所提条件，俄方全部接受。外兴安岭与库页岛之主权，移交中华人民共和国。"
+ TFR_CRN_convo_sov_8:0 "库页岛之安排可进一步磋商。但外兴安岭——事关西伯利亚大铁路之安全，俄方无法在此让步。"
+ TFR_CRN_convo_sov_9:0 "若中方在外兴安岭及库页岛问题上不作妥协，俄方将退出谈判。此前达成的全部共识，一并作废。"
