@@ -17,6 +17,9 @@ scripted_gui = {
 				clear_south_asia_data = yes
 				clear_east_asia_data = yes
 				clear_pacifica_data = yes
+				clear_africa_data = yes
+				clear_america_data = yes
+				clear_europe_data = yes
 				set_variable = {
 					CHN_Display_UI = 2
 				}
@@ -30,6 +33,9 @@ scripted_gui = {
 				clear_southeast_asia_data = yes
 				clear_east_asia_data = yes
 				clear_pacifica_data = yes
+				clear_africa_data = yes
+				clear_america_data = yes
+				clear_europe_data = yes
 				set_variable = {
 					CHN_Display_UI = 1
 				}
@@ -43,6 +49,9 @@ scripted_gui = {
 				clear_pacifica_data = yes
 				clear_south_asia_data = yes
 				clear_west_asia_data = yes
+				clear_africa_data = yes
+				clear_america_data = yes
+				clear_europe_data = yes
 				set_variable = {
 					CHN_Display_UI = 3
 				}
@@ -56,6 +65,9 @@ scripted_gui = {
 				clear_southeast_asia_data = yes
 				clear_south_asia_data = yes
 				clear_east_asia_data = yes
+				clear_africa_data = yes
+				clear_america_data = yes
+				clear_europe_data = yes
 				set_variable = {
 					CHN_Display_UI = 5
 				}
@@ -69,8 +81,59 @@ scripted_gui = {
 				clear_south_asia_data = yes
 				clear_east_asia_data = yes
 				clear_pacifica_data = yes
+				clear_africa_data = yes
+				clear_america_data = yes
+				clear_europe_data = yes
 				set_variable = {
 					CHN_Display_UI = 4
+				}
+				add_to_variable = {
+					PRC_Lib_Int_Dir_Var = 1
+				}
+			}
+			button_Region_Africa_click = {
+				set_country_flag = CHN_Display_Africa
+				clear_west_asia_data = yes
+				clear_southeast_asia_data = yes
+				clear_south_asia_data = yes
+				clear_east_asia_data = yes
+				clear_pacifica_data = yes
+				clear_america_data = yes
+				clear_europe_data = yes
+				set_variable = {
+					CHN_Display_UI = 6
+				}
+				add_to_variable = {
+					PRC_Lib_Int_Dir_Var = 1
+				}
+			}
+			button_Region_Europe_click = {
+				set_country_flag = CHN_Display_Europe
+				clear_west_asia_data = yes
+				clear_southeast_asia_data = yes
+				clear_south_asia_data = yes
+				clear_east_asia_data = yes
+				clear_pacifica_data = yes
+				clear_africa_data = yes
+				clear_america_data = yes
+				set_variable = {
+					CHN_Display_UI = 7
+				}
+				add_to_variable = {
+					PRC_Lib_Int_Dir_Var = 1
+				}
+			}
+			button_Region_America_click = {
+				set_country_flag = CHN_Display_America
+				clear_west_asia_data = yes
+				clear_southeast_asia_data = yes
+				clear_south_asia_data = yes
+				clear_east_asia_data = yes
+				clear_pacifica_data = yes
+				clear_africa_data = yes
+				clear_europe_data = yes
+				set_variable = {
+					CHN_Display_UI = 8
 				}
 				add_to_variable = {
 					PRC_Lib_Int_Dir_Var = 1
@@ -908,7 +971,120 @@ scripted_gui = {
 					}
 				}
 			}
+			button_country_COG_click = {
+				set_variable = {
+					CHN_Display_SAF = 1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							CHN_Display_COG = 1
+						}
+					}
+					set_variable = {
+						CHN_Display_COG = 2
+					}
+					set_country_flag = COG_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+				else = {
+					set_variable = {
+						CHN_Display_COG = 1
+					}
+					clr_country_flag = COG_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			button_country_SAF_click = {
+				set_variable = {
+					CHN_Display_COG = 1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							CHN_Display_SAF = 1
+						}
+					}
+					set_variable = {
+						CHN_Display_SAF = 2
+					}
+					set_country_flag = SAF_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+				else = {
+					set_variable = {
+						CHN_Display_SAF = 1
+					}
+					clr_country_flag = SAF_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			button_country_MEX_click = {
+				set_variable = {
+					CHN_Display_South_America = 1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							CHN_Display_MEX = 1
+						}
+					}
+					set_variable = {
+						CHN_Display_MEX = 2
+					}
+					set_country_flag = MEX_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+				else = {
+					set_variable = {
+						CHN_Display_MEX = 1
+					}
+					clr_country_flag = MEX_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			button_country_South_America_click = {
+				set_variable = {
+					CHN_Display_MEX = 1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							CHN_Display_South_America = 1
+						}
+					}
+					set_variable = {
+						CHN_Display_South_America = 2
+					}
+					set_country_flag = South_America_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+				else = {
+					set_variable = {
+						CHN_Display_South_America = 1
+					}
+					clr_country_flag = South_America_selected
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
 		}
+		
 		triggers = {
 			PRC_china_visible = {
 				has_country_flag = CHN_Display_East_Asia
@@ -938,6 +1114,15 @@ scripted_gui = {
 			}
 			PEC_west_Asia_visible= {
 				has_country_flag = CHN_Display_West_Asia
+			}
+			PRC_America_visible = {
+				has_country_flag = CHN_Display_America
+			}
+			PRC_Africa_visible = {
+				has_country_flag = CHN_Display_Africa
+			}
+			PRC_Europe_visible = {
+				has_country_flag = CHN_Display_Europe
 			}
 			biankuang_icon_visible = {
 				has_country_flag = CHN_Display_Pacifica
@@ -1011,6 +1196,18 @@ scripted_gui = {
 			button_country_IRA_visible = {
 				has_country_flag = CHN_Display_West_Asia
 			}
+			button_country_COG_visible = {
+				has_country_flag = CHN_Display_Africa
+			}
+			button_country_SAF_visible = {
+				has_country_flag = CHN_Display_Africa
+			}
+			button_country_MEX_visible = {
+				has_country_flag = CHN_Display_America
+			}
+			button_country_South_America_visible = {
+				has_country_flag = CHN_Display_America
+			}
 		}
 		properties = {
 			CPC_logo = {
@@ -1075,6 +1272,18 @@ scripted_gui = {
 			}
 			button_country_IRA = {
 				frame = CHN_Display_IRA
+			}
+			button_country_COG = {
+				frame = CHN_Display_COG
+			}
+			button_country_SAF = {
+				frame = CHN_Display_SAF
+			}
+			button_country_MEX = {
+				frame = CHN_Display_MEX
+			}
+			button_country_South_America = {
+				frame = CHN_Display_South_America
 			}
 		}
 	}
