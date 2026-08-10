@@ -24,7 +24,7 @@ TFR_CMRN_negotiation_category = {
 			}
 			PRC = { clr_country_flag = TFR_CMRN_PRC_r1_repeat_used }
 			activate_mission = TFR_CMRN_round_2_timer
-			news_event = { id = TFR_CMRN.2 }
+			country_event = { id = TFR_CMRN.2 }
 		}
 	}
 
@@ -48,7 +48,7 @@ TFR_CMRN_negotiation_category = {
 			}
 			PRC = { clr_country_flag = TFR_CMRN_PRC_r2_repeat_used }
 			activate_mission = TFR_CMRN_round_3_timer
-			news_event = { id = TFR_CMRN.3 }
+			country_event = { id = TFR_CMRN.3 }
 		}
 	}
 
@@ -380,6 +380,7 @@ TFR_CMRN_negotiation_category = {
 				add_to_variable = { TFR_CMRN_prc_influence = 0.05 }
 				add_to_variable = { TFR_CMRN_unification_tendency = 0.05 }
 				set_temp_variable = { industrial_development_var_temp = 0.4 }
+				add_industrial_development = yes
 				set_variable = { TFR_CMRN_prc_last_convo_idx = 7 }
 				set_variable = { TFR_CMRN_prc_convo_last_idx_temp = 7 }
 				TFR_CMRN_shift_prc_convo = yes
@@ -429,6 +430,7 @@ TFR_CMRN_negotiation_category = {
 					limit = { check_variable = { TFR_CMRN_prc_influence > 1 } }
 					set_variable = { TFR_CMRN_prc_influence = 1 }
 				}
+				TFR_CMRN_update_frames = yes
 			}
 			MON = {
 				random_owned_controlled_state = {

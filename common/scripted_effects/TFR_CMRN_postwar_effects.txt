@@ -27,34 +27,7 @@ TFR_CMRN_rebuild_step = {
 	add_to_variable = { var = TFR_CMRN_mz_factory value = 0.16667 }
 }
 
-##############################################################################
-# 蒙古自治区统一结算 — 移除军管区 + 设置蒙古自治修正
-# 可被和平统一和战后军管两条路径共用
-# 调用前需处于 PRC 作用域
-##############################################################################
-TFR_CMRN_setup_mongol_autonomy = {
-	set_global_flag = TFR_CMRN_greater_mongol_autonomy
-	clr_global_flag = TFR_CMRN_war_declared
 
-	# 清除国家域军管区变量（只需 3 行）
-	clear_variable = TFR_CMRN_mz_build
-	clear_variable = TFR_CMRN_mz_manpower
-	clear_variable = TFR_CMRN_mz_factory
-
-	# 清除军管区 dynamic_modifier（按省ID精确枚举，避免波及全中国）
-	330 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
-	1388 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
-	1389 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
-	1390 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
-	1391 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
-
-	# 添加蒙古自治区 dynamic_modifier（仅到 5 个外蒙省）
-	330 = { add_dynamic_modifier = { modifier = TFR_CMRN_mongol_autonomy scope = THIS } }
-	1388 = { add_dynamic_modifier = { modifier = TFR_CMRN_mongol_autonomy scope = THIS } }
-	1389 = { add_dynamic_modifier = { modifier = TFR_CMRN_mongol_autonomy scope = THIS } }
-	1390 = { add_dynamic_modifier = { modifier = TFR_CMRN_mongol_autonomy scope = THIS } }
-	1391 = { add_dynamic_modifier = { modifier = TFR_CMRN_mongol_autonomy scope = THIS } }
-}
 
 ##############################################################################
 # 检查全部 5 省军管区是否均已解除 + 执行最终结算
@@ -70,7 +43,15 @@ TFR_CMRN_check_all_cleared = {
 			1391 = { is_core_of = PRC }
 		}
 		set_global_flag = TFR_CMRN_postwar_complete
-		TFR_CMRN_setup_mongol_autonomy = yes
-		news_event = { id = TFR_CMRN.8 }
+		clr_global_flag = TFR_CMRN_war_declared
+		clear_variable = TFR_CMRN_mz_build
+		clear_variable = TFR_CMRN_mz_manpower
+		clear_variable = TFR_CMRN_mz_factory
+		330 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1388 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1389 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1390 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1391 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		country_event = { id = TFR_CMRN.8 }
 	}
 }
