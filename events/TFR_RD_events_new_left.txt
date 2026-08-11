@@ -1566,6 +1566,43 @@ country_event = {
     }
 }
 
+country_event = {
+    id = prcs.87
+    title = prcs.87.t
+    desc = prcs.87.d
+    is_triggered_only = yes
+    picture = GFX_game_start_keep_in_mind_event
+    option = {
+        name = prcs.87.a
+        VEN = {
+            create_faction = VEN_world_anti_imperialist_platform_idea
+            add_to_faction = NIC
+            add_to_faction = ELN
+            add_to_faction = PRU
+        }   
+        BRA = {
+            create_faction = BRA_south_america_anti_commie
+            add_to_faction = ARG
+            add_to_faction = ECU
+            add_to_faction = BOL
+        }
+        every_country = {
+            limit = {
+                is_ally_with = VEN
+            }
+            every_country = {
+                limit = {
+                    is_ally_with = BRA
+                }
+                declare_war_on = {
+                    target = PREV
+                    type = puppet
+                }
+            }
+        }
+    }
+}
+
 
 
 country_event = {
