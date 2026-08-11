@@ -1,0 +1,776 @@
+focus_tree = {
+	id = WLI_united_nations_focus_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 1
+			tag = WLI
+		}
+	}
+	default = no
+
+	# ==========================================
+	# 核心/政治分支 (主干)
+	# ==========================================
+	# 根国策：红色旗帜，高高升起
+	focus = {
+		id = WLI_red_flag_flying_high
+		icon = GFX_focus_WLI_red_flag_flying_high
+		x = 20
+		y = 0
+		cost = 1
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = WLI_community_with_shared_future
+		icon = GFX_focus_WLI_community_with_shared_future
+		relative_position_id = WLI_red_flag_flying_high
+		x = 0
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_red_flag_flying_high }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_joint_anti_terrorism_operations
+		icon = GFX_focus_WLI_joint_anti_terrorism_operations
+		relative_position_id = WLI_community_with_shared_future
+		x = -3
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_community_with_shared_future }
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_anti_corruption_international_cooperation
+		icon = GFX_focus_WLI_anti_corruption_international_cooperation
+		relative_position_id = WLI_community_with_shared_future
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_community_with_shared_future }
+		completion_reward = {
+			add_political_power = 75
+		}
+	}
+
+	focus = {
+		id = WLI_expand_multilateral_poverty_alleviation
+		icon = GFX_focus_WLI_expand_multilateral_poverty_alleviation
+		relative_position_id = WLI_community_with_shared_future
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_community_with_shared_future }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_common_foreign_policy
+		icon = GFX_focus_WLI_common_foreign_policy
+		relative_position_id = WLI_anti_corruption_international_cooperation
+		x = -1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
+		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = WLI_joint_political_propaganda
+		icon = GFX_focus_WLI_joint_political_propaganda
+		relative_position_id = WLI_anti_corruption_international_cooperation
+		x = 1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
+		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_establish_world_liberation_arbitration_agency
+		icon = GFX_focus_WLI_establish_world_liberation_arbitration_agency
+		relative_position_id = WLI_common_foreign_policy
+		x = -1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_common_foreign_policy }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = WLI_establish_world_liberation_secretariat
+		icon = GFX_focus_WLI_establish_world_liberation_secretariat
+		relative_position_id = WLI_common_foreign_policy
+		x = 1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_common_foreign_policy }
+		prerequisite = { focus = WLI_joint_political_propaganda }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_establish_world_liberation_supervisory_commission
+		icon = GFX_focus_WLI_establish_world_liberation_supervisory_commission
+		relative_position_id = WLI_joint_political_propaganda
+		x = 1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_political_propaganda }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = WLI_convene_world_liberation_congress
+		icon = GFX_focus_WLI_convene_world_liberation_congress
+		relative_position_id = WLI_establish_world_liberation_secretariat
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_establish_world_liberation_arbitration_agency }
+		prerequisite = { focus = WLI_establish_world_liberation_secretariat }
+		prerequisite = { focus = WLI_establish_world_liberation_supervisory_commission }
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+
+	focus = {
+		id = WLI_red_sun_shines_bright
+		icon = GFX_focus_WLI_red_sun_shines_bright
+		relative_position_id = WLI_convene_world_liberation_congress
+		x = -1.5
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_convene_world_liberation_congress }
+		mutually_exclusive = { focus = WLI_stars_revolve_around_the_moon }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_stars_revolve_around_the_moon
+		icon = GFX_focus_WLI_stars_revolve_around_the_moon
+		relative_position_id = WLI_convene_world_liberation_congress
+		x = 1.5
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_convene_world_liberation_congress }
+		mutually_exclusive = { focus = WLI_red_sun_shines_bright }
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_unite_and_look_forward
+		icon = GFX_focus_WLI_unite_and_look_forward
+		relative_position_id = WLI_convene_world_liberation_congress
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { 
+			focus = WLI_red_sun_shines_bright 
+			focus = WLI_stars_revolve_around_the_moon 
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_thorough_discussion
+		icon = GFX_focus_WLI_thorough_discussion
+		relative_position_id = WLI_unite_and_look_forward
+		x = -1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_unite_and_look_forward }
+		completion_reward = {
+			add_political_power = 75
+		}
+	}
+
+	focus = {
+		id = WLI_unanimous_action
+		icon = GFX_focus_WLI_unanimous_action
+		relative_position_id = WLI_unite_and_look_forward
+		x = 1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_unite_and_look_forward }
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_each_in_their_own_beauty
+		icon = GFX_focus_WLI_each_in_their_own_beauty
+		relative_position_id = WLI_unite_and_look_forward
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = WLI_thorough_discussion }
+		prerequisite = { focus = WLI_unanimous_action }
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+
+	# ==========================================
+	# 侧枝：一带一路 / 文化
+	# ==========================================
+	focus = {
+		id = WLI_deepen_belt_and_road
+		icon = GFX_focus_WLI_deepen_belt_and_road
+		relative_position_id = WLI_expand_multilateral_poverty_alleviation
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
+		prerequisite = { focus = WLI_international_tariff_agreement }
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_reform_confucius_institutes
+		icon = GFX_focus_WLI_reform_confucius_institutes
+		relative_position_id = WLI_deepen_belt_and_road
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_deepen_belt_and_road }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	# ==========================================
+	# 左侧：军事指挥分支
+	# ==========================================
+	focus = {
+		id = WLI_joint_command_center
+		icon = GFX_focus_WLI_joint_command_center
+		relative_position_id = WLI_red_flag_flying_high
+		x = -15
+		y = 0
+		cost = 1
+		completion_reward = {
+			army_experience = 10
+		}
+	}
+
+	focus = {
+		id = WLI_share_military_intelligence
+		icon = GFX_focus_WLI_share_military_intelligence
+		relative_position_id = WLI_joint_command_center
+		x = -3
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_command_center }
+		completion_reward = {
+			add_tech_bonus = {
+				name = WLI_radar_tech_bonus
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_standardize_equipment
+		icon = GFX_focus_WLI_standardize_equipment
+		relative_position_id = WLI_joint_command_center
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_command_center }
+		completion_reward = {
+			add_tech_bonus = {
+				name = WLI_infantry_weapons_bonus
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_command_system_reform
+		icon = GFX_focus_WLI_command_system_reform
+		relative_position_id = WLI_joint_command_center
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_command_center }
+		completion_reward = {
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = WLI_expand_depot_network
+		icon = GFX_focus_WLI_expand_depot_network
+		relative_position_id = WLI_share_military_intelligence
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_share_military_intelligence }
+		completion_reward = {
+			random_owned_controlled_state = {
+				construct_building_in_random_province = {
+					supply_node = 1
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_military_industrial_cooperation
+		icon = GFX_focus_WLI_military_industrial_cooperation
+		relative_position_id = WLI_standardize_equipment
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_standardize_equipment }
+		prerequisite = { focus = WLI_share_military_intelligence }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_joint_military_exercises
+		icon = GFX_focus_WLI_joint_military_exercises
+		relative_position_id = WLI_standardize_equipment
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_command_system_reform }
+		prerequisite = { focus = WLI_standardize_equipment }
+		completion_reward = {
+			army_experience = 30
+		}
+	}
+
+	focus = {
+		id = WLI_coordinated_military_training
+		icon = GFX_focus_WLI_coordinated_military_training
+		relative_position_id = WLI_command_system_reform
+		x = 1.5
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_command_system_reform }
+		completion_reward = {
+			army_experience = 20
+		}
+	}
+
+	focus = {
+		id = WLI_eagle_strikes_the_sky
+		icon = GFX_focus_WLI_eagle_strikes_the_sky
+		relative_position_id = WLI_military_industrial_cooperation
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_military_exercises }
+		prerequisite = { focus = WLI_coordinated_military_training }
+		prerequisite = { focus = WLI_military_industrial_cooperation }
+		prerequisite = { focus = WLI_expand_depot_network }
+		completion_reward = {
+			air_experience = 25
+		}
+	}
+
+	focus = {
+		id = WLI_fish_glides_in_deep
+		icon = GFX_focus_WLI_fish_glides_in_deep
+		relative_position_id = WLI_joint_military_exercises
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_joint_military_exercises }
+		prerequisite = { focus = WLI_coordinated_military_training }
+		prerequisite = { focus = WLI_military_industrial_cooperation }
+		prerequisite = { focus = WLI_expand_depot_network }
+		completion_reward = {
+			navy_experience = 25
+		}
+	}
+
+	focus = {
+		id = WLI_wind_rolls_red_flag
+		icon = GFX_focus_WLI_wind_rolls_red_flag
+		relative_position_id = WLI_fish_glides_in_deep
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_eagle_strikes_the_sky }
+		prerequisite = { focus = WLI_fish_glides_in_deep }
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_unified_command
+		icon = GFX_focus_WLI_unified_command
+		relative_position_id = WLI_wind_rolls_red_flag
+		x = -1
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_wind_rolls_red_flag }
+		mutually_exclusive = { focus = WLI_joint_action }
+		completion_reward = {
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = WLI_joint_action
+		icon = GFX_focus_WLI_joint_action
+		relative_position_id = WLI_wind_rolls_red_flag
+		x = 1
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_wind_rolls_red_flag }
+		mutually_exclusive = { focus = WLI_unified_command }
+		completion_reward = {
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = WLI_towards_common_victory
+		icon = GFX_focus_WLI_towards_common_victory
+		relative_position_id = WLI_wind_rolls_red_flag
+		x = 0
+		y = 3
+		cost = 10
+		prerequisite = { 
+			focus = WLI_unified_command 
+			focus = WLI_joint_action 
+		}
+		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = WLI_rebirth_of_international_brigades
+		icon = GFX_focus_WLI_rebirth_of_international_brigades
+		relative_position_id = WLI_coordinated_military_training
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_coordinated_military_training }
+		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
+		completion_reward = {
+			add_manpower = 20000
+		}
+	}
+
+	# ==========================================
+	# 右侧：世解经贸合作分支
+	# ==========================================
+	focus = {
+		id = WLI_deepen_world_liberation_economic_cooperation
+		icon = GFX_focus_WLI_deepen_world_liberation_economic_cooperation
+		relative_position_id = WLI_red_flag_flying_high
+		x = 13
+		y = 0
+		cost = 1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = WLI_industrial_aid
+		icon = GFX_focus_WLI_industrial_aid
+		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_technical_assistance
+		icon = GFX_focus_WLI_technical_assistance
+		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = WLI_international_tariff_agreement
+		icon = GFX_focus_WLI_international_tariff_agreement
+		relative_position_id = WLI_industrial_aid
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_industrial_aid }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = WLI_establish_joint_research_institutions
+		icon = GFX_focus_WLI_establish_joint_research_institutions
+		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = WLI_industrial_aid }
+		prerequisite = { focus = WLI_technical_assistance }
+		completion_reward = {
+			add_tech_bonus = {
+				name = WLI_joint_research_bonus
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_establish_world_liberation_central_bank
+		icon = GFX_focus_WLI_establish_world_liberation_central_bank
+		relative_position_id = WLI_technical_assistance
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_technical_assistance }
+		completion_reward = {
+			add_political_power = 75
+		}
+	}
+
+	focus = {
+		id = WLI_unified_market
+		icon = GFX_focus_WLI_unified_market
+		relative_position_id = WLI_establish_joint_research_institutions
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_international_tariff_agreement }
+		prerequisite = { focus = WLI_establish_joint_research_institutions }
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_unified_currency
+		icon = GFX_focus_WLI_unified_currency
+		relative_position_id = WLI_establish_joint_research_institutions
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_establish_joint_research_institutions }
+		prerequisite = { focus = WLI_establish_world_liberation_central_bank }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_build_integrated_economic_circle
+		icon = GFX_focus_WLI_build_integrated_economic_circle
+		relative_position_id = WLI_establish_joint_research_institutions
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = WLI_unified_market }
+		prerequisite = { focus = WLI_unified_currency }
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+	}
+
+	focus = {
+		id = WLI_expand_international_division_of_labor
+		icon = GFX_focus_WLI_expand_international_division_of_labor
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_build_integrated_economic_circle }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = WLI_coordinated_development_plan
+		icon = GFX_focus_WLI_coordinated_development_plan
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_build_integrated_economic_circle }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_military_supplies_first
+		icon = GFX_focus_WLI_military_supplies_first
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = -4.5
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_livelihood_first }
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_livelihood_first
+		icon = GFX_focus_WLI_livelihood_first
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = -1.5
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_military_supplies_first }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = WLI_staggered_development
+		icon = GFX_focus_WLI_staggered_development
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = 1.5
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_urban_rural_bridging }
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = WLI_urban_rural_bridging
+		icon = GFX_focus_WLI_urban_rural_bridging
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = 4.5
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_staggered_development }
+		completion_reward = {
+			add_stability = 0.025
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = WLI_adapt_to_local_conditions
+		icon = GFX_focus_WLI_adapt_to_local_conditions
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = 0
+		y = 4
+		cost = 10
+		prerequisite = {
+			focus = WLI_military_supplies_first
+			focus = WLI_livelihood_first		
+		}
+		prerequisite = { 
+			focus = WLI_staggered_development
+			focus = WLI_urban_rural_bridging 
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	# ==========================================
+	# 底层总收尾国策
+	# ==========================================
+	focus = {
+		id = WLI_earth_shaking_heroic_song
+		icon = GFX_focus_WLI_earth_shaking_heroic_song
+		relative_position_id = WLI_each_in_their_own_beauty
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = WLI_towards_common_victory }
+		prerequisite = { focus = WLI_each_in_their_own_beauty }
+		prerequisite = { focus = WLI_adapt_to_local_conditions }
+		completion_reward = {
+			add_political_power = 200
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+	}
+}
