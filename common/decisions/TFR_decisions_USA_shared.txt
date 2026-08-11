@@ -930,6 +930,53 @@ PTF_deal_with_USN = {
 				}
 				war_with_PREV = yes
 			}
+			if = {
+				limit = { 
+					OR = {
+						country_exists = ZAP
+						MEX = {
+							exists = yes
+							has_government = communist
+						}
+					}
+					NOT = {
+						country_exists = SIN
+						country_exists = CDJ
+						country_exists = GUC
+						country_exists = LFM
+					}
+				}
+				activate_mission = USA_operation_green_mission
+			}
+		}
+	}
+	USA_operation_green_mission = {
+		available = {
+			MEX = {
+				OR = {
+					is_subject_of = PTF
+					exists = no
+				}
+			}
+			ZAP = {
+				OR = {
+					is_subject_of = PTF
+					exists = no
+				}
+			}
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 180
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			white_peace = MEX
+			white_peace = ZAP
 		}
 	}
 	USA_operation_gray_decision = {

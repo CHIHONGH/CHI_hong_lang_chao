@@ -1173,6 +1173,50 @@ on_actions = {
                     }
                     set_global_flag = skip_default_capitulation
                 }
+                if = {
+                    limit = { 
+                        FROM = {
+                            OR = {
+                                original_tag = MEX
+                                original_tag = ZAP
+                            }
+                        }
+                        ROOT = {
+                            OR = {
+                                original_tag = GUC
+                                original_tag = LFM
+                                original_tag = CAS
+                                original_tag = CDJ
+                                original_tag = SIN
+
+                            }
+                        }
+                    }
+                    if = {
+                        limit = { 
+                            NOT = {
+                                country_exists = GUC
+                                country_exists = LFM
+                                country_exists = CAS
+                                country_exists = CDJ
+                                country_exists = SIN
+                            }
+                            MEX = {
+                                has_non_aggression_pact_with = ZAP
+                            }
+                        }
+                        MEX = {
+                            annex_country = {
+                                target = ROOT
+                                transfer_troops = no
+                            }
+                            annex_country = {
+                                target = ZAP
+                                transfer_troops = yes
+                            }
+                        }
+                    }
+                }
             }
         }
     }
