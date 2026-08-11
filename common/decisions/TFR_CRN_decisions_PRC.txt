@@ -79,6 +79,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 1 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 1 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			set_country_flag = TFR_CRN_PRC_r1_repeat_used
 		}
@@ -103,6 +104,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 2 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 2 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 		}
 		ai_will_do = { factor = 7 }
@@ -133,6 +135,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 10 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 10 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 		}
 		ai_will_do = { factor = 6 }
@@ -147,7 +150,7 @@ TFR_CRN_negotiation_category = {
 		visible = { TFR_CRN_round_1_can_trade = yes }
 		available = {
 			TFR_CRN_round_1_can_trade = yes
-			num_of_civilian_factories_available_for_projects > 1
+			num_of_civilian_factories_available_for_projects > 4
 		}
 		modifier = { civilian_factory_use = 4 }
 		complete_effect = {
@@ -161,6 +164,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 11 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 11 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			SOV = { add_offsite_building = { type = industrial_complex level = 4 } }
 			PRC = { set_temp_variable = { debt_var_temp = 150 } add_debt = yes }
@@ -199,6 +203,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 3 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 3 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			set_country_flag = TFR_CRN_PRC_r2_repeat_used
 		}
@@ -223,6 +228,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 4 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 4 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 		}
 		ai_will_do = { factor = 7 }
@@ -246,6 +252,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 5 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 5 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 		}
 		ai_will_do = { factor = 7 }
@@ -255,7 +262,7 @@ TFR_CRN_negotiation_category = {
 	TFR_CRN_reopen_cr_1929 = {
 		icon = generic_army_leadership
 		fire_only_once = yes
-		cost = 75
+		cost = 50
 		visible = {
 			TFR_CRN_round_2_can_trade = yes
 			has_war = no
@@ -275,8 +282,8 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 6 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 6 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
-			add_tension = 0.3
 		}
 		ai_will_do = { factor = 5 }
 	}
@@ -301,6 +308,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 12 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 12 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			send_equipment = { equipment = infantry_equipment amount = 20000 target = SOV }
 			send_equipment = { equipment = support_equipment amount = 4000 target = SOV }
@@ -318,7 +326,7 @@ TFR_CRN_negotiation_category = {
 		visible = { TFR_CRN_round_2_can_trade = yes }
 		available = {
 			TFR_CRN_round_2_can_trade = yes
-			num_of_civilian_factories_available_for_projects > 1
+			num_of_civilian_factories_available_for_projects > 6
 		}
 		modifier = { civilian_factory_use = 6 }
 		complete_effect = {
@@ -332,6 +340,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 13 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 13 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			SOV = { add_offsite_building = { type = industrial_complex level = 4 } add_offsite_building = { type = arms_factory level = 4 } }
 			PRC = { set_temp_variable = { debt_var_temp = 200 } add_debt = yes }
@@ -370,6 +379,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 7 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 7 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			set_country_flag = TFR_CRN_PRC_r3_repeat_used
 		}
@@ -380,7 +390,7 @@ TFR_CRN_negotiation_category = {
 	TFR_CRN_nerchinsk = {
 		icon = generic_diplomacy
 		fire_only_once = yes
-		cost = 75
+		cost = 50
 		visible = { TFR_CRN_round_3_can_trade = yes }
 		available = { TFR_CRN_round_3_can_trade = yes }
 		complete_effect = {
@@ -394,6 +404,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 8 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 8 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 		}
 		ai_will_do = { factor = 8 }
@@ -417,6 +428,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 9 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 9 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 		}
 		ai_will_do = { factor = 7 }
@@ -443,6 +455,7 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 14 }
 				537 = { add_resource = { type = oil amount = 8 } }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			PRC = { set_temp_variable = { debt_var_temp = 100 } add_debt = yes }
 		}
@@ -455,7 +468,10 @@ TFR_CRN_negotiation_category = {
 		fire_only_once = yes
 		cost = 125
 		visible = { TFR_CRN_round_3_can_trade = yes }
-		available = { TFR_CRN_round_3_can_trade = yes }
+		available = {
+			TFR_CRN_round_3_can_trade = yes
+			num_of_civilian_factories_available_for_projects > 4
+		}
 		days_remove = 90
 		modifier = { civilian_factory_use = 4 }
 		complete_effect = {
@@ -469,13 +485,38 @@ TFR_CRN_negotiation_category = {
 				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 15 }
 				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 15 }
 				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
 			}
 			send_equipment = { equipment = infantry_equipment amount = 15000 target = SOV }
 			send_equipment = { equipment = support_equipment amount = 2000 target = SOV }
 			send_equipment = { equipment = modern_tank_chassis amount = 300 target = SOV }
 			send_equipment = { equipment = modern_tank_artillery_chassis amount = 300 target = SOV }
 			add_manpower = -15000
-			SOV = { add_manpower = 15000 add_offsite_building = { type = arms_factory level = 4 } }
+			SOV = {
+				add_manpower = 15000 add_offsite_building = { type = arms_factory level = 4 }
+				division_template = {
+					name = "Far East International Volunteer Brigade"
+					
+					regiments = {
+						modern_armor = { x = 0 y = 0 }
+						modern_armor = { x = 0 y = 1 }
+						modern_sp_artillery_brigade = { x = 0 y = 2 }
+						modern_armor = { x = 1 y = 0 }
+						modern_armor = { x = 1 y = 1 }
+						modern_sp_artillery_brigade = { x = 1 y = 2 }
+						mechanized = { x = 2 y = 0 }
+						mechanized = { x = 2 y = 1 }
+						mechanized = { x = 2 y = 2 }
+						modern_sp_artillery_brigade = { x = 3 y = 0 }
+					}
+					
+					support = {
+						artillery = { x = 0 y = 0 }
+						spaa_company = { x = 0 y = 1 }
+						engineer = { x = 0 y = 2 }		
+					}
+				}
+			}
 			# 在布里亚特为 SOV 生成 3 支远东国际志愿旅（精锐）
 			564 = {
 				create_unit = {

@@ -77,6 +77,24 @@ TFR_CRN_calc_desperation = {
 	if = { limit = { has_global_flag = TFR_CRN_round_1_success } add_to_variable = { var = TFR_CRN_desperation value = 5 } }
 	if = { limit = { has_global_flag = TFR_CRN_round_2_success } add_to_variable = { var = TFR_CRN_desperation value = 5 } }
 	if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { TFR_CRN_desperation = 100 } }
+	TFR_CRN_update_frames = yes
+}
+
+##############################################################################
+# 进度条帧计算 — 外交筹码/让步意愿(0~100) → 帧(1~21)
+# 运行在 SOV 作用域，任一数值变化后调用刷新 GUI 进度条
+##############################################################################
+TFR_CRN_update_frames = {
+	# 外交筹码 0~100 → 帧 1~21
+	set_variable = { var = TFR_CRN_desp_frame value = TFR_CRN_desperation }
+	multiply_variable = { var = TFR_CRN_desp_frame value = 0.2 }
+	round_variable = TFR_CRN_desp_frame
+	add_to_variable = { TFR_CRN_desp_frame = 1 }
+	# 让步意愿 0~100 → 帧 1~21
+	set_variable = { var = TFR_CRN_concession_frame value = TFR_CRN_concession_willingness }
+	multiply_variable = { var = TFR_CRN_concession_frame value = 0.2 }
+	round_variable = TFR_CRN_concession_frame
+	add_to_variable = { TFR_CRN_concession_frame = 1 }
 }
 
 ##############################################################################
@@ -290,6 +308,10 @@ TFR_CRN_transfer_state = {
 	remove_core_of = SOV
 	add_core_of = PRC
 	transfer_state_to = PRC
+	if = {
+		limit = { has_dynamic_modifier = SOV_republic_of_russia }
+		remove_dynamic_modifier = { modifier = SOV_republic_of_russia }
+	}
 }
 
 ##############################################################################
