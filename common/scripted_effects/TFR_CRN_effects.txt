@@ -31,7 +31,7 @@ TFR_CRN_init_negotiation = {
 		set_variable = { var = TFR_CRN_prc_convo_slot3 value = 0 }
 	}
 	TFR_CRN_calc_desperation = yes
-	news_event = { id = TFR_CRN.1 }
+	PRC = { country_event = { id = TFR_CRN.1 } }
 }
 
 ##############################################################################
@@ -155,7 +155,7 @@ TFR_CRN_round_settlement = {
 			TFR_CRN_reset_round_counters = yes
 			PRC = { clr_country_flag = TFR_CRN_PRC_r1_repeat_used }
 			PRC = { activate_mission = TFR_CRN_round_2_timer }
-			news_event = { id = TFR_CRN.2 }
+			PRC = { country_event = { id = TFR_CRN.2 } }
 		}
 		else = {
 			# 第1轮失败
@@ -165,7 +165,7 @@ TFR_CRN_round_settlement = {
 			set_global_flag = TFR_CRN_negotiation_failed
 			clr_global_flag = TFR_CRN_negotiation_active
 			TFR_CRN_final_delivery = yes
-			news_event = { id = TFR_CRN.4 }
+			PRC = { country_event = { id = TFR_CRN.4 } }
 		}
 	}
 	# === 第 2 轮判定 ===
@@ -188,7 +188,7 @@ TFR_CRN_round_settlement = {
 			TFR_CRN_reset_round_counters = yes
 			PRC = { clr_country_flag = TFR_CRN_PRC_r2_repeat_used }
 			PRC = { activate_mission = TFR_CRN_round_3_timer }
-			news_event = { id = TFR_CRN.3 }
+			PRC = { country_event = { id = TFR_CRN.3 } }
 		}
 		else = {
 			# 第2轮失败
@@ -198,7 +198,7 @@ TFR_CRN_round_settlement = {
 			set_global_flag = TFR_CRN_negotiation_failed
 			clr_global_flag = TFR_CRN_negotiation_active
 			TFR_CRN_final_delivery = yes
-			news_event = { id = TFR_CRN.4 }
+			PRC = { country_event = { id = TFR_CRN.4 } }
 		}
 	}
 	# === 第 3 轮判定 ===
@@ -230,7 +230,7 @@ TFR_CRN_round_settlement = {
 			set_global_flag = TFR_CRN_negotiation_failed
 			clr_global_flag = TFR_CRN_negotiation_active
 			TFR_CRN_final_delivery = yes
-			news_event = { id = TFR_CRN.4 }
+			PRC = { country_event = { id = TFR_CRN.4 } }
 		}
 	}
 }
@@ -269,7 +269,7 @@ TFR_CRN_final_delivery = {
 			}
 		}
 		# 外兴安岭回归新闻（第3轮成功时）
-		if = { limit = { has_global_flag = TFR_CRN_round_3_success } news_event = { id = TFR_CRN.8 days = 2 } }
+		if = { limit = { has_global_flag = TFR_CRN_round_3_success } PRC = { country_event = { id = TFR_CRN.8 days = 2 } } }
 		# 全部8州回归终章新闻
 		if = {
 			limit = {
@@ -314,6 +314,6 @@ TFR_CRN_sov_collapse_transfer = {
 		if = { limit = { 1293 = { NOT = { is_core_of = PRC } } } 1293 = { TFR_CRN_transfer_state = yes } }
 		# 库页岛 537
 		if = { limit = { 537 = { NOT = { is_core_of = PRC } } } 537 = { TFR_CRN_transfer_state = yes } }
-		news_event = { id = TFR_CRN.11 }
+		country_event = { id = TFR_CRN.11 }
 	}
 }
