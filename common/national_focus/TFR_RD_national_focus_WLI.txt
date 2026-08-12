@@ -1,45 +1,74 @@
-focus_tree = {
-	id = WLI_united_nations_focus_tree
-	country = {
-		factor = 0
-		modifier = {
-			add = 1
-			tag = WLI
-		}
-	}
-	default = no
-
 	# ==========================================
 	# 核心/政治分支 (主干)
 	# ==========================================
 	# 根国策：红色旗帜，高高升起
-	focus = {
+	joint_focus = {
 		id = WLI_red_flag_flying_high
-		icon = GFX_focus_WLI_red_flag_flying_high
+		# icon = GFX_focus_WLI_red_flag_flying_high
+		icon = GFX_focus_SOV_new_historical_community
 		x = 20
 		y = 0
 		cost = 1
-		completion_reward = {
-			add_political_power = 50
+		offset = {
+			y = 12
+			trigger = {
+				has_country_flag = Prc_NewLeft_focus_key
+			}	
+		}
+		available = {
+			tag = PRC
+			count_triggers = {
+				amount > 5
+				is_in_faction_with = PAK
+				is_in_faction_with = PRK
+				is_in_faction_with = SRI
+				is_in_faction_with = BAN
+				is_in_faction_with = VIN
+				is_in_faction_with = LAO
+				is_in_faction_with = BRM
+				is_in_faction_with = MND
+				is_in_faction_with = CPA
+				is_in_faction_with = CPP
+				is_in_faction_with = PRT
+				is_in_faction_with = ROP
+				is_in_faction_with = SRL
+				is_in_faction_with = SMA
+				is_in_faction_with = MON
+				is_in_faction_with = NEP
+				is_in_faction_with = BHU
+				is_in_faction_with = CAM
+				is_in_faction_with = NAX
+			}
+		}
+		completion_reward_joint_member = {
+			add_political_power = 100
+		}
+		completion_reward_joint_originator= {
+			add_political_power = 150
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_community_with_shared_future
-		icon = GFX_focus_WLI_community_with_shared_future
+		# icon = GFX_focus_WLI_community_with_shared_future
+		icon = GFX_focus_PRC_prepare_for_the_new_world
 		relative_position_id = WLI_red_flag_flying_high
 		x = 0
 		y = 1
 		cost = 1
 		prerequisite = { focus = WLI_red_flag_flying_high }
+		available = {
+			tag = PRC
+		}
 		completion_reward = {
 			add_stability = 0.05
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_joint_anti_terrorism_operations
-		icon = GFX_focus_WLI_joint_anti_terrorism_operations
+		# icon = GFX_focus_WLI_joint_anti_terrorism_operations
+		icon = GFX_focus_PRC_establish_eadi
 		relative_position_id = WLI_community_with_shared_future
 		x = -3
 		y = 1
@@ -50,9 +79,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_anti_corruption_international_cooperation
-		icon = GFX_focus_WLI_anti_corruption_international_cooperation
+		# icon = GFX_focus_WLI_anti_corruption_international_cooperation
+		icon = GFX_focus_PRC_crackdown_on_corruption
 		relative_position_id = WLI_community_with_shared_future
 		x = 0
 		y = 1
@@ -63,9 +93,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_expand_multilateral_poverty_alleviation
-		icon = GFX_focus_WLI_expand_multilateral_poverty_alleviation
+		# icon = GFX_focus_WLI_expand_multilateral_poverty_alleviation
+		icon = GFX_focus_PRC_korean_economic_assistence_rev
 		relative_position_id = WLI_community_with_shared_future
 		x = 3
 		y = 1
@@ -76,11 +107,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_common_foreign_policy
-		icon = GFX_focus_WLI_common_foreign_policy
+		# icon = GFX_focus_WLI_common_foreign_policy
+		icon = GFX_focus_PRC_empower_masses_autonomus_committe
 		relative_position_id = WLI_anti_corruption_international_cooperation
-		x = -1.5
+		x = -1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
@@ -90,11 +122,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_joint_political_propaganda
-		icon = GFX_focus_WLI_joint_political_propaganda
+		# icon = GFX_focus_WLI_joint_political_propaganda
+		icon = GFX_focus_PRC_stop_the_factionalism
 		relative_position_id = WLI_anti_corruption_international_cooperation
-		x = 1.5
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
@@ -104,11 +137,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_establish_world_liberation_arbitration_agency
-		icon = GFX_focus_WLI_establish_world_liberation_arbitration_agency
+		# icon = GFX_focus_WLI_establish_world_liberation_arbitration_agency
+		icon = GFX_focus_PRC_reinvigorate_the_cadres_nat
 		relative_position_id = WLI_common_foreign_policy
-		x = -1.5
+		x = -1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_common_foreign_policy }
@@ -117,11 +151,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_establish_world_liberation_secretariat
-		icon = GFX_focus_WLI_establish_world_liberation_secretariat
+		# icon = GFX_focus_WLI_establish_world_liberation_secretariat
+		icon = GFX_focus_PRC_the_red_phoenix
 		relative_position_id = WLI_common_foreign_policy
-		x = 1.5
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_common_foreign_policy }
@@ -131,11 +166,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_establish_world_liberation_supervisory_commission
-		icon = GFX_focus_WLI_establish_world_liberation_supervisory_commission
+		# icon = GFX_focus_WLI_establish_world_liberation_supervisory_commission
+		icon = GFX_focus_SOV_restore_stalin_constitution	
 		relative_position_id = WLI_joint_political_propaganda
-		x = 1.5
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_joint_political_propaganda }
@@ -144,9 +180,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_convene_world_liberation_congress
-		icon = GFX_focus_WLI_convene_world_liberation_congress
+		# icon = GFX_focus_WLI_convene_world_liberation_congress
+		icon = GFX_focus_SOV_party_line_approval
 		relative_position_id = WLI_establish_world_liberation_secretariat
 		x = 0
 		y = 1
@@ -159,11 +196,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_red_sun_shines_bright
-		icon = GFX_focus_WLI_red_sun_shines_bright
+		# icon = GFX_focus_WLI_red_sun_shines_bright
+		icon = GFX_focus_SOV_national_hero
 		relative_position_id = WLI_convene_world_liberation_congress
-		x = -1.5
+		x = -1
 		y = 1
 		cost = 1
 		prerequisite = { focus = WLI_convene_world_liberation_congress }
@@ -173,11 +211,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_stars_revolve_around_the_moon
-		icon = GFX_focus_WLI_stars_revolve_around_the_moon
+		# icon = GFX_focus_WLI_stars_revolve_around_the_moon
+		icon = GFX_focus_SOV_party_line_rashkin_3
 		relative_position_id = WLI_convene_world_liberation_congress
-		x = 1.5
+		x = 1
 		y = 1
 		cost = 1
 		prerequisite = { focus = WLI_convene_world_liberation_congress }
@@ -187,9 +226,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_unite_and_look_forward
-		icon = GFX_focus_WLI_unite_and_look_forward
+		# icon = GFX_focus_WLI_unite_and_look_forward
+		icon = GFX_focus_SOV_revolutionary_genius_winner
 		relative_position_id = WLI_convene_world_liberation_congress
 		x = 0
 		y = 2
@@ -204,11 +244,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_thorough_discussion
-		icon = GFX_focus_WLI_thorough_discussion
+		# icon = GFX_focus_WLI_thorough_discussion
+		icon = GFX_focus_SOV_reinvent_democracy
 		relative_position_id = WLI_unite_and_look_forward
-		x = -1.5
+		x = -1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_unite_and_look_forward }
@@ -217,11 +258,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_unanimous_action
-		icon = GFX_focus_WLI_unanimous_action
+		# icon = GFX_focus_WLI_unanimous_action
+		icon = GFX_focus_SOV_prepare_constitutional_reform
 		relative_position_id = WLI_unite_and_look_forward
-		x = 1.5
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_unite_and_look_forward }
@@ -230,9 +272,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_each_in_their_own_beauty
-		icon = GFX_focus_WLI_each_in_their_own_beauty
+		# icon = GFX_focus_WLI_each_in_their_own_beauty
+		icon = GFX_focus_PRC_project_the_eternal_capital
 		relative_position_id = WLI_unite_and_look_forward
 		x = 0
 		y = 2
@@ -247,12 +290,13 @@ focus_tree = {
 	# ==========================================
 	# 侧枝：一带一路 / 文化
 	# ==========================================
-	focus = {
+	joint_focus = {
 		id = WLI_deepen_belt_and_road
-		icon = GFX_focus_WLI_deepen_belt_and_road
+		# icon = GFX_focus_WLI_deepen_belt_and_road
+		icon = GFX_focus_PRC_belt_and_road_initiative
 		relative_position_id = WLI_expand_multilateral_poverty_alleviation
-		x = 3
-		y = 1
+		x = 1
+		y = 2
 		cost = 10
 		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
 		prerequisite = { focus = WLI_international_tariff_agreement }
@@ -264,9 +308,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_reform_confucius_institutes
-		icon = GFX_focus_WLI_reform_confucius_institutes
+		# icon = GFX_focus_WLI_reform_confucius_institutes
+		icon = GFX_focus_PRC_instill_confucious_values
 		relative_position_id = WLI_deepen_belt_and_road
 		x = 0
 		y = 1
@@ -280,21 +325,30 @@ focus_tree = {
 	# ==========================================
 	# 左侧：军事指挥分支
 	# ==========================================
-	focus = {
+	joint_focus = {
 		id = WLI_joint_command_center
-		icon = GFX_focus_WLI_joint_command_center
+		# icon = GFX_focus_WLI_joint_command_center
+		icon = GFX_focus_SOV_unify_command_structure_CPRF
 		relative_position_id = WLI_red_flag_flying_high
-		x = -15
-		y = 0
+		x = -10
+		y = 1
 		cost = 1
+		prerequisite = {
+			focus = WLI_red_flag_flying_high
+		}
+		available = {
+			tag = PRC
+			has_completed_focus = PRC_nl_WLI_collective_action
+		}
 		completion_reward = {
 			army_experience = 10
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_share_military_intelligence
-		icon = GFX_focus_WLI_share_military_intelligence
+		# icon = GFX_focus_WLI_share_military_intelligence
+		icon = GFX_focus_SOV_reform_of_security_forces
 		relative_position_id = WLI_joint_command_center
 		x = -3
 		y = 1
@@ -310,9 +364,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_standardize_equipment
-		icon = GFX_focus_WLI_standardize_equipment
+		# icon = GFX_focus_WLI_standardize_equipment
+		icon = GFX_focus_SOV_expand_t90_production_CPRF
 		relative_position_id = WLI_joint_command_center
 		x = 0
 		y = 1
@@ -328,9 +383,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_command_system_reform
-		icon = GFX_focus_WLI_command_system_reform
+		# icon = GFX_focus_WLI_command_system_reform
+		icon = GFX_focus_SOV_reward_war_heroes
 		relative_position_id = WLI_joint_command_center
 		x = 3
 		y = 1
@@ -341,9 +397,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_expand_depot_network
-		icon = GFX_focus_WLI_expand_depot_network
+		# icon = GFX_focus_WLI_expand_depot_network
+		icon = GFX_focus_SOV_economic_revolution
 		relative_position_id = WLI_share_military_intelligence
 		x = -1
 		y = 1
@@ -358,9 +415,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_military_industrial_cooperation
-		icon = GFX_focus_WLI_military_industrial_cooperation
+		# icon = GFX_focus_WLI_military_industrial_cooperation
+		icon = GFX_focus_SOV_science_in_the_service_of_the_army_CPRF
 		relative_position_id = WLI_standardize_equipment
 		x = -1
 		y = 1
@@ -379,9 +437,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_joint_military_exercises
-		icon = GFX_focus_WLI_joint_military_exercises
+		# icon = GFX_focus_WLI_joint_military_exercises
+		icon = GFX_focus_SOV_improve_deep_battle_theory_CPRF
 		relative_position_id = WLI_standardize_equipment
 		x = 1
 		y = 1
@@ -393,11 +452,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_coordinated_military_training
-		icon = GFX_focus_WLI_coordinated_military_training
+		# icon = GFX_focus_WLI_coordinated_military_training
+		icon = GFX_focus_SOV_defence_fund
 		relative_position_id = WLI_command_system_reform
-		x = 1.5
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_command_system_reform }
@@ -406,9 +466,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_eagle_strikes_the_sky
-		icon = GFX_focus_WLI_eagle_strikes_the_sky
+		# icon = GFX_focus_WLI_eagle_strikes_the_sky
+		icon = GFX_focus_PRC_dominate_the_skies
 		relative_position_id = WLI_military_industrial_cooperation
 		x = 0
 		y = 1
@@ -422,9 +483,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_fish_glides_in_deep
-		icon = GFX_focus_WLI_fish_glides_in_deep
+		# icon = GFX_focus_WLI_fish_glides_in_deep
+		icon = GFX_focus_PRC_expand_the_fleet_of_nuclear_submarines
 		relative_position_id = WLI_joint_military_exercises
 		x = 0
 		y = 1
@@ -438,9 +500,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_wind_rolls_red_flag
-		icon = GFX_focus_WLI_wind_rolls_red_flag
+		# icon = GFX_focus_WLI_wind_rolls_red_flag
+		icon = GFX_focus_SOV_soviet_power_supreme
 		relative_position_id = WLI_fish_glides_in_deep
 		x = -1
 		y = 1
@@ -452,9 +515,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_unified_command
-		icon = GFX_focus_WLI_unified_command
+		# icon = GFX_focus_WLI_unified_command
+		icon = GFX_focus_SOV_unification_of_our_armies
 		relative_position_id = WLI_wind_rolls_red_flag
 		x = -1
 		y = 1
@@ -466,9 +530,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_joint_action
-		icon = GFX_focus_WLI_joint_action
+		# icon = GFX_focus_WLI_joint_action
+		icon = GFX_focus_SOV_unity_of_brotherly_states
 		relative_position_id = WLI_wind_rolls_red_flag
 		x = 1
 		y = 1
@@ -480,9 +545,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_towards_common_victory
-		icon = GFX_focus_WLI_towards_common_victory
+		# icon = GFX_focus_WLI_towards_common_victory
+		icon = GFX_focus_SOV_Soviet_Nostalgia
 		relative_position_id = WLI_wind_rolls_red_flag
 		x = 0
 		y = 3
@@ -496,11 +562,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_rebirth_of_international_brigades
-		icon = GFX_focus_WLI_rebirth_of_international_brigades
+		# icon = GFX_focus_WLI_rebirth_of_international_brigades
+		icon = GFX_focus_SOV_New_Revolutionary_State
 		relative_position_id = WLI_coordinated_military_training
-		x = 3
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_coordinated_military_training }
@@ -513,21 +580,26 @@ focus_tree = {
 	# ==========================================
 	# 右侧：世解经贸合作分支
 	# ==========================================
-	focus = {
+	joint_focus = {
 		id = WLI_deepen_world_liberation_economic_cooperation
-		icon = GFX_focus_WLI_deepen_world_liberation_economic_cooperation
+		# icon = GFX_focus_WLI_deepen_world_liberation_economic_cooperation
+		icon = GFX_focus_PRC_economic_autarky
 		relative_position_id = WLI_red_flag_flying_high
-		x = 13
-		y = 0
+		prerequisite = {
+			focus = WLI_red_flag_flying_high
+		}
+		x = 10
+		y = 1
 		cost = 1
 		completion_reward = {
 			add_political_power = 25
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_industrial_aid
-		icon = GFX_focus_WLI_industrial_aid
+		# icon = GFX_focus_WLI_industrial_aid
+		icon = GFX_focus_PRC_endorse_the_megaprojects_cen
 		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
 		x = -2
 		y = 1
@@ -541,9 +613,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_technical_assistance
-		icon = GFX_focus_WLI_technical_assistance
+		# icon = GFX_focus_WLI_technical_assistance
+		icon = GFX_focus_PRC_huge_machine_of_the_china
 		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
 		x = 2
 		y = 1
@@ -554,9 +627,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_international_tariff_agreement
-		icon = GFX_focus_WLI_international_tariff_agreement
+		# icon = GFX_focus_WLI_international_tariff_agreement
+		icon = GFX_focus_PRC_optimize_the_supply_chain
 		relative_position_id = WLI_industrial_aid
 		x = -2
 		y = 1
@@ -567,9 +641,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_establish_joint_research_institutions
-		icon = GFX_focus_WLI_establish_joint_research_institutions
+		# icon = GFX_focus_WLI_establish_joint_research_institutions
+		icon = GFX_focus_PRC_fund_space_dev
 		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
 		x = 0
 		y = 2
@@ -586,9 +661,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_establish_world_liberation_central_bank
-		icon = GFX_focus_WLI_establish_world_liberation_central_bank
+		# icon = GFX_focus_WLI_establish_world_liberation_central_bank
+		icon = GFX_focus_PRC_encourage_digitalization_nat
 		relative_position_id = WLI_technical_assistance
 		x = 2
 		y = 1
@@ -599,9 +675,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_unified_market
-		icon = GFX_focus_WLI_unified_market
+		# icon = GFX_focus_WLI_unified_market
+		icon = GFX_focus_PRC_continue_eco_dev
 		relative_position_id = WLI_establish_joint_research_institutions
 		x = -2
 		y = 1
@@ -616,9 +693,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_unified_currency
-		icon = GFX_focus_WLI_unified_currency
+		# icon = GFX_focus_WLI_unified_currency
+		icon = GFX_focus_PRC_reorient_the_economy
 		relative_position_id = WLI_establish_joint_research_institutions
 		x = 2
 		y = 1
@@ -630,9 +708,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_build_integrated_economic_circle
-		icon = GFX_focus_WLI_build_integrated_economic_circle
+		# icon = GFX_focus_WLI_build_integrated_economic_circle
+		icon = GFX_focus_FPR_Combat_Hyperinflation
 		relative_position_id = WLI_establish_joint_research_institutions
 		x = 0
 		y = 2
@@ -647,9 +726,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_expand_international_division_of_labor
-		icon = GFX_focus_WLI_expand_international_division_of_labor
+		# icon = GFX_focus_WLI_expand_international_division_of_labor
+		icon = GFX_focus_FPR_fifthinternational
 		relative_position_id = WLI_build_integrated_economic_circle
 		x = -2
 		y = 1
@@ -660,9 +740,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_coordinated_development_plan
-		icon = GFX_focus_WLI_coordinated_development_plan
+		# icon = GFX_focus_WLI_coordinated_development_plan
+		icon = GFX_focus_FPR_federationofsocialiststates
 		relative_position_id = WLI_build_integrated_economic_circle
 		x = 2
 		y = 1
@@ -673,11 +754,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_military_supplies_first
-		icon = GFX_focus_WLI_military_supplies_first
+		# icon = GFX_focus_WLI_military_supplies_first
+		icon = GFX_focus_FPR_cult_of_efficiency
 		relative_position_id = WLI_build_integrated_economic_circle
-		x = -4.5
+		x = -4
 		y = 2
 		cost = 1
 		prerequisite = { focus = WLI_expand_international_division_of_labor }
@@ -688,11 +770,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_livelihood_first
-		icon = GFX_focus_WLI_livelihood_first
+		# icon = GFX_focus_WLI_livelihood_first
+		icon = GFX_focus_FPR_Connect_the_Union
 		relative_position_id = WLI_build_integrated_economic_circle
-		x = -1.5
+		x = -1
 		y = 2
 		cost = 1
 		prerequisite = { focus = WLI_expand_international_division_of_labor }
@@ -703,11 +786,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_staggered_development
-		icon = GFX_focus_WLI_staggered_development
+		# icon = GFX_focus_WLI_staggered_development
+		icon = GFX_focus_FPR_Set_Production_Quotas
 		relative_position_id = WLI_build_integrated_economic_circle
-		x = 1.5
+		x = 1
 		y = 2
 		cost = 1
 		prerequisite = { focus = WLI_expand_international_division_of_labor }
@@ -718,11 +802,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_urban_rural_bridging
-		icon = GFX_focus_WLI_urban_rural_bridging
+		# icon = GFX_focus_WLI_urban_rural_bridging
+		icon = GFX_focus_FPR_socialismofthefuture
 		relative_position_id = WLI_build_integrated_economic_circle
-		x = 4.5
+		x = 4
 		y = 2
 		cost = 1
 		prerequisite = { focus = WLI_expand_international_division_of_labor }
@@ -734,12 +819,13 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	joint_focus = {
 		id = WLI_adapt_to_local_conditions
-		icon = GFX_focus_WLI_adapt_to_local_conditions
+		# icon = GFX_focus_WLI_adapt_to_local_conditions
+		icon = GFX_focus_FPR_the_art_of_politics
 		relative_position_id = WLI_build_integrated_economic_circle
 		x = 0
-		y = 4
+		y = 3
 		cost = 10
 		prerequisite = {
 			focus = WLI_military_supplies_first
@@ -757,9 +843,10 @@ focus_tree = {
 	# ==========================================
 	# 底层总收尾国策
 	# ==========================================
-	focus = {
+	joint_focus = {
 		id = WLI_earth_shaking_heroic_song
-		icon = GFX_focus_WLI_earth_shaking_heroic_song
+		# icon = GFX_focus_WLI_earth_shaking_heroic_song
+		icon = GFX_focus_SOV_russian_proletarian_world
 		relative_position_id = WLI_each_in_their_own_beauty
 		x = 0
 		y = 2
@@ -773,4 +860,3 @@ focus_tree = {
 			add_war_support = 0.1
 		}
 	}
-}
