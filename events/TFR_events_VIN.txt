@@ -1,0 +1,229 @@
+add_namespace = vietnam
+add_namespace = rd_vietnam
+
+country_event = { #New President
+	id = vietnam.1
+	title = vietnam.1.t
+	desc = vietnam.1.d
+	picture = GFX_generic_vietnam
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = vietnam.1.a
+		retire_character = VIN_nguyen_phu_trong_char
+	}
+}
+
+
+news_event = {
+	id = rd_vietnam.1
+	title = rd_vietnam.1.t
+	desc = rd_vietnam.1.d
+	picture = GFX_Event_VIN_politics
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = rd_vietnam.1.a
+		
+	}
+}
+
+country_event = {
+	id = rd_vietnam.2
+	title = rd_vietnam.2.t
+	desc = rd_vietnam.2.d
+	picture = GFX_Event_vietnam_china
+	is_triggered_only = yes
+
+	option = {
+		name = rd_vietnam.2.a
+		custom_effect_tooltip = rd_vietnam_2_a_tt
+		VIN = {
+			add_stability = -0.05
+			set_temp_variable = {
+				society_development_var_temp = -0.05
+			}
+			add_society_development = yes
+		}
+	}
+	option = {
+		name = rd_vietnam.2.b
+		custom_effect_tooltip = rd_vietnam_2_b_tt
+		add_political_power = -100
+		set_temp_variable = {
+			income_var_temp = -50
+		}
+		add_income_with_inflation = yes
+		set_state_owner = 1383
+		set_state_controller = 1383
+		add_state_core = 1383
+		give_resource_rights = {
+			receiver = VIN
+			state = 1383
+		}
+		VIN = {
+			add_political_power = 100
+			add_stability = 0.075
+			set_temp_variable = {
+				income_var_temp = 50
+			}
+			add_income_with_inflation = yes
+		}
+		add_offsite_building = {
+			type = industrial_complex
+			level = 2
+		}
+		set_country_flag = VIN_north_wins
+	}
+}
+
+
+country_event = {
+	id = rd_vietnam.3
+	title = rd_vietnam.3.t
+	desc = rd_vietnam.3.d
+	picture = GFX_Event_VIN_to_lam_speech
+	is_triggered_only = yes
+
+	option = {
+		name = rd_vietnam.3.a
+		if = {
+			limit = { 
+				has_country_flag = VIN_north_wins
+			}
+			VIN = {
+				promote_character = VIN_vo_van_thuong_char
+				set_popularities = {
+					totalitarian_socialist = 20
+					communist = 40
+					libertarian_socialist = 40
+				}
+			}
+			
+			news_event = rd_vietnam.5
+		}
+		else = {
+			country_event = {
+				id = rd_vietnam.4
+				days = 30
+				tooltip = rd_vietnam_4_fake_title
+			}
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_vietnam.4
+	title = rd_vietnam.4.t
+	desc = rd_vietnam.4.d
+	picture = GFX_Event_VIN_to_lam_invitation
+	is_triggered_only = yes
+
+	option = {
+		name = rd_vietnam.4.a
+		custom_effect_tooltip = rd_vietnam_4_a_tt
+
+		add_political_power = -50
+
+		VIN = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.015
+			}
+			promote_leader = VIN_to_lam_char
+			set_popularities = {
+				totalitarian_socialist = 10
+				communist = 50
+				libertarian_socialist = 10
+				authoritarian_democrat = 10
+				nationalist = 20
+			}
+		}
+
+		news_event = {
+			id = rd_vietnam.7
+			days = 15
+		}
+	}
+	option = {
+		name = rd_vietnam.4.b
+		custom_effect_tooltip = rd_vietnam_4_b_tt
+
+		VIN = {
+			add_stability = -0.075
+			add_popularity = {
+				ideology = communist
+				popularity = -0.1
+			}
+			hidden_effect = {
+				country_event = rd_vietnam.8
+			}
+		}
+	}
+}
+
+news_event = {
+	id = rd_vietnam.5
+	title = rd_vietnam.5.t
+	desc = rd_vietnam.5.d
+	picture = GFX_Event_VIN_vo_van_thuong
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = rd_vietnam.5.a
+		
+	}
+}
+news_event = {
+	id = rd_vietnam.6
+	title = rd_vietnam.6.t
+	desc = rd_vietnam.6.d
+	picture = GFX_Event_VIN_nguyen_xuan_phuc
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = rd_vietnam.6.a
+		
+	}
+}
+news_event = {
+	id = rd_vietnam.7
+	title = rd_vietnam.7.t
+	desc = rd_vietnam.7.d
+	picture = GFX_Event_VIN_to_lam
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = rd_vietnam.7.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_vietnam.8
+	title = rd_vietnam.8.t
+	desc = rd_vietnam.8.d
+	picture = GFX_report_event_generic
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		name = rd_vietnam.8.a
+		VIN = {
+			promote_leader = VIN_nguyen_xuan_phuc_char
+			set_popularities = {
+				market_liberal = 60
+				authoritarian_democrat = 30
+				nationalist = 10
+			}
+			news_event = rd_vietnam.6
+		}
+	}
+}
+
