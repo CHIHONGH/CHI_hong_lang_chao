@@ -1953,6 +1953,36 @@ country_event = {
                     add_faction_goal = faction_goal_placeholder_short_term
                     set_faction_leader = yes
                     add_to_faction = PTF
+                    if = {
+                        limit = {
+                            VIN = {
+                                has_country_flag = pdto_member
+                            }
+                        }
+                        add_to_faction = VIN
+                        VIN = {
+                            if = {
+                                limit = {
+                                    JAP = {
+                                        has_completed_focus = JAP_reinforce_pdto
+                                        NOT = {
+                                            has_completed_focus = JAP_continue_military_integration
+                                        }
+                                    }
+                                }
+                                add_ideas = JAP_PDTO_member_1
+                            }
+                            else_if = {
+                                limit = {
+                                    JAP = {
+                                        has_completed_focus = JAP_reinforce_pdto
+                                        has_completed_focus = JAP_continue_military_integration
+                                    }
+                                }
+                                add_ideas = JAP_PDTO_member_2
+                            }
+                        }
+                    }
                 }
             }
             
