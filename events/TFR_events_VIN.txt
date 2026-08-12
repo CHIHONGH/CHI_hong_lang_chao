@@ -102,6 +102,28 @@ country_event = {
 					communist = 40
 					libertarian_socialist = 40
 				}
+				set_country_flag = eadi_member
+				if = {
+					limit = {
+						PRC = {
+							is_in_faction = yes
+						}
+					}
+					PRC = {
+						add_to_faction = VIN
+						add_to_variable = {
+							CPC_frame = 4
+						}
+						clamp_variable = {
+							var = CPC_frame
+							min = 0
+							max = 100
+						}
+						add_to_variable = {
+							PRC_Lib_Int_Dir_Var = 1
+						}
+					}
+				}
 			}
 			
 			news_event = rd_vietnam.5
@@ -144,6 +166,8 @@ country_event = {
 				authoritarian_democrat = 10
 				nationalist = 20
 			}
+			set_country_flag = eadi_member
+			set_country_flag = pdto_member
 		}
 
 		news_event = {
@@ -221,6 +245,78 @@ country_event = {
 				market_liberal = 60
 				authoritarian_democrat = 30
 				nationalist = 10
+			}
+			set_country_flag = pdto_member
+			if = {
+				limit = { 
+					JAP = {
+						is_in_faction = yes
+					}
+				}
+				if = {
+					limit = { 
+						JAP = {
+							is_faction_leader = yes
+						}
+					}
+					JAP = {
+						add_to_faction = VIN
+					}
+					VIN = {
+						if = {
+							limit = {
+								JAP = {
+									has_completed_focus = JAP_reinforce_pdto
+									NOT = {
+										has_completed_focus = JAP_continue_military_integration
+									}
+								}
+							}
+							add_ideas = JAP_PDTO_member_1
+						}
+						else_if = {
+							limit = {
+								JAP = {
+									has_completed_focus = JAP_reinforce_pdto
+									has_completed_focus = JAP_continue_military_integration
+								}
+							}
+							add_ideas = JAP_PDTO_member_2
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						PTF = {
+							is_faction_leader = yes
+						}
+					}
+					PTF = {
+						add_to_faction = VIN
+					}
+					VIN = {
+						if = {
+							limit = {
+								JAP = {
+									has_completed_focus = JAP_reinforce_pdto
+									NOT = {
+										has_completed_focus = JAP_continue_military_integration
+									}
+								}
+							}
+							add_ideas = JAP_PDTO_member_1
+						}
+						else_if = {
+							limit = {
+								JAP = {
+									has_completed_focus = JAP_reinforce_pdto
+									has_completed_focus = JAP_continue_military_integration
+								}
+							}
+							add_ideas = JAP_PDTO_member_2
+						}
+					}
+				}
 			}
 			news_event = rd_vietnam.6
 		}
