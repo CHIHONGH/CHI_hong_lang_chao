@@ -895,7 +895,13 @@ PTF_deal_with_USN = {
 			}
 		}
 		ai_will_do = {
-			base = 1000
+			base = 0
+			modifier = {
+				add = 1000
+				PRC = {
+					has_country_flag = PTF_MEX_intervention_flag
+				}
+			}
 		}
 		modifier = {
 		}
@@ -933,20 +939,21 @@ PTF_deal_with_USN = {
 			if = {
 				limit = { 
 					OR = {
-						country_exists = ZAP
-						MEX = {
-							exists = yes
-							has_government = communist
+						ZAP = {
+							has_country_flag = MEX_mexican_unifier_flag
 						}
-					}
-					NOT = {
-						country_exists = SIN
-						country_exists = CDJ
-						country_exists = GUC
-						country_exists = LFM
+						MEX = {
+							AND = {
+								has_government = communist
+								has_country_flag = MEX_mexican_unifier_flag
+							}	
+						}
 					}
 				}
 				activate_mission = USA_operation_green_mission
+				PRC = {
+					activate_mission = PTF_MEX_war_mission
+				}
 			}
 		}
 	}
@@ -976,7 +983,59 @@ PTF_deal_with_USN = {
 		}
 		timeout_effect = {
 			white_peace = MEX
-			white_peace = ZAP
+			
+			add_timed_idea = {
+				idea = JAP_shame_defeat
+				days = 365
+			}
+			if = {
+				limit = { 
+					country_exists = ZAP
+				}
+				white_peace = ZAP
+				ZAP = {
+					remove_dynamic_modifier = {
+						modifier = PRC_MEX_modifier
+					}
+				}	
+				PRC = {
+					add_to_faction = ZAP
+					add_to_variable = {
+						CPC_frame = 4
+					}
+					clamp_variable = {
+						var = CPC_frame
+						min = 0
+						max = 100
+					}
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			else = {
+				white_peace = MEX
+				MEX = {
+					remove_dynamic_modifier = {
+						modifier = PRC_MEX_modifier
+					}
+				}	
+				PRC = {
+					add_to_faction = MEX
+					add_to_variable = {
+						CPC_frame = 4
+					}
+					clamp_variable = {
+						var = CPC_frame
+						min = 0
+						max = 100
+					}
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			
 		}
 	}
 	USA_operation_gray_decision = {

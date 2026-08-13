@@ -3544,14 +3544,320 @@ PRC_export_revolution = {
             
         }
     }
+    PTF_MEX_intervention_mission = {
+        activation = {
+            always = no
+        }
+        available = {
+            always = no
+        }
+        days_mission_timeout = 220
+        selectable_mission = no
+        timeout_effect = {
+            custom_effect_tooltip = PTF_MEX_intervention_mission_tt
+            set_country_flag = PTF_MEX_intervention_flag
+            PTF = {
+                activate_decision = USA_operation_green_decision
+            }
+        }
+    }
+    MEX_add_bunker = {
+        visible = {
+            has_country_flag = MEX_selected
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 30
+        days_re_enable = 30
+        complete_effect = {
+
+        }
+        modifier = {
+            consumer_goods_factor = 0.075
+        }
+        remove_effect = {
+            every_state = {
+                limit = {
+                    OR = {
+                        is_owned_by = MEX
+                        is_owned_by = ZAP
+                    }
+                    any_neighbor_state = {
+                        is_owned_by = PTF
+                    }
+                }
+                add_building_construction = {
+                    type = bunker
+                    level = 1
+                    province = {
+                        all_provinces = yes
+                        limit_to_border = yes
+                    }
+                    instant_build = yes
+                }
+            }
+            
+        }
+    }
+    MEX_buff = {
+        visible = {
+            has_country_flag = MEX_selected
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 30
+        days_re_enable = 30
+        complete_effect = {
+
+        }
+        modifier = {
+            experience_gain_army_factor = -0.2
+            command_power_gain_mult = -0.5
+        }
+        remove_effect = {
+            if = {
+                limit = { 
+                    country_exists = ZAP
+                }
+                ZAP = {
+                    if = {
+                        limit = { 
+                            has_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                        }
+                        effect_tooltip = {
+                            swap_ideas = {
+                                remove_idea = PRC_MEX_modifier_idea0
+                                add_idea = PRC_MEX_modifier_idea
+                            }
+                        }
+                    }
+                    else = {
+                        effect_tooltip = {
+                            add_ideas = PRC_MEX_modifier_idea
+                        }
+                    }
+                    
+                    hidden_effect = {
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_attack_factor_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_defence_factor_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_core_defence_factor_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_cas_damage_reduction_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_org_factor_var = 0.025
+                        }
+                        add_dynamic_modifier = {
+                            modifier = PRC_MEX_modifier
+                        }
+                    }
+                }
+            }
+            else = {
+                MEX = {
+                    if = {
+                        limit = { 
+                            has_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                        }
+                        effect_tooltip = {
+                            swap_ideas = {
+                                remove_idea = PRC_MEX_modifier_idea0
+                                add_idea = PRC_MEX_modifier_idea
+                            }
+                        }
+                    }
+                    else = {
+                        effect_tooltip = {
+                            add_ideas = PRC_MEX_modifier_idea
+                        }
+                    }
+                    
+                    hidden_effect = {
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_attack_factor_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_defence_factor_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_core_defence_factor_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_cas_damage_reduction_var = 0.025
+                        }
+                        add_to_variable = {
+                            PRC_MEX_modifier_army_org_factor_var = 0.025
+                        }
+                        add_dynamic_modifier = {
+                            modifier = PRC_MEX_modifier
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    MEX_train = {
+        visible = {
+            has_country_flag = MEX_selected
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        complete_effect = {
+
+        }
+        modifier = {
+            experience_gain_army_unit_factor = -0.2
+            command_power_gain = -0.2
+        }
+        remove_effect = {
+            if = {
+                limit = { 
+                    country_exists = ZAP
+                }
+                ZAP = {
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                            allow_spawning_on_enemy_provs = no
+                            count = 1
+                            owner = ZAP
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                            allow_spawning_on_enemy_provs = no
+                            count = 1
+                            owner = ZAP
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                            allow_spawning_on_enemy_provs = no
+                            count = 1
+                            owner = ZAP
+                        }
+                    }
+                }
+            }
+            else = {
+                MEX = {
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = MEX
+                        }
+                    }
+                }
+            }
+        }
+    }
+    PTF_MEX_war_mission = {
+        activation = {
+            always = no
+        }
+        available = {
+            always = no
+        }
+        days_mission_timeout = 180
+        selectable_mission = no
+        timeout_effect = {
+            effect_tooltip = {
+                PTF = {
+                    white_peace = MEX
+                    white_peace = ZAP
+                }
+            }
+        }
+    }
     MEX_interfere_civil_war_saberta = {
         visible = {
             has_country_flag = MEX_selected
+            NOT = {
+                has_country_flag = MEX_interfere_civil_war_coup_flag
+            }
         }
         cost = 25
         days_remove = 30
         fire_only_once = yes
+        complete_effect = {
+            set_country_flag = MEX_interfere_civil_war_saberta_flag
+        }
         remove_effect = {
+            custom_effect_tooltip = MEX_interfere_civil_war_saberta_tt
             ZAP = {
                 capital_scope = {
                     create_unit = {
@@ -3583,11 +3889,19 @@ PRC_export_revolution = {
     MEX_interfere_civil_war_coup = {
         visible = {
             has_country_flag = MEX_selected
+            NOT = {
+                has_country_flag = MEX_interfere_civil_war_saberta_flag
+            }
         }
         cost = 35
         days_remove = 50
         fire_only_once = yes
+        complete_effect = {
+            set_country_flag = MEX_interfere_civil_war_coup_flag
+        }
         remove_effect = {
+            custom_effect_tooltip = MEX_interfere_civil_war_coup_tt
+            
             MEX = {
                 set_politics = {
                     ruling_party = communist
@@ -3595,11 +3909,16 @@ PRC_export_revolution = {
                     last_election = "2024.1.1"
                     election_allowed = no
                 }
+                white_peace = ZAP
                 diplomatic_relation = {
                     country = ZAP
                     relation = non_aggression_pact
                     active = yes
                 }
+                give_military_access = ZAP
+            }
+            ZAP = {
+                give_military_access = MEX
             }
         }
     }
