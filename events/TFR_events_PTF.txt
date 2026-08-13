@@ -4742,3 +4742,30 @@ country_event = {
 		name = rd_ptf_news.3.a
 	}
 }
+
+country_event = {
+	id = rd_ptf_news.4
+	title = rd_ptf_news.4.t
+	desc = rd_ptf_news.4.d
+	picture = GFX_report_event_generic
+
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		OR = {
+			ZAP = {
+				has_country_flag = MEX_mexican_unifier_flag
+			}
+			MEX = {
+				AND = {
+					has_country_flag = MEX_mexican_unifier_flag
+					has_government = communist
+				}
+			}
+		}
+	}
+	option = {
+		name = rd_ptf_news.4.a
+		
+	}
+}
