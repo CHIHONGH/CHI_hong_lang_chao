@@ -254,3 +254,67 @@ NAX_aiding_the_Naxalites_category = {
         }
     }
 }
+
+south_america_rev_war_cat = {
+    south_america_rev_mission = {
+        priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+        available = {
+            ECU = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            PAR = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            BOL = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+        }
+        days_mission_timeout = 999
+        fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+        cancel_trigger = {
+            PRU = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            ELN = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            VEN = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+        }
+        timeout_effect = {
+            activate_mission = south_america_rev_mission
+        }
+        complete_effect = {
+            clr_global_flag = south_america_rev_war_global
+            rev_victory_south_america_war = yes
+        }
+        cancel_effect = {
+            clr_global_flag = south_america_rev_war_global
+            react_victory_south_america_war = yes
+        }
+
+        
+    }
+}

@@ -36,3 +36,169 @@ TFR_NAX_weapon_effects = {
         max = 100
     }
 }
+
+rev_victory_south_america_war = {
+    every_country = {
+        limit = {
+            has_war_with = BRA
+        }
+        white_peace = BRA
+        white_peace = ARG
+    }
+    PRU = {
+        annex_country = {
+            target = BOL
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = PAR
+            transfer_troops = yes
+        }
+        every_state = {
+            limit = {
+                OR = {
+                    is_core_of = BOL
+                    is_core_of = PAR
+                }
+            }
+            transfer_state_to = PRU
+            add_core_of = PRU
+        }
+        set_cosmetic_tag = PRU_great
+    }
+    VEN = {
+        transfer_state = 906
+        add_state_core = 906
+    }
+    ECU = {
+        every_core_state = {
+            transfer_state_to = ELN
+            add_core_of = ELN
+        }
+    }
+    ELN = {
+        annex_country = {
+            target = ECU
+            transfer_troops = yes
+        }
+    }
+    495 = {
+        set_demilitarized_zone = yes
+    }
+    BRA = {
+        add_timed_idea = {
+            idea = BRA_farmer_revolution
+            days = 500
+        }
+    }
+    ARG = {
+        set_cosmetic_tag = ARG_what_the_fuck
+        kill_ideology_leader = market_liberal
+        create_country_leader = {
+            name = AN1_anarchy_char
+            picture = "gfx/Leaders/ZZZ/ZZZ_anarchy.png"
+            ideology = left_anarchist
+        }
+        set_politics = {
+            ruling_party = libertarian_socialist
+            elections_allowed = no
+            election_frequency = 60
+            last_election = "2021.9.5"
+        }
+        set_popularities = {
+            totalitarian_socialist = 5
+            communist = 10
+            libertarian_socialist = 20
+            social_democrat = 5
+            social_liberal = 5
+            market_liberal = 5
+            conservative = 10
+            authoritarian_democrat = 20
+            nationalist = 10
+            fascist = 5
+            national_socialist = 5
+        }
+        news_event = {
+            id = nax.4
+            days = 3
+            random_hours = 6
+        }
+    }
+    BRA = {
+        dismantle_faction = yes
+    }
+
+}
+
+react_victory_south_america_war = {
+    every_country = {
+        limit = {
+            has_war_with = NIC
+        }
+        white_peace = PIC
+    }
+    PRU = {
+        promote_character = PRU_alberto_fujimori_char
+        set_politics = {
+            ruling_party = authoritarian_democrat
+            elections_allowed = no
+            last_election = "2022.2.22"
+            election_frequency = 60
+        }
+        add_timed_idea = {
+            idea = PRU_warlords_idea
+            days = 1000
+        }
+        add_timed_idea = {
+            idea = PRU_rural_massacre
+            days = 500
+        }
+    }
+    ELN = {
+        every_core_state = {
+            transfer_state_to = COL
+            add_core_of = COL
+            remove_core_of = ELN
+        }
+    }
+    COL = {
+        set_politics = {
+            ruling_party = nationalist
+            elections_allowed = no
+            last_election = "2019.1.1"
+            election_frequency = 60
+        }
+    }
+    VEN = {
+        create_country_leader = {
+            name = AN1_anarchy_char
+            picture = "gfx/Leaders/ZZZ/ZZZ_anarchy.png"
+            ideology = left_anarchist
+        }
+        set_politics = {
+            ruling_party = libertarian_socialist
+            elections_allowed = no
+            election_frequency = 60
+            last_election = "2021.9.5"
+        }
+        set_popularities = {
+            totalitarian_socialist = 5
+            communist = 10
+            libertarian_socialist = 20
+            social_democrat = 5
+            social_liberal = 5
+            market_liberal = 5
+            conservative = 10
+            authoritarian_democrat = 20
+            nationalist = 10
+            fascist = 5
+            national_socialist = 5
+        }
+    }
+    PTF = {
+        puppet = NIC
+    }
+    NIC = {
+        set_cosmetic_tag = NIC_PTF_sub
+    }
+}
