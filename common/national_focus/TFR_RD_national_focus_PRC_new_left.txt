@@ -15,6 +15,7 @@ focus_tree = {
     #!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
 
     shared_focus = PRC_chinas_greatest_hour
+    shared_focus = nl_PRC_reconstruct_planning_commission
     shared_focus = PLA_when_that_day_comes
     shared_focus = PRC_nl_road_to_revolution
     shared_focus = PRC_Southwestern_border_in_critical_condition
@@ -1589,7 +1590,9 @@ focus_tree = {
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             PRC_nl_culture_xianzhi = yes
-            PRC_nl_culture_lock = yes
+            NOT = {
+                has_completed_focus = PRC_nl_newculture_tbc
+            }
         }
         cancel_if_invalid = yes
         completion_reward = {
@@ -1638,7 +1641,9 @@ focus_tree = {
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             PRC_nl_culture_xianzhi = yes
-            PRC_nl_culture_lock = yes
+            NOT = {
+                has_completed_focus = PRC_nl_newculture_tbc
+            }
         }
         cancel_if_invalid = yes
         completion_reward = {
@@ -1731,7 +1736,9 @@ focus_tree = {
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             PRC_nl_culture_xianzhi = yes
-            PRC_nl_culture_lock = yes
+            NOT = {
+                has_completed_focus = PRC_nl_newculture_tbc
+            }
         }
         cancel_if_invalid = yes
         completion_reward = {
@@ -1777,7 +1784,9 @@ focus_tree = {
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             PRC_nl_culture_xianzhi = yes
-            PRC_nl_culture_lock = yes
+            NOT = {
+                has_completed_focus = PRC_nl_newculture_tbc
+            }
         }
         cancel_if_invalid = yes
         completion_reward = {
@@ -2599,1353 +2608,1346 @@ focus_tree = {
         }
     }
     #经济线
-    focus = {
-        id = PRC_nl_road_to_future
-        icon = GFX_focus_PRC_forward_to_the_future
-        cost = 3
-        allow_branch = {
-            has_country_flag = Prc_NewLeft_focus_key
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            has_country_flag = Prc_NewLeft_Rectification_Movement
-        }
-        cancel_if_invalid = yes
-        x = 41
-        y = 1
-        completion_reward = {
-            hidden_effect = {
-                scoped_play_song = "legacy_39"
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.1
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_start_efficiency_factor_dynamic_var = 0.1
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.1
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea
-                    add_idea = PRC_nl_jingji0_idea
-                }
-            }
-            hidden_effect = {
-                remove_dynamic_modifier = {
-                    modifier = PRC_made_in_china_dynamic
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_made_in_china_new_left_dynamic
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_national_science_committee
-        icon = GFX_focus_PRC_expand_research_development
-        cost = 3
-        x = -3
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_road_to_future
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_road_to_future
-        completion_reward = {
-            country_event = {
-                id = prcs.3092
-                days = 6
-            }
-            effect_tooltip = {
-                add_ideas = PRC_research_idea
-            }
-            add_to_variable = {
-                var = rd_research_speed_factor_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = rd_expense_growth_factor_var
-                value = 0.05
-            }
-            hidden_effect = {
-                add_dynamic_modifier = {
-                    modifier = PRC_research_dynamic
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_research_institution_consolidation
-        icon = GFX_focus_PRC_inegrate_research_institutes
-        cost = 3
-        x = -1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_national_science_committee
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_national_science_committee
-        completion_reward = {
-            set_temp_variable = {
-                var = academic_development_var_temp
-                value = 0.05
-            }
-            add_academic_development = yes
-            add_to_variable = {
-                var = rd_research_speed_factor_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = rd_expense_growth_factor_var
-                value = -0.025
-            }
-            add_to_variable = {
-                var = rd_consumer_goods_factor_var
-                value = 0.025
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_research_idea0
-                    add_idea = zhenghe_jigou
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_socialist_modernization
-        icon = GFX_focus_PRC_freedom_provinces_initiative
-        cost = 3
-        x = 3
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_road_to_future
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_road_to_future
-        completion_reward = {
-            add_political_power = 100
-            country_event = {
-                id = prcs.3078
-                days = 5
-            }
-            country_event = {
-                id = prcs.3076
-                days = 8
-            }
-            country_event = {
-                id = prcs.3077
-                days = 11
-            }
-            country_event = {
-                id = prcs.3079
-                days = 15
-            }
-        }
-    }
-    #focus = {  转决议
-    #	id = PRC_nl_military_civilian_integration
-    #	icon = GFX_focus_PRC_accelerate_local_recovery
-    #	cost = 2
-    #	x = -1
-    #	y = 1
-    #	prerequisite = {
-    #		focus = PRC_nl_national_science_committee
-    #	}
-    #	relative_position_id = PRC_nl_national_science_committee
-    #	completion_reward = {
-    #		custom_effect_tooltip = PRC_military_tree_opened_tt
-    #		set_country_flag = PRC_military_tree_available
-    #		add_to_variable = {
-    #			var = rd_production_factory_max_efficiency_factor_var
-    #			value = 0.05
-    #		}
-    #		add_to_variable = {
-    #			var = rd_production_speed_arms_factory_factor_var
-    #			value = 0.05
-    #		}
-    #		add_to_variable = {
-    #			var = rd_production_speed_industrial_complex_factor_var
-    #			value = 0.05
-    #		}
-    #		swap_ideas = {
-    #			swap_ideas = {
-    #				remove_idea = PRC_research_idea0
-    #				add_idea = zhenghe_jigou
-    #			}
-    #		}
-    #	}
-    #}
-    focus = {
-        id = PRC_nl_automation_model
-        icon = GFX_focus_PRC_economic_computerization
-        cost = 3
-        x = -3
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_socialist_modernization
-        }
-        prerequisite = {
-            focus = PRC_nl_national_science_committee
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_socialist_modernization
-        completion_reward = {
-            activate_mission = zidonghua_moxing
-            activate_mission = fanduipai_zunao
-            change_economy_type_OGAS_economy = yes
-            hidden_effect = {
-                add_dynamic_modifier = {
-                    modifier = PRC_NEMS_dynamic
-                }
-                add_to_variable = {
-                    var = NEMS_stability_factor_dynamic_var
-                    value = -0.1
-                }
-                add_to_variable = {
-                    var = NEMS_consumer_goods_factor_dynamic_var
-                    value = 0.25
-                }
-                add_to_variable = {
-                    var = NEMS_misc_income_dynamic_var
-                    value = 20
-                }
-            }
-            effect_tooltip = {
-                add_ideas = zidonghua_moxing_dynamic_idea
-            }
-            unlock_decision_category_tooltip = PRC_nems_system
-            #unlock_decision_tooltip = jiasu_gongzuo
-            #unlock_decision_tooltip = touru_keyan_ranyuan
-            #unlock_decision_tooltip = touru_zijin
-        }
-    }
-    focus = {
-        id = PRC_nl_reform_production_relation
-        icon = GFX_focus_PRC_harmonization_companies
-        cost = 3
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_socialist_modernization
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_socialist_modernization
-        completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.3117
-                    days = 190
-                }
-                country_event = {
-                    id = prcs.3081
-                    days = 21
-                }
-                country_event = {
-                    id = prcs.3177
-                    days = 90
-                }
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea
-                    add_idea = PRC_made_in_china_dummy_idea7
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_MODIFIER_TRADE_OPINION_FACTOR_dynamic_var
-                value = -0.15
-            }
-            unlock_decision_category_tooltip = PRC_gaizaodaxingqiye_category
-            unlock_decision_tooltip = PRC_nl_jingjiCd1			#
-            unlock_decision_tooltip = PRC_nl_jingjiCd2			#
-            unlock_decision_tooltip = PRC_nl_jingjiCd3			#
-            unlock_decision_tooltip = PRC_nl_jingjiCd4			#
-            unlock_decision_tooltip = PRC_nl_jingjiCd5			#
-        }
-    }
-    focus = {
-        id = PRC_nl_dawn_project
-        icon = GFX_focus_PRC_Chuji_Shuguang
-        cost = 2
-        x = -1
-        y = 3
-        prerequisite = {
-            focus = PRC_nl_military_civilian_integration
-        }
-        prerequisite = {
-            focus = PRC_nl_research_institution_consolidation
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_national_science_committee
-        completion_reward = {
-            unlock_decision_category_tooltip = PRC_dawn_project
-            unlock_decision_tooltip = PRC_nl_stellar_exploration
-        }
-    }
-    focus = {
-        id = PRC_nl_national_IoT_construction
-        icon = GFX_focus_PRC_Quanquyu_Hulianwang_Jianshe
-        cost = 3
-        x = -1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_automation_model
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_automation_model
-        completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.46
-                    hours = 9
-                }
-            }
-            unlock_decision_tooltip = PRC_nl_spread_lot
-            unlock_decision_tooltip = beijing_jiedian
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea
-                    add_idea = PRC_made_in_china_dummy_idea6
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_expense_growth_factor_dynamic_var
-                value = 0.05
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_building_foundation_of_model
-        icon = GFX_focus_PRC_nationalize_tech_industry
-        cost = 3
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_automation_model
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_automation_model
-        completion_reward = {
-            activate_mission = PRC_nl_building_foundation_of_model
-            unlock_decision_tooltip = saoqing_zhangai
-        }
-    }
-    focus = {
-        id = PRC_nl_new_era_angang_constitution
-        icon = GFX_focus_PRC_propose_confederation_treaty
-        cost = 3
-        x = -1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_reform_production_relation
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_reform_production_relation
-        completion_reward = {
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingji5_idea
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
-                value = 0.1
-            }
-            add_to_variable = {
-                var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_development_monthly_dynamic_var
-                value = 0.005
-            }
-            swap_ideas = {
-                remove_idea = high_safety
-                add_idea = PRC_NLAG_safety
-            }
-            unlock_decision_tooltip = PRC_nl_jingji5_d1			#发扬大庆工业精神
-        }
-    }
-    focus = {
-        id = PRC_nl_restore_people_commune
-        icon = GFX_focus_PRC_youth_construction_brigades
-        cost = 3
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_reform_production_relation
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_reform_production_relation
-        completion_reward = {
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingji9_idea
-                }
-            }
-            hidden_effect = {
-                country_event = {
-                    id = prcs.3124
-                    days = 0
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_production_speed_buildings_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
-                value = 0.1
-            }
-            add_to_variable = {
-                var = PRC_mic_global_building_slots_factor_dynamic_var
-                value = 0.1
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_quantum_supercomputer
-        icon = GFX_focus_PRC_fund_supercomputing_expansion
-        cost = 2
-        x = -1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_dawn_project
-        }
-        relative_position_id = PRC_nl_dawn_project
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        completion_reward = {
-            set_temp_variable = {
-                var = society_development_var_temp
-                value = 0.05
-            }
-            add_society_development = yes
-            add_tech_bonus = {
-                name = PRC_nl_quantum_supercomputer
-                bonus = 0.5
-                uses = 1
-                category = electronics
-            }
-            add_research_slot = 1
-            add_to_variable = {
-                var = rd_expense_growth_factor_var
-                value = 0.05
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_research_idea0
-                    add_idea = PRC_research_idea2
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_fusion_power_demo
-        icon = GFX_focus_PRC_fusion_investements
-        cost = 2
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_dawn_project
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_dawn_project
-        completion_reward = {
-            set_temp_variable = {
-                var = PRC_enviromental_progress_temp
-                value = 0.1
-            }
-            PRC_add_enviromental_progress = yes
-            add_to_variable = {
-                NEMS_misc_income_dynamic_var = 1
-            }
-            add_to_variable = {
-                rd_society_development_monthly_var = 0.005
-            }
-            add_to_variable = {
-                rd_production_speed_nuclear_reactor_factor_var = 0.2
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_research_idea0
-                    add_idea = jianzao_shifanjubiandianzhan_idea
-                }
-            }
-            random_owned_state = {
-                add_extra_state_shared_building_slots = 1
-                add_building_construction = {
-                    type = nuclear_reactor
-                    level = 1
-                    instant_build = yes
-                }
-            }
-            random_owned_state = {
-                add_extra_state_shared_building_slots = 1
-                add_building_construction = {
-                    type = nuclear_reactor
-                    level = 1
-                    instant_build = yes
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_state_enterprise_pilot_operations
-        icon = GFX_focus_PRC_techno_nationalism
-        cost = 3
-        x = -1
-        y = 2
-        prerequisite = {
-            focus = PRC_nl_national_IoT_construction
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_automation_model
-        completion_reward = {
-            add_days_mission_timeout = {
-                mission = zidonghua_moxing
-                days = -90
-            }
-            unlock_decision_tooltip = tongji_shengchan_shuju
-        }
-    }
-    focus = {
-        id = PRC_nl_introduce_worker_supervision
-        icon = GFX_focus_PRC_Yinru_Gongrenjianguan
-        cost = 2
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_new_era_angang_constitution
-        }
-        prerequisite = {
-            focus = PRC_nl_building_foundation_of_model
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_building_foundation_of_model
-        completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.20
-                    hours = 22
-                }
-                country_event = {
-                    id = prcs.3178
-                    days = 10
-                }
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea
-                    add_idea = PRC_made_in_china_dummy_idea7
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_consumer_goods_factor_dynamic_var
-                value = -0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_capacity_factory_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_production_speed_buildings_factor_dynamic_var
-                value = 0.05
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_China_shocks_world
-        icon = GFX_focus_PRC_denounce_xi_revisionism
-        cost = 3
-        x = 0
-        y = 2
-        prerequisite = {
-            focus = PRC_nl_reform_production_relation
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_reform_production_relation
-        completion_reward = {
-            unlock_decision_category_tooltip = PRC_nl_expand_reform_category
-            unlock_decision_tooltip = PRC_nl_shipbuilding_ingenuity
-            #unlock_decision_tooltip =
-            #unlock_decision_tooltip =
-        }
-    }
-    focus = {
-        id = PRC_nl_reform_farmer_cooperation
-        icon = GFX_focus_PRC_Xikan_Daojiqianchonglang
-        cost = 3
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_restore_people_commune
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_restore_people_commune
-        completion_reward = {
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingji6_idea
-                }
-            }
-            country_event = {
-                id = prcs.3116
-                days = 0
-            }
-            add_to_variable = {
-                var = PRC_mic_personal_value_dynamic_var
-                value = 0.1
-            }
-            add_to_variable = {
-                var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
-                value = 0.1
-            }
-            unlock_decision_tooltip = PRC_nl_jingji6_d1			#发扬农业大寨精神
-        }
-    }
-    focus = {
-        id = PRC_nl_comprehensive_social_integration
-        icon = GFX_focus_PRC_galactic_personality
-        cost = 5
-        x = 0
-        y = 3
-        prerequisite = {
-            focus = PRC_nl_state_enterprise_pilot_operations
-        }
-        prerequisite = {
-            focus = PRC_nl_introduce_worker_supervision
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_automation_model
-        available = {
-            PRC_nl_comprehensive_social_integration_tigger = yes
-        }
-        completion_reward = {
-            unlock_decision_tooltip = gaizao_gongchang
-            country_event = {
-                id = prcs.3170
-                days = 2
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_old_transformed_newlook
-        icon = GFX_focus_PRC_modern_socialist_nation
-        cost = 3
-        x = 0
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_China_shocks_world
-        }
-        prerequisite = {
-            focus = PRC_nl_introduce_worker_supervision
-        }
-        prerequisite = {
-            focus = PRC_nl_reform_farmer_cooperation
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_China_shocks_world
-        completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = Chihong.58
-                    days = 11
-                    random_days = 7
-                }
-            }
-            #unlock_decision_tooltip = PRC_nl_super_project
-            country_event = prcs.3161
-            unlock_decision_tooltip = PRC_nl_jingji23_d1
-        }
-    }
-    focus = {
-        id = PRC_nl_socialist_construction_climax
-        icon = GFX_focus_PRC_nl_turmoil_resumed_and_on_the_rocks
-        cost = 3
-        x = -1
-        y = 5
-        prerequisite = {
-            focus = PRC_nl_comprehensive_social_integration
-        }
-        prerequisite = {
-            focus = PRC_nl_old_transformed_newlook
-        }
-        prerequisite = {
-            focus = PRC_nl_quantum_supercomputer
-        }
-        prerequisite = {
-            focus = PRC_nl_fusion_power_demo
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_socialist_modernization
-        completion_reward = {
-            add_political_power = 150
-            hidden_effect = {
-                country_event = Chihong.77
-            }
-            if = {
-                limit = {
-                    NOT = {
-                        has_completed_focus = PRC_nl_long_march_plan
-                    }
-                }
-                focus_unlock = yes
-            }
-            set_country_flag = PRC_nl_socialist_construction_climax_flag
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingji4_idea
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_income_growth_factor_dynamic_var
-                value = 0.1
-            }
-            add_to_variable = {
-                var = PRC_mic_expense_growth_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_personal_value_factor_dynamic_var
-                value = 0.1
-            }
-            #unlock_decision_category_tooltip = 经济gui
-        }
-    }
-    focus = {
-        id = PRC_nl_long_march_plan
-        icon = GFX_focus_PRC_towards_a_digital_world
-        cost = 5
-        x = 2
-        y = 2
-        prerequisite = {
-            focus = PRC_nl_fusion_power_demo
-        }
-        prerequisite = {
-            focus = PRC_nl_quantum_supercomputer
-        }
-        prerequisite = {
-            focus = PRC_nl_comprehensive_social_integration
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_dawn_project
-        completion_reward = {
-            country_event = prcs.23
-            hidden_effect = {
-                country_event = {
-                    id = Chihong.13
-                    days = 2
-                }
-                country_event = {
-                    id = prcs.3096
-                    days = 10
-                }
-            }
-            unlock_decision_tooltip = PRC_project_the_long_march_phase_1
-            unlock_decision_tooltip = PRC_project_the_long_march_phase_2
-            unlock_decision_tooltip = PRC_project_the_long_march_phase_3
-            unlock_decision_tooltip = apply_nems_to_other_states
-            if = {
-                limit = {
-                    NOT = {
-                        has_completed_focus = PRC_nl_socialist_construction_climax
-                    }
-                }
-                focus_unlock = yes
-            }
-            set_country_flag = PRC_nl_socialist_construction_climax_flag
-            unlock_decision_category_tooltip = PRC_loji_category
-        }
-    }
-    focus = {
-        id = PRC_nl_advance_productivity
-        icon = GFX_focus_PRC_invest_mass_smart_manufacturing
-        cost = 3
-        x = -2
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_socialist_construction_climax
-        }
-        prerequisite = {
-            focus = PRC_nl_long_march_plan
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_long_march_plan
-        allow_branch = {
-            #国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
-            has_country_flag = PRC_nl_socialist_construction_climax_flag
-        }
-        completion_reward = {
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingji2_idea
-                }
-            }
-            country_event = {
-                id = prcs.3097
-                days = 10
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_capacity_factory_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_research_speed_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_expense_growth_factor_dynamic_var
-                value = 0.05
-            }
-            #unlock_decision_tooltip = PRC_nl_jingji2_d1			#推进国内大循环
-            #unlock_decision_tooltip = PRC_nl_jingji2_d2			#建设先进产业集群
-            #unlock_decision_tooltip = PRC_nl_jingji2_d3			#扩展科技小院模式
-            #unlock_decision_tooltip = PRC_nl_jingji2_d4			#推广农业八字宪法
-            #unlock_decision_tooltip仅做展示，实际启用决议需在决议中写完成某某国策的条件
-        }
-    }
-    focus = {
-        id = PRC_nl_assure_welfare
-        icon = GFX_focus_PRC_five_shinig_stars_of_china
-        cost = 3
-        x = 2
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_socialist_construction_climax
-        }
-        prerequisite = {
-            focus = PRC_nl_long_march_plan
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_socialist_construction_climax
-        allow_branch = {
-            #国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
-            has_country_flag = PRC_nl_socialist_construction_climax_flag
-        }
-        completion_reward = {
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingji10_idea
-                }
-            }
-            add_to_variable = {
-                var = PRC_mic_stability_factor_dynamic_var
-                value = 0.07
-            }
-            add_to_variable = {
-                var = PRC_mic_personal_expense_factor_dynamic_var
-                value = 0.15
-            }
-            add_to_variable = {
-                var = PRC_mic_poverty_development_monthly_dynamic_var
-                value = 0.005
-            }
-            add_to_variable = {
-                var = PRC_mic_monthly_population_dynamic_var
-                value = 0.15
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_autonomous_iteration_system
-        icon = GFX_focus_PRC_Zizhudiedaixitong
-        cost = 2
-        x = -1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_advance_productivity
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_advance_productivity
-        completion_reward = {
-            custom_effect_tooltip = zizhu_diedai_tt
+    # focus = {
+    #     id = PRC_nl_road_to_future
+    #     icon = GFX_focus_PRC_forward_to_the_future
+    #     cost = 3
+    #     cancel_if_invalid = yes
+    #     x = 41
+    #     y = 1
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             scoped_play_song = "legacy_39"
+    #         }
+    #         add_to_variable = {
+    #             PRC_mic_business_value_dynamic_var = -0.1
+    #         }
+    #         add_to_variable = {
+    #             PRC_mic_production_factory_start_efficiency_factor_dynamic_var = 0.1
+    #         }
+    #         add_to_variable = {
+    #             PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.1
+    #         }
+    #         add_to_variable = {
+    #             PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.1
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea
+    #                 add_idea = PRC_nl_jingji0_idea
+    #             }
+    #         }
+    #         hidden_effect = {
+    #             remove_dynamic_modifier = {
+    #                 modifier = PRC_made_in_china_dynamic
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_made_in_china_new_left_dynamic
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_national_science_committee
+    #     icon = GFX_focus_PRC_expand_research_development
+    #     cost = 3
+    #     x = -3
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_road_to_future
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_road_to_future
+    #     completion_reward = {
+    #         country_event = {
+    #             id = prcs.3092
+    #             days = 6
+    #         }
+    #         effect_tooltip = {
+    #             add_ideas = PRC_research_idea
+    #         }
+    #         add_to_variable = {
+    #             var = rd_research_speed_factor_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = rd_expense_growth_factor_var
+    #             value = 0.05
+    #         }
+    #         hidden_effect = {
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_research_dynamic
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_research_institution_consolidation
+    #     icon = GFX_focus_PRC_inegrate_research_institutes
+    #     cost = 3
+    #     x = -1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_national_science_committee
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_national_science_committee
+    #     completion_reward = {
+    #         set_temp_variable = {
+    #             var = academic_development_var_temp
+    #             value = 0.05
+    #         }
+    #         add_academic_development = yes
+    #         add_to_variable = {
+    #             var = rd_research_speed_factor_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = rd_expense_growth_factor_var
+    #             value = -0.025
+    #         }
+    #         add_to_variable = {
+    #             var = rd_consumer_goods_factor_var
+    #             value = 0.025
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_research_idea0
+    #                 add_idea = zhenghe_jigou
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_socialist_modernization
+    #     icon = GFX_focus_PRC_freedom_provinces_initiative
+    #     cost = 3
+    #     x = 3
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_road_to_future
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_road_to_future
+    #     completion_reward = {
+    #         add_political_power = 100
+    #         country_event = {
+    #             id = prcs.3078
+    #             days = 5
+    #         }
+    #         country_event = {
+    #             id = prcs.3076
+    #             days = 8
+    #         }
+    #         country_event = {
+    #             id = prcs.3077
+    #             days = 11
+    #         }
+    #         country_event = {
+    #             id = prcs.3079
+    #             days = 15
+    #         }
+    #     }
+    # }
+    # #focus = {  转决议
+    # #	id = PRC_nl_military_civilian_integration
+    # #	icon = GFX_focus_PRC_accelerate_local_recovery
+    # #	cost = 2
+    # #	x = -1
+    # #	y = 1
+    # #	prerequisite = {
+    # #		focus = PRC_nl_national_science_committee
+    # #	}
+    # #	relative_position_id = PRC_nl_national_science_committee
+    # #	completion_reward = {
+    # #		custom_effect_tooltip = PRC_military_tree_opened_tt
+    # #		set_country_flag = PRC_military_tree_available
+    # #		add_to_variable = {
+    # #			var = rd_production_factory_max_efficiency_factor_var
+    # #			value = 0.05
+    # #		}
+    # #		add_to_variable = {
+    # #			var = rd_production_speed_arms_factory_factor_var
+    # #			value = 0.05
+    # #		}
+    # #		add_to_variable = {
+    # #			var = rd_production_speed_industrial_complex_factor_var
+    # #			value = 0.05
+    # #		}
+    # #		swap_ideas = {
+    # #			swap_ideas = {
+    # #				remove_idea = PRC_research_idea0
+    # #				add_idea = zhenghe_jigou
+    # #			}
+    # #		}
+    # #	}
+    # #}
+    # focus = {
+    #     id = PRC_nl_automation_model
+    #     icon = GFX_focus_PRC_economic_computerization
+    #     cost = 3
+    #     x = -3
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_socialist_modernization
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_national_science_committee
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_socialist_modernization
+    #     completion_reward = {
+    #         activate_mission = zidonghua_moxing
+    #         activate_mission = fanduipai_zunao
+    #         change_economy_type_OGAS_economy = yes
+    #         hidden_effect = {
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_NEMS_dynamic
+    #             }
+    #             add_to_variable = {
+    #                 var = NEMS_stability_factor_dynamic_var
+    #                 value = -0.1
+    #             }
+    #             add_to_variable = {
+    #                 var = NEMS_consumer_goods_factor_dynamic_var
+    #                 value = 0.25
+    #             }
+    #             add_to_variable = {
+    #                 var = NEMS_misc_income_dynamic_var
+    #                 value = 20
+    #             }
+    #         }
+    #         effect_tooltip = {
+    #             add_ideas = zidonghua_moxing_dynamic_idea
+    #         }
+    #         unlock_decision_category_tooltip = PRC_nems_system
+    #         #unlock_decision_tooltip = jiasu_gongzuo
+    #         #unlock_decision_tooltip = touru_keyan_ranyuan
+    #         #unlock_decision_tooltip = touru_zijin
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_reform_production_relation
+    #     icon = GFX_focus_PRC_harmonization_companies
+    #     cost = 3
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_socialist_modernization
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_socialist_modernization
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = prcs.3117
+    #                 days = 190
+    #             }
+    #             country_event = {
+    #                 id = prcs.3081
+    #                 days = 21
+    #             }
+    #             country_event = {
+    #                 id = prcs.3177
+    #                 days = 90
+    #             }
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea
+    #                 add_idea = PRC_made_in_china_dummy_idea7
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_MODIFIER_TRADE_OPINION_FACTOR_dynamic_var
+    #             value = -0.15
+    #         }
+    #         unlock_decision_category_tooltip = PRC_gaizaodaxingqiye_category
+    #         unlock_decision_tooltip = PRC_nl_jingjiCd1			#
+    #         unlock_decision_tooltip = PRC_nl_jingjiCd2			#
+    #         unlock_decision_tooltip = PRC_nl_jingjiCd3			#
+    #         unlock_decision_tooltip = PRC_nl_jingjiCd4			#
+    #         unlock_decision_tooltip = PRC_nl_jingjiCd5			#
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_dawn_project
+    #     icon = GFX_focus_PRC_Chuji_Shuguang
+    #     cost = 2
+    #     x = -1
+    #     y = 3
+    #     prerequisite = {
+    #         focus = PRC_nl_military_civilian_integration
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_research_institution_consolidation
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_national_science_committee
+    #     completion_reward = {
+    #         unlock_decision_category_tooltip = PRC_dawn_project
+    #         unlock_decision_tooltip = PRC_nl_stellar_exploration
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_national_IoT_construction
+    #     icon = GFX_focus_PRC_Quanquyu_Hulianwang_Jianshe
+    #     cost = 3
+    #     x = -1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_automation_model
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_automation_model
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = prcs.46
+    #                 hours = 9
+    #             }
+    #         }
+    #         unlock_decision_tooltip = PRC_nl_spread_lot
+    #         unlock_decision_tooltip = beijing_jiedian
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea
+    #                 add_idea = PRC_made_in_china_dummy_idea6
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_expense_growth_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_building_foundation_of_model
+    #     icon = GFX_focus_PRC_nationalize_tech_industry
+    #     cost = 3
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_automation_model
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_automation_model
+    #     completion_reward = {
+    #         activate_mission = PRC_nl_building_foundation_of_model
+    #         unlock_decision_tooltip = saoqing_zhangai
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_new_era_angang_constitution
+    #     icon = GFX_focus_PRC_propose_confederation_treaty
+    #     cost = 3
+    #     x = -1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_reform_production_relation
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_reform_production_relation
+    #     completion_reward = {
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_jingji5_idea
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_development_monthly_dynamic_var
+    #             value = 0.005
+    #         }
+    #         swap_ideas = {
+    #             remove_idea = high_safety
+    #             add_idea = PRC_NLAG_safety
+    #         }
+    #         unlock_decision_tooltip = PRC_nl_jingji5_d1			#发扬大庆工业精神
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_restore_people_commune
+    #     icon = GFX_focus_PRC_youth_construction_brigades
+    #     cost = 3
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_reform_production_relation
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_reform_production_relation
+    #     completion_reward = {
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_jingji9_idea
+    #             }
+    #         }
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = prcs.3124
+    #                 days = 0
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_speed_buildings_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_global_building_slots_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_quantum_supercomputer
+    #     icon = GFX_focus_PRC_fund_supercomputing_expansion
+    #     cost = 2
+    #     x = -1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_dawn_project
+    #     }
+    #     relative_position_id = PRC_nl_dawn_project
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     completion_reward = {
+    #         set_temp_variable = {
+    #             var = society_development_var_temp
+    #             value = 0.05
+    #         }
+    #         add_society_development = yes
+    #         add_tech_bonus = {
+    #             name = PRC_nl_quantum_supercomputer
+    #             bonus = 0.5
+    #             uses = 1
+    #             category = electronics
+    #         }
+    #         add_research_slot = 1
+    #         add_to_variable = {
+    #             var = rd_expense_growth_factor_var
+    #             value = 0.05
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_research_idea0
+    #                 add_idea = PRC_research_idea2
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_fusion_power_demo
+    #     icon = GFX_focus_PRC_fusion_investements
+    #     cost = 2
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_dawn_project
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_dawn_project
+    #     completion_reward = {
+    #         set_temp_variable = {
+    #             var = PRC_enviromental_progress_temp
+    #             value = 0.1
+    #         }
+    #         PRC_add_enviromental_progress = yes
+    #         add_to_variable = {
+    #             NEMS_misc_income_dynamic_var = 1
+    #         }
+    #         add_to_variable = {
+    #             rd_society_development_monthly_var = 0.005
+    #         }
+    #         add_to_variable = {
+    #             rd_production_speed_nuclear_reactor_factor_var = 0.2
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_research_idea0
+    #                 add_idea = jianzao_shifanjubiandianzhan_idea
+    #             }
+    #         }
+    #         random_owned_state = {
+    #             add_extra_state_shared_building_slots = 1
+    #             add_building_construction = {
+    #                 type = nuclear_reactor
+    #                 level = 1
+    #                 instant_build = yes
+    #             }
+    #         }
+    #         random_owned_state = {
+    #             add_extra_state_shared_building_slots = 1
+    #             add_building_construction = {
+    #                 type = nuclear_reactor
+    #                 level = 1
+    #                 instant_build = yes
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_state_enterprise_pilot_operations
+    #     icon = GFX_focus_PRC_techno_nationalism
+    #     cost = 3
+    #     x = -1
+    #     y = 2
+    #     prerequisite = {
+    #         focus = PRC_nl_national_IoT_construction
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_automation_model
+    #     completion_reward = {
+    #         add_days_mission_timeout = {
+    #             mission = zidonghua_moxing
+    #             days = -90
+    #         }
+    #         unlock_decision_tooltip = tongji_shengchan_shuju
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_introduce_worker_supervision
+    #     icon = GFX_focus_PRC_Yinru_Gongrenjianguan
+    #     cost = 2
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_new_era_angang_constitution
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_building_foundation_of_model
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_building_foundation_of_model
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = prcs.20
+    #                 hours = 22
+    #             }
+    #             country_event = {
+    #                 id = prcs.3178
+    #                 days = 10
+    #             }
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea
+    #                 add_idea = PRC_made_in_china_dummy_idea7
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_consumer_goods_factor_dynamic_var
+    #             value = -0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_capacity_factory_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_speed_buildings_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_China_shocks_world
+    #     icon = GFX_focus_PRC_denounce_xi_revisionism
+    #     cost = 3
+    #     x = 0
+    #     y = 2
+    #     prerequisite = {
+    #         focus = PRC_nl_reform_production_relation
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_reform_production_relation
+    #     completion_reward = {
+    #         unlock_decision_category_tooltip = PRC_nl_expand_reform_category
+    #         unlock_decision_tooltip = PRC_nl_shipbuilding_ingenuity
+    #         #unlock_decision_tooltip =
+    #         #unlock_decision_tooltip =
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_reform_farmer_cooperation
+    #     icon = GFX_focus_PRC_Xikan_Daojiqianchonglang
+    #     cost = 3
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_restore_people_commune
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_restore_people_commune
+    #     completion_reward = {
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_jingji6_idea
+    #             }
+    #         }
+    #         country_event = {
+    #             id = prcs.3116
+    #             days = 0
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_personal_value_dynamic_var
+    #             value = 0.1
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_line_change_production_efficiency_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         unlock_decision_tooltip = PRC_nl_jingji6_d1			#发扬农业大寨精神
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_comprehensive_social_integration
+    #     icon = GFX_focus_PRC_galactic_personality
+    #     cost = 5
+    #     x = 0
+    #     y = 3
+    #     prerequisite = {
+    #         focus = PRC_nl_state_enterprise_pilot_operations
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_introduce_worker_supervision
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_automation_model
+    #     available = {
+    #         PRC_nl_comprehensive_social_integration_tigger = yes
+    #     }
+    #     completion_reward = {
+    #         unlock_decision_tooltip = gaizao_gongchang
+    #         country_event = {
+    #             id = prcs.3170
+    #             days = 2
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_old_transformed_newlook
+    #     icon = GFX_focus_PRC_modern_socialist_nation
+    #     cost = 3
+    #     x = 0
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_China_shocks_world
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_introduce_worker_supervision
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_reform_farmer_cooperation
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_China_shocks_world
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = Chihong.58
+    #                 days = 11
+    #                 random_days = 7
+    #             }
+    #         }
+    #         #unlock_decision_tooltip = PRC_nl_super_project
+    #         country_event = prcs.3161
+    #         unlock_decision_tooltip = PRC_nl_jingji23_d1
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_socialist_construction_climax
+    #     icon = GFX_focus_PRC_nl_turmoil_resumed_and_on_the_rocks
+    #     cost = 3
+    #     x = -1
+    #     y = 5
+    #     prerequisite = {
+    #         focus = PRC_nl_comprehensive_social_integration
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_old_transformed_newlook
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_quantum_supercomputer
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_fusion_power_demo
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_socialist_modernization
+    #     completion_reward = {
+    #         add_political_power = 150
+    #         hidden_effect = {
+    #             country_event = Chihong.77
+    #         }
+    #         if = {
+    #             limit = {
+    #                 NOT = {
+    #                     has_completed_focus = PRC_nl_long_march_plan
+    #                 }
+    #             }
+    #             focus_unlock = yes
+    #         }
+    #         set_country_flag = PRC_nl_socialist_construction_climax_flag
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_jingji4_idea
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_income_growth_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_expense_growth_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_personal_value_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         #unlock_decision_category_tooltip = 经济gui
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_long_march_plan
+    #     icon = GFX_focus_PRC_towards_a_digital_world
+    #     cost = 5
+    #     x = 2
+    #     y = 2
+    #     prerequisite = {
+    #         focus = PRC_nl_fusion_power_demo
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_quantum_supercomputer
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_comprehensive_social_integration
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_dawn_project
+    #     completion_reward = {
+    #         country_event = prcs.23
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = Chihong.13
+    #                 days = 2
+    #             }
+    #             country_event = {
+    #                 id = prcs.3096
+    #                 days = 10
+    #             }
+    #         }
+    #         unlock_decision_tooltip = PRC_project_the_long_march_phase_1
+    #         unlock_decision_tooltip = PRC_project_the_long_march_phase_2
+    #         unlock_decision_tooltip = PRC_project_the_long_march_phase_3
+    #         unlock_decision_tooltip = apply_nems_to_other_states
+    #         if = {
+    #             limit = {
+    #                 NOT = {
+    #                     has_completed_focus = PRC_nl_socialist_construction_climax
+    #                 }
+    #             }
+    #             focus_unlock = yes
+    #         }
+    #         set_country_flag = PRC_nl_socialist_construction_climax_flag
+    #         unlock_decision_category_tooltip = PRC_loji_category
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_advance_productivity
+    #     icon = GFX_focus_PRC_invest_mass_smart_manufacturing
+    #     cost = 3
+    #     x = -2
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_socialist_construction_climax
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_long_march_plan
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_long_march_plan
+    #     allow_branch = {
+    #         #国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
+    #         has_country_flag = PRC_nl_socialist_construction_climax_flag
+    #     }
+    #     completion_reward = {
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_jingji2_idea
+    #             }
+    #         }
+    #         country_event = {
+    #             id = prcs.3097
+    #             days = 10
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_capacity_factory_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_research_speed_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_expense_growth_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         #unlock_decision_tooltip = PRC_nl_jingji2_d1			#推进国内大循环
+    #         #unlock_decision_tooltip = PRC_nl_jingji2_d2			#建设先进产业集群
+    #         #unlock_decision_tooltip = PRC_nl_jingji2_d3			#扩展科技小院模式
+    #         #unlock_decision_tooltip = PRC_nl_jingji2_d4			#推广农业八字宪法
+    #         #unlock_decision_tooltip仅做展示，实际启用决议需在决议中写完成某某国策的条件
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_assure_welfare
+    #     icon = GFX_focus_PRC_five_shinig_stars_of_china
+    #     cost = 3
+    #     x = 2
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_socialist_construction_climax
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_long_march_plan
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_socialist_construction_climax
+    #     allow_branch = {
+    #         #国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
+    #         has_country_flag = PRC_nl_socialist_construction_climax_flag
+    #     }
+    #     completion_reward = {
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_jingji10_idea
+    #             }
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_stability_factor_dynamic_var
+    #             value = 0.07
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_personal_expense_factor_dynamic_var
+    #             value = 0.15
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_poverty_development_monthly_dynamic_var
+    #             value = 0.005
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_monthly_population_dynamic_var
+    #             value = 0.15
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_autonomous_iteration_system
+    #     icon = GFX_focus_PRC_Zizhudiedaixitong
+    #     cost = 2
+    #     x = -1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_advance_productivity
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_advance_productivity
+    #     completion_reward = {
+    #         custom_effect_tooltip = zizhu_diedai_tt
 
-            country_event = {
-                id = prcs.3212
-                days = 365
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_industry_five
-        icon = GFX_focus_PRC_evacuation_of_key_industries
-        cost = 3
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_advance_productivity
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_advance_productivity
-        completion_reward = {
-            add_to_variable = {
-                var = PRC_mic_research_speed_factor_dynamic_var
-                value = 0.1
-            }
-            add_to_variable = {
-                var = PRC_mic_production_speed_buildings_factor_dynamic_var
-                value = 0.15
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_capacity_factory_dynamic_var
-                value = 0.15
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_development_monthly_dynamic_var
-                value = 0.01
-            }
-            change_economy_type_auto_socialism = yes
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_industry_five_idea
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_free_and_equal_labor
-        icon = GFX_focus_PRC_Ziyou_Pingdeng_Laodong
-        cost = 3
-        x = -1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_assure_welfare
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_assure_welfare
-        completion_reward = {
-            country_event = {
-                id = prcs.3115
-                days = 0
-            }
-            add_to_variable = {
-                var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
-                value = 0.05
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_capacity_factory_dynamic_var
-                value = -0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_free_and_equal_labor_idea
-                }
-            }
-            unlock_decision_tooltip = PRC_nl_jingji14_d1
-        }
-    }
-    focus = {
-        id = PRC_nl_gain_from_each_good
-        icon = GFX_focus_PRC_To_Struggle_Is_To_Live
-        cost = 3
-        x = 1
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_assure_welfare
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_assure_welfare
-        completion_reward = {
-            add_to_variable = {
-                var = PRC_mic_industrial_capacity_factory_dynamic_var
-                value = 0.15
-            }
-            add_to_variable = {
-                var = PRC_mic_industrial_capacity_dockyard_dynamic_var
-                value = 0.15
-            }
-            add_to_variable = {
-                var = PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var
-                value = -0.15
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_gain_from_each_good_idea
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_regional_integration
-        icon = GFX_focus_PRC_regional_industrialization
-        cost = 3
-        x = 4
-        y = 1
-        prerequisite = {
-            focus = PRC_nl_long_march_plan
-            focus = PRC_nl_socialist_construction_climax
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            if = {
-                limit = {
-                    OR = {
-                        has_completed_focus = PRC_nl_long_march_plan
-                        has_completed_focus = PRC_nl_socialist_construction_climax
-                    }
-                }
-                has_completed_focus = PRC_nl_autonomous_iteration_system
-                has_completed_focus = PRC_nl_free_and_equal_labor
-                has_completed_focus = PRC_nl_industry_five
-                has_completed_focus = PRC_nl_gain_from_each_good
-            }
-        }
-        cancel_if_invalid = yes
-        completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.3189
-                    days = 5
-                }
-            }
-            country_event = {
-                id = prcs.3198
-                days = 0
-            }
-            608 = {
-                add_extra_state_shared_building_slots = 2
-                add_building_construction = {
-                    type = industrial_complex
-                    level = 2
-                    instant_build = yes
-                }
-            }
-            592 = {
-                add_extra_state_shared_building_slots = 2
-                add_building_construction = {
-                    type = industrial_complex
-                    level = 2
-                    instant_build = yes
-                }
-            }
-            609 = {
-                add_extra_state_shared_building_slots = 2
-                add_building_construction = {
-                    type = industrial_complex
-                    level = 2
-                    instant_build = yes
-                }
-            }
-        }
-        relative_position_id = PRC_nl_advance_productivity
-    }
-    focus = {
-        id = PRC_nl_commonhappy
-        icon = GFX_focus_PRC_promote_common_prosperity
-        cost = 3
-        x = 0
-        y = 2
-        prerequisite = {
-            focus = PRC_nl_regional_integration
-        }
-        prerequisite = {
-            focus = PRC_nl_free_and_equal_labor
-            focus = PRC_nl_gain_from_each_good
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_assure_welfare
-        completion_reward = {
-            add_to_variable = {
-                var = PRC_mic_monthly_population_dynamic_var
-                value = 0.2
-            }
-            add_to_variable = {
-                var = PRC_mic_personal_expense_factor_dynamic_var
-                value = 0.15
-            }
-            add_to_variable = {
-                var = PRC_mic_personal_value_factor_dynamic_var
-                value = 0.1
-            }
-            add_to_variable = {
-                var = PRC_mic_research_speed_factor_dynamic_var
-                value = 0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_commonhappy_idea
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_greatly_riched
-        icon = GFX_focus_PRC_economic_stability_policy
-        cost = 3
-        x = 0
-        y = 2
-        prerequisite = {
-            focus = PRC_nl_industry_five
-            focus = PRC_nl_autonomous_iteration_system
-        }
-        prerequisite = {
-            focus = PRC_nl_regional_integration
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_advance_productivity
-        completion_reward = {
-            add_to_variable = {
-                var = PRC_mic_stability_weekly_dynamic_var
-                value = 0.002
-            }
-            add_to_variable = {
-                var = PRC_mic_war_support_weekly_dynamic_var
-                value = 0.002
-            }
-            add_to_variable = {
-                var = PRC_mic_poverty_development_monthly_dynamic_var
-                value = 0.01
-            }
-            change_welfare_type_communism = yes
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_greatly_riched_idea
-                }
-            }
-        }
-    }
-    focus = {
-        id = PRC_nl_new_sky
-        icon = GFX_focus_PRC_party_of_xxi_century
-        cost = 3
-        x = -2
-        y = 4
-        prerequisite = {
-            focus = PRC_nl_greatly_riched
-        }
-        prerequisite = {
-            focus = PRC_nl_commonhappy
-        }
-        available = {
-            has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        }
-        cancel_if_invalid = yes
-        relative_position_id = PRC_nl_socialist_construction_climax
-        completion_reward = {
-            hidden_effect = {
-                country_event = {
-                    id = prcs.3105
-                    days = 50
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_ningxia_hui_autonomous_region
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_tibet_autonomous_region
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_xinjiang_uygur_autonomous_region
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_inner_mongolia_autonomous_region
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_guangxi_zhuang_autonomous_region
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_hong_kong
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            every_controlled_state = {
-                limit = {
-                    has_dynamic_modifier = {
-                        modifier = PRC_macau
-                    }
-                }
-                add_dynamic_modifier = {
-                    modifier = PRC_peoples_commune
-                }
-            }
-            hidden_effect = {
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_hong_kong
-                    }
-                }
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_macau
-                    }
-                }
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_guangxi_zhuang_autonomous_region
-                    }
-                }
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_inner_mongolia_autonomous_region
-                    }
-                }
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_xinjiang_uygur_autonomous_region
-                    }
-                }
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_tibet_autonomous_region
-                    }
-                }
-                every_controlled_state = {
-                    remove_dynamic_modifier = {
-                        modifier = PRC_ningxia_hui_autonomous_region
-                    }
-                }
-            }
-            change_economy_type_auto_communism = yes
-        }
-    }
+    #         country_event = {
+    #             id = prcs.3212
+    #             days = 365
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_industry_five
+    #     icon = GFX_focus_PRC_evacuation_of_key_industries
+    #     cost = 3
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_advance_productivity
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_advance_productivity
+    #     completion_reward = {
+    #         add_to_variable = {
+    #             var = PRC_mic_research_speed_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_speed_buildings_factor_dynamic_var
+    #             value = 0.15
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_capacity_factory_dynamic_var
+    #             value = 0.15
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_development_monthly_dynamic_var
+    #             value = 0.01
+    #         }
+    #         change_economy_type_auto_socialism = yes
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_industry_five_idea
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_free_and_equal_labor
+    #     icon = GFX_focus_PRC_Ziyou_Pingdeng_Laodong
+    #     cost = 3
+    #     x = -1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_assure_welfare
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_assure_welfare
+    #     completion_reward = {
+    #         country_event = {
+    #             id = prcs.3115
+    #             days = 0
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+    #             value = 0.05
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_capacity_factory_dynamic_var
+    #             value = -0.1
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_free_and_equal_labor_idea
+    #             }
+    #         }
+    #         unlock_decision_tooltip = PRC_nl_jingji14_d1
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_gain_from_each_good
+    #     icon = GFX_focus_PRC_To_Struggle_Is_To_Live
+    #     cost = 3
+    #     x = 1
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_assure_welfare
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_assure_welfare
+    #     completion_reward = {
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_capacity_factory_dynamic_var
+    #             value = 0.15
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_industrial_capacity_dockyard_dynamic_var
+    #             value = 0.15
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var
+    #             value = -0.15
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_gain_from_each_good_idea
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_regional_integration
+    #     icon = GFX_focus_PRC_regional_industrialization
+    #     cost = 3
+    #     x = 4
+    #     y = 1
+    #     prerequisite = {
+    #         focus = PRC_nl_long_march_plan
+    #         focus = PRC_nl_socialist_construction_climax
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #         if = {
+    #             limit = {
+    #                 OR = {
+    #                     has_completed_focus = PRC_nl_long_march_plan
+    #                     has_completed_focus = PRC_nl_socialist_construction_climax
+    #                 }
+    #             }
+    #             has_completed_focus = PRC_nl_autonomous_iteration_system
+    #             has_completed_focus = PRC_nl_free_and_equal_labor
+    #             has_completed_focus = PRC_nl_industry_five
+    #             has_completed_focus = PRC_nl_gain_from_each_good
+    #         }
+    #     }
+    #     cancel_if_invalid = yes
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = prcs.3189
+    #                 days = 5
+    #             }
+    #         }
+    #         country_event = {
+    #             id = prcs.3198
+    #             days = 0
+    #         }
+    #         608 = {
+    #             add_extra_state_shared_building_slots = 2
+    #             add_building_construction = {
+    #                 type = industrial_complex
+    #                 level = 2
+    #                 instant_build = yes
+    #             }
+    #         }
+    #         592 = {
+    #             add_extra_state_shared_building_slots = 2
+    #             add_building_construction = {
+    #                 type = industrial_complex
+    #                 level = 2
+    #                 instant_build = yes
+    #             }
+    #         }
+    #         609 = {
+    #             add_extra_state_shared_building_slots = 2
+    #             add_building_construction = {
+    #                 type = industrial_complex
+    #                 level = 2
+    #                 instant_build = yes
+    #             }
+    #         }
+    #     }
+    #     relative_position_id = PRC_nl_advance_productivity
+    # }
+    # focus = {
+    #     id = PRC_nl_commonhappy
+    #     icon = GFX_focus_PRC_promote_common_prosperity
+    #     cost = 3
+    #     x = 0
+    #     y = 2
+    #     prerequisite = {
+    #         focus = PRC_nl_regional_integration
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_free_and_equal_labor
+    #         focus = PRC_nl_gain_from_each_good
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_assure_welfare
+    #     completion_reward = {
+    #         add_to_variable = {
+    #             var = PRC_mic_monthly_population_dynamic_var
+    #             value = 0.2
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_personal_expense_factor_dynamic_var
+    #             value = 0.15
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_personal_value_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_research_speed_factor_dynamic_var
+    #             value = 0.1
+    #         }
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_commonhappy_idea
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_greatly_riched
+    #     icon = GFX_focus_PRC_economic_stability_policy
+    #     cost = 3
+    #     x = 0
+    #     y = 2
+    #     prerequisite = {
+    #         focus = PRC_nl_industry_five
+    #         focus = PRC_nl_autonomous_iteration_system
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_regional_integration
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_advance_productivity
+    #     completion_reward = {
+    #         add_to_variable = {
+    #             var = PRC_mic_stability_weekly_dynamic_var
+    #             value = 0.002
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_war_support_weekly_dynamic_var
+    #             value = 0.002
+    #         }
+    #         add_to_variable = {
+    #             var = PRC_mic_poverty_development_monthly_dynamic_var
+    #             value = 0.01
+    #         }
+    #         change_welfare_type_communism = yes
+    #         effect_tooltip = {
+    #             swap_ideas = {
+    #                 remove_idea = PRC_made_in_china_dummy_idea0
+    #                 add_idea = PRC_nl_greatly_riched_idea
+    #             }
+    #         }
+    #     }
+    # }
+    # focus = {
+    #     id = PRC_nl_new_sky
+    #     icon = GFX_focus_PRC_party_of_xxi_century
+    #     cost = 3
+    #     x = -2
+    #     y = 4
+    #     prerequisite = {
+    #         focus = PRC_nl_greatly_riched
+    #     }
+    #     prerequisite = {
+    #         focus = PRC_nl_commonhappy
+    #     }
+    #     available = {
+    #         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+    #     }
+    #     cancel_if_invalid = yes
+    #     relative_position_id = PRC_nl_socialist_construction_climax
+    #     completion_reward = {
+    #         hidden_effect = {
+    #             country_event = {
+    #                 id = prcs.3105
+    #                 days = 50
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_ningxia_hui_autonomous_region
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_tibet_autonomous_region
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_xinjiang_uygur_autonomous_region
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_inner_mongolia_autonomous_region
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_guangxi_zhuang_autonomous_region
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_hong_kong
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         every_controlled_state = {
+    #             limit = {
+    #                 has_dynamic_modifier = {
+    #                     modifier = PRC_macau
+    #                 }
+    #             }
+    #             add_dynamic_modifier = {
+    #                 modifier = PRC_peoples_commune
+    #             }
+    #         }
+    #         hidden_effect = {
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_hong_kong
+    #                 }
+    #             }
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_macau
+    #                 }
+    #             }
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_guangxi_zhuang_autonomous_region
+    #                 }
+    #             }
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_inner_mongolia_autonomous_region
+    #                 }
+    #             }
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_xinjiang_uygur_autonomous_region
+    #                 }
+    #             }
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_tibet_autonomous_region
+    #                 }
+    #             }
+    #             every_controlled_state = {
+    #                 remove_dynamic_modifier = {
+    #                     modifier = PRC_ningxia_hui_autonomous_region
+    #                 }
+    #             }
+    #         }
+    #         change_economy_type_auto_communism = yes
+    #     }
+    # }
     focus = {
         id = PRC_nl_red_dawn
         icon = GFX_focus_PRC_new_left_RED_DAWN
@@ -3953,7 +3955,7 @@ focus_tree = {
         x = 32
         y = 12
         prerequisite = {
-            focus = PRC_nl_greatly_riched
+            focus = nl_PRC_china_economic_new_era
         }
         prerequisite = {
             focus = PRC_nl_unite_efforts_with_unity
