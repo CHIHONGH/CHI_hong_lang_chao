@@ -1,16 +1,8 @@
-﻿scripted_gui = {
+scripted_gui = {
 
-	TFR_space_station_window = {#窗口：天河工程总览（常驻）
-		context_type = country_context
+	TFR_space_station_gui = {#窗口：天河工程总览（嵌入决议面板）
+		context_type = decision_category
 		window_name = "TFR_space_station_window"
-##
-		visible = {
-			ROOT = { tag = PRC }
-			OR = {
-				PRC = { has_completed_focus = PRC_nl_dawn_project }
-				PRC = { has_country_flag = TFR_space_gui_debug }
-			}
-		}
 ##
 		effects = {
 		}
@@ -46,19 +38,19 @@
 ##
 		properties = {
 			phase1_bar = {
-				frame = PRC.PRC_space_phase1_count?0
+				frame = PRC:PRC_space_phase1_count
 			}
 			phase2_bar = {
-				frame = PRC.PRC_space_phase2_count?0
+				frame = PRC:PRC_space_phase2_count
 			}
 			phase3_bar = {
-				frame = PRC.PRC_space_phase3_count?0
+				frame = PRC:PRC_space_phase3_count
 			}
 			phase4_bar = {
-				frame = PRC.PRC_space_phase4_count?0
+				frame = PRC:PRC_space_phase4_count
 			}
 			phase5_bar = {
-				frame = PRC.PRC_space_phase5_count?0
+				frame = PRC:PRC_space_phase5_count
 			}
 		}
 	}
