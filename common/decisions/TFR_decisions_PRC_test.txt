@@ -1,4 +1,4 @@
-debug_decisions = {
+﻿debug_decisions = {
 	PRC_pre_TaiWan_war_national_focus = {
 		icon = generic_industry
 		visible = {
@@ -444,4 +444,43 @@ PRC_coronavirus_category = {
 	# 		base = 0
 	# 	}
 	# }
+	PRC_space_gui_debug = {
+		icon = generic_industry
+		visible = {
+			is_debug = yes
+			original_tag = PRC
+		}
+
+		complete_effect = {
+			# 直接显示天河工程 GUI（无需完成曙光计划国策）
+			set_country_flag = TFR_space_gui_debug
+			# 一键满进度：阶段 flag + 计数变量（便于查看完整 GUI 状态）
+			set_country_flag = PRC_space_done_committee
+			set_country_flag = PRC_space_done_integrate
+			set_country_flag = PRC_space_done_wenchang
+			set_country_flag = PRC_space_done_jiuquan
+			set_country_flag = PRC_space_done_tracking
+			set_country_flag = PRC_space_done_recon_sat
+			set_country_flag = PRC_space_done_comm_const
+			set_country_flag = PRC_space_done_beidou
+			set_country_flag = PRC_space_done_early_warning
+			set_country_flag = PRC_space_done_tianhe
+			set_country_flag = PRC_space_done_wentian
+			set_country_flag = PRC_space_done_mengtian
+			set_country_flag = PRC_space_done_robotic_arm
+			set_country_flag = PRC_space_done_space_power
+			set_country_flag = PRC_space_done_resupply
+			set_country_flag = PRC_space_done_high_orbit
+			set_country_flag = PRC_space_done_energy_platform
+			set_country_flag = PRC_space_done_ecm_array
+			set_country_flag = PRC_space_done_airdrop
+			set_country_flag = PRC_space_done_interception
+			set_country_flag = PRC_space_done_nuclear_platform
+			set_variable = { PRC_space_phase1_count = 5 }
+			set_variable = { PRC_space_phase2_count = 4 }
+			set_variable = { PRC_space_phase3_count = 3 }
+			set_variable = { PRC_space_phase4_count = 5 }
+			set_variable = { PRC_space_phase5_count = 4 }
+		}
+	}
 }
