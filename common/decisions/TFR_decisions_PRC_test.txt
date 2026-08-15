@@ -161,10 +161,23 @@ debug_decisions = {
 		}
 
 		complete_effect = {
-			# 直接显示天河工程 GUI（无需完成曙光计划国策）
+			# 只打开天河工程 GUI（无需完成曙光计划国策）
 			log = "TFR: space gui debug decision completed, flag set"
 			set_country_flag = TFR_space_gui_debug
-			# 一键满进度：阶段 flag + 计数变量（便于查看完整 GUI 状态）
+		}
+	}
+
+	PRC_space_gui_full_progress = {
+		icon = generic_industry
+		visible = {
+			is_debug = yes
+			original_tag = PRC
+			has_country_flag = TFR_space_gui_debug
+		}
+
+		complete_effect = {
+			# 完成天河工程全部进度（需先执行 PRC_space_gui_debug 打开 GUI）
+			log = "TFR: space full progress debug decision completed"
 			set_country_flag = PRC_space_done_committee
 			set_country_flag = PRC_space_done_integrate
 			set_country_flag = PRC_space_done_wenchang
