@@ -1,0 +1,65 @@
+﻿scripted_gui = {
+
+	TFR_space_station_window = {#窗口：天河工程总览（常驻）
+		context_type = country_context
+		window_name = "TFR_space_station_window"
+##
+		visible = {
+			ROOT = { tag = PRC }
+			OR = {
+				PRC = { has_completed_focus = PRC_nl_dawn_project }
+				PRC = { has_country_flag = TFR_space_gui_debug }
+			}
+		}
+##
+		effects = {
+		}
+##
+		triggers = {
+			# 舱段状态：灰=未完成 绿=已完成（交替显隐）
+			tianhe_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_tianhe } }
+			}
+			tianhe_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_tianhe }
+			}
+			wentian_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_wentian } }
+			}
+			wentian_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_wentian }
+			}
+			mengtian_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_mengtian } }
+			}
+			mengtian_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_mengtian }
+			}
+			# 轨道核打击平台状态
+			nuclear_not_ready_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_nuclear_platform } }
+			}
+			nuclear_ready_visible = {
+				PRC = { has_country_flag = PRC_space_done_nuclear_platform }
+			}
+		}
+##
+		properties = {
+			phase1_bar = {
+				frame = PRC.PRC_space_phase1_count?0
+			}
+			phase2_bar = {
+				frame = PRC.PRC_space_phase2_count?0
+			}
+			phase3_bar = {
+				frame = PRC.PRC_space_phase3_count?0
+			}
+			phase4_bar = {
+				frame = PRC.PRC_space_phase4_count?0
+			}
+			phase5_bar = {
+				frame = PRC.PRC_space_phase5_count?0
+			}
+		}
+	}
+}

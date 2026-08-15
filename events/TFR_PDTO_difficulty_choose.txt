@@ -6,7 +6,6 @@ country_event = {
 	title = pdto_difficulty_choose.1.t
 	desc = pdto_difficulty_choose.1.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	trigger = {
 		tag = PRC
@@ -30,7 +29,6 @@ country_event = {
 	title = pdto_difficulty_choose.2.t
 	desc = pdto_difficulty_choose.2.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	option = {
 		name = pdto_difficulty_choose.2.a
@@ -50,7 +48,6 @@ country_event = {
 	title = pdto_difficulty_choose.3.t
 	desc = pdto_difficulty_choose.3.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	option = {
 		name = pdto_difficulty_choose.3.a
@@ -70,7 +67,6 @@ country_event = {
 	title = pdto_difficulty_choose.4.t
 	desc = pdto_difficulty_choose.4.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	option = {
 		name = pdto_difficulty_choose.4.a
@@ -90,7 +86,6 @@ country_event = {
 	title = pdto_difficulty_choose.5.t
 	desc = pdto_difficulty_choose.5.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	option = {
 		name = pdto_difficulty_choose.5.a
@@ -110,7 +105,6 @@ country_event = {
 	title = pdto_difficulty_choose.6.t
 	desc = pdto_difficulty_choose.6.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	trigger = {
 		tag = PRC
@@ -122,6 +116,9 @@ country_event = {
 		custom_effect_tooltip = PTF_choose_Simple
 		hidden_effect = {
 			set_country_flag = PTF_difficulty_Simple
+			PTF = {
+				country_event = { id = pdto_difficulty_choose.7 }
+			}
 		}
 	}
 	option = {
@@ -130,6 +127,9 @@ country_event = {
 		custom_effect_tooltip = PTF_choose_Normal
 		hidden_effect = {
 			set_country_flag = PTF_difficulty_Normal
+			PTF = {
+				country_event = { id = pdto_difficulty_choose.7 }
+			}
 		}
 	}
 	option = {
@@ -138,6 +138,9 @@ country_event = {
 		custom_effect_tooltip = PTF_choose_Hard
 		hidden_effect = {
 			set_country_flag = PTF_difficulty_Hard
+			PTF = {
+				country_event = { id = pdto_difficulty_choose.7 }
+			}
 		}
 	}
 	option = {
@@ -146,6 +149,9 @@ country_event = {
 		custom_effect_tooltip = PTF_choose_Extremely_hard
 		hidden_effect = {
 			set_country_flag = PTF_difficulty_Extremely_hard
+			PTF = {
+				country_event = { id = pdto_difficulty_choose.7 }
+			}
 		}
 	}
 }
@@ -154,6 +160,7 @@ country_event = {
 country_event = {
 	id = pdto_difficulty_choose.7
 	hidden = yes
+	is_triggered_only = yes
 	fire_only_once = yes
 
 	trigger = {

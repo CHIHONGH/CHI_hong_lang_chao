@@ -1,0 +1,271 @@
+guiTypes = {
+
+	containerwindowType = {
+		name = "TFR_space_station_window"
+		position = { x = 760 y = 60 }
+		size = { width = 510 height = 450 }
+		moveable = yes
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_TFR_space_bg"
+		}
+
+		# ===== 标题 =====
+		textBoxType = {
+			name = "TFR_space_title"
+			position = { x = 24 y = 6 }
+			text = "TFR_space_title_text"
+			font = "VCR02_20"
+			maxWidth = 460
+			format = left
+		}
+
+		# ===== 阶段进度区（每阶段一行：标签 | 进度条 | 计数） =====
+		instantTextBoxType = {
+			name = "phase1_label"
+			position = { x = 24 y = 48 }
+			text = "TFR_space_phase1_label"
+			font = "VCR02_14"
+			maxWidth = 90
+			format = left
+		}
+		progressbar = {
+			name = "phase1_bar"
+			position = { x = 126 y = 50 }
+			size = { width = 120 height = 10 }
+			spriteType = "GFX_TFR_space_phase1_bar"
+			frame = 0
+		}
+		instantTextBoxType = {
+			name = "phase1_count"
+			position = { x = 256 y = 48 }
+			text = "TFR_space_phase1_count_text"
+			font = "VCR02_14"
+			maxWidth = 50
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "phase2_label"
+			position = { x = 24 y = 88 }
+			text = "TFR_space_phase2_label"
+			font = "VCR02_14"
+			maxWidth = 90
+			format = left
+		}
+		progressbar = {
+			name = "phase2_bar"
+			position = { x = 126 y = 90 }
+			size = { width = 120 height = 10 }
+			spriteType = "GFX_TFR_space_phase2_bar"
+			frame = 0
+		}
+		instantTextBoxType = {
+			name = "phase2_count"
+			position = { x = 256 y = 88 }
+			text = "TFR_space_phase2_count_text"
+			font = "VCR02_14"
+			maxWidth = 50
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "phase3_label"
+			position = { x = 24 y = 128 }
+			text = "TFR_space_phase3_label"
+			font = "VCR02_14"
+			maxWidth = 90
+			format = left
+		}
+		progressbar = {
+			name = "phase3_bar"
+			position = { x = 126 y = 130 }
+			size = { width = 120 height = 10 }
+			spriteType = "GFX_TFR_space_phase3_bar"
+			frame = 0
+		}
+		instantTextBoxType = {
+			name = "phase3_count"
+			position = { x = 256 y = 128 }
+			text = "TFR_space_phase3_count_text"
+			font = "VCR02_14"
+			maxWidth = 50
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "phase4_label"
+			position = { x = 24 y = 168 }
+			text = "TFR_space_phase4_label"
+			font = "VCR02_14"
+			maxWidth = 90
+			format = left
+		}
+		progressbar = {
+			name = "phase4_bar"
+			position = { x = 126 y = 170 }
+			size = { width = 120 height = 10 }
+			spriteType = "GFX_TFR_space_phase4_bar"
+			frame = 0
+		}
+		instantTextBoxType = {
+			name = "phase4_count"
+			position = { x = 256 y = 168 }
+			text = "TFR_space_phase4_count_text"
+			font = "VCR02_14"
+			maxWidth = 50
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "phase5_label"
+			position = { x = 24 y = 208 }
+			text = "TFR_space_phase5_label"
+			font = "VCR02_14"
+			maxWidth = 90
+			format = left
+		}
+		progressbar = {
+			name = "phase5_bar"
+			position = { x = 126 y = 210 }
+			size = { width = 120 height = 10 }
+			spriteType = "GFX_TFR_space_phase5_bar"
+			frame = 0
+		}
+		instantTextBoxType = {
+			name = "phase5_count"
+			position = { x = 256 y = 208 }
+			text = "TFR_space_phase5_count_text"
+			font = "VCR02_14"
+			maxWidth = 50
+			format = left
+		}
+
+		# ===== 空间站状态区 =====
+		instantTextBoxType = {
+			name = "TFR_space_module_section"
+			position = { x = 24 y = 252 }
+			text = "TFR_space_module_section_text"
+			font = "VCR02_14"
+			maxWidth = 460
+			format = left
+			text_color_code = Y
+		}
+
+		# 天和（灰/绿 交替显隐）
+		iconType = {
+			name = "tianhe_gray"
+			spriteType = "GFX_TFR_space_module_tianhe_gray"
+			position = { x = 44 y = 272 }
+		}
+		iconType = {
+			name = "tianhe_green"
+			spriteType = "GFX_TFR_space_module_tianhe_green"
+			position = { x = 44 y = 272 }
+		}
+		instantTextBoxType = {
+			name = "tianhe_label"
+			position = { x = 44 y = 324 }
+			text = "TFR_space_module_tianhe_label"
+			font = "VCR02_14"
+			maxWidth = 60
+			format = center
+		}
+
+		# 问天
+		iconType = {
+			name = "wentian_gray"
+			spriteType = "GFX_TFR_space_module_wentian_gray"
+			position = { x = 170 y = 272 }
+		}
+		iconType = {
+			name = "wentian_green"
+			spriteType = "GFX_TFR_space_module_wentian_green"
+			position = { x = 170 y = 272 }
+		}
+		instantTextBoxType = {
+			name = "wentian_label"
+			position = { x = 170 y = 324 }
+			text = "TFR_space_module_wentian_label"
+			font = "VCR02_14"
+			maxWidth = 60
+			format = center
+		}
+
+		# 梦天
+		iconType = {
+			name = "mengtian_gray"
+			spriteType = "GFX_TFR_space_module_mengtian_gray"
+			position = { x = 296 y = 272 }
+		}
+		iconType = {
+			name = "mengtian_green"
+			spriteType = "GFX_TFR_space_module_mengtian_green"
+			position = { x = 296 y = 272 }
+		}
+		instantTextBoxType = {
+			name = "mengtian_label"
+			position = { x = 296 y = 324 }
+			text = "TFR_space_module_mengtian_label"
+			font = "VCR02_14"
+			maxWidth = 60
+			format = center
+		}
+
+		# ===== 关键数据区 =====
+		instantTextBoxType = {
+			name = "TFR_space_data_section"
+			position = { x = 24 y = 360 }
+			text = "TFR_space_data_section_text"
+			font = "VCR02_14"
+			maxWidth = 460
+			format = left
+			text_color_code = Y
+		}
+
+		instantTextBoxType = {
+			name = "TFR_space_forces_label"
+			position = { x = 24 y = 386 }
+			text = "TFR_space_forces_label_text"
+			font = "VCR02_14"
+			maxWidth = 120
+			format = left
+		}
+		instantTextBoxType = {
+			name = "TFR_space_forces_num"
+			position = { x = 150 y = 386 }
+			text = "TFR_space_forces_num_text"
+			font = "VCR02_14"
+			maxWidth = 120
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "TFR_space_nuclear_label"
+			position = { x = 24 y = 414 }
+			text = "TFR_space_nuclear_label_text"
+			font = "VCR02_14"
+			maxWidth = 150
+			format = left
+		}
+		instantTextBoxType = {
+			name = "nuclear_not_ready"
+			position = { x = 190 y = 414 }
+			text = "TFR_space_nuclear_not_ready_text"
+			font = "VCR02_14"
+			maxWidth = 120
+			format = left
+			text_color_code = R
+		}
+		instantTextBoxType = {
+			name = "nuclear_ready"
+			position = { x = 190 y = 414 }
+			text = "TFR_space_nuclear_ready_text"
+			font = "VCR02_14"
+			maxWidth = 120
+			format = left
+			text_color_code = G
+		}
+	}
+}

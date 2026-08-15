@@ -1,0 +1,631 @@
+﻿# ==================== 天河工程（太空军事化工程） ====================
+# 流程：国策 PLA_orbital_drop_new（轨道空降）完成后解锁
+# 阶段 I 奠基 → II 天基 → III 空间站 → IV 扩展 → V 战力
+# 奖励与文案暂未填写，仅流程框架
+PRC_space_militarization = {
+
+	# ==================== 阶段 I 奠基 ====================
+	PRC_national_orbital_strategy_committee_new_left = { # 成立国家轨道战略委员会
+		icon = GFX_decision_PRC_national_orbital_strategy_committee
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		fire_only_once = yes
+		cost = 40
+		days_remove = 60
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 40 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_committee
+			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+		}
+	}
+	PRC_integrate_military_aerospace_new_left = { # 整合军工航天企业
+		icon = GFX_decision_PRC_integrate_military_aerospace
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		modifier = {
+			consumer_goods_factor = 0.1
+			political_power_gain = -0.1
+		}
+		fire_only_once = yes
+		cost = 80
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 50 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_integrate
+			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+		}
+	}
+	PRC_expand_wenchang_launch_center_new_left = { # 扩建文昌发射中心
+		icon = GFX_decision_PRC_expand_wenchang_launch_center
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		modifier = {
+			civilian_factory_use = 15
+			production_speed_buildings_factor = -0.1
+		}
+		fire_only_once = yes
+		cost = 80
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 120 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_wenchang
+			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+		}
+	}
+	PRC_build_jiuquan_second_launch_zone_new_left = { # 建设酒泉第二发射区
+		icon = GFX_decision_PRC_build_jiuquan_second_launch_zone
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		modifier = {
+			civilian_factory_use = 15
+			production_speed_buildings_factor = -0.1
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 100 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_jiuquan
+			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+		}
+	}
+	PRC_orbital_tracking_network_new_left = { # 建立轨道测控网络
+		icon = GFX_decision_PRC_orbital_tracking_network
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		modifier = {
+			consumer_goods_factor = 0.08
+			civilian_factory_use = 5
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 180
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 45 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_tracking
+			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+		}
+	}
+
+	# ==================== 阶段 II 天基 ====================
+	PRC_first_gen_recon_satellite_new_left = { # 发射下一代侦察卫星
+		icon = GFX_decision_PRC_first_gen_recon_satellite
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_committee
+			has_country_flag = PRC_space_done_integrate
+			has_country_flag = PRC_space_done_wenchang
+			has_country_flag = PRC_space_done_jiuquan
+			has_country_flag = PRC_space_done_tracking
+		}
+		modifier = {
+			consumer_goods_factor = 0.05
+			civilian_factory_use = 4
+		}
+		fire_only_once = yes
+		cost = 40
+		days_remove = 120
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 40 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_recon_sat
+			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+		}
+	}
+	PRC_global_comm_constellation_new_left = { # 建立全球通信星座
+		icon = GFX_decision_PRC_global_comm_constellation
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_committee
+			has_country_flag = PRC_space_done_integrate
+			has_country_flag = PRC_space_done_wenchang
+			has_country_flag = PRC_space_done_jiuquan
+			has_country_flag = PRC_space_done_tracking
+		}
+		modifier = {
+			research_speed_factor = -0.2
+			consumer_goods_factor = 0.05
+		}
+		fire_only_once = yes
+		cost = 80
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 70 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_comm_const
+			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+		}
+	}
+	PRC_beidou_military_enhanced_new_left = { # 建设北斗军用增强系统
+		icon = GFX_decision_PRC_beidou_military_enhanced
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_committee
+			has_country_flag = PRC_space_done_integrate
+			has_country_flag = PRC_space_done_wenchang
+			has_country_flag = PRC_space_done_jiuquan
+			has_country_flag = PRC_space_done_tracking
+		}
+		modifier = {
+			political_power_gain = -0.15
+			command_power_gain = -0.15
+			consumer_goods_factor = 0.08
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 70 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_beidou
+			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+		}
+	}
+	PRC_early_warning_satellite_new_left = { # 建设预警卫星系统
+		icon = GFX_decision_PRC_early_warning_satellite
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_committee
+			has_country_flag = PRC_space_done_integrate
+			has_country_flag = PRC_space_done_wenchang
+			has_country_flag = PRC_space_done_jiuquan
+			has_country_flag = PRC_space_done_tracking
+		}
+		modifier = {
+			political_power_gain = -0.1
+			command_power_gain = -0.1
+			consumer_goods_factor = 0.05
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 55 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_early_warning
+			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+		}
+	}
+
+	# ==================== 阶段 III 空间站 ====================
+	PRC_tianhe_core_module_new_left = { # 发射天和核心舱
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_recon_sat
+			has_country_flag = PRC_space_done_comm_const
+			has_country_flag = PRC_space_done_beidou
+			has_country_flag = PRC_space_done_early_warning
+		}
+		modifier = {
+			research_speed_factor = -0.15
+			consumer_goods_factor = 0.1
+			civilian_factory_use = 10
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 150 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_tianhe
+			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+		}
+	}
+	PRC_wentian_lab_module_new_left = { # 对接问天实验舱
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_recon_sat
+			has_country_flag = PRC_space_done_comm_const
+			has_country_flag = PRC_space_done_beidou
+			has_country_flag = PRC_space_done_early_warning
+			has_country_flag = PRC_space_done_tianhe
+		}
+		modifier = {
+			research_speed_factor = -0.1
+			civilian_factory_use = 8
+		}
+		fire_only_once = yes
+		cost = 90
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 120 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_wentian
+			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+		}
+	}
+	PRC_mengtian_lab_module_new_left = { # 对接梦天实验舱
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_recon_sat
+			has_country_flag = PRC_space_done_comm_const
+			has_country_flag = PRC_space_done_beidou
+			has_country_flag = PRC_space_done_early_warning
+			has_country_flag = PRC_space_done_wentian
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+		fire_only_once = yes
+		cost = 90
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 120 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_mengtian
+			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+		}
+	}
+
+	# ==================== 阶段 IV 扩展 ====================
+	PRC_space_robotic_arm_new_left = { # 安装空间机械臂
+		icon = GFX_decision_PRC_space_robotic_arm
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_tianhe
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_mengtian
+		}
+		modifier = {
+			research_speed_factor = -0.1
+			consumer_goods_factor = 0.06
+			country_resource_coal = -8
+			country_resource_tungsten = -6
+			country_resource_aluminium = -10
+		}
+		fire_only_once = yes
+		cost = 80
+		days_remove = 120
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 220 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_robotic_arm
+			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+		}
+	}
+	PRC_space_power_system_new_left = { # 建设空间电源系统
+		icon = GFX_decision_PRC_space_power_system
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_tianhe
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_mengtian
+		}
+		modifier = {
+			research_speed_factor = -0.1
+			civilian_factory_use = 10
+			country_resource_coal = -30
+		}
+		fire_only_once = yes
+		cost = 90
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 250 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_space_power
+			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+		}
+	}
+	PRC_auto_resupply_spacecraft_new_left = { # 建造自动补给航天器
+		icon = GFX_decision_PRC_auto_resupply_spacecraft
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_tianhe
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_mengtian
+		}
+		modifier = {
+			civilian_factory_use = 20
+			country_resource_coal = -11
+			country_resource_tungsten = -8
+			country_resource_aluminium = -16
+			country_resource_steel = -10
+		}
+		fire_only_once = yes
+		cost = 80
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 300 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_resupply
+			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+		}
+	}
+	PRC_high_orbit_control_station_new_left = { # 建设高轨控制站
+		icon = GFX_decision_PRC_high_orbit_control_station
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_tianhe
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_mengtian
+		}
+		modifier = {
+			research_speed_factor = -0.1
+			consumer_goods_factor = 0.05
+			country_resource_coal = -8
+			country_resource_aluminium = -8
+		}
+		fire_only_once = yes
+		cost = 80
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 280 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_high_orbit
+			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+		}
+	}
+	PRC_orbital_energy_platform_new_left = { # 建设轨道能源平台
+		icon = GFX_decision_PRC_orbital_energy_platform
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_country_flag = PRC_space_done_tianhe
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_mengtian
+		}
+		modifier = {
+			research_speed_factor = -0.25
+			consumer_goods_factor = 0.15
+			civilian_factory_use = 10
+			country_resource_coal = -12
+			country_resource_aluminium = -20
+			country_resource_steel = -16
+			country_resource_chromium = -8
+		}
+		fire_only_once = yes
+		cost = 120
+		days_remove = 300
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 400 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_energy_platform
+			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+		}
+	}
+
+	# ==================== 阶段 V 战力 ====================
+	PRC_orbital_ew_module_new_left = { # 建设轨道电子对抗阵列
+		icon = GFX_decision_PRC_orbital_ew_module
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_completed_focus = PLA_orbital_drop_new
+			has_country_flag = PRC_space_done_energy_platform
+			has_country_flag = PRC_space_done_robotic_arm
+			has_country_flag = PRC_space_done_space_power
+			has_country_flag = PRC_space_done_resupply
+			has_country_flag = PRC_space_done_high_orbit
+		}
+		modifier = {
+			political_power_gain = -0.15
+			consumer_goods_factor = 0.06
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 75 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_ecm_array
+			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+		}
+	}
+	PRC_orbital_airdrop_system_new_left = { # 建设轨道空投系统
+		icon = GFX_decision_PRC_orbital_airdrop_system
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_completed_focus = PLA_orbital_drop_new
+			has_country_flag = PRC_space_done_energy_platform
+			has_country_flag = PRC_space_done_robotic_arm
+			has_country_flag = PRC_space_done_space_power
+			has_country_flag = PRC_space_done_resupply
+			has_country_flag = PRC_space_done_high_orbit
+		}
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.05
+		}
+		fire_only_once = yes
+		cost = 85
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 65 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_airdrop
+			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+		}
+	}
+	PRC_orbital_interception_system_new_left = { # 建设轨道拦截系统
+		icon = GFX_decision_PRC_orbital_interception_system
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_completed_focus = PLA_orbital_drop_new
+			has_country_flag = PRC_space_done_energy_platform
+			has_country_flag = PRC_space_done_robotic_arm
+			has_country_flag = PRC_space_done_space_power
+			has_country_flag = PRC_space_done_resupply
+			has_country_flag = PRC_space_done_high_orbit
+		}
+		modifier = {
+			political_power_gain = -0.15
+			consumer_goods_factor = 0.06
+		}
+		fire_only_once = yes
+		cost = 110
+		days_remove = 240
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 85 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_interception
+			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+		}
+	}
+	PRC_orbital_nuclear_platform_new_left = { # 建设轨道核打击平台
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+			has_completed_focus = PLA_orbital_drop_new
+			has_country_flag = PRC_space_done_energy_platform
+			has_country_flag = PRC_space_done_robotic_arm
+			has_country_flag = PRC_space_done_space_power
+			has_country_flag = PRC_space_done_resupply
+			has_country_flag = PRC_space_done_high_orbit
+		}
+		modifier = {
+			research_speed_factor = -0.25
+			consumer_goods_factor = 0.15
+			civilian_factory_use = 15
+			country_resource_aluminium = -25
+			country_resource_tungsten = -15
+			country_resource_steel = -20
+			country_resource_chromium = -10
+		}
+		fire_only_once = yes
+		cost = 150
+		days_remove = 300
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 350 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_nuclear_platform
+			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+		}
+	}
+}
