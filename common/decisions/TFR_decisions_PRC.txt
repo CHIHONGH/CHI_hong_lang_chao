@@ -18876,6 +18876,7 @@ PRC_enviromental_policy_category = {
 			civilian_factory_use = 5
 		}
 		remove_effect = {
+			set_country_flag = PRC_establish_green_great_wall_flag
 			set_temp_variable = {
 				var = PRC_enviromental_progress_temp
 				value = 0.15
@@ -18890,6 +18891,7 @@ PRC_enviromental_policy_category = {
 					instant_build = yes
 				}
 			}
+			unlock_decision_tooltip = PRC_northwest_wind_solar_power
 		}
 	}
 	PRC_Cancel_redline_for_farm_land = {
@@ -19066,6 +19068,353 @@ PRC_enviromental_policy_category = {
 				income_var_temp = 35
 			}
 			add_income_with_inflation = yes
+		}
+	}
+	PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_1 = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+				has_variable = PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_var
+			}
+			has_country_flag = electric_white_book_flag
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 75
+		days_remove = 365
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			set_variable = {
+				PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_var = 1
+			}
+			add_stability = 0.05
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+			1153 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dam
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = coal
+					amount = 35
+					state = THIS
+				}
+				increase_state_category = yes
+			}
+			unlock_decision_tooltip = PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_2
+		}
+	}
+	PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_2 = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+			check_variable = {
+				PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_var = 1
+			}
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 75
+		days_remove = 365
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			add_to_variable = {
+				PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_var = 1
+			}
+			add_stability = 0.05
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+			1153 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = coal
+					amount = 35
+					state = THIS
+				}
+				increase_state_category = yes
+			}
+			1152 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dam
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = energy_farm
+					level = 2
+					instant_build = yes
+				}
+				increase_state_category = yes
+			}
+			add_to_variable = {
+                PRC_ce_consumer_goods_factor_dynamic_var = -0.025
+            }
+            add_to_variable = {
+                PRC_ce_farming_development_monthly_dynamic_var = 0.005
+            }
+			add_to_variable = {
+                PRC_ce_industrial_development_monthly_dynamic_var = 0.005
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy3
+                }
+            }
+			unlock_decision_tooltip = PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_3
+		}
+	}
+	PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_3 = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+			check_variable = {
+				PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_var = 2
+			}
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 75
+		days_remove = 365
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			clear_variable = PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_var
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.1
+			}
+			PRC_add_enviromental_progress = yes
+			1153 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex		
+					level = 2
+					instant_build = yes
+				}
+				
+			}
+			1152 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = energy_farm
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+                PRC_ce_local_resources_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_ce_factory_energy_consumption_var = -0.1
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy4
+                }
+            }
+		}
+	}
+	PRC_northwest_wind_solar_power = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+			has_country_flag = PRC_establish_green_great_wall_flag
+		}
+		available = {
+			has_country_flag = electric_white_book_flag
+			num_of_civilian_factories_available_for_projects > 2
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		days_remove = 210
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+			add_tech_bonus = {
+				name = PRC_northwest_wind_solar_power
+				uses = 1
+				bonus = 0.5
+				category = industry
+			}
+			add_to_variable = {
+                PRC_ce_consumer_goods_factor_dynamic_var = -0.025
+            }
+            add_to_variable = {
+                PRC_ce_production_factory_max_efficiency_factor_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy5
+                }
+            }
+		}
+	}
+	PRC_carbon_dioxide_capture = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+			has_country_flag = expand_three_carbon_strategy_flag
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		days_remove = 180
+		fire_only_once = yes
+		modifier = {
+			research_speed_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+			add_tech_bonus = {
+				name = PRC_northwest_wind_solar_power
+				uses = 1
+				bonus = 0.5
+				category = industry
+			}
+			add_to_variable = {
+                PRC_ce_stability_factor_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_ce_research_speed_factor_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy6
+                }
+            }
+		}
+	}
+	PRC_carbon_cycle_technology = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+			has_country_flag = expand_three_carbon_strategy_flag
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		days_remove = 180
+		fire_only_once = yes
+		modifier = {
+			research_speed_factor = -0.1
+		}
+		remove_effect = {
+			add_tech_bonus = {
+				name = PRC_carbon_cycle_technology
+				uses = 1
+				bonus = 0.5
+				category = electronics
+			}
+			add_to_variable = {
+                PRC_ce_production_factory_start_efficiency_factor_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_ce_farming_development_monthly_dynamic_var = 0.005
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy7
+                }
+            }
 		}
 	}
 }
