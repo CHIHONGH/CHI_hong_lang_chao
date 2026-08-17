@@ -19,6 +19,9 @@
         completion_reward = { 
             add_political_power = 100
             add_stability = -0.1
+            set_variable = {
+                NEMS_allowed_decision = 1
+            }
             random_owned_controlled_state = {
                 limit = {
                     free_building_slots = {
@@ -78,7 +81,7 @@
             }
             effect_tooltip = {
                 swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea
+                    remove_idea = PRC_made_in_china_dummy_idea0
                     add_idea = PRC_made_in_china_dummy_idea20
                 }
             }
@@ -295,7 +298,7 @@
             effect_tooltip = {
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea =                     PRC_made_in_china_dummy_idea22
+                    add_idea = PRC_made_in_china_dummy_idea22
                 }
             }
         }
@@ -397,7 +400,7 @@
             effect_tooltip = {
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea =                     PRC_made_in_china_dummy_idea24
+                    add_idea = PRC_made_in_china_dummy_idea24
                 }
             }
         }
@@ -526,7 +529,7 @@
             effect_tooltip = {
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea =                     PRC_made_in_china_dummy_idea26
+                    add_idea = PRC_made_in_china_dummy_idea26
                 }
             }
         }
@@ -568,7 +571,7 @@
             effect_tooltip = {
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea =                     PRC_made_in_china_dummy_idea27
+                    add_idea = PRC_made_in_china_dummy_idea27
                 }
             }
         }
@@ -615,7 +618,47 @@
         prerequisite = {
             focus = nl_PRC_PRC_layout_15th_five_year_plan
         }
-        completion_reward = { }
+        completion_reward = { 
+            add_research_slot = 1
+            add_tech_bonus = {
+                name = nl_PRC_promote_industrial_innovation
+                bonus = 0.5
+                category = electronics
+                category = industry
+            }
+            add_tech_bonus = {
+                name = nl_PRC_promote_industrial_innovation
+                bonus = 0.5
+                category = infantry_tech
+                category = armor
+            }
+            add_to_variable = {
+                PRC_mic_global_building_slots_dynamic_var = 1
+            }
+            add_to_variable = {
+                PRC_mic_research_speed_factor_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_mic_personal_value_factor_dynamic_var = -0.075
+            }
+            add_to_variable = {
+                PRC_mic_business_value_factor_dynamic_var = -0.075
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea40
+                }
+            }
+            set_temp_variable = {
+                var = nems_jindu_rating_var
+                value = 3
+            }
+            nems_jindu = yes
+            unlock_decision_tooltip = PRC_project_the_long_march_phase_1
+            unlock_decision_category_tooltip = PRC_nems_system
+            
+        }
     }
     
     # 硅晶自给
@@ -629,7 +672,42 @@
         prerequisite = {
             focus = nl_PRC_promote_industrial_innovation
         }
-        completion_reward = { }
+        completion_reward = { 
+            every_state = {
+                limit = {
+                    OR = {
+                        state = 1150
+                        state = 1395
+                        state = 1215
+                    }
+                }
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_to_variable = {
+                PRC_mic_expense_growth_factor_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea41
+                }
+            }
+            add_resource = {
+                type = aluminium
+                amount = 17
+                state = 621
+            }
+            add_resource = {
+                type = aluminium
+                amount = 14
+                state = 1202
+            }
+        }
     }
 
     # 全国性工业物联网
@@ -643,7 +721,16 @@
         prerequisite = {
             focus = nl_PRC_silicon_self_sufficiency
         }
-        completion_reward = { }
+        completion_reward = { 
+            set_temp_variable = {
+                var = nems_jindu_rating_var
+                value = 3
+            }
+            nems_jindu = yes
+            nems_level_effect = yes
+
+            custom_effect_tooltip = nl_PRC_national_industrial_iot_tt
+        }
     }
 
     #触及曙光
@@ -662,6 +749,9 @@
         }
 
         completion_reward = {
+            custom_effect_tooltip = PRC_nl_dawn_project_tt
+            add_political_power = 200
+            unlock_decision_tooltip = PRC_project_the_long_march_phase_2
             unlock_decision_category_tooltip = PRC_dawn_project
         }
     }
@@ -677,7 +767,29 @@
         prerequisite = {
             focus = nl_PRC_promote_industrial_innovation
         }
-        completion_reward = { }
+        completion_reward = { 
+            add_to_variable = {
+                PRC_mic_expense_growth_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_personal_value_factor_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_mic_business_value_factor_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea41
+                }
+            }
+            set_temp_variable = {
+                var = nems_jindu_rating_var
+                value = 3
+            }
+            nems_jindu = yes
+            nems_level_effect = yes
+        }
     }
 
     # 扩张信息基建
@@ -691,7 +803,78 @@
         prerequisite = {
             focus = nl_PRC_info_trading_platform
         }
-        completion_reward = { }
+        completion_reward = { 
+            random_owned_controlled_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_to_variable = {
+                PRC_mic_production_speed_infrastructure_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_personal_value_factor_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_mic_supply_node_range_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea44
+                }
+            }
+            set_temp_variable = {
+                var = nems_jindu_rating_var
+                value = 3
+            }
+            nems_jindu = yes
+        }
     }
 
     # 算力长征
@@ -706,7 +889,23 @@
             focus = nl_PRC_national_industrial_iot
             focus = nl_PRC_expand_info_infrastructure
         }
-        completion_reward = { }
+        completion_reward = { 
+            set_temp_variable = {
+                society_development_var_temp = 0.25
+            }
+            add_society_development = yes
+            add_tech_bonus = {
+                name = nl_PRC_computing_power_long_march
+                bonus = 2
+                ahead_reduction = 2
+                category = electronics
+            }
+            custom_override_tooltip = {
+                tooltip = nl_PRC_computing_power_long_march_tt
+                activate_mission = NEMS_self_deploy
+            }
+            unlock_decision_tooltip = PRC_project_the_long_march_phase_3
+        }
     }
 
     # 培正固本政策
@@ -751,7 +950,71 @@
         prerequisite = {
             focus = nl_PRC_new_socialist_countryside_construction
         }
-        completion_reward = { }
+        completion_reward = { 
+            random_owned_controlled_state = {
+                limit = {
+                    OR = {
+                        has_state_category = pastoral
+                        has_state_category = rural
+                        has_state_category = village
+                    }
+                }
+                increase_state_category = yes
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    OR = {
+                        has_state_category = pastoral
+                        has_state_category = rural
+                        has_state_category = village
+                    }
+                }
+                increase_state_category = yes
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    OR = {
+                        has_state_category = pastoral
+                        has_state_category = rural
+                        has_state_category = village
+                    }
+                }
+                increase_state_category = yes
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_to_variable = {
+                PRC_mic_monthly_population_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_supply_consumption_factor_dynamic_var = -0.05
+            }
+            add_to_variable = {
+                PRC_mic_farming_development_monthly_dynamic_var = 0.005
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea43
+                }
+            }
+        }
     }
 
     # 海疆珍宝
@@ -930,5 +1193,7 @@
         prerequisite = {
             focus = nl_PRC_labor_revolution
         }
-        completion_reward = { }
+        completion_reward = { 
+            nems_level_effect = yes
+        }
     }
