@@ -1,170 +1,212 @@
 # TFR_中蒙谈判 - 战后治理决议
-# 流程：整肃(5省各自) → 重建基础设施(1) → 恢复经济生产(1) → 民族和解(1) → 解除军管(1)
+# 流程：整肃(5省各自) → 重建基础设施 → 恢复经济生产 → 民族和解 → 解除军管
 # 每步仅在前一步全部完成后才可用，由国家变量 mz_build 精确值驱动
 # mz_build: -0.40(刚整肃) → -0.26667(重建完) → -0.13334(恢复完) → 0(和解完)
-# visible 由类别统一控制（war_declared + NOT country_exists），各决议只保留省核心检测
+# 时长机制：整肃消耗人力/装备并 30 天完成；重建/恢复/和解占用民工厂；全部通过
+# days_remove + remove_effect 实现点击开始→倒计时→到期完成
 
 TFR_CMRN_postwar_category = {
 
-	########################################################################
-	# state 330 — Khangai（蒙古高原）整肃
-	########################################################################
-
-	TFR_CMRN_pacify_330 = {
-		icon = generic_army_leadership
-		cost = 75
-		fire_only_once = yes
-		visible = { NOT = { 330 = { is_core_of = PRC } } }
-		available = { has_global_flag = TFR_CMRN_war_declared }
-		ai_will_do = { factor = 8 }
-		complete_effect = {
-			330 = { TFR_CMRN_pacify_state = yes }
-		}
+TFR_CMRN_pacify_330 = {
+	icon = generic_army_leadership
+	cost = 75
+	fire_only_once = yes
+	visible = { NOT = { 330 = { is_core_of = PRC } } }
+	available = { has_global_flag = TFR_CMRN_war_declared }
+	custom_cost_trigger = {
+		has_manpower > 2000
+		has_equipment = { infantry_equipment > 1000 }
 	}
-
-	########################################################################
-	# state 1388 — Western Mongolia（西蒙古）整肃
-	########################################################################
-
-	TFR_CMRN_pacify_1388 = {
-		icon = generic_army_leadership
-		cost = 75
-		fire_only_once = yes
-		visible = { NOT = { 1388 = { is_core_of = PRC } } }
-		available = { has_global_flag = TFR_CMRN_war_declared }
-		ai_will_do = { factor = 8 }
-		complete_effect = {
-			1388 = { TFR_CMRN_pacify_state = yes }
-		}
+	custom_cost_text = TFR_CMRN_cost_gun_manpower
+	days_remove = 30
+	ai_will_do = { factor = 8 }
+	complete_effect = {
+		custom_effect_tooltip = TFR_CMRN_pacify_cost_tt
+		add_manpower = -2000
+		add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 producer = ROOT }
 	}
-
-	########################################################################
-	# state 1389 — Gobi Desert（戈壁沙漠）整肃
-	########################################################################
-
-	TFR_CMRN_pacify_1389 = {
-		icon = generic_army_leadership
-		cost = 75
-		fire_only_once = yes
-		visible = { NOT = { 1389 = { is_core_of = PRC } } }
-		available = { has_global_flag = TFR_CMRN_war_declared }
-		ai_will_do = { factor = 8 }
-		complete_effect = {
-			1389 = { TFR_CMRN_pacify_state = yes }
-		}
+	remove_effect = {
+		330 = { TFR_CMRN_pacify_state = yes }
 	}
+}
 
-	########################################################################
-	# state 1390 — Eastern Mongolia（东蒙古）整肃
-	########################################################################
-
-	TFR_CMRN_pacify_1390 = {
-		icon = generic_army_leadership
-		cost = 75
-		fire_only_once = yes
-		visible = { NOT = { 1390 = { is_core_of = PRC } } }
-		available = { has_global_flag = TFR_CMRN_war_declared }
-		ai_will_do = { factor = 8 }
-		complete_effect = {
-			1390 = { TFR_CMRN_pacify_state = yes }
-		}
+TFR_CMRN_pacify_1388 = {
+	icon = generic_army_leadership
+	cost = 75
+	fire_only_once = yes
+	visible = { NOT = { 1388 = { is_core_of = PRC } } }
+	available = { has_global_flag = TFR_CMRN_war_declared }
+	custom_cost_trigger = {
+		has_manpower > 2000
+		has_equipment = { infantry_equipment > 1000 }
 	}
-
-	########################################################################
-	# state 1391 — Ulaanbaatar（乌兰巴托）整肃
-	########################################################################
-
-	TFR_CMRN_pacify_1391 = {
-		icon = generic_army_leadership
-		cost = 75
-		fire_only_once = yes
-		visible = { NOT = { 1391 = { is_core_of = PRC } } }
-		available = { has_global_flag = TFR_CMRN_war_declared }
-		ai_will_do = { factor = 8 }
-		complete_effect = {
-			1391 = { TFR_CMRN_pacify_state = yes }
-		}
+	custom_cost_text = TFR_CMRN_cost_gun_manpower
+	days_remove = 30
+	ai_will_do = { factor = 8 }
+	complete_effect = {
+		custom_effect_tooltip = TFR_CMRN_pacify_cost_tt
+		add_manpower = -2000
+		add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 producer = ROOT }
 	}
-
-	########################################################################
-	# 重建基础设施 — 门控：5 省全部整肃后可用（检测核心）
-	# 变量变为 -0.26667
-	########################################################################
-
-	TFR_CMRN_rebuild_infrastructure = {
-		icon = generic_military_industrial_complex
-		cost = 50
-		fire_only_once = yes
-		available = {
-			330 = { is_core_of = PRC }
-			1388 = { is_core_of = PRC }
-			1389 = { is_core_of = PRC }
-			1390 = { is_core_of = PRC }
-			1391 = { is_core_of = PRC }
-			check_variable = { var = TFR_CMRN_mz_build value = -0.40 compare = equals }
-		}
-		ai_will_do = { factor = 7 }
-		modifier = { civilian_factory_use = 1 }
-		complete_effect = {
-			TFR_CMRN_rebuild_step = yes
-		}
+	remove_effect = {
+		1388 = { TFR_CMRN_pacify_state = yes }
 	}
+}
 
-	########################################################################
-	# 恢复经济生产 — 门控：重建基础设施完成后可用（变量 = -0.26667）
-	# 变量变为 -0.13334
-	########################################################################
-
-	TFR_CMRN_restore_economy = {
-		icon = generic_industrial_concern
-		cost = 75
-		fire_only_once = yes
-		available = {
-			check_variable = { var = TFR_CMRN_mz_build value = -0.26667 compare = equals }
-		}
-		ai_will_do = { factor = 6 }
-		complete_effect = {
-			TFR_CMRN_rebuild_step = yes
-		}
+TFR_CMRN_pacify_1389 = {
+	icon = generic_army_leadership
+	cost = 75
+	fire_only_once = yes
+	visible = { NOT = { 1389 = { is_core_of = PRC } } }
+	available = { has_global_flag = TFR_CMRN_war_declared }
+	custom_cost_trigger = {
+		has_manpower > 2000
+		has_equipment = { infantry_equipment > 1000 }
 	}
-
-	########################################################################
-	# 民族和解 — 门控：恢复经济完成后可用（变量 = -0.13334）
-	# 变量变为 0
-	########################################################################
-
-	TFR_CMRN_ethnic_reconciliation = {
-		icon = generic_political_discourse
-		cost = 50
-		fire_only_once = yes
-		available = {
-			check_variable = { var = TFR_CMRN_mz_build value = -0.13334 compare = equals }
-		}
-		ai_will_do = { factor = 5 }
-		complete_effect = {
-			TFR_CMRN_rebuild_step = yes
-		}
+	custom_cost_text = TFR_CMRN_cost_gun_manpower
+	days_remove = 30
+	ai_will_do = { factor = 8 }
+	complete_effect = {
+		custom_effect_tooltip = TFR_CMRN_pacify_cost_tt
+		add_manpower = -2000
+		add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 producer = ROOT }
 	}
-
-	########################################################################
-	# 解除军管 — 门控：民族和解完成后可用（变量 = 0）+ 5 省核心确认
-	# 触发最终结算
-	########################################################################
-
-	TFR_CMRN_remove_military_zone = {
-		icon = generic_diplomacy
-		fire_only_once = yes
-		available = {
-			330 = { is_core_of = PRC }
-			1388 = { is_core_of = PRC }
-			1389 = { is_core_of = PRC }
-			1390 = { is_core_of = PRC }
-			1391 = { is_core_of = PRC }
-			check_variable = { var = TFR_CMRN_mz_build value = 0 compare = equals }
-		}
-		ai_will_do = { factor = 10 }
-		complete_effect = {
-			TFR_CMRN_check_all_cleared = yes
-		}
+	remove_effect = {
+		1389 = { TFR_CMRN_pacify_state = yes }
 	}
+}
+
+TFR_CMRN_pacify_1390 = {
+	icon = generic_army_leadership
+	cost = 75
+	fire_only_once = yes
+	visible = { NOT = { 1390 = { is_core_of = PRC } } }
+	available = { has_global_flag = TFR_CMRN_war_declared }
+	custom_cost_trigger = {
+		has_manpower > 2000
+		has_equipment = { infantry_equipment > 1000 }
+	}
+	custom_cost_text = TFR_CMRN_cost_gun_manpower
+	days_remove = 30
+	ai_will_do = { factor = 8 }
+	complete_effect = {
+		custom_effect_tooltip = TFR_CMRN_pacify_cost_tt
+		add_manpower = -2000
+		add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 producer = ROOT }
+	}
+	remove_effect = {
+		1390 = { TFR_CMRN_pacify_state = yes }
+	}
+}
+
+TFR_CMRN_pacify_1391 = {
+	icon = generic_army_leadership
+	cost = 75
+	fire_only_once = yes
+	visible = { NOT = { 1391 = { is_core_of = PRC } } }
+	available = { has_global_flag = TFR_CMRN_war_declared }
+	custom_cost_trigger = {
+		has_manpower > 2000
+		has_equipment = { infantry_equipment > 1000 }
+	}
+	custom_cost_text = TFR_CMRN_cost_gun_manpower
+	days_remove = 30
+	ai_will_do = { factor = 8 }
+	complete_effect = {
+		custom_effect_tooltip = TFR_CMRN_pacify_cost_tt
+		add_manpower = -2000
+		add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 producer = ROOT }
+	}
+	remove_effect = {
+		1391 = { TFR_CMRN_pacify_state = yes }
+	}
+}
+
+########################################################################
+# 重建基础设施 — 门控：5 省全部整肃后可用（检测核心）
+# 变量变为 -0.26667；45 天完成
+########################################################################
+
+TFR_CMRN_rebuild_infrastructure = {
+	icon = generic_military_industrial_complex
+	cost = 50
+	fire_only_once = yes
+	available = {
+		330 = { is_core_of = PRC }
+		1388 = { is_core_of = PRC }
+		1389 = { is_core_of = PRC }
+		1390 = { is_core_of = PRC }
+		1391 = { is_core_of = PRC }
+		check_variable = { var = TFR_CMRN_mz_build value = -0.40 compare = equals }
+	}
+	ai_will_do = { factor = 7 }
+	modifier = { civilian_factory_use = 1 }
+	days_remove = 45
+	remove_effect = {
+		TFR_CMRN_rebuild_step = yes
+	}
+}
+
+########################################################################
+# 恢复经济生产 — 门控：重建完成后可用（变量 = -0.26667）
+# 变量变为 -0.13334；45 天完成
+########################################################################
+
+TFR_CMRN_restore_economy = {
+	icon = generic_industrial_concern
+	cost = 75
+	fire_only_once = yes
+	available = {
+		check_variable = { var = TFR_CMRN_mz_build value = -0.26667 compare = equals }
+	}
+	ai_will_do = { factor = 6 }
+	modifier = { civilian_factory_use = 2 }
+	days_remove = 45
+	remove_effect = {
+		TFR_CMRN_rebuild_step = yes
+	}
+}
+
+########################################################################
+# 民族和解 — 门控：恢复经济完成后可用（变量 = -0.13334）
+# 变量变为 0；30 天完成
+########################################################################
+
+TFR_CMRN_ethnic_reconciliation = {
+	icon = generic_political_discourse
+	cost = 50
+	fire_only_once = yes
+	available = {
+		check_variable = { var = TFR_CMRN_mz_build value = -0.13334 compare = equals }
+	}
+	ai_will_do = { factor = 5 }
+	modifier = { civilian_factory_use = 1 }
+	days_remove = 30
+	remove_effect = {
+		TFR_CMRN_rebuild_step = yes
+	}
+}
+
+########################################################################
+# 解除军管 — 门控：民族和解完成后可用（变量 = 0）+ 5 省核心确认
+# 14 天后触发最终结算
+########################################################################
+
+TFR_CMRN_remove_military_zone = {
+	icon = generic_diplomacy
+	fire_only_once = yes
+	available = {
+		330 = { is_core_of = PRC }
+		1388 = { is_core_of = PRC }
+		1389 = { is_core_of = PRC }
+		1390 = { is_core_of = PRC }
+		1391 = { is_core_of = PRC }
+		check_variable = { var = TFR_CMRN_mz_build value = 0 compare = equals }
+	}
+	ai_will_do = { factor = 10 }
+	days_remove = 14
+	remove_effect = {
+		TFR_CMRN_check_all_cleared = yes
+	}
+}
 }

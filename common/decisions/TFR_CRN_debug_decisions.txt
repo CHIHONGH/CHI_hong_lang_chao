@@ -159,4 +159,81 @@ debug_decisions = {
 			custom_effect_tooltip = TFR_CRN_debug_view_vars
 		}
 	}
+
+	########################################################################
+	# 启动边境冲突（黑线 SOV 调试入口）
+	########################################################################
+	TFR_CRN_start_conflict_debug = {
+		icon = generic_war
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			NOT = { has_global_flag = TFR_CRN_conflict_accessible }
+			country_exists = SOV
+			NOT = { SOV = { TFR_CRN_sov_negotiable = yes } }
+		}
+		complete_effect = {
+			TFR_CRN_conflict_init = yes
+		}
+	}
+
+	########################################################################
+	# 重置边境冲突
+	########################################################################
+	TFR_CRN_reset_conflict_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			OR = {
+				has_global_flag = TFR_CRN_conflict_active
+				has_global_flag = TFR_CRN_conflict_ended
+			}
+		}
+		complete_effect = {
+			clr_global_flag = TFR_CRN_conflict_active
+			clr_global_flag = TFR_CRN_conflict_accessible
+			clr_global_flag = TFR_CRN_conflict_ended
+			clr_global_flag = TFR_CRN_full_war_active
+			TFR_CRN_clear_target_flags = yes
+			TFR_CRN_remove_advantage_modifier = yes
+			PRC = {
+				clr_country_flag = TFR_CRN_PRC_started_conflict
+				clear_variable = TFR_CRN_prc_bonus
+				clear_variable = TFR_CRN_sov_bonus
+				clear_variable = TFR_CRN_prc_advantage
+				clear_variable = TFR_CRN_sov_advantage
+				clear_variable = TFR_CRN_adv_prc_org
+				clear_variable = TFR_CRN_adv_prc_supply
+				clear_variable = TFR_CRN_adv_sov_attrition
+				clear_variable = TFR_CRN_adv_sov_supplies
+				clear_variable = TFR_CRN_adv_sov_speed
+				clear_variable = TFR_CRN_adv_sov_org
+				clear_variable = TFR_CRN_prc_adv_frame
+				clear_variable = TFR_CRN_sov_adv_frame
+				remove_mission = TFR_CRN_full_war_timer
+			}
+		}
+	}
+
+	########################################################################
+	# 调试：设 PRC 优势 = 100 / SOV 优势 = 0（测试碾压局面）
+	########################################################################
+	TFR_CRN_set_prc_advantage_debug = {
+		icon = generic_research
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			has_global_flag = TFR_CRN_conflict_active
+		}
+		complete_effect = {
+			set_variable = { var = TFR_CRN_prc_advantage value = 100 }
+			set_variable = { var = TFR_CRN_sov_advantage value = 0 }
+			TFR_CRN_update_advantage_vars = yes
+			TFR_CRN_update_advantage_frames = yes
+		}
+	}
 }

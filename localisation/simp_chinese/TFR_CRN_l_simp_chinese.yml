@@ -256,3 +256,120 @@
  TFR_CRN_convo_sov_7:0 "俄方接受全部条件，外兴安岭与库页岛移交中国"
  TFR_CRN_convo_sov_8:0 "库页岛可磋商，外兴安岭关系铁路安全，无法让步"
  TFR_CRN_convo_sov_9:0 "若坚持外兴安岭库页岛，俄方将退出全部谈判"
+
+ # ========== 边境冲突 ==========
+ # 类别
+ TFR_CRN_conflict_category:0 "中俄边境冲突"
+ TFR_CRN_sov_conflict_category:0 "中俄边境冲突（[SOV.GetName]视角）"
+
+ # 旗标
+ TFR_CRN_conflict_active:0 "边境冲突进行中"
+ TFR_CRN_conflict_ended:0 "边境冲突已结束"
+ TFR_CRN_conflict_accessible:0 "边境冲突机制已启用"
+ TFR_CRN_full_war_active:0 "全面战争进行中"
+
+ # PRC 决议
+ TFR_CRN_start_conflict:0 "对[SOV.GetName]发动边境冲突"
+ TFR_CRN_start_conflict_desc:0 "俄方拒绝了一切外交渠道。边境的剑拔弩张已持续数月，再多的照会也换不来一张谈判桌。\n\n现在，是时候用另一种语言说话了。\n\n发动边境冲突后，中国将逐州对[SOV.GetName]发起边境战争——每次边境战争的胜利都将收回一个州。冲突烈度由双轨军事优势决定：我方优势越高，前线部队越强，俄军越弱。\n\n§R警告：任一方施压累计达到 100，都将令对方忍无可忍、直接爆发全面战争（限时一年）。§!"
+ TFR_CRN_launch_border_war:0 "发动边境战争（当前目标：[SOV.TFR_CRN_GetTargetStateName]）"
+ TFR_CRN_launch_border_war_desc:0 "对当前目标州发动边境战争。打赢则收回该州，打输则需休整后再战。"
+ TFR_CRN_pressure_buildup:0 "边境增兵"
+ TFR_CRN_pressure_buildup_desc:0 "向前线增调装甲集团与导弹旅，压迫[SOV.GetName]在远东的兵力部署。§G中方军事优势 +10§!，施压累计 +10"
+ TFR_CRN_pressure_exercise:0 "边境军事演习"
+ TFR_CRN_pressure_exercise_desc:0 "在边境地区举行大规模军事演习，展示进攻姿态。§G中方军事优势 +6§!，施压累计 +6"
+ TFR_CRN_pressure_ew:0 "电子对抗与网络战"
+ TFR_CRN_pressure_ew_desc:0 "对[SOV.GetName]远东指挥系统实施电子压制与网络渗透，瘫痪其战场感知。§G中方军事优势 +4§!，施压累计 +4"
+
+ # SOV 回应
+ TFR_CRN_sov_respond_buildup:0 "远东增兵"
+ TFR_CRN_sov_respond_buildup_desc:0 "向远东军区增派部队，巩固防线。§R中方军事优势 -10§!"
+ TFR_CRN_sov_respond_mobilize:0 "全面动员"
+ TFR_CRN_sov_respond_mobilize_desc:0 "宣布全国军事动员，将资源倾注于远东战场。§R中方军事优势 -15§!"
+ TFR_CRN_sov_respond_backdown:0 "战略退缩"
+ TFR_CRN_sov_respond_backdown_desc:0 "从边境争议地区后撤，避免与中方发生正面冲突。§G中方军事优势 +10§!"
+
+ # 效果 tooltip
+ TFR_CRN_effect_launch_border_war:0 "§Y边境战争开始：争夺[SOV.TFR_CRN_GetTargetStateName]§!"
+ TFR_CRN_effect_pressure_buildup:0 "§G中方军事优势 +10§!（施压累计 +10）"
+ TFR_CRN_effect_pressure_exercise:0 "§G中方军事优势 +6§!（施压累计 +6）"
+ TFR_CRN_effect_pressure_ew:0 "§G中方军事优势 +4§!（施压累计 +4）"
+ TFR_CRN_effect_sov_respond_buildup:0 "§R中方军事优势 -10§!（俄方施压累计 +10）"
+ TFR_CRN_effect_sov_respond_mobilize:0 "§R中方军事优势 -15§!（俄方施压累计 +15）"
+ TFR_CRN_effect_sov_respond_backdown:0 "§G中方军事优势 +10§!（俄方施压累计 -10）"
+
+ # 冲突事件
+ TFR_CRN.20.t:0 "边境冲突爆发"
+ TFR_CRN.20.d:0 "中华人民共和国政府宣布，对[SOV.GetName]在远东地区的边境挑衅已忍无可忍。\n\n没有宣战，没有最后通牒——只有集结在边境线另一侧的钢铁洪流。\n\n边境冲突开始。中国将逐州争夺外东北：\n\n第一梯队——§Y海参崴、伯力、奇穆尼窝集、海兰泡、外兴安岭§!（直接接壤）\n第二梯队——§Y庙街§!（需先拿下相邻州）\n特殊目标——§Y唐努乌梁海§!（需中国控制蒙古边境州）\n最后一州——§Y库页岛§!（其余各州收回后自动回归）\n\n每次边境战争的胜利都将收回一个州。"
+ TFR_CRN.20.a:0 "边境线就是前线。"
+
+ TFR_CRN.21.t:0 "边境战争胜利"
+ TFR_CRN.21.d:0 "[SOV.TFR_CRN_GetTargetStateName]的俄军防线被彻底击溃。残余部队要么放下武器，要么仓皇撤向更深的西伯利亚。\n\n这面旗帜，现在属于中国。"
+ TFR_CRN.21.a:0 "下一个目标。"
+ TFR_CRN.21.b:0 "耻辱。我们记住了。"
+
+ TFR_CRN.22.t:0 "边境战争受挫"
+ TFR_CRN.22.d:0 "[SOV.TFR_CRN_GetTargetStateName]方向的进攻被[SOV.GetName]军队击退。前线部队在付出了惨重代价后撤回出发阵地。\n\n要么休整后再战，要么……全面升级。"
+ TFR_CRN.22.a:0 "休整，再战。"
+ TFR_CRN.22.b:0 "远东依然属于我们。"
+
+ TFR_CRN.23.t:0 "俄方忍无可忍——全面战争爆发"
+ TFR_CRN.23.d:0 "莫斯科受够了。\n\n中国在边境的持续施压——增兵、演习、电子对抗、边境战争——已经让克里姆林宫的忍耐到达极限。\n\n[SOV.GetName]宣布：对华全面开战。\n\n§Y限时一年§!：\n§G限期内俄军投降，或任一外东北州被占领§!——俄方求和，外东北全境回归。\n§R若一年内无法取胜§!——中国战败，白和并支付巨额赔偿。\n\n战争机器已经全速运转。"
+ TFR_CRN.23.a:0 "那就打到底。"
+
+ TFR_CRN.30.t:0 "中方忍无可忍——全面战争爆发"
+ TFR_CRN.30.d:0 "中国受够了。\n\n[SOV.GetName]在远东的持续施压——增兵、动员、咄咄逼人的军事部署——已经让北京的忍耐到达极限。\n\n中华人民共和国宣布：对俄全面开战。\n\n§Y限时一年§!：\n§G限期内俄军投降，或任一外东北州被占领§!——俄方求和，外东北全境回归。\n§R若一年内无法取胜§!——中国战败，白和并支付巨额赔偿。\n\n战争机器已经全速运转。"
+ TFR_CRN.30.a:0 "忍无可忍，无须再忍。"
+
+ TFR_CRN.24.t:0 "俄罗斯求和"
+ TFR_CRN.24.d:0 "莫斯科撑不住了。\n\n远东的战火、欧洲的压力、国内的不满——[SOV.GetName]的战争机器已经到达极限。克里姆林宫发来求和照会：\n\n外东北，全境归中国。\n\n远东方向再无战事。"
+ TFR_CRN.24.a:0 "接受投降。"
+
+ TFR_CRN.25.t:0 "战败——白和与赔偿"
+ TFR_CRN.25.d:0 "一年之期已到，远东的战事仍未尘埃落定。\n\n国际调停下，双方签署了停战协定：中国撤出全部争议地区，并向[SOV.GetName]支付巨额赔偿。\n\n§R国家债务大幅增加，数以万计的装备作为赔偿运往莫斯科。§!\n\n这一次，我们输了。但外东北——不会永远属于他们。"
+ TFR_CRN.25.a:0 "……总有一天。"
+
+ TFR_CRN.26.t:0 "库页岛回归——外东北全境光复"
+ TFR_CRN.26.d:0 "库页岛——外东北最后一块土地，回归中华人民共和国。\n\n从海参崴到伯力，从海兰泡到庙街，从外兴安岭到唐努乌梁海，从库页岛到整个黑龙江流域——沙俄时代失去的外东北，已被中国以边境战争的方式全部收回。\n\n这不是谈判桌上的施舍，这是战场上赢回来的。"
+ TFR_CRN.26.a:0 "一寸山河一寸血。"
+
+ TFR_CRN.27.t:0 "中国对俄宣战——远东战争全面爆发"
+ TFR_CRN.27.d:0 "北京正式向莫斯科宣战。\n\n持续数月的边境冲突一夜之间升级为全面战争。远东前线炮火连天，世界各大国都在屏息观望这场两个核大国之间的战争会走向何方。\n\n克里姆林宫表示将“坚决回击”，但明眼人都看得出——[SOV.GetName]的军队正被另一场战争消耗着。"
+ TFR_CRN.27.a:0 "世界屏住了呼吸。"
+
+ TFR_CRN.28.t:0 "外东北全境回归中国"
+ TFR_CRN.28.d:0 "莫斯科求和，远东战争结束。\n\n从海参崴到库页岛，外东北全境回归中华人民共和国。这是自1858年《瑷珲条约》以来，中国第一次以军事手段完整收回这片土地。\n\n世界舆论为之哗然——但远东的地图上，已经写下了既成事实。"
+ TFR_CRN.28.a:0 "历史记住了这一天。"
+
+ TFR_CRN.29.t:0 "中国在远东战争中战败"
+ TFR_CRN.29.d:0 "为期一年的远东战争以中国的失败告终。\n\n在国际调停下，双方签署停战协定：中国撤出全部争议地区，并向[SOV.GetName]支付巨额赔偿。\n\n北京承认，这是一次战略上的失败。但远东的积雪之下，种子已经埋下。"
+ TFR_CRN.29.a:0 "莫斯科保住了远东。"
+
+ # 冲突 GUI
+ TFR_CRN_conflict_prc_label:0 "中方军事优势"
+ TFR_CRN_conflict_sov_label:0 "俄方军事优势"
+ TFR_CRN_conflict_prc_pressure_label:0 "中方施压"
+ TFR_CRN_conflict_sov_pressure_label:0 "俄方施压"
+ TFR_CRN_conflict_target_state:0 "当前目标：§Y[SOV.TFR_CRN_GetTargetStateName]§!"
+ TFR_CRN_conflict_status_dynamic:0 "[PRC.TFR_CRN_GetConflictStatus]"
+ TFR_CRN_conflict_status_war:0 "§R全面战争进行中——限时一年，俄军投降或占州即自动求和§!"
+ TFR_CRN_conflict_status_battling:0 "§Y边境战争进行中——胜负将决定目标州归属§!"
+ TFR_CRN_conflict_status_ready:0 "§G目标已定——发动边境战争，胜利即收回该州§!"
+ TFR_CRN_conflict_status_done:0 "§Y全部外东北州已收回§!"
+ TFR_CRN_conflict_progress:0 "已收回 §Y[PRC.TFR_CRN_states_taken]§!/8 州"
+ TFR_CRN_conflict_help_tooltip:0 "§Y边境冲突玩法§!\n逐州边境战争：每次胜利收回一个州。\n§R施压决议§!（增兵/演习/电子战）→ 中方施压与军事优势\n§G俄方回应§!（增兵/动员/退缩）→ 改变双方施压与优势\n优势高 → 目标州中国正面修正强、俄军负面修正重；均势时中国略占优。\n\n§R任一方施压累计满 100 → 对方忍无可忍直接宣战§!，全面战争限时 365 天：\n限期内俄军投降（>10%）或任一州被占 → §G自动触发俄方求和§!，全境回归；\n时间耗尽 → 中国战败白和并赔偿。\n\n特殊目标：唐努乌梁海需先控制蒙古边境州；库页岛在其余各州收回后自动回归。"
+ TFR_CRN_target_state_408:0 "海参崴"
+ TFR_CRN_target_state_409:0 "伯力"
+ TFR_CRN_target_state_657:0 "奇穆尼窝集"
+ TFR_CRN_target_state_1328:0 "海兰泡"
+ TFR_CRN_target_state_1293:0 "外兴安岭"
+ TFR_CRN_target_state_560:0 "庙街"
+ TFR_CRN_target_state_329:0 "唐努乌梁海"
+ TFR_CRN_target_state_none:0 "（无目标——全部州已收回）"
+
+ # 冲突调试
+ TFR_CRN_start_conflict_debug:0 "§Y[调试]§! 启动边境冲突"
+ TFR_CRN_start_conflict_debug_desc:0 "直接初始化边境冲突（需黑线 SOV）。"
+ TFR_CRN_reset_conflict_debug:0 "§Y[调试]§! 重置边境冲突"
+ TFR_CRN_reset_conflict_debug_desc:0 "清空全部冲突相关变量与旗标。"
+ TFR_CRN_set_prc_advantage_debug:0 "§Y[调试]§! 设中方优势 100 / 俄方优势 0"
+ TFR_CRN_set_prc_advantage_debug_desc:0 "测试碾压局面的战斗修正。"

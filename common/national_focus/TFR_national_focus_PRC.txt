@@ -4909,6 +4909,11 @@ shared_focus = {
                 random_hours = 5
             }
             country_event = {
+                id = ChinaOSS.104
+                days = 1
+                random_hours = 12
+            }
+            country_event = {
                 id = ChinaOSS.105
                 days = 20
                 random_hours = 12
@@ -5235,21 +5240,16 @@ shared_focus = {
             idea = PRC_emergency_measures_idea
             days = 350
         }
-        country_event = {
-            id = ChinaOSS.104
-            days = 1
-            random_hours = 12
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+                }
+            }
+            set_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+            unlock_decision_tooltip = PRC_put_the_nuclear_arsenal_on_full_operational_alert
+            unlock_decision_tooltip = PRC_final_chance_thermonuclear
         }
-        # if = {
-        #     limit = {
-        #         NOT = {
-        #             has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
-        #         }
-        #     }
-        #     set_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
-        #     unlock_decision_tooltip = PRC_put_the_nuclear_arsenal_on_full_operational_alert
-        #     unlock_decision_tooltip = PRC_final_chance_thermonuclear
-        # }
     }
 }
 

@@ -4773,7 +4773,7 @@ PRC_helicopter_design_institute_organization = {
 #国家电网有限公司
 PRC_china_power_grid_organization = {
 	icon = GFX_PRC_mio_SGCC
-	background = GFX_mio_SGCC_backgroun
+	background = GFX_mio_SGCC_background
 	allowed = {
 		tag = PRC
 		has_dlc = "Arms Against Tyranny"
@@ -4811,9 +4811,6 @@ PRC_china_power_grid_organization = {
 	initial_trait = {
 		name = PRC_mio_trait_power_grid_init
 
-		production_bonus = {
-			production_cost_factor = -2
-		}
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.05
 			military_industrial_organization_size_up_requirement = -0.25
@@ -4824,6 +4821,10 @@ PRC_china_power_grid_organization = {
 		token = PRC_mio_trait_power_grid_basic
 		name = PRC_mio_trait_power_grid_basic
 		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
+		}
 
 		position = { x = 1 y = 0 }
 
@@ -4842,6 +4843,10 @@ PRC_china_power_grid_organization = {
 		token = PRC_mio_trait_power_grid_eff
 		name = PRC_mio_trait_power_grid_eff
 		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+		}
 
 		relative_position_id = PRC_mio_trait_power_grid_basic
 
@@ -4865,6 +4870,10 @@ PRC_china_power_grid_organization = {
 		name = PRC_mio_trait_power_grid_uhv
 		icon = GFX_generic_mio_trait_icon_production_capacity
 
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+		}
+
 		relative_position_id = PRC_mio_trait_power_grid_basic
 
 		all_parents = { PRC_mio_trait_power_grid_basic }
@@ -4886,6 +4895,10 @@ PRC_china_power_grid_organization = {
 		token = PRC_mio_trait_power_grid_national
 		name = PRC_mio_trait_power_grid_national
 		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 5 } }
+		}
 
 		relative_position_id = PRC_mio_trait_power_grid_uhv
 
@@ -4909,6 +4922,10 @@ PRC_china_power_grid_organization = {
 		name = PRC_mio_trait_power_grid_reform
 		icon = GFX_generic_mio_trait_icon_production_capacity
 
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
+		}
+
 		position = { x = 3 y = 0 }
 
 		on_complete = {
@@ -4927,6 +4944,10 @@ PRC_china_power_grid_organization = {
 		name = PRC_mio_trait_power_grid_demand
 		icon = GFX_generic_mio_trait_icon_production_capacity
 
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
+		}
+
 		position = { x = 5 y = 0 }
 
 		on_complete = {
@@ -4944,6 +4965,10 @@ PRC_china_power_grid_organization = {
 		token = PRC_mio_trait_power_grid_storage
 		name = PRC_mio_trait_power_grid_storage
 		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+		}
 
 		relative_position_id = PRC_mio_trait_power_grid_demand
 
@@ -4967,6 +4992,10 @@ PRC_china_power_grid_organization = {
 		name = PRC_mio_trait_power_grid_dispatch
 		icon = GFX_generic_mio_trait_icon_production_capacity
 
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+		}
+
 		relative_position_id = PRC_mio_trait_power_grid_demand
 
 		all_parents = { PRC_mio_trait_power_grid_demand }
@@ -4988,6 +5017,10 @@ PRC_china_power_grid_organization = {
 		token = PRC_mio_trait_power_grid_global
 		name = PRC_mio_trait_power_grid_global
 		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 8 } }
+		}
 
 		relative_position_id = PRC_mio_trait_power_grid_national
 
@@ -5021,6 +5054,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 30 }
 				add_debt_with_inflation = yes
 			}
@@ -5050,6 +5084,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 40 }
 				add_debt_with_inflation = yes
 			}
@@ -5079,6 +5114,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 50 }
 				add_debt_with_inflation = yes
 			}
@@ -5108,6 +5144,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 60 }
 				add_debt_with_inflation = yes
 			}
@@ -5137,6 +5174,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 120 }
 				add_debt_with_inflation = yes
 				clear_variable = PRC_power_grid_nuclear_invest_var
@@ -5180,6 +5218,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 30 }
 				add_debt_with_inflation = yes
 			}
@@ -5219,6 +5258,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 40 }
 				add_debt_with_inflation = yes
 			}
@@ -5258,6 +5298,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 50 }
 				add_debt_with_inflation = yes
 			}
@@ -5297,6 +5338,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 60 }
 				add_debt_with_inflation = yes
 			}
@@ -5336,6 +5378,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 120 }
 				add_debt_with_inflation = yes
 				clear_variable = PRC_power_grid_thermal_invest_var
@@ -5399,6 +5442,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 30 }
 				add_debt_with_inflation = yes
 			}
@@ -5438,6 +5482,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 40 }
 				add_debt_with_inflation = yes
 			}
@@ -5477,6 +5522,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 50 }
 				add_debt_with_inflation = yes
 			}
@@ -5516,6 +5562,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 60 }
 				add_debt_with_inflation = yes
 			}
@@ -5555,6 +5602,7 @@ PRC_china_power_grid_organization = {
 		}
 		on_complete = {
 			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
 				set_temp_variable = { var = debt_var_temp value = 120 }
 				add_debt_with_inflation = yes
 				clear_variable = PRC_power_grid_solar_invest_var

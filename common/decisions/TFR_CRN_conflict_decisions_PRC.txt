@@ -1,0 +1,132 @@
+# TFR_中俄谈判 - PRC 边境冲突决议
+# 黑线 SOV（非梅德韦杰夫/非红色）时替代谈判路线
+# 逐州边境战争（start_border_war）+ 双轨优势 + 施压满 100 引爆全面战争（365 天限时任务）
+
+TFR_CRN_conflict_category = {
+
+	########################################################################
+	# 全面战争限时任务 — 365 天（由施压满 100 自动引爆，无手动决议）
+	# available（胜利条件：SOV 投降>10% 或任一州被占）满足 → 任务自动完成
+	#   → complete_effect 直接脚本和平（俄方求和，全境回归）
+	# 时间耗尽 → timeout_effect 判定中国输（白和+赔款）
+	########################################################################
+	TFR_CRN_full_war_timer = {
+		icon = generic_timer
+		allowed = { tag = PRC }
+		activation = { always = no }
+		available = {
+			TFR_CRN_full_war_win_conditions = yes
+		}
+		selectable_mission = no
+		days_mission_timeout = 365
+		complete_effect = {
+			TFR_CRN_full_war_win = yes
+		}
+		timeout_effect = {
+			TFR_CRN_full_war_lose = yes
+		}
+	}
+
+	########################################################################
+	# 启动边境冲突（正式入口；黑线 SOV 时可见）
+	########################################################################
+	TFR_CRN_start_conflict = {
+		icon = generic_war
+		cost = 50
+		visible = { TFR_CRN_conflict_can_start = yes }
+		available = {
+			TFR_CRN_conflict_can_start = yes
+			has_war = no
+		}
+		complete_effect = {
+			TFR_CRN_conflict_init = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	########################################################################
+	# 发动边境战争 — 对当前目标州（按相邻可达自动选择目标）
+	########################################################################
+	TFR_CRN_launch_border_war = {
+		icon = generic_army_leadership
+		cost = 50
+		visible = { TFR_CRN_conflict_active_trigger = yes }
+		available = {
+			TFR_CRN_conflict_active_trigger = yes
+			TFR_CRN_has_target = yes
+			has_border_war = no
+			NOT = { has_global_flag = TFR_CRN_full_war_active }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_launch_border_war
+			# 边境战争开始 → 目标州挂载战斗修正（战争结束即移除）
+			TFR_CRN_attach_advantage_modifier = yes
+			TFR_CRN_start_border_war_on_target = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	########################################################################
+	# 施压决议链（积累 PRC 优势；施压累计满 100 → 俄方忍无可忍直接宣战）
+	########################################################################
+
+	# 边境增兵
+	TFR_CRN_pressure_buildup = {
+		icon = generic_military_industrial_complex
+		cost = 50
+		fire_only_once = no
+		days_remove = 45
+		visible = { TFR_CRN_conflict_active_trigger = yes }
+		available = {
+			TFR_CRN_conflict_active_trigger = yes
+			NOT = { has_global_flag = TFR_CRN_full_war_active }
+			check_variable = { TFR_CRN_prc_bonus < 100 }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_pressure_buildup
+			add_to_variable = { var = TFR_CRN_prc_bonus value = 10 }
+			TFR_CRN_calc_advantage = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 边境军事演习
+	TFR_CRN_pressure_exercise = {
+		icon = generic_political_discourse
+		cost = 30
+		fire_only_once = no
+		days_remove = 30
+		visible = { TFR_CRN_conflict_active_trigger = yes }
+		available = {
+			TFR_CRN_conflict_active_trigger = yes
+			NOT = { has_global_flag = TFR_CRN_full_war_active }
+			check_variable = { TFR_CRN_prc_bonus < 100 }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_pressure_exercise
+			add_to_variable = { var = TFR_CRN_prc_bonus value = 6 }
+			TFR_CRN_calc_advantage = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 电子对抗
+	TFR_CRN_pressure_ew = {
+		icon = generic_research
+		cost = 25
+		fire_only_once = no
+		days_remove = 30
+		visible = { TFR_CRN_conflict_active_trigger = yes }
+		available = {
+			TFR_CRN_conflict_active_trigger = yes
+			NOT = { has_global_flag = TFR_CRN_full_war_active }
+			check_variable = { TFR_CRN_prc_bonus < 100 }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_pressure_ew
+			add_to_variable = { var = TFR_CRN_prc_bonus value = 4 }
+			TFR_CRN_calc_advantage = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+}

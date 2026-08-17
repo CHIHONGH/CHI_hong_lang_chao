@@ -104,3 +104,24 @@ scripted_gui = {
 
 	}
 }
+
+scripted_gui = {
+	TFR_CRN_conflict_gui = {
+		window_name = "TFR_CRN_conflict_gui_window"
+		context_type = decision_category
+
+		triggers = {
+			top_folder_button_click_enabled = {
+				set_temp_variable = { folder_frame = 1 }
+				set_temp_variable = { flag_y = 16 }
+			}
+		}
+
+		properties = {
+			prc_adv_progbar = { frame = PRC:TFR_CRN_prc_adv_frame }
+			sov_adv_progbar = { frame = PRC:TFR_CRN_sov_adv_frame }
+			prc_pressure_progbar = { frame = PRC:TFR_CRN_prc_pressure_frame }
+			sov_pressure_progbar = { frame = PRC:TFR_CRN_sov_pressure_frame }
+		}
+	}
+}

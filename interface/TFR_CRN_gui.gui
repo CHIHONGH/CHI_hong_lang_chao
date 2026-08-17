@@ -195,4 +195,154 @@ guiTypes = {
 		instantTextBoxType = { name = "sov_s3_8"  text = "TFR_CRN_convo_sov_8"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
 		instantTextBoxType = { name = "sov_s3_9"  text = "TFR_CRN_convo_sov_9"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
 	}
+
+	########################################################################
+	# 边境冲突 GUI 窗口（双轨优势 + 当前目标州 + 状态）
+	# 总高度 450px，与谈判窗口同背景
+	########################################################################
+	containerWindowType = {
+		name = "TFR_CRN_conflict_gui_window"
+		size = { width = 100%% height = 450 }		position = { x = 0 y = 0 }
+
+		# ====== 谈判窗口背景 ======
+		iconType = {
+			name = "bg"
+			quadtexturesprite = "GFX_TFR_CMRN_negotiation_bg"
+			position = { x = 0 y = 0 }
+			size = { width = 500 height = 450 }
+		}
+
+		# ====== 帮助按钮（玩法说明 tooltip，点击无效）=======
+		buttonType = {
+			name = "conflict_help_btn"
+			quadTextureSprite = "GFX_TFR_CMRN_help_btn"
+			position = { x = 446 y = 14 }
+			size = { width = 24 height = 24 }
+			pdx_tooltip_delayed = "TFR_CRN_conflict_help_tooltip"
+		}
+
+		# ====== 中方军事优势（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "prc_adv_container"
+			position = { x = 22 y = 52 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "prc_adv_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_prc_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "prc_adv_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_influence_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "prc_adv_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_prc_advantage|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 俄方军事优势（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "sov_adv_container"
+			position = { x = 22 y = 95 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "sov_adv_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_sov_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "sov_adv_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_tendency_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "sov_adv_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_sov_advantage|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 中方施压累计（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "prc_pressure_container"
+			position = { x = 22 y = 138 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "prc_pressure_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_prc_pressure_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "prc_pressure_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_influence_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "prc_pressure_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_prc_bonus|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 俄方施压累计（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "sov_pressure_container"
+			position = { x = 22 y = 181 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "sov_pressure_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_sov_pressure_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "sov_pressure_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_tendency_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "sov_pressure_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_sov_bonus|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 当前目标州（动态）======
+		instantTextBoxType = {
+			name = "target_state"
+			position = { x = 0 y = 224 }
+			text = "TFR_CRN_conflict_target_state"
+			font = "VCR02_20" maxWidth = 500 format = center text_color_code = Y
+		}
+
+		# ====== 冲突状态（动态：全面战争/边境战争/待战/完成）======
+		instantTextBoxType = {
+			name = "conflict_status"
+			position = { x = 10 y = 264 }
+			text = "TFR_CRN_conflict_status_dynamic"
+			font = "VCR02_14" maxWidth = 480 format = center
+		}
+
+		# ====== 收回进度 ======
+		instantTextBoxType = {
+			name = "conflict_progress"
+			position = { x = 10 y = 304 }
+			text = "TFR_CRN_conflict_progress"
+			font = "VCR02_16" maxWidth = 480 format = center
+		}
+	}
 }

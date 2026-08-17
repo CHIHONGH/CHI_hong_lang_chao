@@ -12,6 +12,8 @@ TFR_CRN_negotiation_category = {
 	visible = {
 		has_global_flag = TFR_CRN_negotiation_accessible
 		country_exists = SOV
+		# 路由：仅梅德韦杰夫/红色线可谈判，黑线 SOV 时隐藏（走边境冲突）
+		SOV = { TFR_CRN_sov_negotiable = yes }
 	}
 
 	scripted_gui = TFR_CRN_negotiation_gui
@@ -28,5 +30,36 @@ TFR_CRN_sov_negotiation_category = {
 
 	visible = {
 		has_global_flag = TFR_CRN_negotiation_accessible
+	}
+}
+
+# PRC 边境冲突类别（黑线 SOV 时替代谈判，含 GUI 显示双轨优势）
+TFR_CRN_conflict_category = {
+	icon = GFX_goal_generic_diplomacy
+	priority = 45
+
+	allowed = {
+		tag = PRC
+	}
+
+	visible = {
+		has_global_flag = TFR_CRN_conflict_accessible
+		country_exists = SOV
+	}
+
+	scripted_gui = TFR_CRN_conflict_gui
+}
+
+# SOV 冲突回应类别（苏联视角，AI 回应）
+TFR_CRN_sov_conflict_category = {
+	icon = GFX_goal_generic_diplomacy
+	priority = 45
+
+	allowed = {
+		tag = SOV
+	}
+
+	visible = {
+		has_global_flag = TFR_CRN_conflict_accessible
 	}
 }

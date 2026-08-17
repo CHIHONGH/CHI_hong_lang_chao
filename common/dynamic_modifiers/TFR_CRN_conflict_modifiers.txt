@@ -1,0 +1,25 @@
+# TFR_中俄谈判 - 边境冲突州级战斗修正
+# 双轨优势 → 在【当前目标州】挂两个修正（冲突发生在哪，修正就挂在哪）：
+#   TFR_CRN_prc_buff  中国正面修正（州内军队整体受益，攻方吃满）
+#   TFR_CRN_sov_debuff 俄罗斯负面修正（attrition/supplies/speed 系字段只打控制者=SOV）
+# 数值从 PRC 国家变量实时读取（PRC. 前缀，TFR_CRN_update_advantage_vars 重算）
+# 均势时中国 +5% 略高；优势差 ±100 时修正 ±25%
+
+# 中国正面修正（挂在目标州；发动边境战争时挂载，战争结束即移除）
+TFR_CRN_prc_buff = {
+	icon = GFX_MODIFIER_SUPPLY_CONSUMPTION_FACTOR
+	enable = { always = yes }
+	local_org_regain = PRC.TFR_CRN_adv_prc_org
+	local_supplies = PRC.TFR_CRN_adv_prc_supply
+}
+
+# 俄罗斯负面修正（挂在目标州，仅 SOV 控制时生效——冲突期控制者正是 SOV；
+# 发动边境战争时挂载，战争结束即移除）
+TFR_CRN_sov_debuff = {
+	icon = GFX_MODIFIER_ATTRITION
+	enable = { controller = { tag = SOV } }
+	attrition_for_controller = PRC.TFR_CRN_adv_sov_attrition
+	local_supplies_for_controller = PRC.TFR_CRN_adv_sov_supplies
+	army_speed_factor_for_controller = PRC.TFR_CRN_adv_sov_speed
+	local_org_regain = PRC.TFR_CRN_adv_sov_org
+}

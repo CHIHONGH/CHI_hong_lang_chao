@@ -1,7 +1,8 @@
 # ==================== 天河工程（太空军事化工程） ====================
 # 流程：国策 PLA_orbital_drop_new（轨道空降）完成后解锁
 # 阶段 I 奠基 → II 天基 → III 空间站 → IV 扩展 → V 战力
-# 奖励与文案暂未填写，仅流程框架
+# 奖励：即时效果直接写入 remove_effect；长期修正累积到「中国人民解放军天军」动态民族精神
+# （PRC_pla_space_force_dynamic，阶段 I 任意决议完成后挂载）
 PRC_space_militarization = {
 
 	# ==================== 阶段 I 奠基 ====================
@@ -27,6 +28,16 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_committee
 			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_committee
+				}
+			}
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = PRC_pla_space_force_dynamic }
+			}
+			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.10 }
 		}
 	}
 	PRC_integrate_military_aerospace_new_left = { # 整合军工航天企业
@@ -55,6 +66,10 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_integrate
 			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+			mio:PRC_CASC_organization = { add_mio_funds = 2000 }
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = PRC_pla_space_force_dynamic }
+			}
 		}
 	}
 	PRC_expand_wenchang_launch_center_new_left = { # 扩建文昌发射中心
@@ -83,6 +98,12 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_wenchang
 			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+			591 = {
+				add_building_construction = { type = rocket_site level = 3 }
+			}
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = PRC_pla_space_force_dynamic }
+			}
 		}
 	}
 	PRC_build_jiuquan_second_launch_zone_new_left = { # 建设酒泉第二发射区
@@ -111,6 +132,12 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_jiuquan
 			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+			756 = {
+				add_building_construction = { type = rocket_site level = 3 }
+			}
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = PRC_pla_space_force_dynamic }
+			}
 		}
 	}
 	PRC_orbital_tracking_network_new_left = { # 建立轨道测控网络
@@ -139,6 +166,22 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_tracking
 			add_to_variable = { var = PRC_space_phase1_count value = 1 }
+			add_tech_bonus = {
+				bonus = 2.0
+				uses = 1
+				ahead_reduction = 2
+				category = radar_tech
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_tracking
+				}
+			}
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = PRC_pla_space_force_dynamic }
+			}
+			add_to_variable = { var = PRC_pla_space_force_research_speed_factor_dynamic value = 0.05 }
 		}
 	}
 
@@ -174,6 +217,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_recon_sat
 			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_recon_sat
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_decryption_power_factor_dynamic value = 0.15 }
 		}
 	}
 	PRC_global_comm_constellation_new_left = { # 建立全球通信星座
@@ -207,6 +257,14 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_comm_const
 			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_comm_const
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.05 }
+			add_to_variable = { var = PRC_pla_space_force_political_power_gain_dynamic value = 0.05 }
 		}
 	}
 	PRC_beidou_military_enhanced_new_left = { # 建设北斗军用增强系统
@@ -241,6 +299,15 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_beidou
 			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_beidou
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_army_org_regain_dynamic value = 0.10 }
+			add_to_variable = { var = PRC_pla_space_force_army_attack_factor_dynamic value = 0.05 }
+			add_to_variable = { var = PRC_pla_space_force_army_defence_factor_dynamic value = 0.05 }
 		}
 	}
 	PRC_early_warning_satellite_new_left = { # 建设预警卫星系统
@@ -275,6 +342,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_early_warning
 			add_to_variable = { var = PRC_space_phase2_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_early_warning
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_cas_damage_reduction_dynamic value = 0.10 }
 		}
 	}
 
@@ -310,6 +384,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_tianhe
 			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_tianhe
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_research_speed_factor_dynamic value = 0.03 }
 		}
 	}
 	PRC_wentian_lab_module_new_left = { # 对接问天实验舱
@@ -343,6 +424,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_wentian
 			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_wentian
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_research_speed_factor_dynamic value = 0.03 }
 		}
 	}
 	PRC_mengtian_lab_module_new_left = { # 对接梦天实验舱
@@ -375,7 +463,57 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_mengtian
 			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_mengtian
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_research_speed_factor_dynamic value = 0.08 }
 		}
+
+	PRC_xuntian_optical_module_new_left = { # 发射巡天光学舱
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			OR = {
+				has_completed_focus = PRC_nl_dawn_project
+				has_country_flag = TFR_space_gui_debug
+			}
+			has_country_flag = PRC_space_done_tianhe
+		}
+		modifier = {
+			research_speed_factor = -0.1
+			consumer_goods_factor = 0.08
+			civilian_factory_use = 8
+		}
+		fire_only_once = yes
+		cost = 90
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 130 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_xuntian
+			add_to_variable = { var = PRC_space_phase3_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_xuntian
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_research_speed_factor_dynamic value = 0.03 }
+			add_to_variable = { var = PRC_pla_space_force_army_intel_factor_dynamic value = 0.15 }
+			add_to_variable = { var = PRC_pla_space_force_navy_intel_factor_dynamic value = 0.15 }
+			add_to_variable = { var = PRC_pla_space_force_airforce_intel_factor_dynamic value = 0.15 }
+			add_to_variable = { var = PRC_pla_space_force_civilian_intel_factor_dynamic value = 0.15 }
+		}
+	}
 	}
 
 	# ==================== 阶段 IV 扩展 ====================
@@ -411,6 +549,14 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_robotic_arm
 			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_robotic_arm
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_production_speed_arms_factory_factor_dynamic value = 0.02 }
 		}
 	}
 	PRC_space_power_system_new_left = { # 建设空间电源系统
@@ -443,6 +589,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_space_power
 			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_space_power
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_factory_energy_consumption_dynamic value = -0.02 }
 		}
 	}
 	PRC_auto_resupply_spacecraft_new_left = { # 建造自动补给航天器
@@ -477,6 +630,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_resupply
 			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_resupply
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_supply_consumption_factor_dynamic value = -0.02 }
 		}
 	}
 	PRC_high_orbit_control_station_new_left = { # 建设高轨控制站
@@ -510,6 +670,13 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_high_orbit
 			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_high_orbit
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_max_command_power_mult_dynamic value = 0.15 }
 		}
 	}
 	PRC_orbital_energy_platform_new_left = { # 建设轨道能源平台
@@ -546,6 +713,14 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_energy_platform
 			add_to_variable = { var = PRC_space_phase4_count value = 1 }
+			custom_effect_tooltip = PRC_space_energy_platform_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_energy_platform
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_industrial_capacity_factory_dynamic value = 0.05 }
 		}
 	}
 
@@ -582,6 +757,15 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_ecm_array
 			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+			add_command_power = 50
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_ecm_array
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_army_org_factor_dynamic value = 0.10 }
+			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.05 }
 		}
 	}
 	PRC_orbital_airdrop_system_new_left = { # 建设轨道空投系统
@@ -616,6 +800,40 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_airdrop
 			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+			army_experience = 30
+			division_template = {
+				name = "PRC Space Armed Forces"
+				is_locked = yes
+				priority = 2
+				regiments = {
+					Space_expeditionary_forces = { x = 0 y = 0 }
+					Space_expeditionary_forces = { x = 0 y = 1 }
+					Space_expeditionary_forces = { x = 0 y = 2 }
+					Space_expeditionary_forces = { x = 0 y = 3 }
+					Space_expeditionary_forces = { x = 1 y = 0 }
+					Space_expeditionary_forces = { x = 1 y = 1 }
+					Space_expeditionary_forces = { x = 1 y = 2 }
+					Space_expeditionary_forces = { x = 1 y = 3 }
+					Space_expeditionary_forces = { x = 2 y = 0 }
+					Space_expeditionary_forces = { x = 2 y = 1 }
+					Space_expeditionary_forces = { x = 2 y = 2 }
+					Space_expeditionary_forces = { x = 2 y = 3 }
+					Space_expeditionary_forces = { x = 3 y = 0 }
+					#Space_expeditionary_forces = { x = 3 y = 1 }
+					#Space_expeditionary_forces = { x = 3 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_airdrop
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_special_forces_attack_factor_dynamic value = 0.10 }
+			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.05 }
 		}
 	}
 	PRC_orbital_interception_system_new_left = { # 建设轨道拦截系统
@@ -650,6 +868,15 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_interception
 			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+			add_war_support = 0.1
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_interception
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_cas_damage_reduction_dynamic value = 0.10 }
+			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.05 }
 		}
 	}
 	PRC_orbital_nuclear_platform_new_left = { # 建设轨道核打击平台
@@ -689,6 +916,14 @@ PRC_space_militarization = {
 		remove_effect = {
 			set_country_flag = PRC_space_done_nuclear_platform
 			add_to_variable = { var = PRC_space_phase5_count value = 1 }
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_space_force_dummy
+					add_idea = PRC_pla_space_force_dummy_nuclear_platform
+				}
+			}
+			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.10 }
+			add_to_variable = { var = PRC_pla_space_force_max_command_power_mult_dynamic value = 0.15 }
 		}
 	}
 }
