@@ -12,6 +12,7 @@
 | 日期 | 会话任务 | 改动文件 | 状态 |
 |---|---|---|---|
 | 2026-08-17 | 增量同步中俄谈判新提交（冲突修正图标去原版化：TFR_CRN_prc_buff/sov_debuff 自建图标 2 PNG + TFR_CRN_modifiers.gfx 注册 + dynamic_modifiers 改用自有 GFX、战斗修正本地化统一为"边境冲突"，提交 6be56ae）；当日发现并回滚另一会话误提交的本地化 key 小写化改动（36549b3，yml 改小写但代码引用仍大写，大小写不匹配会导致游戏内显示原始 key） | TFR_CRN_conflict_modifiers.txt、TFR_CRN_modifiers.gfx（新）、TFR_CRN_prc_buff/sov_debuff.png（新）、TFR_CRN_l_simp_chinese.yml；另回滚 4 个 yml | 完成 |
+| 2026-08-18 | 同步 space force（提交 3487a96）：假精神 tooltip 方案回退（删 PRC_plan_tremendous_power + 3 个 MIO dummy，org 恢复 custom_effect_tooltip，国策改 PRC_tremendous_power_tt）、电网投资门槛 custom_trigger_tooltip（1/3/5/8）+ 本地化 4 条、新增反舰巡航导弹 2/3 图标（鹰击-18/21）与 sprite 注册、导弹装备/科技细节更新 | 12 文件（+78/-39） | 完成 |
 | 2026-08-17 | 同步 space force 用户修正（提交 71804f5）：ship_rocket 模块分类落地（2 模块 category 改为 ship_rocket，配合船体槽位）、决议/国策船体细节修复；清理本地化残留大写死 key（Tremendous_power/Mountain_Warfare/Urban_Warfare_Kit/Tide_of_Iron，小写版已生效） | 5 文件（+21/-25） | 完成 |
 | 2026-08-17 | 同步 space force（提交 2630971）：完成本地化 key 小写化（由本会话补齐最后 2 处 Tremendous_power 残留大写，Mountain_Warfare_Enhancement_System / Urban_Warfare_Kit / Tide_of_Iron / Tremendous_power 四系列科技/MIO/决议/国策/事件/历史/本地化全对齐小写）+ ASBM_launcher 改名 + 057 驱逐舰/台北舰模板 + 无人机模块限制 + 舰船火箭槽 + 本地化微调 | 15 文件（+3012/-2994） | 完成 |
 | 2026-08-17 | 同步 space force 本地化解耦：天河工程块迁入独立文件 `TFR_space_militarization_l_simp_chinese.yml`（51 个 key） | 2 文件（提交 d2faf16） | 完成 |
