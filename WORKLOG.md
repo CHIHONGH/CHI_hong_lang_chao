@@ -12,7 +12,7 @@
 | 日期 | 会话任务 | 改动文件 | 状态 |
 |---|---|---|---|
 | 2026-08-17 | 增量同步中俄谈判新提交（冲突修正图标去原版化：TFR_CRN_prc_buff/sov_debuff 自建图标 2 PNG + TFR_CRN_modifiers.gfx 注册 + dynamic_modifiers 改用自有 GFX、战斗修正本地化统一为"边境冲突"，提交 6be56ae）；当日发现并回滚另一会话误提交的本地化 key 小写化改动（36549b3，yml 改小写但代码引用仍大写，大小写不匹配会导致游戏内显示原始 key） | TFR_CRN_conflict_modifiers.txt、TFR_CRN_modifiers.gfx（新）、TFR_CRN_prc_buff/sov_debuff.png（新）、TFR_CRN_l_simp_chinese.yml；另回滚 4 个 yml | 完成 |
-| 2026-08-17 | 同步 space force 海军装备模块补全：4 模块本地化（玄武装甲×2+核动力引擎×2）+ 76×42 玄武占位图标 | 4 文件（提交 ed25ec5） | 完成 |
+| 2026-08-17 | 同步 space force（提交 2630971）：完成本地化 key 小写化（由本会话补齐最后 2 处 Tremendous_power 残留大写，Mountain_Warfare_Enhancement_System / Urban_Warfare_Kit / Tide_of_Iron / Tremendous_power 四系列科技/MIO/决议/国策/事件/历史/本地化全对齐小写）+ ASBM_launcher 改名 + 057 驱逐舰/台北舰模板 + 无人机模块限制 + 舰船火箭槽 + 本地化微调 | 15 文件（+3012/-2994） | 完成 |
 | 2026-08-17 | 同步 space force 本地化解耦：天河工程块迁入独立文件 `TFR_space_militarization_l_simp_chinese.yml`（51 个 key） | 2 文件（提交 d2faf16） | 完成 |
 | 2026-08-17 | 同步 space force 进度条 phase3 重画（补齐边框与槽位分隔线，样式与其他阶段一致） | 1 文件（提交 b4b2848） | 完成 |
 | 2026-08-17 | 同步 space force：天军动态精神介绍（新增 desc 文案 + 504x184 横幅占位图 sprite 注册）+ 进度条 frame 索引修复（5 处 `count+1`→`count`）+ 空间站 GUI 标题居中（left→center ×2） | 5 文件（提交 d717a26） | 完成（待游戏内验收） |
