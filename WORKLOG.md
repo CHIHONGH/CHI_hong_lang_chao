@@ -12,6 +12,7 @@
 | 日期 | 会话任务 | 改动文件 | 状态 |
 |---|---|---|---|
 | 2026-08-17 | 增量同步中俄谈判新提交（冲突修正图标去原版化：TFR_CRN_prc_buff/sov_debuff 自建图标 2 PNG + TFR_CRN_modifiers.gfx 注册 + dynamic_modifiers 改用自有 GFX、战斗修正本地化统一为"边境冲突"，提交 6be56ae）；当日发现并回滚另一会话误提交的本地化 key 小写化改动（36549b3，yml 改小写但代码引用仍大写，大小写不匹配会导致游戏内显示原始 key） | TFR_CRN_conflict_modifiers.txt、TFR_CRN_modifiers.gfx（新）、TFR_CRN_prc_buff/sov_debuff.png（新）、TFR_CRN_l_simp_chinese.yml；另回滚 4 个 yml | 完成 |
+| 2026-08-18 | 同步 space force（提交 20309da）：**三军军改动态精神化**（PLA_pla_army/plan_navy/plaaf_air 动态修正变量绑定 + 31 假精神增量，dummy 链 53 处 swap 替换，删旧 idea 定义与 17 处冗余 tooltip）+ debug 决议经验奖励（无人机/合成营/武库舰）+ 本地化；上轮 e53b314 内容一并落地 | 10 文件（7 改 + 3 新） | 完成 |
 | 2026-08-18 | **权威全量同步（提交 c0d1cab）**：新增工具 `../sync_to_beta.sh`（基于 git 跟踪清单：复制/更新子项目全部游戏文件 + 删除子项目已删的残留 + 保留 RedDaw_beta 独有）。space force 复制 209（含平衡调整 a6d25fe：发射场 8→10 / 导弹联队规模 / 直升机科技类别）+ 删残留 126（temp_icon 临时图标目录等）；中俄谈判复制 25 + 删旧修正图标 2（换 enemy_exhaustion / frontline_initiative）；中蒙谈判复制 18；复查 252/252 与子项目一致 | 19 文件（+15/-4） | 完成 |
 | 2026-08-18 | 同步 space force（提交 3487a96）：假精神 tooltip 方案回退（删 PRC_plan_tremendous_power + 3 个 MIO dummy，org 恢复 custom_effect_tooltip，国策改 PRC_tremendous_power_tt）、电网投资门槛 custom_trigger_tooltip（1/3/5/8）+ 本地化 4 条、新增反舰巡航导弹 2/3 图标（鹰击-18/21）与 sprite 注册、导弹装备/科技细节更新 | 12 文件（+78/-39） | 完成 |
 | 2026-08-17 | 同步 space force 用户修正（提交 71804f5）：ship_rocket 模块分类落地（2 模块 category 改为 ship_rocket，配合船体槽位）、决议/国策船体细节修复；清理本地化残留大写死 key（Tremendous_power/Mountain_Warfare/Urban_Warfare_Kit/Tide_of_Iron，小写版已生效） | 5 文件（+21/-25） | 完成 |
