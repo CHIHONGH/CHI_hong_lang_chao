@@ -40,29 +40,16 @@ TFR_CRN_clear_target_flags = {
 }
 
 ##############################################################################
-# 优势重算 — 基础 0 + 形势加成（战争/投降倾向/稳定度）+ 施压累计（上限 100）
+# 优势重算 — 基础 0 + 形势加成（SOV 战争/投降倾向/稳定度）+ 施压累计（上限 100）
 # 施压累计满 100 → 对方忍无可忍直接宣战（TFR_CRN_check_pressure_explosion）
 # 运行在 PRC 作用域
+# 注意：SOV 情景加成在 SOV 域计算后写 SOV 持久变量，再回 PRC 组装——
+#        temp 变量存在当前作用域对象上，跨作用域累加会丢失（历史 bug 已修）
 ##############################################################################
 TFR_CRN_calc_advantage = {
-	set_temp_variable = { adv_prc = 0 }
-	set_temp_variable = { adv_sov = 0 }
-	SOV = {
-		# SOV 深陷战争 → PRC 优势
-		if = { limit = { has_war = yes } add_to_temp_variable = { adv_prc = 15 } }
-		# 投降倾向（0~100 → 0~30）
-		set_temp_variable = { surv = surrender_progress }
-		multiply_temp_variable = { surv = 0.3 }
-		add_to_temp_variable = { adv_prc = surv }
-		# 稳定度惩罚（低于 100% 扣，最多 15）
-		set_temp_variable = { stab = stability }
-		multiply_temp_variable = { stab = 100 }
-		subtract_from_temp_variable = { stab = 100 }
-		multiply_temp_variable = { stab = -1 }
-		if = { limit = { check_variable = { stab > 15 } } set_temp_variable = { stab = 15 } }
-		if = { limit = { check_variable = { stab > 0 } } add_to_temp_variable = { adv_prc = stab } }
-	}
+	set_temp_variable = { adv_prc = SOV.TFR_CRN_sov_situational }
 	add_to_temp_variable = { adv_prc = TFR_CRN_prc_bonus }
+	set_temp_variable = { adv_sov = 0 }
 	add_to_temp_variable = { adv_sov = TFR_CRN_sov_bonus }
 	# 钳位 0~100
 	if = { limit = { check_variable = { adv_prc > 100 } } set_temp_variable = { adv_prc = 100 } }
@@ -71,9 +58,37 @@ TFR_CRN_calc_advantage = {
 	if = { limit = { check_variable = { adv_sov < 0 } } set_temp_variable = { adv_sov = 0 } }
 	set_variable = { var = TFR_CRN_prc_advantage value = adv_prc }
 	set_variable = { var = TFR_CRN_sov_advantage value = adv_sov }
-	TFR_CRN_update_advantage_vars = yes
 	TFR_CRN_update_advantage_frames = yes
 	TFR_CRN_check_pressure_explosion = yes
+}
+
+##############################################################################
+# SOV 情景加成计算 — 运行在 SOV 作用域
+# 结果写 SOV.TFR_CRN_sov_situational（0~45），由 calc_advantage 在 PRC 域读取
+# 问题修复：原实现把这三项累加进 PRC 域的 temp 变量，在 SOV 子块内实际落到了
+#           SOV 域，导致战争形势加成全部丢失（数值崩塌）；现改为持久变量中转
+##############################################################################
+TFR_CRN_calc_sov_situational = {
+	set_variable = { var = TFR_CRN_sov_situational value = 0 }
+	# SOV 深陷战争 → +15
+	if = { limit = { has_war = yes } add_to_variable = { var = TFR_CRN_sov_situational value = 15 } }
+	# 投降倾向（0~100% → 0~30）
+	set_temp_variable = { surv = surrender_progress }
+	multiply_temp_variable = { surv = 0.3 }
+	round_variable = surv
+	add_to_variable = { var = TFR_CRN_sov_situational value = surv }
+	# 稳定度惩罚（低于 100% 每 1% 扣 1，最多 15）
+	set_temp_variable = { stab = stability }
+	multiply_temp_variable = { stab = 100 }
+	subtract_from_temp_variable = { stab = 100 }
+	multiply_temp_variable = { stab = -1 }
+	if = { limit = { check_variable = { stab < 0 } } set_temp_variable = { stab = 0 } }
+	if = { limit = { check_variable = { stab > 15 } } set_temp_variable = { stab = 15 } }
+	round_variable = stab
+	add_to_variable = { var = TFR_CRN_sov_situational value = stab }
+	# 钳位 0~45
+	if = { limit = { check_variable = { TFR_CRN_sov_situational > 45 } } set_variable = { var = TFR_CRN_sov_situational value = 45 } }
+	if = { limit = { check_variable = { TFR_CRN_sov_situational < 0 } } set_variable = { var = TFR_CRN_sov_situational value = 0 } }
 }
 
 ##############################################################################
@@ -129,33 +144,10 @@ TFR_CRN_pressure_explosion_by_prc = {
 }
 
 ##############################################################################
-# 优势差 → 州级战斗修正变量（挂在当前目标州）
-# 差值 D = PRC优势 - SOV优势（-100~100）
-# 中国正面：org恢复/补给 = D×0.002 + 0.05（均势 +5% 略高）
-# 俄罗斯负面：损耗 = D×0.002 + 0.05；补给/机动/org = -D×0.002 - 0.05（均势 -5%）
-# 运行在 PRC 作用域
+# 【已废弃】优势差 → 州级战斗修正变量的连续换算
+# 五段制改造后由 modifiers 文件常量档位承担（TFR_CRN_frontline_initiative_t1~5 / TFR_CRN_enemy_exhaustion_t1~5），
+# 优势差只用于选档（见 TFR_CRN_attach_advantage_modifier），不再写入变量引用
 ##############################################################################
-TFR_CRN_update_advantage_vars = {
-	set_temp_variable = { adv_diff = TFR_CRN_prc_advantage }
-	subtract_from_temp_variable = { adv_diff = TFR_CRN_sov_advantage }
-	# 中国正面
-	set_temp_variable = { org = adv_diff }
-	multiply_temp_variable = { org = 0.002 }
-	add_to_temp_variable = { org = 0.05 }
-	set_variable = { var = TFR_CRN_adv_prc_org value = org }
-	set_variable = { var = TFR_CRN_adv_prc_supply value = org }
-	# 俄罗斯负面
-	set_temp_variable = { atr = adv_diff }
-	multiply_temp_variable = { atr = 0.002 }
-	add_to_temp_variable = { atr = 0.05 }
-	set_variable = { var = TFR_CRN_adv_sov_attrition value = atr }
-	set_temp_variable = { pen = adv_diff }
-	multiply_temp_variable = { pen = -0.002 }
-	subtract_from_temp_variable = { pen = 0.05 }
-	set_variable = { var = TFR_CRN_adv_sov_supplies value = pen }
-	set_variable = { var = TFR_CRN_adv_sov_speed value = pen }
-	set_variable = { var = TFR_CRN_adv_sov_org value = pen }
-}
 
 ##############################################################################
 # 进度条帧计算（0~100 → 帧 1~21）— 优势双条 + 施压双条
@@ -180,30 +172,73 @@ TFR_CRN_update_advantage_frames = {
 }
 
 ##############################################################################
-# 目标州挂载州级战斗修正（运行在 PRC；对当前目标州挂 中国正面 + 俄罗斯负面）
+# 目标州挂载州级战斗修正（五段制）— 运行在 PRC
+# 按优势差 D = PRC优势 - SOV优势 选档（t0 不挂 / t1~t5）：
+#   D ≥80 → t5(+25%)   ≥60 → t4(+20%)   ≥40 → t3(+15%)   ≥20 → t2(+10%)   ≥0 → t1(+5%)   D<0 → 不挂
+# 档位写入 PRC.TFR_CRN_current_tier，由 STATE 作用域 helper 执行挂载
 ##############################################################################
 TFR_CRN_attach_advantage_modifier = {
-	if = { limit = { has_global_flag = TFR_CRN_target_408 } 408 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
-	if = { limit = { has_global_flag = TFR_CRN_target_409 } 409 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
-	if = { limit = { has_global_flag = TFR_CRN_target_657 } 657 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
-	if = { limit = { has_global_flag = TFR_CRN_target_1328 } 1328 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
-	if = { limit = { has_global_flag = TFR_CRN_target_1293 } 1293 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
-	if = { limit = { has_global_flag = TFR_CRN_target_560 } 560 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
-	if = { limit = { has_global_flag = TFR_CRN_target_329 } 329 = { add_dynamic_modifier = { modifier = TFR_CRN_prc_buff } add_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } } }
+	set_temp_variable = { adv_diff = TFR_CRN_prc_advantage }
+	subtract_from_temp_variable = { adv_diff = TFR_CRN_sov_advantage }
+	set_temp_variable = { tier = 0 }
+	if = { limit = { check_variable = { adv_diff >= 80 } } set_temp_variable = { tier = 5 } }
+	else_if = { limit = { check_variable = { adv_diff >= 60 } } set_temp_variable = { tier = 4 } }
+	else_if = { limit = { check_variable = { adv_diff >= 40 } } set_temp_variable = { tier = 3 } }
+	else_if = { limit = { check_variable = { adv_diff >= 20 } } set_temp_variable = { tier = 2 } }
+	else_if = { limit = { check_variable = { adv_diff >= 0 } } set_temp_variable = { tier = 1 } }
+	else = { set_temp_variable = { tier = 0 } }
+	set_variable = { var = TFR_CRN_current_tier value = tier }
+	# 对当前目标州挂载（tier=0 时 helper 不挂任何东西）
+	if = { limit = { has_global_flag = TFR_CRN_target_408 } 408 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_409 } 409 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_657 } 657 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_1328 } 1328 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_1293 } 1293 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_560 } 560 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_329 } 329 = { TFR_CRN_attach_tier_state = yes } }
 }
 
 ##############################################################################
-# 移除全部州上的战斗修正（推进/终局清理）
+# 按档位挂载修正 — 运行在 STATE 作用域（当前目标州）
+# 同档位同时挂 prc 系 + sov 系（数值一致，仅图/名不同）
+##############################################################################
+TFR_CRN_attach_tier_state = {
+	if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 5 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 4 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 3 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 2 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 1 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 }
+	}
+	# tier=0（中国劣势）不挂任何修正
+}
+
+##############################################################################
+# 移除全部州上的战斗修正（五段制 10 个 ID；推进/终局清理）
+# 对不存在的修正 remove 为无害空操作
 ##############################################################################
 TFR_CRN_remove_advantage_modifier = {
-	408 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	409 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	657 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	1328 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	1293 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	560 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	329 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
-	537 = { remove_dynamic_modifier = { modifier = TFR_CRN_prc_buff } remove_dynamic_modifier = { modifier = TFR_CRN_sov_debuff } }
+	408 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	409 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	657 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	1328 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	1293 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	560 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	329 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	537 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
 }
 
 ##############################################################################

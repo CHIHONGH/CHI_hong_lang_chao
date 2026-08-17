@@ -1,25 +1,89 @@
-# TFR_中俄谈判 - 边境冲突州级战斗修正
-# 双轨优势 → 在【当前目标州】挂两个修正（冲突发生在哪，修正就挂在哪）：
-#   TFR_CRN_prc_buff  中国正面修正（州内军队整体受益，攻方吃满）
-#   TFR_CRN_sov_debuff 俄罗斯负面修正（attrition/supplies/speed 系字段只打控制者=SOV）
-# 数值从 PRC 国家变量实时读取（PRC. 前缀，TFR_CRN_update_advantage_vars 重算）
-# 均势时中国 +5% 略高；优势差 ±100 时修正 ±25%
+# TFR_中俄谈判 - 边境冲突州级战斗修正（五段制）
+# 双轨优势差 D = 中方优势 - 俄方优势（0~100 区间五档）→ 挂对应档位修正
+# 数值写死常量（不变量绑定，规避 state 级 TAG.VAR 绑定解析失败导致修正丢失/全 0）
+# 两套修正（prc 系 / sov 系）同档位数值完全一致，仅图片与名称不同（蓝"中" / 红"俄"）
+# 档位：t1=+5%  t2=+10%  t3=+15%  t4=+20%  t5=+25%（优势差 ≥0/20/40/60/80）
+# 挂载：发动边境战争时挂【当前目标州】；战争结束/推进目标即移除（remove 全部 10 个 id）
 
-# 中国正面修正（挂在目标州；发动边境战争时挂载，战争结束即移除）
-TFR_CRN_prc_buff = {
-	icon = GFX_TFR_CRN_prc_buff
+# ============ 中方正面修正（对州内军队整体受益）五档 ============
+TFR_CRN_frontline_initiative_t1 = {
+	icon = GFX_TFR_CRN_frontline_initiative
 	enable = { always = yes }
-	local_org_regain = PRC.TFR_CRN_adv_prc_org
-	local_supplies = PRC.TFR_CRN_adv_prc_supply
+	local_org_regain = 0.05
+	local_supplies = -0.05
 }
 
-# 俄罗斯负面修正（挂在目标州，仅 SOV 控制时生效——冲突期控制者正是 SOV；
-# 发动边境战争时挂载，战争结束即移除）
-TFR_CRN_sov_debuff = {
-	icon = GFX_TFR_CRN_sov_debuff
+TFR_CRN_frontline_initiative_t2 = {
+	icon = GFX_TFR_CRN_frontline_initiative
+	enable = { always = yes }
+	local_org_regain = 0.10
+	local_supplies = -0.10
+}
+
+TFR_CRN_frontline_initiative_t3 = {
+	icon = GFX_TFR_CRN_frontline_initiative
+	enable = { always = yes }
+	local_org_regain = 0.15
+	local_supplies = -0.15
+}
+
+TFR_CRN_frontline_initiative_t4 = {
+	icon = GFX_TFR_CRN_frontline_initiative
+	enable = { always = yes }
+	local_org_regain = 0.20
+	local_supplies = -0.20
+}
+
+TFR_CRN_frontline_initiative_t5 = {
+	icon = GFX_TFR_CRN_frontline_initiative
+	enable = { always = yes }
+	local_org_regain = 0.25
+	local_supplies = -0.25
+}
+
+# ============ 俄罗斯负面修正（仅 SOV 控制时生效）五档 ============
+# 与 prc 系同档位数值一致（attrition/supplies 惩罚 +v，speed/org 惩罚 -v）
+TFR_CRN_enemy_exhaustion_t1 = {
+	icon = GFX_TFR_CRN_enemy_exhaustion
 	enable = { controller = { tag = SOV } }
-	attrition_for_controller = PRC.TFR_CRN_adv_sov_attrition
-	local_supplies_for_controller = PRC.TFR_CRN_adv_sov_supplies
-	army_speed_factor_for_controller = PRC.TFR_CRN_adv_sov_speed
-	local_org_regain = PRC.TFR_CRN_adv_sov_org
+	attrition_for_controller = 0.05
+	local_supplies_for_controller = 0.05
+	army_speed_factor_for_controller = -0.05
+	local_org_regain = -0.05
+}
+
+TFR_CRN_enemy_exhaustion_t2 = {
+	icon = GFX_TFR_CRN_enemy_exhaustion
+	enable = { controller = { tag = SOV } }
+	attrition_for_controller = 0.10
+	local_supplies_for_controller = 0.10
+	army_speed_factor_for_controller = -0.10
+	local_org_regain = -0.10
+}
+
+TFR_CRN_enemy_exhaustion_t3 = {
+	icon = GFX_TFR_CRN_enemy_exhaustion
+	enable = { controller = { tag = SOV } }
+	attrition_for_controller = 0.15
+	local_supplies_for_controller = 0.15
+	army_speed_factor_for_controller = -0.15
+	local_org_regain = -0.15
+}
+
+TFR_CRN_enemy_exhaustion_t4 = {
+	icon = GFX_TFR_CRN_enemy_exhaustion
+	enable = { controller = { tag = SOV } }
+	attrition_for_controller = 0.20
+	local_supplies_for_controller = 0.20
+	army_speed_factor_for_controller = -0.20
+	local_org_regain = -0.20
+}
+
+TFR_CRN_enemy_exhaustion_t5 = {
+	icon = GFX_TFR_CRN_enemy_exhaustion
+	enable = { controller = { tag = SOV } }
+	attrition_for_controller = 0.25
+	local_supplies_for_controller = 0.25
+	army_speed_factor_for_controller = -0.25
+	local_org_regain = -0.25
 }
