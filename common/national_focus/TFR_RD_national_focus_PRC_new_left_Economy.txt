@@ -16,7 +16,74 @@
         cost = 5
         x = 41
         y = 1
-        completion_reward = { }
+        completion_reward = { 
+            add_political_power = 100
+            add_stability = -0.1
+            random_owned_controlled_state = {
+                limit = {
+                    free_building_slots = {
+                        building = industrial_complex
+                        size > 0
+                    }
+                }
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    free_building_slots = {
+                        building = industrial_complex
+                        size > 0
+                    }
+                }
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    free_building_slots = {
+                        building = industrial_complex
+                        size > 0
+                    }
+                }
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            change_economy_type_mixed_economy = yes
+            hidden_effect = {
+                remove_dynamic_modifier = {
+                    modifier = PRC_made_in_china_dynamic
+                }
+                add_dynamic_modifier = {
+                    modifier = PRC_made_in_china_new_left_dynamic
+                }
+            }
+            add_to_variable = {
+                PRC_mic_consumer_goods_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_tax_business_rate_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_expense_growth_factor_dynamic_var = 0.15
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea20
+                }
+            }
+            unlock_decision_category_tooltip = PRC_gaizaodaxingqiye_category
+        }
     }
 
     #科研机构再整合
@@ -30,7 +97,21 @@
         prerequisite = {
             focus = nl_PRC_reconstruct_planning_commission
         }
-        completion_reward = { }
+        completion_reward = { 
+            add_timed_idea = {
+                idea = PRC_integration_research_institutions
+                days = 365
+            }
+            custom_effect_tooltip = after_idea_expires
+            custom_effect_tooltip = generic_skip_one_line_tt
+            effect_tooltip = {
+                add_research_slot = 1
+                swap_ideas = {
+                    remove_idea = PRC_NEMS0
+                    add_idea = PRC_NEMS_level
+                }
+            }
+        }
     }
 
     #产学研三结合
@@ -44,7 +125,34 @@
         prerequisite = {
             focus = nl_PRC_integrate_research_institutions
         }
-        completion_reward = { }
+        completion_reward = { 
+            add_tech_bonus = {
+                name = nl_PRC_industry_education_research_combination
+                category = industry
+                uses = 1
+                bonus = 1
+                ahead_reduction = 1
+            }
+            add_tech_bonus = {
+                name = nl_PRC_industry_education_research_combination
+                category = electronics
+                uses = 1
+                bonus = 1
+                ahead_reduction = 1
+            }
+            add_to_variable = {
+                PRC_mic_industrial_capacity_factory_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea21
+                }
+            }
+        }
     }
 
     #整合全国物流链
@@ -58,7 +166,53 @@
         prerequisite = {
             focus = nl_PRC_industry_education_research_combination
         }
-        completion_reward = { }
+        completion_reward = { 
+            random_owned_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_state = {
+                limit = {
+                    infrastructure < 5
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_to_variable = {
+                PRC_mic_supply_consumption_factor_dynamic_var = -0.1
+            }
+            add_to_variable = {
+                PRC_mic_supply_node_range_dynamic_var = 0.075
+            }
+            add_to_variable = {
+                PRC_mic_production_cost_infrastructure_factor_dynamic_var = -0.075
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea28
+                }
+            }
+        }
     }
 
     # 新三大改造运动
@@ -72,7 +226,13 @@
         prerequisite = {
             focus = nl_PRC_reconstruct_planning_commission
         }
-        completion_reward = { }
+        completion_reward = { 
+            unlock_decision_tooltip = PRC_agricultural_transformation
+            unlock_decision_tooltip = PRC_electronics_and_information_transformation
+            unlock_decision_tooltip = PRC_transportation_transformation
+            unlock_decision_tooltip = PRC_casting_heavy_industry_cartel
+            unlock_decision_tooltip = PRC_disposal_of_individual_businesses
+        }
     }
 
     # 深化乡村振兴
@@ -86,7 +246,59 @@
         prerequisite = {
             focus = nl_PRC_new_three_major_transformations
         }
-        completion_reward = { }
+        completion_reward = { 
+            add_political_power = 25
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                increase_state_category = yes
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                increase_state_category = yes
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                increase_state_category = yes
+            }
+            set_temp_variable = {
+                var = PRC_enviromental_progress_temp
+                value = 0.05
+            }
+            PRC_add_enviromental_progress = yes
+            set_temp_variable = {
+                var = academic_development_var_temp
+                value = 0.1
+            }
+            set_temp_variable = {
+                var = industrial_development_var_temp
+                value = 0.1
+            }
+            set_temp_variable = {
+                var = farming_development_var_temp
+                value = 0.1
+            }
+            add_academic_development = yes
+            add_industrial_development = yes
+            add_farming_development = yes
+            add_to_variable = {
+                PRC_mic_local_resources_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_mic_production_cost_infrastructure_factor_dynamic_var = -0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea =                     PRC_made_in_china_dummy_idea22
+                }
+            }
+        }
     }
 
     # 国家财政改革
@@ -100,7 +312,53 @@
         prerequisite = {
             focus = nl_PRC_reconstruct_planning_commission
         }
-        completion_reward = { }
+        completion_reward = { 
+            set_variable = {
+                PRC_financial_inclusiveness_supervision_cost = 100
+            }
+            set_variable = {
+                PRC_investigate_state_owned_enterprises_cost = 75
+            }
+            set_variable = {
+                PRC_breaking_senior_official_corruption_bonds_cost = 75
+            }
+            set_variable = {
+                PRC_dynamic_fiscal_reporting_cost = 125
+            }
+            set_variable = {
+                PRC_unifying_national_fiscal_power_cost = 125
+            }
+            set_variable = {
+                PRC_budget_allocation_and_calculation_cost = 100
+            }
+            set_temp_variable = {
+                var = society_development_var_temp
+                value = -0.15
+            }
+            set_temp_variable = {
+                var = poverty_development_var_temp
+                value = 0.15
+            }
+            add_society_development = yes
+            add_poverty_development = yes
+            add_to_variable = {
+                PRC_mic_consumer_goods_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_expense_growth_factor_dynamic_var = 0.05
+            }
+            add_to_variable = {
+                PRC_mic_inflation_monthly_dynamic_var = 0.001
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea = PRC_made_in_china_dummy_idea23
+                }
+            }
+
+            custom_effect_tooltip = nl_PRC_reform_national_finance_tt
+        }
     }
 
     #社会保障普惠化
@@ -114,7 +372,35 @@
         prerequisite = {
             focus = nl_PRC_reform_national_finance
         }
-        completion_reward = { }
+        completion_reward = { 
+            if = {
+                limit = { 
+                    has_idea = higher_welfare
+                }
+                add_political_power = 100
+            }
+            else = {
+                increase_welfare = yes
+            }
+            add_to_variable = {
+                PRC_mic_stability_weekly_dynamic_var = 0.001
+            }
+            add_to_variable = {
+                PRC_mic_expense_growth_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_experience_loss_dynamic_var = -0.05
+            }
+            add_to_variable = {
+                PRC_mic_personal_expense_factor_dynamic_var = 0.1
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea =                     PRC_made_in_china_dummy_idea24
+                }
+            }
+        }
     }
 
     # 城乡一体化建设新方法
@@ -131,7 +417,64 @@
         prerequisite = {
             focus = nl_PRC_universal_social_security
         }
-        completion_reward = { }
+        completion_reward = { 
+            set_temp_variable = {
+                var = industrial_development_var_temp
+                value = 0.1
+            }
+            add_industrial_development = yes
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_to_variable = {
+                PRC_mic_production_speed_industrial_complex_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_industrial_capacity_factory_dynamic_var = 0.075
+            }
+            add_to_variable = {
+                PRC_mic_personal_value_factor_dynamic_var = 0.075
+            }
+            add_to_variable = {
+                PRC_mic_society_development_monthly_dynamic_var = 0.005
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea =                     PRC_made_in_china_dummy_idea25
+                }
+            }
+        }
     }
 
     # 全国社会服务一体化
@@ -145,7 +488,48 @@
         prerequisite = {
             focus = nl_PRC_reform_national_finance
         }
-        completion_reward = { }
+        completion_reward = { 
+            add_political_power = 100
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                add_extra_state_shared_building_slots = 2
+                increase_state_category = yes
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                add_extra_state_shared_building_slots = 2
+                increase_state_category = yes
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    has_state_category = rural
+                }
+                add_extra_state_shared_building_slots = 2
+                increase_state_category = yes
+            }
+            add_to_variable = {
+                PRC_mic_political_power_gain_dynamic_var = -0.1
+            }
+            add_to_variable = {
+                PRC_mic_stability_factor_dynamic_var = 0.04
+            }
+            add_to_variable = {
+                PRC_mic_line_change_production_efficiency_factor_dynamic_var = 0.075
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.075
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea =                     PRC_made_in_china_dummy_idea26
+                }
+            }
+        }
     }
 
     # 现代化社会服务体系
@@ -162,14 +546,39 @@
         prerequisite = {
             focus = nl_PRC_national_social_service_integration
         }
-        completion_reward = { }
+        completion_reward = { 
+            set_country_flag = nl_PRC_modern_social_service_system_flag
+            custom_effect_tooltip = change_trade_law_tooltip
+            show_ideas_tooltip = PRC_actual_life_care
+            hidden_effect = {
+                add_ideas = PRC_actual_life_care
+            }
+            add_to_variable = {
+                PRC_mic_war_support_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_stability_factor_dynamic_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_start_efficiency_factor_dynamic_var = 0.075
+            }
+            add_to_variable = {
+                PRC_mic_expense_growth_factor_dynamic_var = 0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea0
+                    add_idea =                     PRC_made_in_china_dummy_idea27
+                }
+            }
+        }
     }
 
     # 布局“十五五”规划
     shared_focus  = {
         id = nl_PRC_PRC_layout_15th_five_year_plan
         icon = GFX_focus_PRC_layout_15th_five_year_plan
-        cost = 5
+        cost = 1
         x = 0
         y = 1
         relative_position_id = nl_PRC_urban_rural_integration_new_methods
@@ -182,7 +591,17 @@
         prerequisite = {
             focus = nl_PRC_urban_rural_integration_new_methods
         }
-        completion_reward = { }
+        available = {
+            OR = {
+                has_country_flag = PRC_grassroots_lost
+                has_country_flag = PRC_grassroots_ord
+                has_country_flag = PRC_grassroots_win
+            }
+        }
+        completion_reward = { 
+            add_political_power = 100
+            add_stability = 0.1
+        }
     }
 
     # 推动产业革新
