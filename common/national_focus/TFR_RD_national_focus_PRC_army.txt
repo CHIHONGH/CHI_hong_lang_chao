@@ -886,9 +886,9 @@ shared_focus = {
         mio:PRC_dajiang_organization = {	###大疆
             add_mio_funds = 1790
         }
-        unlock_decision_tooltip = PRC_unmanned_mechanized_upgrade
-        unlock_decision_tooltip  = PRC_heavy_paratrooper_upgrade
-        unlock_decision_tooltip  = PRC_heavy_synthetic_battalion_upgrade
+        unlock_decision_tooltip = PRC_synthetic_battalion_reform
+        unlock_decision_tooltip  = PRC_synthetic_battalion_exoskeleton_equipment_upgrade
+        unlock_decision_tooltip = PRC_use_me_must_win
         ###解锁特殊项目研究（陆军）
         custom_effect_tooltip = Chinese_military_reform_1_tt
         hidden_effect = {
@@ -929,7 +929,6 @@ shared_focus = {
                 }
             }
         }
-        unlock_decision_tooltip = PRC_use_me_must_win
     }
 }
 
@@ -1323,7 +1322,6 @@ shared_focus = {
     cancel_if_invalid = yes
     completion_reward = {
         set_technology = {
-            cruise_antiship_missile = 1
             ASBM_launcher = 1
         }
         set_temp_variable = {
@@ -1405,6 +1403,10 @@ shared_focus = {
             value = 150
         }
         add_debt_with_inflation = yes
+        set_technology = {
+            tremendous_power = 1
+        }
+        custom_effect_tooltip = PRC_tremendous_power_tt
         add_tech_bonus = {
             bonus = 1.5
             uses = 2
@@ -1489,11 +1491,7 @@ shared_focus = {
 			}
 			set_technology = {
 				improved_ship_hull_heavy = 1
-                tremendous_power = 1
 			}
-            effect_tooltip = {
-                add_ideas = PRC_plan_tremendous_power
-            }
 			create_equipment_variant = {
 				name = "057型导弹驱逐舰"
 				type = ship_hull_super_heavy_2
@@ -2039,6 +2037,7 @@ shared_focus = {
         }
         set_technology = {
             advanced_ballistic_missile = 1
+            advanced_cruise_antiship_missile = 1
         }
         PRC_add_army_reform_progress = yes
         add_ideas = PLA_dawn_breaked_oriented_wind
@@ -2298,12 +2297,6 @@ shared_focus = {
             debt_var_temp = 100
         }
         add_debt = yes
-        add_to_variable = {
-            rocket_army_ability_upper_limit = 1
-        }
-        add_to_variable = {
-            rocket_army_ability = 1
-        }
         custom_effect_tooltip = Chinese_military_reform_1_tt
         custom_effect_tooltip = PLA_rocket_force_tt
         hidden_effect = {
