@@ -11,6 +11,7 @@
 
 | 日期 | 会话任务 | 改动文件 | 状态 |
 |---|---|---|---|
+| 2026-08-17 | 同步 space force：天军动态精神介绍（新增 desc 文案 + 504x184 横幅占位图 sprite 注册）+ 进度条 frame 索引修复（5 处 `count+1`→`count`）+ 空间站 GUI 标题居中（left→center ×2） | 5 文件（提交 d717a26） | 完成（待游戏内验收） |
 | 2026-08-17 | 同步三个子项目至先遣版：space force（天河工程动态修正、天军假民族精神 tooltip、国家电网 MIO 修复、合成营/巡天舱/电力装备图标、land_doctrine 陆战学说重制）、TFR_中俄谈判（冲突机制重构：施压上限 100/满压自动全面战争/边境战争结算、新增冲突决议与效果脚本）、TFR_中蒙谈判（军管区图标、战后决议/动态修正更新） | 49 文件（+4830/-213，提交 92c9e49）；有意排除：`TFR_national_focus_PRC - 副本.txt`（备份残留，会致国策重复定义）、`.mimosa`（工具残留） | 完成 |
 | 2026-08-16 | git 重组：提交 space force 最新成果（8398d38）、分支改名 TFR-CMRN → RedDaw_beta、文件夹改名进行中 | 14 文件（决议/空间站/GUI/图标素材）+ .gitignore | 完成 |
 | 2026-08-16 | 同步 space force 太空军事化与空间站系统（f7d6951）；同步 decision_research/PRC_test（a59951e）；F 组同步（d8d46f1） | TFR_RD_space_militarization、TFR_space_station 全套、难度事件链修复版、space_force_unit.gfx 等 | 完成 |
