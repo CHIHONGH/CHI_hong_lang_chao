@@ -104,6 +104,7 @@ debug_decisions = {
 				PRC_nuclear_ship_engine = 1
 				PRC_xuanwu_armor = 1
 			}
+			add_navy_experience = 500
 		
 			add_equipment_to_stockpile = {
 				type = cruise_antiship_missile_equipment_1
@@ -128,6 +129,83 @@ debug_decisions = {
 		}
 	}
 
+	PRC_synthetic_battalion_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+		}
+		complete_effect = {
+			set_technology = {
+				synthetic_battalion_tech = 1
+				exoskeleton_reinforcement = 1
+			}
+			add_army_experience = 500
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment
+				amount = 1000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis
+				amount = 1000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_destroyer_chassis
+				amount = 400
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = modern_sp_artillery_brigade
+				amount = 500
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment
+				amount = 600
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 600
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = exoskeleton_equipment
+				amount = 2000
+				producer = PRC
+			}
+		}
+	}
+
+	PRC_unmanned_aircraft_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+		}
+		complete_effect = {
+			set_technology = {
+				unmanned_aircraft = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				improved_small_airframe = 1
+				advanced_small_airframe = 1
+				modern_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				improved_medium_airframe = 1
+				advanced_medium_airframe = 1
+				modern_medium_airframe = 1
+			}
+			add_air_experience = 500
+		}
+	}
+
 	PRC__debug = {
 		visible = {
 			tag = PRC
@@ -148,6 +226,9 @@ debug_decisions = {
 			add_command_power = 500
 			set_technology = {
 				advanced_ballistic_missile = 1
+				advanced_cruise_antiship_missile = 1
+				suicide_drone_tech3 = 1
+				suicide_drone_tech4 = 1
 			}
 			add_equipment_to_stockpile = {
 				type = nuclear_missile_equipment_1
@@ -166,7 +247,17 @@ debug_decisions = {
 			}
 			add_equipment_to_stockpile = {
 				type = ballistic_missile_equipment_3
-				amount = 10000
+				amount = 5000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = guided_missile_equipment_3
+				amount = 5000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = cruise_antiship_missile_equipment_3
+				amount = 5000
 				producer = PRC
 			}
 		}
