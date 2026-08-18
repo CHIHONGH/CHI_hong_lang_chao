@@ -12,8 +12,12 @@ TFR_CRN_negotiation_category = {
 	visible = {
 		has_global_flag = TFR_CRN_negotiation_accessible
 		country_exists = SOV
-		# 路由：仅梅德韦杰夫/红色线可谈判，黑线 SOV 时隐藏（走边境冲突）
-		SOV = { TFR_CRN_sov_negotiable = yes }
+		# 路由：未启动时仅梅德韦杰夫/红色线显示（黑线走冲突线）；
+		# 谈判已启动（debug/正式 init 置 negotiation_active）则放开，否则 debug 启动后类别仍被路由隐藏
+		OR = {
+			has_global_flag = TFR_CRN_negotiation_active
+			SOV = { TFR_CRN_sov_negotiable = yes }
+		}
 	}
 
 	scripted_gui = TFR_CRN_negotiation_gui

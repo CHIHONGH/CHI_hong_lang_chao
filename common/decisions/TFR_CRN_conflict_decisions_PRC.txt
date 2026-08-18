@@ -41,7 +41,8 @@ TFR_CRN_conflict_category = {
 		complete_effect = {
 			TFR_CRN_conflict_init = yes
 		}
-		ai_will_do = { factor = 0 }
+		# 战略入口：黑线 SOV 时 PRC AI 主动夺回外东北
+		ai_will_do = { factor = 8 }
 	}
 
 	########################################################################
@@ -65,7 +66,8 @@ TFR_CRN_conflict_category = {
 			TFR_CRN_attach_advantage_modifier = yes
 			TFR_CRN_start_border_war_on_target = yes
 		}
-		ai_will_do = { factor = 0 }
+		# 冲突核心行动：有目标即打
+		ai_will_do = { factor = 8 }
 	}
 
 	########################################################################
@@ -89,7 +91,8 @@ TFR_CRN_conflict_category = {
 			add_to_variable = { var = TFR_CRN_prc_bonus value = 10 }
 			TFR_CRN_calc_advantage = yes
 		}
-		ai_will_do = { factor = 0 }
+		# 施压+10（50PP），与 SOV 远东增兵(5)对等
+		ai_will_do = { factor = 5 }
 	}
 
 	# 边境军事演习
@@ -109,7 +112,8 @@ TFR_CRN_conflict_category = {
 			add_to_variable = { var = TFR_CRN_prc_bonus value = 6 }
 			TFR_CRN_calc_advantage = yes
 		}
-		ai_will_do = { factor = 0 }
+		# 施压+6（30PP）
+		ai_will_do = { factor = 4 }
 	}
 
 	# 电子对抗
@@ -129,6 +133,7 @@ TFR_CRN_conflict_category = {
 			add_to_variable = { var = TFR_CRN_prc_bonus value = 4 }
 			TFR_CRN_calc_advantage = yes
 		}
-		ai_will_do = { factor = 0 }
+		# 施压+4（25PP）
+		ai_will_do = { factor = 3 }
 	}
 }

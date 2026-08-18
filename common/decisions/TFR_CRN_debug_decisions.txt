@@ -62,6 +62,13 @@ debug_decisions = {
 				remove_mission = TFR_CRN_round_2_timer
 				remove_mission = TFR_CRN_round_3_timer
 				remove_decision_on_cooldown = TFR_CRN_coastal_development
+				# 会谈记录 PRC 域镜像一并清空（防止重置后重开谈判显示上次会话旧文本）
+				clear_variable = TFR_CRN_prc_convo_slot1
+				clear_variable = TFR_CRN_prc_convo_slot2
+				clear_variable = TFR_CRN_prc_convo_slot3
+				clear_variable = TFR_CRN_sov_convo_slot1
+				clear_variable = TFR_CRN_sov_convo_slot2
+				clear_variable = TFR_CRN_sov_convo_slot3
 			}
 			SOV = {
 				clear_variable = TFR_CRN_desperation
@@ -79,44 +86,6 @@ debug_decisions = {
 				clear_variable = TFR_CRN_sov_last_convo_idx
 				clear_variable = TFR_CRN_desp_frame
 				clear_variable = TFR_CRN_concession_frame
-			}
-		}
-	}
-
-	########################################################################
-	# 强制设置 SOV 绝望度 = 100
-	########################################################################
-	TFR_CRN_set_desperation_debug = {
-		icon = generic_research
-		ai_will_do = { factor = 0 }
-		allowed = { is_ai = no }
-		visible = {
-			tag = PRC
-			country_exists = SOV
-		}
-		complete_effect = {
-			SOV = {
-				set_variable = { var = TFR_CRN_desperation value = 100 }
-				TFR_CRN_update_frames = yes
-			}
-		}
-	}
-
-	########################################################################
-	# 强制设置 SOV 让步意愿 = 100
-	########################################################################
-	TFR_CRN_set_concession_debug = {
-		icon = generic_research
-		ai_will_do = { factor = 0 }
-		allowed = { is_ai = no }
-		visible = {
-			tag = PRC
-			country_exists = SOV
-		}
-		complete_effect = {
-			SOV = {
-				set_variable = { var = TFR_CRN_concession_willingness value = 100 }
-				TFR_CRN_update_frames = yes
 			}
 		}
 	}
@@ -141,22 +110,6 @@ debug_decisions = {
 			1328 = { TFR_CRN_transfer_state = yes }
 			1293 = { TFR_CRN_transfer_state = yes }
 			537 = { TFR_CRN_transfer_state = yes }
-		}
-	}
-
-	########################################################################
-	# 查看 SOV 当前谈判变量
-	########################################################################
-	TFR_CRN_view_vars_debug = {
-		icon = generic_research
-		ai_will_do = { factor = 0 }
-		allowed = { is_ai = no }
-		visible = {
-			tag = PRC
-			has_global_flag = TFR_CRN_negotiation_accessible
-		}
-		complete_effect = {
-			custom_effect_tooltip = TFR_CRN_debug_view_vars
 		}
 	}
 
@@ -205,12 +158,6 @@ debug_decisions = {
 				clear_variable = TFR_CRN_sov_bonus
 				clear_variable = TFR_CRN_prc_advantage
 				clear_variable = TFR_CRN_sov_advantage
-				clear_variable = TFR_CRN_adv_prc_org
-				clear_variable = TFR_CRN_adv_prc_supply
-				clear_variable = TFR_CRN_adv_sov_attrition
-				clear_variable = TFR_CRN_adv_sov_supplies
-				clear_variable = TFR_CRN_adv_sov_speed
-				clear_variable = TFR_CRN_adv_sov_org
 				clear_variable = TFR_CRN_prc_adv_frame
 				clear_variable = TFR_CRN_sov_adv_frame
 				clear_variable = TFR_CRN_current_tier
