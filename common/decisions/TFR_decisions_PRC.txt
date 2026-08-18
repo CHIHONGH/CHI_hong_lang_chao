@@ -10370,62 +10370,6 @@ debug_decisions = {
 			base = 0
 		}
 	}
-	PRC_go_boom_debug_decision = {
-		icon = generic_industry
-		fire_only_once = no
-		cost = 0
-		available = {
-			is_ai = no
-		}
-		allowed = {
-			tag = PRC
-		}
-		complete_effect = {
-			country_event = {
-				id = china.248
-				days = 1
-			}
-			country_event = {
-				id = china.249
-				days = 2
-			}
-			country_event = {
-				id = china.44
-				days = 3
-			}
-			country_event = {
-				id = china.45
-				days = 4
-			}
-			country_event = {
-				id = china.46
-				days = 5
-			}
-			country_event = {
-				id = china.47
-				days = 6
-			}
-			country_event = {
-				id = china.48
-				days = 7
-			}
-			country_event = {
-				id = china.49
-				days = 8
-			}
-			country_event = {
-				id = china.50
-				days = 9
-			}
-			country_event = {
-				id = china.51
-				days = 10
-			}
-		}
-		ai_will_do = {
-			base = 0
-		}
-	}
 	PRC_load_centrist_focus_debug_decision = {
 		icon = generic_industry
 		fire_only_once = no
@@ -13976,2146 +13920,318 @@ PRC_great_asian_war = {
 			}
 		}
 	}
-	PRC_take_taiwan_gaw = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
+	PRC_operation_showtime = {
+		icon = GFX_JAP_election_day
 		visible = {
-			NOT = {
-				has_country_flag = PRC_new_left_win
-			}
+			has_completed_focus = APC_opening_action_korea
 		}
 		available = {
-			NOT = {
-				524 = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-				1150 = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-				1149 = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-				1148 = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-			}
-			has_completed_focus = PLA_elite_marine_corps
-			has_equipment = {
-				infantry_equipment > 7500
-			}
-			has_equipment = {
-				support_equipment > 750
-			}
-			has_manpower > 30000
+
 		}
-		cost = 15
-		fire_only_once = yes
-		days_remove = 10
+		days_remove = 180
+		targeted_modifier = {
+			tag = KOR
+			attack_bonus_against = 0.05
+		}
 		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -7500
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -750
-			}
-			add_manpower = -30000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_operation_guan_yu_tt
-			every_state = {
-				limit = {
-					OR = {
-						state = 524
-						state = 1150
-						state = 1149
-						state = 1148
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-			hidden_effect = {
-				load_oob = PRC_taiwan_drop_gaw
-				damage_units = {
-					state = 1150
-					damage = 0.4
-					org_damage = 0.4
-					str_damage = 0.4
-					ratio = yes
-					army = yes
-					navy = no
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-	PRC_take_burma = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			OR = {
-				NOT = {
-					BRM = {
-						is_ally_with = PRC
-					}
-				}
-				BRM = {
-					is_ally_with = JAP
-				}
-			}
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-		}
-		remove_effect = {
-			every_state = {
-				limit = {
-					region = 189
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-			add_timed_idea = {
-				idea = PRC_burma_offensive_idea
-				days = 50
-			}
-		}
-		ai_will_do = {
-			base = 200
-		}
-	}
-	PRC_operation_majestic_dec = {
-		name = PRC_operation_majestic
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_majestic
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-		}
-		cost = 25
-		fire_only_once = yes
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_majestic_idea
-				days = 70
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 526
-						state = 528
-						state = 1338
-						state = 529
-						state = 530
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 250
-		}
-	}
-	PRC_operation_genko = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_majestic
-		}
-		available = {
-			has_idea = PRC_operation_majestic_idea
-			has_completed_focus = PLA_elite_marine_corps
-			has_equipment = {
-				infantry_equipment > 10000
-			}
-			has_equipment = {
-				support_equipment > 1000
-			}
-			has_manpower > 50000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			modify_timed_idea = {
-				idea = PRC_operation_majestic_idea
-				days = 35
-			}
-			add_manpower = -50000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -10000
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -1000
-			}
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_operation_genko_tt
-			hidden_effect = {
-				load_oob = PRC_genko
-				JAP = {
-					load_oob = GAW_militia_jap
-				}
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_continue_to_move_deep_into_japan = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_majestic
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			528 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1338 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			529 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			530 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 25
-		complete_effect = {
-		}
-		remove_effect = {
-			every_state = {
-				limit = {
-					OR = {
-						state = 531
-						state = 1340
-						state = 1337
-						state = 532
-						state = 535
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_to_end_japan = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_majestic
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			531 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1340 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1337 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			532 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			535 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 30
-		complete_effect = {
-		}
-		remove_effect = {
-			every_state = {
-				limit = {
-					region = 154
-					has_dynamic_modifier = {
-						modifier = PRC_unplanned_offensive
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-			add_timed_idea = {
-				idea = PRC_to_end_japan_idea
-				days = 50
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_operation_changma_dec = {
-		name = PRC_operation_changma
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_changma
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			OR = {
-				NOT = {
-					country_exists = PRK
-				}
-				PRK = {
-					has_war_with = KOR
-				}
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		complete_effect = {
-			every_state = {
-				limit = {
-					region = 186
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_korean_war_modifer3
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_korean_war_modifer2
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_korean_war_modifer
-				}
-			}
-			add_timed_idea = {
-				idea = PRC_operation_changma_idea
-				days = 50
-			}
-			set_global_flag = PRC_operation_changma_dec_global
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 270
-		}
-	}
-	PRC_Invade_America_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			OR = {
-				has_completed_focus = PRC_operation_coronet
-				has_completed_focus = PRC_starve_the_island
-			}
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = PTF
-		}
-		cost = 35
-		fire_only_once = yes
-		days_remove = 210
-		complete_effect = {
-			custom_effect_tooltip = PRC_operation_America_tt
-			custom_effect_tooltip = PRC_Invade_America_tt
-			add_timed_idea = {
-				idea = PRC_Invade_America_dec_idea
-				days = 50
-			}
-			hidden_effect = {
-				country_event = {
-					id = Chihong.71
-					days = 3
-				}
-			}
-		}
-		remove_effect = {
-			every_state = {
-				limit = {
-					is_core_of = PTF
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		ai_will_do = {
-			base = 300
-		}
-	}
-	PRC_hindustan_offensive_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_kashmir_road
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = RAJ
-		}
-		cost = 35
-		fire_only_once = yes
-		days_remove = 50
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_hindustan_offensive_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 1398
-						state = 435
-						region = 153
-						region = 190
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-			set_country_flag = PRC_hindustan_offensive_dec_flag
-		}
-		ai_will_do = {
-			base = 200
-		}
-	}
-	PRC_hindustan_offensive_2_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_kashmir_road
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = RAJ
-			hidden_trigger = {
-				has_country_flag = PRC_hindustan_offensive_dec_flag
-			}
-		}
-		cost = 35
-		fire_only_once = yes
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_hindustan_offensive_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 425
-						state = 427
-						state = 429
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 200
-		}
-	}
-	PRC_operation_gangaridai_dec = {
-		name = PRC_operation_gangaridai
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_gangaridai
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = RAJ
-			1260 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1261 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_gangaridai_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 1366
-						state = 1367
-						state = 1368
-						state = 1369
-						state = 432
-						state = 434
-						state = 1370
-						state = 789
-						state = 430
-						state = 431
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_operation_pallava_dec = {
-		name = PRC_operation_pallava
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_pallava
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			288 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			has_war_with = RAJ
-			has_completed_focus = PLA_elite_marine_corps
-			has_equipment = {
-				infantry_equipment > 10000
-			}
-			has_equipment = {
-				support_equipment > 1000
-			}
-			has_manpower > 50000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -10000
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -1000
-			}
-			add_manpower = -50000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_operation_pallava_tt
-			add_timed_idea = {
-				idea = PRC_operation_pallava_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 423
-						state = 424
-						state = 1418
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-			hidden_effect = {
-				load_oob = PRC_pallava
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_operation_southern_fury_dec = {
-		name = PRC_operation_southern_fury
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_southern_fury
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			OR = {
-				has_war_with = VIN
-				has_war_with = LAO
-				has_war_with = CAM
-				has_war_with = SIA
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_southern_fury_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					region = 142
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_malaya_offensive_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_southern_fury
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			OR = {
-				has_war_with = SIA
-				has_war_with = MAL
-				has_war_with = SIG
-			}
-			892 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_malaya_offensive_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					region = 188
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_philippine_offensive_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_cover_the_back
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = PHI
-		}
-		cost = 25
-		fire_only_once = yes
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_philippine_offensive_idea
-				days = 50
-			}
-			every_state = {
-				limit = {
-					region = 160
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		remove_effect = {
-		}
-		ai_will_do = {
-			base = 180
-		}
-	}
-	PRC_landing_in_the_philippines_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_cover_the_back
-		}
-		available = {
-			has_war_with = PHI
-			has_completed_focus = PRC_increase_naval_production
-			has_idea = PRC_philippine_offensive_idea
-			has_equipment = {
-				infantry_equipment > 8000
-			}
-			has_equipment = {
-				support_equipment > 800
-			}
-			has_manpower > 35000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			modify_timed_idea = {
-				idea = PRC_philippine_offensive_idea
-				days = 30
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -8000
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -800
-			}
-			add_manpower = -35000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_landing_in_the_philippines_tt
-			hidden_effect = {
-				load_oob = PRC_philippines
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-	PRC_operation_samosir_dec = {
-		name = PRC_operation_samosir
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_samosir
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = INS
-			has_completed_focus = PRC_increase_naval_production
-			has_equipment = {
-				infantry_equipment > 5000
-			}
-			has_equipment = {
-				support_equipment > 500
-			}
-			has_manpower > 20000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_samosir_idea
-				days = 30
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -5000
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -500
-			}
-			add_manpower = -20000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_landing_in_the_sumatra_tt
-			hidden_effect = {
-				load_oob = PRC_samosir
-			}
-			every_state = {
-				limit = {
-					region = 187
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_operation_baru_nah_dec = {
-		name = PRC_operation_baru_nah
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_baru_nah
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = MAL
-			has_completed_focus = PRC_increase_naval_production
-			has_equipment = {
-				infantry_equipment > 5000
-			}
-			has_equipment = {
-				support_equipment > 500
-			}
-			has_manpower > 20000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_baru_nah_idea
-				days = 30
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -5000
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -500
-			}
-			add_manpower = -20000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_landing_in_the_borneo_tt
-			hidden_effect = {
-				load_oob = PRC_baru_nah
-			}
-			every_state = {
-				limit = {
-					region = 159
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_landing_in_the_java_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			OR = {
-				has_completed_focus = PRC_operation_baru_nah
-				has_completed_focus = PRC_operation_samosir
-			}
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			OR = {
-				334 = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-				672 = {
-					is_controlled_by_ROOT_or_ally = yes
-				}
-			}
-			has_war_with = INS
-			has_completed_focus = PLA_elite_marine_corps
-			has_equipment = {
-				infantry_equipment > 7500
-			}
-			has_equipment = {
-				support_equipment > 750
-			}
-			has_manpower > 30000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_baru_nah_idea
-				days = 30
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -7500
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -750
-			}
-			add_manpower = -30000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_landing_in_the_java_tt
-			hidden_effect = {
-				load_oob = PRC_java
-			}
-			every_state = {
-				limit = {
-					OR = {
-						region = 158
-						region = 93
-						region = 167
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		ai_will_do = {
-			base = 150
-		}
-	}
-	PRC_operation_coronet_dec = {
-		name = PRC_operation_coronet
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_operation_coronet
-		}
-		available = {
-			PRC_no_offensive_actions = yes
-			has_war_with = AST
-			has_completed_focus = PRC_operation_coronet
-			has_equipment = {
-				infantry_equipment > 7500
-			}
-			has_equipment = {
-				support_equipment > 750
-			}
-			has_manpower > 30000
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			add_timed_idea = {
-				idea = PRC_operation_coronet_idea
-				days = 75
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -7500
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = -750
-			}
-			add_manpower = -30000
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_landing_in_the_nothern_australia_tt
-			hidden_effect = {
-				load_oob = PRC_coronet
-			}
-			every_state = {
-				limit = {
-					OR = {
-						region = 193
-						region = 194
-						region = 195
-						region = 156
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-			}
-		}
-		ai_will_do = {
-			base = 190
-		}
-	}
-	PRC_starve_the_island_dec = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_starve_the_island
-		}
-		available = {
-			has_war_with = AST
-			ships_in_area = {
-				area = 91
-				size > 24
-				#type = capital_ship
-			}
-			ships_in_area = {
-				area = 99
-				size > 24
-				#type = capital_ship
-			}
-			ships_in_area = {
-				area = 98
-				size > 24
-				#type = capital_ship
-			}
-			ships_in_area = {
-				area = 86
-				size > 24
-				#type = capital_ship
-			}
-			ships_in_area = {
-				area = 81
-				size > 24
-				#type = capital_ship
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 10
-		complete_effect = {
-			every_state = {
-				limit = {
-					OR = {
-						region = 193
-						region = 194
-						region = 195
-						region = 156
-					}
-				}
-				remove_dynamic_modifier = {
-					modifier = PRC_unplanned_offensive
-				}
-				add_dynamic_modifier = {
-					modifier = PRC_non_combat_area
-				}
-			}
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_starve_the_island_dec_tt
-			AST = {
-				add_stability = -0.2
-				add_war_support = -0.3
-				effect_tooltip = {
-					country_event = {
-						id = Australia.19
-						days = 2
-					}
-				}
-				hidden_effect = {
-					create_country_leader = {
-						name = PRC_Li_Qiaoming
-						picture = "gfx/leaders/PRC/generals/Li Qiaoming.png"
-						ideology = military_junta
-					}
-					set_party_name = { ideology = nationalist long_name = PRC_nationalist_party_long name = PRC_nationalist_party }
-					white_peace = AST
-					white_peace = PRC
-					JAP_leave_PEC = yes
-					if = {
-						limit = {
-							has_war_with = NZL
-						}
-						white_peace = NZL
-					}
-					add_days_mission_timeout = {
-						mission = PRC_GAW_war_exhaustion
-						days = 20
-					}
-				}
-			}
-			hidden_effect = {
-				puppet = AST
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-	PRC_dissolve_japan = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_revenge_for_nanking
-		}
-		available = {
-			OR = {
-				NOT = {
-					country_exists = JAP
-				}
-				JAP = {
-					has_capitulated = yes
-				}
-				JAP = {
-					is_ally_with = PRC
-				}
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 30
-		complete_effect = {
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_dissolve_japan_tt
-			hidden_effect = {
-				PRC_dissolve_japan = yes
-			}
-		}
-		ai_will_do = {
-			base = 999
-		}
-	}
-	PRC_fortify_taiwan = {
-		icon = generic_industry
-		allowed = {
-			tag = PRC
-		}
-		visible = {
-			has_completed_focus = PRC_east_china_wall
-		}
-		available = {
-			524 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1150 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1149 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-			1148 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 15
-		complete_effect = {
-		}
-		remove_effect = {
-			524 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-				add_building_construction = {
-					type = coastal_bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-			}
-			1148 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-				add_building_construction = {
-					type = coastal_bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-			}
-			1149 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-				add_building_construction = {
-					type = coastal_bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-			}
-			1150 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-				add_building_construction = {
-					type = coastal_bunker
-					level = 2
-					instant_build = yes
-					province = {
-						all_provinces = yes
-						limit_to_coastal = yes
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-	PRC_final_chance_thermonuclear = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			surrender_progress > 0.3
-			has_war_with = JAP
-		}
-		visible = {
-			has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
-		}
-		fire_only_once = yes
-		cost = 10
-		days_remove = 3
-		complete_effect = {
-		}
-		remove_effect = {
-			custom_effect_tooltip = PRC_thermonuke_japan_tt
-			launch_nuke = {
-				province = 9950
-				controller = JAP
-				nuke_type = thermonuclear_bomb
-			}
-			launch_nuke = {
-				province = 1092
-				controller = JAP
-				nuke_type = thermonuclear_bomb
-			}
-			launch_nuke = {
-				province = 11960
-				controller = JAP
-				nuke_type = thermonuclear_bomb
-			}
-			launch_nuke = {
-				province = 1182
-				controller = JAP
-				nuke_type = thermonuclear_bomb
-			}
-			launch_nuke = {
-				province = 14704
-				controller = JAP
-				nuke_type = thermonuclear_bomb
-			}
-			JAP = {
-				country_event = china.360
-			}
-			news_event = {
-				id = china.361
-				hours = 5
-			}
-			hidden_effect = {
-				sound_effect = siren_sound_effect
-				every_country = {
-					goto_state = 1332
-				}
-				every_state = {
-					limit = {
-						OR = {
-							state = 528
-							state = 529
-							state = 531
-							state = 1332
-							state = 533
-						}
-					}
+			PRK = {
+				add_ideas = PRK_war_of_liberation
+			}
+			KOR = {
+				every_core_state = {
 					remove_dynamic_modifier = {
-						modifier = fallout_atomic
-					}
-					add_dynamic_modifier = {
-						modifier = fallout_thermonuclear
-						days = 730
+						modifier = unplanned_offensive
 					}
 				}
-			}
-		}
-		ai_will_do = {
-			base = 15
-			modifier = {
-				add = 75
-				JAP = {
-					has_country_flag = RAJ_nukes_allowed
-				}
-			}
-			modifier = {
-				add = 100
-				has_global_flag = RAJ_beijing_bombed
-			}
-			modifier = {
-				add = 50
-				has_global_flag = RAJ_shanghai_bombed
 			}
 		}
 	}
-	PRC_put_the_nuclear_arsenal_on_full_operational_alert = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-		}
+	PRC_operation_meltdown_phase_1 = {
+		icon = GFX_JAP_election_day
 		visible = {
-			has_completed_focus = PRC_martial_law
+			has_completed_focus = APC_opening_downfall_japan
 		}
-		fire_only_once = yes
-		cost = 150
-		days_remove = 10
+		available = {
+
+		}
+		days_remove = 20
 		complete_effect = {
+			add_timed_idea = {
+				idea = PRC_operation_meltdown_idea
+				days = 90
+			}
+			
+			528 = {
+				remove_dynamic_modifier = {
+					modifier = unplanned_offensive
+				}
+			}
+			
 		}
 		remove_effect = {
-			set_country_flag = PRC_nukes_available
-			custom_effect_tooltip = PRC_put_the_nuclear_arsenal_on_full_operational_alert_tt
-		}
-		ai_will_do = {
-			base = 50
+			set_country_flag = PRC_operation_meltdown_phase_1_flag
+			effect_tooltip = {
+				JPL = {
+					declare_war_on = {
+						target = JAP
+						type = civil_war
+					}
+				}
+			}
+			hidden_effect = {
+				ROOT = {
+					set_autonomy = {
+						target = JPL
+						autonomous_state = autonomy_communist
+						freedom_level = 0.3
+					}
+				}
+				JPL = {
+					create_country_leader = {
+						name = "白井聪"
+						picture = "gfx/leaders/JPL_baijincong.png"
+						ideology = marxism_leninism
+					}
+					transfer_state = 528
+					add_state_core = 528
+					transfer_state = 526
+					transfer_state = 530
+					transfer_state = 536
+					division_template = {
+						name = "Militia divisions"
+						is_locked = no
+						force_allow_recruiting = yes
+						regiments = {
+							militia = {
+								x = 0
+								y = 0
+							}
+							militia = {
+								x = 0
+								y = 1
+							}
+							militia = {
+								x = 0
+								y = 2
+							}
+							militia = {
+								x = 0
+								y = 3
+							}
+							militia = {
+								x = 0
+								y = 4
+							}
+						}
+						priority = 0
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"Militia divisions\" start_experience_factor = 1 start_equipment_factor = 1.0"
+							owner = JPL
+							count = 10
+						}
+					}
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_1
+						amount = 10000
+						producer = PRC
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment_1
+						amount = 600
+						producer = PRC
+					}
+					declare_war_on = {
+						target = JAP
+						type = annex_everything
+					}
+				}
+			}
 		}
 	}
-	PRC_authorize_pakistani_nuclear_weapons_use = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-		}
+	PRC_operation_meltdown_phase_2 = {
+		icon = GFX_JAP_election_day
 		visible = {
-			has_country_flag = PRC_nukes_available
+			has_country_flag = PRC_operation_meltdown_phase_1_flag
 		}
-		fire_only_once = yes
+		available = {
+			command_power > 50
+		}
 		cost = 50
-		days_remove = 10
+		days_remove = 180
 		complete_effect = {
-		}
-		remove_effect = {
-			PAK = {
-				set_country_flag = PAK_nukes_allowed
+			add_command_power = -50
+			JAP = {
+				every_core_state = {
+					remove_dynamic_modifier = {
+						modifier = unplanned_offensive
+					}
+				}
 			}
-			custom_effect_tooltip = PAK_nukes_allowed_tt
 		}
-		ai_will_do = {
-			base = 50
+		targeted_modifier = {
+			tag = JAP
+			attack_bonus_against = 0.05
 		}
 	}
-	PRC_nuke_tokyo = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 1182
-			}
-			has_war_with = JAP
-			command_power > 29
-		}
+	PRC_operation_skydive = {
+		icon = GFX_JAP_election_day
 		visible = {
-			has_country_flag = PRC_nukes_available
+			has_completed_focus = APC_dive_action_india
 		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1332
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			launch_nuke = {
-				province = 1182
-			}
-			news_event = news.528
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 25
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -25
-				}
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = {
-							has_country_flag = PRC_used_nukes
-						}
-					}
-					JAP = {
-						country_event = {
-							id = jap.61
-							days = 1
-						}
-					}
-				}
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -25
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -25
-					}
-				}
-				set_country_flag = PRC_used_nukes
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_nagoya = {
-		icon = GFX_decision_generic_deploy_nukes
 		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 10125
-			}
-			has_war_with = JAP
-			command_power > 29
+			command_power > 50
 		}
-		visible = {
-			has_country_flag = PRC_nukes_available
+		cost = 50
+		days_remove = 360
+		modifier = {
+			air_superiority_efficiency = 0.2
+			air_superiority_bonus_in_combat = 0.2
 		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1337
-			}
+		targeted_modifier = {
+			tag = RAJ
+			attack_bonus_against = 0.05
+			breakthrough_bonus_against = 0.05
 		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
 		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 10125
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_osaka = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 7072
-			}
-			has_war_with = JAP
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1340
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 7072
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_hiroshima = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 1092
-			}
-			has_war_with = JAP
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 529
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 1092
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_kyoto = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 11960
-			}
-			has_war_with = JAP
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 531
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 11960
-				controller = PRC
-				use_nuke = yes
-			}
-			news_event = news.529
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -20
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_sendai = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 7169
-			}
-			has_war_with = JAP
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1335
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 7169
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_sapporo = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			JAP = {
-				controls_province = 10444
-			}
-			has_war_with = JAP
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1334
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 10444
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_hochimin_city = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			VIN = {
-				controls_province = 4401
-			}
-			has_war_with = VIN
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 783
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 4401
-			}
-			news_event = news.530
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 15
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -15
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -15
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -15
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_bangkok = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			SIA = {
-				controls_province = 7408
-			}
-			has_war_with = SIA
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 289
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 7408
-			}
-			news_event = news.531
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 15
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -15
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -15
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -15
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_dehli = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
+			add_command_power = -50
 			RAJ = {
-				controls_province = 2086
-			}
-			has_war_with = RAJ
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1379
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 2086
-			}
-			news_event = news.532
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -20
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
+				every_core_state = {
+					remove_dynamic_modifier = {
+						modifier = unplanned_offensive
 					}
 				}
 			}
-		}
-		ai_will_do = {
-			base = 50
 		}
 	}
-	PRC_nuke_chennai = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
+	NAX_go_liberate_RAJ = {
+		visible = {
+			has_completed_focus = APC_dive_action_india
+		}
+		
+		cost = 50
+		days_remove = 20
+		fire_only_once = yes
+		remove_effect = {
 			RAJ = {
-				controls_province = 10278
+				add_ideas = RAJ_be_fucked_by_NAX_idea
 			}
-			has_war_with = RAJ
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1418
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 10278
-			}
-		}
-		ai_will_do = {
-			base = 50
-		}
-	}
-	PRC_nuke_jakarta = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			INS = {
-				controls_province = 7381
-			}
-			has_war_with = INS
-			command_power > 29
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1387
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 7381
-			}
-			news_event = news.533
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -20
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
+			NAX = {
+				add_ideas = NAX_go_liberate_RAJ_idea
+				division_template = {
+					name = "Red Volunteer Brigade"
+					is_locked = no
+					force_allow_recruiting = yes
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
 					}
+					support = {
+						engineer = { x = 0 y = 0 }
+					}
+					priority = 0
 				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Red Volunteer Brigade\" start_experience_factor = 1 start_equipment_factor = 0.5"
+						owner = NAX
+						count = 10
 					}
 				}
 			}
 		}
-		ai_will_do = {
-			base = 50
-		}
 	}
-	PRC_nuke_sydney = {
-		icon = GFX_decision_generic_deploy_nukes
+	PRC_operation_flip = {
+		icon = GFX_JAP_election_day
+		visible = {
+			has_completed_focus = APC_flip_action_anzac
+		}
 		available = {
-			has_global_flag = pan_asian_war_ongoing
+			command_power > 50
+		}
+		cost = 50
+		days_remove = 180
+		modifier = {
+			naval_invasion_prep_speed = 0.4
+		}
+		targeted_modifier = {
+			tag = AST
+			attack_bonus_against = 0.05
+		}
+		complete_effect = {
+			add_command_power = -50
 			AST = {
-				controls_province = 12406
-			}
-			has_war_with = AST
-			command_power > 29
-			520 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		visible = {
-			has_country_flag = PRC_nukes_available
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 285
-			}
-		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
-		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 12406
-			}
-			news_event = news.534
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -20
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -20
+				every_core_state = {
+					remove_dynamic_modifier = {
+						modifier = unplanned_offensive
 					}
 				}
 			}
-		}
-		ai_will_do = {
-			base = 50
 		}
 	}
-	PRC_nuke_seoul = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			KOR = {
-				controls_province = 13692
-			}
-			has_war_with = KOR
-			command_power > 29
-		}
+	PRC_operation_flip_2 = {
+		icon = GFX_JAP_election_day
 		visible = {
-			has_country_flag = PRC_nukes_available
+			has_completed_focus = APC_flip_action_anzac
 		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1041
-			}
+		available = {
+			command_power > 50
 		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
+		cost = 50
+		days_remove = 180
+		modifier = {
+			amphibious_invasion = 0.2
+		}
+		targeted_modifier = {
+			tag = AST
+			attack_bonus_against = 0.05
+		}
 		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 13692
-			}
-			news_event = news.535
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 15
-			}
-			JAP = {
-				add_days_mission_timeout = {
-					mission = JAP_GAW_war_exhaustion
-					days = -15
-				}
-			}
-			hidden_effect = {
-				AST = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -15
-					}
-				}
-				RAJ = {
-					add_days_mission_timeout = {
-						mission = JAP_GAW_war_exhaustion
-						days = -15
+			add_command_power = -50
+			NZL = {
+				every_core_state = {
+					remove_dynamic_modifier = {
+						modifier = unplanned_offensive
 					}
 				}
 			}
-		}
-		ai_will_do = {
-			base = 50
 		}
 	}
-	PRC_nuke_busan = {
-		icon = GFX_decision_generic_deploy_nukes
-		available = {
-			has_global_flag = pan_asian_war_ongoing
-			KOR = {
-				controls_province = 4056
-			}
-			has_war_with = KOR
-			command_power > 29
-		}
+	PRC_operation_endgame = {
+		icon = GFX_JAP_election_day
 		visible = {
-			has_country_flag = PRC_nukes_available
+			has_completed_focus = APC_final_act_usa
 		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 1409
-			}
+		available = {
+			command_power > 50
 		}
-		on_map_mode = map_and_decisions_view
-		fire_only_once = yes
-		cost = 125
-		days_remove = 2
+		cost = 50
+		days_remove = 360
+		targeted_modifier = {
+			tag = PTF
+			attack_bonus_against = 0.15
+		}
 		complete_effect = {
-			add_command_power = -30
-		}
-		remove_effect = {
-			set_country_flag = PRC_used_nukes
-			launch_nuke = {
-				province = 4056
+			add_command_power = -50
+			PTF = {
+				every_core_state = {
+					remove_dynamic_modifier = {
+						modifier = unplanned_offensive
+					}
+				}
 			}
-		}
-		ai_will_do = {
-			base = 50
 		}
 	}
 }
+
 
 PRC_the_chinese_century_category = {
 	PRC_glory_the_party_prop = {

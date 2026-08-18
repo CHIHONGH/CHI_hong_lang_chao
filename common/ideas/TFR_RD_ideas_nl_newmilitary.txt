@@ -1450,6 +1450,144 @@ ideas = {
 				military_development_monthly = 0.005
 			}
 		}
+		APC_war_of_liberation = {
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.1
+				army_org_factor = 0.1
+			}
+		}
+		APC_war_of_liberation_1 = {
+			name = APC_war_of_liberation
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_org_factor = 0.1
+			}
+		}
+		APC_war_of_liberation_2 = {
+			name = APC_war_of_liberation
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				surrender_limit = 0.15
+			}
+		}
+		PRC_train_APC = {
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				command_power_gain = -0.1
+			}
+			on_remove = {
+				every_country = {
+					limit = {
+						has_idea = APC_war_of_liberation
+					}
+					swap_ideas = {
+						remove_idea = APC_war_of_liberation
+						add_idea = APC_war_of_liberation_1
+					}
+				}
+			}
+		}
+		PRC_counter_anti_revolutionaries = {
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_against_major_factor = 0.15
+			}
+		}
+		PRK_war_of_liberation = {
+			picture = PRK_for_the_party
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			targeted_modifier = {
+				tag = KOR
+				attack_bonus_against = 0.1
+			}
+			modifier = {
+				army_defence_factor = 0.15
+			}
+			cancel = {
+				has_global_flag = PRC_chinese_gaw_victory_global
+			}
+		}
+		PRC_operation_meltdown_idea = {
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				# naval_speed_factor = 0.1
+				# naval_detection = 0.1
+				# naval_coordination = 0.1
+				naval_hit_chance = 0.1
+				# positioning = 0.1
+				# screening_efficiency = 0.1
+				# navy_weather_penalty = -0.1
+				# naval_morale_factor = 0.1
+				# navy_org_factor = 0.1
+				naval_retreat_chance = -0.15
+				naval_invasion_prep_speed = 0.5
+				amphibious_invasion = 0.2
+			}
+		}
+		NAX_go_liberate_RAJ_idea = {
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_superiority_bonus_in_combat = 0.2
+				air_superiority_efficiency = 0.15
+				army_core_attack_factor = 0.1
+			}
+			cancel = {
+				has_global_flag = PRC_chinese_gaw_victory_global
+			}
+		}
+		RAJ_be_fucked_by_NAX_idea = {
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				attrition = 0.15
+				army_speed_factor = -0.1
+				land_reinforce_rate = -0.1
+			}
+			cancel = {
+				has_global_flag = PRC_chinese_gaw_victory_global
+			}
+		}
 	}
 	#军改GUI决议工具ideas
 	hidden_ideas = {

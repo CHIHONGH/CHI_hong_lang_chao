@@ -1706,10 +1706,34 @@ PRC_export_revolution = {
     #         base = 10
     #     }
     # }
-    PRK_aid_to_korean_insurgents = {
+    PRK_find_the_gap = {
         icon = GFX_PRC_new_left_decision
         visible = {
             has_completed_focus = PRC_nl_spring_of_korea
+        }
+        cost = 30
+        days_remove = 28
+        fire_only_once = yes
+        remove_effect = {
+            set_country_flag = PRK_find_the_gap_flag
+        }
+    }
+    PRK_stir_up_trouble = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_country_flag = PRK_find_the_gap_flag
+        }
+        cost = 30
+        days_remove = 28
+        fire_only_once = yes
+        remove_effect = {
+            set_country_flag = PRK_stir_up_trouble_flag
+        }
+    }
+    PRK_aid_to_korean_insurgents = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_country_flag = PRK_stir_up_trouble_flag
         }
         cost = 30
         days_remove = 28
