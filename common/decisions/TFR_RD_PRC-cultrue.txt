@@ -2525,6 +2525,43 @@ PRC_ready_for_global_economy_destory_category = {
 }
 
 PRC_gaizaodaxingqiye_category = {
+    PRC_15th_five_industry_mission = {
+        allowed = {
+            tag = PRC
+        }
+        available = {
+            num_of_civilian_factories > nl_PRC_PRC_layout_15th_five_year_plan_IC
+            num_of_military_factories > nl_PRC_PRC_layout_15th_five_year_plan_AF
+        }
+        activation = {
+            always = no
+        }
+        is_good = no
+        selectable_mission = no
+        days_mission_timeout = 720
+        complete_effect = {
+            add_offsite_building = {
+                type = arms_factory
+                level = 3
+            }
+            add_offsite_building = {
+                type = industrial_complex
+                level = 3
+            }
+            set_temp_variable = {
+                industrial_development_var_temp = 0.25
+            }
+            add_industrial_development = yes
+            add_timed_idea = {
+                idea = PRC_five_year_ahead
+                days = 720
+            }
+        }
+        timeout_effect = {
+            add_political_power = -100
+        }
+        
+    }
     PRC_agricultural_transformation = {
         cost = 75
         days_remove = 120
@@ -2921,10 +2958,638 @@ PRC_nl_expand_reform_category = {
             }
         }
     }
+    PRC_industrial_expension_northeast_china = {
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = nl_PRC_rectify_and_strengthen_foundation
+			}
+		}
+		icon = GFX_PRC_decision_industrial_expension
+		available = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 100
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 10
+		}
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 716
+						state = 715
+						state = 328
+						state = 1413
+						state = 1417
+						state = 1414
+						state = 1415
+						state = 1416
+						state = 1167
+						state = 714
+						state = 717
+						state = 1394
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			715 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			717 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			714 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			328 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			716 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			1394 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PRC_industrial_expension_south_china = {
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = nl_PRC_rectify_and_strengthen_foundation
+			}
+		}
+		icon = GFX_PRC_decision_industrial_expension
+		available = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 100
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 10
+		}
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 1206
+						state = 1216
+						state = 1213
+						state = 1207
+						state = 728
+						state = 1209
+						state = 1191
+						state = 591
+						state = 593
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			591 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1191 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1216 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			1207 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			1206 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			728 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PRC_industrial_expension_east_china = {
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = nl_PRC_rectify_and_strengthen_foundation
+			}
+		}
+		icon = GFX_PRC_decision_industrial_expension
+		available = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 100
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 10
+		}
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 1420
+						state = 1229
+						state = 1393
+						state = 597
+						state = 1230
+						state = 598
+						state = 1228
+						state = 1222
+						state = 1223
+						state = 1220
+						state = 696
+						state = 1221
+						state = 1159
+						state = 1219
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1228 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			613 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1230 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			606 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			596 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			1219 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PRC_industrial_expension_northwest_china = {
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = nl_PRC_rectify_and_strengthen_foundation
+			}
+		}
+		icon = GFX_PRC_decision_industrial_expension
+		available = {
+		}
+		modifier = {
+			civilian_factory_use = 5
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 100
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 10
+		}
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 1158
+						state = 1163
+						state = 1162
+						state = 1165
+						state = 1187
+						state = 1198
+						state = 1199
+						state = 1166
+						state = 283
+						state = 1193
+						state = 622
+						state = 604
+						state = 1201
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1201 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			604 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1165 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			622 = {
+				increase_state_category = yes
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+    PRC_industrialize_the_countryside = {
+		available = {
+		}
+		visible = {
+			has_completed_focus = nl_PRC_great_country_great_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				income_var_temp = -75
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					OR = {
+						has_state_category = rural
+						has_state_category = village
+						has_state_category = town
+					}
+					free_building_slots = {
+						building = energy_farm
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					OR = {
+						has_state_category = rural
+						has_state_category = village
+						has_state_category = town
+					}
+					free_building_slots = {
+						building = energy_farm
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					OR = {
+						has_state_category = rural
+						has_state_category = village
+						has_state_category = town
+					}
+					free_building_slots = {
+						building = energy_farm
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					OR = {
+						has_state_category = rural
+						has_state_category = village
+						has_state_category = town
+					}
+					free_building_slots = {
+						building = energy_farm
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				increase_state_category = yes
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.025
+			}
+			PRC_add_enviromental_progress = yes
+		}
+		icon = GFX_PRC_decision_industrial_expension
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 135
+		days_remove = 90
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_beijing_shanghai_railway = {
+		available = {
+		}
+		visible = {
+			has_completed_focus = nl_PRC_great_country_great_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				income_var_temp = -50
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			build_railway = {
+				level = 3
+				start_state = 608
+				target_state = 1215
+			}
+			598 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1228 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1229 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1420 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.025
+			}
+			PRC_add_enviromental_progress = yes
+		}
+		icon = GFX_PRC_railroad_train
+		cost = 60
+		fire_only_once = yes
+		days_remove = 70
+		ai_will_do = {
+			base = 1
+		}
+	}
+	PRC_kela_power_station = {
+		available = {
+		}
+		visible = {
+			has_completed_focus = nl_PRC_great_country_great_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				income_var_temp = -50
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			605 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = energy_farm
+					level = 4
+					instant_build = yes
+				}
+				increase_state_category = yes
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+		}
+		icon = GFX_PRC_decision_youth_project
+		cost = 60
+		fire_only_once = yes
+		days_remove = 60
+		ai_will_do = {
+			base = 1
+		}
+	}
+
     PRC_nl_shipbuilding_ingenuity_mission = {
         days_mission_timeout = 365
         allowed = {
-            tag = prc
+            tag = PRC
         }
         available = {
             dockyard > 99
@@ -3406,7 +4071,6 @@ PRC_maoist_politburo_new_left = {
         days_remove = 1
         fire_only_once = yes
         remove_effect = {
-            set_country_flag = PRC_out_capitalist_so_call_equity_flag
             set_temp_variable = {
                 society_development_var_temp = 0.1
             }
@@ -3436,7 +4100,6 @@ PRC_maoist_politburo_new_left = {
         days_remove = 90
         fire_only_once = yes
         remove_effect = {
-            set_country_flag = PRC_PRC_out_maleism_flag
             set_temp_variable = {
                 society_development_var_temp = 0.1
             }
