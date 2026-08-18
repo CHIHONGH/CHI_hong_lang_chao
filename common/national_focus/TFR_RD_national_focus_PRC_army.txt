@@ -41,6 +41,16 @@ shared_focus = {
                 instant_build = yes
             }
         }
+        add_to_variable = { var = PRC_space_phase1_count value = 1 }
+        add_to_variable = { var = PRC_space_phase2_count value = 1 }
+        add_to_variable = { var = PRC_space_phase3_count value = 1 }
+        add_to_variable = { var = PRC_space_phase4_count value = 1 }
+        add_to_variable = { var = PRC_space_phase5_count value = 1 }
+        unlock_decision_tooltip = PRC_national_orbital_strategy_committee_new_left
+        unlock_decision_tooltip = PRC_integrate_military_aerospace_new_left
+        unlock_decision_tooltip = PRC_expand_wenchang_launch_center_new_left
+        unlock_decision_tooltip = PRC_build_jiuquan_second_launch_zone_new_left
+        unlock_decision_tooltip = PRC_orbital_tracking_network_new_left
     }
 }
 
@@ -1681,21 +1691,19 @@ shared_focus = {
     }
     available = {
         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        check_variable = { PRC_space_phase1_count >= 5 }
+        check_variable = { PRC_space_phase2_count >= 4 }
+        check_variable = { PRC_space_phase3_count >= 4 }
+        custom_trigger_tooltip = {
+            tooltip = PLA_orbital_drop_available_tt
+            always = no
+        }
     }
     cancel_if_invalid = yes
     relative_position_id = PAL_Forge_the_sword_of_victory
     x = 0
     y = 1
     completion_reward = {
-        if = {
-            limit = {
-                NOT = {
-                    has_country_flag = PRC_new_left_pla_space_force_GUI_open
-                }
-            }
-            set_country_flag = PRC_new_left_pla_space_force_GUI_open
-            custom_effect_tooltip = PRC_new_left_pla_space_force_GUI_open_tt
-        }
         hidden_effect = {
             country_event = prcs.3132
         }

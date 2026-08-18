@@ -165,6 +165,7 @@ scripted_gui = {
 			oss_spy_satellite_click_enabled = {
 				controller = { NOT = { has_country_flag = PRC_oss_spy_satellite_surveillance } }
 				PRC = { has_political_power > 100 }
+				PRC = { has_country_flag = PRC_space_done_recon_sat }
 				NOT = {
 					is_fully_controlled_by = PRC
 					is_controlled_by = PRC
@@ -184,6 +185,7 @@ scripted_gui = {
 					has_equipment = {
 						ballistic_missile_equipment_3 > 0
 					}
+					has_country_flag = PRC_space_done_ecm_array
 				}
 			}
 			oss_orbital_support_click_enabled = {
@@ -198,6 +200,7 @@ scripted_gui = {
 				PRC = {
 					#NOT = { has_country_flag = PRC_orbital_support }
 					check_variable = { PRC_oss_space_armed_forces_num > 0 }
+					has_country_flag = PRC_space_done_airdrop
 				}
 			}
 			PRC_nuclear_code_button_click_enabled = {
@@ -209,6 +212,7 @@ scripted_gui = {
 					has_equipment = {
 						nuclear_missile_equipment_1 > 0
 					}
+					has_country_flag = PRC_space_done_nuclear_platform
 				}
 				NOT = { has_state_flag = PRC_nuclear_strike_state }
 				controller = { has_war_with = PRC }
@@ -220,6 +224,7 @@ scripted_gui = {
 					has_equipment = {
 						nuclear_missile_equipment_2 > 0
 					}
+					has_country_flag = PRC_space_done_nuclear_platform
 				}
 				controller = { has_war_with = PRC }
 			}
