@@ -1,3 +1,4 @@
+| 2026-08-20 | 同步 space force(提交 5d9ea65):核引擎模块改名闭环(heavy_ship_nuclear_engine)、EHIHS装甲/电磁炮科技+2新模块、超重直升机idea、新建00_tank_modules.txt坦克模块库、ship_anti_air_4父级修正、三军动态修正按MD同步(删11弃用绑定+22新绑定)、假精神22 dummy增删改、军改国策18项同步MD | 11 文件(+2149/-145,新1) | 完成 |
 # WORKLOG：RedDaw_beta（整合版，原 CHI_hong_lang_chao）
 
 > 会话交接日志：会话结束前更新，新会话开始前先读。
