@@ -198,10 +198,41 @@ technologies = {
 		}
 	}
 
+	EHIHS = {
+		enable_equipment_modules = {
+			ship_armor_cruiser_EHIHS
+		}
+		categories = {
+			naval_equipment
+		}
+		research_cost = 1
+		start_year = 2028
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	electromagnetic_gun = {
+		enable_equipment_modules = {
+			ship_electromagnetic_gun
+		}
+		categories = {
+			naval_equipment
+		}
+		research_cost = 1
+		start_year = 2028
+
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+
 	nuclear_ship_engine = {
 		enable_equipment_modules = {
-			heavy_ship_engine_nuclear
-			carrier_ship_engine_nuclear
+			light_ship_nuclear_engine
+			heavy_ship_nuclear_engine
+			carrier_ship_nuclear_engine
 		}
 		categories = {
 			naval_equipment
@@ -216,8 +247,8 @@ technologies = {
 
 	molin_armor = {
 		enable_equipment_modules = {
-			ship_armor_bb_xuanwu
-			ship_armor_shbb_xuanwu
+			ship_armor_bb_molin
+			ship_armor_shbb_molin
 		}
 		categories = {
 			naval_equipment
@@ -237,11 +268,15 @@ technologies = {
 		sortie_efficiency = 0.25
 		carrier_sortie_hours_delay = -2
 
+		enable_equipment_modules = {
+			ship_super_deck_space
+		}
+
 		categories = {
 			naval_equipment
 		}
 		research_cost = 1
-		start_year = 2005
+		start_year = 2015
 
 		ai_will_do = {
 			factor = 0
@@ -416,10 +451,8 @@ technologies = {
 
 	super_heavylift_helicopter = {
 
-		equipment_bonus = {
-			utility_helicopter_equipment = {
-				build_cost = 0.2
-			}
+		on_research_complete = {
+			add_ideas = super_heavylift_helicopter_idea
 		}
 		light_synthetic_battalion = {
 			mountain = {

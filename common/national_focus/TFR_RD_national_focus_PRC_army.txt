@@ -565,8 +565,8 @@ shared_focus = {
                 add_idea = PLA_plaaf_air_dummy_1
             }
         }
-        add_to_variable = { var = PLA_air_experience_gain_air_dynamic value = 0.10 }
-        add_to_variable = { var = PLA_air_air_training_xp_gain_factor_dynamic value = 0.30 }
+        add_to_variable = { var = PLA_air_air_mission_xp_gain_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_ace_generation_chance_factor_dynamic value = 0.15 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
@@ -619,7 +619,8 @@ shared_focus = {
             }
         }
         add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.10 }
-        add_to_variable = { var = PLA_army_research_speed_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_planning_decay_rate_factor_dynamic value = -0.25 }
+        add_to_variable = { var = PLA_army_max_planning_dynamic value = 0.1 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -671,6 +672,10 @@ shared_focus = {
                 add_idea = PLA_pla_army_dummy_4
             }
         }
+        add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.05 }
+        add_to_variable = { var = PLA_army_rocket_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_recon_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.05 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -772,8 +777,8 @@ shared_focus = {
             }
         }
         add_to_variable = { var = PLA_army_command_power_gain_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_army_land_doctrine_cost_factor_dynamic value = -0.10 }
-        add_to_variable = { var = PLA_army_experience_gain_army_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_army_army_org_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_breakthrough_factor_dynamic value = 0.15 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -818,6 +823,7 @@ shared_focus = {
                 add_idea = PLA_plaaf_air_dummy_2
             }
         }
+        add_to_variable = { var = PLA_air_aircraft_upkeep_factor_dynamic value = 0.10 }
         add_to_variable = { var = PLA_air_air_attack_factor_dynamic value = 0.10 }
         add_to_variable = { var = PLA_air_air_defence_factor_dynamic value = 0.10 }
         add_to_variable = { var = PLA_air_air_training_xp_gain_factor_dynamic value = 0.10 }
@@ -929,9 +935,10 @@ shared_focus = {
                 add_idea = PLA_plaaf_air_dummy_3
             }
         }
-        add_to_variable = { var = PLA_air_air_attack_factor_dynamic value = 0.25 }
-        add_to_variable = { var = PLA_air_air_defence_factor_dynamic value = 0.25 }
-        add_to_variable = { var = PLA_air_air_agility_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_aircraft_upkeep_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_attack_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_air_air_defence_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_air_air_agility_factor_dynamic value = 0.20 }
         add_to_variable = { var = PLA_air_air_maximum_speed_factor_dynamic value = 0.20 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
@@ -978,9 +985,11 @@ shared_focus = {
                 add_idea = PLA_plaaf_air_dummy_5
             }
         }
-        add_to_variable = { var = PLA_air_air_superiority_efficiency_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_air_aircraft_upkeep_factor_dynamic value = 0.10 }
         add_to_variable = { var = PLA_air_air_mission_efficiency_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_air_air_wing_xp_loss_when_killed_factor_dynamic value = -0.25 }
+        add_to_variable = { var = PLA_air_air_superiority_detect_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_weather_penalty_dynamic value = -0.40 }
+        add_to_variable = { var = PLA_air_air_night_penalty_dynamic value = -0.40 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
@@ -1022,9 +1031,9 @@ shared_focus = {
                 add_idea = PLA_plan_navy_dummy_2
             }
         }
-        add_to_variable = { var = PLA_navy_navy_max_range_factor_dynamic value = 0.20 }
-        add_to_variable = { var = PLA_navy_naval_coordination_dynamic value = 0.20 }
-        add_to_variable = { var = PLA_navy_industrial_capacity_dockyard_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_naval_coordination_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_industrial_capacity_dockyard_dynamic value = 0.20 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
         }
@@ -1072,6 +1081,7 @@ shared_focus = {
                 add_idea = PLA_plan_navy_dummy_3
             }
         }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
         add_to_variable = { var = PLA_navy_navy_capital_ship_attack_factor_dynamic value = 0.25 }
         add_to_variable = { var = PLA_navy_navy_capital_ship_defence_factor_dynamic value = 0.25 }
         hidden_effect = {
@@ -1121,7 +1131,8 @@ shared_focus = {
             tremendous_power = 1
         }
         custom_effect_tooltip = PRC_tremendous_power_tt
-        add_to_variable = { var = PLA_navy_sortie_efficiency_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_sortie_efficiency_dynamic value = 0.40 }
         add_to_variable = { var = PLA_navy_navy_anti_air_attack_factor_dynamic value = 0.20 }
         add_to_variable = { var = PLA_navy_spotting_chance_dynamic value = 0.20 }
         add_to_variable = { var = PLA_navy_navy_screen_defence_factor_dynamic value = 0.25 }
@@ -1161,21 +1172,24 @@ shared_focus = {
 			days = 250
 		}
 		custom_effect_tooltip = tooltip_white_line
+        #country_event = china.
 		if = {
 			limit = {
 				has_dlc = "Man the Guns"
 			}
 			set_technology = {
 				improved_ship_hull_heavy = 1
+                molin_armor = 1
+                nuclear_ship_engine = 1
 			}
 			create_equipment_variant = {
 				name = "057型导弹驱逐舰"
 				type = ship_hull_super_heavy_2
 				parent_version = 0
 				modules = {
-					fixed_ship_armor_slot = ship_armor_shbb_xuanwu
+					fixed_ship_armor_slot = ship_armor_shbb_molin
                     fixed_ship_battery_slot = ship_missile_launcher_2
-                    fixed_ship_engine_slot = heavy_ship_engine_nuclear
+                    fixed_ship_engine_slot = heavy_ship_nuclear_engine
                     fixed_ship_fire_control_system_slot = ship_fire_control_system_3
                     fixed_ship_radar_slot = ship_radar_4
                     fixed_ship_anti_air_slot = ship_anti_air_3
@@ -1197,7 +1211,7 @@ shared_focus = {
 				}
 				name = "台北舰"
 				requested_factories = 5
-				progress = 0.75
+				progress = 0.8
 				amount = 1
 			}
 			add_equipment_production = {
@@ -1209,6 +1223,28 @@ shared_focus = {
 				name = "高雄舰"
 				requested_factories = 5
 				progress = 0.75
+				amount = 1
+			}
+            add_equipment_production = {
+				equipment = {
+					type = ship_hull_super_heavy_2
+					creator = "PRC"
+					version_name = "057型导弹驱逐舰"
+				}
+				name = "台中舰"
+				requested_factories = 5
+				progress = 0.7
+				amount = 1
+			}
+            add_equipment_production = {
+				equipment = {
+					type = ship_hull_super_heavy_2
+					creator = "PRC"
+					version_name = "057型导弹驱逐舰"
+				}
+				name = "花莲舰"
+				requested_factories = 5
+				progress = 0.65
 				amount = 1
 			}
 		}
@@ -1264,10 +1300,11 @@ shared_focus = {
                 add_idea = PLA_plan_navy_dummy_5
             }
         }
-        add_to_variable = { var = PLA_navy_naval_coordination_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_navy_sortie_efficiency_dynamic value = 0.20 }
-        add_to_variable = { var = PLA_navy_navy_org_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_navy_naval_torpedo_reveal_chance_factor_dynamic value = -0.20 }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_naval_coordination_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_naval_has_potf_in_combat_attack_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_navy_org_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_naval_critical_score_chance_factor_dynamic value = 0.25 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
         }
@@ -1301,8 +1338,8 @@ shared_focus = {
             }
         }
         add_to_variable = { var = PLA_army_org_loss_when_moving_dynamic value = -0.25 }
-        add_to_variable = { var = PLA_army_terrain_penalty_reduction_dynamic value = 0.30 }
-        add_to_variable = { var = PLA_army_army_fuel_consumption_factor_dynamic value = -0.30 }
+        add_to_variable = { var = PLA_army_terrain_penalty_reduction_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_army_army_fuel_consumption_factor_dynamic value = -0.25 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -1312,9 +1349,9 @@ shared_focus = {
                 add_idea = PLA_plan_navy_dummy_7
             }
         }
-        add_to_variable = { var = PLA_navy_navy_max_range_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_navy_navy_max_range_factor_dynamic value = 0.10 }
         add_to_variable = { var = PLA_navy_repair_speed_factor_dynamic value = 0.30 }
-        add_to_variable = { var = PLA_navy_navy_fuel_consumption_factor_dynamic value = -0.30 }
+        add_to_variable = { var = PLA_navy_navy_fuel_consumption_factor_dynamic value = -0.25 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
         }
@@ -1326,7 +1363,7 @@ shared_focus = {
         }
         add_to_variable = { var = PLA_air_air_wing_xp_loss_when_killed_factor_dynamic value = -0.20 }
         add_to_variable = { var = PLA_air_air_range_factor_dynamic value = 0.25 }
-        add_to_variable = { var = PLA_air_air_fuel_consumption_factor_dynamic value = -0.30 }
+        add_to_variable = { var = PLA_air_air_fuel_consumption_factor_dynamic value = -0.25 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
@@ -1377,8 +1414,8 @@ shared_focus = {
                 add_idea = PLA_pla_army_dummy_7
             }
         }
-        add_to_variable = { var = PLA_army_army_armor_attack_factor_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.025 }
+        add_to_variable = { var = PLA_army_rocket_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.05 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -1388,8 +1425,8 @@ shared_focus = {
                 add_idea = PLA_plan_navy_dummy_6
             }
         }
-        add_to_variable = { var = PLA_navy_navy_capital_ship_attack_factor_dynamic value = 0.20 }
-        add_to_variable = { var = PLA_navy_navy_anti_air_attack_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_navy_navy_capital_ship_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_navy_anti_air_attack_factor_dynamic value = 0.10 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
         }
@@ -1399,9 +1436,9 @@ shared_focus = {
                 add_idea = PLA_plaaf_air_dummy_6
             }
         }
-        add_to_variable = { var = PLA_air_air_strategic_bomber_bombing_factor_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_air_production_speed_radar_station_factor_dynamic value = 0.35 }
-        add_to_variable = { var = PLA_air_production_speed_anti_air_building_factor_dynamic value = 0.125 }
+        add_to_variable = { var = PLA_air_air_strategic_bomber_bombing_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_bombing_targetting_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_naval_strike_targetting_factor_dynamic value = 0.25 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
@@ -1529,7 +1566,7 @@ shared_focus = {
             }
         }
         add_to_variable = { var = PLA_army_land_reinforce_rate_dynamic value = 0.075 }
-        add_to_variable = { var = PLA_army_army_morale_dynamic value = 0.075 }
+        add_to_variable = { var = PLA_army_army_morale_factor_dynamic value = 0.12 }
         add_to_variable = { var = PLA_army_planning_speed_dynamic value = 0.15 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
@@ -1632,7 +1669,8 @@ shared_focus = {
             }
         }
         add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.10 }
-        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.025 }
+        add_to_variable = { var = PLA_army_land_night_attack_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_combat_width_factor_dynamic value = -0.15 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -1778,8 +1816,8 @@ shared_focus = {
                 add_idea = PLA_pla_army_dummy_12
             }
         }
-        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.025 }
-        add_to_variable = { var = PLA_army_army_org_factor_dynamic value = 0.05 }
+        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.05 }
+        add_to_variable = { var = PLA_army_army_org_factor_dynamic value = 0.10 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
@@ -1789,7 +1827,7 @@ shared_focus = {
                 add_idea = PLA_plan_navy_dummy_8
             }
         }
-        add_to_variable = { var = PLA_navy_sortie_efficiency_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_screening_efficiency_dynamic value = 0.25 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
         }
@@ -1799,8 +1837,8 @@ shared_focus = {
                 add_idea = PLA_plaaf_air_dummy_8
             }
         }
-        add_to_variable = { var = PLA_air_air_ace_generation_chance_factor_dynamic value = 0.15 }
-        add_to_variable = { var = PLA_air_air_cas_efficiency_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_power_projection_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_air_air_cas_present_factor_dynamic value = 0.15 }
         hidden_effect = {
             add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
