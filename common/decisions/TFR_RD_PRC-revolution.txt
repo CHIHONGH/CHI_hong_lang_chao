@@ -1563,159 +1563,166 @@ PRC_export_revolution = {
             base = 10
         }
     }
-    # PRC_radiated_sun = {
-    #     #射日朝鲜
-    #     icon = GFX_PRC_new_left_decision
-    #     available = {
-    #         has_completed_focus = Shoot_the_sun
-    #     }
-    #     visible = {
-    #         has_completed_focus = Shoot_the_sun
-    #         has_country_flag = North_Korea_selected
-    #     }
-    #     fire_only_once = yes
-    #     cost = 25
-    #     days_remove = 15
-    #     highlight_states = {
-    #         highlight_state_targets = {
-    #             state = 1043
-    #         }
-    #     }
-    #     on_map_mode = map_and_decisions_view
-    #     remove_effect = {
-    #         custom_effect_tooltip = PRC_Prk_tootip
-    #         hidden_effect = {
-    #             declare_war_on = {
-    #                 target = PRK
-    #                 type = puppet_wargoal_focus
-    #             }
-    #             PRK = {
-    #                 add_stability = -0.1
-    #             }
-    #             country_event = {
-    #                 id = china.1711
-    #             }
-    #             news_event = {
-    #                 id = prcs.4
-    #                 hours = 2
-    #             }
-    #             add_to_variable = {
-    #                 CPC_frame = 3
-    #             }
-    #             clamp_variable = {
-    #                 var = CPC_frame
-    #                 min = 0
-    #                 max = 100
-    #             }
-    #             add_to_variable = {
-    #                 PRC_Lib_Int_Dir_Var = 1
-    #             }
-    #         }
-    #     }
-    #     ai_will_do = {
-    #         base = 10
-    #     }
-    # }
-    # PRC_unfreeze_DPRK = {
-    #     #朝鲜解冻
-    #     icon = GFX_PRC_new_left_decision
-    #     available = {
-    #         has_completed_focus = Promote_the_thawing_of_DPRK
-    #     }
-    #     visible = {
-    #         has_completed_focus = Promote_the_thawing_of_DPRK
-    #         has_country_flag = North_Korea_selected
-    #     }
-    #     fire_only_once = yes
-    #     cost = 50
-    #     days_remove = 56
-    #     highlight_states = {
-    #         highlight_state_targets = {
-    #             state = 1043
-    #         }
-    #     }
-    #     on_map_mode = map_and_decisions_view
-    #     remove_effect = {
-    #         hidden_effect = {
-    #             PRK = {
-    #                 remove_ideas = {
-    #                     PRK_heavy_sanctions_idea
-    #                     PRK_Total_Control_idea
-    #                     PRK_Kim_Jae_ryong_hog
-    #                     PRK_Ri_Yong_ho_for
-    #                     PRK_O_Su_yong_eco
-    #                     PRK_Jong_Kyong_thaek_sec
-    #                     PRK_Choe_Pu_Il_int
-    #                 }
-    #             }
-    #             PRK = {
-    #                 set_popularities = {
-    #                     totalitarian_socialist = 100
-    #                 }
-    #                 create_country_leader = {
-    #                     name = "朝鲜人民代表大会"
-    #                     desc = "POLITICS_CHAOXIAN_DESC"
-    #                     picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-    #                     ideology = left_wing_junta
-    #                 }
-    #                 remove_ideas = {
-    #                     PRK_heavy_sanctions_idea
-    #                     PRK_Total_Control_idea
-    #                     PRK_Kim_Jae_ryong_hog
-    #                     PRK_Ri_Yong_ho_for
-    #                     PRK_O_Su_yong_eco
-    #                     PRK_Jong_Kyong_thaek_sec
-    #                     PRK_Choe_Pu_Il_int
-    #                 }
-    #                 set_party_name = {
-    #                     ideology = totalitarian_socialist
-    #                     long_name = PRK_nationalist_party_new_left_long
-    #                     name = PRK_nationalist_party_new_left
-    #                 }
-    #                 inherit_technology = PRC
-    #                 set_cosmetic_tag = PRK_repolice_gonh
-    #                 set_politics = {
-    #                     ruling_party = totalitarian_socialist
-    #                     election_frequency = 60
-    #                     elections_allowed = no
-    #                 }
-    #             }
-    #         }
-    #         add_to_variable = {
-    #             CPC_frame = 2
-    #         }
-    #         clamp_variable = {
-    #             var = CPC_frame
-    #             min = 0
-    #             max = 100
-    #         }
-    #         add_to_variable = {
-    #             PRC_Lib_Int_Dir_Var = 1
-    #         }
-    #         effect_tooltip = {
-    #             PRK = {
-    #                 set_party_name = {
-    #                     ideology = totalitarian_socialist
-    #                     long_name = PRK_nationalist_party_new_left_long
-    #                     name = PRK_nationalist_party_new_left
-    #                 }
-    #             }
-    #         }
-    #     }
-    #     ai_will_do = {
-    #         base = 10
-    #     }
-    # }
+    PRC_radiated_sun = {
+        #射日朝鲜
+        icon = GFX_PRC_new_left_decision
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = PRC_radiated_sun_tt
+                PRK = {
+                    OR = {
+                        check_variable = {
+                           PRK_executed_decisions = 3
+                        }
+                        has_idea = PRK_chaotic_atmosphere
+                    }
+                }
+            }
+        }
+        is_good = no
+        selectable_mission = no
+        days_mission_timeout = 75
+        complete_effect = {
+            add_political_power = 50
+            PRK = {
+                add_political_power = 100
+                add_stability = 0.05
+            }
+        }
+        timeout_effect = {
+            custom_effect_tooltip = PRC_radiated_sun_tt2
+            PRK = {
+                if = {
+                    limit = { 
+                        check_variable = {
+                           PRK_executed_decisions = 2
+                        }
+                    }
+                    remove_ideas = PRK_chaotic_atmosphere
+                    create_country_leader = {
+                        name = PRK_Cho_Yong_Won
+                        picture = GFX_PRK_Cho_Yong_Won
+                        ideology = left_nationalism
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        election_allowed = no
+                        election_frequency = 60
+                        last_election = "2021.7.1"
+                    }
+                    remove_ideas = {
+                        PRK_heavy_sanctions_idea
+                        PRK_Total_Control_idea
+                        PRK_Kim_Jae_ryong_hog
+                        PRK_Ri_Yong_ho_for
+                        PRK_O_Su_yong_eco
+                        PRK_Jong_Kyong_thaek_sec
+                        PRK_Choe_Pu_Il_int
+                    }
+                }
+                else_if = {
+                    limit = { 
+                        check_variable = {
+                           PRK_executed_decisions = 1
+                        }
+                    }
+                    hidden_effect = {
+                        remove_ideas = PRK_chaotic_atmosphere
+                        add_timed_idea = {
+                            idea = PRK_chaotic_atmosphere
+                            days = 500
+                        }
+                    } 
+                    create_country_leader = {
+                        name = PRK_Cho_Yong_Won
+                        picture = GFX_PRK_Cho_Yong_Won
+                        ideology = left_nationalism
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        election_allowed = no
+                        election_frequency = 60
+                        last_election = "2021.7.1"
+                    }
+                    remove_ideas = {
+                        PRK_heavy_sanctions_idea
+                        PRK_Total_Control_idea
+                        PRK_Kim_Jae_ryong_hog
+                        PRK_Ri_Yong_ho_for
+                        PRK_O_Su_yong_eco
+                        PRK_Jong_Kyong_thaek_sec
+                        PRK_Choe_Pu_Il_int
+                    }
+                }
+                else = {
+                    set_cosmetic_tag = PRK_chinese_puppet_communist
+                    create_country_leader = {
+                        name = PRK_civ_war_juche
+                        picture = GFX_portrait_PRC_army
+                        ideology = left_wing_junta
+                    }
+                    remove_ideas = {
+                        PRK_heavy_sanctions_idea
+                        PRK_Total_Control_idea
+                        PRK_Kim_Jae_ryong_hog
+                        PRK_Ri_Yong_ho_for
+                        PRK_O_Su_yong_eco
+                        PRK_Jong_Kyong_thaek_sec
+                        PRK_Choe_Pu_Il_int
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        PRK_executed_decisions = 1
+                    }
+                }
+                KOR = {
+                    transfer_state = 1045
+                    transfer_state = 1044
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        PRK_executed_decisions = 0
+                    }
+                }
+                KOR = {
+                    transfer_state = 1045
+                    transfer_state = 1042
+                    transfer_state = 1046
+                    transfer_state = 1044
+                }
+            }
+        }
+    }
     PRK_find_the_gap = {
         icon = GFX_PRC_new_left_decision
         visible = {
             has_completed_focus = PRC_nl_spring_of_korea
         }
         cost = 30
-        days_remove = 28
+        days_remove = 20
         fire_only_once = yes
         remove_effect = {
+            custom_effect_tooltip = PRK_find_the_gap_tt
             set_country_flag = PRK_find_the_gap_flag
+            add_to_variable = {
+                PRK_executed_decisions = 1
+            }
+            every_state = {
+                limit = {
+                    OR = {
+                        state = 527
+                        state = 875
+                    }
+                }
+                set_demilitarized_zone = yes
+            }
+
+            news_event = prcs.90
         }
     }
     PRK_stir_up_trouble = {
@@ -1723,11 +1730,38 @@ PRC_export_revolution = {
         visible = {
             has_country_flag = PRK_find_the_gap_flag
         }
-        cost = 30
-        days_remove = 28
+        available = {
+            command_power > 25
+            has_equipment = {
+                infantry_equipment > 2000
+            }
+        }
+        days_remove = 20
         fire_only_once = yes
+        complete_effect = {
+            add_command_power = -25
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = -2000
+            }
+        }
         remove_effect = {
+            add_to_variable = {
+                PRK_executed_decisions = 1
+            }
+            custom_effect_tooltip = PRK_stir_up_trouble_tt
             set_country_flag = PRK_stir_up_trouble_flag
+            every_state = {
+                limit = {
+                    OR = {
+                        state = 1050
+                        state = 874
+                        state = 873
+                    }
+                }
+                set_demilitarized_zone = yes
+            }
+            country_event = prcs.91
         }
     }
     PRK_aid_to_korean_insurgents = {
@@ -1735,10 +1769,16 @@ PRC_export_revolution = {
         visible = {
             has_country_flag = PRK_stir_up_trouble_flag
         }
-        cost = 30
-        days_remove = 28
+        available = {
+            command_power > 25
+        }
+        days_remove = 20
         fire_only_once = yes
         remove_effect = {
+            add_to_variable = {
+                PRK_executed_decisions = 1
+            }
+            custom_effect_tooltip = PRK_aid_to_korean_insurgents_tt
             PRK = {
                 create_country_leader = {
                     name = "朝鲜人民代表大会"
@@ -1760,9 +1800,25 @@ PRC_export_revolution = {
                     long_name = PRK_nationalist_party_new_left_long
                     name = PRK_nationalist_party_new_left
                 }
+                set_cosmetic_tag = PRK_rev
                 inherit_technology = PRC
                 remove_ideas = PRK_chaotic_atmosphere
+                every_owned_state = {
+                    limit = {
+                        is_demilitarized_zone = yes
+                    }
+                    set_demilitarized_zone = no
+                }
             }
+            add_to_variable = {
+                CPC_frame = 4
+            }
+            clamp_variable = {
+                var = CPC_frame
+                min = 0
+                max = 100
+            }
+            news_event = prcs.92
         }
     }
     PRC_DPRK_industry = {
