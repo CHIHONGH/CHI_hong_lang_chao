@@ -43,7 +43,6 @@ scripted_gui = {
 						add_political_power = oss_spy_satellite_click_pp_var?-150
 					}
 				}
-				set_temp_variable = { oss_spy_satellite_var = 2 }
 				PRC_oss_spy_satellite = yes
 			}
 			oss_ECM_click = {#电子战
@@ -60,7 +59,6 @@ scripted_gui = {
 					days = 30
 					value = 1
 				}
-				set_temp_variable = { oss_ECM_var = 2 }
 				PRC_electronic_warfare = yes
 			}
 			oss_orbital_support_click = {#轨道支援
@@ -74,7 +72,6 @@ scripted_gui = {
 					days = 16
 					value = 1
 				}
-				set_temp_variable = { oss_orbital_support_var = 2 }
 				oss_orbital_support = yes
 			}
 			oss_tactical_nuclerar_strike_click = {#战术核打击
@@ -320,7 +317,11 @@ scripted_gui = {
 			}
 		}
 ##
-		properties = {
+		properties = { 	#这段代码其实是一串bug,只是不报错，但是删了它会让OSS的七个可交互按钮图片纹理不能正常显示,修复它并使其规范化需要以下三个步骤：
+						#将gfx中对应的图片替换为单帧
+						#更改frame = my_var 为 image = "[get_my_icon_texture]"
+						#删除对应的上方visible条件 my_icon_visible = { trigger }
+						#由于这玩意既不报错也不影响游戏所以我没有修复它
 			oss_spy_satellite = {
 				frame = THIS.oss_spy_satellite_var?1
 			}
@@ -336,10 +337,10 @@ scripted_gui = {
 			oss_thermonuclear_strike = {
 				frame = THIS.oss_thermonuclear_strike_var?1
 			}
-			OSS_nuclear_triad2_button = {
+			OSS_nuclear_triad2_button = { #这个不能删，该按钮没有BUG
 				frame = PRC.OSS_nuclear_triad2_button_var?1
 			}
-			OSS_nuclear_triad3_button = {
+			OSS_nuclear_triad3_button = { #这个不能删，该按钮没有BUG
 				frame = PRC.OSS_nuclear_triad3_button_var?1
 			}
 		}

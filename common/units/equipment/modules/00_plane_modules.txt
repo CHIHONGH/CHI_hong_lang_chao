@@ -1089,9 +1089,10 @@ equipment_modules = {
 	}
 	unmanned_module_small = {
 		abbreviation = "unm"
-		category = plane_special_module_small
+		category = plane_ai_control_module
 		sfx = sfx_ui_sd_module_turret
 		add_stats = {
+			weight = -5
 			build_cost_ic = 14
 		}
 		
@@ -1111,9 +1112,6 @@ equipment_modules = {
 				cas
 				attack_logistics
 			}
-			add_stats = {
-				weight = -5
-			}
 			multiply_stats = {
 				air_ground_attack = 0.2
 			}
@@ -1130,8 +1128,114 @@ equipment_modules = {
 				naval_strike_attack = 0.25
 			}
 		}
+		mission_type_stats = {
+			limit = {
+				strategic_bomber
+			}
+			multiply_stats = {
+				air_bombing = 0.25
+			}
+		}
 		manpower = -1
 		xp_cost = 10
+		dismantle_cost_ic = 0.5
+	}
+	loyal_wingman_control_module = {
+		abbreviation = "wcm"
+		category = plane_ai_control_module
+		sfx = sfx_ui_sd_module_turret
+		add_stats = {
+			build_cost_ic = 62
+			air_superiority = 2
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+				air_superiority
+			}
+			add_stats = {
+				air_attack = 25
+				air_defence = 25
+			}
+			multiply_stats = {
+				air_agility = 0.25
+				air_mission_efficiency = 0.1
+			}
+		}
+		mission_type_stats = {
+			limit = {
+				cas
+				attack_logistics
+			}
+			add_stats = {
+				air_defence = 25
+				air_ground_attack = 30
+			}
+			multiply_stats = {
+				strike_force_movement_org_loss = 0.1
+				air_mission_efficiency = 0.1
+			}
+		}
+		mission_type_stats = {
+			limit = {
+				naval_bomber
+				port_strike
+			}
+			add_stats = {
+				air_agility = 25
+				naval_strike_attack = 40
+				surface_detection = 15
+				sub_detection = 5
+			}
+			multiply_stats = {
+				naval_strike_targetting = 0.25
+				air_mission_efficiency = 0.1
+			}
+		}
+		mission_type_stats = {
+			limit = {
+				strategic_bomber
+			}
+			add_stats = {
+				air_agility = 25
+				air_bombing = 30
+				 
+			}
+			multiply_stats = {
+				air_bombing = 0.25
+				air_mission_efficiency = 0.1
+			}
+		}
+		xp_cost = 10
+	}
+	integrated_electronic_warfare_system = {
+		abbreviation = "ews"
+		category = plane_special_module_small
+		sfx = sfx_ui_sd_module_turret
+		add_stats = {
+			build_cost_ic = 12
+			weight = 1
+			air_defence = 12
+			air_superiority = 0.5
+			night_penalty = -0.25
+		}
+		xp_cost = 5
+		dismantle_cost_ic = 0.5
+	}
+	low_observability_kit = {
+		abbreviation = "lok"
+		category = plane_special_module_small
+		sfx = sfx_ui_sd_module_turret
+		add_stats = {
+			build_cost_ic = 6
+			weight = 2
+			air_defence = 18
+		}
+		multiply_stats = {
+			build_cost_ic = 0.1
+			air_defence = 0.1
+		}
+		xp_cost = 5
 		dismantle_cost_ic = 0.5
 	}
 	self_sealing_fuel_tanks_small = {

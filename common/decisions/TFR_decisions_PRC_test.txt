@@ -193,6 +193,8 @@ debug_decisions = {
 		complete_effect = {
 			set_technology = {
 				unmanned_aircraft = 1
+				loyal_wingman_control = 1
+				integrated_electronic_warfare = 1
 				iw_small_airframe = 1
 				basic_small_airframe = 1
 				improved_small_airframe = 1
@@ -205,6 +207,116 @@ debug_decisions = {
 				modern_medium_airframe = 1
 			}
 			air_experience = 500
+		}
+	}
+
+	PRC_ZTZ100_057_debug = {
+		visible = {
+			tag = PRC
+			is_debug = yes
+		}
+		complete_effect = {
+			set_technology = {
+				main_battle_tank_chassis = 1
+				PLA_project_xuanwu = 1
+				unmanned_turret_tech = 1
+				remote_weapon_system = 1
+				anti_drone_laser_system = 1
+				GL7_active_protection_system = 1
+				improved_ship_hull_heavy = 1
+				ship_hull_advanced_super_heavy = 1
+				ASBM_launcher = 1
+				molin_armor = 1
+				nuclear_ship_engine = 1
+				ship_weapon_laser_system = 1
+			}
+			army_experience = 500
+			navy_experience = 500
+			create_equipment_variant = {
+				name = "ZTZ-100"
+				type = modern_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_high_velocity_cannon_3
+					turret_type_slot = tank_unmanned_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension
+					armor_type_slot = tank_welded_armor
+					engine_type_slot = tank_advanced_electric_engine
+					special_type_slot_1 = remote_weapon_system_antitank
+					special_type_slot_2 = GL7_active_protection_system
+					special_type_slot_3 = auto_loader
+					special_type_slot_4 = anti_drone_laser_system
+					special_type_slot_5 = gunner_nv_3
+					special_type_slot_6 = wet_ammo_storage
+					special_type_slot_7 = tank_radio_3
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 8
+					tank_nsb_armor_upgrade = 1
+				}
+			}
+			create_equipment_variant = {
+				name = "ZTZ-100A"
+				type = modern_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_high_velocity_cannon_4
+					turret_type_slot = tank_unmanned_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension
+					armor_type_slot = tank_cast_armor
+					engine_type_slot = tank_advanced_electric_engine
+					special_type_slot_1 = remote_weapon_system_antitank
+					special_type_slot_2 = GL7_active_protection_system
+					special_type_slot_3 = auto_loader
+					special_type_slot_4 = anti_drone_laser_system
+					special_type_slot_5 = gunner_nv_3
+					special_type_slot_6 = wet_ammo_storage
+					special_type_slot_7 = tank_radio_3
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 4
+					tank_nsb_armor_upgrade = 12
+				}
+			}
+			create_equipment_variant = {
+				name = "057型导弹驱逐舰"
+				type = ship_hull_super_heavy_2
+				parent_version = 0
+				modules = {
+					fixed_ship_armor_slot = ship_armor_shbb_molin
+					fixed_ship_battery_slot = ship_missile_launcher_2
+					fixed_ship_engine_slot = heavy_ship_nuclear_engine
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+					fixed_ship_radar_slot = ship_radar_4
+					fixed_ship_anti_air_slot = ship_weapon_laser_system
+					fixed_ship_secondaries_slot = empty
+					front_1_custom_slot = ship_missile_launcher_2
+					front_2_custom_slot = ship_missile_launcher_2
+					rear_1_custom_slot = ship_missile_launcher_2
+					rear_2_custom_slot = ship_missile_launcher_2
+					mid_1_custom_slot = ship_weapon_laser_system
+					mid_2_custom_slot = ship_weapon_laser_system
+					mid_3_custom_slot = ship_weapon_laser_system
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_4
+				amount = 100
+				producer = PRC
+				variant_name = "ZTZ-100"
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_4
+				amount = 100
+				producer = PRC
+				variant_name = "ZTZ-100A"
+			}
+			add_equipment_to_stockpile = {
+				type = ship_hull_super_heavy_2
+				amount = 5
+				producer = PRC
+				variant_name = "057型导弹驱逐舰"
+			}
 		}
 	}
 
