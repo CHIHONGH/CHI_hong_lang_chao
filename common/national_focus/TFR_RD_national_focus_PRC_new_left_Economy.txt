@@ -10,13 +10,23 @@
         }
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            has_country_flag = Prc_NewLeft_Rectification_Movement
         }
 
         cost = 5
         x = 41
         y = 1
-        completion_reward = { 
+        completion_reward = {
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            } 
             add_political_power = 100
             add_stability = -0.1
             set_variable = {
@@ -162,6 +172,17 @@
                     add_idea = PRC_made_in_china_dummy_idea21
                 }
             }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
         }
     }
 
@@ -243,6 +264,17 @@
             focus = nl_PRC_reconstruct_planning_commission
         }
         completion_reward = { 
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
             unlock_decision_tooltip = PRC_agricultural_transformation
             unlock_decision_tooltip = PRC_electronics_and_information_transformation
             unlock_decision_tooltip = PRC_transportation_transformation
@@ -317,6 +349,17 @@
                     add_idea = PRC_made_in_china_dummy_idea22
                 }
             }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
         }
     }
 
@@ -335,6 +378,17 @@
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         }
         completion_reward = { 
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
             set_variable = {
                 PRC_financial_inclusiveness_supervision_cost = 100
             }
@@ -425,6 +479,17 @@
                     add_idea = PRC_made_in_china_dummy_idea24
                 }
             }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
         }
     }
 
@@ -499,7 +564,18 @@
             effect_tooltip = {
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea =                     PRC_made_in_china_dummy_idea25
+                    add_idea = PRC_made_in_china_dummy_idea25
+                }
+            }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
                 }
             }
         }
@@ -560,6 +636,17 @@
                     add_idea = PRC_made_in_china_dummy_idea26
                 }
             }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
         }
     }
 
@@ -603,6 +690,17 @@
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea0
                     add_idea = PRC_made_in_china_dummy_idea27
+                }
+            }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
                 }
             }
         }
@@ -656,6 +754,17 @@
             round_variable = nl_PRC_PRC_layout_15th_five_year_plan_IC
             round_variable = nl_PRC_PRC_layout_15th_five_year_plan_AF
             activate_mission = PRC_15th_five_industry_mission
+            if = {
+                limit = { 
+                    NOT = {
+                        has_completed_focus = PRC_nl_rebuild_proletarian_dictatorship
+                    }
+                }
+                add_days_mission_timeout = {
+                    mission = PRC_damage_from_reactionary_mission
+                    days = 14
+                }
+            }
         }
     }
 
