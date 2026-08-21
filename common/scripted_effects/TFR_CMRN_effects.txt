@@ -1,0 +1,160 @@
+# TFR_中蒙谈判 - 脚本效果文件
+# 包含谈判初始化/变量计算/最终结算
+
+##############################################################################
+# 谈判初始化 — 由 MON 调用
+# PRC 启动调试决议时触发，首次谈判启动后设置初始变量与旗标
+##############################################################################
+TFR_CMRN_init_negotiation = {
+	set_variable = { TFR_CMRN_unification_tendency = 0.30 }
+	set_variable = { TFR_CMRN_prc_influence = 0.15 }
+	set_variable = { TFR_CMRN_negotiation_round = 1 }
+	set_variable = { TFR_CMRN_prc_round_actions = 0 }
+	set_variable = { TFR_CMRN_mon_round_actions = 0 }
+	set_variable = { TFR_CMRN_prc_convo_slot1 = 0 }
+	set_variable = { TFR_CMRN_prc_convo_slot2 = 0 }
+	set_variable = { TFR_CMRN_prc_convo_slot3 = 0 }
+	set_variable = { TFR_CMRN_mon_convo_slot1 = 0 }
+	set_variable = { TFR_CMRN_mon_convo_slot2 = 0 }
+	set_variable = { TFR_CMRN_mon_convo_slot3 = 0 }
+	set_global_flag = TFR_CMRN_negotiation_active
+	set_global_flag = TFR_CMRN_round_1_active
+	set_global_flag = TFR_CMRN_negotiation_accessible
+	PRC = {
+		set_variable = { TFR_CMRN_prc_convo_slot1 = 0 }
+		set_variable = { TFR_CMRN_prc_convo_slot2 = 0 }
+		set_variable = { TFR_CMRN_prc_convo_slot3 = 0 }
+	}
+	TFR_CMRN_update_frames = yes
+	PRC = { country_event = { id = TFR_CMRN.1 } }
+}
+
+##############################################################################
+# 轮次计数归零 — 每轮结束时调用一次（设在 MON 上）
+##############################################################################
+TFR_CMRN_reset_round_counters = {
+	set_variable = { TFR_CMRN_prc_round_actions = 0 }
+	set_variable = { TFR_CMRN_mon_round_actions = 0 }
+	set_variable = { TFR_CMRN_prc_convo_slot1 = 0 }
+	set_variable = { TFR_CMRN_prc_convo_slot2 = 0 }
+	set_variable = { TFR_CMRN_prc_convo_slot3 = 0 }
+	set_variable = { TFR_CMRN_mon_convo_slot1 = 0 }
+	set_variable = { TFR_CMRN_mon_convo_slot2 = 0 }
+	set_variable = { TFR_CMRN_mon_convo_slot3 = 0 }
+	PRC = {
+		set_variable = { TFR_CMRN_prc_convo_slot1 = 0 }
+		set_variable = { TFR_CMRN_prc_convo_slot2 = 0 }
+		set_variable = { TFR_CMRN_prc_convo_slot3 = 0 }
+		set_variable = { TFR_CMRN_mon_convo_slot1 = 0 }
+		set_variable = { TFR_CMRN_mon_convo_slot2 = 0 }
+		set_variable = { TFR_CMRN_mon_convo_slot3 = 0 }
+	}
+	TFR_CMRN_update_frames = yes
+}
+
+##############################################################################
+# 多帧进度条帧索引计算 — 将 0~1 变量映射到 0~20 帧
+##############################################################################
+TFR_CMRN_update_frames = {
+	set_variable = { TFR_CMRN_tendency_frame = TFR_CMRN_unification_tendency }
+	multiply_variable = { var = TFR_CMRN_tendency_frame value = 20 }
+	round_variable = TFR_CMRN_tendency_frame
+	add_to_variable = { TFR_CMRN_tendency_frame = 1 }
+	set_temp_variable = { temp_inf = TFR_CMRN_prc_influence }
+	set_variable = { var = TFR_CMRN_influence_frame value = temp_inf }
+	multiply_variable = { var = TFR_CMRN_influence_frame value = 20 }
+	round_variable = TFR_CMRN_influence_frame
+	add_to_variable = { TFR_CMRN_influence_frame = 1 }
+}
+
+##############################################################################
+# 会谈记录 3 槽队列 — 新记录从 slot1 进入，依次下推
+# 调用前需设置 TFR_CMRN_prc_convo_last_idx_temp
+##############################################################################
+TFR_CMRN_shift_prc_convo = {
+	set_variable = { TFR_CMRN_prc_convo_slot3 = TFR_CMRN_prc_convo_slot2 }
+	set_variable = { TFR_CMRN_prc_convo_slot2 = TFR_CMRN_prc_convo_slot1 }
+	set_variable = { TFR_CMRN_prc_convo_slot1 = TFR_CMRN_prc_convo_last_idx_temp }
+}
+
+##############################################################################
+# PRC 侧会谈记录 3 槽队列 — 在 PRC 作用域运行
+# 调用前需设置 TFR_CMRN_prc_convo_last_idx_temp
+##############################################################################
+TFR_CMRN_shift_prc_convo_local = {
+	set_variable = { TFR_CMRN_prc_convo_slot3 = TFR_CMRN_prc_convo_slot2 }
+	set_variable = { TFR_CMRN_prc_convo_slot2 = TFR_CMRN_prc_convo_slot1 }
+	set_variable = { TFR_CMRN_prc_convo_slot1 = TFR_CMRN_prc_convo_last_idx_temp }
+}
+
+##############################################################################
+# MON 会谈记录 3 槽队列
+# 调用前需设置 TFR_CMRN_mon_convo_last_idx_temp
+##############################################################################
+TFR_CMRN_shift_mon_convo = {
+	set_variable = { TFR_CMRN_mon_convo_slot3 = TFR_CMRN_mon_convo_slot2 }
+	set_variable = { TFR_CMRN_mon_convo_slot2 = TFR_CMRN_mon_convo_slot1 }
+	set_variable = { TFR_CMRN_mon_convo_slot1 = TFR_CMRN_mon_convo_last_idx_temp }
+}
+
+##############################################################################
+# 隐藏意愿计算 — 决定和平统一还是战争
+##############################################################################
+TFR_CMRN_calculate_will = {
+	set_temp_variable = { CMRN_total_factories = 0 }
+	PRC = {
+		add_to_temp_variable = { CMRN_total_factories = num_of_civilian_factories }
+		add_to_temp_variable = { CMRN_total_factories = num_of_military_factories }
+	}
+	set_temp_variable = { CMRN_influence_var = TFR_CMRN_prc_influence }
+	set_temp_variable = { CMRN_tendency_var = TFR_CMRN_unification_tendency }
+	multiply_temp_variable = { CMRN_influence_var = CMRN_total_factories }
+	multiply_temp_variable = { CMRN_influence_var = 0.008 }
+	multiply_temp_variable = { CMRN_influence_var = CMRN_tendency_var }
+	set_variable = { TFR_CMRN_hidden_will = CMRN_influence_var }
+}
+
+##############################################################################
+# 最终结算 — 和平统一 / 战争
+##############################################################################
+TFR_CMRN_final_settlement = {
+	TFR_CMRN_update_frames = yes
+	TFR_CMRN_calculate_will = yes
+	if = {
+		limit = { check_variable = { TFR_CMRN_hidden_will > 1 } }
+		set_global_flag = TFR_CMRN_prc_annexed
+		MON = {
+			every_core_state = { add_core_of = PRC }
+		}
+		PRC = {
+			remove_mission = TFR_CMRN_round_1_timer
+			remove_mission = TFR_CMRN_round_2_timer
+			remove_mission = TFR_CMRN_round_3_timer
+			remove_decision_on_cooldown = TFR_CMRN_grassland_silk_road
+			remove_decision_on_cooldown = TFR_CMRN_railway_gauge
+			remove_decision_on_cooldown = TFR_CMRN_full_economic_integration
+			remove_decision_on_cooldown = TFR_CMRN_economic_incentive_r2
+			annex_country = {
+				target = MON
+				transfer_troops = yes
+			}
+			news_event = { id = TFR_CMRN.5 days = 2 }
+		}
+	}
+	else = {
+		set_global_flag = TFR_CMRN_war_declared
+		PRC = {
+			remove_mission = TFR_CMRN_round_1_timer
+			remove_mission = TFR_CMRN_round_2_timer
+			remove_mission = TFR_CMRN_round_3_timer
+			remove_decision_on_cooldown = TFR_CMRN_grassland_silk_road
+			remove_decision_on_cooldown = TFR_CMRN_railway_gauge
+			remove_decision_on_cooldown = TFR_CMRN_full_economic_integration
+			remove_decision_on_cooldown = TFR_CMRN_economic_incentive_r2
+			declare_war_on = { target = MON type = annex_everything }
+			news_event = { id = TFR_CMRN.6 days = 2 }
+		}
+	}
+	set_global_flag = TFR_CMRN_negotiation_ended
+	clr_global_flag = TFR_CMRN_negotiation_active
+}

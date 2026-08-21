@@ -1,0 +1,559 @@
+# TFR_中俄谈判 - PRC 谈判决议
+# 三轮谈判制：唐努乌梁海与滨海边疆 / 黑龙江沿岸 / 外兴安岭与库页岛
+# 每轮 50 天限时，回合制交替（PRC 先手 → SOV 回应）
+# 大棒（边界/法理/施压）→ 只加绝望度
+# 萝卜（经济/援助/投资）→ 只加让步意愿 + 赎金
+
+TFR_CRN_negotiation_category = {
+
+	########################################################################
+	# 第 1 轮：50 天谈判循环（timer 触发）
+	########################################################################
+	TFR_CRN_round_1_timer = {
+		icon = generic_timer
+		allowed = { tag = PRC }
+		activation = { always = no }
+		available = { always = no }
+		selectable_mission = no
+		days_mission_timeout = 50
+		timeout_effect = {
+			SOV = { TFR_CRN_round_settlement = yes }
+		}
+	}
+
+	########################################################################
+	# 第 2 轮：50 天谈判循环
+	########################################################################
+	TFR_CRN_round_2_timer = {
+		icon = generic_timer
+		allowed = { tag = PRC }
+		activation = { always = no }
+		available = { always = no }
+		selectable_mission = no
+		days_mission_timeout = 50
+		timeout_effect = {
+			SOV = { TFR_CRN_round_settlement = yes }
+		}
+	}
+
+	########################################################################
+	# 第 3 轮：最终轮 — 计时结束后进入结算
+	########################################################################
+	TFR_CRN_round_3_timer = {
+		icon = generic_timer
+		allowed = { tag = PRC }
+		activation = { always = no }
+		available = { always = no }
+		selectable_mission = no
+		days_mission_timeout = 50
+		timeout_effect = {
+			SOV = { TFR_CRN_round_settlement = yes }
+		}
+	}
+
+	########################################################################
+	# 第 1 轮：唐努乌梁海与滨海边疆
+	# 图瓦(329) + 海参崴(408)
+	# 门槛：绝望≥10, 让步≥20
+	########################################################################
+
+	# === 大棒 ===
+
+	# 递交外交照会 — 每轮可重复一次
+	TFR_CRN_diplomatic_note_r1 = {
+		icon = generic_political_discourse
+		cost = 25
+		visible = { TFR_CRN_round_1_can_trade = yes }
+		available = {
+			TFR_CRN_round_1_can_trade = yes
+			NOT = { has_country_flag = TFR_CRN_PRC_r1_repeat_used }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_diplomatic_note_r1
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 1 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 8 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 1 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 1 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			set_country_flag = TFR_CRN_PRC_r1_repeat_used
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	# 重审唐努乌梁海置制
+	TFR_CRN_reopen_tuva = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		cost = 50
+		visible = { TFR_CRN_round_1_can_trade = yes }
+		available = { TFR_CRN_round_1_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_reopen_tuva
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 2 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 12 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 2 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 2 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# === 萝卜 ===
+
+	# 海参崴联合港务协定
+	TFR_CRN_vladivostok_port = {
+		icon = generic_navy
+		fire_only_once = yes
+		cost = 50
+		targeted_modifier = {
+			tag = SOV
+			trade_cost_for_target_factor = -0.5
+		}
+		visible = { TFR_CRN_round_1_can_trade = yes }
+		available = { TFR_CRN_round_1_can_trade = yes }
+		days_remove = 90
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_vladivostok_port
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 10 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_concession_willingness value = 15 }
+				if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 10 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 10 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	# 滨海边疆区经济补偿
+	TFR_CRN_coastal_development = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		cost = 75
+		days_remove = 90
+		visible = { TFR_CRN_round_1_can_trade = yes }
+		available = {
+			TFR_CRN_round_1_can_trade = yes
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		modifier = { civilian_factory_use = 4 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_coastal_development
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 11 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_concession_willingness value = 20 }
+				if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 11 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 11 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			SOV = { add_offsite_building = { type = industrial_complex level = 4 } }
+			PRC = { set_temp_variable = { debt_var_temp = 150 } add_debt = yes }
+		}
+		remove_effect = {
+			SOV = { add_offsite_building = { type = industrial_complex level = -4 } }
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	########################################################################
+	# 第 2 轮：黑龙江沿岸
+	# 庙街(560) + 伯力(409) + 奇穆尼窝集(657) + 海兰泡(1328)
+	# 门槛：绝望≥20, 让步≥45
+	########################################################################
+
+	# === 大棒 ===
+
+	# 外交施压 — 每轮可重复一次
+	TFR_CRN_diplomatic_pressure_r2 = {
+		icon = generic_political_discourse
+		cost = 25
+		visible = { TFR_CRN_round_2_can_trade = yes }
+		available = {
+			TFR_CRN_round_2_can_trade = yes
+			NOT = { has_country_flag = TFR_CRN_PRC_r2_repeat_used }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_diplomatic_pressure_r2
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 3 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 10 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 3 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 3 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			set_country_flag = TFR_CRN_PRC_r2_repeat_used
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	# 江东六十四屯历史清算
+	TFR_CRN_64_villages = {
+		icon = generic_propaganda
+		fire_only_once = yes
+		cost = 50
+		visible = { TFR_CRN_round_2_can_trade = yes }
+		available = { TFR_CRN_round_2_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_64_villages
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 4 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 15 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 4 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 4 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# 重审瑷珲条约边界条款
+	TFR_CRN_reopen_aigun = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		cost = 50
+		visible = { TFR_CRN_round_2_can_trade = yes }
+		available = { TFR_CRN_round_2_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_reopen_aigun
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 5 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 12 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 5 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 5 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# 重审1929年中东路事件
+	TFR_CRN_reopen_cr_1929 = {
+		icon = generic_army_leadership
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			TFR_CRN_round_2_can_trade = yes
+			has_war = no
+		}
+		available = {
+			TFR_CRN_round_2_can_trade = yes
+			has_war = no
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_reopen_cr_1929
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 6 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 15 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 6 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 6 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	# === 萝卜 ===
+
+	# 黑龙江沿岸经济援助
+	TFR_CRN_amur_aid = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		cost = 75
+		visible = { TFR_CRN_round_2_can_trade = yes }
+		available = { TFR_CRN_round_2_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_amur_aid
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 12 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_concession_willingness value = 18 }
+				if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 12 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 12 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			send_equipment = { equipment = infantry_equipment amount = 20000 target = SOV }
+			send_equipment = { equipment = support_equipment amount = 4000 target = SOV }
+			send_equipment = { equipment = light_mechanized_equipment amount = 200 target = SOV }
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	# 远东基础设施投资
+	TFR_CRN_far_east_investment = {
+		icon = generic_military_industrial_complex
+		fire_only_once = yes
+		cost = 100
+		days_remove = 90
+		visible = { TFR_CRN_round_2_can_trade = yes }
+		available = {
+			TFR_CRN_round_2_can_trade = yes
+			num_of_civilian_factories_available_for_projects > 6
+		}
+		modifier = { civilian_factory_use = 6 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_far_east_investment
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 13 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_concession_willingness value = 22 }
+				if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 13 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 13 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			SOV = { add_offsite_building = { type = industrial_complex level = 4 } add_offsite_building = { type = arms_factory level = 4 } }
+			PRC = { set_temp_variable = { debt_var_temp = 200 } add_debt = yes }
+		}
+		remove_effect = {
+			SOV = { add_offsite_building = { type = industrial_complex level = -4 } add_offsite_building = { type = arms_factory level = -4 } }
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	########################################################################
+	# 第 3 轮：外兴安岭与库页岛
+	# 外兴安岭(1293) + 库页岛(537)
+	# 门槛：绝望≥30, 让步≥65
+	########################################################################
+
+	# === 大棒 ===
+
+	# 最后通牒 — 每轮可重复一次
+	TFR_CRN_ultimatum_r3 = {
+		icon = generic_war
+		cost = 25
+		visible = { TFR_CRN_round_3_can_trade = yes }
+		available = {
+			TFR_CRN_round_3_can_trade = yes
+			NOT = { has_country_flag = TFR_CRN_PRC_r3_repeat_used }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_ultimatum_r3
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 7 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 12 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 7 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 7 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			set_country_flag = TFR_CRN_PRC_r3_repeat_used
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	# 援引尼布楚条约法理
+	TFR_CRN_nerchinsk = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		cost = 50
+		visible = { TFR_CRN_round_3_can_trade = yes }
+		available = { TFR_CRN_round_3_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_nerchinsk
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 8 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 8 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 8 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 8 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 8 }
+	}
+
+	# 库页岛主权未定论
+	TFR_CRN_sakhalin_sovereignty = {
+		icon = generic_navy
+		fire_only_once = yes
+		cost = 50
+		visible = { TFR_CRN_round_3_can_trade = yes }
+		available = { TFR_CRN_round_3_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sakhalin_sovereignty
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 9 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_desperation value = 10 }
+				if = { limit = { check_variable = { TFR_CRN_desperation > 100 } } set_variable = { var = TFR_CRN_desperation value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 9 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 9 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# === 萝卜 ===
+
+	# 萨哈林油气联合开发
+	TFR_CRN_sakhalin_development = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		cost = 100
+		visible = { TFR_CRN_round_3_can_trade = yes }
+		available = { TFR_CRN_round_3_can_trade = yes }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sakhalin_development
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 14 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_concession_willingness value = 20 }
+				if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 14 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 14 }
+				537 = { add_resource = { type = oil amount = 8 } }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			PRC = { set_temp_variable = { debt_var_temp = 100 } add_debt = yes }
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	# 远东战略援助协定
+	TFR_CRN_far_east_strategic = {
+		icon = generic_army_leadership
+		fire_only_once = yes
+		cost = 125
+		visible = { TFR_CRN_round_3_can_trade = yes }
+		available = {
+			TFR_CRN_round_3_can_trade = yes
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		days_remove = 90
+		modifier = { civilian_factory_use = 4 }
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_far_east_strategic
+			set_variable = { TFR_CRN_prc_convo_last_idx_temp = 15 }
+			TFR_CRN_shift_prc_convo_local = yes
+			SOV = {
+				add_to_variable = { var = TFR_CRN_prc_round_actions value = 1 }
+				add_to_variable = { var = TFR_CRN_concession_willingness value = 25 }
+				if = { limit = { check_variable = { TFR_CRN_concession_willingness > 100 } } set_variable = { var = TFR_CRN_concession_willingness value = 100 } }
+				set_variable = { var = TFR_CRN_prc_last_convo_idx value = 15 }
+				set_variable = { var = TFR_CRN_prc_convo_last_idx_temp value = 15 }
+				TFR_CRN_shift_prc_convo = yes
+				TFR_CRN_update_frames = yes
+			}
+			send_equipment = { equipment = infantry_equipment amount = 15000 target = SOV }
+			send_equipment = { equipment = support_equipment amount = 2000 target = SOV }
+			send_equipment = { equipment = modern_tank_chassis amount = 300 target = SOV }
+			send_equipment = { equipment = modern_tank_artillery_chassis amount = 300 target = SOV }
+			add_manpower = -15000
+			SOV = {
+				add_manpower = 15000 add_offsite_building = { type = arms_factory level = 4 }
+				division_template = {
+					name = "Far East International Volunteer Brigade"
+					
+					regiments = {
+						modern_armor = { x = 0 y = 0 }
+						modern_armor = { x = 0 y = 1 }
+						modern_sp_artillery_brigade = { x = 0 y = 2 }
+						modern_armor = { x = 1 y = 0 }
+						modern_armor = { x = 1 y = 1 }
+						modern_sp_artillery_brigade = { x = 1 y = 2 }
+						mechanized = { x = 2 y = 0 }
+						mechanized = { x = 2 y = 1 }
+						mechanized = { x = 2 y = 2 }
+						modern_sp_artillery_brigade = { x = 3 y = 0 }
+					}
+					
+					support = {
+						artillery = { x = 0 y = 0 }
+						spaa_company = { x = 0 y = 1 }
+						engineer = { x = 0 y = 2 }		
+					}
+				}
+			}
+			# 在布里亚特为 SOV 生成 3 支远东国际志愿旅（精锐）
+			564 = {
+				create_unit = {
+					division = "name = \"Far East International Volunteer Brigade\" division_template = \"Far East International Volunteer Brigade\" start_experience_factor = 1"
+					owner = SOV
+					count = 3
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			PRC = { set_temp_variable = { debt_var_temp = 250 } add_debt = yes }
+		}
+		remove_effect = {
+			SOV = { add_offsite_building = { type = arms_factory level = -4 } }
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	########################################################################
+	# 跳过本轮（调试专用）
+	########################################################################
+	TFR_CRN_skip_round_debug = {
+		icon = generic_timer
+		ai_will_do = { factor = 0 }
+		visible = {
+			tag = PRC
+			is_debug = yes
+			has_global_flag = TFR_CRN_negotiation_active
+			NOT = { has_global_flag = TFR_CRN_negotiation_ended }
+		}
+		available = {
+			has_global_flag = TFR_CRN_negotiation_active
+			NOT = { has_global_flag = TFR_CRN_negotiation_ended }
+		}
+		complete_effect = {
+			add_days_mission_timeout = { mission = TFR_CRN_round_1_timer days = -50 }
+			add_days_mission_timeout = { mission = TFR_CRN_round_2_timer days = -50 }
+			add_days_mission_timeout = { mission = TFR_CRN_round_3_timer days = -50 }
+		}
+	}
+}

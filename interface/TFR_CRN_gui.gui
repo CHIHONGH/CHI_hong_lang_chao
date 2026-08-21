@@ -1,0 +1,348 @@
+@slot_x_l = 30
+@slot_x_r = 264
+@slot_y_1 = 268
+@slot_y_2 = 324
+@slot_y_3 = 376
+@slot_w = 225
+
+guiTypes = {
+
+	########################################################################
+	# 中俄谈判 GUI 窗口（3 槽会谈队列，56px 间距）
+	# 上：两条进度条（外交筹码 / 让步意愿）
+	# 下：3 个会谈槽位，slot1(最新)在上，slot3(最旧)在下
+	# 总高度 450px
+	# 可见性由 scripted_guis 的 triggers 控制
+	########################################################################
+	containerWindowType = {
+		name = "TFR_CRN_negotiation_gui_window"
+		size = { width = 100%% height = 450 }
+		position = { x = 0 y = 0 }
+
+		# ====== 谈判窗口背景 ======
+		iconType = {
+			name = "bg"
+			quadtexturesprite = "GFX_TFR_CMRN_negotiation_bg"
+			position = { x = 0 y = 0 }
+			size = { width = 500 height = 450 }
+		}
+
+		# ====== 帮助按钮（玩法说明 tooltip，点击无效）=======
+		buttonType = {
+			name = "negotiation_help_btn"
+			quadTextureSprite = "GFX_TFR_CMRN_help_btn"
+			position = { x = 446 y = 14 }
+			size = { width = 24 height = 24 }
+			pdx_tooltip_delayed = "TFR_CRN_help_tooltip"
+		}
+
+		# ====== 外交筹码（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "desperation_container"
+			position = { x = 22 y = 52 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "desperation_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_desperation_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "desperation_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_influence_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "desperation_value"
+				position = { x = 395 y = 1 }
+				text = "[?SOV:TFR_CRN_desperation|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 让步意愿（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "concession_container"
+			position = { x = 22 y = 95 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "concession_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_concession_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "concession_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_tendency_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "concession_value"
+				position = { x = 395 y = 1 }
+				text = "[?SOV:TFR_CRN_concession_willingness|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 轮次标题（动态）======
+		instantTextBoxType = {
+			name = "round_title"
+			position = { x = 0 y = 191 }
+			text = "TFR_CRN_round_title_dynamic"
+			font = "VCR02_20" maxWidth = 500 format = center text_color_code = Y
+		}
+
+		instantTextBoxType = {
+			name = "prc_convo_label"
+			position = { x = 10 y = 231 }
+			text = "TFR_CRN_conversation_prc_label"
+			font = "VCR02_14" maxWidth = 240 format = center text_color_code = R
+		}
+
+		instantTextBoxType = {
+			name = "sov_convo_label"
+			position = { x = 250 y = 231 }
+			text = "TFR_CRN_conversation_sov_label"
+			font = "VCR02_14" maxWidth = 240 format = center text_color_code = G
+		}
+
+		# ====== 中方会话 3 槽（slot1 最新在上，slot3 最旧在下）======
+		# 每个槽位重叠放置所有可能的会谈文本，由 triggers 控制可见性
+		# 槽 1（最新）：y=@slot_y_1
+		instantTextBoxType = { name = "prc_s1_1"  text = "TFR_CRN_convo_prc_1"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_2"  text = "TFR_CRN_convo_prc_2"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_3"  text = "TFR_CRN_convo_prc_3"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_4"  text = "TFR_CRN_convo_prc_4"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_5"  text = "TFR_CRN_convo_prc_5"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_6"  text = "TFR_CRN_convo_prc_6"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_7"  text = "TFR_CRN_convo_prc_7"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_8"  text = "TFR_CRN_convo_prc_8"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_9"  text = "TFR_CRN_convo_prc_9"  position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_10" text = "TFR_CRN_convo_prc_10" position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_11" text = "TFR_CRN_convo_prc_11" position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_12" text = "TFR_CRN_convo_prc_12" position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_13" text = "TFR_CRN_convo_prc_13" position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_14" text = "TFR_CRN_convo_prc_14" position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s1_15" text = "TFR_CRN_convo_prc_15" position = { x = @slot_x_l y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+
+		# 槽 2（中间）：y=@slot_y_2
+		instantTextBoxType = { name = "prc_s2_1"  text = "TFR_CRN_convo_prc_1"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_2"  text = "TFR_CRN_convo_prc_2"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_3"  text = "TFR_CRN_convo_prc_3"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_4"  text = "TFR_CRN_convo_prc_4"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_5"  text = "TFR_CRN_convo_prc_5"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_6"  text = "TFR_CRN_convo_prc_6"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_7"  text = "TFR_CRN_convo_prc_7"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_8"  text = "TFR_CRN_convo_prc_8"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_9"  text = "TFR_CRN_convo_prc_9"  position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_10" text = "TFR_CRN_convo_prc_10" position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_11" text = "TFR_CRN_convo_prc_11" position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_12" text = "TFR_CRN_convo_prc_12" position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_13" text = "TFR_CRN_convo_prc_13" position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_14" text = "TFR_CRN_convo_prc_14" position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s2_15" text = "TFR_CRN_convo_prc_15" position = { x = @slot_x_l y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+
+		# 槽 3（最旧）：y=@slot_y_3
+		instantTextBoxType = { name = "prc_s3_1"  text = "TFR_CRN_convo_prc_1"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_2"  text = "TFR_CRN_convo_prc_2"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_3"  text = "TFR_CRN_convo_prc_3"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_4"  text = "TFR_CRN_convo_prc_4"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_5"  text = "TFR_CRN_convo_prc_5"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_6"  text = "TFR_CRN_convo_prc_6"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_7"  text = "TFR_CRN_convo_prc_7"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_8"  text = "TFR_CRN_convo_prc_8"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_9"  text = "TFR_CRN_convo_prc_9"  position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_10" text = "TFR_CRN_convo_prc_10" position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_11" text = "TFR_CRN_convo_prc_11" position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_12" text = "TFR_CRN_convo_prc_12" position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_13" text = "TFR_CRN_convo_prc_13" position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_14" text = "TFR_CRN_convo_prc_14" position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "prc_s3_15" text = "TFR_CRN_convo_prc_15" position = { x = @slot_x_l y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+
+		# ====== 苏方会话 3 槽 ======
+		# 槽 1（最新）：y=@slot_y_1
+		instantTextBoxType = { name = "sov_s1_1"  text = "TFR_CRN_convo_sov_1"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_2"  text = "TFR_CRN_convo_sov_2"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_3"  text = "TFR_CRN_convo_sov_3"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_4"  text = "TFR_CRN_convo_sov_4"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_5"  text = "TFR_CRN_convo_sov_5"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_6"  text = "TFR_CRN_convo_sov_6"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_7"  text = "TFR_CRN_convo_sov_7"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_8"  text = "TFR_CRN_convo_sov_8"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s1_9"  text = "TFR_CRN_convo_sov_9"  position = { x = @slot_x_r y = @slot_y_1 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+
+		# 槽 2（中间）：y=@slot_y_2
+		instantTextBoxType = { name = "sov_s2_1"  text = "TFR_CRN_convo_sov_1"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_2"  text = "TFR_CRN_convo_sov_2"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_3"  text = "TFR_CRN_convo_sov_3"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_4"  text = "TFR_CRN_convo_sov_4"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_5"  text = "TFR_CRN_convo_sov_5"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_6"  text = "TFR_CRN_convo_sov_6"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_7"  text = "TFR_CRN_convo_sov_7"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_8"  text = "TFR_CRN_convo_sov_8"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s2_9"  text = "TFR_CRN_convo_sov_9"  position = { x = @slot_x_r y = @slot_y_2 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+
+		# 槽 3（最旧）：y=@slot_y_3
+		instantTextBoxType = { name = "sov_s3_1"  text = "TFR_CRN_convo_sov_1"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_2"  text = "TFR_CRN_convo_sov_2"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_3"  text = "TFR_CRN_convo_sov_3"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_4"  text = "TFR_CRN_convo_sov_4"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_5"  text = "TFR_CRN_convo_sov_5"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_6"  text = "TFR_CRN_convo_sov_6"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_7"  text = "TFR_CRN_convo_sov_7"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_8"  text = "TFR_CRN_convo_sov_8"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+		instantTextBoxType = { name = "sov_s3_9"  text = "TFR_CRN_convo_sov_9"  position = { x = @slot_x_r y = @slot_y_3 }  maxWidth = @slot_w format = left font = "VCR02_14" }
+	}
+
+	########################################################################
+	# 边境冲突 GUI 窗口（双轨优势 + 当前目标州 + 状态）
+	# 总高度 450px，独立电子战术屏背景（区别于谈判外交背景）
+	########################################################################
+	containerWindowType = {
+		name = "TFR_CRN_conflict_gui_window"
+		size = { width = 100%% height = 450 }		position = { x = 0 y = 0 }
+
+		# ====== 冲突窗口背景（自建 GFX_TFR_CRN_conflict_bg）======
+		iconType = {
+			name = "bg"
+			quadtexturesprite = "GFX_TFR_CRN_conflict_bg"
+			position = { x = 0 y = 0 }
+			size = { width = 500 height = 450 }
+		}
+
+		# ====== 帮助按钮（玩法说明 tooltip，点击无效）=======
+		buttonType = {
+			name = "conflict_help_btn"
+			quadTextureSprite = "GFX_TFR_CMRN_help_btn"
+			position = { x = 446 y = 14 }
+			size = { width = 24 height = 24 }
+			pdx_tooltip_delayed = "TFR_CRN_conflict_help_tooltip"
+		}
+
+		# ====== 中方军事优势（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "prc_adv_container"
+			position = { x = 22 y = 52 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "prc_adv_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_prc_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "prc_adv_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_influence_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "prc_adv_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_prc_advantage|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 俄方军事优势（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "sov_adv_container"
+			position = { x = 22 y = 95 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "sov_adv_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_sov_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "sov_adv_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_tendency_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "sov_adv_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_sov_advantage|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 中方施压累计（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "prc_pressure_container"
+			position = { x = 22 y = 138 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "prc_pressure_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_prc_pressure_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "prc_pressure_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_influence_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "prc_pressure_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_prc_bonus|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 俄方施压累计（标签 | 进度条 | 数值 同行）======
+		containerWindowType = {
+			name = "sov_pressure_container"
+			position = { x = 22 y = 181 }
+			size = { width = 460 height = 22 }
+			instantTextBoxType = {
+				name = "sov_pressure_label"
+				position = { x = 0 y = 1 }
+				text = "TFR_CRN_conflict_sov_pressure_label"
+				font = "VCR02_20" maxWidth = 130 format = left
+			}
+			iconType = {
+				name = "sov_pressure_progbar"
+				quadtexturesprite = "GFX_TFR_CMRN_tendency_bar"
+				position = { x = 135 y = 1 }
+				size = { width = 255 height = 20 }
+			}
+			instantTextBoxType = {
+				name = "sov_pressure_value"
+				position = { x = 395 y = 1 }
+				text = "[?PRC:TFR_CRN_sov_bonus|.0]%"
+				font = "VCR02_20" maxWidth = 65 format = right
+			}
+		}
+
+		# ====== 当前目标州（动态）======
+		instantTextBoxType = {
+			name = "target_state"
+			position = { x = 0 y = 224 }
+			text = "TFR_CRN_conflict_target_state"
+			font = "VCR02_20" maxWidth = 500 format = center text_color_code = Y
+		}
+
+		# ====== 冲突状态（动态：全面战争/边境战争/待战/完成）======
+		instantTextBoxType = {
+			name = "conflict_status"
+			position = { x = 10 y = 264 }
+			text = "TFR_CRN_conflict_status_dynamic"
+			font = "VCR02_14" maxWidth = 480 format = center
+		}
+
+		# ====== 收回进度 ======
+		instantTextBoxType = {
+			name = "conflict_progress"
+			position = { x = 10 y = 304 }
+			text = "TFR_CRN_conflict_progress"
+			font = "VCR02_16" maxWidth = 480 format = center
+		}
+	}
+}

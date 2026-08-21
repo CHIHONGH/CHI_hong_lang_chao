@@ -16,14 +16,14 @@ PTF_ai_strategy = {
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
 			create_equipment_variant = {
-				name = "Abrams X I"
+				name = "Abrams X"
 				type = modern_tank_chassis_4
 				parent_version = 0
 				modules = {
@@ -48,7 +48,7 @@ PTF_ai_strategy = {
 			}
 
 			create_equipment_variant = {
-				name = "M10 Booker I"
+				name = "M10 Booker"
 				type = light_tank_chassis_2
 				parent_version = 0
 				modules = {
@@ -70,7 +70,26 @@ PTF_ai_strategy = {
 			}
 
 			create_equipment_variant = {
-				name = "A-20 I"
+				name = "F-47A"
+				type = small_plane_airframe_4
+				modules = {
+					fixed_main_weapon_slot = aircraft_cannon_1_1x
+					fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+					fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+					fixed_auxiliary_weapon_slot_3 = aircraft_cannon_1_1x 
+					fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
+					engine_type_slot = engine_4_1x
+					special_type_slot_1 = fuel_tanks_small
+					special_type_slot_2 = ai_targeting_computer_small
+					special_type_slot_3 = ai_targeting_computer_small
+					special_type_slot_4 = ai_targeting_computer_small
+					special_type_slot_5 = ai_targeting_computer_small
+				}
+				icon = "GFX_USA_fighter4_medium"
+			}
+
+			create_equipment_variant = {
+				name = "F-47B"
 				type = small_plane_cas_airframe_4
 				modules = {
 					fixed_main_weapon_slot = medium_bomb_bay
@@ -101,7 +120,7 @@ PTF_ai_strategy = {
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
@@ -109,7 +128,7 @@ PTF_ai_strategy = {
 		complete_effect = {
 			## Missile Cruisers ##
 			create_equipment_variant = {
-				name = "Ticonderoga-class"
+				name = "Rousseau-class"
 				type = ship_hull_heavy_4
 				parent_version = 0
 				modules = {
@@ -129,7 +148,7 @@ PTF_ai_strategy = {
 			}
 			## Carriers ##
 			create_equipment_variant = {
-				name = "Nimitz-class"
+				name = "Patriot-class"
 				type = ship_hull_carrier_3
 				parent_version = 0
 				modules = {
@@ -150,17 +169,39 @@ PTF_ai_strategy = {
 	USN_retire_warship = {
 		visible = {
 			original_tag = USN
+			is_ai = yes
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
-			transfer_navy = {
-				target = JAP
+			destroy_ships = {
+				type = destroyer
+				count = all
+			}
+			destroy_ships = {
+				type = battleship
+				count = all
+			}
+			destroy_ships = {
+				type = carrier
+				count = all
+			}
+			destroy_ships = {
+				type = light_cruiser
+				count = all
+			}
+			destroy_ships = {
+				type = heavy_cruiser
+				count = all
+			}
+			destroy_ships = {
+				type = submarine
+				count = all
 			}
 		}
 	}
@@ -178,7 +219,7 @@ PTF_ai_strategy = {
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
@@ -201,7 +242,7 @@ PTF_ai_strategy = {
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
@@ -227,7 +268,7 @@ PTF_ai_strategy = {
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes

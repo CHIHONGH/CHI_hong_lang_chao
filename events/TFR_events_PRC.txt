@@ -13169,29 +13169,60 @@ country_event = {
 			main_battle_tank_chassis = 1
 		}
 		create_equipment_variant = {
-			name = "Type 100"
+			name = "ZTZ-100"
 			type = modern_tank_chassis_4
 			parent_version = 0
 			modules = {
 				main_armament_slot = tank_high_velocity_cannon_3
-				turret_type_slot = tank_modern_tank_turret
+				turret_type_slot = tank_unmanned_tank_turret
 				suspension_type_slot = tank_torsion_bar_suspension
-				armor_type_slot = tank_cast_armor
-				engine_type_slot = tank_gas_turbine_engine
-				special_type_slot_1 = tank_radio_2
-				special_type_slot_2 = auto_loader
-				special_type_slot_3 = empty
-				special_type_slot_4 = empty
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_advanced_electric_engine
+				special_type_slot_1 = remote_weapon_system_antitank
+				special_type_slot_2 = GL7_active_protection_system
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = anti_drone_laser_system
+				special_type_slot_5 = gunner_nv_3
+				special_type_slot_6 = wet_ammo_storage
+				special_type_slot_7 = tank_radio_3
 			}
 			upgrades = {
 				tank_nsb_engine_upgrade = 8
 				tank_nsb_armor_upgrade = 1
 			}
 		}
+		create_equipment_variant = {
+			name = "ZTZ-100A"
+			type = modern_tank_chassis_4
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_4
+				turret_type_slot = tank_unmanned_tank_turret
+				suspension_type_slot = tank_torsion_bar_suspension
+				armor_type_slot = tank_cast_armor
+				engine_type_slot = tank_advanced_electric_engine
+				special_type_slot_1 = remote_weapon_system_antitank
+				special_type_slot_2 = GL7_active_protection_system
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = anti_drone_laser_system
+				special_type_slot_5 = gunner_nv_3
+				special_type_slot_6 = wet_ammo_storage
+				special_type_slot_7 = tank_radio_3
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 12
+			}
+		}
 		add_equipment_to_stockpile = {
 			type = modern_tank_chassis_4
-			amount = 50
-			variant_name = "Type 100"
+			amount = 5
+			variant_name = "ZTZ-100"
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_chassis_4
+			amount = 5
+			variant_name = "ZTZ-100A"
 		}
 		set_technology = {
 			PLA_project_xuanwu = 1

@@ -1,0 +1,276 @@
+# 假民族精神（仅 tooltip 展示修正增量，不实际生效）
+# 实际数值走动态修正 PRC_pla_space_force_dynamic（变量累积，见 dynamic_modifiers/TFR_RD_space_militarization_dynamic_modifiers.txt）
+# 用法：决议 remove_effect 中 effect_tooltip = { swap_ideas = { remove_idea = PRC_pla_space_force_dummy add_idea = <增量版> } }
+# 模式学自 RedDaw_beta TFR_ideas_PRC.txt 的 PRC_communist_party_of_china_dummy 系列
+ideas = {
+	country = {
+		# 基础占位版（无修正，所有 swap 的 remove 侧）
+		PRC_pla_space_force_dummy = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+		}
+		# 决议：成立国家轨道战略委员会
+		PRC_pla_space_force_dummy_committee = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				command_power_gain_mult = 0.10
+			}
+		}
+		# 决议：建立轨道测控网络
+		PRC_pla_space_force_dummy_tracking = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+		# 决议：发射下一代侦察卫星
+		PRC_pla_space_force_dummy_recon_sat = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				decryption_power_factor = 0.15
+			}
+		}
+		# 决议：建立全球通信星座
+		PRC_pla_space_force_dummy_comm_const = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				command_power_gain_mult = 0.05
+				political_power_gain = 0.05
+			}
+		}
+		# 决议：建设北斗军用增强系统
+		PRC_pla_space_force_dummy_beidou = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				army_org_regain = 0.10
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+		# 决议：建设预警卫星系统
+		PRC_pla_space_force_dummy_early_warning = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				cas_damage_reduction = 0.10
+			}
+		}
+		# 决议：发射天和核心舱
+		PRC_pla_space_force_dummy_tianhe = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.03
+			}
+		}
+		# 决议：对接问天实验舱
+		PRC_pla_space_force_dummy_wentian = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.03
+			}
+		}
+		# 决议：对接梦天实验舱
+		PRC_pla_space_force_dummy_mengtian = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.08
+			}
+		}
+		# 决议：发射巡天光学舱
+		PRC_pla_space_force_dummy_xuntian = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.03
+				army_intel_factor = 0.15
+				navy_intel_factor = 0.15
+				airforce_intel_factor = 0.15
+				civilian_intel_factor = 0.15
+			}
+		}
+		# 决议：安装空间机械臂
+		PRC_pla_space_force_dummy_robotic_arm = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.02
+			}
+		}
+		# 决议：建设空间电源系统
+		PRC_pla_space_force_dummy_space_power = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				factory_energy_consumption = -0.02
+			}
+		}
+		# 决议：建造自动补给航天器
+		PRC_pla_space_force_dummy_resupply = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				supply_consumption_factor = -0.02
+			}
+		}
+		# 决议：建设高轨控制站
+		PRC_pla_space_force_dummy_high_orbit = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				max_command_power_mult = 0.15
+			}
+		}
+		# 决议：建设轨道能源平台
+		PRC_pla_space_force_dummy_energy_platform = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+		}
+		# 决议：建设轨道电子对抗阵列
+		PRC_pla_space_force_dummy_ecm_array = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.10
+				command_power_gain_mult = 0.05
+			}
+		}
+		# 决议：建设轨道空投系统
+		PRC_pla_space_force_dummy_airdrop = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				special_forces_attack_factor = 0.10
+				command_power_gain_mult = 0.05
+			}
+		}
+		# 决议：建设轨道拦截系统
+		PRC_pla_space_force_dummy_interception = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				cas_damage_reduction = 0.10
+				command_power_gain_mult = 0.05
+			}
+		}
+		# 决议：建设轨道核打击平台
+		PRC_pla_space_force_dummy_nuclear_platform = {
+			
+			picture = GFX_idea_PRC_pla_space_force
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			modifier = {
+				command_power_gain_mult = 0.10
+				max_command_power_mult = 0.15
+			}
+		}
+	}
+}

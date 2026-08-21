@@ -16,7 +16,13 @@ debug_decisions = {
 		}
 
 		complete_effect = {
-			load_focus_tree = dummy_2
+			every_state = {
+				limit = {
+					is_on_continent = australia
+					is_owned_by = PTF
+				}
+				transfer_state_to = APA
+			}
 		}
 	}
 
@@ -72,7 +78,7 @@ debug_decisions = {
 		}
 	}
 
-	PRC_arsenal_ship_equipment_debug = {
+	PRC_ASBM_launcher_debug = {
 		visible = {
 			tag = PRC
 			is_debug = yes
@@ -80,38 +86,101 @@ debug_decisions = {
 		}
 		complete_effect = {
 			set_technology = {
-				cruise_antiship_missile = 1
-				arsenal_ship_equipment = 1
+				advanced_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				base_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				base_ballistic_missile = 1
+				improved_ballistic_missile = 1
+				advanced_ballistic_missile = 1
 				early_ship_hull_heavy = 1
 				basic_ship_hull_heavy = 1
 				improved_ship_hull_heavy = 1
 				advanced_ship_hull_heavy = 1
 				ship_hull_super_heavy = 1
-				ship_hull_super_heavy_2 = 1
-				ship_hull_super_heavy_3 = 1
+				ship_hull_advanced_super_heavy = 1
 				basic_heavy_armor_scheme = 1
 				improved_heavy_armor_scheme = 1
 
-				Tremendous_power = 1
+				tremendous_power = 1
+				nuclear_ship_engine = 1
+				molin_armor = 1
 			}
+			navy_experience = 500
 		
 			add_equipment_to_stockpile = {
 				type = cruise_antiship_missile_equipment_1
 				amount = 2000
 				producer = PRC
 			}
+			add_equipment_to_stockpile = {
+				type = antiship_missile_equipment_1
+				amount = 200
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = antiship_missile_equipment_2
+				amount = 200
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = antiship_missile_equipment_3
+				amount = 200
+				producer = PRC
+			}
 		}
 	}
 
-	PRC_heavy_paratrooper_debug = {
+	PRC_synthetic_battalion_debug = {
 		visible = {
 			tag = PRC
 			is_debug = yes
-			#has_completed_focus = 
 		}
 		complete_effect = {
 			set_technology = {
-				heavy_paratrooper = 1
+				synthetic_battalion_tech = 1
+				exoskeleton_reinforcement = 1
+			}
+			army_experience = 500
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment
+				amount = 1000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis
+				amount = 1000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_destroyer_chassis
+				amount = 400
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = modern_sp_artillery_brigade
+				amount = 500
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment
+				amount = 600
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 600
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = exoskeleton_equipment
+				amount = 2000
+				producer = PRC
 			}
 		}
 	}
@@ -120,37 +189,133 @@ debug_decisions = {
 		visible = {
 			tag = PRC
 			is_debug = yes
-			#has_completed_focus = 
 		}
 		complete_effect = {
 			set_technology = {
 				unmanned_aircraft = 1
+				loyal_wingman_control = 1
+				integrated_electronic_warfare = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				improved_small_airframe = 1
+				advanced_small_airframe = 1
+				modern_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				improved_medium_airframe = 1
+				advanced_medium_airframe = 1
+				modern_medium_airframe = 1
 			}
+			air_experience = 500
 		}
 	}
 
-	PRC_unmanned_mechanized_debug = {
+	PRC_ZTZ100_057_debug = {
 		visible = {
 			tag = PRC
 			is_debug = yes
-			#has_completed_focus = 
 		}
 		complete_effect = {
 			set_technology = {
-				unmanned_mechanized = 1
+				main_battle_tank_chassis = 1
+				PLA_project_xuanwu = 1
+				unmanned_turret_tech = 1
+				remote_weapon_system = 1
+				anti_drone_laser_system = 1
+				GL7_active_protection_system = 1
+				improved_ship_hull_heavy = 1
+				ship_hull_advanced_super_heavy = 1
+				ASBM_launcher = 1
+				molin_armor = 1
+				nuclear_ship_engine = 1
+				ship_weapon_laser_system = 1
 			}
-		}
-	}
-
-	PRC_heavy_synthetic_battalion_debug = {
-		visible = {
-			tag = PRC
-			is_debug = yes
-			#has_completed_focus = 
-		}
-		complete_effect = {
-			set_technology = {
-				heavy_synthetic_battalion = 1
+			army_experience = 500
+			navy_experience = 500
+			create_equipment_variant = {
+				name = "ZTZ-100"
+				type = modern_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_high_velocity_cannon_3
+					turret_type_slot = tank_unmanned_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension
+					armor_type_slot = tank_welded_armor
+					engine_type_slot = tank_advanced_electric_engine
+					special_type_slot_1 = remote_weapon_system_antitank
+					special_type_slot_2 = GL7_active_protection_system
+					special_type_slot_3 = auto_loader
+					special_type_slot_4 = anti_drone_laser_system
+					special_type_slot_5 = gunner_nv_3
+					special_type_slot_6 = wet_ammo_storage
+					special_type_slot_7 = tank_radio_3
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 8
+					tank_nsb_armor_upgrade = 1
+				}
+			}
+			create_equipment_variant = {
+				name = "ZTZ-100A"
+				type = modern_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_high_velocity_cannon_4
+					turret_type_slot = tank_unmanned_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension
+					armor_type_slot = tank_cast_armor
+					engine_type_slot = tank_advanced_electric_engine
+					special_type_slot_1 = remote_weapon_system_antitank
+					special_type_slot_2 = GL7_active_protection_system
+					special_type_slot_3 = auto_loader
+					special_type_slot_4 = anti_drone_laser_system
+					special_type_slot_5 = gunner_nv_3
+					special_type_slot_6 = wet_ammo_storage
+					special_type_slot_7 = tank_radio_3
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 4
+					tank_nsb_armor_upgrade = 12
+				}
+			}
+			create_equipment_variant = {
+				name = "057型导弹驱逐舰"
+				type = ship_hull_super_heavy_2
+				parent_version = 0
+				modules = {
+					fixed_ship_armor_slot = ship_armor_shbb_molin
+					fixed_ship_battery_slot = ship_missile_launcher_2
+					fixed_ship_engine_slot = heavy_ship_nuclear_engine
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+					fixed_ship_radar_slot = ship_radar_4
+					fixed_ship_anti_air_slot = ship_weapon_laser_system
+					fixed_ship_secondaries_slot = empty
+					front_1_custom_slot = ship_missile_launcher_2
+					front_2_custom_slot = ship_missile_launcher_2
+					rear_1_custom_slot = ship_missile_launcher_2
+					rear_2_custom_slot = ship_missile_launcher_2
+					mid_1_custom_slot = ship_weapon_laser_system
+					mid_2_custom_slot = ship_weapon_laser_system
+					mid_3_custom_slot = ship_weapon_laser_system
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_4
+				amount = 100
+				producer = PRC
+				variant_name = "ZTZ-100"
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_4
+				amount = 100
+				producer = PRC
+				variant_name = "ZTZ-100A"
+			}
+			add_equipment_to_stockpile = {
+				type = ship_hull_super_heavy_2
+				amount = 5
+				producer = PRC
+				variant_name = "057型导弹驱逐舰"
 			}
 		}
 	}
@@ -158,14 +323,16 @@ debug_decisions = {
 	PRC_increase_national_nuclear_power_capability = {
 		visible = {
 			tag = PRC
-			is_debug = yes
-			#has_completed_focus = 
+			is_debug = yes 
 		}
 		complete_effect = {
 			add_political_power = 2000
 			add_command_power = 500
 			set_technology = {
 				advanced_ballistic_missile = 1
+				advanced_cruise_antiship_missile = 1
+				suicide_drone_tech3 = 1
+				suicide_drone_tech4 = 1
 			}
 			add_equipment_to_stockpile = {
 				type = nuclear_missile_equipment_1
@@ -184,14 +351,74 @@ debug_decisions = {
 			}
 			add_equipment_to_stockpile = {
 				type = ballistic_missile_equipment_3
-				amount = 10000
+				amount = 5000
 				producer = PRC
 			}
 			add_equipment_to_stockpile = {
-				type = sam_missile_equipment_2
-				amount = 1000
+				type = guided_missile_equipment_3
+				amount = 5000
 				producer = PRC
 			}
+			add_equipment_to_stockpile = {
+				type = cruise_antiship_missile_equipment_3
+				amount = 5000
+				producer = PRC
+			}
+		}
+	}
+
+	PRC_space_gui_debug = {
+		icon = generic_industry
+		visible = {
+			is_debug = yes
+			original_tag = PRC
+		}
+
+		complete_effect = {
+			# 只打开天河工程 GUI（无需完成曙光计划国策）
+			log = "TFR: space gui debug decision completed, flag set"
+			set_country_flag = TFR_space_gui_debug
+		}
+	}
+
+	PRC_space_gui_full_progress = {
+		icon = generic_industry
+		visible = {
+			is_debug = yes
+			original_tag = PRC
+			has_country_flag = TFR_space_gui_debug
+		}
+
+		complete_effect = {
+			# 完成天河工程全部进度（需先执行 PRC_space_gui_debug 打开 GUI）
+			log = "TFR: space full progress debug decision completed"
+			set_country_flag = PRC_space_done_committee
+			set_country_flag = PRC_space_done_integrate
+			set_country_flag = PRC_space_done_wenchang
+			set_country_flag = PRC_space_done_jiuquan
+			set_country_flag = PRC_space_done_tracking
+			set_country_flag = PRC_space_done_recon_sat
+			set_country_flag = PRC_space_done_comm_const
+			set_country_flag = PRC_space_done_beidou
+			set_country_flag = PRC_space_done_early_warning
+			set_country_flag = PRC_space_done_tianhe
+			set_country_flag = PRC_space_done_wentian
+			set_country_flag = PRC_space_done_mengtian
+			set_country_flag = PRC_space_done_xuntian
+			set_country_flag = PRC_space_done_robotic_arm
+			set_country_flag = PRC_space_done_space_power
+			set_country_flag = PRC_space_done_resupply
+			set_country_flag = PRC_space_done_high_orbit
+			set_country_flag = PRC_space_done_energy_platform
+			set_country_flag = PRC_space_done_ecm_array
+			set_country_flag = PRC_space_done_airdrop
+			set_country_flag = PRC_space_done_interception
+			set_country_flag = PRC_space_done_nuclear_platform
+			set_variable = { PRC_space_phase1_count = 5 }
+			set_variable = { PRC_space_phase2_count = 4 }
+			set_variable = { PRC_space_phase3_count = 4 }
+			set_variable = { PRC_space_phase4_count = 5 }
+			set_variable = { PRC_space_phase5_count = 4 }
 		}
 	}
 }

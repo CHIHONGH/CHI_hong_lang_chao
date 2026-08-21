@@ -18,30 +18,6 @@ shared_focus = {
     cancel_if_invalid = yes
     #relative_position_id =
     completion_reward = {
-        set_variable = {
-            PLA_new_left_decryption_power_dynamic_var = 25
-        }
-        set_variable = {
-            PLA_new_left_crypto_strength_dynamic_var = 1
-        }
-        set_variable = {
-            PLA_new_left_intel_network_gain_factor_dynamic_var = 0.25
-        }
-        set_variable = {
-            PLA_plaaf_var_experience_gain_air = 0.1
-        }
-        set_variable = {
-            PLA_plaaf_var_air_training_xp_gain_factor = 0.3
-        }
-        set_variable = {
-            PLA_plan_naval_light_gun_hit_chance_factor_var = 0.1
-        }
-        set_variable = {
-            PLA_plan_naval_heavy_gun_hit_chance_factor_var = 0.1
-        }
-        set_variable = {
-            PLA_plan_experience_gain_navy_factor_var = 0.1
-        }
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
         }
@@ -65,6 +41,16 @@ shared_focus = {
                 instant_build = yes
             }
         }
+        add_to_variable = { var = PRC_space_phase1_count value = 1 }
+        add_to_variable = { var = PRC_space_phase2_count value = 1 }
+        add_to_variable = { var = PRC_space_phase3_count value = 1 }
+        add_to_variable = { var = PRC_space_phase4_count value = 1 }
+        add_to_variable = { var = PRC_space_phase5_count value = 1 }
+        unlock_decision_tooltip = PRC_national_orbital_strategy_committee_new_left
+        unlock_decision_tooltip = PRC_integrate_military_aerospace_new_left
+        unlock_decision_tooltip = PRC_expand_wenchang_launch_center_new_left
+        unlock_decision_tooltip = PRC_build_jiuquan_second_launch_zone_new_left
+        unlock_decision_tooltip = PRC_orbital_tracking_network_new_left
     }
 }
 
@@ -102,74 +88,17 @@ shared_focus = {
         add_dynamic_modifier = {
             modifier = PRC_PLA_masterwork_dynamic
         }
-        # if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_1
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_1
-        #         add_idea = PLA_pla_army_2
-        #     }
-        # }
-        # else_if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_2
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_2
-        #         add_idea = PLA_pla_army_3
-        #     }
-        # }
-        # else_if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_3
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_3
-        #         add_idea = PLA_pla_army_4
-        #     }
-        # }
-        # else_if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_4
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_4
-        #         add_idea = PLA_pla_army_5
-        #     }
-        # }
-        # else_if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_5
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_5
-        #         add_idea = PLA_pla_army_6
-        #     }
-        # }
-        # else_if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_6
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_6
-        #         add_idea = PLA_pla_army_7
-        #     }
-        # }
-        # else_if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_7
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_7
-        #         add_idea = PLA_pla_army_8
-        #     }
-        # }
-        # else = {
-        #     add_ideas = PLA_pla_army_1
-        # }
-        add_dynamic_modifier = {
-            modifier = PLA_general_staff_dynamic
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_1
+            }
+        }
+        add_to_variable = { var = PLA_army_decryption_power_dynamic value = 25 }
+        add_to_variable = { var = PLA_army_crypto_strength_dynamic value = 1 }
+        add_to_variable = { var = PLA_army_intel_network_gain_factor_dynamic value = 0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
         if = {
             limit = { 
@@ -328,7 +257,7 @@ shared_focus = {
         add_doctrine_cost_reduction = {
             cost_reduction = 0.5
             name = PLA_not_forget_the_traditions_of_the_Red_Army
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
         if = {
             limit = {
@@ -606,38 +535,40 @@ shared_focus = {
         army_experience = 50
         navy_experience = 50
         air_experience = 50
-        add_to_variable = {
-            PLA_new_left_army_core_attack_factor_dynamic_var = 0.15
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_2
+            }
         }
-        add_to_variable = {
-            PLA_new_left_army_core_defence_factor_dynamic_var = 0.15
-        }
-        add_to_variable = {
-            PLA_new_left_experience_gain_army_unit_factor_dynamic_var = 0.1
+        add_to_variable = { var = PLA_army_army_core_attack_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_army_army_core_defence_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_army_experience_gain_army_unit_factor_dynamic value = 0.10 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_1
-                add_idea = PLA_pla_army_2
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_1
             }
         }
-        # if = {
-        #     limit = {
-        #         has_idea = PLA_pla_army_1
-        #     }
-        #     swap_ideas = {
-        #         remove_idea = PLA_pla_army_1
-        #         add_idea = PLA_pla_army_2
-        #     }
-        # }
-        # else = {
-        #     add_ideas = PLA_pla_army_1
-        # }
-        add_dynamic_modifier = {
-            modifier = PLA_plaaf
+        add_to_variable = { var = PLA_navy_naval_light_gun_hit_chance_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_naval_heavy_gun_hit_chance_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_experience_gain_navy_factor_dynamic value = 0.10 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
         }
-        add_dynamic_modifier = {
-            modifier = PLA_plan
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_1
+            }
+        }
+        add_to_variable = { var = PLA_air_air_mission_xp_gain_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_ace_generation_chance_factor_dynamic value = 0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
         custom_effect_tooltip = PLA_general_staff_dynamic_tt
     }
@@ -679,59 +610,20 @@ shared_focus = {
         add_doctrine_cost_reduction = {
             cost_reduction = 0.5
             name = PLA_New_LuJun_Xiangqianjin
-            category = land_doctrine
-        }
-        custom_effect_tooltip = Chinese_military_reform_1_tt
-        add_to_variable = {
-            PLA_new_left_battalion_upkeep_factor_dynamic_var = 0.15
-        }
-        add_to_variable = {
-            PLA_new_left_research_speed_factor_dynamic_var = 0.1
+            category = cat_old_land_doctrine
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_2
-                add_idea = PLA_pla_army_3
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_3
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_1
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_1
-        #             add_idea = PLA_pla_army_2
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_2
-        #             add_idea = PLA_pla_army_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_3
-        #             add_idea = PLA_pla_army_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_4
-        #             add_idea = PLA_pla_army_5
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_planning_decay_rate_factor_dynamic value = -0.25 }
+        add_to_variable = { var = PLA_army_max_planning_dynamic value = 0.1 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
+        }
     }
 }
 
@@ -774,66 +666,19 @@ shared_focus = {
             uses = 3
             bonus = 1
         }
-        custom_effect_tooltip = Chinese_military_reform_1_tt
-        add_equipment_bonus = {
-            name = PLA_artillery_wins_that_integrating_information_and_fire
-            bonus = { 
-                self_propelled_artillery = {
-					soft_attack = 0.25		#软攻
-					hard_attack = 0.25		#硬攻
-					breakthrough = 0.25		#突破
-					combat_width = -0.4	#宽度
-					instant = yes
-				}
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_4
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_2
-        #             add_idea = PLA_pla_army_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_3
-        #             add_idea = PLA_pla_army_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_4
-        #             add_idea = PLA_pla_army_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_5
-        #             add_idea = PLA_pla_army_6
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_6
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_6
-        #             add_idea = PLA_pla_army_7
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.05 }
+        add_to_variable = { var = PLA_army_rocket_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_recon_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.05 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
+        }
     }
 }
 
@@ -872,74 +717,21 @@ shared_focus = {
             cost_reduction = 0.75
             uses = 3
             name = PLA_LianQingbudui_Gaige
-            category = land_doctrine
-        }
-        custom_effect_tooltip = Chinese_military_reform_1_tt
-        add_to_variable = {
-            PLA_new_left_army_speed_factor_dynamic_var = 0.15
-        }
-        add_to_variable = {
-            PLA_new_left_attrition_dynamic_var = -0.25
-        }
-        add_to_variable = {
-            PLA_new_left_supply_node_range_dynamic_var = 0.25
-        }
-        add_to_variable = {
-            PLA_new_left_supply_consumption_factor_dynamic_var = -0.15
+            category = cat_old_land_doctrine
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_4
-                add_idea = PLA_pla_army_5
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_5
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_2
-        #             add_idea = PLA_pla_army_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_3
-        #             add_idea = PLA_pla_army_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_4
-        #             add_idea = PLA_pla_army_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_5
-        #             add_idea = PLA_pla_army_6
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_6
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_6
-        #             add_idea = PLA_pla_army_7
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_army_army_speed_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_army_attrition_dynamic value = -0.25 }
+        add_to_variable = { var = PLA_army_supply_node_range_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_army_supply_consumption_factor_dynamic value = -0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
+        }
     }
 }
 
@@ -974,65 +766,22 @@ shared_focus = {
         mio:PRC_dajiang_organization = {	###大疆
             add_mio_funds = 1790
         }
-        unlock_decision_tooltip = PRC_unmanned_mechanized_upgrade
-        unlock_decision_tooltip  = PRC_heavy_paratrooper_upgrade
-        unlock_decision_tooltip  = PRC_heavy_synthetic_battalion_upgrade
+        unlock_decision_tooltip = PRC_synthetic_battalion_reform
+        unlock_decision_tooltip  = PRC_synthetic_battalion_exoskeleton_equipment_upgrade
+        unlock_decision_tooltip = PRC_use_me_must_win
         ###解锁特殊项目研究（陆军）
-        custom_effect_tooltip = Chinese_military_reform_1_tt
-        add_to_variable = {
-            PLA_new_left_command_power_gain_dynamic_var = 0.15
-        }
-        add_to_variable = {
-            PLA_new_left_land_doctrine_cost_factor_dynamic_var = -0.1
-        }
-        add_to_variable = {
-            PLA_new_left_experience_gain_army_factor_dynamic_var = 0.15
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_5
-                add_idea = PLA_pla_army_6
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_6
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_4
-        #             add_idea = PLA_pla_army_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_5
-        #             add_idea = PLA_pla_army_6
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_6
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_6
-        #             add_idea = PLA_pla_army_7
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_7
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_7
-        #             add_idea = PLA_pla_army_8
-        #         }
-        #     }
-        # }
-        unlock_decision_tooltip = PRC_use_me_must_win
+        add_to_variable = { var = PLA_army_command_power_gain_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_army_army_org_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_breakthrough_factor_dynamic value = 0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
+        }
     }
 }
 
@@ -1066,54 +815,22 @@ shared_focus = {
             cost_reduction = 0.75
             name = PLA_CiShiDai_KongJun
             uses = 2
-            category = air_doctrine
-        }
-        
-        custom_effect_tooltip = Chinese_military_reform_2_tt
-        add_to_variable = {
-            PLA_plaaf_var_air_attack_factor = 0.1
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_defence_factor = 0.1
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_superiority_efficiency = 0.15
+            category = cat_old_air_doctrine
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plaaf_air_1
-                add_idea = PLA_plaaf_air_2
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_2
             }
         }
-        # hidden_effect = {
-        #     # if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_1
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_1
-        #     #         add_idea = PLA_plaaf_air_2
-        #     #     }
-        #     # }
-        #     # else_if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_2
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_2
-        #     #         add_idea = PLA_plaaf_air_3
-        #     #     }
-        #     # }
-        #     # else_if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_3
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_3
-        #     #         add_idea = PLA_plaaf_air_4
-        #     #     }
-        #     # }
-        # }
+        add_to_variable = { var = PLA_air_aircraft_upkeep_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_defence_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_training_xp_gain_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_superiority_efficiency_dynamic value = 0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
+        }
     }
 }
 
@@ -1165,64 +882,14 @@ shared_focus = {
             }
         }
         add_ideas = PRC_mass_aircraft_production
-        custom_effect_tooltip = Chinese_military_reform_2_tt
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plaaf_air_3
-                add_idea = PLA_plaaf_air_4
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_4
             }
         }
-        
         hidden_effect = {
-            add_equipment_bonus = {
-                name = PLA_Feiji_LiuShuixian
-                bonus = { 
-                    fighter_equipment = {
-                        build_cost_ic = -0.15
-                        instant = yes
-                    }
-                    medium_plane_airframe = {
-                        build_cost_ic = -0.125
-                        instant = yes
-                    }
-                }
-            }
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_2
-        #             add_idea = PLA_plaaf_air_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_3
-        #             add_idea = PLA_plaaf_air_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_4
-        #             add_idea = PLA_plaaf_air_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_5
-        #             add_idea = PLA_plaaf_air_6
-        #         }
-        #     }
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
     }
 }
@@ -1262,63 +929,20 @@ shared_focus = {
             unmanned_aircraft = 1
         }
         add_military_development = yes
-        custom_effect_tooltip = Chinese_military_reform_2_tt
-        add_to_variable = {
-            PLA_plaaf_var_air_attack_factor = 0.25
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_defence_factor = 0.25
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_agility_factor = 0.25
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_maximum_speed_factor = 0.2
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plaaf_air_2
-                add_idea = PLA_plaaf_air_3
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_3
             }
         }
-        # hidden_effect = {
-        #     # if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_2
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_2
-        #     #         add_idea = PLA_plaaf_air_3
-        #     #     }
-        #     # }
-        #     # else_if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_3
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_3
-        #     #         add_idea = PLA_plaaf_air_4
-        #     #     }
-        #     # }
-        #     # else_if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_4
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_4
-        #     #         add_idea = PLA_plaaf_air_5
-        #     #     }
-        #     # }
-        #     # else_if = {
-        #     #     limit = {
-        #     #         has_idea = PLA_plaaf_air_5
-        #     #     }
-        #     #     swap_ideas = {
-        #     #         remove_idea = PLA_plaaf_air_5
-        #     #         add_idea = PLA_plaaf_air_6
-        #     #     }
-        #     # }
-        # }
+        add_to_variable = { var = PLA_air_aircraft_upkeep_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_attack_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_air_air_defence_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_air_air_agility_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_air_air_maximum_speed_factor_dynamic value = 0.20 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
+        }
     }
 }
 
@@ -1355,60 +979,20 @@ shared_focus = {
             value = 0.05
         }
         add_military_development = yes
-        custom_effect_tooltip = Chinese_military_reform_2_tt
-        add_to_variable = {
-            PLA_plaaf_var_air_superiority_efficiency = 0.2
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_mission_efficiency = 0.15
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_wing_xp_loss_when_killed_factor = -0.25
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plaaf_air_4
-                add_idea = PLA_plaaf_air_5
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_5
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_3
-        #             add_idea = PLA_plaaf_air_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_4
-        #             add_idea = PLA_plaaf_air_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_5
-        #             add_idea = PLA_plaaf_air_6
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plaaf_air_6
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plaaf_air_6
-        #             add_idea = PLA_plaaf_air_7
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_air_aircraft_upkeep_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_air_air_mission_efficiency_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_air_air_superiority_detect_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_weather_penalty_dynamic value = -0.40 }
+        add_to_variable = { var = PLA_air_air_night_penalty_dynamic value = -0.40 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
+        }
     }
 }
 
@@ -1441,54 +1025,18 @@ shared_focus = {
             uses = 2
             category = naval_equipment			#科技
         }
-        custom_effect_tooltip = Chinese_military_reform_3_tt
-        add_to_variable = {
-            PLA_plan_navy_max_range_factor_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_naval_coordination_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_industrial_capacity_dockyard_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_strike_force_movement_org_loss_var = -0.15
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plan_navy_1
-                add_idea = PLA_plan_navy_2
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_2
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_1
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_1
-        #             add_idea = PLA_plan_navy_2
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_2
-        #             add_idea = PLA_plan_navy_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_3
-        #             add_idea = PLA_plan_navy_4
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_naval_coordination_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_industrial_capacity_dockyard_dynamic value = 0.20 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
     }
 }
 
@@ -1513,8 +1061,7 @@ shared_focus = {
     cancel_if_invalid = yes
     completion_reward = {
         set_technology = {
-            cruise_antiship_missile = 1
-            arsenal_ship_equipment = 1
+            ASBM_launcher = 1
         }
         set_temp_variable = {
             var = debt_var_temp
@@ -1527,61 +1074,19 @@ shared_focus = {
             ahead_reduction = 2
             category = bb_tech
         }
-        custom_effect_tooltip = Chinese_military_reform_3_tt
         custom_effect_tooltip = PRC_AG_weapons_tt
-        add_to_variable = {
-            PLA_plan_navy_capital_ship_defence_factor_var = 0.25
-        }
-        add_to_variable = {
-            PLA_plan_navy_capital_ship_attack_factor_var = 0.25
-        }
-        add_to_variable = {
-            PLA_plan_shore_bombardment_bonus_var = 0.25
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plan_navy_2
-                add_idea = PLA_plan_navy_3
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_3
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_2
-        #             add_idea = PLA_plan_navy_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_3
-        #             add_idea = PLA_plan_navy_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_4
-        #             add_idea = PLA_plan_navy_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_5
-        #             add_idea = PLA_plan_navy_6
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_navy_capital_ship_attack_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_navy_navy_capital_ship_defence_factor_dynamic value = 0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
     }
 }
 
@@ -1616,63 +1121,24 @@ shared_focus = {
             ahead_reduction = 2
             category = cv_tech
         }
-        custom_effect_tooltip = Chinese_military_reform_3_tt
-        add_to_variable = {
-            PLA_plan_sortie_efficiency_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_navy_anti_air_attack_factor_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_spotting_chance_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_navy_screen_defence_factor_var = 0.25
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plan_navy_3
-                add_idea = PLA_plan_navy_4
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_4
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_2
-        #             add_idea = PLA_plan_navy_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_3
-        #             add_idea = PLA_plan_navy_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_4
-        #             add_idea = PLA_plan_navy_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_5
-        #             add_idea = PLA_plan_navy_6
-        #         }
-        #     }
-        # }
+        set_technology = {
+            tremendous_power = 1
+        }
+        custom_effect_tooltip = PRC_tremendous_power_tt
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_sortie_efficiency_dynamic value = 0.40 }
+        add_to_variable = { var = PLA_navy_navy_anti_air_attack_factor_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_navy_spotting_chance_dynamic value = 0.20 }
+        add_to_variable = { var = PLA_navy_navy_screen_defence_factor_dynamic value = 0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
     }
 }
 
@@ -1706,52 +1172,79 @@ shared_focus = {
 			days = 250
 		}
 		custom_effect_tooltip = tooltip_white_line
+        #country_event = china.
 		if = {
 			limit = {
 				has_dlc = "Man the Guns"
 			}
 			set_technology = {
 				improved_ship_hull_heavy = 1
-                Tremendous_power = 1
+                molin_armor = 1
+                nuclear_ship_engine = 1
 			}
 			create_equipment_variant = {
-				name = "Type 057 Qiang"
-				type = ship_hull_heavy_3
+				name = "057型导弹驱逐舰"
+				type = ship_hull_super_heavy_2
 				parent_version = 0
 				modules = {
-					fixed_ship_battery_slot = ship_heavy_battery_2
-					fixed_ship_anti_air_slot = ship_anti_air_3
-					fixed_ship_fire_control_system_slot = ship_fire_control_system_2
-					fixed_ship_radar_slot = ship_radar_2
-					fixed_ship_engine_slot = heavy_ship_engine_3
-					fixed_ship_secondaries_slot = ship_secondaries_2
-					fixed_ship_armor_slot = ship_armor_bb_2
-					front_1_custom_slot = ship_heavy_battery_2
-					mid_1_custom_slot = ship_airplane_launcher_2
-					mid_2_custom_slot = ship_heavy_battery_2
-					rear_1_custom_slot = ship_heavy_battery_2
+					fixed_ship_armor_slot = ship_armor_shbb_molin
+                    fixed_ship_battery_slot = ship_missile_launcher_2
+                    fixed_ship_engine_slot = heavy_ship_nuclear_engine
+                    fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+                    fixed_ship_radar_slot = ship_radar_4
+                    fixed_ship_anti_air_slot = ship_weapon_laser_system
+                    fixed_ship_secondaries_slot = empty
+                    front_1_custom_slot = ship_missile_launcher_2
+                    front_2_custom_slot = ship_missile_launcher_2
+                    rear_1_custom_slot = ship_missile_launcher_2
+                    rear_2_custom_slot = ship_missile_launcher_2
+                    mid_1_custom_slot = ship_weapon_laser_system
+                    mid_2_custom_slot = ship_weapon_laser_system
+                    mid_3_custom_slot = ship_weapon_laser_system
 				}
 			}
 			add_equipment_production = {
 				equipment = {
-					type = ship_hull_heavy_3
+					type = ship_hull_super_heavy_2
 					creator = "PRC"
-					version_name = "Type 057 Qiang"
+					version_name = "057型导弹驱逐舰"
 				}
-				name = "Type 057 Qiang 1"
+				name = "台北舰"
 				requested_factories = 5
-				progress = 0.2
+				progress = 0.8
 				amount = 1
 			}
 			add_equipment_production = {
 				equipment = {
-					type = ship_hull_heavy_3
+					type = ship_hull_super_heavy_2
 					creator = "PRC"
-					version_name = "Type 057 Qiang"
+					version_name = "057型导弹驱逐舰"
 				}
-				name = "Type 057 Qiang 2"
+				name = "高雄舰"
 				requested_factories = 5
-				progress = 0.2
+				progress = 0.75
+				amount = 1
+			}
+            add_equipment_production = {
+				equipment = {
+					type = ship_hull_super_heavy_2
+					creator = "PRC"
+					version_name = "057型导弹驱逐舰"
+				}
+				name = "台中舰"
+				requested_factories = 5
+				progress = 0.7
+				amount = 1
+			}
+            add_equipment_production = {
+				equipment = {
+					type = ship_hull_super_heavy_2
+					creator = "PRC"
+					version_name = "057型导弹驱逐舰"
+				}
+				name = "花莲舰"
+				requested_factories = 5
+				progress = 0.65
 				amount = 1
 			}
 		}
@@ -1783,18 +1276,12 @@ shared_focus = {
 			}
 		}
 		custom_effect_tooltip = tooltip_white_line
-		# add_doctrine_cost_reduction = {
-		# 	name = PRC_creation_of_full_scale_missile_cruisers
-		# 	cost_reduction = 0.75
-		# 	uses = 3
-		# 	category = new_fleet_in_being
-		# }
-        add_mastery_bonus = {
-            name = PAL_bulky_giant_ship_pointing_straight_east
-            bonus = 0.75
-            days = 90
-            grand_doctrine = new_fleet_in_being
-        }
+		add_doctrine_cost_reduction = {
+			name = PRC_creation_of_full_scale_missile_cruisers
+			cost_reduction = 0.75
+			uses = 3
+			category = cat_fleet_in_being
+		}
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
 			var = debt_var_temp
@@ -1807,51 +1294,20 @@ shared_focus = {
             category = naval_doctrine
             name = PLA_not_forget_the_traditions_of_the_Red_Army
         }
-        custom_effect_tooltip = Chinese_military_reform_3_tt
-        add_to_variable = {
-            PLA_plan_naval_coordination_var = 0.15
-        }
-        add_to_variable = {
-            PLA_plan_sortie_efficiency_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_navy_org_var = 0.15
-        }
-        add_to_variable = {
-            PLA_plan_naval_torpedo_reveal_chance_factor_var = -0.2
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_plan_navy_4
-                add_idea = PLA_plan_navy_5
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_5
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_4
-        #             add_idea = PLA_plan_navy_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_plan_navy_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_5
-        #             add_idea = PLA_plan_navy_6
-        #         }
-        #     }
-        #     else = {
-        #         swap_ideas = {
-        #             remove_idea = PLA_plan_navy_6
-        #             add_idea = PLA_plan_navy_7
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_navy_ship_upkeep_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_naval_coordination_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_naval_has_potf_in_combat_attack_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_navy_org_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_navy_naval_critical_score_chance_factor_dynamic value = 0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
     }
 }
 
@@ -1875,235 +1331,41 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
-        custom_effect_tooltip = Chinese_military_reform_4_tt
-        add_to_variable = {
-            PLA_new_left_org_loss_when_moving_factor_dynamic_var = -0.25
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_8
+            }
         }
-        add_to_variable = {
-            PLA_new_left_terrain_penalty_reduction_dynamic_var = -0.3
-        }
-        add_to_variable = {
-            PLA_new_left_army_fuel_consumption_factor_dynamic_var = -0.3
-        }
-        add_to_variable = {
-            PLA_plan_navy_capital_ship_attack_factor_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_navy_max_range_factor_var = 0.25
-        }
-        add_to_variable = {
-            PLA_plan_repair_speed_factor_var = 0.3
-        }
-        add_to_variable = {
-            PLA_plan_navy_fuel_consumption_factor_var = -0.3
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_wing_xp_loss_when_killed_factor = -0.2
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_range_factor = 0.25
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_fuel_consumption_factor = -0.3
+        add_to_variable = { var = PLA_army_org_loss_when_moving_dynamic value = -0.25 }
+        add_to_variable = { var = PLA_army_terrain_penalty_reduction_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_army_army_fuel_consumption_factor_dynamic value = -0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_7
-                add_idea = PLA_pla_army_8
-            }
-            swap_ideas = {
-                remove_idea = PLA_plan_navy_6
-                add_idea = PLA_plan_navy_7
-            }
-            swap_ideas = {
-                remove_idea = PLA_plaaf_air_6
-                add_idea = PLA_plaaf_air_7
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_7
             }
         }
-
+        add_to_variable = { var = PLA_navy_navy_max_range_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_repair_speed_factor_dynamic value = 0.30 }
+        add_to_variable = { var = PLA_navy_navy_fuel_consumption_factor_dynamic value = -0.25 }
         hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_1
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_1
-        #             add_idea = PLA_pla_army_2
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_2
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_2
-        #             add_idea = PLA_pla_army_3
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_3
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_3
-        #             add_idea = PLA_pla_army_4
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_4
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_4
-        #             add_idea = PLA_pla_army_5
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_5
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_5
-        #             add_idea = PLA_pla_army_6
-        #         }
-        #     }
-        #     else_if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_6
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_6
-        #             add_idea = PLA_pla_army_7
-        #         }
-        #     }
-            add_equipment_bonus = {
-                name = PAL_QiangHua_ZhanChangZhiYuan
-                bonus = {
-                    destroyer = {	#小型护卫舰
-                        naval_light_gun_hit_chance_factor = 0.05	
-                        naval_heavy_gun_hit_chance_factor = 0.1 
-                        instant = yes
-                    }
-                    light_cruiser = {	#护卫舰
-                        naval_light_gun_hit_chance_factor = 0.05	
-                        naval_heavy_gun_hit_chance_factor = 0.1 
-                        instant = yes
-                    }
-                    heavy_cruiser = {	#驱逐舰
-                        naval_light_gun_hit_chance_factor = 0.05	
-                        naval_heavy_gun_hit_chance_factor = 0.1 
-                        instant = yes
-                    }
-                    battleship = {	#战列巡洋舰
-                        naval_light_gun_hit_chance_factor = 0.05	
-                        naval_heavy_gun_hit_chance_factor = 0.1 
-                        instant = yes
-                    }
-                    battle_cruiser = {	#导弹巡洋舰
-                        naval_light_gun_hit_chance_factor = 0.05	
-                        naval_heavy_gun_hit_chance_factor = 0.1 
-                        instant = yes
-                    }
-                    carrier = {		#航母
-                        naval_light_gun_hit_chance_factor = 0.05	
-                        naval_heavy_gun_hit_chance_factor = 0.1 
-                        surface_visibility = -0.1	#可见度
-                        max_organisation = 0.2	#组织度
-                        max_strength = 0.1		#hp
-                        instant = yes
-                    }
-                }
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_7
             }
-            # if = {
-            #     limit = {
-            #         has_idea = PLA_plan_navy_1
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plan_navy_1
-            #         add_idea = PLA_plan_navy_2
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plan_navy_2
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plan_navy_2
-            #         add_idea = PLA_plan_navy_3
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plan_navy_3
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plan_navy_3
-            #         add_idea = PLA_plan_navy_4
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plan_navy_4
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plan_navy_4
-            #         add_idea = PLA_plan_navy_5
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plan_navy_5
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plan_navy_5
-            #         add_idea = PLA_plan_navy_6
-            #     }
-            # }
-            # if = {
-            #     limit = {
-            #         has_idea = PLA_plaaf_air_1
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plaaf_air_1
-            #         add_idea = PLA_plaaf_air_2
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plaaf_air_2
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plaaf_air_2
-            #         add_idea = PLA_plaaf_air_3
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plaaf_air_3
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plaaf_air_3
-            #         add_idea = PLA_plaaf_air_4
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plaaf_air_4
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plaaf_air_4
-            #         add_idea = PLA_plaaf_air_5
-            #     }
-            # }
-            # else_if = {
-            #     limit = {
-            #         has_idea = PLA_plaaf_air_5
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_plaaf_air_5
-            #         add_idea = PLA_plaaf_air_6
-            #     }
-            # }
+        }
+        add_to_variable = { var = PLA_air_air_wing_xp_loss_when_killed_factor_dynamic value = -0.20 }
+        add_to_variable = { var = PLA_air_air_range_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_fuel_consumption_factor_dynamic value = -0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
         }
     }
 }
@@ -2146,43 +1408,40 @@ shared_focus = {
             uses = 1
             category = cat_anti_air
         }
-        custom_effect_tooltip = Chinese_military_reform_4_tt
-        add_to_variable = {
-            PLA_new_left_army_armor_attack_factor_dynamic_var = 0.15
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_7
+            }
         }
-        add_to_variable = {
-            PLA_new_left_army_attack_factor_dynamic_var = 0.025
-        }
-        add_to_variable = {
-            PLA_plan_navy_capital_ship_attack_factor_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plan_navy_anti_air_attack_factor_var = 0.2
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_strategic_bomber_bombing_factor = 0.15
-        }
-        add_to_variable = {
-            PLA_plaaf_var_production_speed_radar_station_factor = 0.35
-        }
-        add_to_variable = {
-            PLA_plaaf_var_production_speed_anti_air_building_factor = 0.125
+        add_to_variable = { var = PLA_army_rocket_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.05 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_6
-                add_idea = PLA_pla_army_7
-            }
-            swap_ideas = {
-                remove_idea = PLA_plan_navy_5
-                add_idea = PLA_plan_navy_6
-            }
-            swap_ideas = {
-                remove_idea = PLA_plaaf_air_5
-                add_idea = PLA_plaaf_air_6
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_6
             }
         }
-        
+        add_to_variable = { var = PLA_navy_navy_capital_ship_attack_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_navy_navy_anti_air_attack_factor_dynamic value = 0.10 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_6
+            }
+        }
+        add_to_variable = { var = PLA_air_air_strategic_bomber_bombing_factor_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_air_bombing_targetting_dynamic value = 0.25 }
+        add_to_variable = { var = PLA_air_naval_strike_targetting_factor_dynamic value = 0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
+        }
     }
 }
 
@@ -2244,6 +1503,7 @@ shared_focus = {
         }
         set_technology = {
             advanced_ballistic_missile = 1
+            advanced_cruise_antiship_missile = 1
         }
         PRC_add_army_reform_progress = yes
         add_ideas = PLA_dawn_breaked_oriented_wind
@@ -2299,39 +1559,18 @@ shared_focus = {
             }
         }
         custom_effect_tooltip = PLA_DZHQ_4
-        custom_effect_tooltip = Chinese_military_reform_1_tt
-        add_to_variable = {
-            PLA_new_left_land_reinforce_rate_dynamic_var = 0.075
-        }
-        add_to_variable = {
-            PLA_new_left_army_morale_dynamic_var = 0.075
-        }
-        add_to_variable = {
-            PLA_new_left_planning_speed_dynamic_var = 0.15
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_8
-                add_idea = PLA_pla_army_9
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_9
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_9
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_9
-        #             add_idea = PLA_pla_army_10
-        #         }
-        #     }
-        #     else = {
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_8
-        #             add_idea = PLA_pla_army_9
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_army_land_reinforce_rate_dynamic value = 0.075 }
+        add_to_variable = { var = PLA_army_army_morale_factor_dynamic value = 0.12 }
+        add_to_variable = { var = PLA_army_planning_speed_dynamic value = 0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
+        }
         if = {
             limit = {
                 has_idea = PLA_pl_JZGG_5
@@ -2423,36 +1662,18 @@ shared_focus = {
                 }
             }
         }
-        custom_effect_tooltip = Chinese_military_reform_1_tt
-        add_to_variable = {
-            PLA_new_left_battalion_upkeep_factor_dynamic_var = 0.1
-        }
-        add_to_variable = {
-            PLA_new_left_army_attack_factor_dynamic_var = 0.025
-        }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_9
-                add_idea = PLA_pla_army_10
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_10
             }
         }
-        # hidden_effect = {
-        #     if = {
-        #         limit = {
-        #             has_idea = PLA_pla_army_9
-        #         }
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_9
-        #             add_idea = PLA_pla_army_10
-        #         }
-        #     }
-        #     else = {
-        #         swap_ideas = {
-        #             remove_idea = PLA_pla_army_8
-        #             add_idea = PLA_pla_army_9
-        #         }
-        #     }
-        # }
+        add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_land_night_attack_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_combat_width_factor_dynamic value = -0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
+        }
     }
 }
 
@@ -2508,21 +1729,19 @@ shared_focus = {
     }
     available = {
         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        check_variable = { PRC_space_phase1_count >= 5 }
+        check_variable = { PRC_space_phase2_count >= 4 }
+        check_variable = { PRC_space_phase3_count >= 4 }
+        custom_trigger_tooltip = {
+            tooltip = PLA_orbital_drop_available_tt
+            always = no
+        }
     }
     cancel_if_invalid = yes
     relative_position_id = PAL_Forge_the_sword_of_victory
     x = 0
     y = 1
     completion_reward = {
-        if = {
-            limit = {
-                NOT = {
-                    has_country_flag = PRC_new_left_pla_space_force_GUI_open
-                }
-            }
-            set_country_flag = PRC_new_left_pla_space_force_GUI_open
-            custom_effect_tooltip = PRC_new_left_pla_space_force_GUI_open_tt
-        }
         hidden_effect = {
             country_event = prcs.3132
         }
@@ -2530,76 +1749,17 @@ shared_focus = {
             debt_var_temp = 100
         }
         add_debt = yes
-        add_to_variable = {
-            rocket_army_ability_upper_limit = 1
-        }
-        add_to_variable = {
-            rocket_army_ability = 1
-        }
-        custom_effect_tooltip = Chinese_military_reform_1_tt
         custom_effect_tooltip = PLA_rocket_force_tt
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_11
+            }
+        }
+        add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.10 }
+        add_to_variable = { var = PLA_army_max_command_power_dynamic value = 50 }
         hidden_effect = {
-            set_technology = {
-                body_armor8 = 1
-            }
-            division_template = {
-				name = "PRC Space Armed Forces"
-				is_locked = yes
-				#division_cap = 
-				#division_names_group = 
-				priority = 2
-				regiments = {
-					Space_expeditionary_forces = { x = 0 y = 0 }
-					Space_expeditionary_forces = { x = 0 y = 1 }
-					Space_expeditionary_forces = { x = 0 y = 2 }
-					Space_expeditionary_forces = { x = 0 y = 3 }
-					Space_expeditionary_forces = { x = 1 y = 0 }
-					Space_expeditionary_forces = { x = 1 y = 1 }
-					Space_expeditionary_forces = { x = 1 y = 2 }
-					Space_expeditionary_forces = { x = 1 y = 3 }
-					Space_expeditionary_forces = { x = 2 y = 0 }
-					Space_expeditionary_forces = { x = 2 y = 1 }
-					Space_expeditionary_forces = { x = 2 y = 2 }
-					Space_expeditionary_forces = { x = 2 y = 3 }
-					Space_expeditionary_forces = { x = 3 y = 0 }
-					#Space_expeditionary_forces = { x = 3 y = 1 }
-					#Space_expeditionary_forces = { x = 3 y = 2 }
-				}
-				support = {
-					engineer = { x = 0 y = 0 }
-				}
-			}
-            add_to_variable = {
-                var = PRC_oss_space_armed_forces_num
-                value = 12
-			}
-            add_to_variable = {
-                PLA_new_left_battalion_upkeep_factor_dynamic_var = 0.1
-            }
-            add_to_variable = {
-                PLA_new_left_max_command_power_dynamic_var = 50
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PLA_pla_army_10
-                    add_idea = PLA_pla_army_11
-                }
-            }
-            # if = {
-            #     limit = {
-            #         has_idea = PLA_pla_army_9
-            #     }
-            #     swap_ideas = {
-            #         remove_idea = PLA_pla_army_9
-            #         add_idea = PLA_pla_army_10
-            #     }
-            # }
-            # else = {
-            #     swap_ideas = {
-            #         remove_idea = PLA_pla_army_10
-            #         add_idea = PLA_pla_army_11
-            #     }
-            # }
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
     }
 }
@@ -2650,40 +1810,38 @@ shared_focus = {
             value = 0.1
         }
         add_military_development = yes
-        add_to_variable = {
-            PLA_new_left_army_attack_factor_dynamic_var = 0.025
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_pla_army_dummy
+                add_idea = PLA_pla_army_dummy_12
+            }
         }
-        add_to_variable = {
-            PLA_new_left_army_org_factor_dynamic_var = 0.05
-        }
-        add_to_variable = {
-            PLA_plan_sortie_efficiency_var = 0.1
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_ace_generation_chance_factor = 0.15
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_cas_efficiency = 0.1
-        }
-        add_to_variable = {
-            PLA_plaaf_var_air_ace_generation_chance_factor = 0.1
+        add_to_variable = { var = PLA_army_army_attack_factor_dynamic value = 0.05 }
+        add_to_variable = { var = PLA_army_army_org_factor_dynamic value = 0.10 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_pla_army_dynamic }
         }
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PLA_pla_army_11
-                add_idea = PLA_pla_army_12
-            }
-            swap_ideas = {
-                remove_idea = PLA_plan_navy_7
-                add_idea = PLA_plan_navy_8
-            }
-            swap_ideas = {
-                remove_idea = PLA_plaaf_air_7
-                add_idea = PLA_plaaf_air_8
+                remove_idea = PLA_plan_navy_dummy
+                add_idea = PLA_plan_navy_dummy_8
             }
         }
-        
-        
+        add_to_variable = { var = PLA_navy_screening_efficiency_dynamic value = 0.25 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plan_navy_dynamic }
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PLA_plaaf_air_dummy
+                add_idea = PLA_plaaf_air_dummy_8
+            }
+        }
+        add_to_variable = { var = PLA_air_air_power_projection_factor_dynamic value = 0.15 }
+        add_to_variable = { var = PLA_air_air_cas_present_factor_dynamic value = 0.15 }
+        hidden_effect = {
+            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
+        }
         unlock_decision_tooltip = PRC_like_splitting_bamboo
     }
 }

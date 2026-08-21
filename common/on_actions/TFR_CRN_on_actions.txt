@@ -1,0 +1,38 @@
+# TFR_中俄谈判 - on_actions
+# SOV 解体后备：欧陆战争和平会议后无条件割让剩余外东北领土
+
+on_actions = {
+	# SOV 在第二次欧陆战争后作为战败方 → 无条件割让外东北
+	on_peaceconference_ended = {
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = Second_European_War_Outcome
+						option = Second_European_War_Outcome_NATO
+					}
+					NOT = { country_exists = SOV }
+					# 中国未输掉大东亚战争（日本获胜 → 中国失败）
+					NOT = { has_global_flag = PRC_japanese_gaw_victory_global }
+				}
+				TFR_CRN_sov_collapse_transfer = yes
+			}
+		}
+	}
+
+	# 边境战争失败（引擎自动触发，不依赖事件点击）：移除战斗修正 + 重算优势
+	# ROOT 为战败方所在州，owner = 州的所有国
+	on_border_war_lost = {
+		effect = {
+			if = {
+				limit = {
+					owner = {
+						original_tag = PRC
+						has_global_flag = TFR_CRN_conflict_active
+					}
+				}
+				owner = { TFR_CRN_border_war_lose = yes }
+			}
+		}
+	}
+}
