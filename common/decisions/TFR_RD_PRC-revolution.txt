@@ -2122,13 +2122,13 @@ PRC_export_revolution = {
         #不丹
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             # BHU = {
             # 	communist > 0.65
             # }
         }
         visible = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Butan_selected
         }
         fire_only_once = yes
@@ -2204,10 +2204,10 @@ PRC_export_revolution = {
         #尼泊尔
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Nepal_selected
         }
         fire_only_once = yes
@@ -2259,10 +2259,10 @@ PRC_export_revolution = {
         #斯里兰卡
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Sri_Lanka_selected
         }
         fire_only_once = yes
@@ -2339,10 +2339,10 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         visible = {
             has_country_flag = Pakistan_selected
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 25
         days_remove = 25
@@ -2373,10 +2373,10 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         visible = {
             has_country_flag = Pakistan_selected
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 25
         fire_only_once = yes
@@ -2415,11 +2415,11 @@ PRC_export_revolution = {
         visible = {
             AND = {
                 has_country_flag = Pakistan_selected
-                has_completed_focus = Brothers_of_South_Asia
+                has_completed_focus = PRC_nl_red_south_asia
             }
         }
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 25
         days_remove = 30
@@ -2442,7 +2442,7 @@ PRC_export_revolution = {
     PRC_unite_PAK = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
             PAK = {
                 communist > 0.2
                 OR = {
@@ -2452,7 +2452,7 @@ PRC_export_revolution = {
             }
         }
         visible = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Pakistan_selected
             has_country_flag = PRC_PAK_People_Front_flag
             has_country_flag = PAK_Laheer
@@ -2806,10 +2806,10 @@ PRC_export_revolution = {
         #孟加拉
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Banglandash_selected
         }
         fire_only_once = yes
@@ -3940,7 +3940,7 @@ PRC_export_revolution = {
             }
         }
         cost = 25
-        days_remove = 30
+        days_remove = 14
         fire_only_once = yes
         complete_effect = {
             set_country_flag = MEX_interfere_civil_war_saberta_flag
@@ -3983,7 +3983,7 @@ PRC_export_revolution = {
             }
         }
         cost = 35
-        days_remove = 50
+        days_remove = 7
         fire_only_once = yes
         complete_effect = {
             set_country_flag = MEX_interfere_civil_war_coup_flag
@@ -4015,11 +4015,48 @@ PRC_export_revolution = {
         visible = {
             has_country_flag = South_America_selected
         }
-        cost = 30
+        available = {
+            ELN = {
+                has_war = yes
+            }
+        }
+        cost = 50
         days_remove = 30
         days_re_enable = 60
-        complete_effect = {
-            
+        modifier = {
+            supply_consumption_factor = -0.2
+            out_of_supply_factor = -0.2
+            no_supply_grace = 24
+            pocket_penalty = -0.2
+        }
+        remove_effect = {
+            custom_effect_tooltip = South_American_assist_revolution_tt
+            ELN = {
+                add_equipment_to_stockpile = {
+                    type = train_equipment
+                    amount = 20
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = motorized_equipment
+                    amount = 250
+                    producer = PRC
+                }
+                capital_scope = {
+                    add_building_construction = {
+                        type = infrastructure
+                        level = 1
+                        instant_build = yes
+                    }
+                    create_unit = {
+                        division = "division_template = \"Brigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+						allow_spawning_on_enemy_provs = yes
+                        count = 3
+						owner = ZAP
+                    }
+                }
+
+            }
         }
     }
     PRC_mongolia_war = {
