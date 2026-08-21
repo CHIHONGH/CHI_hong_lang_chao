@@ -1,3 +1,4 @@
+| 2026-08-20 | 同步 space force(提交 cd95e50):忠诚僚机控制模块任务加成微调、debug决议补漏low_observability_kit(16项)、坦克模块数值微调、补3漏网模块解锁科技(ship_unmanned_helicopter/tank_advanced_electric_engine/tank_high_velocity_cannon_4,debug补3项现15项) | 4 文件(+59/-11) | 完成 |
 | 2026-08-20 | 同步 space force(提交 8ccc572):5装备模块解锁科技+debug决议一键获取(遥控武器站/反无人机激光/GL7主动防护/舰载激光/低可探测套件)、坦克模块库遥控武器站分类与数值调整、057国策激光配置、飞机模块忠诚僚机/综合电子战、GUI删3个set_temp_variable、装备图标更换(删YJ-18/83、玄武装甲图标移入NVX_naval_icons)、tremendous_power加carrier max_organisation=20;删残留5;用户手工改动:事件ZTZ-100换装+新增ZTZ-100A变体 | 18 文件(+570/-60) | 完成 |
 | 2026-08-20 | 同步 space force(提交 5d9ea65):核引擎模块改名闭环(heavy_ship_nuclear_engine)、EHIHS装甲/电磁炮科技+2新模块、超重直升机idea、新建00_tank_modules.txt坦克模块库、ship_anti_air_4父级修正、三军动态修正按MD同步(删11弃用绑定+22新绑定)、假精神22 dummy增删改、军改国策18项同步MD | 11 文件(+2149/-145,新1) | 完成 |
 # WORKLOG：RedDaw_beta（整合版，原 CHI_hong_lang_chao）
