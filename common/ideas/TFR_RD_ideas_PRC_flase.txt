@@ -719,7 +719,7 @@ ideas = {
                 income_growth_factor = 0.2
             }
         }
-        PRC_nl_jingjiCd4_idea_dummy_2 = {
+        PRC_nl_jingjiCd4_idea_dummy_3 = {
             name = PRC_made_in_china_idea1
 
             allowed = {
@@ -878,11 +878,30 @@ ideas = {
             }
             removal_cost = -1
             modifier = {
-                personal_expense_factor = -0.05
+                stability_factor = -0.1
                 stability_weekly = 0.001
-                consumer_goods_factor = 0.1
+                consumer_goods_factor = 0.15
             }
         }
+        PRC_socialist_culture_start_if = {
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                stability_factor = -0.1
+                breakthrough_factor = 0.05
+                army_attack_against_major_factor = 0.15
+                conscription_factor = 0.125
+                mobilization_speed = 0.20
+                send_volunteer_size = 2
+            }
+        }
+
         PRC_socialist_culture_start10 = {
             picture = generic_covid
             allowed = {
@@ -1033,23 +1052,6 @@ ideas = {
                 poverty_development_monthly = 0.005
 			}
 		}
-		PRC_nl_diyibu_e_idea = {
-            picture = GFX_idea_PRC_made_in_china
-            name = PRC_party_rectification_campaign_empty
-            allowed = {
-                always = no
-            }
-            allowed_civil_war = {
-                always = yes
-            }
-            removal_cost = -1
-            modifier = {
-                personal_value_factor = 0.05
-                industrial_capacity_factory = -0.05
-                society_development_monthly = 0.002
-                authoritarian_democrat_drift = -0.02
-            }
-        }
         PRC_socialist_culture_start16 = {
             picture = generic_covid
             allowed = {
@@ -2252,6 +2254,8 @@ ideas = {
             modifier = {
                 political_power_cost = -0.1
                 stability_factor = 0.05
+                local_resources_factor = 0.1
+                global_building_slots_factor = 0.1
                 consumer_goods_factor = -0.1
                 libertarian_socialist_drift = 0.04
                 totalitarian_socialist_drift = 0.02
@@ -2499,6 +2503,159 @@ ideas = {
                 coordination_bonus = 0.1
                 army_org_regain = 0.1
                 land_reinforce_rate = 0.05
+            }
+        }
+
+        #扫榻（3）触发后
+        PRC_party_rectification_campaign45 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                political_power_gain = 0.25
+                stability_factor = 0.2
+                consumer_goods_factor = -0.05
+                nationalist_drift = -0.03
+                society_development_monthly = 0.003
+            }
+        }
+        #犬牙交错触发后
+        PRC_party_rectification_campaign46 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                stability_factor = 0.2
+                communist_drift = 0.04
+                totalitarian_socialist_drift = -0.04
+                industrial_development_monthly = 0.003
+                farming_development_monthly = 0.003
+            }
+        }
+        #猎狐
+        PRC_party_rectification_campaign47 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                political_power_gain = 0.05
+                personal_expense_factor = -0.125
+                society_development_monthly = 0.003
+                authoritarian_democrat_drift = -0.02
+                nationalist_drift = -0.02
+            }
+        }
+        #苍蝇也要拍
+        PRC_party_rectification_campaign48 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                political_power_gain = 0.03
+                stability_factor = 0.05
+                authoritarian_democrat_drift = -0.03
+            }
+        }
+        #苍蝇也要拍
+        PRC_party_rectification_campaign49 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                political_power_gain = 0.05
+                production_factory_start_efficiency_factor = 0.05
+                society_development_monthly = 0.003
+                communist_drift = 0.05
+                social_democrat_drift = 0.05
+                authoritarian_democrat_drift = -0.02
+                nationalist_drift = -0.02
+            }
+        }
+        #追缉
+        PRC_party_rectification_campaign50 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                stability_factor = 0.05
+                nationalist_drift = -0.1
+                libertarian_socialist_drift = -0.02
+            }
+        }
+        #丰年
+        PRC_party_rectification_campaign51 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                production_factory_max_efficiency_factor = 0.05
+                poverty_development_monthly = 0.003
+                communist_drift = 0.02
+            }
+        }
+        #丰年
+        PRC_party_rectification_campaign52 = {
+            name = PRC_party_rectification_campaign_empty
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                political_power_cost = -0.05
+                production_factory_start_efficiency_factor = 0.05
+                academic_development_monthly = 0.003
+                industrial_development_monthly = 0.003
+                farming_development_monthly = 0.003
+                social_democrat_drift = 0.02
+                communist_drift = 0.05
+                nationalist_drift = -0.02
+                authoritarian_democrat_drift = -0.02
             }
         }
         #红旗不倒
@@ -2816,8 +2973,8 @@ ideas = {
                 political_power_cost = -0.03
                 industrial_capacity_factory = 0.3
                 production_factory_max_efficiency_factor = -0.3
-                nationalist_drift = -0.07
-                authoritarian_democrat_drift = -0.07
+                nationalist_drift = -0.05
+                authoritarian_democrat_drift = -0.05
             }
         }
         PRC_party_rectification_campaign_jiushiminxinturang = {
@@ -3113,6 +3270,153 @@ ideas = {
                 totalitarian_socialist_drift = 0.05
                 authoritarian_democrat_drift = -0.05
                 nationalist_drift = -0.05
+            }
+        }
+        PRC_MEX_modifier_idea0 = {
+            name = PRC_MEX_modifier
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               army_attack_factor = 0.025
+               army_defence_factor = 0.05
+               army_core_defence_factor = 0.025
+               cas_damage_reduction = 0.05
+               army_org_factor = 0.05
+            }
+        }
+        PRC_MEX_modifier_idea = {
+            name = PRC_MEX_modifier
+
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               army_attack_factor = 0.025
+               army_defence_factor = 0.05
+               army_core_defence_factor = 0.025
+               cas_damage_reduction = 0.05
+               army_org_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               
+            }
+        }
+        PRC_chinese_enviroment_dummy1 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                personal_expense_factor = -0.1
+                income_growth_factor = 0.1
+            }
+        }
+        PRC_chinese_enviroment_dummy2 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                monthly_population = 0.1
+                local_resources_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy3 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                consumer_goods_factor = -0.025
+                farming_development_monthly = 0.005
+                industrial_development_monthly = 0.005
+            }
+        }
+        PRC_chinese_enviroment_dummy4 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                local_resources_factor = 0.1
+                factory_energy_consumption = -0.1
+            }
+        }
+        PRC_chinese_enviroment_dummy5 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                consumer_goods_factor = -0.025
+                production_factory_max_efficiency_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy6 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                stability_factor = 0.05
+                research_speed_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy7 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                production_factory_start_efficiency_factor = 0.05
+                farming_development_monthly = 0.005
             }
         }
     }

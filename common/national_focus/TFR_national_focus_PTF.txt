@@ -12,6 +12,7 @@ focus_tree = {
 		}
 	}
 	shared_focus = USA_back_in_business
+	shared_focus = PTF_soaring_white_eagle
 	#Army
 	focus = {
 		id = PTF_vanguard
@@ -93,7 +94,7 @@ focus_tree = {
 		y = 1
 		cost = 2
 		ai_will_do = {
-			base = 20
+			base = 100
 		}
 		relative_position_id = PTF_vanguard
 		prerequisite = {
@@ -106,8 +107,8 @@ focus_tree = {
 					add_idea = PTF_second_continental_army_idea
 				}
 			}
-			add_manpower = 10000
-			add_war_support = 0.05
+			add_manpower = 20000
+			add_war_support = 0.1
 			hidden_effect = {
 				country_event = {
 					#Formation of the Second Continental Army
@@ -123,11 +124,11 @@ focus_tree = {
 				}
 				set_variable = {
 					var = PTF_military_army_org_factor_dynamic_var
-					value = -0.2
+					value = -0.1
 				}
 				set_variable = {
 					var = PTF_military_army_attack_factor_dynamic_var
-					value = -0.15
+					value = -0.1
 				}
 				set_variable = {
 					var = PTF_military_supply_consumption_factor_dynamic_var
@@ -135,7 +136,7 @@ focus_tree = {
 				}
 				set_variable = {
 					var = PTF_military_experience_gain_army_unit_factor_dynamic_var
-					value = -0.15
+					value = -0.1
 				}
 			}
 		}
@@ -148,9 +149,9 @@ focus_tree = {
 		}
 		x = -11
 		y = 1
-		cost = 5
+		cost = 1
 		ai_will_do = {
-			base = 0
+			base = 500
 		}
 		available = {
 			has_completed_focus = PTF_convene_the_third_constitutional_convention
@@ -236,6 +237,23 @@ focus_tree = {
 				idea = PTF_operation_scipio_idea
 				days = 180
 			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					owner = PTF
+					allow_spawning_on_enemy_provs = yes
+					count = 15
+				}
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 10
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 10
+			}
+			
 			activate_mission = PTF_capture_dc
 		}
 	}
@@ -463,7 +481,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -914,7 +932,7 @@ focus_tree = {
 						}
 						add_to_variable = {
 							var = PTF_military_compliance_growth_states_dynamic_var
-							value = 0.1
+							value = 0.15
 						}
 					}
 				}
@@ -1044,7 +1062,7 @@ focus_tree = {
 			hidden_effect = {
 				add_to_variable = {
 					var = PTF_military_army_org_factor_dynamic_var
-					value = 0.05
+					value = 0.075
 				}
 			}
 		}
@@ -1070,6 +1088,14 @@ focus_tree = {
 			hidden_effect = {
 				load_oob = PTF_minutemen
 			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					owner = PTF
+					allow_spawning_on_enemy_provs = yes
+					count = 5
+				}
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PTF_second_continental_army_dummy_idea
@@ -1083,7 +1109,7 @@ focus_tree = {
 			hidden_effect = {
 				add_to_variable = {
 					var = PTF_military_max_dig_in_factor_dynamic_var
-					value = 0.05
+					value = 0.075
 				}
 			}
 		}
@@ -1129,7 +1155,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = PTF_military_command_power_gain_mult_dynamic_var
-					value = 0.05
+					value = 0.1
 				}
 				add_to_variable = {
 					var = PTF_military_supply_consumption_factor_dynamic_var
@@ -1296,7 +1322,7 @@ focus_tree = {
 		}
 		x = -2
 		y = 6
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -1539,7 +1565,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = PTF_military_army_org_factor_dynamic_var
-					value = 0.05
+					value = 0.075
 				}
 			}
 		}
@@ -1579,7 +1605,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = PTF_military_army_org_regain_dynamic_var
-					value = 0.1
+					value = 0.15
 				}
 			}
 		}
@@ -1608,10 +1634,10 @@ focus_tree = {
 			}
 			add_equipment_to_stockpile = {
 				type = support_equipment
-				amount = 1000
+				amount = 2000
 				producer = PTF
 			}
-			add_stability = -0.025
+			add_stability = -0.02
 			set_temp_variable = {
 				var = debt_var_temp
 				value = 10
@@ -1704,7 +1730,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = PTF_military_supply_consumption_factor_dynamic_var
-					value = 0.15
+					value = 0.1
 				}
 			}
 			country_event = {
@@ -1743,7 +1769,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = PTF_military_army_speed_factor_dynamic_var
-					value = 0.05
+					value = 0.1
 				}
 				add_to_variable = {
 					var = PTF_military_dig_in_speed_factor_dynamic_var
@@ -1800,7 +1826,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			USA_enable_militia_recruitment = yes
-			add_political_power = 50
+			add_political_power = 100
 			set_division_template_lock = {
 				division_template = "Minutemen"
 				is_locked = no
@@ -1833,24 +1859,40 @@ focus_tree = {
 		completion_reward = {
 			1077 = {
 				create_unit = {
-					division = "division_template = \"Minutemen\" start_experience_factor = 0.25"
+					division = "division_template = \"Minutemen\" start_experience_factor = 0.4"
 					owner = PTF
 				}
 				create_unit = {
-					division = "division_template = \"Minutemen\" start_experience_factor = 0.25"
+					division = "division_template = \"Minutemen\" start_experience_factor = 0.4"
 					owner = PTF
 				}
 				create_unit = {
-					division = "division_template = \"Minutemen\" start_experience_factor = 0.25"
+					division = "division_template = \"Minutemen\" start_experience_factor = 0.4"
 					owner = PTF
 				}
 				create_unit = {
-					division = "division_template = \"Minutemen\" start_experience_factor = 0.25"
+					division = "division_template = \"Minutemen\" start_experience_factor = 0.4"
 					owner = PTF
 				}
 				create_unit = {
-					division = "division_template = \"Minutemen\" start_experience_factor = 0.25"
+					division = "division_template = \"Minutemen\" start_experience_factor = 0.4"
 					owner = PTF
+				}
+			}
+			random_controlled_state = {
+				create_unit = {
+					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					owner = PTF
+					allow_spawning_on_enemy_provs = yes
+					count = 2
+				}
+			}
+			random_controlled_state = {
+				create_unit = {
+					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					owner = PTF
+					allow_spawning_on_enemy_provs = yes
+					count = 2
 				}
 			}
 			add_popularity = {
@@ -1990,7 +2032,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = land_doc_bonus
-				bonus = 0.5
+				bonus = 0.75
 				uses = 2
 				category = cat_mechanized_equipment
 			}
@@ -2119,7 +2161,7 @@ focus_tree = {
 			custom_effect_tooltip = PTF_construct_the_rousseau_line_tt
 			add_timed_idea = {
 				idea = PRC_bunker_focus_idea
-				days = 90
+				days = 100
 			}
 			hidden_effect = {
 				1117 = {
@@ -2251,7 +2293,7 @@ focus_tree = {
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = PTF_combined_arms_tactics
-				cost_reduction = 0.5
+				cost_reduction = 0.75
 				uses = 2
 				category = cat_mobile_warfare
 			}
@@ -2290,7 +2332,7 @@ focus_tree = {
 			focus = PTF_mechanize_the_second_continental_army
 		}
 		completion_reward = {
-			air_experience = 100
+			air_experience = 120
 			795 = {
 				add_building_construction = {
 					type = air_base
@@ -2388,7 +2430,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 1
-		cost = 7
+		cost = 3
 		ai_will_do = {
 			base = 100
 		}
@@ -2495,11 +2537,11 @@ focus_tree = {
 				}
 				set_variable = {
 					var = PTF_politics_stability_factor_dynamic_var
-					value = -0.3
+					value = -0.25
 				}
 				set_variable = {
 					var = PTF_politics_max_planning_factor_dynamic_var
-					value = -0.2
+					value = -0.15
 				}
 			}
 		}
@@ -2512,7 +2554,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2533,7 +2575,7 @@ focus_tree = {
 			hidden_effect = {
 				set_variable = {
 					var = PTF_politics_political_power_gain_dynamic_var
-					value = 0.05
+					value = 0.1
 				}
 				set_variable = {
 					var = PTF_politics_stability_factor_dynamic_var
@@ -2575,7 +2617,7 @@ focus_tree = {
 		}
 		x = -2
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2611,7 +2653,7 @@ focus_tree = {
 			}
 			set_temp_variable = {
 				var = PTF_national_support_var_temp
-				value = 0.05
+				value = 0.1
 			}
 			PTF_add_national_support = yes
 			custom_effect_tooltip = PTF_empower_the_youth_tt
@@ -2628,7 +2670,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2681,7 +2723,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2739,7 +2781,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2795,7 +2837,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2804,7 +2846,7 @@ focus_tree = {
 			focus = PTF_kneel_to_the_first_consul
 		}
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = 100
 			add_popularity = {
 				ideology = authoritarian_democrat
 				popularity = 0.05
@@ -2839,7 +2881,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2884,7 +2926,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2928,7 +2970,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2983,7 +3025,7 @@ focus_tree = {
 		}
 		x = -3
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -2993,7 +3035,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			PTF_increase_ideological_propoganda = yes
-			add_political_power = 100
+			add_political_power = 120
 			add_power_balance_value = {
 				id = PTF_power_balance
 				value = 0.05
@@ -3014,7 +3056,7 @@ focus_tree = {
 		}
 		x = -5
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3031,7 +3073,7 @@ focus_tree = {
 			focus = PTF_convene_the_third_constitutional_convention
 		}
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 120
 			country_event = {
 				id = ptf.109
 			}
@@ -3054,7 +3096,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3096,7 +3138,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3142,7 +3184,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3173,7 +3215,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3220,7 +3262,7 @@ focus_tree = {
 			focus = PTF_mechanize_the_second_continental_army
 		}
 		completion_reward = {
-			add_stability = -0.05
+			add_war_support = 0.05
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PTF_second_continental_army_dummy_idea
@@ -3260,8 +3302,8 @@ focus_tree = {
 			focus = PTF_victory_or_death
 		}
 		completion_reward = {
-			add_political_power = 25
-			add_war_support = 0.025
+			add_political_power = 50
+			add_war_support = 0.05
 			country_event = {
 				id = ptf.95
 			}
@@ -3275,7 +3317,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3286,7 +3328,7 @@ focus_tree = {
 		completion_reward = {
 			set_temp_variable = {
 				var = legit_var_temp
-				value = 0.025
+				value = 0.05
 			}
 			add_legit = yes
 			add_ideas = PTF_managerial_society_idea
@@ -3300,7 +3342,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3324,7 +3366,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3345,7 +3387,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3369,7 +3411,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 5
-		cost = 7
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3387,9 +3429,10 @@ focus_tree = {
 			focus = PTF_the_american_autocracy
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = PTF_death_of_democracy_idea
-				days = 365
+			add_stability = -0.025
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.02
 			}
 			country_event = PTF.122
 			PTF_increase_popular_support = yes
@@ -3403,7 +3446,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3424,7 +3467,7 @@ focus_tree = {
 		}
 		x = 5
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3446,12 +3489,12 @@ focus_tree = {
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
-				value = 0.25
+				value = 0.3
 			}
 			add_industrial_development = yes
 			set_temp_variable = {
 				var = farming_development_var_temp
-				value = 0.25
+				value = 0.3
 			}
 			add_farming_development = yes
 			effect_tooltip = {
@@ -3488,7 +3531,7 @@ focus_tree = {
 		}
 		x = 4
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3516,7 +3559,7 @@ focus_tree = {
 		}
 		x = 6
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3543,7 +3586,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3598,7 +3641,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3650,7 +3693,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3679,7 +3722,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3708,7 +3751,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 5
-		cost = 7
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3739,7 +3782,7 @@ focus_tree = {
 		}
 		x = 16
 		y = 1
-		cost = 3.7
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3748,6 +3791,24 @@ focus_tree = {
 			focus = PTF_vanguard
 		}
 		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PTF_economic_instability_idea
@@ -3799,7 +3860,7 @@ focus_tree = {
 		}
 		x = -3
 		y = 1
-		cost = 3.7
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3808,6 +3869,24 @@ focus_tree = {
 			focus = PTF_soil
 		}
 		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			country_event = ptf.125
 			add_popularity = {
 				ideology = authoritarian_democrat
@@ -3836,7 +3915,7 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = PTF_economy_consumer_goods_factor_dynamic_var
-					value = -0.05
+					value = -0.1
 				}
 				add_to_variable = {
 					var = PTF_economy_research_speed_factor_dynamic_var
@@ -3854,7 +3933,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 1
-		cost = 3.7
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3863,6 +3942,24 @@ focus_tree = {
 			focus = PTF_soil
 		}
 		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = office_park
+						size > 3
+					}
+				}
+				add_building_construction = {
+					type = office_park
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			country_event = ptf.126
 			add_popularity = {
 				ideology = nationalist
@@ -3908,7 +4005,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -3967,7 +4064,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4031,7 +4128,7 @@ focus_tree = {
 		}
 		x = -3
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4115,7 +4212,7 @@ focus_tree = {
 		}
 		x = -5
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4145,7 +4242,7 @@ focus_tree = {
 		}
 		x = -6
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4186,7 +4283,7 @@ focus_tree = {
 		}
 		x = -6
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4221,7 +4318,7 @@ focus_tree = {
 		}
 		x = -5
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4245,7 +4342,7 @@ focus_tree = {
 		}
 		x = -4
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4297,7 +4394,7 @@ focus_tree = {
 		}
 		x = -3
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4372,7 +4469,7 @@ focus_tree = {
 		}
 		x = -4
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4425,7 +4522,7 @@ focus_tree = {
 		}
 		x = -2
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4482,7 +4579,7 @@ focus_tree = {
 		}
 		x = -5
 		y = 5
-		cost = 8
+		cost = 6
 		ai_will_do = {
 			base = 20
 		}
@@ -4520,7 +4617,7 @@ focus_tree = {
 		}
 		x = -3
 		y = 5
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4577,7 +4674,7 @@ focus_tree = {
 		}
 		x = -2
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4628,7 +4725,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 2
-		cost = 8
+		cost = 6
 		ai_will_do = {
 			base = 20
 		}
@@ -4718,7 +4815,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4770,7 +4867,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 5
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4836,7 +4933,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4891,7 +4988,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4942,7 +5039,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 5
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -4993,7 +5090,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5038,7 +5135,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5079,7 +5176,7 @@ focus_tree = {
 		}
 		x = 4
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5116,7 +5213,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5165,7 +5262,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5212,7 +5309,7 @@ focus_tree = {
 		}
 		x = 4
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5263,7 +5360,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 5
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5312,7 +5409,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5365,7 +5462,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5474,7 +5571,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5603,7 +5700,7 @@ focus_tree = {
 		}
 		x = 5
 		y = 1
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5688,7 +5785,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5746,7 +5843,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5793,7 +5890,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5839,7 +5936,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5900,7 +5997,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -5936,7 +6033,7 @@ focus_tree = {
 		}
 		x = -1
 		y = 5
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6000,7 +6097,7 @@ focus_tree = {
 		}
 		x = 4
 		y = 2
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6076,7 +6173,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 3
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6124,7 +6221,7 @@ focus_tree = {
 		}
 		x = 5
 		y = 3
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6199,7 +6296,7 @@ focus_tree = {
 		}
 		x = 2
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6246,7 +6343,7 @@ focus_tree = {
 		}
 		x = 1
 		y = 5
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6309,7 +6406,7 @@ focus_tree = {
 		}
 		x = 4
 		y = 4
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6357,7 +6454,7 @@ focus_tree = {
 		}
 		x = 3
 		y = 5
-		cost = 4
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}
@@ -6424,7 +6521,7 @@ focus_tree = {
 		}
 		x = 5
 		y = 5
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			base = 20
 		}

@@ -1,0 +1,569 @@
+# focus_tree = {
+#     id = APC_liberation_tree
+#     country = {
+#         factor = 0
+#     }
+#     default = no
+
+    # --- 根节点 ---
+    shared_focus = {
+        id = APC_day_of_liberation
+        icon = GFX_goal_unknown
+        x = 58
+        y = 9
+        cost = 3
+        allow_branch = {
+            has_global_flag = pan_asian_war_ongoing
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_command_power = 75
+            
+        }
+    }
+
+    # --- 左侧分支：召唤同志 ---
+    shared_focus = {
+        id = APC_summon_comrades
+        icon = GFX_goal_unknown
+        x = -4
+        y = 1
+        cost = 3
+        relative_position_id = APC_day_of_liberation
+        prerequisite = { focus = APC_day_of_liberation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            every_allied_country = {
+                add_ideas = APC_war_of_liberation
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_guide_allied_military
+        icon = GFX_goal_unknown
+        x = -1
+        y = 1
+        cost = 3
+        relative_position_id = APC_summon_comrades
+        prerequisite = { focus = APC_summon_comrades }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = PRC_train_APC
+                days = 30
+            }
+            custom_effect_tooltip = generic_skip_one_line_tt
+            custom_effect_tooltip = on_idea_removal_tt
+            custom_effect_tooltip = generic_skip_one_line_tt
+            effect_tooltip = {
+                every_allied_country = {
+                    swap_ideas = {
+                        remove_idea = APC_war_of_liberation
+                        add_idea = APC_war_of_liberation_1
+                    }
+                }
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_solve_reactionaries
+        icon = GFX_goal_unknown
+        x = 1
+        y = 1
+        cost = 3
+        relative_position_id = APC_summon_comrades
+        prerequisite = { focus = APC_summon_comrades }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = PRC_counter_anti_revolutionaries
+                days = 180
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_international_brigades
+        icon = GFX_goal_unknown
+        x = 0
+        y = 2
+        relative_position_id = APC_summon_comrades
+
+        cost = 3
+        prerequisite = { focus = APC_guide_allied_military focus = APC_solve_reactionaries }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            every_allied_country = {
+                add_manpower = 38292
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 3719
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 2030
+                }
+            }
+            
+        }
+    }
+
+    shared_focus = {
+        id = APC_hundred_millions_one_heart
+        icon = GFX_goal_unknown
+        x = 0
+        y = 1
+        cost = 3
+        relative_position_id = APC_international_brigades
+        prerequisite = { focus = APC_international_brigades }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            every_allied_country = {
+                add_stability = 0.15
+                swap_ideas = {
+                    remove_idea = APC_war_of_liberation_1
+                    add_idea = APC_war_of_liberation_2
+                }
+            }
+        }
+    }
+
+    # --- 中间分支：开场行动 ---
+    shared_focus = {
+        id = APC_opening_action_korea
+        icon = GFX_goal_unknown
+        x = 0
+        y = 2
+        relative_position_id = APC_day_of_liberation
+        cost = 3
+        prerequisite = { focus = APC_day_of_liberation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 50
+            unlock_decision_tooltip = PRC_operation_showtime
+        }
+    }
+
+    shared_focus = {
+        id = APC_operation_downfall_japan
+        icon = GFX_goal_unknown
+        x = -1
+        y = 1
+        relative_position_id = APC_opening_action_korea
+        cost = 3
+        prerequisite = { focus = APC_opening_action_korea }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 50
+            unlock_decision_tooltip = PRC_operation_meltdown_phase_1
+
+        }
+    }
+
+    shared_focus = {
+        id = APC_dive_action_india
+        icon = GFX_goal_unknown
+        x = 1
+        y = 1
+        relative_position_id = APC_opening_action_korea
+        cost = 3
+        prerequisite = { focus = APC_opening_action_korea }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 35
+            unlock_decision_tooltip = PRC_operation_skydive
+            unlock_decision_tooltip = NAX_go_liberate_RAJ
+        }
+    }
+
+    shared_focus = {
+        id = APC_flip_action_anzac
+        icon = GFX_goal_unknown
+        x = 0
+        y = 2
+        relative_position_id = APC_opening_action_korea
+        cost = 3
+        prerequisite = { focus = APC_operation_downfall_japan focus = APC_dive_action_india }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 35
+            unlock_decision_tooltip = PRC_operation_flip
+            unlock_decision_tooltip = PRC_operation_flip_2
+        }
+    }
+
+    shared_focus = {
+        id = APC_final_act_usa
+        icon = GFX_goal_unknown
+        x = 0
+        y = 3
+        relative_position_id = APC_opening_action_korea
+        cost = 3
+        prerequisite = { focus = APC_flip_action_anzac }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 35
+            unlock_decision_tooltip = PRC_operation_endgame
+        }
+    }
+
+    # --- 右侧分支：解放军最高战备 ---
+    shared_focus = {
+        id = APC_pla_max_readiness
+        icon = GFX_goal_unknown
+        x = 4
+        y = 1
+        cost = 3
+        relative_position_id = APC_day_of_liberation
+        prerequisite = { focus = APC_day_of_liberation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_war_support = 0.15
+            division_template = {
+                name = "Red Volunteer Brigade"
+                is_locked = no
+                force_allow_recruiting = yes
+                regiments = {
+                    mechanized = { x = 0 y = 0 }
+                    mechanized = { x = 0 y = 1 }
+                    mechanized = { x = 0 y = 2 }
+                    mechanized = { x = 1 y = 0 }
+                    mechanized = { x = 1 y = 1 }
+                    mechanized = { x = 1 y = 2 }
+                    modern_armor = { x = 2 y = 0 }
+                    modern_armor = { x = 2 y = 1 }
+                    modern_armor = { x = 2 y = 2 }
+                    modern_armor = { x = 2 y = 3 }
+                    modern_armor = { x = 3 y = 0 }
+                    modern_armor = { x = 3 y = 1 }
+                    modern_armor = { x = 3 y = 2 }
+                    modern_armor = { x = 3 y = 3 }
+                }
+                support = {
+                    engineer = { x = 0 y = 0 }
+                    artillery = { x = 0 y = 1 }
+                }
+                priority = 0
+            }
+
+            1215 = {
+                create_unit = {
+                    division = "division_template = \"Red Volunteer Brigade\" start_experience_factor = 1 start_equipment_factor = 0.5"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            596 = {
+                create_unit = {
+                    division = "division_template = \"Red Volunteer Brigade\" start_experience_factor = 1 start_equipment_factor = 0.5"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            1218 = {
+                create_unit = {
+                    division = "division_template = \"Red Volunteer Brigade\" start_experience_factor = 1 start_equipment_factor = 0.5"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            1148 = {
+                create_unit = {
+                    division = "division_template = \"Red Volunteer Brigade\" start_experience_factor = 1 start_equipment_factor = 0.5"
+                    owner = PRC
+                    count = 1
+                }
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_wartime_production
+        icon = GFX_goal_unknown
+        x = -1
+        y = 1
+        relative_position_id = APC_pla_max_readiness
+        cost = 3
+        prerequisite = { focus = APC_pla_max_readiness }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = war_economy
+            random_owned_controlled_state = {
+                limit = {
+                    industrial_complex > 0
+                }
+                remove_building = {
+                    type = industrial_complex
+                    level = 1
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    industrial_complex > 0
+                }
+                remove_building = {
+                    type = industrial_complex
+                    level = 1
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    industrial_complex > 0
+                }
+                remove_building = {
+                    type = industrial_complex
+                    level = 1
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    industrial_complex > 0
+                }
+                remove_building = {
+                    type = industrial_complex
+                    level = 1
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    industrial_complex > 0
+                }
+                remove_building = {
+                    type = industrial_complex
+                    level = 1
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_coastal_defense
+        icon = GFX_goal_unknown
+        x = 1
+        y = 1
+        relative_position_id = APC_pla_max_readiness
+        cost = 3
+        prerequisite = { focus = APC_pla_max_readiness }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 35
+            1215 = {
+                create_unit = {
+                    division = "division_template = \"海军陆战队\" start_experience_factor = 0.7 start_equipment_factor = 1"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            596 = {
+                create_unit = {
+                    division = "division_template = \"海军陆战队\" start_experience_factor = 0.7 start_equipment_factor = 1"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            591 = {
+                create_unit = {
+                    division = "division_template = \"海军陆战队\" start_experience_factor = 0.7 start_equipment_factor = 1"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            1218 = {
+                create_unit = {
+                    division = "division_template = \"海军陆战队\" start_experience_factor = 0.7 start_equipment_factor = 1"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            1148 = {
+                create_unit = {
+                    division = "division_template = \"海军陆战队\" start_experience_factor = 0.7 start_equipment_factor = 1"
+                    owner = PRC
+                    count = 1
+                }
+            }
+            728 = {
+                create_unit = {
+                    division = "division_template = \"海军陆战队\" start_experience_factor = 0.7 start_equipment_factor = 1"
+                    owner = PRC
+                    count = 1
+                }
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_mobilize_militia
+        icon = GFX_goal_unknown
+        x = 0
+        y = 2
+        relative_position_id = APC_pla_max_readiness
+        cost = 3
+        prerequisite = { focus = APC_wartime_production focus = APC_coastal_defense }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_command_power = 35
+            division_template = {
+                name = "Red Volunteers"
+                is_locked = no
+                force_allow_recruiting = yes
+                regiments = {
+                    infantry = { x = 0 y = 0 }
+                    infantry = { x = 0 y = 1 }
+                    infantry = { x = 0 y = 2 }
+                    infantry = { x = 1 y = 0 }
+                    infantry = { x = 1 y = 1 }
+                    infantry = { x = 1 y = 2 }
+                }
+                support = {
+                    engineer = { x = 0 y = 0 }
+                    artillery = { x = 0 y = 1 }
+                }
+                priority = 0
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    is_coastal = no
+                }
+                create_unit = {
+                    division = "division_template = \"Red Volunteers\" start_experience_factor = 0.9 start_equipment_factor = 0.9"
+                    owner = PRC
+                    count = 2
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    is_coastal = no
+                }
+                create_unit = {
+                    division = "division_template = \"Red Volunteers\" start_experience_factor = 0.9 start_equipment_factor = 0.9"
+                    owner = PRC
+                    count = 2
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    is_coastal = no
+                }
+                create_unit = {
+                    division = "division_template = \"Red Volunteers\" start_experience_factor = 0.9 start_equipment_factor = 0.9"
+                    owner = PRC
+                    count = 2
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    is_coastal = no
+                }
+                create_unit = {
+                    division = "division_template = \"Red Volunteers\" start_experience_factor = 0.9 start_equipment_factor = 0.9"
+                    owner = PRC
+                    count = 2
+                }
+            }
+            random_owned_controlled_state = {
+                limit = {
+                    is_coastal = no
+                }
+                create_unit = {
+                    division = "division_template = \"Red Volunteers\" start_experience_factor = 0.9 start_equipment_factor = 0.9"
+                    owner = PRC
+                    count = 2
+                }
+            }
+        }
+    }
+
+    shared_focus = {
+        id = APC_trial_by_fire
+        icon = GFX_goal_unknown
+        x = 0
+        y = 3
+        relative_position_id = APC_pla_max_readiness
+        cost = 3
+        prerequisite = { focus = APC_mobilize_militia }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_equipment_to_stockpile = {
+                type = nuclear_missile_equipment_1
+                amount = 20
+            }
+            add_equipment_to_stockpile = {
+                type = nuclear_missile_equipment_2
+                amount = 20
+            }
+            every_allied_country = {
+                every_core_state = {
+                    limit = {
+                        controller = {
+                            has_war_with = PRC
+                        }
+                    }
+                    damage_units = {
+                        org_damage = 0.9
+                    }
+                }
+            }
+        }
+    }
+# }

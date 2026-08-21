@@ -1,0 +1,236 @@
+equipments = {
+	### UTILITY HELICOPTERS ###
+	utility_helicopter_equipment = {
+		year = 1960
+		
+		is_archetype = yes
+		picture = archetype_motorized_equipment		
+		is_buildable = no
+		type = {
+			mechanized
+		}
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		#Misc Abilities
+		reliability = 0.80
+		maximum_speed = 24 #8
+		#Defensive Abilities
+		defense = 8
+		breakthrough = 10 #0
+		hardness = 0.20 #0
+		armor_value = 5 #0
+		
+		#Offensive Abilities
+		soft_attack = 6
+		hard_attack = 3
+		ap_attack = 5 #0
+		air_attack = 0.8
+		
+		#Space taken in convoy
+		lend_lease_cost = 5
+		
+		build_cost_ic = 14
+		resources = {
+			steel = 2
+			aluminium = 1
+		}
+		fuel_consumption = 2.4
+	}
+	
+	utility_helicopter_equipment_1 = {
+		year = 1980
+		
+		#Misc Abilities
+		reliability = 0.7 #0.55
+		maximum_speed = 20 #8
+		#Defensive Abilities
+		defense = 8 #6
+		breakthrough = 10 #2
+		hardness = 0.20 #0.0
+		armor_value = 4 #0
+		
+		#Offensive Abilities
+		soft_attack = 6 #3
+		hard_attack = 3 #6
+		ap_attack = 4 #0
+		
+		archetype = utility_helicopter_equipment
+		priority = 40
+		visual_level = 0
+	}
+	
+	utility_helicopter_equipment_2 = {
+		year = 2000
+		
+		#Misc Abilities
+		reliability = 0.82
+		maximum_speed = 20
+		#Defensive Abilities
+		defense = 10
+		breakthrough = 12
+		hardness = 0.2
+		armor_value = 5
+		
+		#Offensive Abilities
+		soft_attack = 8
+		hard_attack = 4
+		ap_attack = 5
+		
+		archetype = utility_helicopter_equipment
+		parent = utility_helicopter_equipment_1
+		priority = 40
+		visual_level = 0
+		
+		build_cost_ic = 14
+	}
+	
+	### ATTACK HELICOPTERS ###
+	attack_helicopter_equipment = {
+		year = 1960
+		
+		is_archetype = yes
+		is_convertable = yes
+		carrier_capable = yes
+		picture = archetype_fighter_equipment
+		is_buildable = no
+		type = fighter
+		group_by = archetype
+		sprite = light_plane
+		air_map_icon_frame = 1
+		interface_category = interface_category_air
+		interface_overview_category_index = 1
+		
+		allow_mission_type = {
+			cas
+			attack_logistics
+			training
+		}
+		
+		upgrades = {
+			plane_gun_upgrade
+			plane_range_upgrade
+			plane_engine_upgrade
+			plane_reliability_upgrade
+		}
+		
+		air_superiority = 0.01
+		reliability = 0.5
+		air_ground_attack = 1.0
+		
+		# Naval attack
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
+		
+		#Space taken in convoy
+		lend_lease_cost = 8
+		
+		build_cost_ic = 25
+		resources = {
+			aluminium = 2
+			steel = 2
+		}
+		
+		manpower = 20
+		fuel_consumption = 0.2
+	}
+	
+	attack_helicopter_equipment_1 = {
+		archetype = attack_helicopter_equipment
+		priority = 5
+		
+		air_range = 450
+		maximum_speed = 300
+		air_agility = 20.75
+		air_attack = 10.5
+		air_defence = 45
+
+		air_ground_attack = 10
+		
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
+	}
+	
+	attack_helicopter_equipment_2 = {
+		archetype = attack_helicopter_equipment
+		priority = 5
+		
+		air_range = 850
+		maximum_speed = 350
+		air_agility = 20.75
+		air_attack = 10.5
+		air_defence = 65
+
+		air_ground_attack = 20
+		
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
+		
+		build_cost_ic = 30
+	}
+	
+	### ATTACK HELICOPTERS ###
+	suicide_craft_equipment = {
+		year = 1960
+		
+		is_archetype = yes
+		is_convertable = yes
+		picture = archetype_fighter_equipment
+		is_buildable = no
+		type = fighter
+		group_by = archetype
+		sprite = light_plane
+		air_map_icon_frame = 1
+		interface_category = interface_category_air
+		interface_overview_category_index = 1
+		
+		allow_mission_type = {
+			cas
+			attack_logistics
+		}
+		
+		upgrades = {
+			plane_gun_upgrade
+			plane_range_upgrade
+			plane_engine_upgrade
+			plane_reliability_upgrade
+		}
+		
+		air_superiority = 0.01
+		reliability = 0.5
+		air_ground_attack = 1.0
+		
+		# Naval attack
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
+		
+		#Space taken in convoy
+		lend_lease_cost = 8
+		
+		build_cost_ic = 25
+		resources = {
+			aluminium = 2
+			steel = 2
+		}
+		
+		manpower = 20
+		fuel_consumption = 0.2
+	}
+	
+	rocket_suicide_equipment_1 = {
+		archetype = attack_helicopter_equipment
+		priority = 5
+		
+		air_range = 450
+		maximum_speed = 1829
+		air_agility = 20.75
+		air_attack = 10.5
+		air_defence = 45
+
+		air_ground_attack = 10
+		
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
+	}
+}

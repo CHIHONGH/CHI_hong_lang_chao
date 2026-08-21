@@ -1,0 +1,837 @@
+focus_tree = {
+	id = CHI_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			original_tag = CHI
+		}
+	}
+	
+	focus = {
+		id = CHI_island_in_one_fate
+		icon = GFX_focus_CHI_island_in_one_fate
+		x = 7
+		y = 0
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		allow_branch = {
+			has_country_flag = CHI_protecting_the_island_flag
+		}
+		available = {
+			always = no
+		}
+		completion_reward = {
+			hidden_effect = {
+				country_event = { id = taiwan.35 days = 14 }
+			}
+			custom_effect_tooltip = CHI_taiwan_war_begun_tooltip
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { 
+					CHI = {is_ai = no}
+				}
+				add_ideas = CHI_Taiwan_Bravery
+			}
+			else = {
+				add_ideas = CHI_Taiwan_Bravery_2
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { 
+					NOT = {has_template = "Minbing"}
+				}
+				division_template = {
+					name = "Minbing"
+					is_locked = no
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+					}
+					
+					support = {
+						recon = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }	
+					}	
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Minbing Brigade\" division_template = \"Minbing\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+					id = 1949
+					owner = CHI
+					count = 2
+				}
+			}
+			
+		}
+	}
+	
+	focus = {
+		id = CHI_solidify_civil_defence
+		icon = GFX_focus_CHI_solidify_civil_defence
+		x = -5
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_island_in_one_fate
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_island_in_one_fate
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = CHI_repairs_under_fire_idea
+				}
+				swap_ideas = {
+					remove_idea = CHI_repairs_under_fire_idea
+					add_idea = CHI_repairs_under_fire_1_idea
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_repairs_under_fire_1_idea
+				}
+				swap_ideas = {
+					remove_idea = CHI_repairs_under_fire_1_idea
+					add_idea = CHI_repairs_under_fire_2_idea
+				}
+			}
+			
+			custom_effect_tooltip = change_economic_law_tooltip
+			show_ideas_tooltip = early_mobilization
+			hidden_effect = {
+				add_ideas = early_mobilization
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_guerilla_strategy
+		icon = GFX_focus_CHI_guerilla_strategy
+		x = -2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_island_in_one_fate
+		ai_will_do = {
+			factor = 50
+		}
+		prerequisite = {
+			focus = CHI_island_in_one_fate
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {has_template = "Taiwan Guerillas Brigade"}
+				}
+				division_template = {			
+					name = "Taiwan Guerillas Brigade"
+					priority = 1
+					regiments = {
+					    recce = { x = 0 y = 0 }
+						recce = { x = 0 y = 1 }
+						recce = { x = 0 y = 2 }
+						recce = { x = 1 y = 0 }
+						recce = { x = 1 y = 1 }
+						recce = { x = 1 y = 2 }
+						recce = { x = 2 y = 0 }
+						recce = { x = 2 y = 1 }
+						recce = { x = 2 y = 2 }
+						recce = { x = 3 y = 0 }
+					   }
+					support = {
+						helicopter_recon = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }
+						anti_tank = { x = 0 y = 2 }
+						anti_air = { x = 0 y = 3 }
+						
+					}
+				}
+			}
+			1148 = {
+				create_unit = {
+					division = "name = \"Taiwan Guerillas Brigade\" division_template = \"Taiwan Guerillas Brigade\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					owner = CHI
+					count = 1
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line	
+			set_technology = { tech_mountaineers2 = 1 }
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				bonus = 0.15
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = infantry_tech
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = mountaineers_tech
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				uses = 2
+				category = cat_old_land_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_disrupt_transportation
+		icon = GFX_focus_CHI_disrupt_transportation
+		x = 2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_solidify_civil_defence
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_solidify_civil_defence
+			focus = CHI_guerilla_strategy
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = CHI_damage_ports_tooltip
+			custom_effect_tooltip = tooltip_white_line
+			add_mines = { region = 75 amount = 50 }
+			add_mines = { region = 76 amount = 50 }
+			custom_effect_tooltip = tooltip_white_line
+			add_command_power = 50
+			set_country_flag = CHI_damage_ports_flag
+			custom_effect_tooltip = tooltip_white_line
+			PRC = { add_fuel = -1500 }
+		}
+	}
+	
+	focus = {
+		id = CHI_hold_the_defence_line
+		icon = GFX_focus_CHI_hold_the_defence_line
+		x = 2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_island_in_one_fate
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_island_in_one_fate
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = CHI_hold_the_defence_line_tooltip
+			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = {has_template = "Minbing"}
+					}
+					division_template = {
+						name = "Minbing"
+						is_locked = no
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+							militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }
+							militia = { x = 1 y = 1 }
+						}
+						
+						support = {
+							recon = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }	
+						}	
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Minbing Brigade\" division_template = \"Minbing\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+						id = 1949
+						owner = CHI
+						count = 2
+					}
+				}
+			}
+			#hidden_effect = {
+			#	load_oob = CHI_invasion_reserves
+			#}
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = CHI_hold_the_line_idea
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_appeal_to_the_free_world
+		icon = GFX_focus_CHI_appeal_to_the_free_world
+		x = 5
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_island_in_one_fate
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_island_in_one_fate
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			set_country_flag = CHI_request_pdto_fuel_flag
+			custom_effect_tooltip = CHI_request_pdto_fuel_tooltip
+			custom_effect_tooltip = tooltip_white_line
+			random_unit_leader = {
+				add_logistics = 1
+			}
+			random_unit_leader = {
+				add_logistics = 1
+			}
+			random_unit_leader = {
+				add_logistics = 1
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_political_power = 100
+			custom_effect_tooltip = tooltip_white_line
+			add_fuel = 30000
+		}
+	}
+	
+	focus = {
+		id = CHI_military_civilian_duty
+		icon = GFX_focus_CHI_military_civilian_duty
+		x = 1
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_hold_the_defence_line
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_hold_the_defence_line
+			focus = CHI_appeal_to_the_free_world
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			random_unit_leader = {
+				add_defense  = 1
+			}
+			random_unit_leader = {
+				add_defense  = 1
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_manpower = 21738
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = change_mobilization_law_tooltip
+			show_ideas_tooltip = medium_conscription
+			hidden_effect = {
+				add_ideas = medium_conscription
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_grant_emergency_powers
+		icon = GFX_focus_CHI_grant_emergency_powers
+		x = 0
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_island_in_one_fate
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_island_in_one_fate
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			set_temp_variable = {
+				coalition_partner_var_temp = token:conservative
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_liberal
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:market_liberal
+			}
+			add_to_coalition = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_war_support = 0.15
+			add_stability = 0.1
+			add_political_power = 100
+		}
+	}
+	
+	focus = {
+		id = CHI_engineering_maintenance_brigade
+		icon = GFX_focus_CHI_engineering_maintenance_brigade
+		x = -2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_grant_emergency_powers
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_grant_emergency_powers
+		}
+		prerequisite = {
+			focus = CHI_disrupt_transportation
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			every_military_industrial_organization = {
+				add_mio_funds_gain_factor = 0.1
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = {
+					has_idea = CHI_repairs_under_fire_idea
+				}
+				swap_ideas = {
+					remove_idea = CHI_repairs_under_fire_idea
+					add_idea = CHI_repairs_under_fire_1_idea
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_repairs_under_fire_1_idea
+				}
+				swap_ideas = {
+					remove_idea = CHI_repairs_under_fire_1_idea
+					add_idea = CHI_repairs_under_fire_2_idea
+				}
+			}
+			add_fuel = 2000
+		}
+	}
+	
+	focus = {
+		id = CHI_withdraw_foreign_exchange
+		icon = GFX_focus_CHI_withdraw_foreign_exchange
+		x = 0
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_grant_emergency_powers
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_grant_emergency_powers
+		}
+		prerequisite = {
+			focus = CHI_disrupt_transportation
+			focus = CHI_military_civilian_duty
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			every_military_industrial_organization = {
+				add_mio_funds = 1000
+			}
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = {
+				var = income_var_temp
+				value = 18.2
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+			    var = debt_var_temp
+				value = -9.7
+			}
+			add_debt_with_inflation = yes
+			custom_effect_tooltip = tooltip_white_line
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_unite_the_island
+		icon = {
+			GFX_focus_CHI_unite_the_island_dpp = {
+				has_country_leader = {
+					character = CHI_tsai_ing_wen_char
+					ruling_only = yes
+				}
+			}
+
+			GFX_focus_CHI_unite_the_island = yes
+		}
+		x = 2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_grant_emergency_powers
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_grant_emergency_powers
+		}
+		prerequisite = {
+			focus = CHI_military_civilian_duty
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			1148 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 14937
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1050
+				producer = CHI
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = CHI_united_as_one_idea
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_wolf_pack_tactics
+		icon = GFX_focus_CHI_wolf_pack_tactics
+		x = -2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_engineering_maintenance_brigade
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_withdraw_foreign_exchange
+		}
+		prerequisite = {
+			focus = CHI_engineering_maintenance_brigade
+			focus = CHI_unite_the_island
+		}
+		mutually_exclusive = {
+			focus = CHI_phantom_legions
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = CHI_wolfpack_fleet_tooltip
+			custom_effect_tooltip = tooltip_white_line
+			hidden_effect = {
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+					load_oob = CHI_taiwan_fleet
+				}
+				else = {
+					load_oob = CHI_taiwan_fleet_legacy
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_mines = { region = 75 amount = 25 }
+			add_mines = { region = 76 amount = 25 }
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = CHI_wolfpack_tactics_idea
+			custom_effect_tooltip = tooltip_white_line
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				uses = 1
+				category = cat_old_naval_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_phantom_legions
+		icon = GFX_focus_CHI_phantom_legions
+		x = 2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_unite_the_island
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_withdraw_foreign_exchange
+		}
+		prerequisite = {
+			focus = CHI_unite_the_island
+			focus = CHI_engineering_maintenance_brigade
+		}
+		mutually_exclusive = {
+			focus = CHI_wolf_pack_tactics
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+					limit = {
+						has_dlc = "By Blood Alone"
+					}
+					add_equipment_to_stockpile = {
+						type = small_plane_airframe_1
+						variant_name = "F-16V Viper"
+						amount = 100
+						producer = CHI
+					}									
+				}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment
+					amount = 100
+					producer = CHI
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = CHI_phantom_legions_idea
+			custom_effect_tooltip = tooltip_white_line
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				uses = 1
+				category = cat_old_air_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = CHI_taiwan_still_brave
+		icon = GFX_focus_CHI_taiwan_still_brave
+		x = 4
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		relative_position_id = CHI_wolf_pack_tactics
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = CHI_wolf_pack_tactics
+			focus = CHI_phantom_legions
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = CHI_last_stand_idea
+				}
+				swap_ideas = {
+					remove_idea = CHI_last_stand_idea
+					add_idea = CHI_last_stand_1_idea
+				}
+			}
+			else = {
+				add_ideas = CHI_last_stand_idea
+			}
+			custom_effect_tooltip = tooltip_white_line
+			army_experience = 50
+			navy_experience = 50
+			air_experience = 50
+			custom_effect_tooltip = tooltip_white_line
+			add_manpower = 14281
+		}
+	}
+
+	#focus = {
+	#	id = CHI_our_final_fight
+	#	icon = GFX_focus_CHI_our_final_fight
+	#	x = 7
+	#	y = 0
+	#	cost = 5
+	#	available_if_capitulated = yes
+	#	ai_will_do = {
+	#		factor = 100
+	#	}
+	#	allow_branch = {
+	#		has_country_flag = CHI_our_final_fight_flag
+	#	}
+	#	available = {
+	#		always = no
+	#	}
+	#	completion_reward = {
+	#	}
+	#}
+	#
+	#focus = {
+	#	id = CHI_pointy_bayonets
+	#	icon = GFX_focus_CHI_pointy_bayonets
+	#	x = -2
+	#	y = 2
+	#	cost = 5
+	#	available_if_capitulated = yes
+	#	relative_position_id = CHI_our_final_fight
+	#	ai_will_do = {
+	#		factor = 100
+	#	}
+	#	prerequisite = {
+	#		focus = CHI_our_final_fight
+	#	}
+	#	available = {
+	#	}
+	#	completion_reward = {
+	#		add_manpower = 123918
+	#	}
+	#}
+	#
+	#focus = {
+	#	id = CHI_long_way_home
+	#	icon = GFX_focus_CHI_long_way_home
+	#	x = 2
+	#	y = 2
+	#	cost = 5
+	#	available_if_capitulated = yes
+	#	relative_position_id = CHI_our_final_fight
+	#	ai_will_do = {
+	#		factor = 100
+	#	}
+	#	prerequisite = {
+	#		focus = CHI_our_final_fight
+	#	}
+	#	available = {
+	#	}
+	#	completion_reward = {
+	#		add_manpower = 123918
+	#	}
+	#}
+	#
+	#focus = {
+	#	id = CHI_standing_as_one
+	#	icon = GFX_focus_CHI_standing_as_one
+	#	x = 0
+	#	y = 3
+	#	cost = 5
+	#	available_if_capitulated = yes
+	#	relative_position_id = CHI_our_final_fight
+	#	ai_will_do = {
+	#		factor = 100
+	#	}
+	#	prerequisite = {
+	#		focus = CHI_our_final_fight
+	#	}
+	#	available = {
+	#	}
+	#	completion_reward = {
+	#		add_manpower = 123918
+	#	}
+	#}
+	
+}

@@ -3,25 +3,359 @@ on_actions = {
         effect = {
             if = {
                 limit = {
+                    FROM = {
+                        original_tag = PRC
+                    }
+                    ROOT = {
+                        original_tag = PRK
+                    }
+                }
+                FROM = {
+                    white_peace = ROOT
                     PRC = {
-                        NOT = {
-                            has_country_flag = prc_allies_in_southeast_asia_flag_set
+                        set_autonomy = {
+                            target = PRK
+                            autonomous_state = autonomy_communist
+                            freedom_level = 0.1
                         }
-                        is_ally_with = ROP
-                        is_ally_with = SRI
-                        is_ally_with = SMA
-                        is_ally_with = CAM
-                        is_ally_with = VIN
+                        hidden_effect = {
+                            country_event = {
+                                id = china.1712
+                                days = 7
+                            }
+                        }
+                        add_to_variable = {
+                            CPC_frame = 2
+                        }
+                        clamp_variable = {
+                            var = CPC_frame
+                            min = 0
+                            max = 100
+                        }
+                        add_to_variable = {
+                            PRC_Lib_Int_Dir_Var = 1
+                        }
+                    }
+                }
+                ROOT = {
+                    set_party_name = {
+                        ideology = totalitarian_socialist
+                        long_name = PRC_nationalist_party_long
+                        name = PRC_nationalist_party
+                    }
+                    create_country_leader = {
+                        name = "朝鲜人民代表大会"
+                        desc = "POLITICS_CHAOXIAN_DESC"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = left_wing_junta
+                    }
+                    remove_ideas = {
+                        PRK_heavy_sanctions_idea
+                        PRK_Total_Control_idea
+                        PRK_Kim_Jae_ryong_hog
+                        PRK_Ri_Yong_ho_for
+                        PRK_O_Su_yong_eco
+                        PRK_Jong_Kyong_thaek_sec
+                        PRK_Choe_Pu_Il_int
+                    }
+
+                    inherit_technology = PRC
+                    set_cosmetic_tag = PRK_repolice_gonh
+                    set_politics = {
+                        ruling_party = totalitarian_socialist
+                        elections_allowed = no
+                    }
+                    set_party_name = {
+                        ideology = totalitarian_socialist
+                        long_name = PRK_nationalist_party_new_left_long
+                        name = PRK_nationalist_party_new_left
+                    }
+                    set_popularities = {
+                        totalitarian_socialist = 100
+                    }
+                    every_country = {
+                        limit = {
+                            is_in_faction_with = ROOT
+                            any_controlled_state = {
+                                NOT = {
+                                    is_controlled_by = ROOT
+                                }
+                                is_core_of = ROOT
+                                NOT = {
+                                    is_core_of = PREV
+                                }
+                            }
+                        }
+                        every_controlled_state = {
+                            limit = {
+                                NOT = {
+                                    is_controlled_by = ROOT
+                                }
+                                is_core_of = ROOT
+                                NOT = {
+                                    is_core_of = PREV
+                                }
+                            }
+                            transfer_state_to = ROOT
+                            set_state_owner_to = ROOT
+                            set_state_controller_to = ROOT
+                        }
+                    }
+                }
+                set_global_flag = skip_default_capitulation
+            }
+            if = {
+                # THE PACIFIC WAR - EADI KILL PDTO
+                limit = {
+                    has_global_flag = pan_asian_war_ongoing
+                    FROM = {
+                        OR = {
+                            original_tag = PRC
+                            is_ally_with = PRC
+                        }
+                    }
+                    ROOT = {
+                        OR = {
+                            original_tag = JAP
+                            original_tag = AST
+                            original_tag = RAJ
+                            original_tag = KOR
+                            original_tag = PNG
+                            original_tag = NZL
+                            original_tag = KOR
+                        }
+                    }
+                }
+                FROM = {
+                    puppet = ROOT
+                    white_peace = ROOT
+                }
+                ROOT = {
+                    load_focus_tree = generic_focus
+                    clr_country_flag = pdto_member
+                    every_country = {
+                        limit = {
+                            is_in_faction_with = ROOT
+                            any_controlled_state = {
+                                NOT = { is_controlled_by = ROOT }
+                                is_core_of = ROOT
+                                NOT = { is_core_of = PREV }
+                            }
+                        }
+                        every_controlled_state = { 
+                            limit = {
+                                NOT = { is_controlled_by = ROOT }
+                                is_core_of = ROOT
+                                NOT = { is_core_of = PREV }
+                            }
+                            transfer_state_to = ROOT
+                            set_state_owner_to = ROOT
+                            set_state_controller_to = ROOT
+                        }
+                    }
+                }
+                ROOT = {
+                    add_popularity = {
+                        ideology = communist
+                        popularity = 0.7
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no 
+                    }
+                    set_party_name = { ideology = communist long_name = PRC_provisional_government_party_long name = PRC_provisional_government_party }
+                    set_cosmetic_tag = PRC_provisional_government
+                    JAP_leave_PEC = yes
+                    create_country_leader = {
+                        expire = "1.1.1"
+                        ideology = military_junta
+                        traits = {
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = JAP
+                        }
+                    }
+                    PRC = {
+                        transfer_state = 876
+                    }
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = PNG
+                        }
+                    }
+                    create_country_leader = {
+                        name = "巴布几内亚临时人民委员会"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = marxism_leninism
+                    }
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = RAJ
+                        }
+                    }
+                    FROM = {
+                        end_puppet = RAJ
+                    }
+                    PRC = {
+                        remove_from_faction = RAJ
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = RAJ
+                        }
+                        white_peace = RAJ
+                    }
+                    PRC_dissolve_india = yes
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = NZL
+                        }
+                    }
+                    create_country_leader = {
+                        name = "新西兰临时人民委员会"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = marxism_leninism
+                    }
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = AST
+                        }
+                    }
+                    create_country_leader = {
+                        name = "澳大利亚临时人民委员会"
+                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        ideology = marxism_leninism
+                    }
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = KOR
+                        }
+                    }
+                    PRK = {
+                        annex_country = {
+                            target = KOR
+                            transfer_troops = no
+                        }
+                    }
+                    PRC = {
+                        add_to_faction = PRK
+                    }
+                }
+                set_global_flag = skip_default_capitulation
+            }
+            if = {
+                # PRC kill VIN
+                limit = {
+                    FROM = {
+                        has_country_flag = PRC_new_left_win
+                        OR = {
+                            original_tag = PRC
+                            is_ally_with = PRC
+                        }
+                    }
+                    ROOT = {
+                        original_tag = VIN
                     }
                 }
                 PRC = {
-                    news_event = prcs.81
+                    white_peace = ROOT
+                    set_autonomy = {
+                        target = VIN
+                        autonomous_state = autonomy_communist
+                        freedom_level = 0.1
+                    }
+                    add_to_variable = {
+                        CPC_frame = 6
+                    }
+                    clamp_variable = {
+                        var = CPC_frame
+                        min = 0
+                        max = 100
+                    }
+                    add_to_variable = {
+                        PRC_Lib_Int_Dir_Var = 1
+                    }
+                    transfer_state = 879
+                    # clr_country_flag = PRC_spread_chinese_influence
                 }
+                879 = {
+                    add_core_of = PRC 
+                }
+                ROOT = {
+                    add_country_leader_role = {
+                        character = VIN_Vo_Van_Thuong
+                        promote_leader = yes
+                        country_leader = {
+                            ideology = marxism_leninism
+                        }
+                    }
+                    set_popularities = {
+                        totalitarian_socialist = 40
+                        communist = 60
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        election_frequency = 60
+                        elections_allowed = no
+                    }
+                    set_party_name = {
+                        ideology = communist
+                        long_name = PRC_nationalist_party_new_long
+                        name = PRC_nationalist_party_new
+                    }
+                    set_cosmetic_tag = PRK_revolutionary_government
+                    JAP_leave_PEC = yes
+                    clr_country_flag = pdto_member
+                    every_country = {
+                        limit = {
+                            is_in_faction_with = ROOT
+                            any_controlled_state = {
+                                NOT = {
+                                    is_controlled_by = ROOT
+                                }
+                                is_core_of = ROOT
+                                NOT = {
+                                    is_core_of = PREV
+                                }
+                            }
+                        }
+                        every_controlled_state = {
+                            limit = {
+                                NOT = {
+                                    is_controlled_by = ROOT
+                                }
+                                is_core_of = ROOT
+                                NOT = {
+                                    is_core_of = PREV
+                                }
+                            }
+                            transfer_state_to = ROOT
+                            set_state_owner_to = ROOT
+                            set_state_controller_to = ROOT
+                        }
+                    }
+                }
+                set_global_flag = skip_default_capitulation
             }
             if = {
                 # MND kill all
                 limit = {
                     FROM = {
+                        has_country_flag = PRC_new_left_win
                         OR = {
                             original_tag = MND
                             original_tag = PRC
@@ -186,7 +520,7 @@ on_actions = {
                         set_autonomy = {
                             target = BRM
                             autonomous_state = autonomy_communist
-                            freedom_level = 0.3
+                            freedom_level = 0.1
                         }
                     }
                     BRM = {
@@ -259,17 +593,9 @@ on_actions = {
                                 }
                             }
                         }
+                        set_global_flag = BRM_prochinese_asian_cold_war
                         BRM = {
-                            every_country = {
-                                limit = {
-                                    is_core_of = BRM
-                                }
-                                annex_country = {
-                                    target = FROM
-                                    transfer_troops = no
-                                }
-                            }
-                            set_cosmetic_tag = PRC_repolice_gonh
+                            set_cosmetic_tag = BRM_revolutionary_government
                             set_politics = {
                                 ruling_party = totalitarian_socialist
                                 elections_allowed = no
@@ -281,129 +607,64 @@ on_actions = {
                     }
                 }
                 set_global_flag = skip_default_capitulation
-            }
+            }            
             if = {
                 # PRC kill JAP
                 limit = {
                     FROM = {
                         OR = {
                             original_tag = PRC
-                            is_ally_with = PRC
-                        }
-                    }
-                    ROOT = {
-                        original_tag = JAP
-                    }
-                }
-                FROM = {
-                    PRC = {
-                        every_country = {
-                            limit = {
-                                is_in_faction_with = JPL
-                                any_controlled_state = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                            }
-                            every_controlled_state = {
-                                limit = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                                transfer_state_to = JPL
-                                set_state_owner_to = JPL
-                                set_state_controller_to = JPL
-                            }
-                        }
-                    }
-                    white_peace = ROOT
-                }
-                set_global_flag = skip_default_capitulation
-            }
-            if = {
-                # JPL kill JAP
-                limit = {
-                    FROM = {
-                        OR = {
                             original_tag = JPL
-                            is_ally_with = PRC
                         }
                     }
                     ROOT = {
                         original_tag = JAP
                     }
                 }
-                FROM = {
-                    PRC = {
-                        every_country = {
+                PRC = {
+                    every_country = {
+                        limit = {
+                            is_in_faction_with = JPL
+                            any_controlled_state = {
+                                NOT = {
+                                    is_controlled_by = JPL
+                                }
+                                is_core_of = JPL
+                            }
+                        }
+                        every_controlled_state = {
                             limit = {
-                                is_in_faction_with = JPL
-                                any_controlled_state = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
+                                NOT = {
+                                    is_controlled_by = JPL
                                 }
+                                is_core_of = JPL
                             }
-                            every_controlled_state = {
-                                limit = {
-                                    NOT = {
-                                        is_controlled_by = JPL
-                                    }
-                                    is_core_of = JPL
-                                }
-                                transfer_state_to = JPL
-                                set_state_owner_to = JPL
-                                set_state_controller_to = JPL
-                            }
+                            transfer_state_to = JPL
+                            set_state_owner_to = JPL
+                            set_state_controller_to = JPL
                         }
                     }
-                    JPL = {
-                        set_cosmetic_tag = PRC_shijieguoji_a
-                        set_politics = {
-                            ruling_party = communist
-                            elections_allowed = no
-                        }
-                        set_party_name = {
-                            ideology = communist
-                            long_name = PRC_nationalist_party_new_left_JPL
-                            name = PRC_nationalist_party_new_left_name_JPL
-                        }
-                        PRC = {
-                            add_to_faction = JPL
-                        }
-                        JAP_leave_PEC = yes
-                    }
+                }
+                JPL = {
                     white_peace = ROOT
                     annex_country = {
-                        target = JAP
+                        target = ROOT
                         transfer_troops = no
                     }
-                    # else_if = {
-                    #     limit = {
-                    #         OR = {
-                    #             country_exists = JAP
-                    #             FROM = {
-                    #                 OR = {
-                    #                     original_tag = JPL
-                    #                     NOT = {
-                    #                         country_exists = JPL
-                    #                     }
-                    #                 }
-                    #             }
-                    #         }
-                    #     }
-                    #     FROM = {
-                    #         annex_country = {
-                    #             target = JAP
-                    #             transfer_troops = no
-                    #         }
-                    #     }
-                    # }
+                    set_cosmetic_tag = PRC_shijieguoji_a
+                    set_politics = {
+                        ruling_party = communist
+                        elections_allowed = no
+                    }
+                    set_party_name = {
+                        ideology = communist
+                        long_name = PRC_nationalist_party_new_left_JPL
+                        name = PRC_nationalist_party_new_left_name_JPL
+                    }
+                    PRC = {
+                        add_to_faction = JPL
+                    }
+                    JAP_leave_PEC = yes
                 }
                 set_global_flag = skip_default_capitulation
             }
@@ -449,26 +710,37 @@ on_actions = {
                     }
                 }
                 set_global_flag = war_won
+
+                # PRC kill PTF
                 if = {
-                    # PRC kill PTF
                     limit = {
-                        FROM = {
+                        ROOT = {
                             original_tag = PTF
                         }
-                        ROOT = {
-                            original_tag = PRC
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
                         }
                     }
-                    ROOT = {
+                    FROM = {
+                        end_puppet = PTF
+                    }
+                    PRC = {
+                        remove_from_faction = PTF
                         country_event = {
                             id = prcs.3134
                             days = 4
                         }
                     }
-                    FROM = {
-                        white_peace = ROOT
-                        add_ideas = GER_national_catastrophe
+                    every_country = {
+                        limit = {
+                            has_war_with = PTF
+                        }
+                        white_peace = PTF
                     }
+                    PRC_PTF_gaw = yes
                     set_global_flag = skip_default_capitulation
                 }
                 if = {
@@ -500,13 +772,46 @@ on_actions = {
                 if = {
                     limit = {
                         ROOT = {
-                            original_tag = CPP
+                            OR = {
+                                original_tag = PER
+                                original_tag = IRQ
+                            }
                         }
                         FROM = {
-                            original_tag = PER
+                            original_tag = CPP
+                        }
+                    }
+                    FROM = {
+                        annex_country = {
+                            target = ROOT
+                            transfer_troops = no
                         }
                     }
                     PRC = {
+                        if = {
+                            limit = {
+                                OR = {
+                                    NOT = {
+                                        country_exists = PER
+                                        country_exists = IRQ
+                                    }
+                                }
+                            }
+                            PRC = {
+                                set_autonomy = {
+                                    target = IRQ
+                                    autonomous_state = autonomy_communist
+                                    freedom_level = 0.1
+                                }
+                            }
+                            PRC = {
+                                set_autonomy = {
+                                    target = CPP
+                                    autonomous_state = autonomy_communist
+                                    freedom_level = 0.1
+                                }
+                            }
+                        }
                         add_to_faction = CPP
                         add_to_variable = {
                             CPC_frame = 8
@@ -521,15 +826,56 @@ on_actions = {
                         }
                     }
                     CPP = {
-                        PRC = {
-                            set_autonomy = {
-                                target = CPP
-                                autonomous_state = autonomy_communist
-                                freedom_level = 0.3
+                        if = {
+                            limit = {
+                                OR = {
+                                    NOT = {
+                                        country_exists = PER
+                                        country_exists = IRQ
+                                    }
+                                }
                             }
+                            CPP = {
+                                release = IRQ
+                                IRQ = {
+                                    remove_ideas = {
+                                        arab_league_member
+                                    }
+                                    create_country_leader = {
+                                        name = "伊拉克临时人民委员会"
+                                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                                        ideology = marxism_leninism
+                                    }
+                                    set_party_name = {
+                                        ideology = communist
+                                        long_name = PRC_nationalist_party_new_left_IRQ
+                                        name = PRC_nationalist_party_new_left_name_IRQ
+                                    }
+                                    set_politics = {
+                                        ruling_party = communist
+                                        elections_allowed = no
+                                    }
+                                    set_cosmetic_tag = IRQ_rebulid_the_government
+                                }
+                            }
+                        }
+                        promote_character = PER_Ali_Reza_Englebazard
+                        set_party_name = {
+                            ideology = totalitarian_socialist
+                            long_name = PER_communist_party_a
+                            name = PER_communist_party_a
+                        }
+                        set_party_name = {
+                            ideology = communist
+                            long_name = PER_communist_party_a
+                            name = PER_communist_party_a
                         }
                         every_core_state = {
                             remove_core_of = PER
+                        }
+                        set_politics = {
+                            ruling_party = totalitarian_socialist
+                            elections_allowed = no
                         }
                     }
                     set_global_flag = skip_default_capitulation
@@ -537,13 +883,20 @@ on_actions = {
                 if = {
                     limit = {
                         ROOT = {
-                            original_tag = CPA
+                            original_tag = TAL
                         }
                         FROM = {
-                            original_tag = TAL
+                            original_tag = CPA
                         }
                         NOT = {
                             country_exists = AFG
+                        }
+                    }
+                    FROM = {
+                        white_peace = ROOT
+                        annex_country = {
+                            target = ROOT
+                            transfer_troops = no
                         }
                     }
                     PRC = {
@@ -559,42 +912,57 @@ on_actions = {
                         add_to_variable = {
                             PRC_Lib_Int_Dir_Var = 1
                         }
-                    }
-                    CPA = {
                         PRC = {
                             set_autonomy = {
                                 target = CPA
                                 autonomous_state = autonomy_communist
-                                freedom_level = 0.3
+                                freedom_level = 0.1
                             }
                         }
-                        annex_country = {
-                            target = TAL
-                            transfer_troops = no
-                        }
-                        annex_country = {
-                            target = AFG
-                            transfer_troops = no
-                        }
+                    }
+                    CPA = {
                         every_core_state = {
                             remove_core_of = TAL
                             remove_core_of = AFG
                         }
+                        set_party_name = {
+                            ideology = communist
+                            long_name = TAL_communist_party_a
+                            name = TAL_communist_party_a
+                        }
+                        set_party_name = {
+                            ideology = totalitarian_socialist
+                            long_name = TAL_communist_party_a
+                            name = TAL_communist_party_a
+                        }
+                        set_politics = {
+                            ruling_party = totalitarian_socialist
+                            elections_allowed = no
+                        }
+                        promote_character = AFG_Hamidullah_Shahidzada
                     }
                     set_global_flag = skip_default_capitulation
                 }
                 else_if = {
                     limit = {
                         ROOT = {
-                            original_tag = CPA
+                            original_tag = AFG
                         }
                         FROM = {
-                            original_tag = AFG
+                            original_tag = CPA
                         }
                         NOT = {
                             country_exists = TAL
                         }
                     }
+                    FROM = {
+                        white_peace = ROOT
+                        annex_country = {
+                            target = ROOT
+                            transfer_troops = no
+                        }
+                    }
+
                     PRC = {
                         add_to_faction = CPA
                         add_to_variable = {
@@ -608,27 +976,34 @@ on_actions = {
                         add_to_variable = {
                             PRC_Lib_Int_Dir_Var = 1
                         }
-                    }
-                    CPA = {
                         PRC = {
                             set_autonomy = {
                                 target = CPA
                                 autonomous_state = autonomy_communist
-                                freedom_level = 0.3
+                                freedom_level = 0.1
                             }
                         }
-                        annex_country = {
-                            target = TAL
-                            transfer_troops = no
-                        }
-                        annex_country = {
-                            target = AFG
-                            transfer_troops = no
-                        }
+                    }
+                    CPA = {
                         every_core_state = {
                             remove_core_of = TAL
                             remove_core_of = AFG
                         }
+                        set_party_name = {
+                            ideology = communist
+                            long_name = TAL_communist_party_a
+                            name = TAL_communist_party_a
+                        }
+                        set_party_name = {
+                            ideology = totalitarian_socialist
+                            long_name = TAL_communist_party_a
+                            name = TAL_communist_party_a
+                        }
+                        set_politics = {
+                            ruling_party = totalitarian_socialist
+                            elections_allowed = no
+                        }
+                        promote_character = AFG_Hamidullah_Shahidzada
                     }
                     set_global_flag = skip_default_capitulation
                 }
@@ -647,12 +1022,12 @@ on_actions = {
                             set_autonomy = {
                                 target = ROP
                                 autonomous_state = autonomy_communist
-                                freedom_level = 0.3
+                                freedom_level = 0.1
                             }
                         }
                         ROP = {
                             set_party_name = {
-                                ideology = totalitarian_socialist
+                                ideology = communist
                                 long_name = PRC_nationalist_party_new_left_ROP
                                 name = PRC_nationalist_party_new_left_name_ROP
                             }
@@ -682,6 +1057,9 @@ on_actions = {
                             target = PHI
                             transfer_troops = no
                         }
+                        every_core_state = {
+                            remove_core_of = ROOT
+                        }
                     }
                     set_global_flag = skip_default_capitulation
                 }
@@ -700,13 +1078,13 @@ on_actions = {
                             set_autonomy = {
                                 target = SRI
                                 autonomous_state = autonomy_communist
-                                freedom_level = 0.3
+                                freedom_level = 0.1
                             }
                         }
                         SRI = {
                             set_cosmetic_tag = PRC_shijieguoji_i
                             set_party_name = {
-                                ideology = totalitarian_socialist
+                                ideology = communist
                                 long_name = PRC_nationalist_party_new_left_SRI
                                 name = PRC_nationalist_party_new_left_name_SRI
                             }
@@ -756,13 +1134,13 @@ on_actions = {
                             set_autonomy = {
                                 target = SMA
                                 autonomous_state = autonomy_communist
-                                freedom_level = 0.3
+                                freedom_level = 0.1
                             }
                         }
                         SMA = {
                             set_cosmetic_tag = PRC_shijieguoji
                             set_party_name = {
-                                ideology = totalitarian_socialist
+                                ideology = communist
                                 long_name = PRC_nationalist_party_new_left_SMA
                                 name = PRC_nationalist_party_new_left_name_SMA
                             }
@@ -796,537 +1174,49 @@ on_actions = {
                     set_global_flag = skip_default_capitulation
                 }
                 if = {
-                    limit = {
+                    limit = { 
                         FROM = {
-                            original_tag = PRC
+                            OR = {
+                                original_tag = MEX
+                                original_tag = ZAP
+                            }
                         }
                         ROOT = {
-                            original_tag = PRK
-                        }
-                    }
-                    FROM = {
-                        white_peace = ROOT
-                        PRC = {
-                            set_autonomy = {
-                                target = PRK
-                                autonomy_state = autonomy_communist
-                                freedom_level = 0.1
-                            }
-                            hidden_effect = {
-                                country_event = {
-                                    id = china.1712
-                                    days = 7
-                                }
-                            }
-                            add_to_variable = {
-                                CPC_frame = 2
-                            }
-                            clamp_variable = {
-                                var = CPC_frame
-                                min = 0
-                                max = 100
-                            }
-                            add_to_variable = {
-                                PRC_Lib_Int_Dir_Var = 1
+                            OR = {
+                                original_tag = GUC
+                                original_tag = LFM
+                                original_tag = CAS
+                                original_tag = CDJ
+                                original_tag = SIN
+
                             }
                         }
                     }
-                    ROOT = {
-                        set_party_name = {
-                            ideology = totalitarian_socialist
-                            long_name = PRC_nationalist_party_long
-                            name = PRC_nationalist_party
-                        }
-                        create_country_leader = {
-                            name = "朝鲜军管委员会"
-                            desc = "POLITICS_CHAOXIAN_DESC"
-                            picture = "gfx/leaders/PRC/generals/PRC_army.png"
-                            ideology = left_wing_junta
-                        }
-                        remove_ideas = {
-                            PRK_heavy_sanctions_idea
-                            PRK_Total_Control_idea
-                            PRK_Kim_Jae_ryong_hog
-                            PRK_Ri_Yong_ho_for
-                            PRK_O_Su_yong_eco
-                            PRK_Jong_Kyong_thaek_sec
-                            PRK_Choe_Pu_Il_int
-                        }
-                       
-                        inherit_technology = PRC
-                        set_cosmetic_tag = PRC_repolice_gonh
-                        set_politics = {
-                            ruling_party = totalitarian_socialist
-                            election_frequency = 60
-                            elections_allowed = no
-                        }
-                        every_country = {
-                            limit = {
-                                is_in_faction_with = ROOT
-                                any_controlled_state = {
-                                    NOT = {
-                                        is_controlled_by = ROOT
-                                    }
-                                    is_core_of = ROOT
-                                    NOT = {
-                                        is_core_of = PREV
-                                    }
-                                }
+                    if = {
+                        limit = { 
+                            NOT = {
+                                country_exists = GUC
+                                country_exists = LFM
+                                country_exists = CAS
+                                country_exists = CDJ
+                                country_exists = SIN
                             }
-                            every_controlled_state = {
-                                limit = {
-                                    NOT = {
-                                        is_controlled_by = ROOT
-                                    }
-                                    is_core_of = ROOT
-                                    NOT = {
-                                        is_core_of = PREV
-                                    }
-                                }
-                                transfer_state_to = ROOT
-                                set_state_owner_to = ROOT
-                                set_state_controller_to = ROOT
+                            MEX = {
+                                has_non_aggression_pact_with = ZAP
+                            }
+                        }
+                        MEX = {
+                            annex_country = {
+                                target = ROOT
+                                transfer_troops = no
+                            }
+                            annex_country = {
+                                target = ZAP
+                                transfer_troops = yes
                             }
                         }
                     }
-                    set_global_flag = skip_default_capitulation
                 }
-                if = {
-                    # PRC kill VIN
-                    limit = {
-                        FROM = {
-                            original_tag = PRC
-                        }
-                        ROOT = {
-                            original_tag = VIN
-                        }
-                    }
-                    FROM = {
-                        white_peace = ROOT
-                        set_autonomy = {
-                            target = VIN
-                            autonomous_state = autonomy_communist
-                            freedom_level = 0.3
-                        }
-                        add_to_variable = {
-                            CPC_frame = 6
-                        }
-                        clamp_variable = {
-                            var = CPC_frame
-                            min = 0
-                            max = 100
-                        }
-                        add_to_variable = {
-                            PRC_Lib_Int_Dir_Var = 1
-                        }
-                        # clr_country_flag = PRC_spread_chinese_influence
-                    }
-                    ROOT = {
-                        set_popularities = {
-                            totalitarian_socialist = 40
-                            communist = 60
-                        }
-                        set_politics = {
-                            ruling_party = communist
-                            election_frequency = 60
-                            elections_allowed = no
-                        }
-                        set_party_name = {
-                            ideology = communist
-                            long_name = PRC_nationalist_party_new_long
-                            name = PRC_nationalist_party_new
-                        }
-                        set_cosmetic_tag = PRC_repolice_gonh
-                        JAP_leave_PEC = yes
-                        clr_country_flag = pdto_member
-                        every_country = {
-                            limit = {
-                                is_in_faction_with = ROOT
-                                any_controlled_state = {
-                                    NOT = {
-                                        is_controlled_by = ROOT
-                                    }
-                                    is_core_of = ROOT
-                                    NOT = {
-                                        is_core_of = PREV
-                                    }
-                                }
-                            }
-                            every_controlled_state = {
-                                limit = {
-                                    NOT = {
-                                        is_controlled_by = ROOT
-                                    }
-                                    is_core_of = ROOT
-                                    NOT = {
-                                        is_core_of = PREV
-                                    }
-                                }
-                                transfer_state_to = ROOT
-                                set_state_owner_to = ROOT
-                                set_state_controller_to = ROOT
-                            }
-                        }
-                    }
-                    set_global_flag = skip_default_capitulation
-                }
-                # if = {
-                #     limit = {
-                #         FROM = {
-                #             OR = {
-                #                 original_tag = PRC
-                #                 is_ally_with = PRC
-                #                 is_ally_with = PAK
-                #             }
-                #         }
-                #         ROOT = {
-                #             original_tag = AFG
-                #         }
-                #     }
-                #     FROM = {
-                #         PRC = {
-                #             annex_country = {
-                #                 target = AFG
-                #                 transfer_troops = no
-                #             }
-                #         }
-                #         AFG = {
-                #             inherit_technology = PRC
-                #             set_cosmetic_tag = PRC_repolice_gonh
-                #             set_party_name = {
-                #                 ideology = communist
-                #                 long_name = PRC_nationalist_party_long
-                #                 name = PRC_nationalist_party_long
-                #             }
-                #             set_politics = {
-                #                 ruling_party = communist
-                #                 election_frequency = 60
-                #                 elections_allowed = yes
-                #             }
-                #             create_country_leader = {
-                #                 name = "阿富汗人民代表大会"
-                #                 desc = "POLITICS_ASTGW_DESC"
-                #                 picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                #                 expire = "1999.1.1"
-                #                 ideology = marxism_leninism
-                #             }
-                #         }
-                #     }
-                #     set_global_flag = skip_default_capitulation
-                # }
-                # if = {
-                #     limit = {
-                #         FROM = {
-                #             OR = {
-                #                 original_tag = PRC
-                #                 is_ally_with = PRC
-                #                 is_ally_with = PAK
-                #             }
-                #         }
-                #         ROOT = {
-                #             original_tag = TAL
-                #         }
-                #     }
-                #     FROM = {
-                #         PRC = {
-                #             annex_country = {
-                #                 target = TAL
-                #                 transfer_troops = no
-                #             }
-                #             release_autonomy = {
-                #                 target = TAL
-                #                 autonomy_state = autonomy_communist
-                #                 freedom_level = 0.1
-                #             }
-                #         }
-                #         TAL = {
-                #             inherit_technology = PRC
-                #             set_cosmetic_tag = PRC_repolice_gonh_1
-                #             set_party_name = {
-                #                 ideology = communist
-                #                 long_name = PRC_nationalist_party_long
-                #                 name = PRC_nationalist_party_long
-                #             }
-                #             set_politics = {
-                #                 ruling_party = communist
-                #                 election_frequency = 60
-                #                 elections_allowed = yes
-                #             }
-                #             create_country_leader = {
-                #                 name = "阿富汗人民代表大会"
-                #                 desc = "POLITICS_ASTGW_DESC"
-                #                 picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                #                 expire = "1999.1.1"
-                #                 ideology = marxism_leninism
-                #             }
-                #         }
-                #     }
-                #     set_global_flag = skip_default_capitulation
-                # }
-                # if = {
-                # 	# MND kill all
-                # 	limit = {
-                # 		FROM = {
-                # 			OR = {
-                # 				original_tag = MND
-                # 				original_tag = PRC
-                # 			}
-                # 		}
-                # 		ROOT = {
-                # 			OR = {
-                # 				original_tag = PDF
-                # 				original_tag = BRM
-                # 				original_tag = KNU
-                # 				original_tag = CNF
-                # 				original_tag = SSA
-                # 				original_tag = MOA
-                # 			}
-                # 		}
-                # 	}
-                # 	MND = {
-                # 		white_peace = ROOT
-                # 		annex_country = {
-                # 			target = ROOT
-                # 			transfer_troops = no
-                # 		}
-                # 	}
-                # 	if = {
-                # 		limit = {
-                # 			OR = {
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = PDF
-                # 					}
-                # 					NOT = {
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = BRM
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = CNF
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = KNU
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = SSA
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						MOA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				AND = {
-                # 					ROOT = {
-                # 						original_tag = MOA
-                # 					}
-                # 					NOT = {
-                # 						PDF = {
-                # 							exists = yes
-                # 						}
-                # 						BRM = {
-                # 							exists = yes
-                # 						}
-                # 						CNF = {
-                # 							exists = yes
-                # 						}
-                # 						KNU = {
-                # 							exists = yes
-                # 						}
-                # 						SSA = {
-                # 							exists = yes
-                # 						}
-                # 					}
-                # 				}
-                # 			}
-                # 		}
-                # 		PRC = {
-                # 			puppet = BRM
-                # 		}
-                # 		BRM = {
-                # 			white_peace = FROM
-                # 			if = {
-                # 				limit = {
-                # 					PRC = {
-                # 						has_country_leader = {
-                # 							character = PRC_Hu_Chunhua
-                # 							ruling_only = yes
-                # 						}
-                # 					}
-                # 				}
-                # 				set_popularities = {
-                # 					totalitarian_socialist = 75
-                # 					communist = 25
-                # 				}
-                # 			}
-                # 			annex_country = {
-                # 				target = MND
-                # 				transfer_troops = yes
-                # 			}
-                # 			every_state = {
-                # 				limit = {
-                # 					is_core_of = BRM
-                # 				}
-                # 				remove_core_of = PDF
-                # 				remove_core_of = CNF
-                # 				remove_core_of = KLA
-                # 				remove_core_of = KNU
-                # 				remove_core_of = SSA
-                # 				remove_core_of = MOA
-                # 				remove_core_of = MND
-                # 				remove_core_of = WAT
-                # 			}
-                # 			remove_ideas = {
-                # 				BRM_first_xiist_revolution
-                # 				BRM_ethnic_tensions
-                # 				BRM_national_ceasefire
-                # 				BRM_unstable_junta
-                # 				BRM_civil_war_idea
-                # 			}
-                # 			PRC = {
-                # 				clr_country_flag = PRC_myanmar_negotiations_flag
-                # 				add_to_faction = BRM
-                # 				every_country = {
-                # 					limit = {
-                # 						is_in_faction_with = BRM
-                # 						any_controlled_state = {
-                # 							NOT = {
-                # 								is_controlled_by = BRM
-                # 							}
-                # 							is_core_of = BRM
-                # 						}
-                # 					}
-                # 					every_controlled_state = {
-                # 						limit = {
-                # 							NOT = {
-                # 								is_controlled_by = BRM
-                # 							}
-                # 							is_core_of = BRM
-                # 						}
-                # 						transfer_state_to = BRM
-                # 						set_state_owner_to = BRM
-                # 						set_state_controller_to = BRM
-                # 					}
-                # 				}
-                # 			}
-                # 			BRM = {
-                # 				every_country = {
-                # 					limit = {
-                # 						is_core_of = BRM
-                # 					}
-                # 					annex_country = {
-                # 						target = FROM
-                # 						transfer_troops = no
-                # 					}
-                # 				}
-                # 				set_cosmetic_tag = PRC_repolice_gonh
-                # 				set_politics = {
-                # 					ruling_party = totalitarian_socialist
-                # 					elections_allowed = yes
-                # 					election_frequency = 48
-                # 				}
-                # 				create_country_leader = {
-                # 					name = "缅甸人民委员会"
-                # 					desc = "POLITICS_ASTGW_DESC"
-                # 					picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                # 					expire = "1999.1.1"
-                # 					ideology = left_wing_junta
-                # 				}
-                # 				# country_event = { id = bur.5 }
-                # 				clr_country_flag = pdto_member
-                # 				set_country_flag = eadi_member
-                # 			}
-                # 		}
-                # 	}
-                # 	set_global_flag = skip_default_capitulation
-                # }
             }
         }
     }

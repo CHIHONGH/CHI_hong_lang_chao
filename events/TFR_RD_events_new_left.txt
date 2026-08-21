@@ -22,15 +22,8 @@ country_event = {
     title = prcs.2.t
     desc = prcs.2.d
     picture = GFX_2025_xinchun
-    # is_triggered_only = yes
+    is_triggered_only = yes
     fire_only_once = yes
-    trigger = {
-        date > 2025.1.1
-        AND = {
-            tag = PRC
-            has_country_flag = PRC_pla_xibubianqu
-        }
-    }
     option = {
         name = prcs.2.a
     }
@@ -121,6 +114,23 @@ news_event = {
     }
     option = {
         name = prcs.7.a
+        hidden_effect = {
+            ROP = {
+                set_capital = {
+                    state = 1274
+                }
+            }
+            SRI = {
+                set_capital = {
+                    state = 1387
+                }
+            }
+            SMA = {
+                set_capital = {
+                    state = 1386
+                }
+            }
+        }
     }
 }
 
@@ -588,6 +598,10 @@ country_event = {
 
     option = {
         name = prcs.36.a
+        hidden_effect = {
+            set_country_flag = PRC_china_gaw_victor
+            focus_unlock = yes
+        }
         if = {
             limit = {
                 check_variable = {
@@ -954,13 +968,7 @@ country_event = {
     title = prcs.56.t
     desc = prcs.56.d
     picture = GFX_PRC_PRK_train
-    fire_only_once = yes
-    trigger = {
-        tag = PRC
-        PRK = {
-            is_ally_with = PRC
-        }
-    }
+    is_triggered_only = yes
     option = {
         name = prcs.56.a
         country_event = prcs.57
@@ -1091,7 +1099,7 @@ country_event = {
     id = prcs.64
     title = prcs.64.t
     desc = prcs.64.d
-    picture = GFX_PRC_tank_stars
+    picture = GFX_PRC_type_100
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -1433,7 +1441,6 @@ news_event = {
     is_triggered_only = yes
     major = yes
     option = {
-        set_country_flag = prc_allies_in_southeast_asia_flag_set
         name = prcs.81.a
     }
 }
@@ -1481,6 +1488,206 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.83.a
+    }
+}
+
+country_event = {
+    id = prcs.84
+    title = prcs.84.t
+    desc = prcs.84.d
+    hidden = yes
+    trigger = {
+        tag = PRC
+        ROP = {
+            is_in_faction_with = PRC
+        }
+        SRI = {
+            is_in_faction_with = PRC
+        }
+        SMA = {
+            is_in_faction_with = PRC
+        }
+        CAM = {
+            is_in_faction_with = PRC
+        }
+        VIN = {
+            is_in_faction_with = PRC
+        }
+    }
+    fire_only_once = yes
+    timeout_days = 1
+    mean_time_to_happen = {
+        days = 5
+    }
+    option = {
+        name = prcs.84.a        
+        news_event = {
+            id = prcs.81
+            days = 10
+        }
+    }
+}
+
+country_event = {
+    id = prcs.85
+    title = prcs.85.t
+    desc = prcs.85.d
+    is_triggered_only = yes
+    picture = GFX_game_start_keep_in_mind_event
+    option = {
+        name = prcs.85.a
+    }
+}
+
+country_event = {
+    id = prcs.86
+    title = prcs.86.t
+    desc = prcs.86.d
+    fire_only_once = yes
+    trigger = {
+        tag = EFF
+        NOT = {
+            country_exists = LES
+            country_exists = CFF
+            country_exists = SWZ
+            country_exists = SAF
+        }
+    }
+    picture = GFX_game_start_keep_in_mind_event
+    option = {
+        name = prcs.86.a
+        add_country_leader_role = {
+            character = SAF_Julius_Malema_char
+            country_leader = { 
+                ideology = left_nationalism
+            }
+        }
+        set_politics = {
+            ruling_party = communist
+            election_frequency = 60
+            elections_allowed = no
+            last_election = "2021.1.1"
+        }
+        set_cosmetic_tag = EFF_socialist
+    }
+}
+
+country_event = {
+    id = prcs.87
+    title = prcs.87.t
+    desc = prcs.87.d
+    is_triggered_only = yes
+    picture = GFX_game_start_keep_in_mind_event
+    option = {
+        name = prcs.87.a
+        set_global_flag = south_america_rev_war_global
+        VEN = {
+            create_faction = VEN_world_anti_imperialist_platform_idea
+            add_to_faction = NIC
+            add_to_faction = ELN
+            add_to_faction = PRU
+        }   
+        BRA = {
+            create_faction = BRA_south_america_anti_commie
+            add_to_faction = ARG
+            add_to_faction = ECU
+            add_to_faction = BOL
+        }
+        every_country = {
+            limit = {
+                is_ally_with = VEN
+            }
+            every_country = {
+                limit = {
+                    is_ally_with = BRA
+                }
+                declare_war_on = {
+                    target = PREV
+                    type = puppet
+                }
+            }
+        }
+    }
+}
+
+
+country_event = {
+    id = prcs.88
+    title = prcs.88.t
+    desc = prcs.88.d
+    is_triggered_only = yes
+    picture = GFX_game_start_keep_in_mind_event
+    option = {
+        name = prcs.88.a
+        start_civil_war = {
+            ideology = communist
+        }
+    }
+}
+
+country_event = {
+    id = prcs.89
+    title = prcs.89.t
+    desc = prcs.89.d
+    is_triggered_only = yes
+    picture = GFX_game_start_keep_in_mind_event  #没图
+    option = {
+        name = prcs.89.a
+        custom_effect_tooltip = prcs_89_a_tt
+        set_country_flag = PRC_chinese_nation_policy_2_flag
+        custom_effect_tooltip = change_race_law_tooltip
+        show_ideas_tooltip = PRC_chinese_nation_policy_2
+        hidden_effect = {
+            add_ideas = PRC_chinese_nation_policy_2
+        }
+    }
+    option = {
+        name = prcs.89.b
+        custom_effect_tooltip = prcs_89_b_tt
+
+        set_country_flag = PRC_chinese_nation_policy_3_flag
+        custom_effect_tooltip = change_race_law_tooltip
+        show_ideas_tooltip = PRC_chinese_nation_policy_2
+        hidden_effect = {
+            add_ideas = PRC_chinese_nation_policy_3
+        }
+    }
+}
+
+news_event = {
+    id = prcs.90
+    title = prcs.90.t
+    desc = prcs.90.d
+    picture = GFX_another_day_in_the_bronx
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = prcs.90.a
+
+    }
+}
+country_event = {
+    id = prcs.91
+    title = prcs.91.t
+    desc = prcs.91.d
+    picture = GFX_APA_soviet_flag
+    is_triggered_only = yes
+
+    option = {
+        name = prcs.91.a
+            
+    }
+}
+news_event = {
+    id = prcs.92
+    title = prcs.92.t
+    desc = prcs.92.d
+    picture = GFX_report_event_generic
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = prcs.92.a
+            
     }
 }
 
@@ -2046,11 +2253,15 @@ country_event = {
     id = Chihong.31
     title = Chihong.31.t
     desc = Chihong.31.desc
-    picture = GFX_Chihong31_event
+    picture = GFX_Event_Template108
     fire_only_once = yes
     trigger = {
         tag = PRC
         country_exists = ATW
+        has_global_flag = USA_american_civil_war_global
+    }
+    mean_time_to_happen = {
+        days = 25
     }
     option = {
         name = Chihong.31.a
@@ -2068,7 +2279,7 @@ country_event = {
     id = Chihong.32
     title = Chihong.32.t
     desc = Chihong.32.desc
-    picture = GFX_Chihong32_event
+    picture = GFX_Event_Template109
     is_triggered_only = yes
     option = {
         name = Chihong.32.a
@@ -2086,7 +2297,7 @@ country_event = {
     id = Chihong.33
     title = Chihong.33.t
     desc = Chihong.33.desc
-    picture = GFX_Chihong33_event
+    picture = GFX_Event_Template110
     is_triggered_only = yes
     option = {
         name = Chihong.33.a
@@ -2104,7 +2315,7 @@ country_event = {
     id = Chihong.34
     title = Chihong.34.t
     desc = Chihong.34.desc
-    picture = GFX_Chihong34_event
+    picture = GFX_Event_Template111
     is_triggered_only = yes
     option = {
         name = Chihong.34.a
@@ -2122,7 +2333,7 @@ country_event = {
     id = Chihong.35
     title = Chihong.35.t
     desc = Chihong.35.desc
-    picture = GFX_Chihong35_event
+    picture = GFX_Event_Template112
     is_triggered_only = yes
     option = {
         name = Chihong.35.a
@@ -2736,6 +2947,9 @@ country_event = {
 
     option = {
         name = Chihong.71.a
+        hidden_effect = {
+            load_oob = PRC_usa_seattle
+        }
     }
 }
 
@@ -3205,10 +3419,12 @@ country_event = {
 
     option = {
         name = Chihong.96.a
+        set_country_flag = War_situation_flag
         add_to_variable = {
             War_situation_var = 1
         }
         NAX = {
+            set_country_flag = War_situation_flag
             add_to_variable = {
                 War_situation_var = 1
             }
@@ -3227,9 +3443,11 @@ country_event = {
     option = {
         name = Chihong.97.a
         add_to_variable = {
+            set_country_flag = War_situation_flag
             War_situation_var = 1
         }
         NAX = {
+            set_country_flag = War_situation_flag
             add_to_variable = {
                 War_situation_var = 1
             }
@@ -3248,16 +3466,395 @@ country_event = {
     option = {
         name = Chihong.98.a
         add_to_variable = {
+            set_country_flag = War_situation_flag
             War_situation_var = 1
         }
         NAX = {
             add_to_variable = {
+                set_country_flag = War_situation_flag
                 War_situation_var = 1
             }
         }
         ai_chance = { factor = 1000 }
     }
 }
+
+country_event = {
+    id = Chihong.99
+    title = Chihong.99.t
+    desc = Chihong.99.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong_transformation_moderate
+        add_to_variable = {
+            PRC_mic_stability_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_monthly_population_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_global_building_slots_factor_dynamic_var = 0.075
+        }
+        add_to_variable = {
+            PRC_mic_tax_business_rate_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.03
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea29a
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_state_own
+        add_to_variable = {
+            PRC_mic_stability_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_monthly_population_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_global_building_slots_factor_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.02
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea29b
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_collective
+        add_to_variable = {
+            PRC_mic_stability_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_monthly_population_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_global_building_slots_factor_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.01
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea29c
+            }
+        }
+    }
+}
+
+country_event = {
+    id = Chihong.100
+    title = Chihong.100.t
+    desc = Chihong.100.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong_transformation_moderate
+        add_to_variable = {
+            PRC_mic_political_power_gain_dynamic_var = 0.15
+        }
+        add_to_variable = {
+            PRC_mic_society_development_monthly_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_decryption_power_dynamic_var = 0.2
+        }
+        add_to_variable = {
+            PRC_mic_tax_business_rate_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.03
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea30a
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_state_own
+        add_to_variable = {
+            PRC_mic_political_power_gain_dynamic_var = 0.2
+        }
+        add_to_variable = {
+            PRC_mic_society_development_monthly_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_decryption_power_dynamic_var = 0.2
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.02
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea30b
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_collective
+        add_to_variable = {
+            PRC_mic_political_power_gain_dynamic_var = 0.2
+        }
+        add_to_variable = {
+            PRC_mic_society_development_monthly_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_decryption_power_dynamic_var = 0.2
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.01
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea30c
+            }
+        }
+    }
+}
+
+country_event = {
+    id = Chihong.101
+    title = Chihong.101.t
+    desc = Chihong.101.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong_transformation_moderate
+        add_to_variable = {
+            PRC_mic_production_cost_infrastructure_factor_dynamic_var = -0.075
+        }
+        add_to_variable = {
+            PRC_mic_production_cost_rail_way_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_supply_consumption_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_tax_business_rate_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.03
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea31a
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_state_own
+        add_to_variable = {
+            PRC_mic_production_cost_infrastructure_factor_dynamic_var = -0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_cost_rail_way_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_supply_consumption_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.02
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea31b
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_collective
+        add_to_variable = {
+            PRC_mic_production_cost_infrastructure_factor_dynamic_var = -0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_cost_rail_way_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_supply_consumption_factor_dynamic_var = -0.1
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.01
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea31c
+            }
+        }
+    }
+}
+
+
+country_event = {
+    id = Chihong.102
+    title = Chihong.102.t
+    desc = Chihong.102.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong_transformation_moderate
+        add_to_variable = {
+            PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_industrial_capacity_factory_dynamic_var = 0.075
+        }
+        add_to_variable = {
+            PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.075
+        }
+        add_to_variable = {
+            PRC_mic_tax_business_rate_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.03
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea32a
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_state_own
+        add_to_variable = {
+            PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_industrial_capacity_factory_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.02
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea32b
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_collective
+        add_to_variable = {
+            PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_industrial_capacity_factory_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.01
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea32c
+            }
+        }
+    }
+}
+
+country_event = {
+    id = Chihong.103
+    title = Chihong.103.t
+    desc = Chihong.103.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = Chihong_transformation_moderate
+        add_to_variable = {
+            PRC_mic_misc_income_dynamic_var = 25
+        }
+        add_to_variable = {
+            PRC_mic_personal_value_factor_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_income_growth_factor_dynamic_var = 0.05
+        }
+        add_to_variable = {
+            PRC_mic_tax_business_rate_dynamic_var = 0.01
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.13
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea33a
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_state_own
+        add_to_variable = {
+            PRC_mic_misc_income_dynamic_var = 25
+        }
+        add_to_variable = {
+            PRC_mic_personal_value_factor_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.02
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea33b
+            }
+        }
+    }
+    option = {
+        name = Chihong_transformation_collective
+        add_to_variable = {
+            PRC_mic_misc_income_dynamic_var = 25
+        }
+        add_to_variable = {
+            PRC_mic_personal_value_factor_dynamic_var = 0.1
+        }
+        add_to_variable = {
+            PRC_mic_business_value_dynamic_var = 0.125
+        }
+        add_to_variable = {
+            PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.01
+        }
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_made_in_china_dummy_idea0
+                add_idea = PRC_made_in_china_dummy_idea33c
+            }
+        }
+    }
+}
+
 
 country_event = {
     id = china.1733
@@ -3441,6 +4038,81 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = china.1703.a
+        PRC = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -1071
+            }
+            add_income_with_inflation = yes
+        }
+        CPA = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = 571
+            }
+            add_income_with_inflation = yes
+            set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+            set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.20
+			}
+			add_poverty_development = yes
+            set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.20
+			}
+			add_society_development = yes
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = CPA
+				}
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.035
+        }
+        CPP = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = 500
+            }
+            add_income_with_inflation = yes
+            set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+            set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.20
+			}
+			add_poverty_development = yes
+            set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.20
+			}
+			add_society_development = yes
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = CPP
+				}
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.045
+        }
         hidden_effect = {
             if = {
                 limit = {
@@ -3472,6 +4144,34 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = china.1704.a
+        CPP = {
+            add_stability = 0.095
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+        }
+        CPA = {
+            add_stability = 0.085
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+        }
     }
 }
 
@@ -3823,7 +4523,7 @@ country_event = {
     id = china.1722
     title = china.1722.t
     desc = china.1722.d
-    picture = GFX_red_patriotism
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3840,7 +4540,7 @@ country_event = {
     id = china.1723
     title = china.1723.t
     desc = china.1723.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3857,7 +4557,7 @@ country_event = {
     id = china.1724
     title = china.1724.t
     desc = china.1724.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3874,7 +4574,7 @@ country_event = {
     id = china.1725
     title = china.1725.t
     desc = china.1725.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3891,7 +4591,7 @@ country_event = {
     id = china.1726
     title = china.1726.t
     desc = china.1726.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3908,7 +4608,7 @@ country_event = {
     id = china.1727
     title = china.1727.t
     desc = china.1727.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3925,7 +4625,7 @@ country_event = {
     id = china.1728
     title = china.1728.t
     desc = china.1728.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -3942,7 +4642,7 @@ country_event = {
     id = china.1729
     title = china.1729.t
     desc = china.1729.d
-    #picture = GFX_Chinese_soldiers
+    picture = GFX_Event_Template33
     is_triggered_only = yes
     trigger = {
         tag = PRC
@@ -4048,3449 +4748,3 @@ country_event = {
     }
 }
 
-country_event = {
-    id = Chihong.6502
-    title = Chihong.6502.t
-    desc = Chihong.6502.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6502.a
-        custom_effect_tooltip = Chihong_6502_tt1
-        set_variable = {
-            nationalization_var_1 = 3
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.075
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.05
-        }
-        country_event = {
-            id = Chihong.6602
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6502.b
-        custom_effect_tooltip = Chihong_6502_tt2
-        set_variable = {
-            nationalization_var_1 = 4
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.15
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.1
-        }
-        country_event = {
-            id = Chihong.6602
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6502.c
-        set_variable = {
-            nationalization_var_1 = 5
-        }
-        add_political_power = -25
-        add_stability = -0.05
-        set_temp_variable = {
-            income_var_temp = -5
-        }
-        add_income_with_inflation = yes
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.25
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.15
-        }
-        country_event = {
-            id = Chihong.6602
-            days = 1
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6602
-    title = Chihong.6602.t
-    desc = Chihong.6602.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6602.a
-        custom_effect_tooltip = Chihong_6602_a_tt
-        add_political_power = -25
-        add_stability = 0.05
-        country_event = {
-            id = Chihong.6702
-            days = 60
-        }
-
-    }
-    option = {
-        name = Chihong.6602.b
-        custom_effect_tooltip = Chihong_6602_b_tt
-        add_stability = -0.025
-        add_political_power = 50
-        random_list = {
-            10 = {
-                country_event = {
-                    id = Chihong.6802
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.6902
-                    days = 30
-                }
-            }
-            30 = {
-                country_event = {
-                    id = Chihong.7002
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.7102
-                    days = 30
-                }
-            }
-            10 = {
-                country_event = {
-                    id = Chihong.7202
-                    days = 30
-                }
-            }
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6702
-    title = Chihong.6702.t
-    desc = Chihong.6702.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6702.a
-        add_political_power = 10
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -10
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6802
-    title = Chihong.6802.t
-    desc = Chihong.6802.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6802.a
-        add_political_power = 30
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -25
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6802
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6902
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7002
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7102
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7202
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6902
-    title = Chihong.6902.t
-    desc = Chihong.6902.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6902.a
-        add_political_power = 15
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -10
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6802
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6902
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7002
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7102
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7202
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7002
-    title = Chihong.7002.t
-    desc = Chihong.7002.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7002.a
-        add_political_power = 5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6802
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6902
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7002
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7102
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7202
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7102
-    title = Chihong.7102.t
-    desc = Chihong.7102.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7102.a
-        add_political_power = -5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = 5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6802
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6902
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7002
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7102
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7202
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7102.b
-        country_event = {
-            id = Chihong.6702
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7202
-    title = Chihong.7202.t
-    desc = Chihong.7202.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7202.a
-        add_political_power = -20
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = 20
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6802
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6902
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7002
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7102
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7202
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7202.b
-        add_popularity = {
-            ideology = libertarian_socialist
-            popularity = -0.1
-        }
-        add_political_power = -25
-        country_event = {
-            id = Chihong.6702
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7302
-    title = Chihong.7302.t
-    desc = Chihong.7302.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7302.a
-
-    }
-    option = {
-        name = Chihong.7302.b
-        custom_effect_tooltip = Chihong_7302_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 1
-        }
-    }
-    option = {
-        name = Chihong.7302.c
-        custom_effect_tooltip = Chihong_7302_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 2
-        }
-    }
-
-    option = {
-        name = Chihong.7302.d
-        custom_effect_tooltip = Chihong_7302_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 3
-        }
-    }
-    option = {
-        name = Chihong.7302.e
-        custom_effect_tooltip = Chihong_7302_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 4
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7402
-    title = Chihong.7402.t
-    desc = Chihong.7402.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7402.a
-        custom_effect_tooltip = Chihong_7402_tt1
-        add_political_power = -100
-        set_temp_variable = {
-            income_var_temp = -20
-        }
-        add_income_with_inflation = yes
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 2
-                }
-            }
-            add_to_variable = {
-                PRC_mic_political_power_gain_dynamic_var = 0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_0
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 3
-                }
-            }
-            add_to_variable = {
-                PRC_mic_political_power_gain_dynamic_var = 0.15
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_1
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 4
-                }
-            }
-            add_to_variable = {
-                PRC_mic_political_power_gain_dynamic_var = 0.2
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_2
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 5
-                }
-            }
-            add_to_variable = {
-                PRC_mic_political_power_gain_dynamic_var = 0.25
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_3
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 1
-                }
-            }
-            custom_effect_tooltip = Chihong_7402_tt2
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.015
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_5
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 2
-                }
-            }
-            custom_effect_tooltip = Chihong_7402_tt3
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.03
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_6
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 3
-                }
-            }
-            custom_effect_tooltip = Chihong_7402_tt4
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 4
-                }
-            }
-            custom_effect_tooltip = Chihong_7402_tt5
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7502
-    title = Chihong.7502.t
-    desc = Chihong.7502.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7502.a
-        add_political_power = 50
-        add_stability = 0.05
-        remove_dynamic_modifier = {
-            modifier = TFR_PRC_cost_of_nationalization_dynamic
-        }
-    }
-}
-
-
-
-country_event = {
-    id = Chihong.6504
-    title = Chihong.6504.t
-    desc = Chihong.6504.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6504.a
-        custom_effect_tooltip = Chihong_6502_tt1
-        set_variable = {
-            nationalization_var_1 = 3
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.075
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.05
-        }
-        country_event = {
-            id = Chihong.6604
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6504.b
-        custom_effect_tooltip = Chihong_6502_tt2
-        set_variable = {
-            nationalization_var_1 = 4
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.15
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.1
-        }
-        country_event = {
-            id = Chihong.6604
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6504.c
-        custom_effect_tooltip = Chihong_6502_tt3
-        set_variable = {
-            nationalization_var_1 = 5
-        }
-        add_political_power = -25
-        add_stability = -0.05
-        set_temp_variable = {
-            income_var_temp = -5
-        }
-        add_income_with_inflation = yes
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.25
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.15
-        }
-        country_event = {
-            id = Chihong.6604
-            days = 1
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6604
-    title = Chihong.6604.t
-    desc = Chihong.6604.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6604.a
-        custom_effect_tooltip = Chihong_6604_a_tt
-        add_political_power = -25
-        add_stability = 0.05
-        country_event = {
-            id = Chihong.6704
-            days = 60
-        }
-
-    }
-    option = {
-        name = Chihong.6604.b
-        custom_effect_tooltip = Chihong_6604_b_tt
-        add_stability = -0.025
-        add_political_power = 50
-        random_list = {
-            10 = {
-                country_event = {
-                    id = Chihong.6804
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.6904
-                    days = 30
-                }
-            }
-            30 = {
-                country_event = {
-                    id = Chihong.7004
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.7104
-                    days = 30
-                }
-            }
-            10 = {
-                country_event = {
-                    id = Chihong.7204
-                    days = 30
-                }
-            }
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6704
-    title = Chihong.6704.t
-    desc = Chihong.6704.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6704.a
-        add_political_power = 10
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -10
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6804
-    title = Chihong.6804.t
-    desc = Chihong.6804.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6804.a
-        add_political_power = 30
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -25
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6804
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6904
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7004
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7104
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7204
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6904
-    title = Chihong.6904.t
-    desc = Chihong.6904.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6904.a
-        add_political_power = 15
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -10
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6804
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6904
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7004
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7104
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7204
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7004
-    title = Chihong.7004.t
-    desc = Chihong.7004.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7004.a
-        add_political_power = 5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6804
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6904
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7004
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7104
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7204
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7104
-    title = Chihong.7104.t
-    desc = Chihong.7104.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7104.a
-        add_political_power = -5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = 5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd1 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6804
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6904
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7004
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7104
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7204
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7104.b
-        country_event = {
-            id = Chihong.6704
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7204
-    title = Chihong.7204.t
-    desc = Chihong.7204.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7204.a
-        add_political_power = -20
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd4
-            days = 20
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd4 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6804
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6904
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7004
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7104
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7204
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7204.b
-        add_popularity = {
-            ideology = libertarian_socialist
-            popularity = -0.1
-        }
-        add_political_power = -25
-        country_event = {
-            id = Chihong.6704
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7304
-    title = Chihong.7304.t
-    desc = Chihong.7304.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7304.a
-
-    }
-    option = {
-        name = Chihong.7304.b
-        custom_effect_tooltip = Chihong_7304_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 1
-        }
-    }
-    option = {
-        name = Chihong.7304.c
-        custom_effect_tooltip = Chihong_7304_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 2
-        }
-    }
-
-    option = {
-        name = Chihong.7304.d
-        custom_effect_tooltip = Chihong_7304_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 3
-        }
-    }
-    option = {
-        name = Chihong.7304.e
-        custom_effect_tooltip = Chihong_7304_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 4
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7404
-    title = Chihong.7404.t
-    desc = Chihong.7404.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7404.a
-        custom_effect_tooltip = Chihong_7404_tt1
-        add_political_power = -100
-        set_temp_variable = {
-            income_var_temp = -20
-        }
-        add_income_with_inflation = yes
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 2
-                }
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = 0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd4_idea_dummy_0
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 3
-                }
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = 0.15
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd4_idea_dummy_1
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 4
-                }
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = 0.2
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd4_idea_dummy_2
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 5
-                }
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = 0.25
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd4_idea_dummy_3
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 1
-                }
-            }
-            custom_effect_tooltip = Chihong_7404_tt2
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.015
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_5
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 2
-                }
-            }
-            custom_effect_tooltip = Chihong_7404_tt3
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.03
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_6
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 3
-                }
-            }
-            custom_effect_tooltip = Chihong_7404_tt4
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 4
-                }
-            }
-            custom_effect_tooltip = Chihong_7404_tt5
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-    }
-}
-
-
-
-
-
-country_event = {
-    id = Chihong.6501
-    title = Chihong.6501.t
-    desc = Chihong.6501.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6501.a
-        custom_effect_tooltip = Chihong_6502_tt1
-        set_variable = {
-            nationalization_var_1 = 3
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.075
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.05
-        }
-        country_event = {
-            id = Chihong.6601
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6501.b
-        custom_effect_tooltip = Chihong_6502_tt2
-        set_variable = {
-            nationalization_var_1 = 4
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.15
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.1
-        }
-        country_event = {
-            id = Chihong.6601
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6501.c
-        set_variable = {
-            nationalization_var_1 = 5
-        }
-        custom_effect_tooltip = Chihong_6502_tt3
-        add_political_power = -25
-        add_stability = -0.05
-        set_temp_variable = {
-            income_var_temp = -5
-        }
-        add_income_with_inflation = yes
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.25
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.15
-        }
-        country_event = {
-            id = Chihong.6601
-            days = 1
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6601
-    title = Chihong.6601.t
-    desc = Chihong.6601.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6601.a
-        custom_effect_tooltip = Chihong_6602_a_tt
-        add_political_power = -25
-        add_stability = 0.05
-        country_event = {
-            id = Chihong.6701
-            days = 60
-        }
-
-    }
-    option = {
-        name = Chihong.6601.b
-        custom_effect_tooltip = Chihong_6602_b_tt
-        add_stability = -0.015
-        add_political_power = 50
-        random_list = {
-            10 = {
-                country_event = {
-                    id = Chihong.6801
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.6901
-                    days = 30
-                }
-            }
-            30 = {
-                country_event = {
-                    id = Chihong.7001
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.7101
-                    days = 30
-                }
-            }
-            10 = {
-                country_event = {
-                    id = Chihong.7201
-                    days = 30
-                }
-            }
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6701
-    title = Chihong.6701.t
-    desc = Chihong.6701.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6701.a
-        add_political_power = 10
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd3
-            days = -10
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6801
-    title = Chihong.6801.t
-    desc = Chihong.6801.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6801.a
-        add_political_power = 30
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd3
-            days = -25
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd3 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6801
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6901
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7001
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7101
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7201
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6901
-    title = Chihong.6901.t
-    desc = Chihong.6901.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6901.a
-        add_political_power = 15
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd3
-            days = -10
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd3 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6801
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6901
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7001
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7101
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7201
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7001
-    title = Chihong.7001.t
-    desc = Chihong.7001.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7001.a
-        add_political_power = 5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd3
-            days = -5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd3 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6801
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6901
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7001
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7101
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7201
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7101
-    title = Chihong.7101.t
-    desc = Chihong.7101.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7101.a
-        add_political_power = -5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd3
-            days = 5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd3 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6801
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6901
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7001
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7101
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7201
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7101.b
-        country_event = {
-            id = Chihong.6701
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7201
-    title = Chihong.7201.t
-    desc = Chihong.7201.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7201.a
-        add_political_power = -20
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd3
-            days = 20
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd3 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6801
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6901
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7001
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7101
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7201
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7201.b
-        add_popularity = {
-            ideology = libertarian_socialist
-            popularity = -0.1
-        }
-        add_political_power = -25
-        country_event = {
-            id = Chihong.6701
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7301
-    title = Chihong.7301.t
-    desc = Chihong.7301.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7301.a
-
-    }
-    option = {
-        name = Chihong.7301.b
-        custom_effect_tooltip = Chihong_7301_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 1
-        }
-    }
-    option = {
-        name = Chihong.7301.c
-        custom_effect_tooltip = Chihong_7301_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 2
-        }
-    }
-
-    option = {
-        name = Chihong.7301.d
-        custom_effect_tooltip = Chihong_7301_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 3
-        }
-    }
-    option = {
-        name = Chihong.7301.e
-        custom_effect_tooltip = Chihong_7301_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 4
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7401
-    title = Chihong.7401.t
-    desc = Chihong.7401.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7401.a
-        custom_effect_tooltip = Chihong_7401_tt1
-        add_political_power = -100
-        set_temp_variable = {
-            income_var_temp = -20
-        }
-        add_income_with_inflation = yes
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 2
-                }
-            }
-            add_to_variable = {
-                PRC_mic_society_development_monthly_dynamic_var = 0.005
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd3_idea_dummy_0
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 3
-                }
-            }
-            add_to_variable = {
-                PRC_mic_society_development_monthly_dynamic_var = 0.0075
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd3_idea_dummy_1
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 4
-                }
-            }
-            add_to_variable = {
-                PRC_mic_society_development_monthly_dynamic_var = 0.01
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd3_idea_dummy_2
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 5
-                }
-            }
-            add_to_variable = {
-                PRC_mic_society_development_monthly_dynamic_var = 0.0125
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_3
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 1
-                }
-            }
-            custom_effect_tooltip = Chihong_7401_tt2
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.015
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_5
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 2
-                }
-            }
-            custom_effect_tooltip = Chihong_7401_tt3
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.03
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_6
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 3
-                }
-            }
-            custom_effect_tooltip = Chihong_7401_tt4
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 4
-                }
-            }
-            custom_effect_tooltip = Chihong_7401_tt5
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-    }
-}
-
-
-
-country_event = {
-    id = Chihong.6503
-    title = Chihong.6503.t
-    desc = Chihong.6503.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6503.a
-        custom_effect_tooltip = Chihong_6503_tt1
-        set_variable = {
-            nationalization_var_1 = 3
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.075
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.05
-        }
-        country_event = {
-            id = Chihong.6603
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6503.b
-        custom_effect_tooltip = Chihong_6503_tt2
-        set_variable = {
-            nationalization_var_1 = 4
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.15
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.1
-        }
-        country_event = {
-            id = Chihong.6603
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6503.c
-        set_variable = {
-            nationalization_var_1 = 5
-        }
-        add_political_power = -25
-        add_stability = -0.05
-        set_temp_variable = {
-            income_var_temp = -5
-        }
-        add_income_with_inflation = yes
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.25
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.15
-        }
-        country_event = {
-            id = Chihong.6603
-            days = 1
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6603
-    title = Chihong.6603.t
-    desc = Chihong.6603.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6603.a
-        custom_effect_tooltip = Chihong_6603_a_tt
-        add_political_power = -25
-        add_stability = 0.05
-        country_event = {
-            id = Chihong.6703
-            days = 60
-        }
-
-    }
-    option = {
-        name = Chihong.6603.b
-        custom_effect_tooltip = Chihong_6603_b_tt
-        add_stability = -0.025
-        add_political_power = 50
-        random_list = {
-            10 = {
-                country_event = {
-                    id = Chihong.6803
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.6903
-                    days = 30
-                }
-            }
-            30 = {
-                country_event = {
-                    id = Chihong.7003
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.7103
-                    days = 30
-                }
-            }
-            10 = {
-                country_event = {
-                    id = Chihong.7203
-                    days = 30
-                }
-            }
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6703
-    title = Chihong.6703.t
-    desc = Chihong.6703.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6703.a
-        add_political_power = 10
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd2
-            days = -10
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6803
-    title = Chihong.6803.t
-    desc = Chihong.6803.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6803.a
-        add_political_power = 30
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd2
-            days = -25
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd2 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6803
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6903
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7003
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7103
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7203
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6903
-    title = Chihong.6903.t
-    desc = Chihong.6903.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6903.a
-        add_political_power = 15
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd2
-            days = -10
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd2 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6803
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6903
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7003
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7103
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7203
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7003
-    title = Chihong.7003.t
-    desc = Chihong.7003.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7003.a
-        add_political_power = 5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd2
-            days = -5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd2 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6803
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6903
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7003
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7103
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7203
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7103
-    title = Chihong.7103.t
-    desc = Chihong.7103.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7103.a
-        add_political_power = -5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd2
-            days = 5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd2 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6803
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6903
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7003
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7103
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7203
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7103.b
-        country_event = {
-            id = Chihong.6703
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7203
-    title = Chihong.7203.t
-    desc = Chihong.7203.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7203.a
-        add_political_power = -20
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd2
-            days = 20
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd2 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6803
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6903
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7003
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7103
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7203
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7203.b
-        add_popularity = {
-            ideology = libertarian_socialist
-            popularity = -0.1
-        }
-        add_political_power = -25
-        country_event = {
-            id = Chihong.6703
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7303
-    title = Chihong.7303.t
-    desc = Chihong.7303.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7303.a
-
-    }
-    option = {
-        name = Chihong.7303.b
-        custom_effect_tooltip = Chihong_7303_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 1
-        }
-    }
-    option = {
-        name = Chihong.7303.c
-        custom_effect_tooltip = Chihong_7303_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 2
-        }
-    }
-
-    option = {
-        name = Chihong.7303.d
-        custom_effect_tooltip = Chihong_7303_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 3
-        }
-    }
-    option = {
-        name = Chihong.7303.e
-        custom_effect_tooltip = Chihong_7303_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 4
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7403
-    title = Chihong.7403.t
-    desc = Chihong.7403.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7403.a
-        custom_effect_tooltip = Chihong_7403_tt1
-        add_political_power = -100
-        set_temp_variable = {
-            income_var_temp = -20
-        }
-        add_income_with_inflation = yes
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 2
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.05
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd2_idea_dummy_0
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 3
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.075
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd2_idea_dummy_1
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 4
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd2_idea_dummy_2
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 5
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.125
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd2_idea_dummy_3
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 1
-                }
-            }
-            custom_effect_tooltip = Chihong_7403_tt2
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.015
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_5
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 2
-                }
-            }
-            custom_effect_tooltip = Chihong_7403_tt3
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.03
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_6
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 3
-                }
-            }
-            custom_effect_tooltip = Chihong_7403_tt4
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 4
-                }
-            }
-            custom_effect_tooltip = Chihong_7403_tt5
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.035
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.03
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-    }
-}
-
-
-country_event = {
-    id = Chihong.6505
-    title = Chihong.6505.t
-    desc = Chihong.6505.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6505.a
-        custom_effect_tooltip = Chihong_6502_tt1
-        set_variable = {
-            nationalization_var_1 = 3
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.075
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.05
-        }
-        country_event = {
-            id = Chihong.6605
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6505.b
-        custom_effect_tooltip = Chihong_6502_tt2
-        set_variable = {
-            nationalization_var_1 = 4
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.15
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.1
-        }
-        country_event = {
-            id = Chihong.6605
-            days = 1
-        }
-    }
-    option = {
-        name = Chihong.6505.c
-        custom_effect_tooltip = Chihong_6502_tt3
-        set_variable = {
-            nationalization_var_1 = 5
-        }
-        add_political_power = -25
-        add_stability = -0.05
-        set_temp_variable = {
-            income_var_temp = -5
-        }
-        add_income_with_inflation = yes
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_cg_var = 0.25
-        }
-        add_to_variable = {
-            TFR_PRC_cost_of_nationalization_eg_var = 0.15
-        }
-        country_event = {
-            id = Chihong.6605
-            days = 1
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6605
-    title = Chihong.6605.t
-    desc = Chihong.6605.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6605.a
-        custom_effect_tooltip = Chihong_6605_a_tt
-        add_political_power = -25
-        add_stability = 0.05
-        country_event = {
-            id = Chihong.6705
-            days = 60
-        }
-
-    }
-    option = {
-        name = Chihong.6605.b
-        custom_effect_tooltip = Chihong_6605_b_tt
-        add_stability = -0.025
-        add_political_power = 50
-        random_list = {
-            10 = {
-                country_event = {
-                    id = Chihong.6805
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.6905
-                    days = 30
-                }
-            }
-            30 = {
-                country_event = {
-                    id = Chihong.7005
-                    days = 30
-                }
-            }
-            25 = {
-                country_event = {
-                    id = Chihong.7105
-                    days = 30
-                }
-            }
-            10 = {
-                country_event = {
-                    id = Chihong.7205
-                    days = 30
-                }
-            }
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.6705
-    title = Chihong.6705.t
-    desc = Chihong.6705.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6705.a
-        add_political_power = 10
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd1
-            days = -10
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6805
-    title = Chihong.6805.t
-    desc = Chihong.6805.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6805.a
-        add_political_power = 30
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd5
-            days = -25
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd5 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6805
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6905
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7005
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7105
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7205
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.6905
-    title = Chihong.6905.t
-    desc = Chihong.6905.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.6905.a
-        add_political_power = 15
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd5
-            days = -10
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd5 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6805
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6905
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7005
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7105
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7205
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7005
-    title = Chihong.7005.t
-    desc = Chihong.7005.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7005.a
-        add_political_power = 5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd5
-            days = -5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd5 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6805
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6905
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7005
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7105
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7205
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-}
-
-country_event = {
-    id = Chihong.7105
-    title = Chihong.7105.t
-    desc = Chihong.7105.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7105.a
-        add_political_power = -5
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd5
-            days = 5
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd5 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6805
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6905
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7005
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7105
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7205
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7105.b
-        country_event = {
-            id = Chihong.6705
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7205
-    title = Chihong.7205.t
-    desc = Chihong.7205.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7205.a
-        add_political_power = -20
-        add_days_remove = {
-            decision = PRC_nl_jingjiCd5
-            days = 20
-        }
-        hidden_effect = {
-            if = {
-                limit = {
-                    check_variable = {
-                        days_decision_timeout@PRC_nl_jingjiCd5 > 30
-                    }
-                }
-                random_list = {
-                    10 = {
-                        country_event = {
-                            id = Chihong.6805
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.6905
-                            days = 30
-                        }
-                    }
-                    30 = {
-                        country_event = {
-                            id = Chihong.7005
-                            days = 30
-                        }
-                    }
-                    25 = {
-                        country_event = {
-                            id = Chihong.7105
-                            days = 30
-                        }
-                    }
-                    10 = {
-                        country_event = {
-                            id = Chihong.7205
-                            days = 30
-                        }
-                    }
-                }
-
-            }
-        }
-
-    }
-    option = {
-        name = Chihong.7205.b
-        add_popularity = {
-            ideology = libertarian_socialist
-            popularity = -0.1
-        }
-        add_political_power = -25
-        country_event = {
-            id = Chihong.6705
-            days = 60
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7305
-    title = Chihong.7305.t
-    desc = Chihong.7305.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7305.a
-
-    }
-    option = {
-        name = Chihong.7305.b
-        custom_effect_tooltip = Chihong_7305_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 1
-        }
-    }
-    option = {
-        name = Chihong.7305.c
-        custom_effect_tooltip = Chihong_7305_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 2
-        }
-    }
-
-    option = {
-        name = Chihong.7305.d
-        custom_effect_tooltip = Chihong_7305_tt1
-        subtract_from_variable = {
-            nationalization_var_1 = 1
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 3
-        }
-    }
-    option = {
-        name = Chihong.7305.e
-        custom_effect_tooltip = Chihong_7305_tt2
-        trigger = {
-            check_variable = {
-                nationalization_var_1 > 3
-            }
-        }
-        subtract_from_variable = {
-            nationalization_var_1 = 2
-        }
-        set_variable = {
-            nationalization_var_outcome_A = 4
-        }
-    }
-}
-
-country_event = {
-    id = Chihong.7405
-    title = Chihong.7405.t
-    desc = Chihong.7405.d
-    is_triggered_only = yes
-    option = {
-        name = Chihong.7405.a
-        custom_effect_tooltip = Chihong_7405_tt1
-        add_political_power = -100
-        set_temp_variable = {
-            income_var_temp = -20
-        }
-        add_income_with_inflation = yes
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 2
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd5_idea_dummy_0
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 3
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.075
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd5_idea_dummy_1
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 4
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.1
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd5_idea_dummy_2
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_1 = 5
-                }
-            }
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.125
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd5_idea_dummy_3
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 1
-                }
-            }
-            custom_effect_tooltip = Chihong_7405_tt2
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.015
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_5
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 2
-                }
-            }
-            custom_effect_tooltip = Chihong_7405_tt3
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_tax_business_rate_dynamic_var = 0.055
-            }
-            add_to_variable = {
-                PRC_mic_income_growth_factor_dynamic_var = -0.05
-            }
-            add_to_variable = {
-                PRC_mic_expense_growth_factor_dynamic_var = -0.05
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_6
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 3
-                }
-            }
-            custom_effect_tooltip = Chihong_7405_tt4
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.015
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.015
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-        if = {
-            limit = {
-                check_variable = {
-                    nationalization_var_outcome_A = 4
-                }
-            }
-            custom_effect_tooltip = Chihong_7405_tt5
-            add_to_variable = {
-                PRC_mic_personal_value_factor_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_production_factory_max_efficiency_factor_dynamic_var = 0.055
-            }
-            add_to_variable = {
-                PRC_mic_business_value_dynamic_var = -0.05
-            }
-            effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_made_in_china_dummy_idea0
-                    add_idea = PRC_nl_jingjiCd1_idea_dummy_7
-                }
-            }
-        }
-    }
-}

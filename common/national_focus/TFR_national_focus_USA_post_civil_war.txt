@@ -24,69 +24,55 @@
 shared_focus = {
 	id = USA_back_in_business
 	icon = {
-		trigger = {
+		GFX_focus_USA_back_in_business_NSM = {
 			tag = NSM
 		}
-		value = GFX_focus_USA_back_in_business_NSM
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_back_in_business_PTF
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB = {
 			tag = USB
 			has_country_leader = {
 				character = USB_joe_biden_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_andrew_yang = {
 			tag = USB
 			has_country_leader = {
 				character = USB_Andrew_Yang_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB_andrew_yang
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_aoc = {
 			tag = USB
 			has_country_leader = {
 				character = USB_AOC_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB_aoc
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_bernie_sanders = {
 			tag = USB
 			has_country_leader = {
 				character = USB_bernie_sanders_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB_bernie_sanders
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_kamala_harris = {
 			tag = USB
 			has_country_leader = {
 				character = USB_kamala_harris_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB_kamala_harris
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_micheal_bloomberg = {
 			tag = USB
 			has_country_leader = {
 				character = USB_michael_bloomberg_char
@@ -94,10 +80,8 @@ shared_focus = {
 			}
 			has_country_flag = USB_bloomberg_dem_2024_flag
 		}
-		value = GFX_focus_USA_back_in_business_USB_micheal_bloomberg
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_micheal_bloomberg1 = {
 			tag = USB
 			has_country_leader = {
 				character = USB_michael_bloomberg_char
@@ -105,35 +89,29 @@ shared_focus = {
 			}
 			has_government = authoritarian_democrat
 		}
-		value = GFX_focus_USA_back_in_business_USB_micheal_bloomberg1
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_mitt_romney = {
 			tag = USB
 			has_country_leader = {
 				character = USB_mitt_romney_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB_mitt_romney
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_back_in_business_USB_rfk = {
 			tag = USB
 			has_country_leader = {
 				character = USB_RFK_char
 				ruling_only = yes
 			}
 		}
-		value = GFX_focus_USA_back_in_business_USB_rfk
-	}
-	icon = {
-		value = GFX_focus_USA_back_in_business
+
+		GFX_focus_USA_back_in_business = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_POLITICAL
 	}
-	cost = 10
+	cost = 7
 	x = 0
 	y = 0
 	offset = {
@@ -213,6 +191,10 @@ shared_focus = {
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	completion_reward = {
 		set_temp_variable = {
@@ -237,6 +219,7 @@ shared_focus = {
 				limit = {
 					tag = PTF
 				}
+				remove_ideas = PTF_fast_recoring
 				country_event = ptf.137
 			}
 			meta_effect = {
@@ -253,103 +236,21 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = USA_embrace_neutrality
-	icon = {
-		trigger = {
-			tag = NSM
-		}
-		value = GFX_focus_USA_embrace_neutrality_NSM
-	}
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_embrace_neutrality_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_embrace_neutrality
-	}
-	search_filters = {
-		FOCUS_FILTER_POLITICAL
-	}
-	relative_position_id = USA_back_in_business
-	available_if_capitulated = yes
-	dynamic = yes
-	x = -3
-	y = 1
-	cost = 10
-	prerequisite = {
-		focus = USA_back_in_business
-	}
-	mutually_exclusive = {
-		focus = USA_the_giant_wakes
-	}
-	ai_will_do = {
-		base = 20
-	}
-	completion_reward = {
-		set_temp_variable = {
-			var = society_development_var_temp
-			value = 0.25
-		}
-		add_society_development = yes
-		set_temp_variable = {
-			var = USA_reconstruction_progress_var_temp
-			value = 0.05
-		}
-		USA_add_reconstruction_progress = yes
-		custom_effect_tooltip = USA_embrace_neutrality_tooltip
-		effect_tooltip = {
-			meta_effect = {
-				text = {
-					swap_ideas = {
-						remove_idea = [TOKEN]
-						add_idea = USA_embrace_neutrality_idea
-					}
-				}
-				TOKEN = "[ROOT.USA_politics_dummy_idea_text]"
-			}
-		}
-		hidden_effect = {
-			set_variable = {
-				var = USA_reconstruction_cooldown_var
-				value = 87
-			}
-			meta_effect = {
-				text = {
-					add_to_variable = {
-						var = [TOKEN]_politics_stability_factor_dynamic_var
-						value = 0.1
-					}
-				}
-				TOKEN = "[ROOT.GetTag]"
-			}
-		}
-	}
-}
-
-shared_focus = {
 	id = USA_the_giant_wakes
 	icon = {
-		trigger = {
+		GFX_focus_USA_the_giant_wakes_USB = {
 			tag = USB
 		}
-		value = GFX_focus_USA_the_giant_wakes_USB
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_the_giant_wakes_NSM = {
 			tag = NSM
 		}
-		value = GFX_focus_USA_the_giant_wakes_NSM
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_the_giant_wakes_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_the_giant_wakes_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_the_giant_wakes
+
+		GFX_focus_USA_the_giant_wakes = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_POLITICAL
@@ -357,23 +258,24 @@ shared_focus = {
 	}
 	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
-	x = 3
+	x = 2
 	y = 1
-	cost = 10
+	cost = 2
 	prerequisite = {
 		focus = USA_back_in_business
 	}
-	mutually_exclusive = {
-		focus = USA_embrace_neutrality
-	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	completion_reward = {
 		add_political_power = 100
 		set_temp_variable = {
 			var = USA_reconstruction_progress_var_temp
-			value = 0.05
+			value = 0.1
 		}
 		USA_add_reconstruction_progress = yes
 		custom_effect_tooltip = USA_the_giant_wakes_tooltip
@@ -414,19 +316,15 @@ shared_focus = {
 shared_focus = {
 	id = USA_american_restoration_act
 	icon = {
-		trigger = {
+		GFX_focus_USA_american_restoration_act_USB = {
 			tag = USB
 		}
-		value = GFX_focus_USA_american_restoration_act_USB
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_american_restoration_act_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_american_restoration_act_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_american_restoration_act
+
+		GFX_focus_USA_american_restoration_act = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_POLITICAL
@@ -434,15 +332,19 @@ shared_focus = {
 	}
 	x = 0
 	y = 2
-	cost = 10
+	cost = 1
 	prerequisite = {
 		focus = USA_the_giant_wakes
-		focus = USA_embrace_neutrality
+		focus = USA_american_diplomatic_corps
 	}
 	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 1000
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
@@ -489,26 +391,22 @@ shared_focus = {
 shared_focus = {
 	id = USA_hearts_of_industry
 	icon = {
-		trigger = {
+		GFX_focus_USA_hearts_of_industry_USB = {
 			tag = USB
 		}
-		value = GFX_focus_USA_hearts_of_industry_USB
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_hearts_of_industry_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_hearts_of_industry_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_hearts_of_industry
+
+		GFX_focus_USA_hearts_of_industry = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_INDUSTRY
 	}
 	x = -1
 	y = 1
-	cost = 10
+	cost = 2
 	prerequisite = {
 		focus = USA_american_restoration_act
 	}
@@ -516,6 +414,10 @@ shared_focus = {
 	available_if_capitulated = yes
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 1000
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
@@ -588,13 +490,11 @@ shared_focus = {
 shared_focus = {
 	id = USA_those_in_need
 	icon = {
-		trigger = {
+		GFX_focus_USA_those_in_need_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_those_in_need_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_those_in_need
+
+		GFX_focus_USA_those_in_need = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_POLITICAL
@@ -603,12 +503,16 @@ shared_focus = {
 	relative_position_id = USA_american_restoration_act	
 	x = 1
 	y = 1
-	cost = 10
+	cost = 2
 	prerequisite = {
 		focus = USA_american_restoration_act
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 500
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
@@ -657,20 +561,18 @@ shared_focus = {
 shared_focus = {
 	id = USA_the_forgotten_farmlands
 	icon = {
-		trigger = {
+		GFX_focus_USA_the_forgotten_farmlands_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_the_forgotten_farmlands_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_the_forgotten_farmlands
+
+		GFX_focus_USA_the_forgotten_farmlands = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_INDUSTRY
 	}
 	x = 0
 	y = 2
-	cost = 10
+	cost = 2
 	relative_position_id = USA_those_in_need
 	available_if_capitulated = yes
 	prerequisite = {
@@ -744,32 +646,17 @@ shared_focus = {
 				TOKEN = "[ROOT.GetTag]"
 			}
 		}
-		if = {
-			limit = { 
-				tag = PTF	
-			}
-			custom_effect_tooltip = USA_war_with_PRC_tt
-			if = {
-				limit = { has_completed_focus = USA_build_the_military_of_tomorrow }
-				hidden_effect = {
-					load_focus_tree = PTF_American
-					mark_focus_tree_layout_dirty = yes
-				}
-			}
-		}
 	}
 }
 
 shared_focus = {
 	id = USA_organs_of_america
 	icon = {
-		trigger = {
+		GFX_focus_USA_organs_of_america_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_organs_of_america_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_organs_of_america
+
+		GFX_focus_USA_organs_of_america = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_POLITICAL
@@ -778,7 +665,7 @@ shared_focus = {
 	relative_position_id = USA_those_in_need
 	x = 1
 	y = 1
-	cost = 10
+	cost = 2
 	prerequisite = {
 		focus = USA_those_in_need
 	}
@@ -880,33 +767,29 @@ shared_focus = {
 shared_focus = {
 	id = USA_safeguard_the_nation
 	icon = {
-		trigger = {
+		GFX_focus_USA_safeguard_our_nation1 = {
 			OR = {
 				tag = USB
 				tag = USC
 			}
 		}
-		value = GFX_focus_USA_safeguard_our_nation1
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_safeguard_our_nation_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_safeguard_our_nation_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_safeguard_our_nation
+
+		GFX_focus_USA_safeguard_our_nation = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_ANNEXATION
 	}
-	x = 1
+	x = 0
 	y = 1
 	cost = 5
-	relative_position_id = USA_embrace_neutrality
+	relative_position_id = USA_back_in_business
 	available_if_capitulated = yes
 	prerequisite = {
-		focus = USA_embrace_neutrality
+		focus = USA_back_in_business
 	}
 	ai_will_do = {
 		base = 20
@@ -930,36 +813,36 @@ shared_focus = {
 shared_focus = {
 	id = USA_american_diplomatic_corps
 	icon = {
-		trigger = {
+		GFX_focus_USA_diplomatic_corps1 = {
 			OR = {
 				tag = USB
 				tag = USC
 			}
 		}
-		value = GFX_focus_USA_diplomatic_corps1
-	}
-	icon = {
-		trigger = {
+
+		GFX_focus_USA_diplomatic_corps_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_diplomatic_corps_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_diplomatic_corps
+
+		GFX_focus_USA_diplomatic_corps = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_ANNEXATION
 	}
-	x = -1
-	y = 1
-	cost = 5
+	x = -4
+	y = 0
+	cost = 2
 	relative_position_id = USA_the_giant_wakes
 	available_if_capitulated = yes
 	prerequisite = {
-		focus = USA_the_giant_wakes
+		focus = USA_back_in_business
 	}
 	ai_will_do = {
 		base = 20
+		modifier = {
+			add = 1000
+			has_global_flag = USA_american_civil_war_over_global
+		}
 	}
 	available = {
 	}
@@ -992,191 +875,177 @@ shared_focus = {
 # 	}
 # }
 
-shared_focus = {
-	id = USA_liberate_the_great_north
-	icon = {
-		trigger = {
-			OR = {
-				tag = USB
-				tag = USC
-			}
-		}
-		value = GFX_focus_USA_liberate_the_great_north1
-	}
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_liberate_the_great_north_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_liberate_the_great_north
-	}
-	search_filters = {
-		FOCUS_FILTER_ANNEXATION
-	}
-	x = -1
-	y = 1
-	cost = 5
-	relative_position_id = USA_safeguard_the_nation
-	available_if_capitulated = yes
-	prerequisite = {
-		focus = USA_safeguard_the_nation
-		focus = USA_american_diplomatic_corps
-	}
-	ai_will_do = {
-		base = 20
-	}
-	available = {
-		USA_controls_all_cores_trigger = yes
-	}
-	bypass = {
-		CAN = {
-			OR = {
-				exists = no
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-		QUE = {
-			OR = {
-				exists = no
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-		USN = {
-			OR = {
-				exists = no
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
-			}
-		}
-	}
-	completion_reward = {
-		unlock_decision_tooltip = USA_operation_crimson_decision
-		every_state = {
-			limit = {
-				OR = {
-					is_core_of = CAN
-					is_core_of = QUE
-					is_core_of = USN
-				}
-			}
-			add_claim_by = ROOT
-		}
-	}
-}
+# shared_focus = {
+# 	id = USA_liberate_the_great_north
+# 	icon = {
+# 		trigger = {
+# 			OR = {
+# 				tag = USB
+# 				tag = USC
+# 			}
+# 		}
+# 		value = GFX_focus_USA_liberate_the_great_north1
+# 	}
+# 	icon = {
+# 		trigger = {
+# 			tag = PTF
+# 		}
+# 		value = GFX_focus_USA_liberate_the_great_north_PTF
+# 	}
+# 	icon = {
+# 		value = GFX_focus_USA_liberate_the_great_north
+# 	}
+# 	search_filters = {
+# 		FOCUS_FILTER_ANNEXATION
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = PTF_soaring_white_eagle
+# 	prerequisite = {
+# 		focus = PTF_soaring_white_eagle
+# 	}
+# 	cost = 5
+# 	available_if_capitulated = yes
+# 	ai_will_do = {
+# 		base = 20
+# 	}
+# 	available = {
+# 		USA_controls_all_cores_trigger = yes
+# 	}
+# 	bypass = {
+# 		CAN = {
+# 			OR = {
+# 				exists = no
+# 				is_subject_of = ROOT
+# 				is_in_faction_with = ROOT
+# 			}
+# 		}
+# 		QUE = {
+# 			OR = {
+# 				exists = no
+# 				is_subject_of = ROOT
+# 				is_in_faction_with = ROOT
+# 			}
+# 		}
+# 		USN = {
+# 			OR = {
+# 				exists = no
+# 				is_subject_of = ROOT
+# 				is_in_faction_with = ROOT
+# 			}
+# 		}
+# 	}
+# 	completion_reward = {
+# 		set_country_flag = USA_liberate_central_america_flag
+# 		unlock_decision_tooltip = USA_operation_crimson_decision
+# 		every_state = {
+# 			limit = {
+# 				OR = {
+# 					is_core_of = CAN
+# 					is_core_of = QUE
+# 					is_core_of = USN
+# 				}
+# 			}
+# 			add_claim_by = ROOT
+# 		}
+# 	}
+# }
 
-shared_focus = {
-	id = USA_secure_the_south
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_secure_the_south_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_secure_the_south
-	}
-	search_filters = {
-		FOCUS_FILTER_ANNEXATION
-	}
-	relative_position_id = USA_american_diplomatic_corps
-	available_if_capitulated = yes
-	x = 1
-	y = 1
-	cost = 5
-	prerequisite = {
-		focus = USA_safeguard_the_nation
-		focus = USA_american_diplomatic_corps
-	}
-	ai_will_do = {
-		base = 20
-	}
-	available = {
-		USA_controls_all_cores_trigger = yes
-	}
-	completion_reward = {
-		unlock_decision_tooltip = USA_operation_green_decision
-	}
-}
+# shared_focus = {
+# 	id = USA_secure_the_south
+# 	icon = {
+# 		trigger = {
+# 			tag = PTF
+# 		}
+# 		value = GFX_focus_USA_secure_the_south_PTF
+# 	}
+# 	icon = {
+# 		value = GFX_focus_USA_secure_the_south
+# 	}
+# 	search_filters = {
+# 		FOCUS_FILTER_ANNEXATION
+# 	}
+# 	available_if_capitulated = yes
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = PTF_soaring_white_eagle
+# 	prerequisite = {
+# 		focus = PTF_soaring_white_eagle
+# 	}
+# 	cost = 5
+# 	ai_will_do = {
+# 		base = 20
+# 	}
+# 	available = {
+# 		USA_controls_all_cores_trigger = yes
+# 	}
+# 	completion_reward = {
+# 		set_country_flag = USA_secure_the_south_flag
+# 		unlock_decision_tooltip = USA_operation_green_decision
+# 	}
+# }
 
-shared_focus = {
-	id = USA_the_big_stick_policy
-	icon = GFX_focus_USA_the_big_stick_policy
-	icon = {
-		trigger = {
-			tag = PTF
-		}
-		value = GFX_focus_USA_the_big_stick_policy_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_the_big_stick_policy
-	}
-	search_filters = {
-		FOCUS_FILTER_ANNEXATION
-	}
-	x = 0
-	y = 2
-	cost = 5
-	relative_position_id = USA_american_restoration_act
-	available_if_capitulated = yes
-	prerequisite = {
-		focus = USA_secure_the_south
-		focus = USA_liberate_the_great_north
-	}
-	ai_will_do = {
-		base = 100
-	}
-	available = {
-		USA_controls_all_cores_trigger = yes
-		if = {
-			limit = {
-				has_completed_focus = USA_the_giant_wakes
-			}
-			set_temp_variable = {
-				var = USA_reconstruction_progress_trigger_var_temp
-				value = 0.5
-			}
-			USA_has_reconstruction_progress_greater_than_or_equals = yes
-		}
-		else = {
-			set_temp_variable = {
-				var = USA_reconstruction_progress_trigger_var_temp
-				value = 0.9
-			}
-			USA_has_reconstruction_progress_greater_than_or_equals = yes
-		}
-	}
-	completion_reward = {
-		unlock_decision_tooltip = USA_join_nato_decision
-		unlock_decision_tooltip = USA_join_ptdo_decision
-		unlock_decision_tooltip = USA_reassert_ourselves_decision
-		# if = {
-		# 	limit = {
-		# 		NOT = {
-		# 			tag = USB
-		# 			tag = USC
-		# 		}
-		# 	}
-		# 	unlock_decision_tooltip = USA_reassert_ourselves_decision
-		# }
-		unlock_decision_tooltip = USA_operation_gray_decision
-		if = {
-			limit = { 
-				tag = PTF
-				NOT = {
-					is_in_faction_with = JAP
-				}
-			}
-			JAP = {
-				add_to_faction = PTF
-			}
-		}
-		enable_wargoal_justification = yes
-	}
-}
+# shared_focus = {
+# 	id = USA_the_big_stick_policy
+# 	icon = GFX_focus_USA_the_big_stick_policy
+# 	icon = {
+# 		trigger = {
+# 			tag = PTF
+# 		}
+# 		value = GFX_focus_USA_the_big_stick_policy_PTF
+# 	}
+# 	icon = {
+# 		value = GFX_focus_USA_the_big_stick_policy
+# 	}
+# 	search_filters = {
+# 		FOCUS_FILTER_ANNEXATION
+# 	}
+# 	x = 0
+# 	y = -1
+# 	cost = 5
+# 	relative_position_id = PTF_storming_back_into_tne_pacific
+# 	available_if_capitulated = yes
+# 	prerequisite = {
+# 		focus = PTF_soaring_white_eagle
+# 	}
+# 	prerequisite = {
+# 		focus = USA_liberate_the_great_north
+# 		focus = USA_secure_the_south
+# 	}
+# 	ai_will_do = {
+# 		base = 100
+# 	}
+# 	available = {
+# 		USA_controls_all_cores_trigger = yes
+# 	}
+# 	completion_reward = {
+# 		unlock_decision_tooltip = USA_join_nato_decision
+# 		unlock_decision_tooltip = USA_join_ptdo_decision
+# 		unlock_decision_tooltip = USA_reassert_ourselves_decision
+# 		# if = {
+# 		# 	limit = {
+# 		# 		NOT = {
+# 		# 			tag = USB
+# 		# 			tag = USC
+# 		# 		}
+# 		# 	}
+# 		# 	unlock_decision_tooltip = USA_reassert_ourselves_decision
+# 		# }
+# 		unlock_decision_tooltip = USA_operation_gray_decision
+# 		if = {
+# 			limit = { 
+# 				tag = PTF
+# 				NOT = {
+# 					is_in_faction_with = JAP
+# 				}
+# 			}
+# 			JAP = {
+# 				add_to_faction = PTF
+# 			}
+# 		}
+# 		enable_wargoal_justification = yes
+# 	}
+# }
 
 #Post-Civil War Military
 # shared_focus = {
@@ -1206,28 +1075,26 @@ shared_focus = {
 shared_focus = {
 	id = USA_rebuild_the_great_american_navy
 	icon = {
-		trigger = {
+		GFX_focus_USA_rebuild_the_great_american_navy_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_rebuild_the_great_american_navy_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_rebuild_the_great_american_navy
+
+		GFX_focus_USA_rebuild_the_great_american_navy = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_ANNEXATION
 	}
 	x = -1
 	y = 1
-	cost = 10
+	cost = 2
 	relative_position_id = USA_hearts_of_industry
 	available_if_capitulated = yes
 	prerequisite = {
 		focus = USA_hearts_of_industry
 	}
-	ai_will_do = {
-		base = 200
-	}
+    ai_will_do = {
+        factor = 1000
+    }
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
 	}
@@ -1294,30 +1161,51 @@ shared_focus = {
 shared_focus = {
 	id = USA_build_the_military_of_tomorrow
 	icon = {
-		trigger = {
+		GFX_focus_USA_build_the_military_of_tomorrow_PTF = {
 			tag = PTF
 		}
-		value = GFX_focus_USA_build_the_military_of_tomorrow_PTF
-	}
-	icon = {
-		value = GFX_focus_USA_build_the_military_of_tomorrow
+
+		GFX_focus_USA_build_the_military_of_tomorrow = yes
 	}
 	search_filters = {
 		FOCUS_FILTER_INDUSTRY
 	}
 	x = 0
 	y = 2
-	cost = 10
+	cost = 2
 	relative_position_id = USA_hearts_of_industry
 	available_if_capitulated = yes
 	prerequisite = {
 		focus = USA_hearts_of_industry
 	}
-	ai_will_do = {
-		base = 200
-	}
+    ai_will_do = {
+        factor = 0
+        modifier = {
+			add = 1000
+			OR = {
+                date > 2026.06.01
+                PRC = {
+                    OR = {
+                        has_shine_effect_on_focus = Moving_towards_victory
+                        has_completed_focus = Moving_towards_victory
+                        has_war_with = JAP
+                    }
+                }
+                #JAP = { has_active_mission = JAP_korean_war_joining }
+            }
+		}
+        modifier = {
+			add = 20
+			PRC = {
+                has_completed_focus = PLA_The_iron_flow_miles
+            }
+		}
+    }
 	available = {
 		USA_reconstruction_cooldown_trigger = yes
+		#PRC = {
+        #    has_completed_focus = PLA_The_iron_flow_miles
+        #}
 	}
 	completion_reward = {
 		set_temp_variable = {
@@ -1382,12 +1270,10 @@ shared_focus = {
 				tag = PTF	
 			}
 			custom_effect_tooltip = USA_war_with_PRC_tt
-			if = {
-				limit = { has_completed_focus = USA_the_forgotten_farmlands }
-				hidden_effect = {
-					load_focus_tree = PTF_American
-					mark_focus_tree_layout_dirty = yes
-				}
+			hidden_effect = {
+				set_country_flag = USA_war_with_PRC_flag
+				focus_unlock = yes
+				complete_national_focus = PTF_soaring_white_eagle
 			}
 		}
 	}
