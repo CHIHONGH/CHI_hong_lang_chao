@@ -250,6 +250,9 @@ PRC_export_revolution = {
             # 	add_to_faction = MND
             # }
             add_to_faction = MND
+            MND = {
+                load_focus_tree = WLI
+            }
             hidden_effect = {
                 BRM = {
                     leave_faction = yes
@@ -559,6 +562,9 @@ PRC_export_revolution = {
                         PRC_Lib_Int_Dir_Var = 1
                     }
                 }
+                LAO = {
+                    load_focus_tree = WLI
+                }
             }
             add_to_variable = {
                 PRC_WLI_consumer_factor = -0.01
@@ -644,6 +650,9 @@ PRC_export_revolution = {
                     add_to_variable = {
                         PRC_Lib_Int_Dir_Var = 1
                     }
+                }
+                CAM = {
+                    load_focus_tree = WLI
                 }
             }
             add_to_variable = {
@@ -1337,6 +1346,9 @@ PRC_export_revolution = {
                     add_to_variable = {
                         PRC_Lib_Int_Dir_Var = 1
                     }
+                }
+                CAM = {
+                    load_focus_tree = SIG
                 }
             }
             add_to_variable = {
@@ -2160,6 +2172,7 @@ PRC_export_revolution = {
                 }
                 BHU = {
                     set_cosmetic_tag = PRC_repolice_gonh
+                    load_focus_tree = WLI
                     set_party_name = {
                         ideology = communist
                         long_name = BHU_nationalist_party_long
@@ -2236,6 +2249,7 @@ PRC_export_revolution = {
             hidden_effect = {
                 NEP = {
                     set_cosmetic_tag = PRC_repolice_gonh
+                    load_focus_tree = WLI
                     PRC = {
                         add_to_faction = NEP
                     }
@@ -2311,6 +2325,7 @@ PRC_export_revolution = {
                         picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
                         ideology = marxism_leninism
                     }
+                    load_focus_tree = WLI
                 }
                 add_to_faction = SRL
             }
@@ -2492,6 +2507,7 @@ PRC_export_revolution = {
                     }
                 }
                 PAK = {
+                    load_focus_tree = WLI
                     remove_ideas = PAK_fervent_nationalism
                     remove_ideas = commonwealth_of_nations_member
                     set_cosmetic_tag = PAK_name
@@ -2852,6 +2868,7 @@ PRC_export_revolution = {
                     #set_cosmetic_tag = PRC_military_administration
                     #add_ideas = PRC_unwilling_ally
                     JAP_leave_PEC = yes
+                    load_focus_tree = WLI
                 }
                 PRC = {
                     add_to_faction = BAN
@@ -3823,93 +3840,16 @@ PRC_export_revolution = {
         }
         remove_effect = {
             if = {
-                limit = { 
-                    country_exists = ZAP
-                }
-                ZAP = {
-                    if = {
-                        limit = { 
-                            has_dynamic_modifier = {
-                                modifier = PRC_MEX_modifier
-                            }
-                        }
-                        effect_tooltip = {
-                            swap_ideas = {
-                                remove_idea = PRC_MEX_modifier_idea0
-                                add_idea = PRC_MEX_modifier_idea
-                            }
-                        }
-                    }
-                    else = {
-                        effect_tooltip = {
-                            add_ideas = PRC_MEX_modifier_idea
-                        }
-                    }
-                    
-                    hidden_effect = {
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_attack_factor_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_defence_factor_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_core_defence_factor_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_cas_damage_reduction_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_org_factor_var = 0.025
-                        }
-                        add_dynamic_modifier = {
-                            modifier = PRC_MEX_modifier
-                        }
+                limit = {
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
                     }
                 }
+                MEX_buff_normal_effect = yes
             }
             else = {
-                MEX = {
-                    if = {
-                        limit = { 
-                            has_dynamic_modifier = {
-                                modifier = PRC_MEX_modifier
-                            }
-                        }
-                        effect_tooltip = {
-                            swap_ideas = {
-                                remove_idea = PRC_MEX_modifier_idea0
-                                add_idea = PRC_MEX_modifier_idea
-                            }
-                        }
-                    }
-                    else = {
-                        effect_tooltip = {
-                            add_ideas = PRC_MEX_modifier_idea
-                        }
-                    }
-                    
-                    hidden_effect = {
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_attack_factor_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_defence_factor_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_core_defence_factor_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_cas_damage_reduction_var = 0.025
-                        }
-                        add_to_variable = {
-                            PRC_MEX_modifier_army_org_factor_var = 0.025
-                        }
-                        add_dynamic_modifier = {
-                            modifier = PRC_MEX_modifier
-                        }
-                    }
-                }
+                MEX_buff_hard_effect = yes
             }
             
         }
@@ -4102,12 +4042,16 @@ PRC_export_revolution = {
             has_country_flag = PRC_MEX_PTF_bold
             OR = {
                 ZAP = {
-                    has_country_flag = MEX_mexican_unifier_flag
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
                 }
                 MEX = {
                     AND = {
                         has_government = communist
                         has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
                     }	
                 }
             }
@@ -4116,6 +4060,7 @@ PRC_export_revolution = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
+                has_global_flag = PTF_oh_shit_mexico_flag
             }
         }
         available = {
@@ -4131,6 +4076,7 @@ PRC_export_revolution = {
                 }
                 ZAP = {
                     inherit_technology = PRC
+                    remove_ideas = ai_disabled_production
                 }
             }
             else = {
@@ -4146,12 +4092,16 @@ PRC_export_revolution = {
             has_country_flag = PRC_MEX_PTF_bold
             OR = {
                 ZAP = {
-                    has_country_flag = MEX_mexican_unifier_flag
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
                 }
                 MEX = {
                     AND = {
                         has_government = communist
                         has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
                     }	
                 }
             }
@@ -4160,55 +4110,333 @@ PRC_export_revolution = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
+                has_global_flag = PTF_oh_shit_mexico_flag
             }
         }
         available = {
+            custom_trigger_tooltip = {
+                tooltip = MEX_build_an_ultimate_army_tt
+                check_variable = {
+                    MEX_build_an_ultimate_army_var < 4
+                }
+            }
             
         }
-        cost = 20
+        cost = 25
         days_remove = 20
-        days_re_enable = 20
-        complete_effect = {
+        modifier = {
+            consumer_goods_factor = 0.1
+            experience_gain_army_unit_factor = -0.1
+        }
+        remove_effect = {
             if = {
                 limit = { 
                     country_exists = ZAP
                 }
                 ZAP = {
+                    army_experience = 150
                     if = {
                         limit = { 
-                            NOT = {
-                                has_variable = MEX_build_an_ultimate_army_var
-                            }
-                        }
-                        MEX_ZAP_initialize_the_ultimate_army_1 = yes
-                    }
-                    else_if = {
-                        limit = { 
                             check_variable = {
-                                MEX_build_an_ultimate_army_var = 8
+                                PRC.MEX_build_an_ultimate_army_var = 0
                             }
                         }
-                        MEX_ZAP_gain_the_ultimate = yes
+                        add_offsite_building = {
+                            type = industrial_complex
+                            level = 5
+                        }
+                        add_offsite_building = {
+                            type = arms_factory
+                            level = 2
+                        }
+                        division_template = {
+                            name = "Willpower Brigade"
+                            regiments = {
+                                special_forces = {
+                                    x = 0
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 3
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 3
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                        division_template = {
+                            name = "Zhukov Division"
+                            regiments = {
+                                modern_armor = {
+                                    x = 0
+                                    y = 0
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 1
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 2
+                                }
+                                light_mechanized = {
+                                    x = 0
+                                    y = 3
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 0
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 1
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                                logistics_company = {
+                                    x = 0
+                                    y = 3
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = ZAP
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = ZAP
+                        }
                     }
                 }
             }
             else = {
                 MEX = {
+                    army_experience = 150
                     if = {
                         limit = { 
-                            NOT = {
-                                has_variable = MEX_build_an_ultimate_army_var
-                            }
-                        }
-                        MEX_ZAP_initialize_the_ultimate_army_1 = yes
-                    }
-                    else_if = {
-                        limit = { 
                             check_variable = {
-                                MEX_build_an_ultimate_army_var = 8
+                                PRC.MEX_build_an_ultimate_army_var = 0
                             }
                         }
-                        MEX_ZAP_gain_the_ultimate = yes
+                        add_offsite_building = {
+                            type = industrial_complex
+                            level = 5
+                        }
+                        add_offsite_building = {
+                            type = arms_factory
+                            level = 2
+                        }
+                        division_template = {
+                            name = "Willpower Brigade"
+                            regiments = {
+                                special_forces = {
+                                    x = 0
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 3
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 3
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                        division_template = {
+                            name = "Zhukov Division"
+                            regiments = {
+                                modern_armor = {
+                                    x = 0
+                                    y = 0
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 1
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 2
+                                }
+                                light_mechanized = {
+                                    x = 0
+                                    y = 3
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 0
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 1
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                                logistics_company = {
+                                    x = 0
+                                    y = 3
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = MEX
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = MEX
+                        }
                     }
                 }
             }
@@ -4223,12 +4451,16 @@ PRC_export_revolution = {
             has_country_flag = PRC_MEX_PTF_bold
             OR = {
                 ZAP = {
-                    has_country_flag = MEX_mexican_unifier_flag
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
                 }
                 MEX = {
                     AND = {
                         has_government = communist
                         has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
                     }	
                 }
             }
@@ -4237,6 +4469,7 @@ PRC_export_revolution = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
+                has_global_flag = PTF_oh_shit_mexico_flag
             }
         }
         available = {
@@ -4266,7 +4499,10 @@ PRC_export_revolution = {
         cost = 20
         days_remove = 20
         days_re_enable = 20
-        complete_effect = {  
+        modifier = {
+            command_power_gain_mult = -0.3
+        }
+        remove_effect = {  
             MEX_pretrain_for_the_worst_display = yes
             add_to_variable = {
                 MEX_pretrain_for_the_worst_var = 1
@@ -4279,12 +4515,16 @@ PRC_export_revolution = {
             has_country_flag = PRC_MEX_PTF_bold
             OR = {
                 ZAP = {
-                    has_country_flag = MEX_mexican_unifier_flag
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
                 }
                 MEX = {
                     AND = {
                         has_government = communist
                         has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
                     }	
                 }
             }
@@ -4293,6 +4533,7 @@ PRC_export_revolution = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
+                has_global_flag = PTF_oh_shit_mexico_flag
             }
         }
         available = {
@@ -4301,7 +4542,10 @@ PRC_export_revolution = {
         cost = 20
         days_remove = 20
         days_re_enable = 20
-        complete_effect = {
+        modifier = {
+            consumer_goods_factor = 0.15
+        }
+        remove_effect = {
             if = {
                 limit = { 
                     OR = {
@@ -4349,6 +4593,13 @@ PRC_export_revolution = {
                                 instant_build = yes
                             }
                         }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
                     }
                 }
                 else = {
@@ -4384,6 +4635,13 @@ PRC_export_revolution = {
                         random_owned_controlled_state = {
                             add_building_construction = {
                                 type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
                                 level = 1
                                 instant_build = yes
                             }
@@ -4438,6 +4696,20 @@ PRC_export_revolution = {
                                 instant_build = yes
                             }
                         }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
                     }
                 }
                 else = {
@@ -4477,26 +4749,93 @@ PRC_export_revolution = {
                                 instant_build = yes
                             }
                         }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
                     }
                 }
             }
-            
         }
     }
     PTF_MEX_war_mission = {
         activation = {
             always = no
         }
-        available = {
-            always = no
+        cancel_trigger = {
+            NOT = {
+                country_exists = MEX
+                country_exists = ZAP
+            }
         }
         days_mission_timeout = 180
         selectable_mission = no
+        cancel_effect = {
+            add_command_power = 15
+            if = {
+                limit = {
+                    has_country_flag = PRC_MEX_PTF_bold
+                }
+                add_political_power = -50
+                add_war_support = -0.1
+                add_popularity = {
+                    ideology = totalitarian_socialist
+                    popularity = -0.05
+                }
+                add_popularity = {
+                    ideology = communist
+                    popularity = -0.1
+                }
+                add_popularity = {
+                    ideology = libertarian_socialist
+                    popularity = -0.1
+                }
+                add_popularity = {
+                    ideology = social_democrat
+                    popularity = -0.05
+                }
+            }
+        }
         timeout_effect = {
             effect_tooltip = {
                 PTF = {
                     white_peace = MEX
                     white_peace = ZAP
+                    add_timed_idea = {
+                        idea = JAP_shame_defeat
+                        days = 365
+                    }
+                }
+                if = {
+                    limit = {
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        remove_dynamic_modifier = {
+                            modifier = PRC_MEX_modifier
+                        }
+                        load_focus_tree = WLI
+                    }
+                    add_to_faction = ZAP
+                }
+                else = {
+                    MEX = {
+                        remove_dynamic_modifier = {
+                            modifier = PRC_MEX_modifier
+                        }
+                        load_focus_tree = WLI
+                    }
+                    add_to_faction = MEX
                 }
             }
         }
@@ -4506,12 +4845,15 @@ PRC_export_revolution = {
             has_country_flag = MEX_selected
             NOT = {
                 has_country_flag = MEX_interfere_civil_war_coup_flag
+                any_other_country = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
             }
         }
         cost = 25
         days_remove = 14
         fire_only_once = yes
-        complete_effect = {
+        remove_effect = {
             set_country_flag = MEX_interfere_civil_war_saberta_flag
         }
         remove_effect = {
@@ -4549,6 +4891,9 @@ PRC_export_revolution = {
             has_country_flag = MEX_selected
             NOT = {
                 has_country_flag = MEX_interfere_civil_war_saberta_flag
+                any_other_country = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
             }
         }
         cost = 35
