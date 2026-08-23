@@ -1,3 +1,11 @@
+	focus_tree = {
+		id = WLI
+		country = { 
+			factor = 0
+		}
+		default = no
+		shared_focus = WLI_red_flag_flying_high
+	}
 	# ==========================================
 	# 核心/政治分支 (主干)
 	# ==========================================
@@ -16,7 +24,12 @@
 			}	
 		}
 		allow_branch = {
-			has_country_flag = Prc_NewLeft_focus_key
+			if = {
+				limit = { 
+					tag = PRC
+				}
+				has_country_flag = Prc_NewLeft_focus_key
+			}
 		}
 		available = {
 			tag = PRC
@@ -41,6 +54,8 @@
 				is_in_faction_with = BHU
 				is_in_faction_with = CAM
 				is_in_faction_with = NAX
+				is_in_faction_with = ZAP
+				is_in_faction_with = MEX
 			}
 		}
 		completion_reward_joint_member = {

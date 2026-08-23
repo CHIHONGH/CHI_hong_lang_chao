@@ -203,177 +203,187 @@ react_victory_south_america_war = {
     }
 }
 
-MEX_ZAP_initialize_the_ultimate_army_1 = {
-    division_template = {
-        name = "Willpower Brigade"
-        regiments = { 
-            special_forces = {
-                x = 0
-                y = 0
+MEX_buff_normal_effect = {
+    if = {
+        limit = { 
+            country_exists = ZAP
+        }
+        ZAP = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.025
             }
-            special_forces = {
-                x = 0
-                y = 1
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.05
             }
-            special_forces = {
-                x = 0
-                y = 2
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.025
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.05
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
             }
         }
-        support = {
-            engineer = {
-                x = 0
-                y = 0
-            }
-            apc_company = {
-                x = 0
-                y = 1
-            }
-        }
-        priority = 2
-        is_locked = yes
     }
-    division_template = {
-        name = "Zhukov Division"
-        regiments = { 
-            light_mechanized = {
-                x = 0
-                y = 0
+    else = {
+        MEX = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.025
             }
-            light_mechanized = {
-                x = 0
-                y = 1
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.05
             }
-            light_mechanized = {
-                x = 0
-                y = 2
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.025
             }
-            modern_sp_artillery_brigade = {
-                x = 1
-                y = 0
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.05
             }
-            spaa_brigade = {
-                x = 1
-                y = 1
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.05
             }
-            motorized = {
-                x = 2
-                y = 0
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
             }
         }
-        support = {
-            engineer = {
-                x = 0
-                y = 0
+    }
+}
+MEX_buff_hard_effect = {
+    if = {
+        limit = { 
+            country_exists = ZAP
+        }
+        ZAP = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.05
             }
-            apc_company = {
-                x = 0
-                y = 1
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.1
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea_hard
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea_hard
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
             }
         }
-        priority = 3
-        is_locked = yes
+    }
+    else = {
+        MEX = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.1
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea_hard
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea_hard
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+            }
+        }
     }
 }
 
-MEX_ZAP_buff_up_the_ultimate = {
-    add_units_to_division_template = {
-        template_name = "Willpower Brigade"
-        regiments = {
-            special_forces = 2
-        }
-    }
-    add_units_to_division_template = {
-        template_name = "Zhukov Division"
-        regiments = {
-            light_mechanized = 1
-        }
-    }
-}
 
-MEX_ZAP_gain_the_ultimate = {
-    division_template = {
-        name = "Endgame Division"
-        regiments = {
-            modern_armor = {
-                x = 0
-                y = 0
-            }
-            modern_armor = {
-                x = 0
-                y = 1
-            }
-            modern_armor = {
-                x = 0
-                y = 2
-            }
-            mechanized = {
-                x = 0
-                y = 3
-            }
-            mechanized = {
-                x = 0
-                y = 4
-            }
-            modern_armor = {
-                x = 1
-                y = 0
-            }
-            modern_armor = {
-                x = 1
-                y = 1
-            }
-            modern_armor = {
-                x = 1
-                y = 2
-            }
-            light_mechanized = {
-                x = 1
-                y = 3
-            }
-            light_mechanized = {
-                x = 1
-                y = 4
-            }
-            modern_sp_artillery_brigade = {
-                x = 2
-                y = 0
-            }
-            modern_sp_artillery_brigade = {
-                x = 2
-                y = 1
-            }
-            modern_sp_artillery_brigade = {
-                x = 2
-                y = 2
-            }
-            modern_sp_artillery_brigade = {
-                x = 2
-                y = 3
-            }
-            mechanized = {
-                x = 2
-                y = 4
-            }
-            spaa_brigade = {
-                x = 3
-                y = 0
-            }
-        }
-        support = {
-            signal_company = {
-                x = 0
-                y = 0
-            }
-            engineer = {
-                x = 0
-                y = 1
-            }
-        }
-        priority = 2
-        is_locked = yes
-    }
-}
+
 
 MEX_pretrain_for_the_worst_display = {
     custom_effect_tooltip = MEX_pretrain_for_the_worst_tt
@@ -550,6 +560,89 @@ MEX_pretrain_for_the_worst_display = {
     
 }
 
+MEX_ZAP_get_division_template = {
+    division_template = {
+        name = "Endgame Division"
+        regiments = {
+            modern_armor = {
+                x = 0
+                y = 0
+            }
+            modern_armor = {
+                x = 0
+                y = 1
+            }
+            modern_armor = {
+                x = 0
+                y = 2
+            }
+            mechanized = {
+                x = 0
+                y = 3
+            }
+            mechanized = {
+                x = 0
+                y = 4
+            }
+            modern_armor = {
+                x = 1
+                y = 0
+            }
+            modern_armor = {
+                x = 1
+                y = 1
+            }
+            modern_armor = {
+                x = 1
+                y = 2
+            }
+            light_mechanized = {
+                x = 1
+                y = 3
+            }
+            light_mechanized = {
+                x = 1
+                y = 4
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 0
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 1
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 2
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 3
+            }
+            mechanized = {
+                x = 2
+                y = 4
+            }
+            spaa_brigade = {
+                x = 3
+                y = 0
+            }
+        }
+        support = {
+            signal_company = {
+                x = 0
+                y = 0
+            }
+            engineer = {
+                x = 0
+                y = 1
+            }
+        }
+        priority = 120
+    }
+}
+
 MEX_ZAP_fuck_off_PTF = {
     PRC = {
         meta_effect = {
@@ -564,35 +657,29 @@ MEX_ZAP_fuck_off_PTF = {
             country_exists = ZAP
         }
         ZAP = {
+            MEX_ZAP_get_division_template = yes
             capital_scope = {
                 create_unit = {
                     division = "division_template = \"Willpower Brigade\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                    allow_spawning_on_enemy_provs = no
-                    count = MEX_build_an_ultimate_army_var
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
                     owner = ZAP
                 }
             }
             capital_scope = {
                 create_unit = {
                     division = "division_template = \"Zhukov Division\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                    allow_spawning_on_enemy_provs = no
-                    count = MEX_build_an_ultimate_army_var
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
                     owner = ZAP
                 }
             }
-            if = {
-                limit = { 
-                    check_variable = {
-                        MEX_build_an_ultimate_army_var = 9
-                    }
-                }
-                capital_scope = {
-                    create_unit = {
-                        division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
-                        allow_spawning_on_enemy_provs = no
-                        count = 5
-                        owner = ZAP
-                    }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = ZAP
                 }
             }
             if = {
@@ -657,32 +744,25 @@ MEX_ZAP_fuck_off_PTF = {
             capital_scope = {
                 create_unit = {
                     division = "division_template = \"Willpower Brigade\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                    allow_spawning_on_enemy_provs = no
-                    count = MEX_build_an_ultimate_army_var
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
                     owner = MEX
                 }
             }
             capital_scope = {
                 create_unit = {
                     division = "division_template = \"Zhukov Division\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                    allow_spawning_on_enemy_provs = no
-                    count = MEX_build_an_ultimate_army_var
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
                     owner = MEX
                 }
             }
-            if = {
-                limit = { 
-                    check_variable = {
-                        MEX_build_an_ultimate_army_var = 9
-                    }
-                }
-                capital_scope = {
-                    create_unit = {
-                        division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
-                        allow_spawning_on_enemy_provs = no
-                        count = 5
-                        owner = MEX
-                    }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = no
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = MEX
                 }
             }
             if = {

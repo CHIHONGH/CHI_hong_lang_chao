@@ -2275,26 +2275,6 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_perfect_democratic_centralization
         completion_reward = {
-            custom_effect_tooltip = PRC_cadre_witharwal_system_tt
-            custom_effect_tooltip = tooltip_white_line
-            effect_tooltip = {
-                country_event = prcs.3203
-            }
-            hidden_effect = {
-                if = {
-                    limit = {
-                        check_variable = {
-                            var = party_popularity@libertarian_socialist
-                            value = party_popularity@communist
-                            compare = less_than_or_equals
-                        }
-                    }
-                    country_event = {
-                        id = prcs.3203
-                        days = 7
-                    }
-                }
-            }
             add_to_variable = {
                 PRC_cpc_political_power_gain_dynamic_var = -0.15
             }
@@ -2318,6 +2298,26 @@ focus_tree = {
                 swap_ideas = {
                     remove_idea = PRC_road_to_people_democracy0
                     add_idea = PRC_road_to_people_democracy2
+                }
+            }
+            custom_effect_tooltip = PRC_cadre_witharwal_system_tt
+            custom_effect_tooltip = tooltip_white_line
+            effect_tooltip = {
+                country_event = prcs.3203
+            }
+            hidden_effect = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = party_popularity@libertarian_socialist
+                            value = party_popularity@communist
+                            compare = less_than_or_equals
+                        }
+                    }
+                    country_event = {
+                        id = prcs.3203
+                        days = 7
+                    }
                 }
             }
         }
