@@ -202,3 +202,545 @@ react_victory_south_america_war = {
         set_cosmetic_tag = NIC_PTF_sub
     }
 }
+
+MEX_ZAP_initialize_the_ultimate_army_1 = {
+    division_template = {
+        name = "Willpower Brigade"
+        regiments = { 
+            special_forces = {
+                x = 0
+                y = 0
+            }
+            special_forces = {
+                x = 0
+                y = 1
+            }
+            special_forces = {
+                x = 0
+                y = 2
+            }
+        }
+        support = {
+            engineer = {
+                x = 0
+                y = 0
+            }
+            apc_company = {
+                x = 0
+                y = 1
+            }
+        }
+        priority = 2
+        is_locked = yes
+    }
+    division_template = {
+        name = "Zhukov Division"
+        regiments = { 
+            light_mechanized = {
+                x = 0
+                y = 0
+            }
+            light_mechanized = {
+                x = 0
+                y = 1
+            }
+            light_mechanized = {
+                x = 0
+                y = 2
+            }
+            modern_sp_artillery_brigade = {
+                x = 1
+                y = 0
+            }
+            spaa_brigade = {
+                x = 1
+                y = 1
+            }
+            motorized = {
+                x = 2
+                y = 0
+            }
+        }
+        support = {
+            engineer = {
+                x = 0
+                y = 0
+            }
+            apc_company = {
+                x = 0
+                y = 1
+            }
+        }
+        priority = 3
+        is_locked = yes
+    }
+}
+
+MEX_ZAP_buff_up_the_ultimate = {
+    add_units_to_division_template = {
+        template_name = "Willpower Brigade"
+        regiments = {
+            special_forces = 2
+        }
+    }
+    add_units_to_division_template = {
+        template_name = "Zhukov Division"
+        regiments = {
+            light_mechanized = 1
+        }
+    }
+}
+
+MEX_ZAP_gain_the_ultimate = {
+    division_template = {
+        name = "Endgame Division"
+        regiments = {
+            modern_armor = {
+                x = 0
+                y = 0
+            }
+            modern_armor = {
+                x = 0
+                y = 1
+            }
+            modern_armor = {
+                x = 0
+                y = 2
+            }
+            mechanized = {
+                x = 0
+                y = 3
+            }
+            mechanized = {
+                x = 0
+                y = 4
+            }
+            modern_armor = {
+                x = 1
+                y = 0
+            }
+            modern_armor = {
+                x = 1
+                y = 1
+            }
+            modern_armor = {
+                x = 1
+                y = 2
+            }
+            light_mechanized = {
+                x = 1
+                y = 3
+            }
+            light_mechanized = {
+                x = 1
+                y = 4
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 0
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 1
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 2
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 3
+            }
+            mechanized = {
+                x = 2
+                y = 4
+            }
+            spaa_brigade = {
+                x = 3
+                y = 0
+            }
+        }
+        support = {
+            signal_company = {
+                x = 0
+                y = 0
+            }
+            engineer = {
+                x = 0
+                y = 1
+            }
+        }
+        priority = 2
+        is_locked = yes
+    }
+}
+
+MEX_pretrain_for_the_worst_display = {
+    custom_effect_tooltip = MEX_pretrain_for_the_worst_tt
+    meta_effect = {
+        text = {
+            show_ideas_tooltip = PRC_MEX_the_horror_of_decade_[PRC_level]
+        }
+        PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+    }
+    custom_effect_tooltip = MEX_pretrain_for_the_worst_tt2
+    if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var > 0
+            }
+            check_variable = {
+                MEX_pretrain_for_the_worst_var < 3
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_low
+    }
+    else_if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var > 0
+            }
+            check_variable = {
+                MEX_pretrain_for_the_worst_var < 5
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_medium
+    }
+    else_if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var > 0
+            }
+            check_variable = {
+                MEX_pretrain_for_the_worst_var < 6
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_high
+    }
+    else_if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var = 6
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_insane
+    }
+    else = {
+        custom_effect_tooltip = MEX_pretrain_for_the_worst_tt3
+    }
+    custom_effect_tooltip = generic_skip_one_line_tt
+    set_temp_variable = {
+        PRC_level_new_temp = MEX_pretrain_for_the_worst_var
+    }
+    add_to_temp_variable = {
+        PRC_level_new_temp = 1
+    }
+    if = {
+        limit = { 
+            OR = {
+                has_country_flag = PTF_difficulty_Simple
+                has_country_flag = PTF_difficulty_Normal
+            }
+        }
+        if = {
+            limit = { 
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 5
+                }
+            }
+            custom_effect_tooltip = MEX_pretrain_for_the_worst_tt4
+            meta_effect = {
+                text = {
+                    effect_tooltip = {
+                        swap_ideas = {
+                            remove_idea = PRC_MEX_the_horror_of_decade_[PRC_level]
+                            add_idea = PRC_MEX_the_horror_of_decade_[PRC_level_new]
+                        }
+                    }
+                }
+                PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+                PRC_level_new = "[?PRC_level_new_temp|.0]"
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 2
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_low
+                    add_idea = MEX_the_horror_of_decade_medium
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 4
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_medium
+                    add_idea = MEX_the_horror_of_decade_high
+                }
+            }
+        }     
+    }
+    if = {
+        limit = { 
+            OR = {
+                has_country_flag = PTF_difficulty_Hard
+                has_country_flag = PTF_difficulty_Extremely_hard
+            }
+        }
+        if = {
+            limit = { 
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 6
+                }
+            }
+            custom_effect_tooltip = MEX_pretrain_for_the_worst_tt4
+            meta_effect = {
+                text = {
+                    effect_tooltip = {
+                        swap_ideas = {
+                            remove_idea = PRC_MEX_the_horror_of_decade_[PRC_level]
+                            add_idea = PRC_MEX_the_horror_of_decade_[PRC_level_new]
+                        }
+                    }
+                }
+                PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+                PRC_level_new = "[?PRC_level_new_temp|.0]"
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 2
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_low
+                    add_idea = MEX_the_horror_of_decade_medium
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 4
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_medium
+                    add_idea = MEX_the_horror_of_decade_high
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 5
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_high
+                    add_idea = MEX_the_horror_of_decade_insane
+                }
+            }
+        }
+        
+    }
+    
+}
+
+MEX_ZAP_fuck_off_PTF = {
+    PRC = {
+        meta_effect = {
+            text = {
+                add_ideas = PRC_MEX_the_horror_of_decade_[PRC_level]
+            }
+            PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+        }
+    }
+    if = {
+        limit = { 
+            country_exists = ZAP
+        }
+        ZAP = {
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Willpower Brigade\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = no
+                    count = MEX_build_an_ultimate_army_var
+                    owner = ZAP
+                }
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Zhukov Division\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = no
+                    count = MEX_build_an_ultimate_army_var
+                    owner = ZAP
+                }
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        MEX_build_an_ultimate_army_var = 9
+                    }
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
+                        allow_spawning_on_enemy_provs = no
+                        count = 5
+                        owner = ZAP
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 3
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_low
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_medium
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_high
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 6
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_insane
+                    days = 180
+                }
+            }
+        }
+        
+    }
+    else = {
+        MEX = {
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Willpower Brigade\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = no
+                    count = MEX_build_an_ultimate_army_var
+                    owner = MEX
+                }
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Zhukov Division\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = no
+                    count = MEX_build_an_ultimate_army_var
+                    owner = MEX
+                }
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        MEX_build_an_ultimate_army_var = 9
+                    }
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
+                        allow_spawning_on_enemy_provs = no
+                        count = 5
+                        owner = MEX
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 3
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_low
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_medium
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_high
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 6
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_insane
+                    days = 180
+                }
+            }
+        }
+        
+    }
+    
+}
