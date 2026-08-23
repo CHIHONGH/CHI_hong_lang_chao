@@ -620,6 +620,7 @@ PRC_export_revolution = {
                 }
                 CAM = {
                     JAP_leave_PEC = yes
+                    set_country_flag = eadi_member
                     set_cosmetic_tag = PRC_cam
                     set_party_name = {
                         ideology = communist
@@ -675,62 +676,62 @@ PRC_export_revolution = {
             base = 10
         }
     }
-    PRC_retrace_HoChiMinh = {
-        #越南
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Adjust_path_in_Indochina
-        }
-        visible = {
-            tag = PRC
-            has_completed_focus = Adjust_path_in_Indochina
-            has_country_flag = Vietnam_selected
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 23
-        highlight_states = {
-            highlight_state_targets = {
-                state = 671
-            }
-        }
-        on_map_mode = map_and_decisions_view
-        remove_effect = {
-            custom_effect_tooltip = PRC_Vin_tootip
-            JAP_leave_PEC = yes
-            hidden_effect = {
-                VIN = {
-                    leave_faction = yes
-                }
-                PRC = {
-                    declare_war_on = {
-                        target = VIN
-                        type = topple_government
-                    }
-                    add_to_variable = {
-                        CPC_frame = 2
-                    }
-                    clamp_variable = {
-                        var = CPC_frame
-                        min = 0
-                        max = 100
-                    }
-                    add_to_variable = {
-                        PRC_Lib_Int_Dir_Var = 1
-                    }
-                }
-            }
-            hidden_effect = {
-                news_event = {
-                    id = prcs.5
-                    hours = 2
-                }
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
+    # PRC_retrace_HoChiMinh = {
+    #     #越南
+    #     icon = GFX_PRC_new_left_decision
+    #     available = {
+    #         has_completed_focus = Adjust_path_in_Indochina
+    #     }
+    #     visible = {
+    #         tag = PRC
+    #         has_completed_focus = Adjust_path_in_Indochina
+    #         has_country_flag = Vietnam_selected
+    #     }
+    #     fire_only_once = yes
+    #     cost = 25
+    #     days_remove = 23
+    #     highlight_states = {
+    #         highlight_state_targets = {
+    #             state = 671
+    #         }
+    #     }
+    #     on_map_mode = map_and_decisions_view
+    #     remove_effect = {
+    #         custom_effect_tooltip = PRC_Vin_tootip
+    #         JAP_leave_PEC = yes
+    #         hidden_effect = {
+    #             VIN = {
+    #                 leave_faction = yes
+    #             }
+    #             PRC = {
+    #                 declare_war_on = {
+    #                     target = VIN
+    #                     type = topple_government
+    #                 }
+    #                 add_to_variable = {
+    #                     CPC_frame = 2
+    #                 }
+    #                 clamp_variable = {
+    #                     var = CPC_frame
+    #                     min = 0
+    #                     max = 100
+    #                 }
+    #                 add_to_variable = {
+    #                     PRC_Lib_Int_Dir_Var = 1
+    #                 }
+    #             }
+    #         }
+    #         hidden_effect = {
+    #             news_event = {
+    #                 id = prcs.5
+    #                 hours = 2
+    #             }
+    #         }
+    #     }
+    #     ai_will_do = {
+    #         base = 10
+    #     }
+    # }
     PRC_PHIred_rebellion = {
         #菲律宾
         icon = GFX_PRC_new_left_decision
@@ -752,7 +753,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            custom_effect_tooltip = PRC_Mal_tootip
+            custom_effect_tooltip = PRC_PHIred_rebellion_tt
             hidden_effect = {
                 if = {
                     limit = {
@@ -984,6 +985,8 @@ PRC_export_revolution = {
                     add_state_core = 816
                     transfer_state = 333
                     add_state_core = 333
+                    transfer_state = 834
+                    add_state_core = 834
                     division_template = {
                         name = "Militia divisions"
                         is_locked = no
@@ -1106,7 +1109,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            custom_effect_tooltip = PRC_Mal_tootip
+            custom_effect_tooltip = PRC_equator_awaken_tt
             hidden_effect = {
                 news_event = prcs.80
                 if = {
@@ -1301,6 +1304,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
+            custom_effect_tooltip = PRC_Sig_tootip
             ROOT = {
                 set_autonomy = {
                     target = SIG
@@ -1308,7 +1312,6 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            custom_effect_tooltip = PRC_Sig_tootip
             hidden_effect = {
                 SIG = {
                     set_cosmetic_tag = PRC_repolice_gonh
@@ -1576,7 +1579,7 @@ PRC_export_revolution = {
         }
     }
     PRC_radiated_sun = {
-        #射日朝鲜
+        #金，你交权吧……
         icon = GFX_PRC_new_left_decision
         available = {
             custom_trigger_tooltip = {
@@ -1586,7 +1589,9 @@ PRC_export_revolution = {
                         check_variable = {
                            PRK_executed_decisions = 3
                         }
-                        has_idea = PRK_chaotic_atmosphere
+                        NOT = {
+                            has_idea = PRK_chaotic_atmosphere
+                        }                       
                     }
                 }
             }
@@ -2147,6 +2152,8 @@ PRC_export_revolution = {
         cost = 50
         days_remove = 28
         remove_effect = {
+            
+            custom_effect_tooltip = PRC_Bhu_tootip
             ROOT = {
                 set_autonomy = {
                     target = BHU
@@ -2154,7 +2161,6 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            custom_effect_tooltip = PRC_Bhu_tootip
             hidden_effect = {
                 PRC = {
                     add_to_faction = BHU
@@ -2227,6 +2233,7 @@ PRC_export_revolution = {
         cost = 10
         days_remove = 14
         remove_effect = {
+            custom_effect_tooltip = PRC_Nep_tootip
             ROOT = {
                 set_autonomy = {
                     target = NEP
@@ -2245,7 +2252,6 @@ PRC_export_revolution = {
                     PRC_Lib_Int_Dir_Var = 1
                 }
             }
-            custom_effect_tooltip = PRC_Nep_tootip
             hidden_effect = {
                 NEP = {
                     set_cosmetic_tag = PRC_repolice_gonh
@@ -5102,7 +5108,11 @@ PRC_export_revolution = {
         complete_effect = {
             add_timed_idea = {
                 idea = PRC_JAP_intel
-                days = 365
+                days = 250
+            }
+            add_decryption = {
+                target = JAP
+                amount = 1000
             }
         }
         ai_will_do = {

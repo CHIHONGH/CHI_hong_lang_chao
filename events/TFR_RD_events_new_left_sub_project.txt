@@ -1820,10 +1820,6 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3088.a
-        country_event = {
-            id = prcs.3075
-            days = 31
-        }
     }
 }
 country_event = {
@@ -1932,6 +1928,11 @@ country_event = {
                         limit = {
                             VIN = {
                                 has_country_flag = pdto_member
+                                NOT = {
+                                    has_country_leader = {
+                                        character = VIN_to_lam_char
+                                    }
+                                }
                             }
                         }
                         add_to_faction = VIN
@@ -4667,6 +4668,7 @@ country_event = {
         immediate = {
             hidden_effect = {
                 country_event = { id = prcs.3212 days = 365 }
+                activate_mission = NEMS_self_deploy
             }
         }
 
@@ -4677,6 +4679,9 @@ country_event = {
                 value = 1
             }
             nems_jindu = yes
+            effect_tooltip = {
+                activate_mission = NEMS_self_deploy
+            }
         }
 
         # option = {

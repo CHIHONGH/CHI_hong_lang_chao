@@ -10,6 +10,9 @@ country_event = {
 	trigger = {
 		tag = PRC
 	}
+	option = {
+		name = china.2.a
+	}
 }
 
 #President Xi Visits Myanmar
@@ -600,16 +603,15 @@ country_event = {
 				idea = PRC_chinese_triumphalism
 				days = 1000
 			}
-			swap_ideas = {
-				remove_idea = PRC_party_rectification_campaign_bf1e
-				add_idea = PRC_party_rectification_campaign_bf2
-			}
+			custom_effect_tooltip = PRC_nl_clean_house_tt
 		}
 		hidden_effect = {
 			remove_dynamic_modifier = {
 				modifier = PRC_party_rectification_campaign_another_dynamic
 			}
-			add_ideas = PRC_party_rectification_campaign_bf2
+			add_dynamic_modifier = {
+				modifier = PRC_party_rectification_campaign_twother_dynamic
+			}
 		}
 	}
 }
@@ -3700,70 +3702,70 @@ country_event = {
 			}
 		}
 	}
-	option = {
-		name = china.117.b
-		set_temp_variable = {
-			var = PRC_influence_cen_var_temp
-			value = 0.05
-		}
-		PRC_add_influence_cen = yes
-		PRC = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = -2000
-				producer = PRC
-			}
-			add_ai_strategy = {
-				type = send_volunteers_desire
-				id = "SWZ"
-				value = 100
-			}
-			add_ai_strategy = {
-				type = support
-				id = "SWZ"
-				value = 300
-			}
-		}
-		SWZ = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = 2000
-				producer = PRC
-			}
-		}
-	}
-	option = {
-		name = china.117.c
-		set_temp_variable = {
-			var = PRC_influence_lib_var_temp
-			value = 0.05
-		}
-		PRC_add_influence_lib = yes
-		PRC = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = -2000
-				producer = PRC
-			}
-			add_ai_strategy = {
-				type = send_volunteers_desire
-				id = "SAF"
-				value = 100
-			}
-			add_ai_strategy = {
-				type = support
-				id = "SAF"
-				value = 300
-			}
-		}
-		SAF = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = 1000
-				producer = PRC
-			}
-		}
-	}
+	# option = {
+	# 	name = china.117.b
+	# 	set_temp_variable = {
+	# 		var = PRC_influence_cen_var_temp
+	# 		value = 0.05
+	# 	}
+	# 	PRC_add_influence_cen = yes
+	# 	PRC = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = -2000
+	# 			producer = PRC
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = send_volunteers_desire
+	# 			id = "SWZ"
+	# 			value = 100
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = support
+	# 			id = "SWZ"
+	# 			value = 300
+	# 		}
+	# 	}
+	# 	SWZ = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = 2000
+	# 			producer = PRC
+	# 		}
+	# 	}
+	# }
+	# option = {
+	# 	name = china.117.c
+	# 	set_temp_variable = {
+	# 		var = PRC_influence_lib_var_temp
+	# 		value = 0.05
+	# 	}
+	# 	PRC_add_influence_lib = yes
+	# 	PRC = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = -2000
+	# 			producer = PRC
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = send_volunteers_desire
+	# 			id = "SAF"
+	# 			value = 100
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = support
+	# 			id = "SAF"
+	# 			value = 300
+	# 		}
+	# 	}
+	# 	SAF = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = 1000
+	# 			producer = PRC
+	# 		}
+	# 	}
+	# }
 }
 
 country_event = {
