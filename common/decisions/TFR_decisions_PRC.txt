@@ -4608,769 +4608,82 @@ PRC_national_peoples_congress_cat = {
 			base = 100
 		}
 	}
-	PRC_new_left_influence_increasing_mission = {
-		icon = GFX_PRC_new_left_decision
+	
+	PRC_centrist_strengthen_currency = {
 		allowed = {
 			tag = PRC
 		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
 		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = 0.075
+			#has_country_flag = PRC_sided_with_cen_flag
+			NOT = {
+				has_country_flag = PRC_cen_banned_flag
 			}
-			PRC_add_influence_new = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_new_left_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_attacking_squo_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_red_culture_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_organizing_workers_mission
-						add_ideas = PRC_new_left_workers_strikes_idea
-					}
-				}
-			}
-		}
-	}
-	PRC_new_left_attacking_squo_mission = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			tag = PRC
 		}
 		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
+			political_power_daily > 0.3
 			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_cen = yes
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_nat = yes
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_lib = yes
-			add_stability = -0.03
-			add_political_power = -25
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_new_left_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_attacking_squo_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_red_culture_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_organizing_workers_mission
-						add_ideas = PRC_new_left_workers_strikes_idea
-					}
-				}
-			}
-		}
-	}
-	PRC_new_left_red_culture_mission = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_new = yes
-			add_political_power = 75
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_new_left_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_attacking_squo_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_red_culture_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_organizing_workers_mission
-						add_ideas = PRC_new_left_workers_strikes_idea
-					}
-				}
-			}
-		}
-	}
-	PRC_new_left_organizing_workers_mission = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_new = yes
-			add_stability = 0.03
-			remove_ideas = PRC_new_left_workers_strikes_idea
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_new_left_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_attacking_squo_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_red_culture_mission
-					}
-					25 = {
-						activate_mission = PRC_new_left_organizing_workers_mission
-						add_ideas = PRC_new_left_workers_strikes_idea
-					}
-				}
-			}
-		}
-	}
-	PRC_nationalist_influence_increasing_mission = {
-		icon = GFX_PRC_nationalist_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = 0.075
-			}
-			PRC_add_influence_nat = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_nationalist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_attacking_libs_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_pro_war_propoganda_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_militarization_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_nationalist_attacking_libs_mission = {
-		icon = GFX_PRC_nationalist_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_lib = yes
-			add_political_power = -25
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_nationalist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_attacking_libs_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_pro_war_propoganda_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_militarization_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_nationalist_pro_war_propoganda_mission = {
-		icon = GFX_PRC_nationalist_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = 0.035
-			}
-			PRC_add_influence_nat = yes
-			add_war_support = 0.05
-			add_political_power = -30
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_nationalist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_attacking_libs_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_pro_war_propoganda_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_militarization_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_nationalist_militarization_mission = {
-		icon = GFX_PRC_nationalist_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = 0.04
-			}
-			PRC_add_influence_nat = yes
-			random_owned_controlled_state = {
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-			set_temp_variable = {
-				var = debt_var_temp
+				var = PRC_influence_cen_trigger_temp
 				value = 1
 			}
-			add_debt = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_nationalist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_attacking_libs_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_pro_war_propoganda_mission
-					}
-					25 = {
-						activate_mission = PRC_nationalist_militarization_mission
-					}
-				}
-			}
+			PRC_has_influence_cen_less_than = yes
+			#has_country_flag = PRC_sided_with_cen_flag
 		}
-	}
-	PRC_centrist_influence_increasing_mission = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			tag = PRC
+		cost = 25
+		days_remove = 90
+		complete_effect = {
+			
 		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
+		modifier = {
+			political_power_cost = 0.3
+			stability_weekly = 0.003
+			inflation_monthly = -0.002
+			business_value_factor = -0.05
+			society_development_monthly = 0.002
 		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
+		remove_effect = {
 			set_temp_variable = {
 				var = PRC_influence_cen_var_temp
-				value = 0.075
+				value = 0.05
 			}
 			PRC_add_influence_cen = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_centrist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_new_left_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_buiding_infrastructure_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_nationalists_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_centrist_attacking_new_left_mission = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
 			set_temp_variable = {
 				var = PRC_influence_new_var_temp
 				value = -0.05
 			}
 			PRC_add_influence_new = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_centrist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_new_left_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_buiding_infrastructure_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_nationalists_mission
-					}
-				}
-			}
 		}
 	}
-	PRC_centrist_buiding_infrastructure_mission = {
-		icon = GFX_PRC_centrist_decision
+	PRC_centrist_centralize_infrastructure = {
 		allowed = {
 			tag = PRC
 		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
 		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			random_owned_controlled_state = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
+			#has_country_flag = PRC_sided_with_cen_flag
+			NOT = {
+				has_country_flag = PRC_cen_banned_flag
 			}
-			set_temp_variable = {
-				var = debt_var_temp
-				value = 3
-			}
-			add_debt = yes
-			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = 0.03
-			}
-			PRC_add_influence_cen = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_centrist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_new_left_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_buiding_infrastructure_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_nationalists_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_centrist_attacking_nationalists_mission = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			tag = PRC
 		}
 		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
+			political_power_daily > 0.3
 			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = -0.05
+				var = PRC_influence_cen_trigger_temp
+				value = 1
 			}
-			PRC_add_influence_nat = yes
-			add_war_support = -0.03
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_centrist_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_new_left_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_buiding_infrastructure_mission
-					}
-					25 = {
-						activate_mission = PRC_centrist_attacking_nationalists_mission
-					}
-				}
-			}
+			PRC_has_influence_cen_less_than = yes
+			#has_country_flag = PRC_sided_with_cen_flag
 		}
-	}
-	PRC_liberal_influence_increasing_mission = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			tag = PRC
+		cost = 25
+		days_remove = 90
+		complete_effect = {
+			
 		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
+		modifier = {
+			political_power_cost = 0.3
+			production_factory_max_efficiency_factor = 0.05
+			production_factory_efficiency_gain_factor = -0.05
+			industrial_development_monthly = 0.01
 		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = 0.075
-			}
-			PRC_add_influence_lib = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_liberal_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_attacking_authoritarians_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_demanding_reforms_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_market_oriented_policy_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_liberal_attacking_authoritarians_mission = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = -0.06
-			}
-			PRC_add_influence_cen = yes
-			add_stability = -0.01
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_liberal_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_attacking_authoritarians_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_demanding_reforms_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_market_oriented_policy_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_liberal_demanding_reforms_mission = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_lib = yes
-			add_stability = -0.03
-			add_political_power = -100
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_liberal_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_attacking_authoritarians_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_demanding_reforms_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_market_oriented_policy_mission
-					}
-				}
-			}
-		}
-	}
-	PRC_liberal_market_oriented_policy_mission = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-		}
-		priority = 10
-		fire_only_once = no
-		days_mission_timeout = 70
-		is_good = no
-		cancel_if_not_visible = yes
-		fixed_random_seed = no
-		activation = {
-			always = no
-		}
-		visible = {
-			tag = PRC
-		}
-		timeout_effect = {
+		remove_effect = {
 			random_owned_controlled_state = {
 				add_building_construction = {
 					type = industrial_complex
@@ -5379,110 +4692,491 @@ PRC_national_peoples_congress_cat = {
 				}
 			}
 			set_temp_variable = {
-				var = debt_var_temp
-				value = 150
+				var = PRC_influence_lib_var_temp
+				value = -0.05
 			}
-			add_debt = yes
-			hidden_effect = {
-				random_list = {
-					25 = {
-						activate_mission = PRC_liberal_influence_increasing_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_attacking_authoritarians_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_demanding_reforms_mission
-					}
-					25 = {
-						activate_mission = PRC_liberal_market_oriented_policy_mission
-					}
-				}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
 			}
+			PRC_add_influence_cen = yes
 		}
 	}
-	PRC_finalize_recovery_from_the_oil_crisis = {
-		icon = GFX_PRC_centrist_decision
+	PRC_centrist_three_farming_policy = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_cen_flag
+			NOT = {
+				has_country_flag = PRC_cen_banned_flag
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = PRC_influence_cen_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_cen_less_than = yes
+			#has_country_flag = PRC_sided_with_cen_flag
+		}
+		cost = 100
+		days_remove = 90
+		complete_effect = {
+			
+		}
+		modifier = {
+			political_power_gain = 0.3
+			consumer_goods_factor = 0.035
+		}
+		remove_effect = {
+			set_temp_variable = {
+				farming_development_var_temp = 0.05
+			}
+			add_farming_development = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.025
+			}
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	PRC_centrist_crack_down_on_corruption = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_cen_flag
+			NOT = {
+				has_country_flag = PRC_cen_banned_flag
+			}
+		}
+		available = {
+			political_power_daily > 0.5
+			set_temp_variable = {
+				var = PRC_influence_cen_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_cen_less_than = yes
+			#has_country_flag = PRC_sided_with_cen_flag
+		}
+		cost = 100
+		days_remove = 90
+		complete_effect = {
+			
+		}
+		modifier = {
+			political_power_cost = 0.5
+			expense_growth_factor = -0.2
+			personal_expense_factor = -0.05
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.015
+			}
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+
+	PRC_liberal_less_market_restrictions = {
+		icon = GFX_PRC_liberal_decision
 		allowed = {
 			original_tag = PRC
 		}
 		visible = {
-			has_completed_focus = sail_through_the_storm
-			OR = {
-				has_idea = PRC_oil_crash1
-				has_idea = PRC_oil_crash2
-				has_idea = PRC_oil_crash3
-				has_idea = PRC_oil_crash4
-				has_idea = PRC_oil_crash5
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_lib_banned_flag
 			}
 		}
 		available = {
-			OR = {
-				has_idea = PRC_oil_crash1
-				has_idea = PRC_oil_crash2
-				has_idea = PRC_oil_crash3
-				has_idea = PRC_oil_crash4
-				has_idea = PRC_oil_crash5
+			political_power_daily > 0.3
+			set_temp_variable = {
+				var = PRC_influence_lib_trigger_temp
+				value = 1
 			}
+			PRC_has_influence_lib_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
 		}
-		ai_will_do = {
-			base = 50
-		}
-		cost = 35
-		days_remove = 50
+		cost = 25
+		days_remove = 90
 		modifier = {
-		}
-		complete_effect = {
+			political_power_cost = 0.3
+			business_value_factor = 0.075
+			production_factory_efficiency_gain_factor = 0.1
 		}
 		remove_effect = {
-			PRC_decrease_oil = yes
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_new = yes
 		}
 	}
-	PRC_advocate_for_militarization = {
+	PRC_liberal_culture_independence = {
+		icon = GFX_PRC_liberal_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_lib_banned_flag
+			}
+		}
+		available = {
+			political_power_daily > 0.3
+			set_temp_variable = {
+				var = PRC_influence_lib_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_lib_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 25
+		days_remove = 90
+		modifier = {
+			political_power_cost = 0.3
+			personal_value_factor = 0.075
+			drift_defence_factor = -0.2
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	PRC_liberal_justice_disclosure = {
+		icon = GFX_PRC_liberal_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_lib_banned_flag
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = PRC_influence_lib_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_lib_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 100
+		days_remove = 90
+		modifier = {
+			political_power_gain = 0.3
+			expense_growth_factor = 0.1
+			society_development_monthly = 0.005
+		}
+		remove_effect = {
+			add_stability = 0.025
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_nat = yes
+		}
+	}
+	PRC_liberal_less_tariff = {
+		icon = GFX_PRC_liberal_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_lib_banned_flag
+			}
+		}
+		available = {
+			political_power_daily > 0.5
+			set_temp_variable = {
+				var = PRC_influence_lib_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_lib_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 100
+		days_remove = 90
+		modifier = {
+			political_power_cost = 0.5
+			consumer_goods_expected_value = -0.05
+			consumer_goods_factor = -0.1
+			income_growth_factor = -0.2
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = -0.025
+			}
+			PRC_add_influence_nat = yes
+		}
+	}
+
+
+	PRC_left_tax_on_legacy = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_new_banned_flag
+			}
+		}
+		available = {
+			political_power_daily > 0.3
+			set_temp_variable = {
+				var = PRC_influence_new_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_new_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 25
+		days_remove = 90
+		modifier = {
+			political_power_cost = 0.3
+			misc_income = 50
+			society_development_monthly = 0.01
+			production_speed_office_park_factor = -0.2
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+	PRC_left_heavy_labor_law = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_new_banned_flag
+			}
+		}
+		available = {
+			political_power_daily > 0.3
+			set_temp_variable = {
+				var = PRC_influence_new_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_new_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 25
+		days_remove = 90
+		modifier = {
+			political_power_cost = 0.3
+			society_development_monthly = 0.01
+			industrial_capacity_factory = -0.075
+			production_factory_efficiency_gain_factor = 0.05
+		}
+		remove_effect = {
+			add_political_power = 35
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	PRC_left_basic_education = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_new_banned_flag
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = PRC_influence_new_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_new_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 100
+		days_remove = 90
+		modifier = {
+			research_speed_factor = 0.08
+			academic_development_monthly = 0.01
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = -0.025
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+	PRC_left_dont_cook_house = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_new_banned_flag
+			}
+		}
+		available = {
+			political_power_daily > 0.5
+			set_temp_variable = {
+				var = PRC_influence_new_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_new_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
+		}
+		cost = 100
+		days_remove = 90
+		modifier = {
+			political_power_cost = 0.5
+			stability_weekly = 0.005
+			production_cost_infrastructure_factor = -0.05
+			poverty_development_monthly = 0.01
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+
+	PRC_nationalist_miliarized_education = {
 		icon = GFX_PRC_nationalist_decision
 		allowed = {
 			original_tag = PRC
 		}
 		visible = {
-			#has_country_flag = PRC_sided_with_nat_flag
+			#has_country_flag = PRC_sided_with_lib_flag
 			NOT = {
 				has_country_flag = PRC_nat_banned_flag
 			}
 		}
 		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
+			political_power_daily > 0.3
 			set_temp_variable = {
 				var = PRC_influence_nat_trigger_temp
 				value = 1
 			}
 			PRC_has_influence_nat_less_than = yes
-			#has_country_flag = PRC_sided_with_nat_flag
+			#has_country_flag = PRC_sided_with_lib_flag
 		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 150
-		days_remove = 35
-		days_re_enable = 35
+		cost = 25
+		days_remove = 90
 		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 35
-					value = 1
-				}
-			}
+			political_power_cost = 0.3
+			training_time_factor = -0.1
+			military_development_monthly = 0.015
 		}
 		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_nat = yes
+			add_war_support = 0.025
 			random_owned_controlled_state = {
 				add_building_construction = {
 					type = arms_factory
@@ -5490,46 +5184,53 @@ PRC_national_peoples_congress_cat = {
 					instant_build = yes
 				}
 			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_lib = yes
 		}
 	}
-	PRC_revanchist_propaganda = {
+	PRC_nationalist_our_culture = {
 		icon = GFX_PRC_nationalist_decision
 		allowed = {
 			original_tag = PRC
 		}
 		visible = {
-			#has_country_flag = PRC_sided_with_nat_flag
+			#has_country_flag = PRC_sided_with_lib_flag
 			NOT = {
 				has_country_flag = PRC_nat_banned_flag
 			}
 		}
 		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
+			political_power_daily > 0.3
 			set_temp_variable = {
 				var = PRC_influence_nat_trigger_temp
 				value = 1
 			}
 			PRC_has_influence_nat_less_than = yes
-			#has_country_flag = PRC_sided_with_nat_flag
+			#has_country_flag = PRC_sided_with_lib_flag
 		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 100
-		days_remove = 21
-		days_re_enable = 21
+		cost = 25
+		days_remove = 90
 		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
+			political_power_cost = 0.3
+			trade_opinion_factor = 0.1
+			personal_value_factor = 0.05
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -5537,705 +5238,104 @@ PRC_national_peoples_congress_cat = {
 				value = 0.05
 			}
 			PRC_add_influence_nat = yes
-			add_war_support = 0.05
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_new = yes
 		}
 	}
-	PRC_attack_opposition_factions = {
+	PRC_nationalist_industrial_nationalization = {
 		icon = GFX_PRC_nationalist_decision
 		allowed = {
 			original_tag = PRC
 		}
 		visible = {
-			#has_country_flag = PRC_sided_with_nat_flag
+			#has_country_flag = PRC_sided_with_lib_flag
 			NOT = {
 				has_country_flag = PRC_nat_banned_flag
 			}
 		}
 		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
 			set_temp_variable = {
 				var = PRC_influence_nat_trigger_temp
 				value = 1
 			}
 			PRC_has_influence_nat_less_than = yes
-			#has_country_flag = PRC_sided_with_nat_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 50
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_cen = yes
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_lib = yes
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_new = yes
-			add_stability = -0.03
-		}
-	}
-	PRC_hold_pro_government_rally = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_cen_flag
-			NOT = {
-				has_country_flag = PRC_cen_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_cen_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_cen_less_than = yes
-			#has_country_flag = PRC_sided_with_cen_flag
-		}
-		ai_will_do = {
-			base = 20
+			#has_country_flag = PRC_sided_with_lib_flag
 		}
 		cost = 100
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
+		days_remove = 90
 		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
 			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_cen = yes
-			add_stability = 0.025
-		}
-	}
-	PRC_spread_pro_government_messages = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_cen_flag
-			NOT = {
-				has_country_flag = PRC_cen_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_cen_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_cen_less_than = yes
-			#has_country_flag = PRC_sided_with_cen_flag
-		}
-		ai_will_do = {
-			base = 100
-		}
-		cost = 75
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_cen = yes
-		}
-	}
-	PRC_censor_opposition_parties = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_cen_flag
-			NOT = {
-				has_country_flag = PRC_cen_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_cen_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_cen_less_than = yes
-			#has_country_flag = PRC_sided_with_cen_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 75
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_lib = yes
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_new = yes
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_nat = yes
-		}
-	}
-	#PRC_lobby_for_new_decision = {
-	#
-	#	icon = GFX_PRC_new_left_decision
-	#	allowed = {
-	#		original_tag = PRC
-	#	}
-	#	
-	#	visible = {
-	#		#has_country_flag = PRC_sided_with_new_flag
-	#	}
-	#	available = {
-	#		NOT = {
-	#			has_country_flag = political_action_flag
-	#		}
-	#		set_temp_variable = {
-	#			var = PRC_influence_new_trigger_temp
-	#			value = 1
-	#		}
-	#		PRC_has_influence_new_less_than = yes
-	#		#has_country_flag = PRC_sided_with_new_flag
-	#	}
-	#	
-	#	ai_will_do = {
-	#	base = 30
-	#	}
-	#	cost = 5
-	#	days_remove = 14
-	#	days_re_enable = 14
-	#	modifier = {
-	#	}
-	#	complete_effect = {
-	#		hidden_effect = {
-	#			set_country_flag = {
-	#				flag = political_action_flag
-	#				days = 14
-	#				value = 1
-	#			}
-	#		}
-	#	}
-	#	remove_effect = {
-	#		set_temp_variable = { 
-	#			var = PRC_influence_new_var_temp
-	#			value = 0.05
-	#		}
-	#		PRC_add_influence_new = yes
-	#	}
-	#}
-	PRC_blackmail_a_critical_politician = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_lib_flag
-			NOT = {
-				has_country_flag = PRC_lib_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_lib_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_lib_less_than = yes
-			#has_country_flag = PRC_sided_with_lib_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 150
-		days_remove = 50
-		days_re_enable = 350
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = 0.075
-			}
-			PRC_add_influence_lib = yes
-		}
-	}
-	PRC_spread_anti_status_quo_messages = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_lib_flag
-			NOT = {
-				has_country_flag = PRC_lib_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_lib_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_lib_less_than = yes
-			#has_country_flag = PRC_sided_with_lib_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 100
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_lib = yes
-			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_cen = yes
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = -0.05
-			}
-			PRC_add_influence_nat = yes
-			add_war_support = -0.05
-		}
-	}
-	PRC_demand_reforms = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_lib_flag
-			NOT = {
-				has_country_flag = PRC_lib_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_lib_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_lib_less_than = yes
-			#has_country_flag = PRC_sided_with_lib_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 75
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_lib = yes
-			add_stability = -0.03
-		}
-	}
-	PRC_hold_a_protest = {
-		icon = GFX_PRC_liberal_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_lib_flag
-			NOT = {
-				has_country_flag = PRC_lib_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_lib_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_lib_less_than = yes
-			#has_country_flag = PRC_sided_with_lib_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 50
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_lib = yes
-			add_war_support = -0.025
-			add_stability = -0.025
-		}
-	}
-	PRC_look_for_politburo_sympathisers = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_side_with_left_flag
-			NOT = {
-				has_country_flag = PRC_new_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_new_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_new_less_than = yes
-			#has_country_flag = PRC_side_with_left_flag
-		}
-		ai_will_do = {
-			base = 20
-		}
-		cost = 100
-		days_remove = 50
-		days_re_enable = 350
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 50
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = 0.075
-			}
-			PRC_add_influence_new = yes
-		}
-	}
-	PRC_discredit_capitalist_roaders = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_sided_with_left_flag
-			NOT = {
-				has_country_flag = PRC_new_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_new_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_new_less_than = yes
-			#has_country_flag = PRC_sided_with_left_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 75
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_lib_var_temp
-				value = -0.03
-			}
-			PRC_add_influence_lib = yes
-			set_temp_variable = {
-				var = PRC_influence_cen_var_temp
-				value = -0.03
-			}
-			PRC_add_influence_cen = yes
-			set_temp_variable = {
-				var = PRC_influence_nat_var_temp
-				value = -0.03
-			}
-			PRC_add_influence_nat = yes
-			add_stability = -0.05
-		}
-	}
-	PRC_organize_a_red_culture_event = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_side_with_left_flag
-			NOT = {
-				has_country_flag = PRC_new_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_new_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_new_less_than = yes
-			#has_country_flag = PRC_side_with_left_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 50
-		days_remove = 21
-		days_re_enable = 21
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_influence_new_var_temp
-				value = 0.05
-			}
-			PRC_add_influence_new = yes
-			add_stability = -0.03
-		}
-	}
-	PRC_stir_up_the_workers = {
-		icon = GFX_PRC_new_left_decision
-		allowed = {
-			original_tag = PRC
-		}
-		visible = {
-			#has_country_flag = PRC_side_with_left_flag
-			NOT = {
-				has_country_flag = PRC_new_banned_flag
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = political_action_flag
-			}
-			set_temp_variable = {
-				var = PRC_influence_new_trigger_temp
-				value = 1
-			}
-			PRC_has_influence_new_less_than = yes
-			#has_country_flag = PRC_side_with_left_flag
-		}
-		ai_will_do = {
-			base = 30
-		}
-		cost = 50
-		days_remove = 50
-		days_re_enable = 350
-		modifier = {
-		}
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = {
-					flag = political_action_flag
-					days = 21
-					value = 1
-				}
-			}
-			#add_timed_idea = {
-			#	idea = PRC_new_left_workers_strikes_idea
-			#	days = 70
-			#}
-			set_temp_variable = {
-				var = industrial_development_var_temp
-				value = -0.05
+				industrial_development_var_temp = -0.05
 			}
 			add_industrial_development = yes
 		}
+		modifier = {
+			research_speed_factor = 0.08
+			production_lack_of_resource_penalty_factor = -0.2
+		}
 		remove_effect = {
-			add_stability = -0.035
+			add_stability = 0.015
+			add_war_support = 0.015
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
 			set_temp_variable = {
 				var = PRC_influence_new_var_temp
-				value = 0.075
+				value = 0.025
 			}
 			PRC_add_influence_new = yes
 		}
 	}
-	PRC_lobby_for_npc_support = {
-		icon = generic_industry
+	PRC_nationalist_strong_diplomacy = {
+		icon = GFX_PRC_nationalist_decision
 		allowed = {
-			tag = PRC
+			original_tag = PRC
 		}
 		visible = {
-			tag = PRC
+			#has_country_flag = PRC_sided_with_lib_flag
+			NOT = {
+				has_country_flag = PRC_nat_banned_flag
+			}
 		}
 		available = {
-			tag = PRC
+			political_power_daily > 0.5
+			set_temp_variable = {
+				var = PRC_influence_nat_trigger_temp
+				value = 1
+			}
+			PRC_has_influence_nat_less_than = yes
+			#has_country_flag = PRC_sided_with_lib_flag
 		}
-		fire_only_once = yes
-		cost = 30
-		days_remove = 70
+		cost = 100
+		days_remove = 90
 		complete_effect = {
+			add_threat = 0.5
+		}
+		modifier = {
+			political_power_cost = 0.5
+			war_support_weekly = 0.005
+			intel_network_gain_factor = 0.05
+			army_org_factor = 0.05
 		}
 		remove_effect = {
 			set_temp_variable = {
-				var = PRC_approval_rating_var_temp
+				var = PRC_influence_new_var_temp
 				value = 0.05
 			}
-			PRC_add_party_approval = yes
-		}
-		ai_will_do = {
-			base = 10
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_lib = yes
 		}
 	}
+
 }
 
 PRC_chinese_socialist_economy_cat = {
