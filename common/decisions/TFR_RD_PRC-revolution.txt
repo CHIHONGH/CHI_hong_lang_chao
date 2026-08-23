@@ -3648,11 +3648,15 @@ PRC_export_revolution = {
             PTF = {
                 activate_decision = USA_operation_green_decision
             }
+            effect_tooltip = {
+                MEX_ZAP_fuck_off_PTF = yes
+            }
         }
     }
     MEX_add_bunker = {
         visible = {
             has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_conservative
             OR = {
                 ZAP = {
                     has_country_flag = MEX_mexican_unifier_flag
@@ -3675,8 +3679,8 @@ PRC_export_revolution = {
             
         }
         cost = 20
-        days_remove = 30
-        days_re_enable = 30
+        days_remove = 20
+        days_re_enable = 20
         complete_effect = {
 
         }
@@ -3704,12 +3708,88 @@ PRC_export_revolution = {
                     instant_build = yes
                 }
             }
+            if = {
+                limit = { 
+                    has_country_flag = PTF_difficulty_Normal
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 1
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 1
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Hard
+                        has_country_flag = PTF_difficulty_Extremely_hard
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 2
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 2
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             
         }
     }
     MEX_buff = {
         visible = {
             has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_conservative
             OR = {
                 ZAP = {
                     has_country_flag = MEX_mexican_unifier_flag
@@ -3837,6 +3917,7 @@ PRC_export_revolution = {
     MEX_train = {
         visible = {
             has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_conservative
             OR = {
                 ZAP = {
                     has_country_flag = MEX_mexican_unifier_flag
@@ -3871,47 +3952,535 @@ PRC_export_revolution = {
         remove_effect = {
             if = {
                 limit = { 
-                    country_exists = ZAP
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
                 }
-                ZAP = {
-                    capital_scope = {
-                        create_unit = {
-                            division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                            allow_spawning_on_enemy_provs = no
-                            count = 1
-                            owner = ZAP
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 1
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 1
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 1
+                                owner = ZAP
+                            }
                         }
                     }
-                    random_owned_controlled_state = {
-                        create_unit = {
-                            division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                            allow_spawning_on_enemy_provs = no
-                            count = 1
-                            owner = ZAP
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 3
+                                owner = MEX
+                            }
                         }
                     }
-                    random_owned_controlled_state = {
-                        create_unit = {
-                            division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                            allow_spawning_on_enemy_provs = no
-                            count = 1
-                            owner = ZAP
+                }
+            }
+            else_if = {
+                limit = {
+                    has_country_flag = PTF_difficulty_Hard
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 2
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 2
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 2
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 6
+                                owner = MEX
+                            }
                         }
                     }
                 }
             }
             else = {
-                MEX = {
-                    capital_scope = {
-                        create_unit = {
-                            division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
-                            allow_spawning_on_enemy_provs = no
-                            count = 3
-                            owner = MEX
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 3
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 3
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 4
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 10
+                                owner = MEX
+                            }
                         }
                     }
                 }
             }
+        }
+    }
+    MEX_ultra_technology = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 40
+        days_remove = 20
+        fire_only_once = yes
+        remove_effect = {
+            if = {
+                limit = { 
+                    country_exists = ZAP
+                }
+                ZAP = {
+                    inherit_technology = PRC
+                }
+            }
+            else = {
+                MEX = {
+                    inherit_technology = PRC
+                }
+            }
+        }
+    }
+    MEX_build_an_ultimate_army = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        complete_effect = {
+            if = {
+                limit = { 
+                    country_exists = ZAP
+                }
+                ZAP = {
+                    if = {
+                        limit = { 
+                            NOT = {
+                                has_variable = MEX_build_an_ultimate_army_var
+                            }
+                        }
+                        MEX_ZAP_initialize_the_ultimate_army_1 = yes
+                    }
+                    else_if = {
+                        limit = { 
+                            check_variable = {
+                                MEX_build_an_ultimate_army_var = 8
+                            }
+                        }
+                        MEX_ZAP_gain_the_ultimate = yes
+                    }
+                }
+            }
+            else = {
+                MEX = {
+                    if = {
+                        limit = { 
+                            NOT = {
+                                has_variable = MEX_build_an_ultimate_army_var
+                            }
+                        }
+                        MEX_ZAP_initialize_the_ultimate_army_1 = yes
+                    }
+                    else_if = {
+                        limit = { 
+                            check_variable = {
+                                MEX_build_an_ultimate_army_var = 8
+                            }
+                        }
+                        MEX_ZAP_gain_the_ultimate = yes
+                    }
+                }
+            }
+            add_to_variable = {
+                MEX_build_an_ultimate_army_var = 1
+            }
+        }
+    }
+    MEX_pretrain_for_the_worst = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
+                }
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 5
+                }
+            }
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Hard
+                        has_country_flag = PTF_difficulty_Extremely_hard
+                    }
+                }
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 6
+                }
+            }
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        complete_effect = {  
+            MEX_pretrain_for_the_worst_display = yes
+            add_to_variable = {
+                MEX_pretrain_for_the_worst_var = 1
+            }
+        }
+    }
+    MEX_prepare_accordingly = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        complete_effect = {
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Hard
+                        has_country_flag = PTF_difficulty_Extremely_hard
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     }
     PTF_MEX_war_mission = {
