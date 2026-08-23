@@ -292,7 +292,10 @@ scripted_gui = {
 				is_in_faction = no
 			}
 			TFR_LI_politics_icon_visible = {
-				has_completed_focus = PRC_unfinished_revolution
+				has_country_flag = eadi_member
+				PRC = {
+					has_completed_focus = PRC_nl_road_to_revolution
+				}
 			}
 			TFR_NATO_politics_icon_visible = {
 				has_country_flag = global_ass_lol
@@ -302,6 +305,17 @@ scripted_gui = {
 			}
 			TFR_pdto_politics_icon_visible = {
 				has_country_flag = pdto_member
+				if = {
+					limit = { 
+						tag = VIN
+					}
+					NOT = {
+						has_country_leader = {
+							character = VIN_to_lam_char
+							ruling_only = yes
+						}
+					}
+				}
 			}
 			TFR_csto_politics_icon_visible = {
 				has_country_flag = csto_member
@@ -317,6 +331,11 @@ scripted_gui = {
 			}
 			TFR_eadi_politics_icon_visible = {
 				has_country_flag = eadi_member
+				PRC = {
+					NOT = {
+						has_completed_focus = PRC_nl_road_to_revolution
+					}
+				}
 			}
 			TFR_psf_politics_icon_visible = {
 				has_country_flag = psf_member
@@ -381,6 +400,17 @@ scripted_gui = {
 			}
 			TFR_eadi_diplo_icon_visible = {
 				has_country_flag = eadi_member
+				if = {
+					limit = { 
+						tag = VIN
+					}
+					NOT = {
+						has_country_leader = {
+							character = VIN_to_lam_char
+							ruling_only = yes
+						}
+					}
+				}
 			}
 			TFR_psf_diplo_icon_visible = {
 				has_country_flag = psf_member
