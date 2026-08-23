@@ -285,7 +285,6 @@ scripted_gui = {
 					has_country_flag = pact_of_steel_member
 					has_country_flag = BTO_member
 					has_country_flag = National_Front_Member
-					has_completed_focus = PRC_unfinished_revolution
 				}
 			}
 			TFR_no_faction_politics_icon_visible = {
@@ -376,7 +375,7 @@ scripted_gui = {
 			}
 			TFR_li_diplo_icon_visible = {
 				PRC = {
-					has_completed_focus = PRC_unfinished_revolution
+					has_completed_focus = PRC_nl_road_to_revolution
 					is_ally_with = FROM
 				}
 			}
@@ -402,7 +401,9 @@ scripted_gui = {
 				has_country_flag = eadi_member
 				if = {
 					limit = { 
-						tag = VIN
+						FROM = {
+							original_tag = VIN
+						}
 					}
 					NOT = {
 						has_country_leader = {

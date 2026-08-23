@@ -1872,10 +1872,6 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3088.a
-        country_event = {
-            id = prcs.3075
-            days = 31
-        }
     }
 }
 country_event = {
@@ -1963,6 +1959,54 @@ country_event = {
             JAP = {
                 add_to_faction = PTF
             }
+            else = {
+                JAP = {
+                    create_faction = PDTO
+                    remove_faction_goal = faction_goal_the_atomic_race
+                    add_faction_goal = faction_goal_placeholder_long_term
+                    remove_faction_goal = faction_goal_a_military_base
+                    add_faction_goal = faction_goal_placeholder_medium_term
+                    add_faction_goal = faction_goal_placeholder_short_term
+                    set_faction_leader = yes
+                    add_to_faction = PTF
+                    if = {
+                        limit = {
+                            VIN = {
+                                has_country_flag = pdto_member
+                                NOT = {
+                                    has_country_leader = {
+                                        character = VIN_to_lam_char
+                                    }
+                                }
+                            }
+                        }
+                        add_to_faction = VIN
+                        VIN = {
+                            if = {
+                                limit = {
+                                    JAP = {
+                                        has_completed_focus = JAP_reinforce_pdto
+                                        NOT = {
+                                            has_completed_focus = JAP_continue_military_integration
+                                        }
+                                    }
+                                }
+                                add_ideas = JAP_PDTO_member_1
+                            }
+                            else_if = {
+                                limit = {
+                                    JAP = {
+                                        has_completed_focus = JAP_reinforce_pdto
+                                        has_completed_focus = JAP_continue_military_integration
+                                    }
+                                }
+                                add_ideas = JAP_PDTO_member_2
+                            }
+                        }
+                    }
+                }
+            }
+            
             news_event = prcs.3118
         }
     }
@@ -4660,7 +4704,115 @@ country_event = {
         }
     }
 
-# 旧方法，新构想 (3)
+    # 旧方法，新构想 (3)
+    country_event = {
+        id = prcs.3211
+        title = prcs.3211.t
+        desc = prcs.3211.d
+        is_triggered_only = yes
+        picture = GFX_Event_Template105
+        option = {
+            name = prcs.3211.a
+        }
+    }
+
+    # 迭代系统
+    country_event = {
+        id = prcs.3212
+        title = prcs.3212.t
+        desc = prcs.3212.d
+        picture = GFX_Event_Template24
+
+        is_triggered_only = yes
+
+        immediate = {
+            hidden_effect = {
+                country_event = { id = prcs.3212 days = 365 }
+                activate_mission = NEMS_self_deploy
+            }
+        }
+
+        option = {
+            name = prcs.3212.a
+            set_temp_variable = {
+                var = nems_jindu_rating_var_temp
+                value = 1
+            }
+            nems_jindu = yes
+            effect_tooltip = {
+                activate_mission = NEMS_self_deploy
+            }
+        }
+
+        # option = {
+        #     name = prcs.3212.b
+        #     custom_effect_tooltip = prcs_3212_b_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.05
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.025
+        #     }
+        # }
+
+        # option = {
+        #     name = prcs.3212.c
+        #     custom_effect_tooltip = prcs_3212_c_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.05
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.025
+        #     }
+        # }
+
+        # option = {
+        #     name = prcs.3212.e
+        #     custom_effect_tooltip = prcs_3212_e_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.05
+        #     }
+        # }
+
+        # option = {
+        #     name = prcs.3212.f
+        #     custom_effect_tooltip = prcs_3212_f_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.0375
+        #     }
+        # }
+    }
+
 country_event = {
     id = prcs.3211
     title = prcs.3211.t

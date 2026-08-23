@@ -666,10 +666,18 @@ shared_focus = {
             uses = 3
             bonus = 1
         }
-        effect_tooltip = {
-            swap_ideas = {
-                remove_idea = PLA_pla_army_dummy
-                add_idea = PLA_pla_army_dummy_4
+        custom_effect_tooltip = Chinese_military_reform_1_tt
+        add_equipment_bonus = {
+            name = PLA_artillery_wins_that_integrating_information_and_fire
+            bonus = { 
+                modern_tank_artillery_chassis = {
+                    soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4	#宽度
+					instant = yes
+                }
+				
             }
         }
         add_to_variable = { var = PLA_army_battalion_upkeep_factor_dynamic value = 0.05 }
@@ -889,7 +897,55 @@ shared_focus = {
             }
         }
         hidden_effect = {
-            add_dynamic_modifier = { modifier = PLA_plaaf_air_dynamic }
+            add_equipment_bonus = {
+                name = PLA_Feiji_LiuShuixian
+                bonus = { 
+                    small_plane_airframe = {
+                        build_cost_ic = -0.15
+                        instant = yes
+                    }
+                    medium_plane_airframe = {
+                        build_cost_ic = -0.125
+                        instant = yes
+                    }
+                }
+            }
+        #     if = {
+        #         limit = {
+        #             has_idea = PLA_plaaf_air_2
+        #         }
+        #         swap_ideas = {
+        #             remove_idea = PLA_plaaf_air_2
+        #             add_idea = PLA_plaaf_air_3
+        #         }
+        #     }
+        #     else_if = {
+        #         limit = {
+        #             has_idea = PLA_plaaf_air_3
+        #         }
+        #         swap_ideas = {
+        #             remove_idea = PLA_plaaf_air_3
+        #             add_idea = PLA_plaaf_air_4
+        #         }
+        #     }
+        #     else_if = {
+        #         limit = {
+        #             has_idea = PLA_plaaf_air_4
+        #         }
+        #         swap_ideas = {
+        #             remove_idea = PLA_plaaf_air_4
+        #             add_idea = PLA_plaaf_air_5
+        #         }
+        #     }
+        #     else_if = {
+        #         limit = {
+        #             has_idea = PLA_plaaf_air_5
+        #         }
+        #         swap_ideas = {
+        #             remove_idea = PLA_plaaf_air_5
+        #             add_idea = PLA_plaaf_air_6
+        #         }
+        #     }
         }
     }
 }
