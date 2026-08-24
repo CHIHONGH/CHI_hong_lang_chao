@@ -150,7 +150,7 @@ ideas = {
 		PRC_WLI_idea = {
 			#世界解放国际
 			name = PRC_WLI_modifiers			#"世界解放国际"
-			picture = GFX_PRC_idea_world_jiefang
+			picture = PRC_world_jiefang
 			allowed = {
 				tag = PRC
 			}
@@ -259,7 +259,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				decryption_power = 3
+				decryption_power = 50
 			}
 		}
 		#以下为民族精神 整饬当地情况
@@ -299,6 +299,155 @@ ideas = {
 				production_factory_max_efficiency_factor = 0.03
 				academic_development_monthly = 0.005
 				society_development_monthly = 0.008
+			}
+		}
+		PRC_integration_research_institutions = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.15
+				consumer_goods_factor = 0.075
+				expense_growth_factor = -0.1
+				research_speed_factor = 0.1
+			}
+			on_remove = {
+				add_research_slot = 1
+				add_to_variable = {
+					NEMS_consumer_goods_factor_dynamic_var = -0.05
+				}
+				add_to_variable = {
+					NEMS_expense_growth_factor_dynamic_var = -0.05
+				}
+				add_to_variable = {
+					NEMS_production_speed_buildings_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_production_factory_start_efficiency_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.075
+				}
+				add_to_variable = {
+					NEMS_global_building_slots_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_personal_value_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_business_value_factor_dynamic_var = -0.05
+				}
+				add_to_variable = {
+					NEMS_society_development_monthly_dynamic_var = 0.005
+				}
+				add_to_variable = {
+					NEMS_farming_development_monthly_dynamic_var = 0.005
+				}
+				add_to_variable = {
+					NEMS_industrial_development_monthly_dynamic_var = 0.005
+				}
+
+			}
+		}
+		PRC_five_year_ahead = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				communist_drift = 0.025
+				libertarian_socialist_drift = 0.025
+				production_factory_efficiency_gain_factor = 0.075
+				industrial_capacity_factory = 0.05
+			}
+		}
+		PRC_break_old_rules = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_start_efficiency_factor = -0.25
+				line_change_production_efficiency_factor = -0.2
+				industrial_development_monthly = -0.02
+			}
+			on_remove = {
+				add_ideas = {
+					PRC_production_democracy
+					PRC_socialism_female
+				}
+				country_event = {
+					id = prcs.93
+					days = 1
+					random_hours = 20
+				}
+			}
+		}
+		PRC_break_education_chain = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.2
+				industrial_capacity_factory = -0.1
+				expense_growth_factor = 0.15
+				academic_development_monthly = -0.02
+				industrial_development_monthly = -0.01
+			}
+			on_remove = {
+            	set_country_flag = nl_PRC_build_learning_society_flag
+				add_ideas = PRC_encourage_lifelong_education
+			}
+		}
+		PRC_beyond_coldness = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.2
+				stability_weekly = 0.002
+				production_factory_max_efficiency_factor = -0.1
+				society_development_monthly = 0.005
+			}
+			on_remove = {
+            	add_to_variable = {
+					PRC_mic_stability_factor_dynamic_var = 0.025
+				}
+				add_to_variable = {
+					PRC_mic_war_support_factor_dynamic_var = 0.025
+				}
+				add_to_variable = {
+					PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.075
+				}
+				add_to_variable = {
+					PRC_mic_monthly_population_dynamic_var = 0.025
+				}
+				add_to_variable = {
+					PRC_mic_experience_loss_factor_dynamic_var = -0.1
+				}
 			}
 		}
 		EFF_left_unity_idea = {

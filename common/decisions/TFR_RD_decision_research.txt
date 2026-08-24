@@ -1,1816 +1,973 @@
 PRC_nems_system = {
-	yu_fanduipai_hezuo = {
-		icon = GFX_PRC_Power_Through_the_Chairman
-		allowed = {
-			tag = PRC
+	NEMS_self_deploy = {
+		visible = {
+			has_completed_focus = nl_PRC_computing_power_long_march
 		}
 		available = {
+			always = no
 		}
-		visible = {
-			has_completed_focus = PRC_nl_automation_model
-			has_decision = zidonghua_moxing
+		activation = {
+			always = no
 		}
-		cost = 30
-		days_re_enable = 60
-		days_remove = 60
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = zidonghua_moxing
-				days = -250
-			}
+		selectable_mission = no
+		is_good = no
+		days_mission_timeout = 180
+		timeout_effect = {
+			country_event = prcs.3212
 		}
 	}
-	chongzu_zjw = {
-		icon = GFX_PRC_centrist_decision
-		allowed = {
-			tag = PRC
-		}
+	NEMS_reform_construction_standard = {
 		available = {
-		}
-		visible = {
-		}
-		fire_only_once = yes
-		cost = 20
-		complete_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
 			}
-			nems_jindu = yes
-			hidden_effect = {
-				add_to_variable = {
-					var = NEMS_stability_factor_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_consumer_goods_factor_dynamic_var
-					value = -0.02
-				}
-				add_to_variable = {
-					var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_industrial_capacity_factory_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_production_speed_buildings_factor_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_business_value_factor_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_personal_value_factor_dynamic_var
-					value = 0.05
-				}
-				add_to_variable = {
-					var = NEMS_income_growth_factor_dynamic_var
-					value = 0.05
-				}
+		}
+		custom_cost_text = NEMS_cost_2
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+		}
+		days_remove = 30
+		complete_effect = {
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_consumer_goods_factor_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				NEMS_production_speed_buildings_factor_dynamic_var = 0.025
 			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_NEMS0
-					add_idea = PRC_NEMS
+					add_idea = PRC_NEMS1
 				}
 			}
 		}
 	}
-	saoqing_zhangai = {
-		icon = GFX_PRC_Reinforce_Communism
-		allowed = {
-			tag = PRC
-		}
+	NEMS_expand_consumer_goods_production = {
 		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_building_foundation_of_model
-		}
-		cost = 10
-		days_remove = 15
-		days_re_enable = 30
-		complete_effect = {
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
 			}
-			nems_jindu = yes
-			set_temp_variable = {
-				var = society_development_var_temp
-				value = 0.05
+		}
+		custom_cost_text = NEMS_cost_2
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
 			}
-			add_society_development = yes
 		}
-	}
-	tongji_shengchan_shuju = {
-		icon = GFX_PRC_things_going_bad
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_state_enterprise_pilot_operations
-		}
-		cost = 20
 		days_remove = 30
-		days_re_enable = 45
 		complete_effect = {
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
+			add_to_variable = {
+				NEMS_executing_decision = 1
 			}
-			nems_jindu = yes
-			set_temp_variable = {
-				var = society_development_var_temp
-				value = 0.1
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
 			}
-			add_society_development = yes
-		}
-	}
-	gaizao_gongchang = {
-		icon = GFX_fund_manufacturing_improvements
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_comprehensive_social_integration
-		}
-		cost = 30
-		days_remove = 120
-		days_re_enable = 0
-		complete_effect = {
 		}
 		modifier = {
-			civilian_factory_use = 5
+			
 		}
 		remove_effect = {
-			add_offsite_building = {
-				type = arms_factory
-				level = 1
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_consumer_goods_factor_dynamic_var = -0.025
+			}
+			add_to_variable = {
+				NEMS_political_power_gain_dynamic_var = -0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS2
+				}
+			}
+		}
+	}
+	NEMS_transfer_shipbuilding_capacity = {
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_2
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+		}		
+		days_remove = 30
+		complete_effect = {
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_production_speed_buildings_factor_dynamic_var = -0.01
+			}
+			add_to_variable = {
+				NEMS_industrial_capacity_dockyard_dynamic_var = 0.03
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS3
+				}
+			}
+		}
+	}
+	NEMS_expand_research_models = {
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_2
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+		}
+		days_remove = 30
+		complete_effect = {
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_consumer_goods_factor_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				NEMS_research_speed_factor_dynamic_var = 0.025
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS4
+				}
+			}
+		}
+	}
+	NEMS_experience_utilization_administration = {
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_2_pp_30
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+			has_political_power > 30
+		}
+		cost = 30
+		days_remove = 45
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -30
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_society_development_monthly_dynamic_var = -0.002
+			}
+			add_to_variable = {
+				NEMS_political_power_gain_dynamic_var = 0.1
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS5
+				}
+			}
+		}
+	}
+	NEMS_reduce_burden_mid_small_micro_corp = {
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_2_pp_30
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+			has_political_power > 30
+		}		
+		days_remove = 45
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -30
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_consumer_goods_factor_dynamic_var = -0.01
+			}
+			add_to_variable = {
+				NEMS_business_value_factor_dynamic_var = 0.025
+			}
+			add_to_variable = {
+				NEMS_personal_value_factor_dynamic_var = 0.025
+			}
+			add_to_variable = {
+				NEMS_income_growth_factor_dynamic_var = -0.035
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS6
+				}
+			}
+		}
+		
+	}
+	NEMS_technology_effect_practice = {
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_2_pp_30
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+			has_political_power > 30
+		}		
+		days_remove = 45
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -30
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_industrial_capacity_factory_dynamic_var = 0.025
+			}
+			add_to_variable = {
+				NEMS_research_speed_factor_dynamic_var = -0.01
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS7
+				}
+			}
+		}
+	}
+	NEMS_renovate_old_factory_zones = {
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_2_pp_30
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value = 1
+				compare = greater_than
+			}
+			has_political_power > 30
+		}		
+		days_remove = 45
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -30
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
+			}
+			add_to_variable = {
+				NEMS_consumer_goods_factor_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.025
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_NEMS0
+					add_idea = PRC_NEMS8
+				}
 			}
 			add_offsite_building = {
 				type = industrial_complex
 				level = 1
 			}
 		}
-	}
-	zidonghua_moxing = {
-		icon = GFX_PRC_NEMS
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			always = no
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 180   #720
-		timeout_effect = {
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.075
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.075
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.1
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = NEMS_expense_growth_factor_dynamic_var
-				value = 0.1
-			}
-			#add_to_variable = {
-			#	var = NEMS_inflation_monthly_dynamic_var
-			#	value = -0.003
-			#}
-			add_to_variable = {
-				var = NEMS_misc_income_dynamic_var
-				value = -10
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = aidonghua_moxing_idea
-				}
-			}
-			set_country_flag = PRC_nl_NEMS_model_end_flag
-			set_country_flag = zidonghua_moxed
-			if = {
-				limit = {
-					has_country_flag = PRC_nl_building_foundation_of_model_flag
-				}
-				add_to_variable = {
-					var = NEMS_industrial_development_monthly_dynamic_var
-					value = 0.005
-				}
-				add_to_variable = {
-					var = NEMS_society_development_monthly_dynamic_var
-					value = 0.005
-				}
-				add_to_variable = {
-					var = NEMS_poverty_development_monthly_dynamic_var
-					value = 0.005
-				}
-				add_to_variable = {
-					var = NEMS_farming_development_monthly_dynamic_var
-					value = 0.005
-				}
-				add_to_variable = {
-					var = NEMS_academic_development_monthly_dynamic_var
-					value = 0.005
-				}
-				add_to_variable = {
-					var = NEMS_production_lack_of_resource_penalty_factor_dynamic_var
-					value = -0.1
-				}
-				set_temp_variable = {
-					var = nems_jindu_rating_var_temp
-					value = 0.005
-				}
-				nems_jindu = yes
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = PRC_NEMS0
-						add_idea = aidonghua_moxing_idea1
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_country_flag = PRC_nl_spread_lot_flag
-				}
-				add_to_variable = {
-					var = NEMS_industrial_development_monthly_dynamic_var
-					value = 0.01
-				}
-				add_to_variable = {
-					var = NEMS_society_development_monthly_dynamic_var
-					value = 0.01
-				}
-				add_to_variable = {
-					var = NEMS_poverty_development_monthly_dynamic_var
-					value = 0.01
-				}
-				add_to_variable = {
-					var = NEMS_farming_development_monthly_dynamic_var
-					value = 0.01
-				}
-				add_to_variable = {
-					var = NEMS_academic_development_monthly_dynamic_var
-					value = 0.01
-				}
-				set_temp_variable = {
-					var = nems_jindu_rating_var_temp
-					value = 0.01
-				}
-				nems_jindu = yes
-				effect_tooltip = {
-					swap_ideas = {
-						remove_idea = PRC_NEMS0
-						add_idea = aidonghua_moxing_idea2
-					}
-				}
-			}
-		}
-	}
-	PRC_nl_building_foundation_of_model ={
-		icon = GFX_PRC_NEMS
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			always = no
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 10 #180
-		timeout_effect = {
-			add_days_mission_timeout = {
-				mission = zidonghua_moxing
-				days = -90
-			}
-			custom_effect_tooltip = PRC_nl_PRC_nl_spread_lot_tt
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = aidonghua_moxing_idea1
-				}
-			}
-			set_country_flag = PRC_nl_building_foundation_of_model_flag
-		}
-	}
-	PRC_nl_spread_lot = {
-		icon = GFX_jsc
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
+	}	
+	NEMS_industrial_internet_things_construction_1 = {
 		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
-		cost = 250
+		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
+		}
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
+		}
 		days_remove = 180
 		fire_only_once = yes
 		complete_effect = {
-			custom_effect_tooltip = PRC_nl_PRC_nl_spread_lot_tt
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = aidonghua_moxing_idea2
-				}
-			}
-			set_country_flag = PRC_nl_spread_lot_flag
-		}
-	}
-	jiasu_gongzuo = {
-		icon = GFX_jsc
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_automation_model
-			NOT = {
-				has_country_flag = zidonghua_moxed
-			}
-		}
-		cost = 10
-		days_re_enable = 60
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = zidonghua_moxing
-				days = -30
-			}
-		}
-	}
-	touru_keyan_ranyuan = {
-		icon = GFX_jsc
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_automation_model
-			NOT = {
-				has_country_flag = zidonghua_moxed
-			}
-		}
-		cost = 10
-		days_re_enable = 60
-		complete_effect = {
-			add_to_variable = {
-				var = zdh_research_speed_factor_var
-				value = -0.01
-			}
-			add_days_mission_timeout = {
-				mission = zidonghua_moxing
-				days = -60
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = zidonghua_moxing_dynamic_idea0
-					add_idea = touru_keyan_ranyuan_idea
-				}
-			}
-		}
-	}
-	touru_zijin = {
-		icon = GFX_jsc
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_automation_model
-			NOT = {
-				has_country_flag = zidonghua_moxed
-			}
-		}
-		cost = 10
-		days_re_enable = 60
-		complete_effect = {
-			add_days_mission_timeout = {
-				mission = zidonghua_moxing
-				days = -60
+			hidden_effect = {
+				add_political_power = -100
 			}
 			add_to_variable = {
-				var = zdh_consumer_goods_factor_var
-				value = 0.01
+				NEMS_executing_decision = 1
 			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = zidonghua_moxing_dynamic_idea0
-					add_idea = touru_zijin_idea
-				}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
 			}
 		}
-	}
-	beijing_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 150
-		days_remove = 150
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 5
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -200
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_country_flag = beijing_jiedian_complete
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.1
-			}
-			nems_jindu = yes
-		}
-	}
-	guangzhou_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
-		}
-		cost = 100
-		days_remove = 100
-		fire_only_once = yes
 		modifier = {
 			civilian_factory_use = 3
 		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -100
-			}
-			add_income = yes
-		}
 		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = zhuyao_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea45
 				}
 			}
-			set_country_flag = guangzhou_jiedian_complete
+			every_state = {
+				limit = {
+					OR = {
+						state = 1394
+						state = 328
+						state = 717
+						state = 716
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
-	shanghai_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
+	NEMS_industrial_internet_things_construction_2 = {
+		visible = {
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
 		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
 		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
-		}
-		cost = 100
-		days_remove = 100
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
+		}		
+		days_remove = 180
 		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -100
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
 		modifier = {
 			civilian_factory_use = 3
 		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -100
-			}
-			add_income = yes
-		}
 		remove_effect = {
-			set_country_flag = shanghai_jiedian_complete
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
+				PRC_mic_production_factory_start_efficiency_factor_dynamic_var = 0.05
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				PRC_mic_line_change_production_efficiency_factor_dynamic_var = 0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = zhuyao_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea46
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 608
+						state = 1157
+						state = 621
+						state = 615
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
 	}
-	wuhan_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
+	NEMS_industrial_internet_things_construction_3 = {
+		visible = {
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
 		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
 		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
-		}
-		cost = 100
-		days_remove = 100
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
+		}		
+		days_remove = 180
 		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -100
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
 		modifier = {
 			civilian_factory_use = 3
 		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -100
-			}
-			add_income = yes
-		}
 		remove_effect = {
-			set_country_flag = wuhan_jiedian_complete
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				PRC_mic_consumer_goods_factor_dynamic_var = -0.075
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = zhuyao_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea47
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 605
+						state = 1189
+						state = 1196
+						state = 1156
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
-	}
-	shenyang_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
+	}	
+	NEMS_industrial_internet_things_construction_4 = {
+		visible = {
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
 		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
 		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
-		}
-		cost = 100
-		days_remove = 100
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
+		}		
+		days_remove = 180
 		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -100
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
 		modifier = {
 			civilian_factory_use = 3
 		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -100
-			}
-			add_income = yes
-		}
 		remove_effect = {
-			set_country_flag = shenyan_jiedian_complete
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+			modify_building_resources = {
+				building = energy_farm
+				resource = coal
+				amount = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
+				PRC_mic_production_speed_power_plant_factor_dynamic_var = 0.125
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var = 0.125
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = zhuyao_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea48
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 1165
+						state = 604
+						state = 283
+						state = 622
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
 	}
-	chongqing_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
+	NEMS_industrial_internet_things_construction_5 = {
+		visible = {
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
 		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
 		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
 		}
-		cost = 100
-		days_remove = 100
+		days_remove = 180
 		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -100
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
 		modifier = {
 			civilian_factory_use = 3
 		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -100
-			}
-			add_income = yes
-		}
 		remove_effect = {
-			set_country_flag = chongqing_jiedian_complete
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				PRC_mic_consumer_goods_factor_dynamic_var = -0.075
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = zhuyao_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea49
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 1215
+						state = 1222
+						state = 1220
+						state = 1148
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
 	}
-	xian_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
+	NEMS_industrial_internet_things_construction_6 = {
+		visible = {
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
 		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
 		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
 		}
-		cost = 100
-		days_remove = 100
+		days_remove = 180
 		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -100
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
 		modifier = {
 			civilian_factory_use = 3
 		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -100
-			}
-			add_income = yes
-		}
 		remove_effect = {
-			set_country_flag = xian_jiedian_complete
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.05
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.02
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.02
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.01
+				PRC_mic_production_speed_infrastructure_factor_dynamic_var = 0.1
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = zhuyao_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea50
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 1211
+						state = 1208
+						state = 1225
+						state = 1226
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
 	}
-	wulumuqi_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
+	NEMS_industrial_internet_things_construction_7 = {
+		visible = {
+			has_completed_focus = nl_PRC_national_industrial_iot
 		}
 		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			custom_trigger_tooltip = {
+				tooltip = NEMS_decision_number_tt
+				check_variable = {
+					NEMS_executing_decision < NEMS_allowed_decision
+				}
+			}
 		}
-		visible = {
-			has_country_flag = xian_jiedian_complete
+		custom_cost_text = NEMS_cost_1_pp_100
+		custom_cost_trigger = {
+			check_variable = {
+				var = nems_jindu_rating_var
+				value > 0
+			}
+			has_political_power > 100
 		}
-		cost = 50
-		days_remove = 50
+		days_remove = 180
 		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -100
+			}
+			add_to_variable = {
+				NEMS_executing_decision = 1
+			}
+			custom_effect_tooltip = NEMS_spend_nems_jindu_rating_var_tt
+			subtract_from_variable = {
+				nems_jindu_rating_var = 2
+			}
+		}
 		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
+			civilian_factory_use = 3
 		}
 		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.01
+			subtract_from_variable = {
+				NEMS_executing_decision = 1
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.01
+				PRC_mic_production_speed_dockyard_factor_dynamic_var = 0.075
 			}
 			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.005
+				PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.05
 			}
 			effect_tooltip = {
 				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = fu_jiedian_idea
+					remove_idea = PRC_made_in_china_dummy_idea0
+					add_idea = PRC_made_in_china_dummy_idea51
 				}
 			}
-		}
-	}
-	lasa_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_country_flag = chongqing_jiedian_complete
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = fu_jiedian_idea
+			every_state = {
+				limit = {
+					OR = {
+						state = 592
+						state = 1395
+						state = 326
+						state = 729
+					}
 				}
-			}
-		}
-	}
-	taibei_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_country_flag = shanghai_jiedian_complete
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = fu_jiedian_idea
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
 				}
-			}
-		}
-	}
-	haikou_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_country_flag = guangzhou_jiedian_complete
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = fu_jiedian_idea
-				}
-			}
-		}
-	}
-	wulan_baotuo_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			1391 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		visible = {
-			has_country_flag = beijing_jiedian_complete
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		cancel_trigger = {
-			1391 = {
-				is_controlled_by_ROOT_or_ally = no
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = fu_jiedian_idea
-				}
-			}
-		}
-	}
-	haishenwan_jiedian = {
-		icon = GFX_SOV_decision_soviet_apartaments
-		allowed = {
-			tag = PRC
-		}
-		available = {
-			408 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		visible = {
-			has_country_flag = shenyan_jiedian_complete
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		cancel_trigger = {
-			408 = {
-				is_controlled_by_ROOT_or_ally = yes
-			}
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.02
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_stability_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_max_efficiency_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_factory_efficiency_gain_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_industrial_capacity_factory_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_production_speed_buildings_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_income_growth_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_business_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_personal_value_factor_dynamic_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = NEMS_consumer_goods_factor_dynamic_var
-				value = -0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = fu_jiedian_idea
-				}
-			}
-		}
-	}
-	guoyouqiye_shixing = {
-		icon = GFX_PRC_decision_industrial_expension
-		allowed = {
-			tag = PRC
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			always = no
-		}
-		is_good = no
-		selectable_mission = no
-		days_mission_timeout = 150
-		timeout_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.1
-			}
-			nems_jindu = yes
-			set_temp_variable = {
-				var = industrial_development_var_temp
-				value = 0.1
-			}
-			add_industrial_development = yes
-			set_temp_variable = {
-				var = society_development_var_temp
-				value = 0.1
-			}
-			add_society_development = yes
-			add_tech_bonus = {
-				name = xinnengyuan_chuneng
-				bonus = 1
-				uses = 1
-				category = industry
-			}
-		}
-	}
-	hua_nan = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	hua_zhong = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	hua_bei = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	hua_dong = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	dong_bei = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	xi_bei = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	xi_nan = {
-		icon = GFX_PRC_loji_decision_icon
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_national_IoT_construction
-		}
-		cost = 50
-		days_remove = 50
-		fire_only_once = yes
-		modifier = {
-			civilian_factory_use = 2
-		}
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = nems_jindu_rating_var_temp
-				value = 0.03
-			}
-			nems_jindu = yes
-			add_to_variable = {
-				var = NEMS_industrial_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_society_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_poverty_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_farming_development_monthly_dynamic_var
-				value = 0.005
-			}
-			add_to_variable = {
-				var = NEMS_academic_development_monthly_dynamic_var
-				value = 0.005
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_NEMS0
-					add_idea = wulianwang_idea
-				}
-			}
-		}
-	}
-	apply_nems_to_other_states = {
-		icon = GFX_PRC_loji_decision_icon
-		visible = {
-			has_completed_focus = PRC_nl_long_march_plan
-		}
-		target_trigger = {
-			NOT = {
-				tag = PRC
-			}
-			is_in_faction_with = PRC
-		}
-		cost = 50
-		fire_only_once = yes
-		days_remove = 60
-		remove_effect = {
-			custom_effect_tooltip = spread_nems_tt
-			FROM = {
-				set_country_flag = zizhu_diedai
-				add_dynamic_modifier = {
-					modifier = PRC_NEMS_dynamic
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
@@ -1818,636 +975,4 @@ PRC_nems_system = {
 }
 
 PRC_dawn_project = {
-	zhiyao_yimiao = {
-		icon = GFX_PRC_Negotiate_with_the_Fuerdai
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			add_to_variable = {
-				var = rd_monthly_population_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = rd_business_value_factor_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = rd_personal_value_factor_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = rd_experience_loss_factor_var
-				value = -0.1
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = shengwu_yimiao
-				}
-			}
-		}
-	}
-	PRC_nl_military_civilian_integration = {
-		icon = GFX_computers
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 120
-		complete_effect = {
-		}
-		remove_effect = {
-			set_country_flag = PRC_military_tree_available
-			add_to_variable = {
-				var = rd_production_factory_max_efficiency_factor_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = rd_production_speed_arms_factory_factor_var
-				value = 0.05
-			}
-			add_to_variable = {
-				var = rd_production_speed_industrial_complex_factor_var
-				value = 0.05
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = PRC_research_idea1
-				}
-			}
-		}
-	}
-	PRC_nl_stellar_exploration = {
-		icon = GFX_computers
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 120
-		complete_effect = {
-			custom_effect_tooltip = PRC_chinese_space_age_tt
-			hidden_effect = {
-				add_dynamic_modifier = {
-					modifier = PRC_chinese_space_age_dynamic
-				}
-			}
-		}
-		remove_effect = {
-			unlock_decision_tooltip = PRC_asteroid_mining_programme_new_left
-			unlock_decision_tooltip = PRC_new_moon_race_programme_new_left
-			unlock_decision_tooltip = PRC_expand_satellite_launching_programme_new_left
-			set_country_flag = PRC_nl_stellar_exploration_flag
-			hidden_effect = {
-				country_event = {
-					id = prcs.53
-					days = 40
-					random_days = 50
-				}
-			}
-		}
-	}
-	liangzi_jisuan = {
-		icon = GFX_computers
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			add_to_variable = {
-				var = rd_research_speed_factor_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = rd_decryption_factor_var
-				value = 0.2
-			}
-			add_to_variable = {
-				var = rd_encryption_factor_var
-				value = 0.1
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = liangzi_jisuan_idea
-				}
-			}
-		}
-	}
-	xinnengyuan_chuneng = {
-		icon = GFX_PRC_atomic_nuclear
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_enviromental_progress_temp
-				value = 0.05
-			}
-			PRC_add_enviromental_progress = yes
-			add_to_variable = {
-				var = rd_production_speed_energy_farm_factor_var
-				value = 0.25
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = xinnengyuan_chuneng_idea
-				}
-			}
-			add_tech_bonus = {
-				name = xinnengyuan_chuneng
-				ahead_reduction = 2
-				uses = 2
-				category = nuclear
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = energy_farm
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = energy_farm
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = energy_farm
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	fenzi_yuzhong = {
-		icon = GFX_PRC_chinese_enviroment_cat
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			set_temp_variable = {
-				var = PRC_enviromental_progress_temp
-				value = 0.05
-			}
-			PRC_add_enviromental_progress = yes
-			add_to_variable = {
-				var = rd_farming_development_monthly_var
-				value = 0.01
-			}
-			add_to_variable = {
-				var = rd_supply_consumption_factor_var
-				value = -0.15
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = fenzi_yuzhong_idea
-				}
-			}
-		}
-	}
-	chaodao_cailiao = {
-		icon = GFX_PRC_railroad_train
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			add_to_variable = {
-				var = rd_production_factory_max_efficiency_factor_var
-				value = 0.1
-			}
-			add_to_variable = {
-				var = rd_production_speed_buildings_factor_var
-				value = 0.1
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = chaodao_cailiao_idea
-				}
-			}
-			add_tech_bonus = {
-				name = chaodao_cailiao
-				ahead_reduction = 1
-				uses = 1
-				category = construction_tech
-			}
-		}
-	}
-	haiyang_ziyuan = {
-		icon = GFX_PRC_chinese_enviroment_cat
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			add_to_variable = {
-				var = rd_local_resources_factor_var
-				value = 0.15
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = haiyang_ziyuan_idea
-				}
-			}
-			879 = {
-				add_resource = {
-					type = steel
-					amount = 50
-				}
-				add_resource = {
-					type = tungsten
-					amount = 50
-				}
-				add_resource = {
-					type = chromium
-					amount = 50
-				}
-				add_resource = {
-					type = aluminium
-					amount = 50
-				}
-			}
-			591 = {
-				add_resource = {
-					type = steel
-					amount = 50
-				}
-				add_resource = {
-					type = tungsten
-					amount = 50
-				}
-				add_resource = {
-					type = chromium
-					amount = 50
-				}
-				add_resource = {
-					type = aluminium
-					amount = 50
-				}
-			}
-		}
-	}
-	wulixue_touzi = {
-		icon = GFX_PRC_Communist_Money
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			add_tech_bonus = {
-				name = wulixue_touzi
-				bonus = 1
-				uses = 1
-				ahead_reduction = 1
-				category = air_equipment
-			}
-			add_to_variable = {
-				var = rd_air_accidents_factor_var
-				value = -0.25
-			}
-			add_to_variable = {
-				var = rd_air_agility_factor_var
-				value = 0.15
-			}
-			add_to_variable = {
-				var = rd_air_range_factor_var
-				value = 0.15
-			}
-			add_to_variable = {
-				var = rd_research_speed_factor_var
-				value = 0.2
-			}
-			add_to_variable = {
-				var = rd_academic_development_monthly_var
-				value = 0.01
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = wulixue_touzi_idea
-				}
-			}
-		}
-	}
-	sidai_hefanying = {
-		icon = GFX_PRC_atomic_nuclear
-		allowed = {
-			tag = PRC
-		}
-		available = {
-		}
-		visible = {
-			has_completed_focus = PRC_nl_dawn_project
-		}
-		fire_only_once = yes
-		cost = 50
-		days_remove = 180
-		complete_effect = {
-			set_temp_variable = {
-				income_var_temp = -1
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			add_to_variable = {
-				var = rd_production_speed_nuclear_reactor_factor_var
-				value = 0.25
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_research_idea0
-					add_idea = sidai_hefanying_idea
-				}
-			}
-			add_tech_bonus = {
-				name = sidai_hefanying
-				ahead_reduction = 2
-				uses = 2
-				category = nuclear
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = nuclear_reactor
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = nuclear_reactor
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = nuclear_reactor
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	PRC_asteroid_mining_programme_new_left = {
-		visible = {
-			has_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		modifier = {
-			political_power_gain = -0.1
-			consumer_goods_factor = 0.06
-		}
-		fire_only_once = yes
-		complete_effect = {
-			set_temp_variable = {
-				var = income_var_temp
-				value = -50
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_chinese_space_age_dummy
-					add_idea = PRC_chinese_space_age_asteroid_mining_programme
-				}
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_research_speed_factor_dynamic
-				value = 0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_consumer_goods_factor_dynamic
-				value = -0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_income_growth_factor_dynamic
-				value = 0.065
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_business_value_factor_dynamic
-				value = 0.015
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_lack_of_resource_penalty_factor_dynamic
-				value = -0.06
-			}
-		}
-		days_remove = 365
-		icon = GFX_decision_PRC_asteroid_mining_programme
-		cost = 100
-	}
-	PRC_new_moon_race_programme_new_left = {
-		visible = {
-			has_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		modifier = {
-			political_power_gain = 0.1
-			consumer_goods_factor = 0.05
-		}
-		fire_only_once = yes
-		complete_effect = {
-			set_temp_variable = {
-				var = income_var_temp
-				value = -35
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_chinese_space_age_dummy
-					add_idea = PRC_chinese_space_age_moon_landing_programme
-				}
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_research_speed_factor_dynamic
-				value = 0.005
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_society_development_monthly_dynamic
-				value = 0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_speed_infrastructure_factor_dynamic
-				value = 0.01
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_political_power_factor_dynamic
-				value = 0.015
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_industrial_capacity_factory_dynamic
-				value = 0.05
-			}
-		}
-		days_remove = 365
-		icon = GFX_decision_PRC_new_moon_race_programme
-		cost = 100
-	}
-	PRC_expand_satellite_launching_programme_new_left = {
-		visible = {
-			has_country_flag = PRC_nl_stellar_exploration_flag
-		}
-		modifier = {
-			political_power_gain = -0.05
-			consumer_goods_factor = 0.02
-		}
-		complete_effect = {
-			set_temp_variable = {
-				var = income_var_temp
-				value = -20
-			}
-			add_income = yes
-		}
-		remove_effect = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_chinese_space_age_dummy
-					add_idea = PRC_chinese_space_age_expand_satellite_launching_programme
-				}
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_factory_efficiency_gain_factor_dynamic
-				value = 0.015
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_production_speed_buildings_factor_dynamic
-				value = 0.0125
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_income_growth_factor_dynamic
-				value = 0.025
-			}
-			add_to_variable = {
-				var = PRC_chinese_space_age_business_value_factor_dynamic
-				value = 0.015
-			}
-		}
-		days_remove = 180
-		days_re_enable = 365
-		icon = GFX_decision_PRC_expand_satellite_launching_programme
-		cost = 65
-	}
-
 }

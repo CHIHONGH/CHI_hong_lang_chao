@@ -893,7 +893,7 @@ country_event = {
             id = prcs.3033
             days = 10
         }
-        custom_effect_tooltip = PRC_tfr_nl_china_tongtoupidai_tt
+        # custom_effect_tooltip = PRC_tfr_nl_china_tongtoupidai_tt
         custom_effect_tooltip = PRC_tfr_nl_china_yizezuopaiyanlun_tt
     }
 }
@@ -1625,6 +1625,18 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3076.a
+        hidden_effect = {
+            country_event = {
+                id = prcs.3077
+                days = 50
+                random_days = 15
+            }
+            country_event = {
+                id = prcs.3078
+                days = 720
+                random_days = 15
+            }
+        }
     }
 }
 country_event = {
@@ -1645,6 +1657,11 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3078.a
+        country_event = {
+            id = prcs.3079
+            days = 2
+            random_hours = 15
+        }
     }
 }
 country_event = {
@@ -1803,10 +1820,6 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3088.a
-        country_event = {
-            id = prcs.3075
-            days = 31
-        }
     }
 }
 country_event = {
@@ -1915,6 +1928,11 @@ country_event = {
                         limit = {
                             VIN = {
                                 has_country_flag = pdto_member
+                                NOT = {
+                                    has_country_leader = {
+                                        character = VIN_to_lam_char
+                                    }
+                                }
                             }
                         }
                         add_to_faction = VIN
@@ -4650,93 +4668,89 @@ country_event = {
         immediate = {
             hidden_effect = {
                 country_event = { id = prcs.3212 days = 365 }
+                activate_mission = NEMS_self_deploy
             }
         }
 
         option = {
             name = prcs.3212.a
-            custom_effect_tooltip = prcs_3212_a_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
+            set_temp_variable = {
+                var = nems_jindu_rating_var_temp
+                value = 1
             }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.025
+            nems_jindu = yes
+            effect_tooltip = {
+                activate_mission = NEMS_self_deploy
             }
         }
 
-        option = {
-            name = prcs.3212.b
-            custom_effect_tooltip = prcs_3212_b_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.025
-            }
-        }
+        # option = {
+        #     name = prcs.3212.b
+        #     custom_effect_tooltip = prcs_3212_b_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.05
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.025
+        #     }
+        # }
 
-        option = {
-            name = prcs.3212.c
-            custom_effect_tooltip = prcs_3212_c_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.025
-            }
-        }
+        # option = {
+        #     name = prcs.3212.c
+        #     custom_effect_tooltip = prcs_3212_c_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.05
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.025
+        #     }
+        # }
 
-        option = {
-            name = prcs.3212.e
-            custom_effect_tooltip = prcs_3212_e_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.05
-            }
-        }
+        # option = {
+        #     name = prcs.3212.e
+        #     custom_effect_tooltip = prcs_3212_e_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.05
+        #     }
+        # }
 
-        option = {
-            name = prcs.3212.f
-            custom_effect_tooltip = prcs_3212_f_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.0375
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.0375
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.0375
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.0375
-            }
-        }
+        # option = {
+        #     name = prcs.3212.f
+        #     custom_effect_tooltip = prcs_3212_f_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.0375
+        #     }
+        # }
     }
 
 country_event = {
@@ -4786,7 +4800,7 @@ country_event = {
     id = prcs.3213
     title = prcs.3213.t
     desc = prcs.3213.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_Generic_Unity
     is_triggered_only = yes
     option = {
         name = prcs.3213.a
@@ -4801,7 +4815,7 @@ country_event = {
     id = prcs.3214
     title = prcs.3214.t
     desc = prcs.3214.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_Generic_Unity
     is_triggered_only = yes
     option = {
         name = prcs.3214.a
@@ -4816,7 +4830,7 @@ country_event = {
     id = prcs.3215
     title = prcs.3215.t
     desc = prcs.3215.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_red_flag
     is_triggered_only = yes
     option = {
         name = prcs.3215.a
@@ -4847,7 +4861,7 @@ country_event = {
     id = prcs.3216
     title = prcs.3216.t
     desc = prcs.3216.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_swat2
     is_triggered_only = yes
     option = {
         name = prcs.3216.a
@@ -4862,7 +4876,7 @@ country_event = {
     id = prcs.3217
     title = prcs.3217.t
     desc = prcs.3217.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_mao_protest
     is_triggered_only = yes
     option = {
         name = prcs.3217.a
@@ -4893,7 +4907,7 @@ country_event = {
     id = prcs.3219
     title = prcs.3219.t
     desc = prcs.3219.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_little_guangzhou
     is_triggered_only = yes
     option = {
         name = prcs.3219.a
@@ -4910,7 +4924,7 @@ country_event = {
     id = prcs.3220
     title = prcs.3220.t
     desc = prcs.3220.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_loyalty_to_the_party
     is_triggered_only = yes
     option = {
         name = prcs.3220.a
@@ -4934,6 +4948,7 @@ country_event = {
         add_to_variable = {
             PPRC_farming_dev_var = 0.003
         }
+        
     }
 }
 
@@ -4941,7 +4956,7 @@ country_event = {
     id = prcs.3221
     title = prcs.3221.t
     desc = prcs.3221.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_huchunhua
     is_triggered_only = yes
     option = {
         name = prcs.3221.a
@@ -4959,7 +4974,7 @@ country_event = {
     id = prcs.3222
     title = prcs.3222.t
     desc = prcs.3222.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_oh_no_jap
     is_triggered_only = yes
     option = {
         name = prcs.3222.a
@@ -4979,6 +4994,7 @@ country_event = {
         add_to_variable = {
             PPRC_nt_drift_var = -0.02
         }
+        
         country_event = {
             id = prcs.3223
             days = 14
@@ -4991,7 +5007,7 @@ country_event = {
     id = prcs.3223
     title = prcs.3223.t
     desc = prcs.3223.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_oh_no_jap
     is_triggered_only = yes
     option = {
         name = prcs.3223.a
@@ -5004,6 +5020,7 @@ country_event = {
         add_to_variable = {
             PPRC_ad_drift_var = -0.03
         }
+        
         country_event = {
             id = prcs.3224
             days = 14
@@ -5016,7 +5033,7 @@ country_event = {
     id = prcs.3224
     title = prcs.3224.t
     desc = prcs.3224.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_proletariat_democracy
     is_triggered_only = yes
     option = {
         name = prcs.3224.a
@@ -5042,6 +5059,7 @@ country_event = {
         add_to_variable = {
             PPRC_nt_drift_var = -0.02
         }
+        
         country_event = {
             id = prcs.3225
             days = 14
@@ -5054,7 +5072,7 @@ country_event = {
     id = prcs.3225
     title = prcs.3225.t
     desc = prcs.3225.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_swat
     is_triggered_only = yes
     option = {
         name = prcs.3225.a
@@ -5067,6 +5085,7 @@ country_event = {
         add_to_variable = {
             PPRC_ls_drift_var = -0.02
         }
+        
         country_event = {
             id = prcs.3226
             days = 14
@@ -5079,7 +5098,7 @@ country_event = {
     id = prcs.3226
     title = prcs.3226.t
     desc = prcs.3226.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_party_office
     is_triggered_only = yes
     option = {
         name = prcs.3226.a
@@ -5093,6 +5112,7 @@ country_event = {
         add_to_variable = {
             PPRC_com_drift_var = 0.02
         }
+        
         country_event = {
             id = prcs.3227
             days = 14
@@ -5105,7 +5125,7 @@ country_event = {
     id = prcs.3227
     title = prcs.3227.t
     desc = prcs.3227.d
-    picture = GFX_PRC_black
+    picture = GFX_PRC_a_meeting
     is_triggered_only = yes
     option = {
         name = prcs.3227.a
@@ -5137,5 +5157,6 @@ country_event = {
         add_to_variable = {
             PPRC_ad_drift_var = -0.02
         }
+        
     }
 }

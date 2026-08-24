@@ -791,6 +791,9 @@ USA_restoring_american_foreign_influence_category = {
 			}
 			CAN = {
 				add_war_support = -0.90
+				hidden_effect = {
+					add_ideas = PTF_just_fucking_surrender_CAN
+				}
 			}
 		}
 		remove_effect = {
@@ -913,6 +916,8 @@ PTF_deal_with_USN = {
 				value = 1
 			}
 		}
+		war_with_on_remove = ZAP
+		war_with_on_remove = MEX
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: decision USA_operation_green_decision remove_effect"
 			every_other_country = {
@@ -950,6 +955,7 @@ PTF_deal_with_USN = {
 						}
 					}
 				}
+				MEX_ZAP_fuck_off_PTF = yes
 				activate_mission = USA_operation_green_mission
 				PRC = {
 					activate_mission = PTF_MEX_war_mission
@@ -982,8 +988,7 @@ PTF_deal_with_USN = {
 			
 		}
 		timeout_effect = {
-			white_peace = MEX
-			
+			set_global_flag = PTF_oh_shit_mexico_flag
 			add_timed_idea = {
 				idea = JAP_shame_defeat
 				days = 365
@@ -993,12 +998,31 @@ PTF_deal_with_USN = {
 					country_exists = ZAP
 				}
 				white_peace = ZAP
+				every_allied_country = {
+					white_peace = ZAP
+				}
 				ZAP = {
 					remove_dynamic_modifier = {
 						modifier = PRC_MEX_modifier
 					}
+					load_focus_tree = WLI
+					remove_ideas = {
+						MEX_the_horror_of_decade_low
+						MEX_the_horror_of_decade_medium
+						MEX_the_horror_of_decade_high
+						MEX_the_horror_of_decade_insane
+					}
 				}	
 				PRC = {
+					remove_ideas = {
+						PRC_MEX_the_horror_of_decade_0
+						PRC_MEX_the_horror_of_decade_1
+						PRC_MEX_the_horror_of_decade_2
+						PRC_MEX_the_horror_of_decade_3
+						PRC_MEX_the_horror_of_decade_4
+						PRC_MEX_the_horror_of_decade_5
+						PRC_MEX_the_horror_of_decade_6
+					}
 					add_to_faction = ZAP
 					add_to_variable = {
 						CPC_frame = 4
@@ -1015,12 +1039,32 @@ PTF_deal_with_USN = {
 			}
 			else = {
 				white_peace = MEX
+				every_allied_country = {
+					white_peace = MEX
+				}
+				
 				MEX = {
 					remove_dynamic_modifier = {
 						modifier = PRC_MEX_modifier
 					}
+					load_focus_tree = WLI
+					remove_ideas = {
+						MEX_the_horror_of_decade_low
+						MEX_the_horror_of_decade_medium
+						MEX_the_horror_of_decade_high
+						MEX_the_horror_of_decade_insane
+					}
 				}	
 				PRC = {
+					remove_ideas = {
+						PRC_MEX_the_horror_of_decade_0
+						PRC_MEX_the_horror_of_decade_1
+						PRC_MEX_the_horror_of_decade_2
+						PRC_MEX_the_horror_of_decade_3
+						PRC_MEX_the_horror_of_decade_4
+						PRC_MEX_the_horror_of_decade_5
+						PRC_MEX_the_horror_of_decade_6
+					}
 					add_to_faction = MEX
 					add_to_variable = {
 						CPC_frame = 4
@@ -1064,6 +1108,7 @@ PTF_deal_with_USN = {
 			}
 		}
 		available = {
+			always = no
 			NOT = {
 				has_country_flag = war_justification_flag
 			}
