@@ -143,7 +143,74 @@ PRC_new_left_pla_reformation = {
 		remove_effect = {
 			custom_override_tooltip = {
 				set_technology = {
-					exoskeleton_reinforcement = 1
+					heavy_paratrooper = 1
+				}
+			}
+		}
+	}
+	PRC_unmanned_mechanized_upgrade = {
+		icon = GFX_PRC_soliders
+		days_remove = 30
+		fire_only_once = yes
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_HengSaoQianJun
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			command_power > 30	
+		}
+		available = {
+			command_power > 30
+		}
+		available = {
+			OR = {
+				has_tech = body_armor6
+				has_tech = body_armor8
+			}
+		}
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			custom_override_tooltip = {
+				tooltip = PRC_unmanned_mechanized_upgrade_tt
+				set_technology = {
+					unmanned_mechanized = 1
+				}
+			}
+		}
+	}
+	PRC_heavy_synthetic_battalion_upgrade = {
+		icon = GFX_PRC_soliders
+		days_remove = 30
+		fire_only_once = yes
+		visible = {
+			original_tag = PRC
+			has_completed_focus = PLA_HengSaoQianJun
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			command_power > 30	
+		}
+		available = {
+			command_power > 30
+		}
+		available = {
+			OR = {
+				has_tech = tank_destroyer1
+				has_tech = tank_destroyer2
+			}
+			
+		}
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			custom_override_tooltip = {
+				tooltip = PRC_heavy_synthetic_battalion_upgrade_tt
+				set_technology = {
+					heavy_synthetic_battalion = 1
 				}
 				tooltip = PRC_synthetic_battalion_exoskeleton_equipment_upgrade_tt
 			}

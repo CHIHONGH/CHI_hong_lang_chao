@@ -96,6 +96,11 @@
                 }
             }
             unlock_decision_category_tooltip = PRC_gaizaodaxingqiye_category
+            country_event = {
+                id = prcs.97
+                days = 1
+                random_hours = 20
+            }
         }
     }
 
@@ -742,6 +747,11 @@
         relative_position_id = nl_PRC_urban_rural_integration_new_methods
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+            OR = {
+                has_country_flag = PRC_grassroots_lost
+                has_country_flag = PRC_grassroots_ord
+                has_country_flag = PRC_grassroots_win
+            }
         }
         prerequisite = {
             focus = nl_PRC_integrate_national_logistics_network
@@ -751,13 +761,6 @@
         }
         prerequisite = {
             focus = nl_PRC_urban_rural_integration_new_methods
-        }
-        available = {
-            OR = {
-                has_country_flag = PRC_grassroots_lost
-                has_country_flag = PRC_grassroots_ord
-                has_country_flag = PRC_grassroots_win
-            }
         }
         completion_reward = { 
             add_political_power = 100
@@ -794,6 +797,11 @@
             country_event = {
                 id = prcs.3097
                 days = 1
+                random_hours = 20
+            }
+            country_event = {
+                id = prcs.97
+                days = 2
                 random_hours = 20
             }
         }
