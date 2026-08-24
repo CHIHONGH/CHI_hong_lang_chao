@@ -1,10 +1,3 @@
-PRC_Rt_People_Democracy = {
-}
-
-# 意识形态阵线
-PRC_Youth_Ideological_Education = {
-}
-
 PRC_solve_economy_crisis = {
     # 解决经济危机
     PRC_new_left_start = {
@@ -143,7 +136,7 @@ PRC_solve_economy_crisis = {
         }
         fire_only_once = yes
         remove_effect = {
-            add_political_power = 500
+            add_political_power = 350
             #country_event = { id = xxx hours = 6 }
             set_country_flag = PRC_emergency_economic_control_yes
         }
@@ -414,7 +407,7 @@ PRC_solve_economy_crisis = {
                 value = 0.05
             }
             PRC_add_influence_new = yes
-            add_political_power = 300
+            add_political_power = 250
         }
         ai_will_do = {
             base = 10
@@ -485,7 +478,7 @@ PRC_solve_economy_crisis = {
             add_stability = 0.1
         }
         remove_Effect = {
-            add_political_power = 300			#pp 300
+            add_political_power = 250
             add_stability = 0.1
             add_to_variable = {
                 var = stability_factor
@@ -1000,7 +993,7 @@ PRC_ready_for_global_economy_destory_category = {
         days_remove = 10
         days_re_enable = 30
         remove_Effect = {
-            add_political_power = 300			#pp 300
+            add_political_power = 250
             set_temp_variable = {
                 var = PRC_readiness_dingdongji
                 value = 5
@@ -1271,12 +1264,12 @@ PRC_ready_for_global_economy_destory_category = {
         }
         available = {
         }
-        cost = 75
+        cost = 50
         days_remove = 20
         fire_only_once = yes
         remove_Effect = {
             set_country_flag = PRC_crackdown_on_financial_speculation_yes
-            add_political_power = 200			#pp 200
+            add_political_power = 150
             set_temp_variable = {
                 var = PRC_readiness_dingdongji
                 value = 5
@@ -1368,7 +1361,11 @@ PRC_gaizaodaxingqiye_category = {
             }
         }
         timeout_effect = {
-            add_political_power = -100
+            add_political_power = -50
+            set_temp_variable = {
+                industrial_development_var_temp = -0.25
+            }
+            add_industrial_development = yes
         }
         
     }
