@@ -38,7 +38,7 @@ focus_tree = {
         ai_will_do = {
             factor = 100
         }
-        cost = 4
+        cost = 3
 
         available = {
 
@@ -72,7 +72,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
         relative_position_id = covid_full_lockdown
         available = {
             has_completed_focus = adopt_dynamic_zero_policy
@@ -106,7 +106,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 3
+        cost = 2
 
         available = {
 
@@ -142,7 +142,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
 
@@ -174,7 +174,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
 
@@ -228,7 +228,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 3
+        cost = 2
 
         available = {
 
@@ -266,7 +266,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
         relative_position_id = promote_prevention_measures
         available = {
             NOT = {
@@ -345,7 +345,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             has_country_flag = PRC_li_keqiang_died_flag
@@ -403,7 +403,7 @@ focus_tree = {
         cancel_if_invalid = no
         available_if_capitulated = yes
 
-        x = 11
+        x = 18
         y = 0
     }
 
@@ -842,7 +842,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
         completion_reward = {
             add_political_power = -50
             country_event = {
@@ -905,7 +905,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -951,7 +951,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1046,7 +1046,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1114,7 +1114,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1194,7 +1194,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1247,7 +1247,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1286,7 +1286,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1332,7 +1332,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1388,7 +1388,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1435,7 +1435,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1502,7 +1502,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1549,7 +1549,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1590,7 +1590,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1744,12 +1744,12 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 10
+        cost = 5
 
         available = {
 
         }
-
+        cancelable = no
         
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1796,13 +1796,211 @@ focus_tree = {
                 }
             }
         }
-        x = -4
+        x = -10
         y = 2
         prerequisite = {
             focus = prepare_for_20th_party_congress
         }
         prerequisite = {
             focus = return_to_normal
+        }
+        prerequisite = { focus = nems_experiment }
+    }
+    focus = {
+        id = reform_electric_division
+        icon = GFX_focus_PRC_reform_electric_division
+        cost = 4
+        x = 8
+        y = 0
+        available = {
+            has_country_flag = PRC_power_outage_flag
+        }
+        completion_reward = { 
+            add_political_power = -50
+            modify_building_resources = {
+                building = energy_farm
+                resource = coal
+                amount = 1
+            }
+            add_to_variable = {
+                PRC_mic_consumer_goods_factor_dynamic_var = -0.1
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_start_efficiency_factor_dynamic_var = -0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea17
+                }
+            }
+        }
+    }
+    focus = {
+        id = deprice_and_order
+        icon = GFX_focus_PRC_deprice_and_order
+        cost = 4
+        x = 0
+        y = 1
+        relative_position_id = reform_electric_division
+        prerequisite = { focus = reform_electric_division }
+        completion_reward = { 
+            add_political_power = -25
+            add_to_variable = {
+                PRC_mic_local_resources_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.15
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea18
+                }
+            }
+            country_event = {
+                id = prcs.3075
+                days = 3
+            }
+        }
+    }
+    focus = {
+        id = get_rid_of_bad_parts
+        icon = GFX_focus_PRC_get_rid_of_bad_parts
+        cost = 4
+        x = -1
+        y = 2
+        relative_position_id = deprice_and_order
+        prerequisite = { focus = deprice_and_order }
+        completion_reward = { 
+            add_political_power = -50
+            modify_building_resources = {
+                building = energy_farm
+                resource = coal
+                amount = 1
+            }
+            add_to_variable = {
+                PRC_ce_personal_expense_factor_dynamic_var = -0.1
+            }
+            add_to_variable = {
+                PRC_ce_income_growth_factor_dynamic_var = 0.1
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy1
+                }
+            }
+        }
+    }
+    focus = {
+        id = electric_white_book
+        icon = GFX_focus_PRC_electric_white_book
+        cost = 4
+        x = 1
+        y = 1
+        relative_position_id = deprice_and_order
+        prerequisite = { focus = deprice_and_order }
+        completion_reward = { 
+            set_country_flag = electric_white_book_flag
+            add_political_power = 100
+            unlock_decision_tooltip = PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_1
+            unlock_decision_tooltip = PRC_northwest_wind_solar_power
+            country_event = {
+                id = Chihong.77
+                days = 1
+                random_hours = 20
+            }
+        }
+    }
+    focus = {
+        id = expand_three_carbon_strategy
+        icon = GFX_focus_PRC_expand_three_carbon_strategy
+        cost = 4
+        x = 0
+        y = 2
+        relative_position_id = electric_white_book
+        prerequisite = { focus = electric_white_book }
+        completion_reward = { 
+            set_country_flag = expand_three_carbon_strategy_flag
+            add_political_power = 100
+            set_temp_variable = {
+                var = PRC_enviromental_progress_temp
+                value = 0.1
+            }
+            PRC_add_enviromental_progress = yes
+            add_to_variable = {
+                PRC_mic_factory_energy_consumption_var = -0.1
+            }
+            add_to_variable = {
+                PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var = -0.1
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea19
+                }
+            }
+            unlock_decision_tooltip = PRC_carbon_dioxide_capture
+            unlock_decision_tooltip = PRC_carbon_cycle_technology
+        }
+    }
+    focus = {
+        id = nems_experiment
+        icon = GFX_focus_PRC_nems_experiment
+        cost = 4
+        x = 0
+        y = 5
+        relative_position_id = deprice_and_order
+        prerequisite = { focus = expand_three_carbon_strategy }
+        prerequisite = { focus = get_rid_of_bad_parts }
+        completion_reward = { 
+            add_political_power = -100
+            set_variable = {
+                PRC_NEMS_level = 1
+            }
+            set_variable = {
+                NEMS_consumer_goods_factor_dynamic_var = 0.1
+            }
+            set_variable = {
+                NEMS_expense_growth_factor_dynamic_var = 0.15
+            }
+            set_variable = {
+                NEMS_production_speed_buildings_factor_dynamic_var = 0.075
+            }
+            set_variable = {
+                NEMS_production_factory_start_efficiency_factor_dynamic_var = 0.05
+            }
+            set_variable = {
+                NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.05
+            }
+            set_variable = {
+                NEMS_global_building_slots_factor_dynamic_var = 0.075
+            }
+            set_variable = {
+                NEMS_personal_value_factor_dynamic_var = 0.1
+            }
+            set_variable = {
+                NEMS_business_value_factor_dynamic_var = 0.1
+            }
+            set_variable = {
+                NEMS_society_development_monthly_dynamic_var = 0.005
+            }
+            set_variable = {
+                NEMS_farming_development_monthly_dynamic_var = 0.005
+            }
+            set_variable = {
+                NEMS_industrial_development_monthly_dynamic_var = 0.005
+            }
+            effect_tooltip = {
+                add_ideas = PRC_NEMS
+            }
+            hidden_effect = {
+                add_dynamic_modifier = {
+                    modifier = PRC_NEMS_dynamic
+                }
+            }
+            
         }
     }
 }

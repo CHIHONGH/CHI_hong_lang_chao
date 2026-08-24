@@ -14,12 +14,36 @@ focus_tree = {
     #!gfx:interface\New_left_Collection_of_files\goals\RD_New_left_goals.gfx
     #!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
 
-    shared_focus = PRC_chinas_greatest_hour
+    shared_focus = APC_day_of_liberation
     shared_focus = nl_PRC_reconstruct_planning_commission
     shared_focus = PLA_when_that_day_comes
     shared_focus = PRC_nl_road_to_revolution
     shared_focus = PRC_Southwestern_border_in_critical_condition
     shared_focus = WLI_red_flag_flying_high
+    shortcut = {
+        name = PRC_gaizaodaxingqiye_category
+        target = nl_PRC_reconstruct_planning_commission
+    }
+    shortcut = {
+        name = PRC_export_revolution
+        target = PRC_nl_road_to_revolution
+    }
+    shortcut = {
+        name = PRC_maoist_politburo_cat
+        target = PRC_nl_clean_house
+    }
+    shortcut = {
+        name = PLA_The_iron_flow_miles
+        target = PLA_when_that_day_comes
+    }
+    shortcut = {
+        name = APC_day_of_liberation
+        target = APC_day_of_liberation
+    }
+    shortcut = {
+        name = WLI
+        target = WLI_red_flag_flying_high
+    }
     #重建台湾
     focus = {
         id = PRC_nl_ancestor_worship
@@ -310,6 +334,9 @@ focus_tree = {
         cancel_if_invalid = yes
         completion_reward = {
             set_country_flag = head_of_gov_ui_enabled
+            set_country_flag = PRC_reform_enabled_flag
+            set_country_flag = PRC_propaganda_enabled_flag
+            set_country_flag = PRC_culture_enabled_flag
             set_country_flag = PRC_new_left_party_end_key
             set_country_flag = PRC_clean_house_start
             hidden_effect = {
@@ -385,11 +412,11 @@ focus_tree = {
                 PPRC_personal_value_var = -0.035
             }
             set_variable = {
-                PPRC_consumer_var = 0.25
+                PPRC_consumer_var = 0.5
             }
-            set_variable = {
-                PPRC_consumer_num_var = 0.45
-            }
+            # set_variable = {
+            #     PPRC_consumer_num_var = 0.45
+            # }
             set_variable = {
                 PPRC_poverty_dev_var = -0.01
             }
@@ -442,13 +469,16 @@ focus_tree = {
                 add_dynamic_modifier = {
                     modifier = PRC_party_rectification_campaign_dynamic
                 }
-                remove_ideas = PRC_party_rectification_campaign_bf2
+                remove_dynamic_modifier = {
+                    modifier = PRC_party_rectification_campaign_twother_dynamic
+                }
             }
             effect_tooltip = {
-                swap_ideas = {
-                    remove_idea = PRC_party_rectification_campaign_bf2
-                    add_idea = PRC_party_rectification_campaign
-                }
+                custom_effect_tooltip = PRC_nl_clean_house_tt
+                # swap_ideas = {
+                #     remove_idea = PRC_party_rectification_campaign_bf2
+                #     add_idea = PRC_party_rectification_campaign
+                # }
                 add_ideas = PRC_road_to_people_democracy
             }
             set_party_name = {
@@ -483,7 +513,6 @@ focus_tree = {
                 campaign_slot_total_var_temp = 1
             }
             add_total_campaign_slot = yes
-            custom_effect_tooltip = PARTY_GUI_UPCOMING
         }
     }
     focus = {
@@ -532,7 +561,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             unlock_decision_tooltip = PRC_detente_with_new_lefties
             unlock_decision_tooltip = PRC_detente_with_old_lefties
@@ -630,7 +659,7 @@ focus_tree = {
             custom_effect_tooltip = FRA_focus_select_effect_tt
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             #PRC_decrease_corrupt_bureaucracy = yes
             custom_effect_tooltip = FRA_focus_complete_effect_tt
@@ -662,7 +691,7 @@ focus_tree = {
             add_society_development = yes
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PRC_cpc_political_power_gain_dynamic_var = -0.05
@@ -730,7 +759,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 59
+                days = 60
             }
             add_campaign_slot = yes
         }
@@ -765,7 +794,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 26
+                days = 25
             }
             add_political_power = -50
             set_temp_variable = {
@@ -809,7 +838,7 @@ focus_tree = {
             increase_safety = yes
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PRC_cpc_drift_defence_factor_dynamic_var = 0.05
@@ -863,7 +892,7 @@ focus_tree = {
             add_society_development = yes
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PRC_cpc_political_power_gain_dynamic_var = 0.04
@@ -1043,7 +1072,7 @@ focus_tree = {
             add_political_power = 50
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PRC_cpc_stability_factor_dynamic_var = 0.05
@@ -1110,7 +1139,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PPRC_pp_var = -0.05
@@ -1156,7 +1185,7 @@ focus_tree = {
             add_political_power = -50
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             unlock_decision_tooltip = PRC_replace_unloyal_officers
         }
@@ -1185,7 +1214,7 @@ focus_tree = {
         completion_reward = {
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 26
+                days = 25
             }
             hidden_effect = {
                 country_event = {
@@ -1249,7 +1278,7 @@ focus_tree = {
         completion_reward = {
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 26
+                days = 25
             }
             add_political_power = 50
             set_variable = {
@@ -1332,7 +1361,7 @@ focus_tree = {
             add_stability = -0.15
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PSC_stability_var = -0.05
@@ -1382,7 +1411,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 26
+                days = 25
             }
             custom_effect_tooltip = FRA_focus_select_effect_tt
             effect_tooltip = {
@@ -1404,7 +1433,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1883,7 +1912,7 @@ focus_tree = {
             }
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
         }
     }
@@ -1920,7 +1949,7 @@ focus_tree = {
             add_political_power = 50
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 21
+                days = 14
             }
             add_to_variable = {
                 PPRC_pp_var = -0.1
@@ -2249,26 +2278,6 @@ focus_tree = {
         cancel_if_invalid = yes
         relative_position_id = PRC_nl_perfect_democratic_centralization
         completion_reward = {
-            custom_effect_tooltip = PRC_cadre_witharwal_system_tt
-            custom_effect_tooltip = tooltip_white_line
-            effect_tooltip = {
-                country_event = prcs.3203
-            }
-            hidden_effect = {
-                if = {
-                    limit = {
-                        check_variable = {
-                            var = party_popularity@libertarian_socialist
-                            value = party_popularity@communist
-                            compare = less_than_or_equals
-                        }
-                    }
-                    country_event = {
-                        id = prcs.3203
-                        days = 7
-                    }
-                }
-            }
             add_to_variable = {
                 PRC_cpc_political_power_gain_dynamic_var = -0.15
             }
@@ -2292,6 +2301,26 @@ focus_tree = {
                 swap_ideas = {
                     remove_idea = PRC_road_to_people_democracy0
                     add_idea = PRC_road_to_people_democracy2
+                }
+            }
+            custom_effect_tooltip = PRC_cadre_witharwal_system_tt
+            custom_effect_tooltip = tooltip_white_line
+            effect_tooltip = {
+                country_event = prcs.3203
+            }
+            hidden_effect = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = party_popularity@libertarian_socialist
+                            value = party_popularity@communist
+                            compare = less_than_or_equals
+                        }
+                    }
+                    country_event = {
+                        id = prcs.3203
+                        days = 7
+                    }
                 }
             }
         }

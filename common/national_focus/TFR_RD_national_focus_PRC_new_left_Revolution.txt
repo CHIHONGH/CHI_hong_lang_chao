@@ -2,12 +2,16 @@
 		id = PRC_nl_road_to_revolution
 		x = 54
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_road_to_revolution_focus
 		allow_branch = {
 			has_country_flag = Prc_NewLeft_focus_key
+		}
+		available = {
+			has_country_flag = PRC_for_policy_tree_available
+        	has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 		}
 		completion_reward = {
 			add_political_power = 100
@@ -32,6 +36,9 @@
 						}
 					}
 					add_to_faction = VIN
+					VIN = {
+						load_focus_tree = WLI
+					}
 				}
 			}
 			add_ideas = {
@@ -43,19 +50,21 @@
 		id = PRC_nl_global_revolution
 		x = -3
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_global_revolution_focus
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		relative_position_id = PRC_nl_road_to_revolution
 		completion_reward = {
 			add_political_power = 100
 			custom_effect_tooltip = PRC_revolutionary_tt
 			unlock_decision_category_tooltip = PRC_export_revolution
-       		set_country_flag = PRC_world_revolution
 			add_ideas = PRC_birthplace_of_the_revolution_idea
 			unlock_decision_tooltip = PRC_armed_neutral
 			unlock_decision_tooltip = PRC_choose_a_side
@@ -65,12 +74,15 @@
 		id = PRC_nl_hearts_of_bravery
 		x = -1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_hearts_of_bravery_focus
 		prerequisite = {
 			focus = PRC_nl_global_revolution
+		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 		}
 		relative_position_id = PRC_nl_global_revolution
 		completion_reward = {
@@ -89,12 +101,15 @@
 		id = PRC_nl_storm_across_west_asia
 		x = 1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_storm_across_west_asia_focus
 		prerequisite = {
 			focus = PRC_nl_hearts_of_bravery
+		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 		}
 		relative_position_id = PRC_nl_hearts_of_bravery
 		completion_reward = {
@@ -106,13 +121,16 @@
 		id = PRC_nl_WLI_collective_action
 		x = 1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_WLI_collective_action_focus
 		relative_position_id = PRC_nl_storm_across_west_asia
 		prerequisite = {
 			focus = PRC_nl_storm_across_west_asia
+		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 		}
 		completion_reward = {
 			set_country_flag = PRC_Unified_Military_Command_for_Southeast_Asia
@@ -126,12 +144,15 @@
 		id = PRC_nl_flame_of_asia
 		x = 3
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_flame_of_asia_focus
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
+		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 		}
 		relative_position_id = PRC_nl_road_to_revolution
 		completion_reward = {
@@ -149,27 +170,35 @@
 		id = PRC_nl_spring_of_korea
 		x = 1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		relative_position_id = PRC_nl_flame_of_asia
 		icon = GFX_focus_PRC_nl_spring_of_korea_focus
+		available = {
+			has_country_flag = PRK_disaster_flag
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_flame_of_asia
 		}
 		completion_reward = {
-			unlock_decision_tooltip = PRK_aid_to_korean_insurgents
+			activate_mission = PRC_radiated_sun
+			unlock_decision_tooltip = PRK_find_the_gap
 		}
 	}
 	shared_focus = {
 		id = PRC_nl_restore_JAP_commies
 		x = -1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		relative_position_id = PRC_nl_spring_of_korea
 		icon = GFX_focus_PRC_nl_restore_JAP_commies_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_spring_of_korea
 		}
@@ -191,23 +220,34 @@
 		id = PRC_nl_WLI_command_line
 		x = -1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		relative_position_id = PRC_nl_restore_JAP_commies
 		icon = GFX_focus_PRC_nl_WLI_command_line_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_restore_JAP_commies
+		}
+		completion_reward = {
+			effect_tooltip = {
+				unlock_national_focus = WLI_joint_command_center
+			}
 		}
 	}
 	shared_focus = {
 		id = PRC_nl_into_south_america
 		x = -1
 		y = 2
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_into_south_america_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
@@ -222,16 +262,19 @@
 		id = PRC_nl_red_south_asia
 		x = 1
 		y = 2
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_red_south_asia_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
 		relative_position_id = PRC_nl_road_to_revolution
 		completion_reward = {
-			unlock_decision_tooltip = PRC_equator_awaken
+			unlock_decision_tooltip = PRC_invite_SriLanka
 			unlock_decision_tooltip = PRC_Promote_Laheer
 			unlock_decision_tooltip = PRC_PAK_People_Front
 			unlock_decision_tooltip = PRC_bangladesh_revolution
@@ -243,10 +286,13 @@
 		id = PRC_nl_flame_in_pacific
 		x = 0
 		y = 3
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_flame_in_pacific_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_into_south_america
 		}

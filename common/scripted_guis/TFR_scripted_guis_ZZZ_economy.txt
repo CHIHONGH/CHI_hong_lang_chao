@@ -439,6 +439,41 @@ scripted_gui = {
 			}
 		}
 
+		triggers = {
+			Economic_Civilian_Investments_Button_click_enabled = {
+				NOT = {
+					OR = {
+						has_idea = generic_civilian_development_investments_idea
+						has_idea = generic_military_development_investments_idea
+					}
+				}
+			}
+			Economic_Military_Investments_Button_click_enabled = {
+				NOT = {
+					OR = {
+						has_idea = generic_civilian_development_investments_idea
+						has_idea = generic_military_development_investments_idea
+					}
+				}
+			}
+		}
+		
+		effects = {
+			Economic_Civilian_Investments_Button_click = {
+				add_timed_idea = {
+					idea = generic_civilian_development_investments_idea
+					days = 120
+				}
+			}
+			
+			Economic_Military_Investments_Button_click = {
+				add_timed_idea = {
+					idea = generic_military_development_investments_idea
+					days = 120
+				}
+			}
+		}
+
 		#Economic Actions
 		#triggers = {
 			#gdp_printer_button_click_enabled = {

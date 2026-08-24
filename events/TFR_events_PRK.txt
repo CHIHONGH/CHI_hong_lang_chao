@@ -345,7 +345,7 @@ country_event = {
 			if = {
 				limit = {
 					PRC = {
-						has_completed_focus = Moving_towards_victory
+						has_completed_focus = PRC_nl_toward_victory
 					}
 				}
 				JAP = {
@@ -420,5 +420,25 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
+	}
+}
+
+country_event = {
+	id = nk.17
+	title = nk.17.t
+	desc = nk.17.d
+	picture = GFX_Event_PRK_flood
+	is_triggered_only = yes
+
+	option = {
+		name = nk.17.a
+		custom_override_tooltip = {
+			tooltip = nk_17_tt
+			set_country_flag = PRK_disaster_flag
+		}
+		PRK = {
+			add_ideas = PRK_chaotic_atmosphere
+		}
+		
 	}
 }

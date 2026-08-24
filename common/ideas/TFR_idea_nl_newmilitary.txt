@@ -430,7 +430,7 @@ ideas = {
 				experience_gain_navy_factor = 0.1		#海军经验增长
 				navy_max_range_factor = 0.2		#海军航程系数
 				naval_coordination = 0.2		#舰队协同性
-				#打击舰队速度+15%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失		没找到，暂放
 				industrial_capacity_dockyard = 0.1	#海军船坞生产
 			}
 		}
@@ -452,8 +452,8 @@ ideas = {
 				industrial_capacity_dockyard = 0.1	#海军船坞生产
 				navy_capital_ship_attack_factor = 0.25		#主力舰攻击
 				navy_capital_ship_defence_factor = 0.25		#主力舰防御
-				#打击舰队速度+15%		没找到，暂放
-				#对岸炮击+25%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
 			}
 		}
 		#改革航母战斗群
@@ -478,8 +478,8 @@ ideas = {
 				navy_anti_air_attack_factor = 0.2	#舰船防空	
 				spotting_chance = 0.2		#索敌速度
 				navy_screen_defence_factor = 0.25	#屏卫舰防御
-				#打击舰队速度+15%		没找到，暂放
-				#对岸炮击+25%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
 			}
 		}
 		#艟艨巨舰直东指
@@ -506,8 +506,8 @@ ideas = {
 				navy_screen_defence_factor = 0.25	#屏卫舰防御
 				navy_org = 0.15		#海军组织度
 				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
-				#打击舰队速度+15%		没找到，暂放
-				#对岸炮击+25%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
 			}
 		}
 		#导弹部队现代化
@@ -534,44 +534,44 @@ ideas = {
 				navy_screen_defence_factor = 0.25	#屏卫舰防御
 				navy_org = 0.15		#海军组织度
 				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
-				#打击舰队速度+15%		没找到，暂放
-				#对岸炮击+25%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
 			}
-			equipment_bonus = {
-				destroyer = {	#小型护卫舰
-					naval_light_gun_hit_chance_factor = 0.05	
-					naval_heavy_gun_hit_chance_factor = 0.1 
-					instant = yes
-				}
-				light_cruiser = {	#护卫舰
-					naval_light_gun_hit_chance_factor = 0.05	
-					naval_heavy_gun_hit_chance_factor = 0.1 
-					instant = yes
-				}
-				heavy_cruiser = {	#驱逐舰
-					naval_light_gun_hit_chance_factor = 0.05	
-					naval_heavy_gun_hit_chance_factor = 0.1 
-					instant = yes
-				}
-				battleship = {	#战列巡洋舰
-					naval_light_gun_hit_chance_factor = 0.05	
-					naval_heavy_gun_hit_chance_factor = 0.1 
-					instant = yes
-				}
-				battle_cruiser = {	#导弹巡洋舰
-					naval_light_gun_hit_chance_factor = 0.05	
-					naval_heavy_gun_hit_chance_factor = 0.1 
-					instant = yes
-				}
-				carrier = {		#航母
-					naval_light_gun_hit_chance_factor = 0.05	
-					naval_heavy_gun_hit_chance_factor = 0.1 
-					surface_visibility = -0.1	#可见度
-					max_organisation = 0.2	#组织度
-					max_strength = 0.1		#hp
-					instant = yes
-				}
-			}
+			# equipment_bonus = {
+			# 	destroyer = {	#小型护卫舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	light_cruiser = {	#护卫舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	heavy_cruiser = {	#驱逐舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	battleship = {	#战列巡洋舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	battle_cruiser = {	#导弹巡洋舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	carrier = {		#航母
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		surface_visibility = -0.1	#可见度
+			# 		max_organisation = 0.2	#组织度
+			# 		max_strength = 0.1		#hp
+			# 		instant = yes
+			# 	}
+			# }
 		}
 		#强化战场支援
 		PLA_plan_navy_7 = {
@@ -599,8 +599,8 @@ ideas = {
 				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
 				repair_speed_factor = 0.3		#船只维修速度
 				navy_fuel_consumption_factor = -0.3		#海军燃料消耗
-				#打击舰队速度+15%		没找到，暂放
-				#对岸炮击+25%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
 			}
 		}
 		#铁流两万五千里
@@ -629,8 +629,8 @@ ideas = {
 				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
 				repair_speed_factor = 0.3		#船只维修速度
 				navy_fuel_consumption_factor = -0.3		#海军燃料消耗
-				#打击舰队速度+15%		没找到，暂放
-				#对岸炮击+25%		没找到，暂放
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
 			}
 		}
 
@@ -700,7 +700,7 @@ ideas = {
 				air_maximum_speed_factor = 0.2		#空军速度
 			}
 			equipment_bonus = {
-				fighter_equipment = {
+				small_plane_airframe = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
@@ -847,7 +847,7 @@ ideas = {
 		}
 		
 		PAL_the_better_revolutionary_enthusiasm_idea = {
-		#革命热情
+			#革命热情
 			picture = PRC_one_heart_idea
 			#图片不予添加
 			allowed = {
@@ -1145,6 +1145,236 @@ ideas = {
 				army_intel_factor = 1
 				navy_intel_to_others_factor = 1
 				airforce_intel_factor = 1
+			}
+		}
+
+		PRC_MEX_the_horror_of_decade_0 = {
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+
+			}
+		}
+		PRC_MEX_the_horror_of_decade_1 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				terrain_penalty_reduction = 0.1
+				cas_damage_reduction = 0.1
+				supply_consumption_factor = -0.1
+				out_of_supply_factor = -0.1
+			}
+		}
+		PRC_MEX_the_horror_of_decade_2 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				pocket_penalty = -0.1
+				terrain_penalty_reduction = 0.15
+				cas_damage_reduction = 0.15
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+			}
+		}
+		PRC_MEX_the_horror_of_decade_3 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				org_damage_multiplier = -0.1
+				pocket_penalty = -0.15
+				terrain_penalty_reduction = 0.2
+				cas_damage_reduction = 0.2
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					anti_air_attack = 0.05
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_4 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				army_strength_factor = 0.1
+				org_damage_multiplier = -0.1
+				org_loss_when_moving = -0.1
+				org_loss_at_low_org_factor = -0.1
+				pocket_penalty = -0.15
+				terrain_penalty_reduction = 0.2
+				cas_damage_reduction = 0.2
+				supply_consumption_factor = -0.2
+				out_of_supply_factor = -0.2
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					anti_air_attack = 0.1
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_5 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				army_morale_factor = 0.1
+				org_damage_multiplier = -0.1
+				pocket_penalty = -0.1
+				terrain_penalty_reduction = 0.15
+				cas_damage_reduction = 0.15
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					anti_air_attack = 0.05
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_6 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.25
+				army_attack_speed_factor = 0.25
+				army_org_factor = 0.15
+				army_morale_factor = 0.15
+				army_strength_factor = 0.15
+				org_damage_multiplier = -0.15
+				org_loss_when_moving = -0.15
+				org_loss_at_low_org_factor = -0.15
+				pocket_penalty = -0.35
+				terrain_penalty_reduction = 0.25
+				cas_damage_reduction = 0.25
+				supply_consumption_factor = -0.3
+				out_of_supply_factor = -0.3
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					anti_air_attack = 0.2
+				}
+			}
+			
+		}
+		MEX_the_horror_of_decade_low = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = PTF
+				army_defence_factor = 0.15
+			}
+		}
+		MEX_the_horror_of_decade_medium = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.25
+				org_loss_when_moving = -0.25
+			}
+			targeted_modifier = {
+				tag = PTF
+				army_defence_factor = 0.3
+			}
+		}
+		MEX_the_horror_of_decade_high = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.2
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.25
+				org_loss_when_moving = -0.25
+				org_damage_multiplier = -0.5
+				cas_damage_reduction = 0.5
+				air_superiority_bonus_in_combat = 0.25
+			}
+			targeted_modifier = {
+				tag = PTF
+				army_defence_factor = 0.5
+			}
+		}
+		MEX_the_horror_of_decade_insane = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.35
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.15
+				army_strength_factor = 0.1
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.25
+				experience_loss_factor = -0.35
+				org_loss_when_moving = -0.5
+				org_damage_multiplier = -0.5
+				cas_damage_reduction = 0.5
+				supply_consumption_factor = -0.15
+				supply_node_range = 0.5
+				air_superiority_bonus_in_combat = 0.25
+			}
+			targeted_modifier = {
+				tag = PTF
+				army_defence_factor = 0.75
 			}
 		}
 	}

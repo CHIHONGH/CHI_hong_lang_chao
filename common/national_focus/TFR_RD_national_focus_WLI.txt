@@ -1,3 +1,11 @@
+	focus_tree = {
+		id = WLI
+		country = { 
+			factor = 0
+		}
+		default = no
+		shared_focus = WLI_red_flag_flying_high
+	}
 	# ==========================================
 	# 核心/政治分支 (主干)
 	# ==========================================
@@ -10,13 +18,27 @@
 		y = 0
 		cost = 1
 		offset = {
+			x = -6
+			trigger = {
+				NOT = {
+					tag = PRC
+				}
+			}	
+		}
+		offset = {
 			y = 12
 			trigger = {
+				tag = PRC
 				has_country_flag = Prc_NewLeft_focus_key
 			}	
 		}
 		allow_branch = {
-			has_country_flag = Prc_NewLeft_focus_key
+			if = {
+				limit = { 
+					tag = PRC
+				}
+				has_country_flag = Prc_NewLeft_focus_key
+			}
 		}
 		available = {
 			tag = PRC
@@ -41,6 +63,8 @@
 				is_in_faction_with = BHU
 				is_in_faction_with = CAM
 				is_in_faction_with = NAX
+				is_in_faction_with = ZAP
+				is_in_faction_with = MEX
 			}
 		}
 		completion_reward_joint_member = {
@@ -606,7 +630,7 @@
 		x = 10
 		y = 1
 		cost = 1
-		completion_reward = {
+		completion_reward_joint_member = {
 			add_political_power = 25
 		}
 	}
@@ -620,7 +644,7 @@
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
-		completion_reward = {
+		completion_reward_joint_member = {
 			add_offsite_building = {
 				type = industrial_complex
 				level = 1
@@ -637,7 +661,7 @@
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
-		completion_reward = {
+		completion_reward_joint_member = {
 			add_research_slot = 1
 		}
 	}
@@ -651,7 +675,7 @@
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_industrial_aid }
-		completion_reward = {
+		completion_reward_joint_member = {
 			add_political_power = 50
 		}
 	}
@@ -666,7 +690,7 @@
 		cost = 10
 		prerequisite = { focus = WLI_industrial_aid }
 		prerequisite = { focus = WLI_technical_assistance }
-		completion_reward = {
+		completion_reward_joint_originator = {
 			add_tech_bonus = {
 				name = WLI_joint_research_bonus
 				bonus = 0.5
@@ -685,7 +709,7 @@
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_technical_assistance }
-		completion_reward = {
+		completion_reward_joint_originator = {
 			add_political_power = 75
 		}
 	}
@@ -700,7 +724,7 @@
 		cost = 10
 		prerequisite = { focus = WLI_international_tariff_agreement }
 		prerequisite = { focus = WLI_establish_joint_research_institutions }
-		completion_reward = {
+		completion_reward_joint_originator = {
 			add_offsite_building = {
 				type = industrial_complex
 				level = 1
@@ -718,7 +742,7 @@
 		cost = 10
 		prerequisite = { focus = WLI_establish_joint_research_institutions }
 		prerequisite = { focus = WLI_establish_world_liberation_central_bank }
-		completion_reward = {
+		completion_reward_joint_originator = {
 			add_stability = 0.05
 		}
 	}
@@ -733,7 +757,7 @@
 		cost = 10
 		prerequisite = { focus = WLI_unified_market }
 		prerequisite = { focus = WLI_unified_currency }
-		completion_reward = {
+		completion_reward_joint_member = {
 			add_offsite_building = {
 				type = industrial_complex
 				level = 2

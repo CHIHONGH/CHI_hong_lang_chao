@@ -33,6 +33,51 @@ ideas = {
 			}
 		}
 	}
+	welfare_laws = {
+		PRC_actual_life_care = {
+			picture = laws_welfare
+			visible = {
+				has_country_flag = nl_PRC_modern_social_service_system_flag
+			}
+			available = {
+				
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				low_stability_weekly = 0.002
+				personal_expense = 0.7
+				business_value_factor = -0.05
+				poverty_development_monthly = 0.015
+				society_development_monthly = 0.015
+				production_speed_infrastructure_factor = 0.15
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+	}
+	safety_laws = {
+		PRC_production_democracy = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_safety4
+			visible = {
+				has_country_flag = nl_PRC_founding_labor_society_flag
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				stability_factor = 0.1
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				production_speed_buildings_factor = 0.025
+				industrial_development_monthly = 0.012
+				farming_development_monthly = 0.012
+			}
+		}
+	}
 	hidden_ideas = {
 		ZZZ_automation_socialism = {
 			allowed = {
@@ -57,12 +102,15 @@ ideas = {
 				always = yes
 			}
 			modifier = {
-				consumer_goods_factor = 0.2
-				stability_weekly = 0.002
-				business_value_factor = 0.25
-				personal_value_factor = 0.15
-				production_speed_buildings_factor = 0.15
-				industrial_development_monthly = 0.01
+				consumer_goods_factor = -0.03
+				production_speed_infrastructure_factor = 0.1
+				business_value_factor = -0.15
+				personal_value_factor = 0.1
+				production_factory_start_efficiency_factor = 0.075
+				production_factory_efficiency_gain_factor = 0.025
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.125
+				personal_expense_factor = 0.2
 			}
 		}
 		ZZZ_automation_communism = {
