@@ -155,7 +155,11 @@ PRC_new_left_pla_reformation = {
 			command_power > 30
 		}
 		available = {
-			has_tech = tank_destroyer1
+			OR = {
+				has_tech = tank_destroyer1
+				has_tech = tank_destroyer2
+			}
+			
 		}
 		complete_effect = {
 			add_command_power = -30
