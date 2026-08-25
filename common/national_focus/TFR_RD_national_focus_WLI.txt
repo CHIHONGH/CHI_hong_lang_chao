@@ -1,5 +1,5 @@
 	focus_tree = {
-		id = WLI
+		id = WLI_tree
 		country = { 
 			factor = 0
 		}
@@ -10,7 +10,7 @@
 	# 核心/政治分支 (主干)
 	# ==========================================
 	# 根国策：红色旗帜，高高升起
-	joint_focus = {
+	shared_focus = {
 		id = WLI_red_flag_flying_high
 		# icon = GFX_focus_WLI_red_flag_flying_high
 		icon = GFX_focus_SOV_new_historical_community
@@ -33,15 +33,17 @@
 			}	
 		}
 		allow_branch = {
-			if = {
-				limit = { 
+			OR  = {
+				AND = {
+					tag = PRC
+					has_country_flag = Prc_NewLeft_focus_key
+				}
+				NOT = {
 					tag = PRC
 				}
-				has_country_flag = Prc_NewLeft_focus_key
 			}
 		}
 		available = {
-			tag = PRC
 			count_triggers = {
 				amount > 5
 				is_in_faction_with = PAK
@@ -67,11 +69,8 @@
 				is_in_faction_with = MEX
 			}
 		}
-		completion_reward_joint_member = {
+		completion_reward = {
 			add_political_power = 100
-		}
-		completion_reward_joint_originator= {
-			add_political_power = 150
 		}
 	}
 
@@ -83,6 +82,9 @@
 		x = 0
 		y = 1
 		cost = 1
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_red_flag_flying_high }
 		available = {
 			tag = PRC
@@ -100,6 +102,9 @@
 		x = -3
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_community_with_shared_future }
 		completion_reward = {
 			add_war_support = 0.05
@@ -114,6 +119,9 @@
 		x = 0
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_community_with_shared_future }
 		completion_reward = {
 			add_political_power = 75
@@ -128,6 +136,9 @@
 		x = 3
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_community_with_shared_future }
 		completion_reward = {
 			add_stability = 0.05
@@ -142,6 +153,9 @@
 		x = -1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
 		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
 		completion_reward = {
@@ -157,6 +171,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
 		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
 		completion_reward = {
@@ -165,6 +182,9 @@
 	}
 
 	joint_focus = {
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		id = WLI_establish_world_liberation_arbitration_agency
 		# icon = GFX_focus_WLI_establish_world_liberation_arbitration_agency
 		icon = GFX_focus_PRC_reinvigorate_the_cadres_nat
@@ -186,6 +206,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_common_foreign_policy }
 		prerequisite = { focus = WLI_joint_political_propaganda }
 		completion_reward = {
@@ -201,6 +224,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_political_propaganda }
 		completion_reward = {
 			add_political_power = 50
@@ -215,6 +241,9 @@
 		x = 0
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_establish_world_liberation_arbitration_agency }
 		prerequisite = { focus = WLI_establish_world_liberation_secretariat }
 		prerequisite = { focus = WLI_establish_world_liberation_supervisory_commission }
@@ -267,6 +296,9 @@
 		x = 0
 		y = 2
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { 
 			focus = WLI_red_sun_shines_bright 
 			focus = WLI_stars_revolve_around_the_moon 
@@ -285,6 +317,9 @@
 		x = -1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_unite_and_look_forward }
 		completion_reward = {
 			add_political_power = 75
@@ -299,6 +334,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_unite_and_look_forward }
 		completion_reward = {
 			add_war_support = 0.05
@@ -313,6 +351,9 @@
 		x = 0
 		y = 2
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_thorough_discussion }
 		prerequisite = { focus = WLI_unanimous_action }
 		completion_reward = {
@@ -331,6 +372,9 @@
 		x = 1
 		y = 2
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
 		prerequisite = { focus = WLI_international_tariff_agreement }
 		completion_reward = {
@@ -349,6 +393,9 @@
 		x = 0
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_deepen_belt_and_road }
 		completion_reward = {
 			add_stability = 0.05
@@ -386,6 +433,9 @@
 		x = -3
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_command_center }
 		completion_reward = {
 			add_tech_bonus = {
@@ -405,6 +455,9 @@
 		x = 0
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_command_center }
 		completion_reward = {
 			add_tech_bonus = {
@@ -424,6 +477,9 @@
 		x = 3
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_command_center }
 		completion_reward = {
 			army_experience = 25
@@ -438,6 +494,9 @@
 		x = -1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_share_military_intelligence }
 		completion_reward = {
 			random_owned_controlled_state = {
@@ -456,6 +515,9 @@
 		x = -1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_standardize_equipment }
 		prerequisite = { focus = WLI_share_military_intelligence }
 		completion_reward = {
@@ -478,6 +540,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_command_system_reform }
 		prerequisite = { focus = WLI_standardize_equipment }
 		completion_reward = {
@@ -493,6 +558,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_command_system_reform }
 		completion_reward = {
 			army_experience = 20
@@ -507,6 +575,9 @@
 		x = 0
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_military_exercises }
 		prerequisite = { focus = WLI_coordinated_military_training }
 		prerequisite = { focus = WLI_military_industrial_cooperation }
@@ -524,6 +595,9 @@
 		x = 0
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_joint_military_exercises }
 		prerequisite = { focus = WLI_coordinated_military_training }
 		prerequisite = { focus = WLI_military_industrial_cooperation }
@@ -541,6 +615,9 @@
 		x = -1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_eagle_strikes_the_sky }
 		prerequisite = { focus = WLI_fish_glides_in_deep }
 		completion_reward = {
@@ -592,6 +669,9 @@
 		x = 0
 		y = 3
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { 
 			focus = WLI_unified_command 
 			focus = WLI_joint_action 
@@ -609,6 +689,9 @@
 		x = 1
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_coordinated_military_training }
 		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
 		completion_reward = {
@@ -643,6 +726,9 @@
 		x = -2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
 		completion_reward_joint_member = {
 			add_offsite_building = {
@@ -660,6 +746,9 @@
 		x = 2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
 		completion_reward_joint_member = {
 			add_research_slot = 1
@@ -674,6 +763,9 @@
 		x = -2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_industrial_aid }
 		completion_reward_joint_member = {
 			add_political_power = 50
@@ -688,6 +780,9 @@
 		x = 0
 		y = 2
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_industrial_aid }
 		prerequisite = { focus = WLI_technical_assistance }
 		completion_reward_joint_originator = {
@@ -708,6 +803,9 @@
 		x = 2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_technical_assistance }
 		completion_reward_joint_originator = {
 			add_political_power = 75
@@ -722,6 +820,9 @@
 		x = -2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_international_tariff_agreement }
 		prerequisite = { focus = WLI_establish_joint_research_institutions }
 		completion_reward_joint_originator = {
@@ -740,6 +841,9 @@
 		x = 2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_establish_joint_research_institutions }
 		prerequisite = { focus = WLI_establish_world_liberation_central_bank }
 		completion_reward_joint_originator = {
@@ -755,6 +859,9 @@
 		x = 0
 		y = 2
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_unified_market }
 		prerequisite = { focus = WLI_unified_currency }
 		completion_reward_joint_member = {
@@ -773,6 +880,9 @@
 		x = -2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_build_integrated_economic_circle }
 		completion_reward = {
 			add_political_power = 50
@@ -787,6 +897,9 @@
 		x = 2
 		y = 1
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_build_integrated_economic_circle }
 		completion_reward = {
 			add_stability = 0.05
@@ -878,6 +991,9 @@
 		x = 0
 		y = 3
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = {
 			focus = WLI_military_supplies_first
 			focus = WLI_livelihood_first		
@@ -906,6 +1022,9 @@
 		x = 0
 		y = 2
 		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		prerequisite = { focus = WLI_towards_common_victory }
 		prerequisite = { focus = WLI_each_in_their_own_beauty }
 		prerequisite = { focus = WLI_adapt_to_local_conditions }
