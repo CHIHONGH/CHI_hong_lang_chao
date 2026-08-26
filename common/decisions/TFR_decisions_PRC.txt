@@ -4938,11 +4938,35 @@ PRC_national_peoples_congress_cat = {
 		}
 		modifier = {
 			political_power_cost = 0.3
+			business_value_factor = 0.035
 			personal_value_factor = 0.075
 			drift_defence_factor = -0.2
 		}
 		remove_effect = {
-			add_war_support = 0.05
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.015
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.015
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.015
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.015
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.015
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.015
+			}
 			set_temp_variable = {
 				var = PRC_influence_lib_var_temp
 				value = 0.05
@@ -5468,8 +5492,7 @@ PRC_national_peoples_congress_cat = {
 		modifier = {
 			political_power_cost = 0.5
 			war_support_weekly = 0.005
-			intel_network_gain_factor = 0.05
-			army_org_factor = 0.05
+			send_volunteer_size = 3
 		}
 		remove_effect = {
 			set_temp_variable = {
