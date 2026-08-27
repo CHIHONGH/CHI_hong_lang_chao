@@ -5149,8 +5149,8 @@ PRC_national_peoples_congress_cat = {
 		modifier = {
 			political_power_cost = 0.3
 			society_development_monthly = 0.01
-			industrial_capacity_factory = -0.075
-			production_factory_efficiency_gain_factor = 0.05
+			industrial_capacity_factory = -0.05
+			production_factory_efficiency_gain_factor = 0.1
 		}
 		remove_effect = {
 			add_political_power = 50
@@ -9799,7 +9799,7 @@ PRC_indo_pakistan_war = {
 		priority = 1
 		icon = GFX_PRC_indo_pakistani_war_decision
 		available = {
-			hidden_trigger = {
+			OR = {
 				PAK = {
 					controls_state = 443
 					OR = {
@@ -9811,12 +9811,23 @@ PRC_indo_pakistan_war = {
 						}
 					}
 				}
-				NOT = {
-					RAJ = {
-						controls_state = 1373
-						controls_state = 1131
-						controls_state = 441
+				HUL = {
+					controls_state = 443
+					OR = {
+						controls_state = 1379
+						AND = {
+							controls_state = 439
+							controls_state = 1381
+							controls_state = 428
+						}
 					}
+				}
+			}
+			NOT = {
+				RAJ = {
+					controls_state = 1373
+					controls_state = 1131
+					controls_state = 441
 				}
 			}
 		}
@@ -10025,35 +10036,35 @@ PRC_indo_pakistan_war = {
 			}
 		}
 	}
-	PRC_host_non_nuclear_negotiations = {
-		available = {
-		}
-		visible = {
-			tag = PRC
-		}
-		complete_effect = {
-			custom_effect_tooltip = PRC_host_non_nuclear_negotiations_tt
-		}
-		remove_effect = {
-			RAJ = {
-				country_event = {
-					id = china.140
-				}
-			}
-			PAK = {
-				country_event = {
-					id = china.140
-				}
-			}
-		}
-		icon = GFX_decision_generic_make_nukes
-		cost = 25
-		fire_only_once = yes
-		days_remove = 15
-		ai_will_do = {
-			base = 15
-		}
-	}
+	# PRC_host_non_nuclear_negotiations = {
+	# 	available = {
+	# 	}
+	# 	visible = {
+	# 		tag = PRC
+	# 	}
+	# 	complete_effect = {
+	# 		custom_effect_tooltip = PRC_host_non_nuclear_negotiations_tt
+	# 	}
+	# 	remove_effect = {
+	# 		RAJ = {
+	# 			country_event = {
+	# 				id = china.140
+	# 			}
+	# 		}
+	# 		PAK = {
+	# 			country_event = {
+	# 				id = china.140
+	# 			}
+	# 		}
+	# 	}
+	# 	icon = GFX_decision_generic_make_nukes
+	# 	cost = 25
+	# 	fire_only_once = yes
+	# 	days_remove = 15
+	# 	ai_will_do = {
+	# 		base = 15
+	# 	}
+	# }
 	PRC_send_pakistan_planes = {
 		available = {
 			#if = {
@@ -10167,38 +10178,134 @@ PRC_indo_pakistan_war = {
 			base = 15
 		}
 	}
-	PRC_embed_advisors_pakistan = {
-		available = {
-		}
+	# PRC_embed_advisors_pakistan = {
+	# 	available = {
+	# 	}
+	# 	visible = {
+	# 		tag = PRC
+	# 	}
+	# 	complete_effect = {
+	# 	}
+	# 	remove_effect = {
+	# 		PAK = {
+	# 			army_experience = 50
+	# 			air_experience = 25
+	# 		}
+	# 		PRC_Zhao_Zongqi = {
+	# 			set_nationality = PAK
+	# 		}
+	# 		set_country_flag = PRC_advisors_sent
+	# 		unlock_decision_tooltip = PRC_initiate_operation_gul
+	# 		unlock_decision_tooltip = PRC_initiate_operation_khalid
+	# 	}
+	# 	icon = GFX_decision_generic_military
+	# 	cost = 25
+	# 	fire_only_once = yes
+	# 	days_remove = 20
+	# 	days_re_enable = 20
+	# 	ai_will_do = {
+	# 		base = 15
+	# 	}
+	# }
+	PRC_solve_the_basic_problem = {
 		visible = {
 			tag = PRC
 		}
+		days_remove = 50
+		highlight_states = {
+			443 1381 1380
+		}
 		complete_effect = {
+			PAK = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 20
+				}
+			}
+		}
+		modifier = {
+			consumer_goods_expected_value = 0.015
+			supply_consumption_factor = -0.2
+			pocket_penalty = -0.5
+			out_of_supply_factor = -0.3
 		}
 		remove_effect = {
 			PAK = {
-				army_experience = 50
-				air_experience = 25
+				add_offsite_building = {
+					type = industrial_complex
+					level = -15
+				}
 			}
-			PRC_Zhao_Zongqi = {
-				set_nationality = PAK
+			custom_effect_tooltip = PRC_solve_the_basic_problem_tt
+			if = {
+				limit = { 
+					NOT = {
+						has_variable = PRC_solve_the_basic_problem_var
+					}
+					1380 = {
+						is_controlled_by = PAK
+					}
+				}
+				build_railway = {
+					level = 1
+					path = { 
+						10898 12792
+					}
+				}
+				add_to_variable = {
+					PRC_solve_the_basic_problem_var = 1
+				}
 			}
-			set_country_flag = PRC_advisors_sent
-			unlock_decision_tooltip = PRC_initiate_operation_gul
-			unlock_decision_tooltip = PRC_initiate_operation_khalid
-		}
-		icon = GFX_decision_generic_military
-		cost = 25
-		fire_only_once = yes
-		days_remove = 20
-		days_re_enable = 20
-		ai_will_do = {
-			base = 15
+			else_if = {
+				limit = {
+					check_variable = {
+						PRC_solve_the_basic_problem_var = 1
+					}
+					443 = {
+						is_controlled_by = PAK
+					}
+					1381 = {
+						is_controlled_by = PAK
+					}
+				}
+				
+				build_railway = {
+					level = 1
+					path = { 
+						1971 14730 10847
+					}
+				}
+				add_to_variable = {
+					PRC_solve_the_basic_problem_var = 1
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						PRC_solve_the_basic_problem_var = 2
+					}
+					1380 = {
+						is_controlled_by = PAK
+					}
+					1381 = {
+						is_controlled_by = PAK
+					}
+				}
+				build_railway = {
+					level = 1
+					path = { 
+						10843 12876 14734 7998
+					}
+				}
+				add_to_variable = {
+					PRC_solve_the_basic_problem_var = 1
+				}
+			}
+			
 		}
 	}
 	PRC_initiate_operation_gul = {
 		available = {
-			has_country_flag = PRC_advisors_sent
 			NOT = {
 				has_country_flag = PRC_ongoing_offensive
 			}
@@ -10216,20 +10323,42 @@ PRC_indo_pakistan_war = {
 			}
 		}
 		modifier = {
-			air_superiority_efficiency = 0.1
-			air_superiority_bonus_in_combat = 0.1
-			combat_width_factor = -0.1
-			terrain_penalty_reduction = 0.25
 			army_speed_factor = 0.1
-			no_supply_grace = 12
-			supply_consumption_factor = -0.1
-			max_planning_factor = 0.2
-			army_attack_speed_factor = 0.1
-			army_non_core_defence_factor = -0.1
-			land_mastery_gain_factor = 0.2
-			combat_entrenchment = -0.2
+			army_attack_factor = 0.15
+			army_defence_factor = -0.05
+			supply_consumption_factor = -0.25
+			out_of_supply_factor = -0.25
+			terrain_penalty_reduction = 0.2
+			air_superiority_bonus_in_combat = 0.2
+			max_planning_factor = 0.1
+			air_weather_penalty = -0.25
+			air_superiority_efficiency = 0.2
 		}
 		remove_effect = {
+			custom_effect_tooltip = PRC_RAJ_operation_tt
+			if = {
+				limit = { 
+					RAJ = {
+						surrender_progress > 0.4
+					}
+				}
+				add_days_mission_timeout = {
+					mission = NAX_Limited_Time_Mission
+					days = 25
+				}
+			}
+			else_if = {
+				limit = { 
+					RAJ = {
+						surrender_progress > 0.25
+					}
+				}
+				add_days_mission_timeout = {
+					mission = NAX_Limited_Time_Mission
+					days = 15
+				}
+			}
+
 			hidden_effect = {
 				country_event = {
 					id = china.135
@@ -10247,7 +10376,6 @@ PRC_indo_pakistan_war = {
 	}
 	PRC_initiate_operation_khalid = {
 		available = {
-			has_country_flag = PRC_advisors_sent
 			NOT = {
 				has_country_flag = PRC_ongoing_offensive
 			}
@@ -10265,21 +10393,41 @@ PRC_indo_pakistan_war = {
 			}
 		}
 		modifier = {
-			air_superiority_efficiency = 0.1
-			air_superiority_bonus_in_combat = 0.1
-			combat_width_factor = -0.1
-			terrain_penalty_reduction = 0.25
 			army_speed_factor = 0.1
-			max_planning_factor = 0.2
-			no_supply_grace = 12
-			supply_consumption_factor = -0.1
-			army_attack_speed_factor = 0.1
-			army_non_core_defence_factor = -0.1
-			land_mastery_gain_factor = 0.2
-			combat_entrenchment = -0.2
+			army_attack_factor = 0.15
+			army_defence_factor = -0.05
+			supply_consumption_factor = -0.25
+			out_of_supply_factor = -0.25
+			terrain_penalty_reduction = 0.2
+			air_superiority_bonus_in_combat = 0.2
+			max_planning_factor = 0.1
+			air_weather_penalty = -0.25
+			air_superiority_efficiency = 0.2
 		}
 		remove_effect = {
 			#country_event = { id = china.141 } ##причем тут этот ивент наху
+			if = {
+				limit = { 
+					RAJ = {
+						surrender_progress > 0.4
+					}
+				}
+				add_days_mission_timeout = {
+					mission = NAX_Limited_Time_Mission
+					days = 25
+				}
+			}
+			else_if = {
+				limit = { 
+					RAJ = {
+						surrender_progress > 0.25
+					}
+				}
+				add_days_mission_timeout = {
+					mission = NAX_Limited_Time_Mission
+					days = 15
+				}
+			}
 			hidden_effect = {
 				clr_country_flag = PRC_ongoing_offensive
 			}
