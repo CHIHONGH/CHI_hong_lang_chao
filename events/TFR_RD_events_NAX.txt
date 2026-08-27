@@ -34,26 +34,28 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = nax.3.a
-        if = {
-            limit = {
-                NAX = {
-                    has_country_flag = NAX_win_indian_wool_war
+        hidden_effect = {
+            if = {
+                limit = {
+                    NAX = {
+                        has_country_flag = NAX_win_indian_wool_war
+                    }
+                }
+                news_event = {
+                    id = nax.2
+                    hours = 10
                 }
             }
-            news_event = {
-                id = nax.2
-                hours = 10
-            }
-        }
-        else_if = {
-            limit = {
-                NAX = {
-                    has_country_flag = NAX_lost_indian_wool_war
+            else_if = {
+                limit = {
+                    NAX = {
+                        has_country_flag = NAX_lost_indian_wool_war
+                    }
                 }
-            }
-            news_event = {
-                id = nax.1
-                hours = 10
+                news_event = {
+                    id = nax.1
+                    hours = 10
+                }
             }
         }
     }
