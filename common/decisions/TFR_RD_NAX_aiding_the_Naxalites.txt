@@ -27,6 +27,100 @@ NAX_aiding_the_Naxalites_category = {
         }
         visible = {
         }
+        cancel_trigger = {
+            OR = {
+                has_country_flag = PAK_won_indo_pakistan_war
+                has_country_flag = PAK_lost_indo_pakistan_war
+            }
+        }
+        cancel_effect = {
+            remove_mission = NAX_Nasser_Mass_Power
+            remove_mission = NAX_Limited_Time_Mission
+            if = {
+                limit = { 
+                    has_country_flag = PAK_won_indo_pakistan_war
+                }
+                NAX = {
+                    set_country_flag = NAX_win_indian_wool_war
+                }
+                country_event = {
+                    id = nax.3
+                    hours = 10
+                }
+                RAJ = {
+                    add_war_support = -0.15
+                }
+                NAX = {
+                    set_country_leader_portrait = {
+                        ideology = totalitarian_socialist
+                        portrait = GFX_NAX_Nambala_Keshav_Rao
+                    }
+                }
+                789 = {
+                    set_demilitarized_zone = yes
+                }
+                1370 = {
+                    set_demilitarized_zone = yes
+                }
+                PRC = {
+                    clr_country_flag = PRC_NAX_indian_wool_war_ongoing
+                }
+            }
+            else = {
+                NAX = {
+                    set_country_flag = NAX_lost_indian_wool_war
+                }
+                country_event = {
+                    id = nax.3
+                    hours = 10
+                }
+                RAJ = {
+                    annex_country = {
+                        target = NAX
+                        transfer_troops = no
+                    }
+                }
+                RAJ = {
+                    set_politics = {
+                        ruling_party = authoritarian_democrat
+                        elections_allowed = no
+                        last_election = "1935.12.17"
+                        election_frequency = 48
+                    }
+                    add_popularity = {
+                        ideology = authoritarian_democrat
+                        popularity = 0.65
+                    }
+                    create_country_leader = {
+                        name = EGY_mohamed_ahmed_zaki
+                        picture = "Mohamed Ahmed Zaki.png"
+                        ideology = military_junta
+                        traits = {
+                        }
+                    }
+                }
+                hidden_effect = {
+                    442 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1367 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1366 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1369 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1368 = {
+                        set_demilitarized_zone = yes
+                    }
+                    PRC = {
+                        clr_country_flag = PRC_NAX_indian_wool_war_ongoing
+                    }
+                }
+            }
+        }
         fire_only_once = no
         cancel_if_not_visible = no
         is_good = no
