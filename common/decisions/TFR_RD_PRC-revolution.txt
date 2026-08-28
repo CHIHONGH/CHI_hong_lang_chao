@@ -4,6 +4,10 @@ PRC_export_revolution = {
     PRC_choose_a_side = {
         icon = GFX_PRC_new_left_decision
         visible = {
+            NOT = {
+                has_country_flag = PRC_armed_neutral_flag
+                has_country_flag = PRC_choose_a_side_flag
+            }
             has_country_flag = CHN_Display_Europe
             has_completed_focus = PRC_nl_global_revolution
         }
@@ -36,7 +40,10 @@ PRC_export_revolution = {
             }
         }
         cost = 50
-        fire_only_once = yes
+        days_remove = 15
+        complete_effect = {
+            set_country_flag = PRC_choose_a_side_flag
+        }
         remove_effect = {
             every_country = {
                 limit = {
@@ -52,7 +59,14 @@ PRC_export_revolution = {
                         has_government = social_democrat
                     }
                 }
-                add_ideas = PRC_china_supplies
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
                 add_ideas = PRC_china_trade
             }
             add_ideas = PRC_china_trade
@@ -61,11 +75,22 @@ PRC_export_revolution = {
     PRC_armed_neutral = {
         icon = GFX_PRC_new_left_decision
         visible = {
+            NOT = {
+                has_country_flag = PRC_choose_a_side_flag
+                has_country_flag = PRC_armed_neutral_flag
+            }
             has_country_flag = CHN_Display_Europe
             has_completed_focus = PRC_nl_global_revolution
         }
         cost = 50
-        fire_only_once = yes
+        days_remove = 15
+        complete_effect = {
+            set_country_flag = {
+                flag = PRC_armed_neutral_flag
+                days = 750
+                value = 1
+            }
+        }
         remove_effect = {
             add_offsite_building = {
                 type = industrial_complex
@@ -1612,6 +1637,7 @@ PRC_export_revolution = {
         timeout_effect = {
             custom_effect_tooltip = PRC_radiated_sun_tt2
             PRK = {
+                load_focus_tree = WLI_tree
                 if = {
                     limit = { 
                         check_variable = {
@@ -1716,6 +1742,7 @@ PRC_export_revolution = {
                     transfer_state = 1044
                 }
             }
+            add_to_faction = PRK
         }
     }
     PRK_find_the_gap = {
@@ -2406,15 +2433,15 @@ PRC_export_revolution = {
             PAK = {
                 add_popularity = {
                     ideology = communist
-                    popularity = 0.02
+                    popularity = 0.05
                 }
                 add_popularity = {
                     ideology = libertarian_socialist
-                    popularity = 0.02
+                    popularity = 0.05
                 }
                 add_popularity = {
                     ideology = social_democrat
-                    popularity = 0.02
+                    popularity = 0.05
                 }
             }
             add_to_variable = {
@@ -2434,6 +2461,11 @@ PRC_export_revolution = {
     PRC_PAK_advocation_to_teens = {
         icon = GFX_PRC_new_left_decision
         visible = {
+            NOT = {
+                PAK = {
+                    has_government = communist
+                }
+            }
             AND = {
                 has_country_flag = Pakistan_selected
                 has_completed_focus = PRC_nl_red_south_asia
@@ -2548,7 +2580,7 @@ PRC_export_revolution = {
             base = 10
         }
     }
-     PRC_PAK_industry = {
+    PRC_PAK_industry = {
         #巴基斯坦
         icon = GFX_PRC_new_left_decision
         available = {
@@ -3350,6 +3382,7 @@ PRC_export_revolution = {
         }
     }
 
+    #非洲
     EFF_political_support = {
         visible = {
             has_completed_focus = PRC_nl_hearts_of_bravery
@@ -3432,7 +3465,14 @@ PRC_export_revolution = {
                     amount = 40
                     producer = PRC
                 }
-                add_ideas = PRC_china_supplies
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
             }
             
         }
@@ -3519,16 +3559,24 @@ PRC_export_revolution = {
                     amount = 40
                     producer = PRC
                 }
-                add_ideas = PRC_china_supplies
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
             }
             
         }
     }
 
+    #南美洲
     PRU_military_support = {
         visible = {
             has_completed_focus = PRC_nl_into_south_america
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
         }
         available = {
             PRU = {
@@ -3555,7 +3603,15 @@ PRC_export_revolution = {
                     amount = 40
                     producer = PRC
                 }
-                add_ideas = PRC_china_supplies
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+                
             }
             
         }
@@ -3565,7 +3621,7 @@ PRC_export_revolution = {
     VEN_military_support = {
         visible = {
             has_completed_focus = PRC_nl_into_south_america
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
         }
         available = {
             VEN = {
@@ -3592,7 +3648,14 @@ PRC_export_revolution = {
                     amount = 40
                     producer = PRC
                 }
-                add_ideas = PRC_china_supplies
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
             }
             
         }
@@ -3600,7 +3663,7 @@ PRC_export_revolution = {
     ELN_military_support = {
         visible = {
             has_completed_focus = PRC_nl_into_south_america
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
         }
         available = {
             ELN = {
@@ -3627,7 +3690,14 @@ PRC_export_revolution = {
                     amount = 40
                     producer = PRC
                 }
-                add_ideas = PRC_china_supplies
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
             }
             
         }
@@ -3656,6 +3726,8 @@ PRC_export_revolution = {
             }
         }
     }
+
+    #北美洲
     PTF_MEX_intervention_mission = {
         activation = {
             always = no
@@ -3717,9 +3789,13 @@ PRC_export_revolution = {
                         is_owned_by = MEX
                         is_owned_by = ZAP
                     }
-                    any_neighbor_state = {
-                        is_owned_by = PTF
+                    OR = {
+                        is_capital = yes
+                        any_neighbor_state = {
+                            is_owned_by = PTF
+                        }
                     }
+                    
                 }
                 add_building_construction = {
                     type = bunker
@@ -3727,6 +3803,7 @@ PRC_export_revolution = {
                     province = {
                         all_provinces = yes
                         limit_to_border = yes
+                        limit_to_victory_point = yes
                     }
                     instant_build = yes
                 }
@@ -3838,7 +3915,20 @@ PRC_export_revolution = {
         days_remove = 30
         days_re_enable = 30
         complete_effect = {
-
+            if = {
+                limit = { 
+                    NOT = {
+                        has_country_flag = MEX_buff_flag
+                    }
+                }
+                SIA = {
+                    set_nationality = {
+                        target_country = MEX
+                        character = SIA_bak
+                    }
+                }
+                set_country_flag = MEX_buff
+            }
         }
         modifier = {
             experience_gain_army_factor = -0.2
@@ -3912,99 +4002,6 @@ PRC_export_revolution = {
                             create_unit = {
                                 division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
                                 allow_spawning_on_enemy_provs = no
-                                count = 1
-                                owner = ZAP
-                            }
-                        }
-                        random_owned_controlled_state = {
-                            create_unit = {
-                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                                allow_spawning_on_enemy_provs = no
-                                count = 1
-                                owner = ZAP
-                            }
-                        }
-                        random_owned_controlled_state = {
-                            create_unit = {
-                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                                allow_spawning_on_enemy_provs = no
-                                count = 1
-                                owner = ZAP
-                            }
-                        }
-                    }
-                }
-                else = {
-                    MEX = {
-                        capital_scope = {
-                            create_unit = {
-                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
-                                allow_spawning_on_enemy_provs = no
-                                count = 3
-                                owner = MEX
-                            }
-                        }
-                    }
-                }
-            }
-            else_if = {
-                limit = {
-                    has_country_flag = PTF_difficulty_Hard
-                }
-                if = {
-                    limit = { 
-                        country_exists = ZAP
-                    }
-                    ZAP = {
-                        capital_scope = {
-                            create_unit = {
-                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                                allow_spawning_on_enemy_provs = no
-                                count = 2
-                                owner = ZAP
-                            }
-                        }
-                        random_owned_controlled_state = {
-                            create_unit = {
-                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                                allow_spawning_on_enemy_provs = no
-                                count = 2
-                                owner = ZAP
-                            }
-                        }
-                        random_owned_controlled_state = {
-                            create_unit = {
-                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                                allow_spawning_on_enemy_provs = no
-                                count = 2
-                                owner = ZAP
-                            }
-                        }
-                    }
-                }
-                else = {
-                    MEX = {
-                        capital_scope = {
-                            create_unit = {
-                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
-                                allow_spawning_on_enemy_provs = no
-                                count = 6
-                                owner = MEX
-                            }
-                        }
-                    }
-                }
-            }
-            else = {
-                if = {
-                    limit = { 
-                        country_exists = ZAP
-                    }
-                    ZAP = {
-                        capital_scope = {
-                            create_unit = {
-                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
-                                allow_spawning_on_enemy_provs = no
                                 count = 3
                                 owner = ZAP
                             }
@@ -4034,6 +4031,99 @@ PRC_export_revolution = {
                                 division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
                                 allow_spawning_on_enemy_provs = no
                                 count = 10
+                                owner = MEX
+                            }
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    has_country_flag = PTF_difficulty_Hard
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 5
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 5
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 5
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 15
+                                owner = MEX
+                            }
+                        }
+                    }
+                }
+            }
+            else = {
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 7
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 7
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 6
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 20
                                 owner = MEX
                             }
                         }
@@ -5610,7 +5700,7 @@ PRC_export_revolution = {
             }
         }
         visible = {
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = no
@@ -5649,7 +5739,7 @@ PRC_export_revolution = {
             }
         }
         visible = {
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = no
@@ -5694,7 +5784,7 @@ PRC_export_revolution = {
         available = {
         }
         visible = {
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = yes
@@ -5717,7 +5807,7 @@ PRC_export_revolution = {
             }
         }
         visible = {
-            has_country_flag = CHN_Display_America
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = no
