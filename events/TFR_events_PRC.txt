@@ -2730,14 +2730,27 @@ news_event = {
 	}
 	option = {
 		name = china.80.a
-		hidden_effect = {
-			PRC = {
-				set_country_flag = PRC_cold_war_flag
-			}
-			JAP = {
-				set_country_flag = JAP_cold_war_flag
+		trigger = {
+			tag = JAP
+		}
+		set_country_flag = JAP_cold_war_flag
+	}
+	option = {
+		name = china.80.b
+		trigger = {
+			tag = PRC
+		}
+		set_country_flag = PRC_cold_war_flag
+	}
+	option = {
+		name = china.80.c
+		trigger = {
+			NOT = {
+				tag = JAP
+				tag = PRC
 			}
 		}
+		
 	}
 }
 
