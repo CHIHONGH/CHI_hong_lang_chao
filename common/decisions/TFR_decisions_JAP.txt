@@ -11551,11 +11551,37 @@ JAP_great_asian_war = {
 		}
 
 		timeout_effect = {
+			if = {
+				limit = { 
+					PRC = {
+						has_country_flag = RD_no_dont_kill_me_graygoo_flag2
+					}
+				}
+				hidden_effect = {
+					PTF = {
+						remove_ideas = {
+							PTF_Fascist_military_revolution_I_idea
+							PTF_Counter_revolutionary_center_I_idea
+							PTF_Fascist_military_revolution_II_idea
+							PTF_Counter_revolutionary_center_II_idea
+							PTF_Fascist_military_revolution_III_idea
+							PTF_Counter_revolutionary_center_III_idea
+							PTF_Anti_communist_fortress_idea
+							PTF_End_of_communism_idea
+						}
+					}
+					
+				}	
+				
+			}
 			declare_war_on = {
 				target = PRK
 				type = annex_everything
 			}
 			add_to_faction = KOR
+			NAX = {
+				load_focus_tree = NAX_focus
+			}
 			KOR = {
 				set_country_flag = pdto_member
 			}
