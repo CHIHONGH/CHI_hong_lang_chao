@@ -1526,25 +1526,22 @@ focus_tree = {
             add_society_development = yes
             add_academic_development = yes
             add_to_variable = {
-                PSC_pp_factor_var = 0.15
+                PSC_stability_var = -0.1
             }
             add_to_variable = {
-                PSC_research_var = 0.05
+                PSC_breakthrough_var = 0.05
             }
             add_to_variable = {
-                PSC_personal_value_var = 0.05
+                PSC_attack_major_var = 0.15
             }
             add_to_variable = {
-                PSC_business_value_var = 0.05
+                PSC_conscription_factor_var = 0.125
             }
             add_to_variable = {
-                PSC_poverty_var = 0.03
+                PSC_mobilization_var = 0.2
             }
             add_to_variable = {
-                PSC_academic_var = 0.03
-            }
-            add_to_variable = {
-                PSC_drift_var = 0.1
+                PSC_volunteer_size_var = 2
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1614,9 +1611,13 @@ focus_tree = {
         relative_position_id = PRC_nl_second_newculture
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            PRC_nl_culture_xianzhi = yes
-            NOT = {
-                has_completed_focus = PRC_nl_newculture_tbc
+            count_triggers = {
+                amount < 3
+                has_completed_focus = PRC_nl_second_newculture
+                has_completed_focus = PRC_nl_proletarian_art_festival
+                has_completed_focus = PRC_nl_hundred_flowers_bloom
+                has_completed_focus = PRC_nl_cosmos_red_tide
+                has_completed_focus = PRC_nl_shatter_myth_bourgeoisie
             }
         }
         cancel_if_invalid = yes
@@ -1665,18 +1666,17 @@ focus_tree = {
         relative_position_id = PRC_nl_peoples_culture_revolutionary_culture
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            PRC_nl_culture_xianzhi = yes
-            NOT = {
-                has_completed_focus = PRC_nl_newculture_tbc
+            count_triggers = {
+                amount < 3
+                has_completed_focus = PRC_nl_second_newculture
+                has_completed_focus = PRC_nl_proletarian_art_festival
+                has_completed_focus = PRC_nl_hundred_flowers_bloom
+                has_completed_focus = PRC_nl_cosmos_red_tide
+                has_completed_focus = PRC_nl_shatter_myth_bourgeoisie
             }
         }
         cancel_if_invalid = yes
         completion_reward = {
-            add_to_variable = {
-                #加法运算
-                var = PRC_nl_focus_culture_complete_var				#被加数
-                value = 1				#加数
-            }
             add_political_power = 50
             add_popularity = {
                 ideology = communist
@@ -1718,16 +1718,17 @@ focus_tree = {
         relative_position_id = PRC_nl_peoples_culture_revolutionary_culture
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            PRC_nl_culture_xianzhi = yes
-            PRC_nl_culture_lock = yes
+            count_triggers = {
+                amount < 3
+                has_completed_focus = PRC_nl_second_newculture
+                has_completed_focus = PRC_nl_proletarian_art_festival
+                has_completed_focus = PRC_nl_hundred_flowers_bloom
+                has_completed_focus = PRC_nl_cosmos_red_tide
+                has_completed_focus = PRC_nl_shatter_myth_bourgeoisie
+            }
         }
         cancel_if_invalid = yes
         completion_reward = {
-            add_to_variable = {
-                #加法运算
-                var = PRC_nl_focus_culture_complete_var				#被加数
-                value = 1				#加数
-            }
             add_to_variable = {
                 PSC_academic_var = 0.005
             }
@@ -1760,18 +1761,17 @@ focus_tree = {
         relative_position_id = PRC_nl_peoples_culture_revolutionary_culture
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            PRC_nl_culture_xianzhi = yes
-            NOT = {
-                has_completed_focus = PRC_nl_newculture_tbc
+            count_triggers = {
+                amount < 3
+                has_completed_focus = PRC_nl_second_newculture
+                has_completed_focus = PRC_nl_proletarian_art_festival
+                has_completed_focus = PRC_nl_hundred_flowers_bloom
+                has_completed_focus = PRC_nl_cosmos_red_tide
+                has_completed_focus = PRC_nl_shatter_myth_bourgeoisie
             }
         }
         cancel_if_invalid = yes
         completion_reward = {
-            add_to_variable = {
-                #加法运算
-                var = PRC_nl_focus_culture_complete_var				#被加数
-                value = 1				#加数
-            }
             add_political_power = 50
             add_popularity = {
                 ideology = social_democrat
@@ -1808,9 +1808,13 @@ focus_tree = {
         relative_position_id = PRC_nl_proletarian_art_festival
         available = {
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-            PRC_nl_culture_xianzhi = yes
-            NOT = {
-                has_completed_focus = PRC_nl_newculture_tbc
+            count_triggers = {
+                amount < 3
+                has_completed_focus = PRC_nl_second_newculture
+                has_completed_focus = PRC_nl_proletarian_art_festival
+                has_completed_focus = PRC_nl_hundred_flowers_bloom
+                has_completed_focus = PRC_nl_cosmos_red_tide
+                has_completed_focus = PRC_nl_shatter_myth_bourgeoisie
             }
         }
         cancel_if_invalid = yes
@@ -2592,8 +2596,15 @@ focus_tree = {
         }
         relative_position_id = PRC_nl_peoples_culture_revolutionary_culture
         available = {
-            PRC_nl_culture_vardel_xianzhi = yes
             has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+            count_triggers = {
+                amount = 3
+                has_completed_focus = PRC_nl_second_newculture
+                has_completed_focus = PRC_nl_proletarian_art_festival
+                has_completed_focus = PRC_nl_hundred_flowers_bloom
+                has_completed_focus = PRC_nl_cosmos_red_tide
+                has_completed_focus = PRC_nl_shatter_myth_bourgeoisie
+            }
         }
         cancel_if_invalid = yes
         completion_reward = {

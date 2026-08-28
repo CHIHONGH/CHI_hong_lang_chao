@@ -9766,7 +9766,11 @@ debug_decisions = {
 				add_to_faction = BHU
 				add_to_faction = PRK
 				add_to_faction = PAK
+				every_allied_country = {
+					load_focus_tree = WLI_tree
+				}
 			}
+			
 		}
 	}
 	PRC_dissolve_japan_debug = {
@@ -13335,6 +13339,14 @@ PRC_great_asian_war = {
 		complete_effect = {
 		}
 		timeout_effect = {
+			if = {
+				limit = { 
+					has_country_flag = RD_no_dont_kill_me_graygoo_flag2
+				}
+				PTF = {
+					custom_effect_tooltip = RD_graygoo_will_stop_haunting_me_tt
+				}
+			}
 			effect_tooltip = {
 				activate_mission = PRC_GAW_war_exhaustion
 			}

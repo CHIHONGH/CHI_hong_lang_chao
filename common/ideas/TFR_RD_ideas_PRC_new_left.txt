@@ -482,6 +482,29 @@ ideas = {
 				breakthrough_factor = 0.06
 				army_org_factor = 0.1
 			}
+
+			cancel = {
+				NOT = {
+					has_government = totalitarian_socialist
+					has_government = communist
+					has_government = libertarian_socialist
+					has_government = social_democrat
+				}
+			}
+			on_remove = {
+				if = {
+					limit = { 
+						OR = {
+							tag = GER
+							tag = FRA
+							tag = SOV
+						}
+					}
+					PRC = {
+						clr_country_flag = PRC_choose_a_side_flag
+					}
+				}
+			}
 		}
 		PRC_china_trade = {
 			picture = PRC_chinese_communist_party
@@ -496,6 +519,14 @@ ideas = {
 				industrial_capacity_factory = 0.1
 				trade_opinion_factor = 0.15
 				tax_business_rate_factor = 0.1
+			}
+			cancel = {
+				NOT = {
+					has_government = totalitarian_socialist
+					has_government = communist
+					has_government = libertarian_socialist
+					has_government = social_democrat
+				}
 			}
 		}
 		JAP_CNNC_activated = {
