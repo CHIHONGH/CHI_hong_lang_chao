@@ -36,14 +36,47 @@
 						}
 					}
 					add_to_faction = VIN
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						VIN = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						VIN = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						VIN = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
 					VIN = {
 						load_focus_tree = WLI_tree
 					}
 				}
 			}
-			add_ideas = {
-				PRC_WLI_idea
+			add_dynamic_modifier = {
+				modifier = PRC_WLI_modifiers
 			}
+			# add_ideas = {
+			# 	PRC_WLI_idea
+			# }
 		}
 	}
 	shared_focus = {

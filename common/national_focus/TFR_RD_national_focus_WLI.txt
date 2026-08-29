@@ -43,6 +43,9 @@
 				}
 			}
 		}
+		joint_trigger = {
+			is_ally_with = PRC
+		}
 		available = {
 			tag = PRC
 			count_triggers = {
@@ -71,6 +74,34 @@
 			}
 		}
 		completion_reward = {
+			custom_effect_tooltip = RD_re_enable_ai_production_tt
+			if = {
+				limit = {
+					has_idea = ai_disabled_production
+				}
+				remove_ideas = ai_disabled_production
+				add_research_slot = 1
+			}
+			set_variable = {
+				WLI_ec_var_consumer_goods_factor = 0.05
+			}
+			set_variable = {
+				WLI_ca_var_command_power_gain = 0.25
+			}
+			set_variable = {
+				WLI_ca_var_max_command_power = 100
+			}
+			set_variable = {
+				WLI_ca_var_max_planning_factor = 0.1
+			}
+			set_variable = {
+				WLI_ca_var_planning_speed = 0.1
+			}
+		}
+		completion_reward_joint_originator = {
+			add_political_power = 150
+		}
+		completion_reward_joint_member = {
 			add_political_power = 100
 		}
 	}
@@ -91,7 +122,8 @@
 			tag = PRC
 		}
 		completion_reward = {
-			add_stability = 0.05
+			add_political_power = 50
+			add_stability = 0.1
 		}
 	}
 
@@ -107,8 +139,13 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_community_with_shared_future }
-		completion_reward = {
-			add_war_support = 0.05
+		completion_reward_joint_originator = {
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+		completion_reward_joint_member = {
+			add_stability = 0.05
+			add_stability = 0.05
 		}
 	}
 
@@ -124,8 +161,19 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_community_with_shared_future }
-		completion_reward = {
-			add_political_power = 75
+		completion_reward_joint_originator = {
+			add_political_power = 100
+			set_temp_variable = {
+				income_var_temp = 10
+			}
+			add_income_with_inflation = yes
+		}
+		completion_reward_joint_member = {
+			add_political_power = 50
+			set_temp_variable = {
+				income_var_temp = 5
+			}
+			add_income_with_inflation = yes
 		}
 	}
 
@@ -141,8 +189,25 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_community_with_shared_future }
-		completion_reward = {
-			add_stability = 0.05
+		completion_reward_joint_originator = {
+			set_temp_variable = {
+				society_development_var_temp = 0.5
+			}
+			set_temp_variable = {
+				poverty_development_var_temp = 0.5
+			}
+			add_poverty_development = yes
+			add_society_development = yes
+		}
+		completion_reward_joint_member = {
+			set_temp_variable = {
+				society_development_var_temp = 0.25
+			}
+			set_temp_variable = {
+				poverty_development_var_temp = 0.25
+			}
+			add_poverty_development = yes
+			add_society_development = yes
 		}
 	}
 
@@ -160,7 +225,28 @@
 		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
 		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
 		completion_reward = {
-			add_political_power = 50
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_war_stability_factor = 0.1
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_factor = 0.02
+				}
+				add_to_variable = {
+					PRC_WLI_trade_opinion_factor = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea8
+				}
+			}
 		}
 	}
 
@@ -178,7 +264,37 @@
 		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
 		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
 		completion_reward = {
-			add_war_support = 0.05
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_drift_defence_factor = 0.1
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_factor = 0.03
+				}
+				add_to_variable = {
+					PRC_WLI_defensive_war_stability_factor = 0.05
+				}
+				add_to_variable = {
+					PRC_WLI_non_core_manpower = 0.05
+				}
+				add_to_variable = {
+					PRC_WLI_conscription_factor = 0.15
+				}
+				add_to_variable = {
+					PRC_WLI_army_morale_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea8
+				}
+			}
 		}
 	}
 
@@ -194,8 +310,27 @@
 		y = 1
 		cost = 10
 		prerequisite = { focus = WLI_common_foreign_policy }
-		completion_reward = {
-			add_political_power = 50
+		completion_reward_joint_originator = {
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea11
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea10
+				}
+			}
 		}
 	}
 
@@ -213,7 +348,25 @@
 		prerequisite = { focus = WLI_common_foreign_policy }
 		prerequisite = { focus = WLI_joint_political_propaganda }
 		completion_reward = {
-			add_stability = 0.05
+			add_to_variable = {
+				PRC_WLI_stability_factor = -0.15
+			}
+			add_to_variable = {
+				PRC_WLI_stability_weekly = 0.002
+			}
+			add_to_variable = {
+				PRC_WLI_compliance_gain = 0.03
+			}
+			add_to_variable = {
+				PRC_WLI_resistance_growth = -0.3
+			}
+			
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea13
+				}
+			}
 		}
 	}
 
@@ -248,8 +401,13 @@
 		prerequisite = { focus = WLI_establish_world_liberation_arbitration_agency }
 		prerequisite = { focus = WLI_establish_world_liberation_secretariat }
 		prerequisite = { focus = WLI_establish_world_liberation_supervisory_commission }
-		completion_reward = {
+		completion_reward_joint_originator = {
 			add_political_power = 100
+			add_stability = 0.1
+		}
+		completion_reward_joint_member = {
+			add_political_power = 50
+			add_stability = 0.1
 		}
 	}
 
@@ -267,7 +425,28 @@
 		prerequisite = { focus = WLI_convene_world_liberation_congress }
 		mutually_exclusive = { focus = WLI_stars_revolve_around_the_moon }
 		completion_reward = {
-			add_stability = 0.05
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_gain = 0.02
+				}
+				add_to_variable = {
+					PRC_WLI_drift_defence_factor = 0.1
+				}
+				add_to_variable = {
+					PRC_WLI_army_org_factor = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea5
+				}
+			}
 		}
 	}
 
@@ -285,7 +464,28 @@
 		prerequisite = { focus = WLI_convene_world_liberation_congress }
 		mutually_exclusive = { focus = WLI_red_sun_shines_bright }
 		completion_reward = {
-			add_war_support = 0.05
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_gain = -0.02
+				}
+				add_to_variable = {
+					PRC_WLI_industrial_capacity_factory = 0.05
+				}
+				add_to_variable = {
+					PRC_WLI_production_factory_max_efficiency_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea6
+				}
+			}
 		}
 	}
 
@@ -305,8 +505,21 @@
 			focus = WLI_stars_revolve_around_the_moon 
 		}
 		completion_reward = {
-			add_stability = 0.05
-			add_war_support = 0.05
+			add_to_variable = {
+				PRC_WLI_stability_weekly = 0.002
+			}
+			add_to_variable = {
+				PRC_WLI_resistance_target = -0.05
+			}
+			add_to_variable = {
+				PRC_WLI_resistance_growth = -0.2
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea4
+				}
+			}
 		}
 	}
 
@@ -323,7 +536,18 @@
 		}
 		prerequisite = { focus = WLI_unite_and_look_forward }
 		completion_reward = {
-			add_political_power = 75
+			add_to_variable = {
+				PRC_WLI_political_power_gain = 0.02
+			}
+			add_to_variable = {
+				PRC_WLI_compliance_growth = 0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea2
+				}
+			}
 		}
 	}
 
@@ -340,7 +564,16 @@
 		}
 		prerequisite = { focus = WLI_unite_and_look_forward }
 		completion_reward = {
-			add_war_support = 0.05
+			add_political_power = 50
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea3
+				}
+			}
 		}
 	}
 
@@ -358,7 +591,18 @@
 		prerequisite = { focus = WLI_thorough_discussion }
 		prerequisite = { focus = WLI_unanimous_action }
 		completion_reward = {
-			add_stability = 0.1
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_WLI_stability_weekly = 0.002
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea1
+				}
+			}
 		}
 	}
 
@@ -379,9 +623,27 @@
 		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
 		prerequisite = { focus = WLI_international_tariff_agreement }
 		completion_reward = {
-			add_offsite_building = {
-				type = industrial_complex
-				level = 1
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_political_power_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_business_value_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea7
+				}
 			}
 		}
 	}
@@ -399,7 +661,28 @@
 		}
 		prerequisite = { focus = WLI_deepen_belt_and_road }
 		completion_reward = {
-			add_stability = 0.05
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_communist_drift = 0.01
+				}
+				add_to_variable = {
+					PRC_WLI_libertarian_socialist_drift = 0.01
+				}
+				add_to_variable = {
+					PRC_WLI_research_speed_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea7
+				}
+			}
 		}
 	}
 
@@ -422,7 +705,9 @@
 			has_completed_focus = WLI_joint_command_center
 		}
 		completion_reward = {
-			army_experience = 10
+			add_dynamic_modifier = {
+				modifier = WLI_collective_army_modifier
+			}
 		}
 	}
 
@@ -445,6 +730,30 @@
 				uses = 1
 				category = electronics
 			}
+			custom_effect_tooltip = RD_different_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				PRC = {
+					add_ideas = WLI_collective_intelligence_PRC
+					every_allied_country = {
+						add_ideas = WLI_collective_intelligence_others
+					}
+				}
+				
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						tag = PRC
+					}
+					add_ideas = WLI_collective_intelligence_PRC
+				}
+				else = {
+					add_ideas = WLI_collective_intelligence_others
+				}
+			}
+			
+			
 		}
 	}
 
@@ -461,12 +770,38 @@
 		}
 		prerequisite = { focus = WLI_joint_command_center }
 		completion_reward = {
-			add_tech_bonus = {
-				name = WLI_infantry_weapons_bonus
-				bonus = 0.5
-				uses = 2
-				category = infantry_weapons
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_supply_consumption_factor = -0.1	
+				}
+				add_to_variable = {
+					WLI_ca_var_production_factory_efficiency_gain_factor = 0.2	
+				}
 			}
+			add_tech_bonus = {
+				name = WLI_standardize_equipment
+				bonus = 1
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = WLI_standardize_equipment
+				bonus = 1
+				uses = 1
+				category = armor
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea1
+				}
+			}
+			custom_effect_tooltip = RD_ally_only_buff
 		}
 	}
 
@@ -483,7 +818,22 @@
 		}
 		prerequisite = { focus = WLI_joint_command_center }
 		completion_reward = {
-			army_experience = 25
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				WLI_ca_var_command_power_gain_mult = 0.1	
+			}
+			add_to_variable = {
+				WLI_ca_var_army_org_factor = 0.1	
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea2
+				}
+			}
+			
+			
 		}
 	}
 
@@ -500,11 +850,28 @@
 		}
 		prerequisite = { focus = WLI_share_military_intelligence }
 		completion_reward = {
-			random_owned_controlled_state = {
-				construct_building_in_random_province = {
-					supply_node = 1
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_supply_node_range = 0.1
+				}
+				add_to_variable = {
+					WLI_ca_var_army_fuel_consumption_factor = -0.1
 				}
 			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea4
+				}
+			}
+			
 		}
 	}
 
@@ -522,6 +889,8 @@
 		prerequisite = { focus = WLI_standardize_equipment }
 		prerequisite = { focus = WLI_share_military_intelligence }
 		completion_reward = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
 			random_owned_controlled_state = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -530,6 +899,39 @@
 					instant_build = yes
 				}
 			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_production_factory_max_efficiency_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_industrial_capacity_factory = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea5
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			
 		}
 	}
 
@@ -547,7 +949,31 @@
 		prerequisite = { focus = WLI_command_system_reform }
 		prerequisite = { focus = WLI_standardize_equipment }
 		completion_reward = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
 			army_experience = 30
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				add_timed_idea = {
+					idea = WLI_joint_military_exercises_idea
+					days = 150
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = {
+							tag = PRC
+						}
+					}
+					add_timed_idea = {
+						idea = WLI_joint_military_exercises_idea
+						days = 150
+					}
+				}
+			}
 		}
 	}
 
@@ -564,7 +990,45 @@
 		}
 		prerequisite = { focus = WLI_command_system_reform }
 		completion_reward = {
-			army_experience = 20
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				WLI_ca_var_army_org_factor = 0.05
+			}
+			add_to_variable = {
+				WLI_ca_var_army_morale_factor = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea3
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				add_mastery_bonus = {
+					name = WLI_coordinated_military_training
+					bonus = 0.25
+					days = 720
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = {
+							tag = PRC
+						}
+					}
+					add_mastery_bonus = {
+						name = WLI_coordinated_military_training
+						bonus = 0.25
+						days = 720
+					}
+				}
+			}
+			
 		}
 	}
 
@@ -583,8 +1047,47 @@
 		prerequisite = { focus = WLI_coordinated_military_training }
 		prerequisite = { focus = WLI_military_industrial_cooperation }
 		prerequisite = { focus = WLI_expand_depot_network }
-		completion_reward = {
+		completion_reward_joint_originator = {
+			air_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_eagle_strikes_the_sky
+				uses = 2
+				bonus = 1
+				category = cat_strategic_bomber
+			}
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
 			air_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_eagle_strikes_the_sky
+				uses = 1
+				bonus = 1
+				category = cat_strategic_bomber
+			}
 		}
 	}
 
@@ -603,8 +1106,49 @@
 		prerequisite = { focus = WLI_coordinated_military_training }
 		prerequisite = { focus = WLI_military_industrial_cooperation }
 		prerequisite = { focus = WLI_expand_depot_network }
-		completion_reward = {
+		completion_reward_joint_originator = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_fish_glides_in_deep
+				uses = 2
+				bonus = 1
+				category = ss_tech
+			}
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
 			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_fish_glides_in_deep
+				uses = 1
+				bonus = 1
+				category = ss_tech
+			}
 		}
 	}
 
@@ -622,7 +1166,43 @@
 		prerequisite = { focus = WLI_eagle_strikes_the_sky }
 		prerequisite = { focus = WLI_fish_glides_in_deep }
 		completion_reward = {
-			add_war_support = 0.05
+			if = {
+				limit = { 
+					tag = PRC
+				}
+				add_war_support = 0.1
+			}
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea8
+				}
+			}
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_war_support_factor = 0.1
+				}
+				add_to_variable = {
+					WLI_ca_var_army_attack_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_army_defence_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_navy_capital_ship_attack_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_navy_capital_ship_defence_factor = 0.05
+				}
+			}
+			
 		}
 	}
 
@@ -640,7 +1220,27 @@
 		prerequisite = { focus = WLI_wind_rolls_red_flag }
 		mutually_exclusive = { focus = WLI_joint_action }
 		completion_reward = {
-			army_experience = 15
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_army_org_factor = 0.1
+				}
+				add_to_variable = {
+					WLI_ca_var_army_morale = 0.1
+				}
+			}		
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea6
+				}
+			}
 		}
 	}
 
@@ -658,7 +1258,27 @@
 		prerequisite = { focus = WLI_wind_rolls_red_flag }
 		mutually_exclusive = { focus = WLI_unified_command }
 		completion_reward = {
-			army_experience = 15
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_army_org_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_army_morale = 0.2
+				}
+			}		
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea7
+				}
+			}
 		}
 	}
 
@@ -678,7 +1298,13 @@
 			focus = WLI_joint_action 
 		}
 		completion_reward = {
-			add_war_support = 0.1
+			add_war_support = 0.2
+		}
+		completion_reward_joint_member = {
+			add_political_power = 75
+		}
+		completion_reward_joint_originator = {
+			add_political_power = 150
 		}
 	}
 
@@ -695,8 +1321,20 @@
 		}
 		prerequisite = { focus = WLI_coordinated_military_training }
 		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
-		completion_reward = {
-			add_manpower = 20000
+		completion_reward_joint_originator = {
+			add_ideas = WLI_revolution_reborn
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_ideas = WLI_revolution_reborn1
+			}
 		}
 	}
 
@@ -714,8 +1352,10 @@
 		x = 10
 		y = 1
 		cost = 1
-		completion_reward_joint_member = {
-			add_political_power = 25
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = WLI_economic_cooperation_modifier
+			}
 		}
 	}
 
@@ -731,11 +1371,85 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
-		completion_reward_joint_member = {
-			add_offsite_building = {
-				type = industrial_complex
-				level = 1
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
 			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					state_population > 50000
+					free_building_slots = {
+						building = dockyard
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_different_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = { tag = PRC }
+				}
+				random_owned_controlled_state = {
+					limit = {
+						state_population > 50000
+					}		
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						state_population > 50000
+						free_building_slots = {
+							building = dockyard
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = {
+						state_population > 50000
+					}
+					add_extra_state_shared_building_slots = 5
+				}
+				add_offsite_building = {
+					type = industrial_complex
+					level = 3
+				}
+				add_offsite_building = {
+					type = dockyard
+					level = 2
+				}
+			}
+			
 		}
 	}
 
@@ -751,8 +1465,28 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
-		completion_reward_joint_member = {
-			add_research_slot = 1
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_tech_bonus = {
+					name = WLI_technical_assistance
+					uses = 2
+					bonus = 1
+					category = industry
+				}
+				add_tech_bonus = {
+					name = WLI_technical_assistance
+					uses = 2
+					bonus = 1
+					category = electronics
+				}
+			}
 		}
 	}
 
@@ -768,8 +1502,28 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_industrial_aid }
-		completion_reward_joint_member = {
-			add_political_power = 50
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_business_value_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea4
+				}
+			}
 		}
 	}
 
@@ -786,13 +1540,8 @@
 		}
 		prerequisite = { focus = WLI_industrial_aid }
 		prerequisite = { focus = WLI_technical_assistance }
-		completion_reward_joint_originator = {
-			add_tech_bonus = {
-				name = WLI_joint_research_bonus
-				bonus = 0.5
-				uses = 2
-				category = industry
-			}
+		completion_reward = {
+			add_to_tech_sharing_group = eadi_research
 		}
 	}
 
@@ -808,8 +1557,28 @@
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_technical_assistance }
-		completion_reward_joint_originator = {
-			add_political_power = 75
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.1
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_buildings_factor = 0.025
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea3
+				}
+			}
 		}
 	}
 
@@ -826,10 +1595,27 @@
 		}
 		prerequisite = { focus = WLI_international_tariff_agreement }
 		prerequisite = { focus = WLI_establish_joint_research_institutions }
-		completion_reward_joint_originator = {
-			add_offsite_building = {
-				type = industrial_complex
-				level = 1
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_resource_trade_cost_bonus_per_factory = 2
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea5
+				}
 			}
 		}
 	}
@@ -847,8 +1633,31 @@
 		}
 		prerequisite = { focus = WLI_establish_joint_research_institutions }
 		prerequisite = { focus = WLI_establish_world_liberation_central_bank }
-		completion_reward_joint_originator = {
-			add_stability = 0.05
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_business_value_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea6
+				}
+			}
 		}
 	}
 
@@ -865,11 +1674,35 @@
 		}
 		prerequisite = { focus = WLI_unified_market }
 		prerequisite = { focus = WLI_unified_currency }
-		completion_reward_joint_member = {
-			add_offsite_building = {
-				type = industrial_complex
-				level = 2
+		completion_reward = {
+			custom_effect_tooltip = RD_different_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					tag = PRC
+				}
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.1
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = WLI_economic_cooperation_idea0
+						add_idea = WLI_economic_cooperation_idea1
+					}
+				}
 			}
+			else = {
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.15
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = WLI_economic_cooperation_idea0
+						add_idea = WLI_economic_cooperation_idea2
+					}
+				}
+			}
+			
 		}
 	}
 
@@ -886,7 +1719,77 @@
 		}
 		prerequisite = { focus = WLI_build_integrated_economic_circle }
 		completion_reward = {
-			add_political_power = 50
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_factory_max_efficiency_factor = 0.05
+				}
+				
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea8
+				}
+			}
+		}
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -903,7 +1806,37 @@
 		}
 		prerequisite = { focus = WLI_build_integrated_economic_circle }
 		completion_reward = {
-			add_stability = 0.05
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_buildings_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea11
+				}
+			}
+			
 		}
 	}
 
@@ -922,7 +1855,62 @@
 		prerequisite = { focus = WLI_coordinated_development_plan }
 		mutually_exclusive = { focus = WLI_livelihood_first }
 		completion_reward = {
-			add_war_support = 0.05
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_arms_factory_factor = 0.1
+				}
+				
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea9
+				}
+			}
+		}
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -941,7 +1929,62 @@
 		prerequisite = { focus = WLI_coordinated_development_plan }
 		mutually_exclusive = { focus = WLI_military_supplies_first }
 		completion_reward = {
-			add_stability = 0.05
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_industrial_complex_factor = 0.1
+				}
+				
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea10
+				}
+			}
+		}
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -959,8 +2002,72 @@
 		prerequisite = { focus = WLI_expand_international_division_of_labor }
 		prerequisite = { focus = WLI_coordinated_development_plan }
 		mutually_exclusive = { focus = WLI_urban_rural_bridging }
-		completion_reward = {
-			add_political_power = 25
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -978,9 +2085,162 @@
 		prerequisite = { focus = WLI_expand_international_division_of_labor }
 		prerequisite = { focus = WLI_coordinated_development_plan }
 		mutually_exclusive = { focus = WLI_staggered_development }
-		completion_reward = {
-			add_stability = 0.025
-			add_political_power = 25
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -1003,8 +2263,33 @@
 			focus = WLI_staggered_development
 			focus = WLI_urban_rural_bridging 
 		}
-		completion_reward = {
-			add_stability = 0.05
+		completion_reward_joint_originator = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 2
+			}
+		}
+		completion_reward_joint_member = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 1
+			}
 		}
 	}
 
