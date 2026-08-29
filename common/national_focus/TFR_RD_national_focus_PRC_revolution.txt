@@ -755,9 +755,7 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
-        set_country_flag = PRC_mongolia_hetong_flag_1
-        set_country_flag = PRC_mongolia_hetong_flag
-        unlock_decision_category_tooltip = PRC_mongolia_hetong
+        unlock_decision_category_tooltip = PRC_sino_mongolia_negotiate_tt
     }
 }
 shared_focus = {
@@ -782,7 +780,14 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
-        unlock_decision_tooltip = PRC_mongolia_war
+        # 中蒙谈判正式入口（防重入：谈判已启动则跳过）
+        if = {
+            limit = {
+                NOT = { has_global_flag = TFR_CMRN_negotiation_active }
+                country_exists = MON
+            }
+            MON = { TFR_CMRN_init_negotiation = yes }
+        }
         SOV = {
             country_event = {
                 id = china.1719
@@ -811,23 +816,21 @@ shared_focus = {
     }
     available = {
         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        # 与中俄谈判可谈判判定对齐：统一俄罗斯（梅德韦杰夫）或红系非杜金
         SOV = {
-            OR = {
-                has_government = communist
-                has_government = libertarian_socialist
-                has_government = totalitarian_socialist
-                has_government = authoritarian_democrat
-                has_government = social_liberal
-                has_government = social_democrat
-                has_country_leader = {
-                    character = SOV_gennady_zyuganov
-                    ruling_only = yes
-                }
-            }
+            TFR_CRN_sov_negotiable = yes
         }
     }
     cancel_if_invalid = yes
     completion_reward = {
+        # 中蒙谈判正式入口（防重入：公投/解放线已启动则跳过）
+        if = {
+            limit = {
+                NOT = { has_global_flag = TFR_CMRN_negotiation_active }
+                country_exists = MON
+            }
+            MON = { TFR_CMRN_init_negotiation = yes }
+        }
         unlock_decision_tooltip = PRC_USSR_diplomacy
         hidden_effect = {
             country_event = {
