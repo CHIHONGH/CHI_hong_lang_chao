@@ -52,6 +52,36 @@ focus_tree = {
 				news_event = nlnews.6
 				PRC = {
 					add_to_faction = NAX
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
 				}
 				NAX = {
 					load_focus_tree = WLI_tree

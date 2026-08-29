@@ -10410,24 +10410,6 @@ JAP_foreign_policy_cat = {
 				}
 				if = {
 					limit = {
-						tag = VIN
-					}
-					OR = {
-						AND = {
-							check_variable = { 
-								global.JAP_influence_VIN_var > 0.7
-							}
-							check_variable = { 
-								global.PRC_influence_VIN_var < 0.3
-							}
-						}
-						check_variable = { 
-							global.JAP_influence_VIN_var > 0.99
-						}
-					}
-				}
-				if = {
-					limit = {
 						tag = LAO
 					}
 					OR = {
@@ -10554,7 +10536,7 @@ JAP_foreign_policy_cat = {
 				}
 			}
 		}
-		targets = { BRM VIN LAO CAM INS MAL PHI SIG SIA }
+		targets = { BRM LAO CAM INS MAL PHI SIG SIA }
 		complete_effect = {
 			JAP = {
 				add_to_faction = FROM

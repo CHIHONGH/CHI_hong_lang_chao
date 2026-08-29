@@ -919,6 +919,10 @@ PTF_deal_with_USN = {
 		war_with_on_remove = ZAP
 		war_with_on_remove = MEX
 		remove_effect = {
+			add_timed_idea = {
+				idea = PTF_wait_for_me
+				days = 10
+			}
 			log = "[GetDateText]: [Root.GetName]: decision USA_operation_green_decision remove_effect"
 			every_other_country = {
 				limit = {
@@ -1024,6 +1028,36 @@ PTF_deal_with_USN = {
 						PRC_MEX_the_horror_of_decade_6
 					}
 					add_to_faction = ZAP
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
 					add_to_variable = {
 						CPC_frame = 4
 					}
@@ -1066,6 +1100,36 @@ PTF_deal_with_USN = {
 						PRC_MEX_the_horror_of_decade_6
 					}
 					add_to_faction = MEX
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
 					add_to_variable = {
 						CPC_frame = 4
 					}
