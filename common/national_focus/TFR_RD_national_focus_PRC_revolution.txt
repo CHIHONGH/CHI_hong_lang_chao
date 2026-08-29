@@ -755,6 +755,14 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
+        # 中蒙谈判正式入口（防重入：谈判已启动则跳过）
+        if = {
+            limit = {
+                NOT = { has_global_flag = TFR_CMRN_negotiation_active }
+                country_exists = MON
+            }
+            MON = { TFR_CMRN_init_negotiation = yes }
+        }
         unlock_decision_category_tooltip = PRC_sino_mongolia_negotiate_tt
     }
 }
@@ -907,6 +915,14 @@ shared_focus = {
     }
     cancel_if_invalid = yes
     completion_reward = {
+        # 中蒙谈判正式入口（防重入：谈判已启动则跳过）
+        if = {
+            limit = {
+                NOT = { has_global_flag = TFR_CMRN_negotiation_active }
+                country_exists = MON
+            }
+            MON = { TFR_CMRN_init_negotiation = yes }
+        }
         hidden_effect = {
             country_event = {
                 id = prcs.15
