@@ -1,0 +1,177 @@
+# TFR_中俄谈判 — 动态脚本本地化
+# 根据 SOV 意识形态和领导人动态切换"苏方/俄方"称谓
+
+defined_text = {
+	name = TFR_CRN_GetSovFactionLabel
+
+	# 泛红且非杜金欧亚 → 苏方
+	text = {
+		trigger = {
+			OR = {
+				has_government = libertarian_socialist
+				has_government = communist
+				has_government = totalitarian_socialist
+			}
+			NOT = {
+				has_country_leader = {
+					character = SOV_alexander_dugin
+					ruling_only = yes
+				}
+			}
+		}
+		localization_key = TFR_CRN_label_soviet
+	}
+
+	# 其余 → 俄方
+	text = {
+		localization_key = TFR_CRN_label_russian
+	}
+}
+
+defined_text = {
+	name = TFR_CRN_GetSovFullName
+
+	text = {
+		trigger = {
+			OR = {
+				has_government = libertarian_socialist
+				has_government = communist
+				has_government = totalitarian_socialist
+			}
+			NOT = {
+				has_country_leader = {
+					character = SOV_alexander_dugin
+					ruling_only = yes
+				}
+			}
+		}
+		localization_key = TFR_CRN_name_soviet
+	}
+
+	text = {
+		localization_key = TFR_CRN_name_russian
+	}
+}
+
+defined_text = {
+	name = TFR_CRN_GetSovDesperationLabel
+
+	text = {
+		trigger = {
+			OR = {
+				has_government = libertarian_socialist
+				has_government = communist
+				has_government = totalitarian_socialist
+			}
+			NOT = {
+				has_country_leader = {
+					character = SOV_alexander_dugin
+					ruling_only = yes
+				}
+			}
+		}
+		localization_key = TFR_CRN_desp_label_soviet
+	}
+
+	text = {
+		localization_key = TFR_CRN_desp_label_russian
+	}
+}
+
+defined_text = {
+	name = TFR_CRN_GetSovConcessionLabel
+
+	text = {
+		trigger = {
+			OR = {
+				has_government = libertarian_socialist
+				has_government = communist
+				has_government = totalitarian_socialist
+			}
+			NOT = {
+				has_country_leader = {
+					character = SOV_alexander_dugin
+					ruling_only = yes
+				}
+			}
+		}
+		localization_key = TFR_CRN_conc_label_soviet
+	}
+
+	text = {
+		localization_key = TFR_CRN_conc_label_russian
+	}
+}
+
+defined_text = {
+	name = TFR_CRN_GetRoundTitle
+
+	text = {
+		trigger = { has_global_flag = TFR_CRN_round_1_active }
+		localization_key = TFR_CRN_round_title_r1
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_round_2_active }
+		localization_key = TFR_CRN_round_title_r2
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_round_3_active }
+		localization_key = TFR_CRN_round_title_r3
+	}
+}
+
+defined_text = {
+	name = TFR_CRN_GetTargetStateName
+
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_408 }
+		localization_key = TFR_CRN_target_state_408
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_409 }
+		localization_key = TFR_CRN_target_state_409
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_657 }
+		localization_key = TFR_CRN_target_state_657
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_1328 }
+		localization_key = TFR_CRN_target_state_1328
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_1293 }
+		localization_key = TFR_CRN_target_state_1293
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_560 }
+		localization_key = TFR_CRN_target_state_560
+	}
+	text = {
+		trigger = { has_global_flag = TFR_CRN_target_329 }
+		localization_key = TFR_CRN_target_state_329
+	}
+	text = {
+		localization_key = TFR_CRN_target_state_none
+	}
+}
+
+defined_text = {
+	name = TFR_CRN_GetConflictStatus
+
+	text = {
+		trigger = { has_global_flag = TFR_CRN_full_war_active }
+		localization_key = TFR_CRN_conflict_status_war
+	}
+	text = {
+		trigger = { has_border_war = yes }
+		localization_key = TFR_CRN_conflict_status_battling
+	}
+	text = {
+		trigger = { TFR_CRN_has_target = yes }
+		localization_key = TFR_CRN_conflict_status_ready
+	}
+	text = {
+		localization_key = TFR_CRN_conflict_status_done
+	}
+}

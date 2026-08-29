@@ -7,7 +7,7 @@ focus_tree = {
 			tag = NAX
 		}
 	}
-
+	default = no
 	shared_focus = PRC_Southwestern_border_in_critical_condition
 	#!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
 	focus = {
@@ -52,6 +52,39 @@ focus_tree = {
 				news_event = nlnews.6
 				PRC = {
 					add_to_faction = NAX
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
+				}
+				NAX = {
+					load_focus_tree = WLI_tree
 				}
 			}
 		}
@@ -339,7 +372,7 @@ focus_tree = {
 				add_compliance = 15
 				add_resistance = -15
 			}
-			add_stability = 0,025
+			add_stability = 0.025
 		}
 	}
 	focus = {

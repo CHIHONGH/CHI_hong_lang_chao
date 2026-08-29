@@ -1,0 +1,184 @@
+militia_PRC = {
+
+	available_for = {
+		PRC
+	}
+	
+	role = garrison
+	
+	upgrade_prio = {
+		base = 10
+
+		modifier = {
+			factor = 1
+		}
+	}
+
+	WuJing = {
+		reinforce_prio = 0
+	
+		upgrade_prio = {
+			factor = 1
+		}
+		
+		target_template = {
+			regiments = {
+				militia = 3
+			}
+		}
+	}
+}
+
+armored_PRC = {
+
+	available_for = {
+		PRC
+	}
+
+	role = armor
+	
+	upgrade_prio = {
+		factor = 10
+
+		modifier = {
+			factor = 1
+		}
+	}
+	
+	Jixiehua_Bubing_Shi_Taihai = {
+		reinforce_prio = 1
+		custom_icon = 17
+		can_upgrade_in_field = {
+			always = yes
+		}
+	
+		upgrade_prio = {
+			factor = 10
+		}
+
+		target_template = {
+			regiments = {
+				mechanized = 4
+				modern_armor = 6
+			}
+
+			support = {
+				engineer = 1
+				air_mechanized = 1
+				spaa_company = 1
+				light_flame_tank = 1
+				helicopter_recon = 1
+			}
+		}
+	}
+
+	Jixiehua_Bubing_Shi_GAW = {
+		reinforce_prio = 1
+		custom_icon = 17
+		can_upgrade_in_field = {
+			always = yes
+		}
+	
+		upgrade_prio = {
+			factor = 1
+			modifier = {
+				factor = 100
+				has_completed_focus = PLA_orbital_drop_new
+			}
+		}
+
+		target_template = {
+			regiments = {
+				mechanized = 3
+				modern_armor = 9
+			}
+
+			support = {
+				engineer = 1
+				air_mechanized = 1
+				exoskeleton_support = 1
+				light_flame_tank = 1
+				helicopter_recon = 1
+			}
+		}
+		replace_at_match = 0.9
+		replace_with = Jixiehua_Bubing_Shi_Taihai
+	}
+}
+
+marines_PRC = {
+
+	available_for = {
+		PRC
+	}
+
+	role = marines
+
+	upgrade_prio = {
+		base = 10
+
+		modifier = {
+			factor = 1
+		}
+	}
+	
+	Haijun_Lu_Zhandui_Taihai = {
+		reinforce_prio = 2
+		custom_icon = 35
+		can_upgrade_in_field = {
+			always = yes
+		}
+
+		upgrade_prio = {
+			base = 10
+		}
+
+		target_template = {
+			regiments = {
+				paratrooper = 6
+				modern_armor = 6
+			}
+
+			support = {
+				engineer = 1
+				spa_company = 1
+				air_mechanized = 1
+				light_flame_tank = 1
+				helicopter_recon = 1
+			}
+		}
+	}
+
+	Haijun_Lu_Zhandui_GAW = {
+		reinforce_prio = 2
+		custom_icon = 35
+		can_upgrade_in_field = {
+			always = yes
+		}
+
+		upgrade_prio = {
+			factor = 1
+			modifier = {
+				factor = 100
+				has_completed_focus = PLA_orbital_drop_new
+			}
+		}
+
+		target_template = {
+			regiments = {
+				modern_armor = 9
+				paratrooper = 6
+			}
+
+			support = {
+				engineer = 1
+				air_mechanized = 1
+				exoskeleton_support = 1
+				light_flame_tank = 1
+				helicopter_recon = 1
+			}
+		}
+		replace_at_match = 0.9
+		replace_with = Haijun_Lu_Zhandui_Taihai
+	}
+}

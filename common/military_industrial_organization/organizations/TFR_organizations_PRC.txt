@@ -228,14 +228,14 @@ PRC_heping_artillery_organization = { #Qiqihar Heping Heavy Industry Group
 		ai_will_do = { base = 2 }
 	}
 }
-#PRC_poly_organization = {
-#	include = generic_infantry_equipment_organization
-#	icon = GFX_idea_PRC_poly
-#	allowed = {	
-#		tag = PRC 
-#		has_dlc = "Arms Against Tyranny"
-#	}
-#}
+PRC_poly_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_PRC_poly
+	allowed = {	
+		tag = PRC 
+		has_dlc = "Arms Against Tyranny"
+	}
+}
 PRC_dajiang_organization = {
 	include = generic_TFR_UAV_equipment_organization
 	icon = GFX_idea_PRC_dajiang
@@ -530,7 +530,7 @@ PRC_csic_wuchang_shipyard_organization = { #Wuchang Shipbuilding Industry Group
 		position = { x = 0 y = 1 }
 
 		available = {
-			PRC = { has_completed_focus = PAL_build_new_navy }
+			PRC = { has_completed_focus = PRC_a_blue_water_navy }
 		}
 
 		equipment_bonus = {
@@ -553,7 +553,7 @@ PRC_csic_wuchang_shipyard_organization = { #Wuchang Shipbuilding Industry Group
 		position = { x = 0 y = 1 }
 
 		available = {
-			PRC = { has_completed_focus = PAL_build_new_navy }
+			PRC = { has_completed_focus = PRC_a_blue_water_navy }
 		}
 
 		equipment_bonus = {
@@ -579,7 +579,7 @@ PRC_csic_wuchang_shipyard_organization = { #Wuchang Shipbuilding Industry Group
 		position = { x = 2 y = 0 }
 
 		available = {
-			PRC = { has_completed_focus = PRC_a_blue_water_navy }
+			PRC = { has_completed_focus = PAL_build_new_navy }
 		}
 
 		equipment_bonus = {
@@ -604,7 +604,7 @@ PRC_csic_wuchang_shipyard_organization = { #Wuchang Shipbuilding Industry Group
 		position = { x = 2 y = 0 }
 
 		available = {
-			PRC = { has_completed_focus = PRC_a_blue_water_navy }
+			PRC = { has_completed_focus = PAL_build_new_navy }
 		}
 
 		equipment_bonus = {
@@ -712,7 +712,7 @@ PRC_jiangnan_organization = {
 
 		available = {
 			owner = { controls_state = 1215 }
-			PRC = { has_completed_focus = PAL_Reforming_aircraft_carrier_battle_groups }
+			PRC = { has_completed_focus = PRC_carrier_primacy }
 		}
 
 		limit_to_equipment_type = { mio_cat_eq_all_carrier }
@@ -748,7 +748,7 @@ PRC_jiangnan_organization = {
 
 		available = {
 			owner = { controls_state = 1215 }
-			PRC = { has_completed_focus = PAL_Reforming_aircraft_carrier_battle_groups }
+			PRC = { has_completed_focus = PRC_carrier_primacy }
 		}
 
 		limit_to_equipment_type = { mio_cat_eq_all_carrier }
@@ -789,7 +789,7 @@ PRC_Huangpu_Wenchong_organization = { #Huangpu Wenchong Shipyard
 		position = { x = 4 y = 0 }
 
 		#available = {
-		#	PRC = { has_completed_focus = PRC_a_blue_water_navy }
+		#	PRC = { has_completed_focus = PAL_build_new_navy }
 		#}
 
 		equipment_bonus = {
@@ -816,7 +816,7 @@ PRC_Huangpu_Wenchong_organization = { #Huangpu Wenchong Shipyard
 		position = { x = 0 y = 1 }
 
 		#available = {
-		#	PRC = { has_completed_focus = PRC_a_blue_water_navy }
+		#	PRC = { has_completed_focus = PAL_build_new_navy }
 		#}
 
 		equipment_bonus = {
@@ -843,7 +843,7 @@ PRC_Huangpu_Wenchong_organization = { #Huangpu Wenchong Shipyard
 		position = { x = -2 y = 0 }
 
 		#available = {
-		#	PRC = { has_completed_focus = PRC_a_blue_water_navy }
+		#	PRC = { has_completed_focus = PAL_build_new_navy }
 		#}
 
 		equipment_bonus = {
@@ -871,7 +871,7 @@ PRC_Huangpu_Wenchong_organization = { #Huangpu Wenchong Shipyard
 		position = { x = 0 y = 2 }
 
 		#available = {
-		#	PRC = { has_completed_focus = PRC_a_blue_water_navy }
+		#	PRC = { has_completed_focus = PAL_build_new_navy }
 		#}
 
 		equipment_bonus = {
@@ -895,7 +895,7 @@ PRC_Huangpu_Wenchong_organization = { #Huangpu Wenchong Shipyard
 		position = { x = 8 y = 0 }
 
 		#available = {
-		#	PRC = { has_completed_focus = PRC_a_blue_water_navy }
+		#	PRC = { has_completed_focus = PAL_build_new_navy }
 		#}
 
 		equipment_bonus = {
@@ -1056,7 +1056,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			PRC = { has_completed_focus = PAL_bulky_giant_ship_pointing_straight_east }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine }
@@ -1116,8 +1116,8 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			PRC = { has_completed_focus = PAL_bulky_giant_ship_pointing_straight_east }
-			#has_mio_flag = PRC_mio_flag_cmc_approve_ssn_funding
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			has_mio_flag = PRC_mio_flag_cmc_approve_ssn_funding
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine }
@@ -1150,7 +1150,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			PRC = { has_completed_focus = PAL_bulky_giant_ship_pointing_straight_east }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine submarine }	
@@ -1181,7 +1181,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			#PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { mio_cat_tech_all_submarine_and_modules submarine }	
@@ -1211,7 +1211,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			#PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine submarine }	
@@ -1240,7 +1240,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			#PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine submarine }	
@@ -1271,7 +1271,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			#PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine submarine }	
@@ -1304,7 +1304,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			#PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine submarine }	
@@ -1333,7 +1333,7 @@ PRC_bohai_shipyard_organization = { #Bohai Shipbuilding Heavy Industry Company
 
 		available = {
 			owner = { controls_state = 1425 }
-			#PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
+			PRC = { has_completed_focus = PRC_expand_the_fleet_of_nuclear_submarines }
 		}
 
 		limit_to_equipment_type = { ship_hull_nuclear_submarine submarine }	
@@ -1617,7 +1617,7 @@ PRC_hudong_shipyard_organization = {
 			armor_value = 0.05
 		}
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_capacity_factor = 0.02
 		}
 
 		on_complete = {
@@ -1670,7 +1670,7 @@ PRC_hudong_shipyard_organization = {
 			naval_range = 0.07
 		}
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_capacity_factor = 0.03
 		}
 
 		on_complete = {		
@@ -1714,14 +1714,14 @@ PRC_hudong_shipyard_organization = {
 		}
 
 		equipment_bonus = {
-			carrier_size = 3
+			carrier_size = 1
 			armor_value = 0.1
 			build_cost_ic = 0.07
 			naval_speed = 0.10
 			naval_weather_penalty_factor = -0.10
 		}
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_capacity_factor = 0.03
 		}
 
 		on_complete = {		
@@ -1819,13 +1819,14 @@ PRC_hudong_shipyard_organization = {
 		equipment_bonus = {
 			naval_range = 0.05
 			build_cost_ic = 0.05
-			naval_speed = 0.1
+			naval_speed = 0.05
+			fuel_consumption = -0.05
 		}
 		production_bonus = {
-			production_resource_need_factor = 0.05
+			production_resource_need_factor = 0.1
 		}
 		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.20
+			military_industrial_organization_funds_gain = 0.25
 		}
 
 		on_complete = {
@@ -1928,7 +1929,7 @@ PRC_hudong_shipyard_organization = {
 			surface_detection = 0.12
 		}
 		production_bonus = {
-			production_resource_need_factor = 0.02
+			production_resource_need_factor = 0.1
 		}
 
 		ai_will_do = { base = 2 }
@@ -2026,8 +2027,8 @@ PRC_hudong_shipyard_organization = {
 
 		equipment_bonus = {
 			anti_air_attack = 0.05
-			naval_light_gun_hit_chance_factor = 0.1
-			naval_heavy_gun_hit_chance_factor = 0.1
+			naval_light_gun_hit_chance_factor = 0.07
+			naval_heavy_gun_hit_chance_factor = 0.07
 		}
 
 		ai_will_do = { base = 2 }
@@ -2320,7 +2321,7 @@ PRC_hudong_shipyard_organization = {
 
 		equipment_bonus = {
 			build_cost_ic = 0.05
-			carrier_size = 2
+			carrier_size = 1
 		}
 
 		production_bonus = {
@@ -2371,7 +2372,7 @@ PRC_hudong_shipyard_organization = {
 
 		production_bonus = {
 			production_resource_need_factor = -0.05
-			production_capacity_factor = 0.05
+			production_capacity_factor = 0.02
 		}
 
 		on_complete = {
@@ -2424,7 +2425,7 @@ PRC_hudong_shipyard_organization = {
 
 		production_bonus = {
 			production_resource_need_factor = 0.03
-			production_capacity_factor = 0.03
+			production_capacity_factor = 0.02
 		}
 
 		on_complete = {
@@ -2475,8 +2476,8 @@ PRC_hudong_shipyard_organization = {
 		}
 
 		production_bonus = {
-			production_resource_need_factor = -0.05
-			production_capacity_factor = 0.05
+			production_resource_need_factor = -0.02
+			production_capacity_factor = 0.02
 		}
 
 		on_complete = {
@@ -2500,8 +2501,10 @@ PRC_hudong_shipyard_organization = {
 #		has_dlc = "Arms Against Tyranny"
 #	}
 #}
+#railway equipment
 
-#missile equipment
+
+#中国航天科技集团
 PRC_CASC_organization = {
 	icon = GFX_PRC_mio_CASC_RD
 	background = GFX_mio_CASC_background
@@ -2547,14 +2550,12 @@ PRC_CASC_organization = {
 	initial_trait = {
 		name = PRC_CASC_subtitle
 
-		organization_modifier = {
-			military_industrial_organization_design_team_assign_cost = -0.5
-		}
 		production_bonus = {
 			production_capacity_factor = 0.05		
 		}
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.05
+			military_industrial_organization_design_team_assign_cost = -0.5
 		}
 	}
 
@@ -2565,24 +2566,22 @@ PRC_CASC_organization = {
 
 		position = { x = 4 y = 0 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
 		}
 
-		equipment_bonus = {
-			reliability = 0.05
-		}
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_hangkong1_yuan_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 12
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 12
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2600,21 +2599,21 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
 		}
 
-		equipment_bonus = {
-			build_cost_ic = -0.1
+		production_bonus ={
+			production_cost_factor = -0.1
 		}
 
 		on_complete = {
 			FROM = {
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2632,22 +2631,18 @@ PRC_CASC_organization = {
 
 		position = { x = -1 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.2
-			air_agility = 0.2
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_hypersonic_glide_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2665,22 +2660,18 @@ PRC_CASC_organization = {
 
 		position = { x = 1 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_bombing = 0.15
-			naval_strike_attack = 0.10
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_mirv_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2698,22 +2689,18 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_bombing = 0.10
-			naval_strike_attack = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_area_denial_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2731,21 +2718,18 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_range = 0.10
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_cpgs_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2763,22 +2747,18 @@ PRC_CASC_organization = {
 
 		position = { x = 1 y = 0 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_bombing = 0.15
-			naval_strike_attack = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_precision_guided_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 48
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 48
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2793,24 +2773,22 @@ PRC_CASC_organization = {
 
 		position = { x = 5 y = 0 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			guided_missile_equipment
 		}
 
-		equipment_bonus = {
-			reliability = 0.05
-		}
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_hangkong3_yuan_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 12
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 12
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2827,21 +2805,18 @@ PRC_CASC_organization = {
 
 		position = { x = 1 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			guided_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_agility = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_low_altitude_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2858,21 +2833,21 @@ PRC_CASC_organization = {
 
 		position = { x = 2 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			guided_missile_equipment
 		}
 
-		equipment_bonus = {
-			build_cost_ic = -0.15
+		production_bonus ={
+			production_cost_factor = -0.10
 		}
 
 		on_complete = {
 			FROM = {
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2889,21 +2864,21 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			guided_missile_equipment
 		}
 
-		equipment_bonus = {
-			build_cost_ic = -0.25
+		production_bonus ={
+			production_cost_factor = -0.15
 		}
 
 		on_complete = {
 			FROM = {
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2920,21 +2895,18 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			guided_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_agility = 0.25
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_stealth_cruise_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2951,23 +2923,18 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			guided_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_bombing = 0.1
-			naval_strike_attack = 0.1
-			air_range = 0.25
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_remote_precision_strike_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 21
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 21
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -2981,24 +2948,22 @@ PRC_CASC_organization = {
 
 		position = { x = 3 y = 0 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			sam_missile_equipment
 		}
 
-		equipment_bonus = {
-			reliability = 0.05
-		}
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_hangkong2_yuan_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 12
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 12
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3015,21 +2980,21 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			sam_missile_equipment
 		}
 
-		equipment_bonus = {
-			build_cost_ic = -0.15
+		production_bonus = {
+			production_cost_factor = -0.1
 		}
 
 		on_complete = {
 			FROM = {
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3046,21 +3011,18 @@ PRC_CASC_organization = {
 
 		position = { x = -1 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			sam_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_attack = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_multi_layer_air_defense_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3077,21 +3039,18 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			sam_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_attack = 0.15
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_phased_array_radar_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3108,22 +3067,18 @@ PRC_CASC_organization = {
 
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			sam_missile_equipment
-		}
-
-		equipment_bonus = {
-			air_attack = 0.10
-			air_range = 0.25
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_high_altitude_intercept_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 8
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 8
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3146,27 +3101,24 @@ PRC_CASC_organization = {
 		}
 		position = { x = 0 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			sam_missile_equipment
 			guided_missile_equipment
 			ballistic_missile_equipment
 		}
 
-		equipment_bonus = {
-			air_attack = 0.1
-			air_range = 0.1
-			air_bombing = 0.1
-			naval_strike_attack = 0.1
-			build_cost_ic = -0.05
+		production_bonus ={
+			production_cost_factor = -0.05
 		}
 
 		on_complete = {
 			FROM = {
+				add_ideas = PRC_missile_strategic_deterrence_idea
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 42
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 42
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3218,6 +3170,20 @@ PRC_CASC_organization = {
 				set_variable = {
 					PRC.space_forces_training_days_var = 75
 				}
+				# 天河工程阶段 I/II/III 决议天数减半
+				set_variable = { PRC.space_dec_committee_days = 30 }
+				set_variable = { PRC.space_dec_integrate_days = 50 }
+				set_variable = { PRC.space_dec_wenchang_days = 120 }
+				set_variable = { PRC.space_dec_jiuquan_days = 120 }
+				set_variable = { PRC.space_dec_tracking_days = 90 }
+				set_variable = { PRC.space_dec_recon_sat_days = 60 }
+				set_variable = { PRC.space_dec_comm_const_days = 120 }
+				set_variable = { PRC.space_dec_beidou_days = 100 }
+				set_variable = { PRC.space_dec_early_warning_days = 100 }
+				set_variable = { PRC.space_dec_tianhe_days = 120 }
+				set_variable = { PRC.space_dec_wentian_days = 100 }
+				set_variable = { PRC.space_dec_mengtian_days = 100 }
+				set_variable = { PRC.space_dec_xuntian_days = 100 }
 			}
 		}
 
@@ -3244,6 +3210,16 @@ PRC_CASC_organization = {
 			    add_debt_with_inflation = yes
 				custom_effect_tooltip = PRC_mio_trait_Heavy_lift_Rocket_Launching_Engineering_tt
 				set_country_flag = mio_trait_Heavy_lift_Rocket_Launching_Engineering_flag
+				# 天河工程阶段 IV/V 决议天数减半
+				set_variable = { PRC.space_dec_robotic_arm_days = 60 }
+				set_variable = { PRC.space_dec_power_system_days = 120 }
+				set_variable = { PRC.space_dec_resupply_days = 120 }
+				set_variable = { PRC.space_dec_high_orbit_days = 120 }
+				set_variable = { PRC.space_dec_energy_platform_days = 150 }
+				set_variable = { PRC.space_dec_ew_module_days = 120 }
+				set_variable = { PRC.space_dec_airdrop_days = 120 }
+				set_variable = { PRC.space_dec_interception_days = 120 }
+				set_variable = { PRC.space_dec_nuclear_platform_days = 150 }
 			}
 		}
 
@@ -3316,8 +3292,8 @@ PRC_CASC_organization = {
 			ballistic_missile_equipment
 		}
 		visible = {
-			check_variable = {
-				FROM.PRC_mio_trait_scale_production_var = 0?0
+			FROM = {
+				NOT = { has_variable = PRC_mio_trait_scale_production_var }
 			}
 		}
 
@@ -3586,23 +3562,23 @@ PRC_CASC_organization = {
 
 		position = { x = 9 y = 1 }
 
-		limit_to_equipment_type = { 
+		limit_to_equipment_type = {
 			ballistic_missile_equipment
 			sam_missile_equipment
 			guided_missile_equipment
 		}
 
-		equipment_bonus = {
-			build_cost_ic = -0.05
+		production_bonus ={
+			production_cost_factor = -0.05
 		}
 
 		on_complete = {
 			FROM = {
 				set_temp_variable = {
-				    var = debt_var_temp
-				    value = 24
-			    }
-			    add_debt_with_inflation = yes
+					var = debt_var_temp
+					value = 24
+				}
+				add_debt_with_inflation = yes
 			}
 		}
 
@@ -3631,16 +3607,16 @@ PRC_CASC_organization = {
 			    add_debt_with_inflation = yes
 				custom_effect_tooltip = Military_satellite_deployment_system_tt
 				set_variable = {
-					oss_spy_satellite_click_pp_var = -75
+					oss_spy_satellite_click_pp_var = -100
 				}
 				set_variable = {
-					oss_spy_satellite_click_pp_abs_var = 75
+					oss_spy_satellite_click_pp_abs_var = 100
 				}
 				set_variable = {
-					oss_ECM_click_pp_var = -10
+					oss_ECM_click_pp_var = -25
 				}
 				set_variable = {
-					oss_ECM_click_pp_abs_var = 10
+					oss_ECM_click_pp_abs_var = 25
 				}
 			}
 		}
@@ -3649,8 +3625,7 @@ PRC_CASC_organization = {
 	}
 }
 
-
-
+#宇树科技
 PRC_unitree_robotics_organization = {
 	icon = GFX_PRC_mio_unitree_robotics
 	background = GFX_mio_Unitree_background
@@ -3782,11 +3757,12 @@ PRC_unitree_robotics_organization = {
 		}
 
 		equipment_bonus = {
-			recon = 450
+			recon = 100
 		}
 
 		on_complete = {
 			FROM = {
+				custom_effect_tooltip = PRC_mio_trait_Battlefield_perception_idea_tt
 				set_temp_variable = {
 				    var = debt_var_temp
 				    value = 2
@@ -3812,7 +3788,7 @@ PRC_unitree_robotics_organization = {
 		}
 
 		equipment_bonus = {
-			defense = 0.15
+			defense = 0.1
 		}
 
 		on_complete = {
@@ -3840,14 +3816,11 @@ PRC_unitree_robotics_organization = {
 			exoskeleton_equipment
 		}
 
-		limit_to_equipment_type = { 
-			exoskeleton_equipment
-		}
 
 		equipment_bonus = {
 			soft_attack = 0.10
 			hard_attack = 0.10
-			breakthrough = 0.25
+			breakthrough = 0.15
 			build_cost_ic = 0.05
 		}
 
@@ -3868,6 +3841,7 @@ PRC_unitree_robotics_organization = {
 		token = PRC_mio_trait_The_next_generation_individual_combat_system
 		name = PRC_mio_trait_The_next_generation_individual_combat_system
 		icon = GFX_generic_mio_trait_icon_max_strength
+		special_trait_background = yes
 
 		all_parents = { PRC_mio_trait_Human_machine_collaborative_operations PRC_mio_trait_Weapon_integration_interface }
 		relative_position_id = PRC_mio_trait_Human_machine_collaborative_operations
@@ -3876,17 +3850,14 @@ PRC_unitree_robotics_organization = {
 			exoskeleton_equipment
 		}
 
-		limit_to_equipment_type = { 
-			exoskeleton_equipment
-		}
-
 		equipment_bonus = {
-			max_organisation = 200
+			max_organisation = 120
 			max_strength = 100
 		}
 
 		on_complete = {
 			FROM = {
+				custom_effect_tooltip = PRC_mio_trait_The_next_generation_individual_combat_system_idea_tt
 				set_temp_variable = {
 				    var = debt_var_temp
 				    value = 250
@@ -3919,7 +3890,7 @@ PRC_unitree_robotics_organization = {
 		}
 
 		equipment_bonus = {
-			soft_attack = 0.05
+			soft_attack = 0.10
 			hard_attack = 0.05
 		}
 
@@ -3950,7 +3921,7 @@ PRC_unitree_robotics_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.15
+			maximum_speed = 0.25
 			armor_value = -0.15
 			build_cost_ic = -0.05
 		}
@@ -3984,7 +3955,8 @@ PRC_unitree_robotics_organization = {
 		equipment_bonus = {
 			maximum_speed = -0.25
 			armor_value = 0.15
-			breakthrough = 0.15
+			breakthrough = 0.1
+			defense = 0.15
 		}
 
 		on_complete = {
@@ -4001,8 +3973,8 @@ PRC_unitree_robotics_organization = {
 	}
 
 	trait = {#山地作战增强系统
-		token = PRC_mio_trait_Mountain_Warfare_Enhancement_System
-		name = PRC_mio_trait_Mountain_Warfare_Enhancement_System
+		token = PRC_mio_trait_mountain_warfare_enhancement_system
+		name = PRC_mio_trait_mountain_warfare_enhancement_system
 		icon = GFX_generic_mio_trait_icon_reliability
 
 		any_parent = { PRC_mio_trait_Heavy_Assault_Exoskeleton PRC_mio_trait_High_mobility_exoskeleton }
@@ -4013,21 +3985,21 @@ PRC_unitree_robotics_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.15
+			maximum_speed = 0.1
 			reliability = 0.05
 		}
 
 		on_complete = {
 			FROM = {
+				set_technology = {
+					mountain_warfare_enhancement_system = 1
+				}
+				custom_effect_tooltip = PRC_mio_trait_mountain_warfare_enhancement_system_idea_tt
 				set_temp_variable = {
 				    var = debt_var_temp
 				    value = 25
 			    }
 			    add_debt_with_inflation = yes
-
-				set_technology = {
-					Mountain_Warfare_Enhancement_System = 1
-				}
 			}
 		}
 
@@ -4035,8 +4007,8 @@ PRC_unitree_robotics_organization = {
 	}
 
 	trait = {#城市作战套件
-		token = PRC_mio_trait_Urban_Warfare_Kit
-		name = PRC_mio_trait_Urban_Warfare_Kit
+		token = PRC_mio_trait_urban_warfare_kit
+		name = PRC_mio_trait_urban_warfare_kit
 		icon = GFX_generic_mio_department_icon_mechanized
 
 		any_parent = { PRC_mio_trait_Heavy_Assault_Exoskeleton PRC_mio_trait_High_mobility_exoskeleton }
@@ -4047,21 +4019,21 @@ PRC_unitree_robotics_organization = {
 		}
 
 		equipment_bonus = {
-			breakthrough = 0.10
+			breakthrough = 0.05
 			defense = 0.05
 		}
 
 		on_complete = {
 			FROM = {
+				set_technology = {
+					urban_warfare_kit = 1
+				}
+				custom_effect_tooltip = PRC_mio_trait_urban_warfare_kit_idea_tt
 				set_temp_variable = {
 				    var = debt_var_temp
 				    value = 25
 			    }
 			    add_debt_with_inflation = yes
-
-				set_technology = {
-					Urban_Warfare_Kit = 1
-				}
 			}
 		}
 
@@ -4084,7 +4056,7 @@ PRC_unitree_robotics_organization = {
 			soft_attack = 0.15
 			hard_attack = 0.35
 			ap_attack = 0.25
-			build_cost_ic = 0.05
+			build_cost_ic = 0.08
 		}
 
 		on_complete = {
@@ -4116,11 +4088,11 @@ PRC_unitree_robotics_organization = {
 					has_tech = body_armor8
 				}
 			}
-			date > 2024.12.01
+			date > 2025.01.01
 		}
 		production_bonus = {
 			production_efficiency_gain_factor = 0.20
-			production_capacity_factor = 0.15
+			production_capacity_factor = 0.1
 			#production_cost_factor = -0.10
 		}
 
@@ -4333,4 +4305,1820 @@ PRC_unitree_robotics_organization = {
 
 		ai_will_do = { base = 2 }
 	}
+}
+
+#中国直升机设计研究所
+PRC_helicopter_design_institute_organization = {
+	icon = GFX_PRC_mio_AVIC_602
+	background = GFX_mio_AVIC_602_background
+	allowed = {	
+		tag = PRC 
+	    has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = { controls_state = 717 } #哈飞 哈尔滨（原676在TFR中为伊拉克Mosul）
+	}
+
+	equipment_type = {
+		utility_helicopter_equipment
+		attack_helicopter_equipment
+	}
+
+	research_categories = {
+		cat_helicopter_modules
+		plane_modules_tech
+	}
+
+	tree_header_text = {
+		text = utility_helicopter_equipment_loc_key
+		x = 3
+	}
+
+	tree_header_text = {
+		text = attack_helicopter_equipment_loc_key
+		x = 5
+	}
+
+	initial_trait = {
+		name = PRC_helicopter_institute_subtitle
+
+		production_bonus = {
+			production_capacity_factor = 0.03
+			production_efficiency_gain_factor = 0.05
+		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.05
+		}
+	}
+
+	trait = {#轻型通用直升机平台
+		token = PRC_mio_trait_light_utility_helicopter
+		name = PRC_mio_trait_light_utility_helicopter
+		icon = GFX_generic_mio_trait_icon_unique
+
+		position = { x = 3 y = 0 }
+
+		limit_to_equipment_type = {
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			reliability = 0.08
+			maximum_speed = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 5
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#武装直升机研发
+		token = PRC_mio_trait_attack_helicopter_rnd
+		name = PRC_mio_trait_attack_helicopter_rnd
+		icon = GFX_generic_mio_trait_icon_unique
+
+		position = { x = 5 y = 0 }
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.08
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 5
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#高原突击型改装
+		token = PRC_mio_trait_high_altitude_assault
+		name = PRC_mio_trait_high_altitude_assault
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		relative_position_id = PRC_mio_trait_light_utility_helicopter
+
+		all_parents = { PRC_mio_trait_light_utility_helicopter }
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = {
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.08
+			breakthrough = 0.08
+		}
+
+		on_complete = {
+			FROM = {
+				set_technology = {
+					super_heavylift_helicopter = 1
+				}
+				custom_effect_tooltip = PRC_mio_trait_high_altitude_assault_idea_tt
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#战场搜救
+		token = PRC_mio_trait_battlefield_rescue
+		name = PRC_mio_trait_battlefield_rescue
+		icon = GFX_generic_mio_department_icon_support_equipment
+
+		relative_position_id = PRC_mio_trait_light_utility_helicopter
+
+		all_parents = { PRC_mio_trait_light_utility_helicopter }
+
+		position = { x = -1 y = 1 }
+
+		limit_to_equipment_type = {
+			utility_helicopter_equipment
+		}
+
+		available = {
+			FROM = {
+				has_tech = tech_field_hospital
+			}
+		}
+
+		equipment_bonus = {
+			defense = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#对地打击系统
+		token = PRC_mio_trait_ground_strike_system
+		name = PRC_mio_trait_ground_strike_system
+		icon = GFX_generic_mio_trait_icon_air_ground_attack
+
+		relative_position_id = PRC_mio_trait_attack_helicopter_rnd
+
+		all_parents = { PRC_mio_trait_attack_helicopter_rnd }
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.15
+			naval_strike_attack = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#战场生存强化
+		token = PRC_mio_trait_combat_survivability
+		name = PRC_mio_trait_combat_survivability
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = PRC_mio_trait_attack_helicopter_rnd
+
+		all_parents = { PRC_mio_trait_attack_helicopter_rnd }
+
+		position = { x = 1 y = 1 }
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			reliability = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#机降火力支援
+		token = PRC_mio_trait_air_assault_firesupport
+		name = PRC_mio_trait_air_assault_firesupport
+		icon = GFX_generic_mio_department_icon_tank_general_spg
+
+		relative_position_id = PRC_mio_trait_high_altitude_assault
+
+		all_parents = { PRC_mio_trait_high_altitude_assault }
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = {
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.10
+			breakthrough = 0.15
+			hard_attack = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 8
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#装甲防护套件
+		token = PRC_mio_trait_armor_protection_kit
+		name = PRC_mio_trait_armor_protection_kit
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		relative_position_id = PRC_mio_trait_battlefield_rescue
+
+		all_parents = { PRC_mio_trait_battlefield_rescue }
+
+		position = { x = -1 y = 2 }
+
+		limit_to_equipment_type = {
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			armor_value = 0.25
+			defense = 0.10
+			hardness = 0.15
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 10
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#重型反坦克导弹
+		token = PRC_mio_trait_heavy_atgm
+		name = PRC_mio_trait_heavy_atgm
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = PRC_mio_trait_ground_strike_system
+
+		all_parents = { PRC_mio_trait_ground_strike_system }
+
+		position = { x = 0 y = 2 }
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.20
+			naval_strike_attack = 0.20
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 10
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#航电升级套件
+		token = PRC_mio_trait_avionics_upgrade
+		name = PRC_mio_trait_avionics_upgrade
+		icon = GFX_generic_mio_trait_icon_air_agility
+
+		relative_position_id = PRC_mio_trait_combat_survivability
+
+		all_parents = { PRC_mio_trait_combat_survivability }
+
+		position = { x = 1 y = 2 }
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			air_agility = 0.15
+			air_defence = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 10
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#先进复合材料旋翼
+		token = PRC_mio_trait_advanced_composite_rotor
+		name = PRC_mio_trait_advanced_composite_rotor
+		icon = GFX_generic_mio_department_icon_plane_general
+		special_trait_background = yes
+
+		position = { x = 4 y = 1 }
+
+		available = {
+			FROM = {
+				has_tech = utility_helicopter_2
+				has_tech = attack_helicopter_2
+			}
+		}
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			maximum_speed = 0.25
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 15
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#直升机电力系统
+		token = PRC_mio_trait_electrical_power_system
+		name = PRC_mio_trait_electrical_power_system
+		icon = GFX_generic_mio_trait_icon_efficiency_gain
+		special_trait_background = yes
+
+		position = { x = 4 y = 2 }
+
+		available = {
+			FROM = {
+				has_tech = petascale_computing
+			}
+		}
+
+		limit_to_equipment_type = {
+			attack_helicopter_equipment
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.05
+			fuel_consumption = -0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 15
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#空中突击指挥系统
+		token = PRC_mio_trait_air_assault_command
+		name = PRC_mio_trait_air_assault_command
+		icon = GFX_generic_mio_trait_icon_breakthrough
+		special_trait_background = yes
+
+		position = { x = 4 y = 3 }
+
+		available = {
+			FROM = {
+				has_tech = improved_centimetric_radar
+			}
+		}
+
+		limit_to_equipment_type = {
+			utility_helicopter_equipment
+		}
+
+		equipment_bonus = {
+			breakthrough = 0.15
+			soft_attack = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = {
+				    var = debt_var_temp
+				    value = 20
+			    }
+			    add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+}
+
+#国家电网有限公司
+PRC_china_power_grid_organization = {
+	icon = GFX_PRC_mio_SGCC
+	background = GFX_mio_SGCC_background
+	allowed = {
+		tag = PRC
+		has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = { controls_state = 608 }
+	}
+
+	research_categories = {
+		electronics
+		radar_tech
+		energy
+		nuclear
+	}
+
+	equipment_type = {
+		electric_power_equipment
+	}
+
+	tree_header_text = {
+		text = power_grid_generation_loc_key
+		x = 1
+	}
+
+	tree_header_text = {
+		text = power_grid_reform_loc_key
+		x = 3
+	}
+
+	tree_header_text = {
+		text = power_grid_demand_loc_key
+		x = 5
+	}
+
+	initial_trait = {
+		name = PRC_mio_trait_power_grid_init
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_size_up_requirement = -0.25
+		}
+	}
+
+	trait = {#电网基建
+		token = PRC_mio_trait_power_grid_basic
+		name = PRC_mio_trait_power_grid_basic
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_1_tt
+		}
+
+		position = { x = 1 y = 0 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_basic_idea
+				set_temp_variable = { var = debt_var_temp value = 18 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#高效发电
+		token = PRC_mio_trait_power_grid_eff
+		name = PRC_mio_trait_power_grid_eff
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_3_tt
+		}
+
+		relative_position_id = PRC_mio_trait_power_grid_basic
+
+		all_parents = { PRC_mio_trait_power_grid_basic }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_eff_idea
+				set_temp_variable = { var = debt_var_temp value = 20 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#特高压输电
+		token = PRC_mio_trait_power_grid_uhv
+		name = PRC_mio_trait_power_grid_uhv
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_3_tt
+		}
+
+		relative_position_id = PRC_mio_trait_power_grid_basic
+
+		all_parents = { PRC_mio_trait_power_grid_basic }
+
+		position = { x = 1 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_uhv_idea
+				set_temp_variable = { var = debt_var_temp value = 42 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#全国互联电网
+		token = PRC_mio_trait_power_grid_national
+		name = PRC_mio_trait_power_grid_national
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 5 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_5_tt
+		}
+
+		relative_position_id = PRC_mio_trait_power_grid_uhv
+
+		all_parents = { PRC_mio_trait_power_grid_uhv }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_national_idea
+				set_temp_variable = { var = debt_var_temp value = 48 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#电力市场改革
+		token = PRC_mio_trait_power_grid_reform
+		name = PRC_mio_trait_power_grid_reform
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_1_tt
+		}
+
+		position = { x = 3 y = 0 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_reform_idea
+				set_temp_variable = { var = debt_var_temp value = 60 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#需求侧管理
+		token = PRC_mio_trait_power_grid_demand
+		name = PRC_mio_trait_power_grid_demand
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_1_tt
+		}
+
+		position = { x = 5 y = 0 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_demand_idea
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#储能系统
+		token = PRC_mio_trait_power_grid_storage
+		name = PRC_mio_trait_power_grid_storage
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_3_tt
+		}
+
+		relative_position_id = PRC_mio_trait_power_grid_demand
+
+		all_parents = { PRC_mio_trait_power_grid_demand }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_storage_idea
+				set_temp_variable = { var = debt_var_temp value = 30 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#智能调度
+		token = PRC_mio_trait_power_grid_dispatch
+		name = PRC_mio_trait_power_grid_dispatch
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_3_tt
+		}
+
+		relative_position_id = PRC_mio_trait_power_grid_demand
+
+		all_parents = { PRC_mio_trait_power_grid_demand }
+
+		position = { x = 1 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_dispatch_idea
+				set_temp_variable = { var = debt_var_temp value = 30 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#全球能源互联网
+		token = PRC_mio_trait_power_grid_global
+		name = PRC_mio_trait_power_grid_global
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		available = {
+			FROM = { check_variable = { PRC_power_grid_invest_total_var = 8 } }
+			custom_trigger_tooltip = PRC_power_grid_invest_8_tt
+		}
+
+		relative_position_id = PRC_mio_trait_power_grid_national
+
+		all_parents = { PRC_mio_trait_power_grid_national PRC_mio_trait_power_grid_reform PRC_mio_trait_power_grid_storage }
+
+		position = { x = 1 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_power_grid_global_idea
+				set_temp_variable = { var = debt_var_temp value = 124 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	# ==========================================================================
+	# 投资核电站 (Nuclear Investment) — x=9 y=0
+	# ==========================================================================
+
+	trait = {#投资核电站1
+		token = PRC_mio_trait_power_grid_nuclear_1
+		name = PRC_mio_trait_power_grid_nuclear_1
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 0 }
+		visible = {
+			FROM = { NOT = { has_variable = PRC_power_grid_nuclear_invest_var } }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 30 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_nuclear_invest_var = 1 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = nuclear_reactor size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资核电站2
+		token = PRC_mio_trait_power_grid_nuclear_2
+		name = PRC_mio_trait_power_grid_nuclear_2
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 0 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_nuclear_invest_var = 1 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 40 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_nuclear_invest_var = 2 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = nuclear_reactor size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资核电站3
+		token = PRC_mio_trait_power_grid_nuclear_3
+		name = PRC_mio_trait_power_grid_nuclear_3
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 0 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_nuclear_invest_var = 2 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 50 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_nuclear_invest_var = 3 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = nuclear_reactor size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资核电站4
+		token = PRC_mio_trait_power_grid_nuclear_4
+		name = PRC_mio_trait_power_grid_nuclear_4
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 0 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_nuclear_invest_var = 3 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 60 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_nuclear_invest_var = 4 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = nuclear_reactor size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资核电站5（加倍）
+		token = PRC_mio_trait_power_grid_nuclear_5
+		name = PRC_mio_trait_power_grid_nuclear_5
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 0 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_nuclear_invest_var = 4 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 120 }
+				add_debt_with_inflation = yes
+				clear_variable = PRC_power_grid_nuclear_invest_var
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = nuclear_reactor size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = nuclear_reactor size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	# ==========================================================================
+	# 投资火电站 (Thermal Power Investment) — x=9 y=1
+	# ==========================================================================
+
+	trait = {#投资火电站1
+		token = PRC_mio_trait_power_grid_thermal_1
+		name = PRC_mio_trait_power_grid_thermal_1
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 1 }
+		visible = {
+			FROM = { NOT = { has_variable = PRC_power_grid_thermal_invest_var } }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 30 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_thermal_invest_var = 1 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资火电站2
+		token = PRC_mio_trait_power_grid_thermal_2
+		name = PRC_mio_trait_power_grid_thermal_2
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 1 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_thermal_invest_var = 1 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 40 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_thermal_invest_var = 2 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资火电站3
+		token = PRC_mio_trait_power_grid_thermal_3
+		name = PRC_mio_trait_power_grid_thermal_3
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 1 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_thermal_invest_var = 2 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 50 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_thermal_invest_var = 3 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资火电站4
+		token = PRC_mio_trait_power_grid_thermal_4
+		name = PRC_mio_trait_power_grid_thermal_4
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 1 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_thermal_invest_var = 3 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 60 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_thermal_invest_var = 4 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资火电站5（加倍）
+		token = PRC_mio_trait_power_grid_thermal_5
+		name = PRC_mio_trait_power_grid_thermal_5
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 1 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_thermal_invest_var = 4 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 120 }
+				add_debt_with_inflation = yes
+				clear_variable = PRC_power_grid_thermal_invest_var
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = power_plant size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = power_plant level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	# ==========================================================================
+	# 投资太阳能 (Solar Energy Investment) — x=9 y=2
+	# ==========================================================================
+
+	trait = {#投资太阳能1
+		token = PRC_mio_trait_power_grid_solar_1
+		name = PRC_mio_trait_power_grid_solar_1
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 2 }
+		visible = {
+			FROM = { NOT = { has_variable = PRC_power_grid_solar_invest_var } }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 30 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_solar_invest_var = 1 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资太阳能2
+		token = PRC_mio_trait_power_grid_solar_2
+		name = PRC_mio_trait_power_grid_solar_2
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 2 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_solar_invest_var = 1 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 40 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_solar_invest_var = 2 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资太阳能3
+		token = PRC_mio_trait_power_grid_solar_3
+		name = PRC_mio_trait_power_grid_solar_3
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 2 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_solar_invest_var = 2 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 50 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_solar_invest_var = 3 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资太阳能4
+		token = PRC_mio_trait_power_grid_solar_4
+		name = PRC_mio_trait_power_grid_solar_4
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 2 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_solar_invest_var = 3 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 60 }
+				add_debt_with_inflation = yes
+			}
+			set_variable = { FROM.PRC_power_grid_solar_invest_var = 4 }
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#投资太阳能5（加倍）
+		token = PRC_mio_trait_power_grid_solar_5
+		name = PRC_mio_trait_power_grid_solar_5
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x = 9 y = 2 }
+		visible = {
+			check_variable = { FROM.PRC_power_grid_solar_invest_var = 4 }
+		}
+		on_complete = {
+			FROM = {
+				add_to_variable = { var = PRC_power_grid_invest_total_var value = 1 }
+				set_temp_variable = { var = debt_var_temp value = 120 }
+				add_debt_with_inflation = yes
+				clear_variable = PRC_power_grid_solar_invest_var
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			random_state = {
+				limit = {
+					is_core_of = PRC
+					is_controlled_by = PRC
+					free_building_slots = { building = energy_farm size > 0 include_locked = yes }
+					check_variable = { state_population_k > 500 }
+				}
+				add_building_construction = { type = energy_farm level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		ai_will_do = { base = 2 }
+	}
+}
+
+#中国铁路集团
+PRC_china_railway_organization = {
+	icon = GFX_PRC_mio_china_railway
+	background = GFX_mio_China_Railway_background
+	allowed = {	
+		tag = PRC 
+	    has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = { controls_state = 608 } #beijing
+	}
+
+	equipment_type = {
+		train_equipment
+	}
+
+	research_categories = {
+		train_tech
+		industry
+		dispersed_industry_category
+		concentrated_industry_category
+		construction_tech
+		excavation_tech
+		synth_resources
+	}
+
+	tree_header_text = {
+		text = railway_new_train_type_loc_key
+		x = 2
+	}
+
+	tree_header_text = {
+		text = railway_smart_high_speed_loc_key
+		x = 6
+	}
+
+	initial_trait = {
+		name = PRC_railway_subtitle
+
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_size_up_requirement = -0.5
+		}
+	}
+
+	trait = {#高铁领跑新时代 — 根节点
+		token = PRC_mio_trait_gaotie_lingpao
+		name = PRC_mio_trait_gaotie_lingpao
+		icon = GFX_generic_mio_trait_icon_unique
+
+		position = { x = 4 y = 0 }
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#新型动车组 — 复兴号系列研发
+		token = PRC_mio_trait_fuxing_series
+		name = PRC_mio_trait_fuxing_series
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		relative_position_id = PRC_mio_trait_gaotie_lingpao
+
+		all_parents = { PRC_mio_trait_gaotie_lingpao }
+
+		position = { x = -2 y = 1 }
+
+		limit_to_equipment_type = {
+			train_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.10
+			armor_value = 0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#智能高铁 — 高铁网络优化工程
+		token = PRC_mio_trait_network_optimization
+		name = PRC_mio_trait_network_optimization
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		relative_position_id = PRC_mio_trait_gaotie_lingpao
+
+		all_parents = { PRC_mio_trait_gaotie_lingpao }
+
+		position = { x = 2 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_network_optimization_idea
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#下一代复兴号
+		token = PRC_mio_trait_next_gen_fuxing
+		name = PRC_mio_trait_next_gen_fuxing
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		relative_position_id = PRC_mio_trait_fuxing_series
+
+		all_parents = { PRC_mio_trait_fuxing_series }
+
+		position = { x = 0 y = 1 }
+
+		limit_to_equipment_type = {
+			train_equipment
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+			build_cost_ic = -0.10
+		}
+
+		on_complete = {
+			FROM = {
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#线路攻坚
+		token = PRC_mio_trait_line_construction
+		name = PRC_mio_trait_line_construction
+		icon = GFX_generic_mio_trait_icon_hardness
+
+		relative_position_id = PRC_mio_trait_network_optimization
+
+		all_parents = { PRC_mio_trait_network_optimization }
+
+		position = { x = -1 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_line_construction_idea
+				set_temp_variable = { var = debt_var_temp value = 20 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#枢纽升级
+		token = PRC_mio_trait_hub_upgrade
+		name = PRC_mio_trait_hub_upgrade
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+
+		relative_position_id = PRC_mio_trait_network_optimization
+
+		all_parents = { PRC_mio_trait_network_optimization }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_hub_upgrade_idea
+				set_temp_variable = { var = debt_var_temp value = 12 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#智慧运维
+		token = PRC_mio_trait_smart_maintenance
+		name = PRC_mio_trait_smart_maintenance
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = PRC_mio_trait_network_optimization
+
+		all_parents = { PRC_mio_trait_network_optimization }
+
+		position = { x = 1 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_smart_maintenance_idea
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#时速400公里
+		token = PRC_mio_trait_400kmh
+		name = PRC_mio_trait_400kmh
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		relative_position_id = PRC_mio_trait_next_gen_fuxing
+
+		all_parents = { PRC_mio_trait_next_gen_fuxing }
+
+		position = { x = -1 y = 1 }
+
+		limit_to_equipment_type = {
+			train_equipment
+		}
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_army_deployment_idea
+				set_temp_variable = { var = debt_var_temp value = 12 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#智能配置
+		token = PRC_mio_trait_smart_config
+		name = PRC_mio_trait_smart_config
+		icon = GFX_generic_mio_trait_icon_efficiency_gain
+
+		relative_position_id = PRC_mio_trait_next_gen_fuxing
+
+		all_parents = { PRC_mio_trait_next_gen_fuxing }
+
+		position = { x = 1 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_smart_config_idea
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#川藏铁路
+		token = PRC_mio_trait_sichuan_tibet
+		name = PRC_mio_trait_sichuan_tibet
+		icon = GFX_generic_mio_trait_icon_hardness
+
+		relative_position_id = PRC_mio_trait_line_construction
+
+		all_parents = { PRC_mio_trait_line_construction }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_sichuan_tibet_idea
+				set_temp_variable = { var = debt_var_temp value = 200 }
+				add_debt_with_inflation = yes
+				build_railway = { level = 4 start_state = 605 target_state = 1152 }
+				build_railway = { level = 4 start_state = 1152 target_state = 1156 }
+				1152 = {
+					add_building_construction = { type = supply_node province = 10856 level = 1 instant_build = yes }
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#综合枢纽
+		token = PRC_mio_trait_comprehensive_hub
+		name = PRC_mio_trait_comprehensive_hub
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+
+		relative_position_id = PRC_mio_trait_hub_upgrade
+
+		all_parents = { PRC_mio_trait_hub_upgrade }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_comprehensive_hub_idea
+				set_temp_variable = { var = debt_var_temp value = 20 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#数字孪生
+		token = PRC_mio_trait_digital_twin
+		name = PRC_mio_trait_digital_twin
+		icon = GFX_generic_mio_trait_icon_detection
+
+		relative_position_id = PRC_mio_trait_smart_maintenance
+
+		all_parents = { PRC_mio_trait_smart_maintenance }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_digital_twin_idea
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#商业运营
+		token = PRC_mio_trait_commercial_operation
+		name = PRC_mio_trait_commercial_operation
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+
+		relative_position_id = PRC_mio_trait_400kmh
+
+		all_parents = { PRC_mio_trait_400kmh }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_commercial_operation_idea
+				set_temp_variable = { var = debt_var_temp value = 18 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#5G+北斗应用
+		token = PRC_mio_trait_5g_beidou
+		name = PRC_mio_trait_5g_beidou
+		icon = GFX_generic_mio_trait_icon_detection
+
+		relative_position_id = PRC_mio_trait_smart_config
+
+		all_parents = { PRC_mio_trait_smart_config }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_5g_beidou_idea
+				set_temp_variable = { var = debt_var_temp value = 16 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#跨国联运实验
+		token = PRC_mio_trait_international_railway
+		name = PRC_mio_trait_international_railway
+		icon = GFX_generic_mio_trait_icon_strategic_attack
+
+		relative_position_id = PRC_mio_trait_sichuan_tibet
+
+		all_parents = { PRC_mio_trait_sichuan_tibet }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_international_railway_idea
+				set_temp_variable = { var = debt_var_temp value = 40 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#城市群轨道网
+		token = PRC_mio_trait_urban_rail
+		name = PRC_mio_trait_urban_rail
+		icon = GFX_generic_mio_trait_icon_naval_strike_targetting
+
+		relative_position_id = PRC_mio_trait_comprehensive_hub
+
+		all_parents = { PRC_mio_trait_comprehensive_hub }
+
+		position = { x = 0 y = 1 }
+
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_urban_rail_idea
+				set_temp_variable = { var = debt_var_temp value = 80 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	trait = {#智能检测系统
+		token = PRC_mio_trait_inspection_system
+		name = PRC_mio_trait_inspection_system
+		icon = GFX_generic_mio_trait_icon_detection
+
+		relative_position_id = PRC_mio_trait_digital_twin
+
+		all_parents = { PRC_mio_trait_digital_twin }
+
+		position = { x = 0 y = 1 }
+		on_complete = {
+			FROM = {
+				add_ideas = PRC_railway_inspection_system_idea
+				set_temp_variable = { var = debt_var_temp value = 10 }
+				add_debt_with_inflation = yes
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
 }

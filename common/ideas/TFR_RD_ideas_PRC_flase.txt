@@ -75,7 +75,7 @@ ideas = {
         }
         PRC_party_rectification_campaign_c = {
             picture = GFX_idea_PRC_made_in_china
-			name = PRC_party_rectification_campaign_empty
+			name = PRC_party_rectification_campaign
 
 			allowed = {
 				always = no
@@ -105,7 +105,7 @@ ideas = {
         }
         PRC_party_rectification_campaign_b = {
             picture = GFX_idea_PRC_made_in_china
-			name = PRC_party_rectification_campaign_empty
+			name = PRC_party_rectification_campaign
 
 			allowed = {
 				always = no
@@ -134,7 +134,7 @@ ideas = {
         }
         PRC_party_rectification_campaign_a = {
             picture = GFX_idea_PRC_made_in_china
-			name = PRC_party_rectification_campaign_empty
+			name = PRC_party_rectification_campaign
 
 			allowed = {
 				always = no
@@ -719,7 +719,7 @@ ideas = {
                 income_growth_factor = 0.2
             }
         }
-        PRC_nl_jingjiCd4_idea_dummy_2 = {
+        PRC_nl_jingjiCd4_idea_dummy_3 = {
             name = PRC_made_in_china_idea1
 
             allowed = {
@@ -756,7 +756,6 @@ ideas = {
             }
             removal_cost = -1
             modifier = {
-                stability_factor = -0.1
                 personal_expense_factor = -0.05
                 production_factory_max_efficiency_factor = 0.025
             }
@@ -835,7 +834,6 @@ ideas = {
             removal_cost = -1
             modifier = {
                 political_power_cost = -0.05
-                consumer_goods_factor = 0.1
                 income_growth_factor = 0.1
             }
         }
@@ -879,13 +877,29 @@ ideas = {
             removal_cost = -1
             modifier = {
                 stability_factor = -0.1
+                stability_weekly = 0.001
+                consumer_goods_factor = 0.15
+            }
+        }
+        PRC_socialist_culture_start_if = {
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                stability_factor = -0.1
                 breakthrough_factor = 0.05
-                army_attack_against_major_factor = 0.05
-                conscription_factor = 0.1
-                mobilization_speed = 0.2
+                army_attack_against_major_factor = 0.15
+                conscription_factor = 0.125
+                mobilization_speed = 0.20
                 send_volunteer_size = 2
             }
         }
+
         PRC_socialist_culture_start10 = {
             picture = generic_covid
             allowed = {
@@ -1310,7 +1324,6 @@ ideas = {
             }
             removal_cost = -1
             modifier = {
-                stability_factor = -0.05
             }
         }
         PRC_socialist_culture_start33 = {
@@ -1324,7 +1337,7 @@ ideas = {
             }
             removal_cost = -1
             modifier = {
-                consumer_goods_factor = 0.1
+                consumer_goods_factor = -0.1
                 expense_growth_factor = 0.15
             }
         }
@@ -1341,7 +1354,7 @@ ideas = {
             modifier = {
                 industrial_capacity_factory = 0.05
                 industrial_capacity_dockyard = 0.05
-                expense_growth_factor = 0.05
+                expense_growth_factor = 0.1
                 production_speed_buildings_factor = 0.05
             }
         }
@@ -1557,7 +1570,7 @@ ideas = {
         }
         #	党的组织：整风运动 - 初始
         PRC_party_rectification_campaign = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = GFX_idea_PRC_national_peoples_congress_dynamic
             allowed = {
                 always = no
@@ -1570,8 +1583,7 @@ ideas = {
                 political_power_gain = -0.5
                 political_power_cost = 0.5
                 stability_factor = -0.25
-                consumer_goods_expected_value = 0.45
-                consumer_goods_factor = 0.25
+                consumer_goods_factor = 0.5
                 personal_value_factor = -0.35
                 business_value_factor = -0.5
                 personal_expense_factor = 0.35
@@ -1601,7 +1613,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign0 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = PRC_national_peoples_congress_dynamic
             allowed = {
                 always = no
@@ -1623,7 +1635,7 @@ ideas = {
         }
         #	假民族精神 - 党内整风
         PRC_party_rectification_campaign_empty = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1637,7 +1649,7 @@ ideas = {
         }
         #	任务 - 反动派在行动 -效果
         PRC_party_rectification_campaign1 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1659,7 +1671,7 @@ ideas = {
         }
         #	决议 - 同老左派和解 - 效果
         PRC_party_rectification_campaign2 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1680,7 +1692,7 @@ ideas = {
         }
         #	决议 - 同新左派合作 - 效果
         PRC_party_rectification_campaign3 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1701,8 +1713,29 @@ ideas = {
             }
         }
         #	决议 - 自我批评 - 效果
-        PRC_party_rectification_campaign4 = {
-            name = PRC_party_rectification_campaign_empty
+        PRC_party_rectification_campaign4a = {
+            name = PRC_party_rectification_campaign
+            picture = generic_covid
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                political_power_gain = 0.1
+                stability_factor = 0.1
+                consumer_goods_factor = -0.075
+                production_factory_max_efficiency_factor = -0.075
+                production_factory_efficiency_gain_factor = -0.1
+                nationalist_drift = -0.05
+                society_development_monthly = 0.005
+            }
+        }
+        #	决议 - 自我批评 - 效果
+        PRC_party_rectification_campaign4b = {
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1721,7 +1754,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign5 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1733,7 +1766,6 @@ ideas = {
             modifier = {
                 political_power_gain = 0.05
                 stability_factor = -0.1
-                consumer_goods_factor = 0.075
                 industrial_capacity_factory = 0.05
                 production_factory_start_efficiency_factor = 0.1
                 production_factory_max_efficiency_factor = 0.05
@@ -1741,7 +1773,7 @@ ideas = {
         }
         #	决议 - 整肃地方党组织 - 效果
         PRC_party_rectification_campaign6 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1759,7 +1791,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign7 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1778,7 +1810,7 @@ ideas = {
         }
         #	决议 - 打击工厂官僚主义 - 效果
         PRC_party_rectification_campaign8 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1796,7 +1828,7 @@ ideas = {
         }
         #	决议 - 推进人民公社进程 - 效果
         PRC_party_rectification_campaign9 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1817,7 +1849,7 @@ ideas = {
         }
         #	决议 - 军队革命化 - 效果
         PRC_party_rectification_campaign10 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1841,7 +1873,7 @@ ideas = {
         }
         #	国企干部革命化 - 效果
         PRC_party_rectification_campaign11 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1863,7 +1895,7 @@ ideas = {
         }
         #   国策-扩大年轻生力军 - 效果
         PRC_party_rectification_campaign12 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1881,7 +1913,7 @@ ideas = {
         }
         #	决议-行政干部革命化 - 效果
         PRC_party_rectification_campaign13 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1899,7 +1931,7 @@ ideas = {
         }
         #	决议-完善官僚培训标准 - 效果
         PRC_party_rectification_campaign14 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1919,7 +1951,7 @@ ideas = {
         }
         #	决议-试行老中青“三结合” - 效果
         PRC_party_rectification_campaign15 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1942,7 +1974,7 @@ ideas = {
         }
         #	决议-颠覆资产阶级平等幻象/粉碎父权制/地方党干部撤换- 效果
         PRC_party_rectification_campaign16 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1957,7 +1989,7 @@ ideas = {
         }
         #	决议-乡村学校改造- 效果
         PRC_party_rectification_campaign17 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1973,7 +2005,7 @@ ideas = {
         }
         #	国策 - 马克思理论再建构 - 效果
         PRC_party_rectification_campaign18 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -1991,7 +2023,7 @@ ideas = {
         }
         #	决议 - 第二次三湾改编 - 效果
         PRC_party_rectification_campaign19 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2011,7 +2043,7 @@ ideas = {
         }
         #	决议 - 新社会主义理论实践 - 效果
         PRC_party_rectification_campaign20 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2031,7 +2063,7 @@ ideas = {
         }
         #	决议 - 党组领导，吸收外来，不忘本来 - 效果
         PRC_party_rectification_campaign21 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2053,7 +2085,7 @@ ideas = {
         }
         #	决议 - 赋权人民，重塑无产阶级文化 - 效果
         PRC_party_rectification_campaign22 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2077,7 +2109,7 @@ ideas = {
         }
         #	国策 - 马克思思想放光芒 - 效果
         PRC_party_rectification_campaign23 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2096,7 +2128,7 @@ ideas = {
         }
         #	国策 - 历史经验总结 - 效果
         PRC_party_rectification_campaign24 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2114,7 +2146,7 @@ ideas = {
         }
         #	国策 -  前三十年重定性 - 效果
         PRC_party_rectification_campaign25 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2133,7 +2165,7 @@ ideas = {
         }
         #	决议 - 三七开 - 效果
         PRC_party_rectification_campaign26 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2156,7 +2188,7 @@ ideas = {
         }
         #	决议 -  六四开 - 效果
         PRC_party_rectification_campaign27 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2181,7 +2213,7 @@ ideas = {
         }
         #	国策 -  重建无产阶级专政 - 效果
         PRC_party_rectification_campaign28 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2191,7 +2223,6 @@ ideas = {
             }
             removal_cost = -1
             modifier = {
-                consumer_goods_factor = -0.15
                 political_power_factor = 0.25
                 stability_factor = -0.075
                 production_factory_max_efficiency_factor = 0.1
@@ -2207,7 +2238,7 @@ ideas = {
         }
         #	决议 - 构建新官僚体制 - 效果
         PRC_party_rectification_campaign29 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2226,7 +2257,7 @@ ideas = {
         }
         #	决议 - 第二次四清运动 - 效果
         PRC_party_rectification_campaign30 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2238,6 +2269,8 @@ ideas = {
             modifier = {
                 political_power_cost = -0.1
                 stability_factor = 0.05
+                local_resources_factor = 0.1
+                global_building_slots_factor = 0.1
                 consumer_goods_factor = -0.1
                 libertarian_socialist_drift = 0.04
                 totalitarian_socialist_drift = 0.02
@@ -2248,7 +2281,7 @@ ideas = {
         }
         #后四十年历程再现
         PRC_party_rectification_campaign31 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2267,7 +2300,7 @@ ideas = {
         }
         #坚定群众路线
         PRC_party_rectification_campaign32 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2285,7 +2318,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign33 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2304,7 +2337,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign34 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2320,7 +2353,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign35 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2335,7 +2368,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign36 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2350,7 +2383,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign37 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2366,7 +2399,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign38 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2385,7 +2418,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign39 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2403,7 +2436,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign40 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2422,7 +2455,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign41 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2439,7 +2472,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign42 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2454,7 +2487,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign43 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2470,7 +2503,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign44 = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2595,7 +2628,6 @@ ideas = {
             removal_cost = -1
             modifier = {
                 industrial_capacity_factory = 0.05
-                consumer_goods_factor = 0.15
                 global_building_slots_factor = 0.1
                 research_speed_factor = 0.05
             }
@@ -2612,7 +2644,6 @@ ideas = {
             removal_cost = -1
             modifier = {
                 intelligence_agency_defense = 2
-                consumer_goods_factor = 0.15
                 civilian_intel_to_others = -0.15
                 mobilization_speed = 0.15
             }
@@ -2770,7 +2801,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_mituzhizi = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2789,7 +2820,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_jiuhuansimeng = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2807,7 +2838,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_jiushiminxinturang = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2826,7 +2857,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_lanlianhua = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2842,7 +2873,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_shizishanxia = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2858,7 +2889,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_zijinhuazaikai = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2876,7 +2907,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_pimi = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2890,7 +2921,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_goushao = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2905,7 +2936,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_yunniang = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2919,7 +2950,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_kuanghuan = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2933,7 +2964,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_heiyun = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2948,7 +2979,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_jiedao = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2960,14 +2991,14 @@ ideas = {
             modifier = {
                 political_power_gain = 0.15
                 stability_factor = 0.15
-                consumer_goods_expected_value = -0.15
+                # consumer_goods_expected_value = -0.15
                 authoritarian_democrat_drift = -0.05
                 nationalist_drift = -0.05
                 society_development_monthly = 0.005
             }
         }
         PRC_party_rectification_campaign_xinzang = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -2987,7 +3018,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_fengzi = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -3006,7 +3037,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_yemuxia = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -3023,7 +3054,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_bingshanyijiao = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -3045,7 +3076,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_baolei = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -3063,7 +3094,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_qiutu = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -3078,7 +3109,7 @@ ideas = {
             }
         }
         PRC_party_rectification_campaign_yuhoudezaochen = {
-            name = PRC_party_rectification_campaign_empty
+            name = PRC_party_rectification_campaign
             picture = generic_covid
             allowed = {
                 always = no
@@ -3099,6 +3130,167 @@ ideas = {
                 totalitarian_socialist_drift = 0.05
                 authoritarian_democrat_drift = -0.05
                 nationalist_drift = -0.05
+            }
+        }
+        PRC_MEX_modifier_idea0 = {
+            name = PRC_MEX_modifier
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               
+            }
+        }
+        PRC_MEX_modifier_idea = {
+            name = PRC_MEX_modifier
+
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               army_attack_factor = 0.05
+               army_defence_factor = 0.1
+               army_core_defence_factor = 0.05
+               cas_damage_reduction = 0.1
+               army_org_factor = 0.1
+            }
+        }
+        PRC_MEX_modifier_idea_hard = {
+            name = PRC_MEX_modifier
+
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               army_attack_factor = 0.15
+               army_defence_factor = 0.2
+               army_core_defence_factor = 0.1
+               cas_damage_reduction = 0.2
+               army_org_factor = 0.2
+            }
+        }
+        PRC_chinese_enviroment_dummy = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+               
+            }
+        }
+        PRC_chinese_enviroment_dummy1 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                personal_expense_factor = -0.1
+                income_growth_factor = 0.1
+            }
+        }
+        PRC_chinese_enviroment_dummy2 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                monthly_population = 0.1
+                local_resources_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy3 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                consumer_goods_factor = -0.025
+                farming_development_monthly = 0.005
+                industrial_development_monthly = 0.005
+            }
+        }
+        PRC_chinese_enviroment_dummy4 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                local_resources_factor = 0.1
+                factory_energy_consumption = -0.1
+            }
+        }
+        PRC_chinese_enviroment_dummy5 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                consumer_goods_factor = -0.025
+                production_factory_max_efficiency_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy6 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                stability_factor = 0.05
+                research_speed_factor = 0.05
+            }
+        }
+        PRC_chinese_enviroment_dummy7 = {
+            name = PRC_chinese_enviroment_dynamic
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                production_factory_start_efficiency_factor = 0.05
+                farming_development_monthly = 0.005
             }
         }
     }

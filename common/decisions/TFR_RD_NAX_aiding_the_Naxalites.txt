@@ -27,6 +27,100 @@ NAX_aiding_the_Naxalites_category = {
         }
         visible = {
         }
+        cancel_trigger = {
+            OR = {
+                has_country_flag = PAK_won_indo_pakistan_war
+                has_country_flag = PAK_lost_indo_pakistan_war
+            }
+        }
+        cancel_effect = {
+            remove_mission = NAX_Nasser_Mass_Power
+            remove_mission = NAX_Limited_Time_Mission
+            if = {
+                limit = { 
+                    has_country_flag = PAK_won_indo_pakistan_war
+                }
+                NAX = {
+                    set_country_flag = NAX_win_indian_wool_war
+                }
+                country_event = {
+                    id = nax.3
+                    hours = 10
+                }
+                RAJ = {
+                    add_war_support = -0.15
+                }
+                NAX = {
+                    set_country_leader_portrait = {
+                        ideology = totalitarian_socialist
+                        portrait = GFX_NAX_Nambala_Keshav_Rao
+                    }
+                }
+                789 = {
+                    set_demilitarized_zone = yes
+                }
+                1370 = {
+                    set_demilitarized_zone = yes
+                }
+                PRC = {
+                    clr_country_flag = PRC_NAX_indian_wool_war_ongoing
+                }
+            }
+            else = {
+                NAX = {
+                    set_country_flag = NAX_lost_indian_wool_war
+                }
+                country_event = {
+                    id = nax.3
+                    hours = 10
+                }
+                RAJ = {
+                    annex_country = {
+                        target = NAX
+                        transfer_troops = no
+                    }
+                }
+                RAJ = {
+                    set_politics = {
+                        ruling_party = authoritarian_democrat
+                        elections_allowed = no
+                        last_election = "1935.12.17"
+                        election_frequency = 48
+                    }
+                    add_popularity = {
+                        ideology = authoritarian_democrat
+                        popularity = 0.65
+                    }
+                    create_country_leader = {
+                        name = EGY_mohamed_ahmed_zaki
+                        picture = "Mohamed Ahmed Zaki.png"
+                        ideology = military_junta
+                        traits = {
+                        }
+                    }
+                }
+                hidden_effect = {
+                    442 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1367 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1366 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1369 = {
+                        set_demilitarized_zone = yes
+                    }
+                    1368 = {
+                        set_demilitarized_zone = yes
+                    }
+                    PRC = {
+                        clr_country_flag = PRC_NAX_indian_wool_war_ongoing
+                    }
+                }
+            }
+        }
         fire_only_once = no
         cancel_if_not_visible = no
         is_good = no
@@ -135,16 +229,15 @@ NAX_aiding_the_Naxalites_category = {
         icon = GFX_PRC_Reinforce_Communism
         available = {
             has_equipment = {
-                infantry_equipment > 999
+                infantry_equipment > 350
             }
             has_completed_focus = PRC_and_NAX_Supply_Coordination
         }
         visible = {
             has_country_flag = PRC_NAX_indian_wool_war_ongoing
         }
-        cost = 35
-        days_remove = 5
-        days_re_enable = 3
+        cost = 5
+        days_remove = 3
         fire_only_once = no
         complete_effect = {
             hidden_effect = {
@@ -177,9 +270,8 @@ NAX_aiding_the_Naxalites_category = {
         visible = {
             has_country_flag = PRC_NAX_indian_wool_war_ongoing
         }
-        cost = 50
-        days_remove = 5
-        days_re_enable = 3
+        cost = 15
+        days_remove = 3
         fire_only_once = no
         complete_effect = {
             set_temp_variable = {
@@ -252,5 +344,69 @@ NAX_aiding_the_Naxalites_category = {
                 add_stability = 0.005
             }
         }
+    }
+}
+
+south_america_rev_war_cat = {
+    south_america_rev_mission = {
+        priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+        available = {
+            ECU = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            PAR = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            BOL = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+        }
+        days_mission_timeout = 999
+        fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+        cancel_trigger = {
+            PRU = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            ELN = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            VEN = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+        }
+        timeout_effect = {
+            activate_mission = south_america_rev_mission
+        }
+        complete_effect = {
+            clr_global_flag = south_america_rev_war_global
+            rev_victory_south_america_war = yes
+        }
+        cancel_effect = {
+            clr_global_flag = south_america_rev_war_global
+            react_victory_south_america_war = yes
+        }
+
+        
     }
 }

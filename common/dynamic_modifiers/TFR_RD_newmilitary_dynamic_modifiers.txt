@@ -1,0 +1,89 @@
+# ==================== 三军军改动态民族精神 ====================
+# 由 TFR_RD_national_focus_PRC_army.txt 军种国策逐级挂载/累积
+# 数值：国策完成时 add_to_variable 加该级增量（增量表见 docs/三军军改装备加成记录.md）
+# 展示：国策 effect_tooltip swap 到对应级别假精神（TFR_RD_ideas_PLA_dummy.txt）
+# 变量未累积时为 0，对应修正行显示 +0%
+# 装备加成（自行火炮/全舰种命中/飞机造价）无法挂动态修正，已搁置待重设计
+
+# 中国人民解放军陆军（原 PLA_pla_army_1~12 链，满级数值不变）
+PLA_pla_army_dynamic = {
+	icon = GFX_idea_PRC_pla
+	decryption_power = PLA_army_decryption_power_dynamic
+	crypto_strength = PLA_army_crypto_strength_dynamic
+	intel_network_gain_factor = PLA_army_intel_network_gain_factor_dynamic
+	army_core_attack_factor = PLA_army_army_core_attack_factor_dynamic
+	army_core_defence_factor = PLA_army_army_core_defence_factor_dynamic
+	experience_gain_army_unit_factor = PLA_army_experience_gain_army_unit_factor_dynamic
+	battalion_upkeep_factor = PLA_army_battalion_upkeep_factor_dynamic
+	planning_decay_rate_factor = PLA_army_planning_decay_rate_factor_dynamic
+	max_planning = PLA_army_max_planning_dynamic
+	army_speed_factor = PLA_army_army_speed_factor_dynamic
+	attrition = PLA_army_attrition_dynamic
+	supply_node_range = PLA_army_supply_node_range_dynamic
+	supply_consumption_factor = PLA_army_supply_consumption_factor_dynamic
+	command_power_gain = PLA_army_command_power_gain_dynamic
+	army_attack_factor = PLA_army_army_attack_factor_dynamic
+	rocket_attack_factor = PLA_army_rocket_attack_factor_dynamic
+	recon_factor = PLA_army_recon_factor_dynamic
+	org_loss_when_moving = PLA_army_org_loss_when_moving_dynamic
+	terrain_penalty_reduction = PLA_army_terrain_penalty_reduction_dynamic
+	army_fuel_consumption_factor = PLA_army_army_fuel_consumption_factor_dynamic
+	land_reinforce_rate = PLA_army_land_reinforce_rate_dynamic
+	army_morale_factor = PLA_army_army_morale_factor_dynamic
+	planning_speed = PLA_army_planning_speed_dynamic
+	land_night_attack = PLA_army_land_night_attack_dynamic
+	combat_width_factor = PLA_army_combat_width_factor_dynamic
+	max_command_power = PLA_army_max_command_power_dynamic
+	army_org_factor = PLA_army_army_org_factor_dynamic
+	breakthrough_factor = PLA_army_breakthrough_factor_dynamic
+}
+
+# 中国人民解放军海军（原 PLA_plan_navy_1~8 链）
+PLA_plan_navy_dynamic = {
+	icon = GFX_idea_PRC_plan_dynamic
+	naval_light_gun_hit_chance_factor = PLA_navy_naval_light_gun_hit_chance_factor_dynamic
+	naval_heavy_gun_hit_chance_factor = PLA_navy_naval_heavy_gun_hit_chance_factor_dynamic
+	experience_gain_navy_factor = PLA_navy_experience_gain_navy_factor_dynamic
+	navy_max_range_factor = PLA_navy_navy_max_range_factor_dynamic
+	naval_coordination = PLA_navy_naval_coordination_dynamic
+	industrial_capacity_dockyard = PLA_navy_industrial_capacity_dockyard_dynamic
+	ship_upkeep_factor = PLA_navy_ship_upkeep_factor_dynamic
+	navy_capital_ship_attack_factor = PLA_navy_navy_capital_ship_attack_factor_dynamic
+	navy_capital_ship_defence_factor = PLA_navy_navy_capital_ship_defence_factor_dynamic
+	sortie_efficiency = PLA_navy_sortie_efficiency_dynamic
+	navy_anti_air_attack_factor = PLA_navy_navy_anti_air_attack_factor_dynamic
+	spotting_chance = PLA_navy_spotting_chance_dynamic
+	navy_screen_defence_factor = PLA_navy_navy_screen_defence_factor_dynamic
+	naval_has_potf_in_combat_attack = PLA_navy_naval_has_potf_in_combat_attack_dynamic
+	naval_critical_score_chance_factor = PLA_navy_naval_critical_score_chance_factor_dynamic
+	screening_efficiency = PLA_navy_screening_efficiency_dynamic
+	navy_org_factor = PLA_navy_navy_org_factor_dynamic
+	repair_speed_factor = PLA_navy_repair_speed_factor_dynamic
+	navy_fuel_consumption_factor = PLA_navy_navy_fuel_consumption_factor_dynamic
+}
+
+# 中国人民解放军空军（原 PLA_plaaf_air_1~8 链）
+PLA_plaaf_air_dynamic = {
+	icon = GFX_idea_PRC_plaaf_dynamic
+	air_mission_xp_gain_factor = PLA_air_air_mission_xp_gain_factor_dynamic
+	aircraft_upkeep_factor = PLA_air_aircraft_upkeep_factor_dynamic
+	air_training_xp_gain_factor = PLA_air_air_training_xp_gain_factor_dynamic
+	air_attack_factor = PLA_air_air_attack_factor_dynamic
+	air_defence_factor = PLA_air_air_defence_factor_dynamic
+	air_superiority_efficiency = PLA_air_air_superiority_efficiency_dynamic
+	air_superiority_detect_factor = PLA_air_air_superiority_detect_factor_dynamic
+	air_weather_penalty = PLA_air_air_weather_penalty_dynamic
+	air_night_penalty = PLA_air_air_night_penalty_dynamic
+	air_agility_factor = PLA_air_air_agility_factor_dynamic
+	air_maximum_speed_factor = PLA_air_air_maximum_speed_factor_dynamic
+	air_mission_efficiency = PLA_air_air_mission_efficiency_dynamic
+	air_wing_xp_loss_when_killed_factor = PLA_air_air_wing_xp_loss_when_killed_factor_dynamic
+	air_strategic_bomber_bombing_factor = PLA_air_air_strategic_bomber_bombing_factor_dynamic
+	air_bombing_targetting = PLA_air_air_bombing_targetting_dynamic
+	naval_strike_targetting_factor = PLA_air_naval_strike_targetting_factor_dynamic
+	air_range_factor = PLA_air_air_range_factor_dynamic
+	air_fuel_consumption_factor = PLA_air_air_fuel_consumption_factor_dynamic
+	air_ace_generation_chance_factor = PLA_air_air_ace_generation_chance_factor_dynamic
+	air_power_projection_factor = PLA_air_air_power_projection_factor_dynamic
+	air_cas_present_factor = PLA_air_air_cas_present_factor_dynamic
+}

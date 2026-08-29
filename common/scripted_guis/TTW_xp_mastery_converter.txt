@@ -1,0 +1,103 @@
+scripted_gui = {
+	xp_mastery_converter_gui = {
+		context_type = player_context
+		window_name = "xp_mastery_converter"
+		parent_window_name = "country_doctrine_view"
+		visible = {
+			always = yes
+		}
+		ai_enabled = {
+			always = yes
+		}
+		effects = {
+			xp_button1_click = {
+				army_experience = -50
+				add_mastery = {
+					amount = 20
+					folder = land
+				}
+			}
+			xp_button2_click = {
+				navy_experience = -50
+				add_mastery = {
+					amount = 20
+					folder = naval
+				}
+			}
+			xp_button3_click = {
+				air_experience = -50
+				add_mastery = {
+					amount = 20
+					folder = air
+				}
+			}
+			xp_button4_click = {
+				army_experience = -15
+				air_experience = -15
+				navy_experience = -15
+				add_mastery = {
+					amount = 20
+					folder = special_forces
+				}
+			}
+		}
+
+		triggers = {
+			xp_button1_click_enabled = {
+				has_army_experience > 50
+			}
+			xp_button2_click_enabled = {
+				has_navy_experience > 50
+			}
+			xp_button3_click_enabled = {
+				has_air_experience > 50
+			}
+			xp_button4_click_enabled = {
+				has_army_experience > 15
+				has_navy_experience > 14
+				has_air_experience > 15
+			}
+		}
+
+		ai_weights = {
+			xp_button1_click = {
+				ai_will_do = {
+					base = 10
+					modifier = {
+						add = 100
+						has_army_experience > 300
+					}
+				}
+			}
+			xp_button2_click = {
+				ai_will_do = {
+					base = 10
+					modifier = {
+						add = 100
+						has_navy_experience > 300
+					}
+				}
+			}
+			xp_button3_click = {
+				ai_will_do = {
+					base = 10
+					modifier = {
+						add = 100
+						has_air_experience > 300
+					}
+				}
+			}
+			xp_button4_click = {
+				ai_will_do = {
+					base = 10
+					modifier = {
+						add = 150
+						has_army_experience > 200
+						has_air_experience > 200
+						has_navy_experience > 200
+					}
+				}
+			}
+		}
+	}
+}

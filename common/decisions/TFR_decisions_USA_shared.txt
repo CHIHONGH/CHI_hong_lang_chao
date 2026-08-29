@@ -791,6 +791,9 @@ USA_restoring_american_foreign_influence_category = {
 			}
 			CAN = {
 				add_war_support = -0.90
+				hidden_effect = {
+					add_ideas = PTF_just_fucking_surrender_CAN
+				}
 			}
 		}
 		remove_effect = {
@@ -895,7 +898,13 @@ PTF_deal_with_USN = {
 			}
 		}
 		ai_will_do = {
-			base = 1000
+			base = 0
+			modifier = {
+				add = 1000
+				PRC = {
+					has_country_flag = PTF_MEX_intervention_flag
+				}
+			}
 		}
 		modifier = {
 		}
@@ -907,7 +916,13 @@ PTF_deal_with_USN = {
 				value = 1
 			}
 		}
+		war_with_on_remove = ZAP
+		war_with_on_remove = MEX
 		remove_effect = {
+			add_timed_idea = {
+				idea = PTF_wait_for_me
+				days = 10
+			}
 			log = "[GetDateText]: [Root.GetName]: decision USA_operation_green_decision remove_effect"
 			every_other_country = {
 				limit = {
@@ -930,6 +945,205 @@ PTF_deal_with_USN = {
 				}
 				war_with_PREV = yes
 			}
+			if = {
+				limit = { 
+					OR = {
+						ZAP = {
+							has_country_flag = MEX_mexican_unifier_flag
+						}
+						MEX = {
+							AND = {
+								has_government = communist
+								has_country_flag = MEX_mexican_unifier_flag
+							}	
+						}
+					}
+				}
+				MEX_ZAP_fuck_off_PTF = yes
+				activate_mission = USA_operation_green_mission
+				PRC = {
+					activate_mission = PTF_MEX_war_mission
+				}
+			}
+		}
+	}
+	USA_operation_green_mission = {
+		available = {
+			MEX = {
+				OR = {
+					is_subject_of = PTF
+					exists = no
+				}
+			}
+			ZAP = {
+				OR = {
+					is_subject_of = PTF
+					exists = no
+				}
+			}
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 180
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			set_global_flag = PTF_oh_shit_mexico_flag
+			add_timed_idea = {
+				idea = JAP_shame_defeat
+				days = 365
+			}
+			if = {
+				limit = { 
+					country_exists = ZAP
+				}
+				white_peace = ZAP
+				every_allied_country = {
+					white_peace = ZAP
+				}
+				ZAP = {
+					remove_dynamic_modifier = {
+						modifier = PRC_MEX_modifier
+					}
+					load_focus_tree = WLI_tree
+					remove_ideas = {
+						MEX_the_horror_of_decade_low
+						MEX_the_horror_of_decade_medium
+						MEX_the_horror_of_decade_high
+						MEX_the_horror_of_decade_insane
+					}
+				}	
+				PRC = {
+					remove_ideas = {
+						PRC_MEX_the_horror_of_decade_0
+						PRC_MEX_the_horror_of_decade_1
+						PRC_MEX_the_horror_of_decade_2
+						PRC_MEX_the_horror_of_decade_3
+						PRC_MEX_the_horror_of_decade_4
+						PRC_MEX_the_horror_of_decade_5
+						PRC_MEX_the_horror_of_decade_6
+					}
+					add_to_faction = ZAP
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
+					add_to_variable = {
+						CPC_frame = 4
+					}
+					clamp_variable = {
+						var = CPC_frame
+						min = 0
+						max = 100
+					}
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			else = {
+				white_peace = MEX
+				every_allied_country = {
+					white_peace = MEX
+				}
+				
+				MEX = {
+					remove_dynamic_modifier = {
+						modifier = PRC_MEX_modifier
+					}
+					load_focus_tree = WLI_tree
+					remove_ideas = {
+						MEX_the_horror_of_decade_low
+						MEX_the_horror_of_decade_medium
+						MEX_the_horror_of_decade_high
+						MEX_the_horror_of_decade_insane
+					}
+				}	
+				PRC = {
+					remove_ideas = {
+						PRC_MEX_the_horror_of_decade_0
+						PRC_MEX_the_horror_of_decade_1
+						PRC_MEX_the_horror_of_decade_2
+						PRC_MEX_the_horror_of_decade_3
+						PRC_MEX_the_horror_of_decade_4
+						PRC_MEX_the_horror_of_decade_5
+						PRC_MEX_the_horror_of_decade_6
+					}
+					add_to_faction = MEX
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
+					add_to_variable = {
+						CPC_frame = 4
+					}
+					clamp_variable = {
+						var = CPC_frame
+						min = 0
+						max = 100
+					}
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			
 		}
 	}
 	USA_operation_gray_decision = {
@@ -958,6 +1172,7 @@ PTF_deal_with_USN = {
 			}
 		}
 		available = {
+			always = no
 			NOT = {
 				has_country_flag = war_justification_flag
 			}

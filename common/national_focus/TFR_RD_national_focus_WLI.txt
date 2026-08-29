@@ -1,0 +1,2319 @@
+	focus_tree = {
+		id = WLI_tree
+		country = { 
+			factor = 0
+		}
+		default = no
+		shared_focus = WLI_red_flag_flying_high
+	}
+	# ==========================================
+	# 核心/政治分支 (主干)
+	# ==========================================
+	# 根国策：红色旗帜，高高升起
+	joint_focus = {
+		id = WLI_red_flag_flying_high
+		# icon = GFX_focus_WLI_red_flag_flying_high
+		icon = GFX_focus_SOV_new_historical_community
+		x = 20
+		y = 0
+		cost = 1
+		offset = {
+			x = -6
+			trigger = {
+				NOT = {
+					tag = PRC
+				}
+			}	
+		}
+		offset = {
+			y = 12
+			trigger = {
+				tag = PRC
+				has_country_flag = Prc_NewLeft_focus_key
+			}	
+		}
+		allow_branch = {
+			OR  = {
+				AND = {
+					tag = PRC
+					has_country_flag = Prc_NewLeft_focus_key
+				}
+				NOT = {
+					tag = PRC
+				}
+			}
+		}
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		available = {
+			tag = PRC
+			count_triggers = {
+				amount > 5
+				is_in_faction_with = PAK
+				is_in_faction_with = PRK
+				is_in_faction_with = SRI
+				is_in_faction_with = BAN
+				is_in_faction_with = VIN
+				is_in_faction_with = LAO
+				is_in_faction_with = BRM
+				is_in_faction_with = MND
+				is_in_faction_with = CPA
+				is_in_faction_with = CPP
+				is_in_faction_with = PRT
+				is_in_faction_with = ROP
+				is_in_faction_with = SRL
+				is_in_faction_with = SMA
+				is_in_faction_with = MON
+				is_in_faction_with = NEP
+				is_in_faction_with = BHU
+				is_in_faction_with = CAM
+				is_in_faction_with = NAX
+				is_in_faction_with = ZAP
+				is_in_faction_with = MEX
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = RD_re_enable_ai_production_tt
+			if = {
+				limit = {
+					has_idea = ai_disabled_production
+				}
+				remove_ideas = ai_disabled_production
+				add_research_slot = 1
+			}
+			set_variable = {
+				WLI_ec_var_consumer_goods_factor = 0.05
+			}
+			set_variable = {
+				WLI_ca_var_command_power_gain = 0.25
+			}
+			set_variable = {
+				WLI_ca_var_max_command_power = 100
+			}
+			set_variable = {
+				WLI_ca_var_max_planning_factor = 0.1
+			}
+			set_variable = {
+				WLI_ca_var_planning_speed = 0.1
+			}
+		}
+		completion_reward_joint_originator = {
+			add_political_power = 150
+		}
+		completion_reward_joint_member = {
+			add_political_power = 100
+		}
+	}
+
+	joint_focus = {
+		id = WLI_community_with_shared_future
+		# icon = GFX_focus_WLI_community_with_shared_future
+		icon = GFX_focus_PRC_prepare_for_the_new_world
+		relative_position_id = WLI_red_flag_flying_high
+		x = 0
+		y = 1
+		cost = 1
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_red_flag_flying_high }
+		available = {
+			tag = PRC
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+
+	joint_focus = {
+		id = WLI_joint_anti_terrorism_operations
+		# icon = GFX_focus_WLI_joint_anti_terrorism_operations
+		icon = GFX_focus_PRC_establish_eadi
+		relative_position_id = WLI_community_with_shared_future
+		x = -3
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_community_with_shared_future }
+		completion_reward_joint_originator = {
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+		completion_reward_joint_member = {
+			add_stability = 0.05
+			add_stability = 0.05
+		}
+	}
+
+	joint_focus = {
+		id = WLI_anti_corruption_international_cooperation
+		# icon = GFX_focus_WLI_anti_corruption_international_cooperation
+		icon = GFX_focus_PRC_crackdown_on_corruption
+		relative_position_id = WLI_community_with_shared_future
+		x = 0
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_community_with_shared_future }
+		completion_reward_joint_originator = {
+			add_political_power = 100
+			set_temp_variable = {
+				income_var_temp = 10
+			}
+			add_income_with_inflation = yes
+		}
+		completion_reward_joint_member = {
+			add_political_power = 50
+			set_temp_variable = {
+				income_var_temp = 5
+			}
+			add_income_with_inflation = yes
+		}
+	}
+
+	joint_focus = {
+		id = WLI_expand_multilateral_poverty_alleviation
+		# icon = GFX_focus_WLI_expand_multilateral_poverty_alleviation
+		icon = GFX_focus_PRC_korean_economic_assistence_rev
+		relative_position_id = WLI_community_with_shared_future
+		x = 3
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_community_with_shared_future }
+		completion_reward_joint_originator = {
+			set_temp_variable = {
+				society_development_var_temp = 0.5
+			}
+			set_temp_variable = {
+				poverty_development_var_temp = 0.5
+			}
+			add_poverty_development = yes
+			add_society_development = yes
+		}
+		completion_reward_joint_member = {
+			set_temp_variable = {
+				society_development_var_temp = 0.25
+			}
+			set_temp_variable = {
+				poverty_development_var_temp = 0.25
+			}
+			add_poverty_development = yes
+			add_society_development = yes
+		}
+	}
+
+	joint_focus = {
+		id = WLI_common_foreign_policy
+		# icon = GFX_focus_WLI_common_foreign_policy
+		icon = GFX_focus_PRC_empower_masses_autonomus_committe
+		relative_position_id = WLI_anti_corruption_international_cooperation
+		x = -1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
+		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_war_stability_factor = 0.1
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_factor = 0.02
+				}
+				add_to_variable = {
+					PRC_WLI_trade_opinion_factor = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea8
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_joint_political_propaganda
+		# icon = GFX_focus_WLI_joint_political_propaganda
+		icon = GFX_focus_PRC_stop_the_factionalism
+		relative_position_id = WLI_anti_corruption_international_cooperation
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_anti_corruption_international_cooperation }
+		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_drift_defence_factor = 0.1
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_factor = 0.03
+				}
+				add_to_variable = {
+					PRC_WLI_defensive_war_stability_factor = 0.05
+				}
+				add_to_variable = {
+					PRC_WLI_non_core_manpower = 0.05
+				}
+				add_to_variable = {
+					PRC_WLI_conscription_factor = 0.15
+				}
+				add_to_variable = {
+					PRC_WLI_army_morale_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea8
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		id = WLI_establish_world_liberation_arbitration_agency
+		# icon = GFX_focus_WLI_establish_world_liberation_arbitration_agency
+		icon = GFX_focus_PRC_reinvigorate_the_cadres_nat
+		relative_position_id = WLI_common_foreign_policy
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = WLI_common_foreign_policy }
+		completion_reward_joint_originator = {
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea11
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea10
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_establish_world_liberation_secretariat
+		# icon = GFX_focus_WLI_establish_world_liberation_secretariat
+		icon = GFX_focus_PRC_the_red_phoenix
+		relative_position_id = WLI_common_foreign_policy
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_common_foreign_policy }
+		prerequisite = { focus = WLI_joint_political_propaganda }
+		completion_reward = {
+			add_to_variable = {
+				PRC_WLI_stability_factor = -0.15
+			}
+			add_to_variable = {
+				PRC_WLI_stability_weekly = 0.002
+			}
+			add_to_variable = {
+				PRC_WLI_compliance_gain = 0.03
+			}
+			add_to_variable = {
+				PRC_WLI_resistance_growth = -0.3
+			}
+			
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea13
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_establish_world_liberation_supervisory_commission
+		# icon = GFX_focus_WLI_establish_world_liberation_supervisory_commission
+		icon = GFX_focus_SOV_restore_stalin_constitution	
+		relative_position_id = WLI_joint_political_propaganda
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_political_propaganda }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	joint_focus = {
+		id = WLI_convene_world_liberation_congress
+		# icon = GFX_focus_WLI_convene_world_liberation_congress
+		icon = GFX_focus_SOV_party_line_approval
+		relative_position_id = WLI_establish_world_liberation_secretariat
+		x = 0
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_establish_world_liberation_arbitration_agency }
+		prerequisite = { focus = WLI_establish_world_liberation_secretariat }
+		prerequisite = { focus = WLI_establish_world_liberation_supervisory_commission }
+		completion_reward_joint_originator = {
+			add_political_power = 100
+			add_stability = 0.1
+		}
+		completion_reward_joint_member = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+
+	joint_focus = {
+		id = WLI_red_sun_shines_bright
+		# icon = GFX_focus_WLI_red_sun_shines_bright
+		icon = GFX_focus_SOV_national_hero
+		relative_position_id = WLI_convene_world_liberation_congress
+		available = {
+			tag = PRC
+		}
+		x = -1
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_convene_world_liberation_congress }
+		mutually_exclusive = { focus = WLI_stars_revolve_around_the_moon }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_gain = 0.02
+				}
+				add_to_variable = {
+					PRC_WLI_drift_defence_factor = 0.1
+				}
+				add_to_variable = {
+					PRC_WLI_army_org_factor = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea5
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_stars_revolve_around_the_moon
+		# icon = GFX_focus_WLI_stars_revolve_around_the_moon
+		icon = GFX_focus_SOV_party_line_rashkin_3
+		relative_position_id = WLI_convene_world_liberation_congress
+		available = {
+			tag = PRC
+		}
+		x = 1
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_convene_world_liberation_congress }
+		mutually_exclusive = { focus = WLI_red_sun_shines_bright }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_political_power_gain = -0.02
+				}
+				add_to_variable = {
+					PRC_WLI_industrial_capacity_factory = 0.05
+				}
+				add_to_variable = {
+					PRC_WLI_production_factory_max_efficiency_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea6
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_unite_and_look_forward
+		# icon = GFX_focus_WLI_unite_and_look_forward
+		icon = GFX_focus_SOV_revolutionary_genius_winner
+		relative_position_id = WLI_convene_world_liberation_congress
+		x = 0
+		y = 2
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { 
+			focus = WLI_red_sun_shines_bright 
+			focus = WLI_stars_revolve_around_the_moon 
+		}
+		completion_reward = {
+			add_to_variable = {
+				PRC_WLI_stability_weekly = 0.002
+			}
+			add_to_variable = {
+				PRC_WLI_resistance_target = -0.05
+			}
+			add_to_variable = {
+				PRC_WLI_resistance_growth = -0.2
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea4
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_thorough_discussion
+		# icon = GFX_focus_WLI_thorough_discussion
+		icon = GFX_focus_SOV_reinvent_democracy
+		relative_position_id = WLI_unite_and_look_forward
+		x = -1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_unite_and_look_forward }
+		completion_reward = {
+			add_to_variable = {
+				PRC_WLI_political_power_gain = 0.02
+			}
+			add_to_variable = {
+				PRC_WLI_compliance_growth = 0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea2
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_unanimous_action
+		# icon = GFX_focus_WLI_unanimous_action
+		icon = GFX_focus_SOV_prepare_constitutional_reform
+		relative_position_id = WLI_unite_and_look_forward
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_unite_and_look_forward }
+		completion_reward = {
+			add_political_power = 50
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.02
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea3
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_each_in_their_own_beauty
+		# icon = GFX_focus_WLI_each_in_their_own_beauty
+		icon = GFX_focus_PRC_project_the_eternal_capital
+		relative_position_id = WLI_unite_and_look_forward
+		x = 0
+		y = 2
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_thorough_discussion }
+		prerequisite = { focus = WLI_unanimous_action }
+		completion_reward = {
+			add_to_variable = {
+				PRC_WLI_political_power_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_WLI_stability_weekly = 0.002
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea1
+				}
+			}
+		}
+	}
+
+	# ==========================================
+	# 侧枝：一带一路 / 文化
+	# ==========================================
+	joint_focus = {
+		id = WLI_deepen_belt_and_road
+		# icon = GFX_focus_WLI_deepen_belt_and_road
+		icon = GFX_focus_PRC_belt_and_road_initiative
+		relative_position_id = WLI_expand_multilateral_poverty_alleviation
+		x = 1
+		y = 2
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_expand_multilateral_poverty_alleviation }
+		prerequisite = { focus = WLI_international_tariff_agreement }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_political_power_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_business_value_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea7
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_reform_confucius_institutes
+		# icon = GFX_focus_WLI_reform_confucius_institutes
+		icon = GFX_focus_PRC_instill_confucious_values
+		relative_position_id = WLI_deepen_belt_and_road
+		x = 0
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_deepen_belt_and_road }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					PRC_WLI_communist_drift = 0.01
+				}
+				add_to_variable = {
+					PRC_WLI_libertarian_socialist_drift = 0.01
+				}
+				add_to_variable = {
+					PRC_WLI_research_speed_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_WLI_itself_idea0
+					add_idea = PRC_WLI_itself_idea7
+				}
+			}
+		}
+	}
+
+	# ==========================================
+	# 左侧：军事指挥分支
+	# ==========================================
+	joint_focus = {
+		id = WLI_joint_command_center
+		# icon = GFX_focus_WLI_joint_command_center
+		icon = GFX_focus_SOV_unify_command_structure_CPRF
+		relative_position_id = WLI_red_flag_flying_high
+		x = -10
+		y = 1
+		cost = 1
+		prerequisite = {
+			focus = WLI_red_flag_flying_high
+		}
+		available = {
+			tag = PRC
+			has_completed_focus = WLI_joint_command_center
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = WLI_collective_army_modifier
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_share_military_intelligence
+		# icon = GFX_focus_WLI_share_military_intelligence
+		icon = GFX_focus_SOV_reform_of_security_forces
+		relative_position_id = WLI_joint_command_center
+		x = -3
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_command_center }
+		completion_reward = {
+			add_tech_bonus = {
+				name = WLI_radar_tech_bonus
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+			custom_effect_tooltip = RD_different_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				PRC = {
+					add_ideas = WLI_collective_intelligence_PRC
+					every_allied_country = {
+						add_ideas = WLI_collective_intelligence_others
+					}
+				}
+				
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						tag = PRC
+					}
+					add_ideas = WLI_collective_intelligence_PRC
+				}
+				else = {
+					add_ideas = WLI_collective_intelligence_others
+				}
+			}
+			
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_standardize_equipment
+		# icon = GFX_focus_WLI_standardize_equipment
+		icon = GFX_focus_SOV_expand_t90_production_CPRF
+		relative_position_id = WLI_joint_command_center
+		x = 0
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_command_center }
+		completion_reward = {
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_supply_consumption_factor = -0.1	
+				}
+				add_to_variable = {
+					WLI_ca_var_production_factory_efficiency_gain_factor = 0.2	
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_standardize_equipment
+				bonus = 1
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = WLI_standardize_equipment
+				bonus = 1
+				uses = 1
+				category = armor
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea1
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_command_system_reform
+		# icon = GFX_focus_WLI_command_system_reform
+		icon = GFX_focus_SOV_reward_war_heroes
+		relative_position_id = WLI_joint_command_center
+		x = 3
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_command_center }
+		completion_reward = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				WLI_ca_var_command_power_gain_mult = 0.1	
+			}
+			add_to_variable = {
+				WLI_ca_var_army_org_factor = 0.1	
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea2
+				}
+			}
+			
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_expand_depot_network
+		# icon = GFX_focus_WLI_expand_depot_network
+		icon = GFX_focus_SOV_economic_revolution
+		relative_position_id = WLI_share_military_intelligence
+		x = -1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_share_military_intelligence }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_supply_node_range = 0.1
+				}
+				add_to_variable = {
+					WLI_ca_var_army_fuel_consumption_factor = -0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea4
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_military_industrial_cooperation
+		# icon = GFX_focus_WLI_military_industrial_cooperation
+		icon = GFX_focus_SOV_science_in_the_service_of_the_army_CPRF
+		relative_position_id = WLI_standardize_equipment
+		x = -1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_standardize_equipment }
+		prerequisite = { focus = WLI_share_military_intelligence }
+		completion_reward = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_production_factory_max_efficiency_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_industrial_capacity_factory = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea5
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_joint_military_exercises
+		# icon = GFX_focus_WLI_joint_military_exercises
+		icon = GFX_focus_SOV_improve_deep_battle_theory_CPRF
+		relative_position_id = WLI_standardize_equipment
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_command_system_reform }
+		prerequisite = { focus = WLI_standardize_equipment }
+		completion_reward = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			army_experience = 30
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				add_timed_idea = {
+					idea = WLI_joint_military_exercises_idea
+					days = 150
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = {
+							tag = PRC
+						}
+					}
+					add_timed_idea = {
+						idea = WLI_joint_military_exercises_idea
+						days = 150
+					}
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_coordinated_military_training
+		# icon = GFX_focus_WLI_coordinated_military_training
+		icon = GFX_focus_SOV_defence_fund
+		relative_position_id = WLI_command_system_reform
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_command_system_reform }
+		completion_reward = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				WLI_ca_var_army_org_factor = 0.05
+			}
+			add_to_variable = {
+				WLI_ca_var_army_morale_factor = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea3
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				add_mastery_bonus = {
+					name = WLI_coordinated_military_training
+					bonus = 0.25
+					days = 720
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = {
+							tag = PRC
+						}
+					}
+					add_mastery_bonus = {
+						name = WLI_coordinated_military_training
+						bonus = 0.25
+						days = 720
+					}
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_eagle_strikes_the_sky
+		# icon = GFX_focus_WLI_eagle_strikes_the_sky
+		icon = GFX_focus_PRC_dominate_the_skies
+		relative_position_id = WLI_military_industrial_cooperation
+		x = 0
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_military_exercises }
+		prerequisite = { focus = WLI_coordinated_military_training }
+		prerequisite = { focus = WLI_military_industrial_cooperation }
+		prerequisite = { focus = WLI_expand_depot_network }
+		completion_reward_joint_originator = {
+			air_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_eagle_strikes_the_sky
+				uses = 2
+				bonus = 1
+				category = cat_strategic_bomber
+			}
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			air_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_eagle_strikes_the_sky
+				uses = 1
+				bonus = 1
+				category = cat_strategic_bomber
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_fish_glides_in_deep
+		# icon = GFX_focus_WLI_fish_glides_in_deep
+		icon = GFX_focus_PRC_expand_the_fleet_of_nuclear_submarines
+		relative_position_id = WLI_joint_military_exercises
+		x = 0
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_joint_military_exercises }
+		prerequisite = { focus = WLI_coordinated_military_training }
+		prerequisite = { focus = WLI_military_industrial_cooperation }
+		prerequisite = { focus = WLI_expand_depot_network }
+		completion_reward_joint_originator = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_fish_glides_in_deep
+				uses = 2
+				bonus = 1
+				category = ss_tech
+			}
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_everyone_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = WLI_fish_glides_in_deep
+				uses = 1
+				bonus = 1
+				category = ss_tech
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_wind_rolls_red_flag
+		# icon = GFX_focus_WLI_wind_rolls_red_flag
+		icon = GFX_focus_SOV_soviet_power_supreme
+		relative_position_id = WLI_fish_glides_in_deep
+		x = -1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_eagle_strikes_the_sky }
+		prerequisite = { focus = WLI_fish_glides_in_deep }
+		completion_reward = {
+			if = {
+				limit = { 
+					tag = PRC
+				}
+				add_war_support = 0.1
+			}
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea8
+				}
+			}
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_war_support_factor = 0.1
+				}
+				add_to_variable = {
+					WLI_ca_var_army_attack_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_army_defence_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_navy_capital_ship_attack_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_navy_capital_ship_defence_factor = 0.05
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_unified_command
+		# icon = GFX_focus_WLI_unified_command
+		icon = GFX_focus_SOV_unification_of_our_armies
+		relative_position_id = WLI_wind_rolls_red_flag
+		available = {
+			tag = PRC
+		}
+		x = -1
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_wind_rolls_red_flag }
+		mutually_exclusive = { focus = WLI_joint_action }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_army_org_factor = 0.1
+				}
+				add_to_variable = {
+					WLI_ca_var_army_morale = 0.1
+				}
+			}		
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea6
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_joint_action
+		# icon = GFX_focus_WLI_joint_action
+		icon = GFX_focus_SOV_unity_of_brotherly_states
+		relative_position_id = WLI_wind_rolls_red_flag
+		available = {
+			tag = PRC
+		}
+		x = 1
+		y = 1
+		cost = 1
+		prerequisite = { focus = WLI_wind_rolls_red_flag }
+		mutually_exclusive = { focus = WLI_unified_command }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ca_var_army_org_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ca_var_army_morale = 0.2
+				}
+			}		
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_collective_army_idea0
+					add_idea = WLI_collective_army_idea7
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_towards_common_victory
+		# icon = GFX_focus_WLI_towards_common_victory
+		icon = GFX_focus_SOV_Soviet_Nostalgia
+		relative_position_id = WLI_wind_rolls_red_flag
+		x = 0
+		y = 3
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { 
+			focus = WLI_unified_command 
+			focus = WLI_joint_action 
+		}
+		completion_reward = {
+			add_war_support = 0.2
+		}
+		completion_reward_joint_member = {
+			add_political_power = 75
+		}
+		completion_reward_joint_originator = {
+			add_political_power = 150
+		}
+	}
+
+	joint_focus = {
+		id = WLI_rebirth_of_international_brigades
+		# icon = GFX_focus_WLI_rebirth_of_international_brigades
+		icon = GFX_focus_SOV_New_Revolutionary_State
+		relative_position_id = WLI_coordinated_military_training
+		x = 1
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_coordinated_military_training }
+		prerequisite = { focus = WLI_joint_anti_terrorism_operations }
+		completion_reward_joint_originator = {
+			add_ideas = WLI_revolution_reborn
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_ideas = WLI_revolution_reborn1
+			}
+		}
+	}
+
+	# ==========================================
+	# 右侧：世解经贸合作分支
+	# ==========================================
+	joint_focus = {
+		id = WLI_deepen_world_liberation_economic_cooperation
+		# icon = GFX_focus_WLI_deepen_world_liberation_economic_cooperation
+		icon = GFX_focus_PRC_economic_autarky
+		relative_position_id = WLI_red_flag_flying_high
+		prerequisite = {
+			focus = WLI_red_flag_flying_high
+		}
+		x = 10
+		y = 1
+		cost = 1
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = WLI_economic_cooperation_modifier
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_industrial_aid
+		# icon = GFX_focus_WLI_industrial_aid
+		icon = GFX_focus_PRC_endorse_the_megaprojects_cen
+		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
+		x = -2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}		
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					state_population > 50000
+					free_building_slots = {
+						building = dockyard
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			custom_effect_tooltip = RD_different_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = { tag = PRC }
+				}
+				random_owned_controlled_state = {
+					limit = {
+						state_population > 50000
+					}		
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						state_population > 50000
+						free_building_slots = {
+							building = dockyard
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = {
+						state_population > 50000
+					}
+					add_extra_state_shared_building_slots = 5
+				}
+				add_offsite_building = {
+					type = industrial_complex
+					level = 3
+				}
+				add_offsite_building = {
+					type = dockyard
+					level = 2
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_technical_assistance
+		# icon = GFX_focus_WLI_technical_assistance
+		icon = GFX_focus_PRC_huge_machine_of_the_china
+		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
+		x = 2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_deepen_world_liberation_economic_cooperation }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_tech_bonus = {
+					name = WLI_technical_assistance
+					uses = 2
+					bonus = 1
+					category = industry
+				}
+				add_tech_bonus = {
+					name = WLI_technical_assistance
+					uses = 2
+					bonus = 1
+					category = electronics
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_international_tariff_agreement
+		# icon = GFX_focus_WLI_international_tariff_agreement
+		icon = GFX_focus_PRC_optimize_the_supply_chain
+		relative_position_id = WLI_industrial_aid
+		x = -2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_industrial_aid }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_business_value_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea4
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_establish_joint_research_institutions
+		# icon = GFX_focus_WLI_establish_joint_research_institutions
+		icon = GFX_focus_PRC_fund_space_dev
+		relative_position_id = WLI_deepen_world_liberation_economic_cooperation
+		x = 0
+		y = 2
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_industrial_aid }
+		prerequisite = { focus = WLI_technical_assistance }
+		completion_reward = {
+			add_to_tech_sharing_group = eadi_research
+		}
+	}
+
+	joint_focus = {
+		id = WLI_establish_world_liberation_central_bank
+		# icon = GFX_focus_WLI_establish_world_liberation_central_bank
+		icon = GFX_focus_PRC_encourage_digitalization_nat
+		relative_position_id = WLI_technical_assistance
+		x = 2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_technical_assistance }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.1
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_buildings_factor = 0.025
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea3
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_unified_market
+		# icon = GFX_focus_WLI_unified_market
+		icon = GFX_focus_PRC_continue_eco_dev
+		relative_position_id = WLI_establish_joint_research_institutions
+		x = -2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_international_tariff_agreement }
+		prerequisite = { focus = WLI_establish_joint_research_institutions }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_resource_trade_cost_bonus_per_factory = 2
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea5
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_unified_currency
+		# icon = GFX_focus_WLI_unified_currency
+		icon = GFX_focus_PRC_reorient_the_economy
+		relative_position_id = WLI_establish_joint_research_institutions
+		x = 2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_establish_joint_research_institutions }
+		prerequisite = { focus = WLI_establish_world_liberation_central_bank }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_income_growth_factor = 0.05
+				}
+				add_to_variable = {
+					WLI_ec_var_business_value_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea6
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_build_integrated_economic_circle
+		# icon = GFX_focus_WLI_build_integrated_economic_circle
+		icon = GFX_focus_FPR_Combat_Hyperinflation
+		relative_position_id = WLI_establish_joint_research_institutions
+		x = 0
+		y = 2
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_unified_market }
+		prerequisite = { focus = WLI_unified_currency }
+		completion_reward = {
+			custom_effect_tooltip = RD_different_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					tag = PRC
+				}
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.1
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = WLI_economic_cooperation_idea0
+						add_idea = WLI_economic_cooperation_idea1
+					}
+				}
+			}
+			else = {
+				add_to_variable = {
+					WLI_ec_var_consumer_goods_factor = -0.15
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = WLI_economic_cooperation_idea0
+						add_idea = WLI_economic_cooperation_idea2
+					}
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_expand_international_division_of_labor
+		# icon = GFX_focus_WLI_expand_international_division_of_labor
+		icon = GFX_focus_FPR_fifthinternational
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = -2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_build_integrated_economic_circle }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_factory_max_efficiency_factor = 0.05
+				}
+				
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea8
+				}
+			}
+		}
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_coordinated_development_plan
+		# icon = GFX_focus_WLI_coordinated_development_plan
+		icon = GFX_focus_FPR_federationofsocialiststates
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = 2
+		y = 1
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_build_integrated_economic_circle }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_buildings_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea11
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = WLI_military_supplies_first
+		# icon = GFX_focus_WLI_military_supplies_first
+		icon = GFX_focus_FPR_cult_of_efficiency
+		relative_position_id = WLI_build_integrated_economic_circle
+		available = {
+			tag = PRC
+		}
+		x = -4
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_livelihood_first }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_arms_factory_factor = 0.1
+				}
+				
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea9
+				}
+			}
+		}
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_livelihood_first
+		# icon = GFX_focus_WLI_livelihood_first
+		icon = GFX_focus_FPR_Connect_the_Union
+		relative_position_id = WLI_build_integrated_economic_circle
+		available = {
+			tag = PRC
+		}
+		x = -1
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_military_supplies_first }
+		completion_reward = {
+			custom_effect_tooltip = RD_ally_only_buff
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { 
+					NOT = {
+						tag = PRC
+					}
+				}
+				add_to_variable = {
+					WLI_ec_var_production_speed_industrial_complex_factor = 0.1
+				}
+				
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = WLI_economic_cooperation_idea0
+					add_idea = WLI_economic_cooperation_idea10
+				}
+			}
+		}
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_staggered_development
+		# icon = GFX_focus_WLI_staggered_development
+		icon = GFX_focus_FPR_Set_Production_Quotas
+		relative_position_id = WLI_build_integrated_economic_circle
+		available = {
+			tag = PRC
+		}
+		x = 1
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_urban_rural_bridging }
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_urban_rural_bridging
+		# icon = GFX_focus_WLI_urban_rural_bridging
+		icon = GFX_focus_FPR_socialismofthefuture
+		relative_position_id = WLI_build_integrated_economic_circle
+		available = {
+			tag = PRC
+		}
+		x = 4
+		y = 2
+		cost = 1
+		prerequisite = { focus = WLI_expand_international_division_of_labor }
+		prerequisite = { focus = WLI_coordinated_development_plan }
+		mutually_exclusive = { focus = WLI_staggered_development }
+		completion_reward_joint_originator = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					state_population > 50000
+					infrastructure < 4
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = WLI_adapt_to_local_conditions
+		# icon = GFX_focus_WLI_adapt_to_local_conditions
+		icon = GFX_focus_FPR_the_art_of_politics
+		relative_position_id = WLI_build_integrated_economic_circle
+		x = 0
+		y = 3
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = {
+			focus = WLI_military_supplies_first
+			focus = WLI_livelihood_first		
+		}
+		prerequisite = { 
+			focus = WLI_staggered_development
+			focus = WLI_urban_rural_bridging 
+		}
+		completion_reward_joint_originator = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 2
+			}
+		}
+		completion_reward_joint_member = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 1
+			}
+		}
+	}
+
+	# ==========================================
+	# 底层总收尾国策
+	# ==========================================
+	joint_focus = {
+		id = WLI_earth_shaking_heroic_song
+		# icon = GFX_focus_WLI_earth_shaking_heroic_song
+		icon = GFX_focus_SOV_russian_proletarian_world
+		relative_position_id = WLI_each_in_their_own_beauty
+		available = {
+			tag = PRC
+			has_country_flag = PRC_china_gaw_victor
+		}
+		x = 0
+		y = 2
+		cost = 10
+		joint_trigger = {
+			is_ally_with = PRC
+		}
+		prerequisite = { focus = WLI_towards_common_victory }
+		prerequisite = { focus = WLI_each_in_their_own_beauty }
+		prerequisite = { focus = WLI_adapt_to_local_conditions }
+		completion_reward = {
+			add_political_power = 200
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+	}

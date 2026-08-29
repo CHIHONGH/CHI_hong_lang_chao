@@ -1,0 +1,286 @@
+# TFR_中俄谈判 - 事件文件
+# 三轮谈判制
+add_namespace = TFR_CRN
+
+##############################################################################
+# 1 — 谈判开始（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CRN.1
+	title = TFR_CRN.1.t
+	desc = TFR_CRN.1.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.1.a
+	}
+}
+
+##############################################################################
+# 2 — 第1轮成功，第2轮开始（黑龙江沿岸）（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CRN.2
+	title = TFR_CRN.2.t
+	desc = TFR_CRN.2.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.2.a
+	}
+}
+
+##############################################################################
+# 3 — 第2轮成功，第3轮开始（外兴安岭与库页岛）（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CRN.3
+	title = TFR_CRN.3.t
+	desc = TFR_CRN.3.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.3.a
+	}
+}
+
+##############################################################################
+# 4 — 谈判失败（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CRN.4
+	title = TFR_CRN.4.t
+	desc = TFR_CRN.4.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.4.a
+	}
+}
+
+##############################################################################
+# 5 — 三轮全部成功，外东北全境回归（全局新闻）
+##############################################################################
+news_event = {
+	id = TFR_CRN.5
+	title = TFR_CRN.5.t
+	desc = TFR_CRN.5.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.5.a
+	}
+}
+
+##############################################################################
+# 8 — 外兴安岭回归（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CRN.8
+	title = TFR_CRN.8.t
+	desc = TFR_CRN.8.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.8.a
+	}
+}
+
+##############################################################################
+# 10 — 库页岛回归（全局新闻）
+##############################################################################
+news_event = {
+	id = TFR_CRN.10
+	title = TFR_CRN.10.t
+	desc = TFR_CRN.10.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.10.a
+	}
+}
+
+##############################################################################
+# 11 — SOV 解体，外东北剩余领土无条件割让（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CRN.11
+	title = TFR_CRN.11.t
+	desc = TFR_CRN.11.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.11.a
+	}
+}
+
+##############################################################################
+# 边境冲突事件（20~26）
+##############################################################################
+
+# 20 — 边境冲突开始（PRC 专属）
+country_event = {
+	id = TFR_CRN.20
+	title = TFR_CRN.20.t
+	desc = TFR_CRN.20.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.20.a
+	}
+}
+
+# 21 — 边境战争胜利（双方收到；PRC 选项执行结算）
+country_event = {
+	id = TFR_CRN.21
+	title = TFR_CRN.21.t
+	desc = TFR_CRN.21.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.21.a
+		trigger = { original_tag = PRC }
+		hidden_effect = {
+			TFR_CRN_border_war_win = yes
+		}
+	}
+	option = {
+		name = TFR_CRN.21.b
+		trigger = { NOT = { original_tag = PRC } }
+	}
+}
+
+# 22 — 边境战争失败/取消（双方收到；PRC 选项收尾）
+country_event = {
+	id = TFR_CRN.22
+	title = TFR_CRN.22.t
+	desc = TFR_CRN.22.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.22.a
+		trigger = { original_tag = PRC }
+		hidden_effect = {
+			TFR_CRN_border_war_lose = yes
+		}
+	}
+	option = {
+		name = TFR_CRN.22.b
+		trigger = { NOT = { original_tag = PRC } }
+	}
+}
+
+# 23 — 全面战争：俄方忍无可忍对华宣战（PRC 专属，中方施压满 100 引爆）
+country_event = {
+	id = TFR_CRN.23
+	title = TFR_CRN.23.t
+	desc = TFR_CRN.23.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.23.a
+	}
+}
+
+# 30 — 全面战争：中方忍无可忍对俄宣战（PRC 专属，俄方施压满 100 引爆）
+country_event = {
+	id = TFR_CRN.30
+	title = TFR_CRN.30.t
+	desc = TFR_CRN.30.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.30.a
+	}
+}
+
+# 24 — SOV 求和（PRC 专属，全面战争胜利）
+country_event = {
+	id = TFR_CRN.24
+	title = TFR_CRN.24.t
+	desc = TFR_CRN.24.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.24.a
+	}
+}
+
+# 25 — 中国战败赔款（PRC 专属，365 天时间耗尽）
+country_event = {
+	id = TFR_CRN.25
+	title = TFR_CRN.25.t
+	desc = TFR_CRN.25.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.25.a
+	}
+}
+
+# 26 — 库页岛回归，外东北全境收回（全局新闻）
+news_event = {
+	id = TFR_CRN.26
+	title = TFR_CRN.26.t
+	desc = TFR_CRN.26.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.26.a
+	}
+}
+
+# 27 — 中国对俄全面宣战（全局新闻，全面升级时）
+news_event = {
+	id = TFR_CRN.27
+	title = TFR_CRN.27.t
+	desc = TFR_CRN.27.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.27.a
+	}
+}
+
+# 28 — 外东北全境回归（全局新闻，全面战争胜利/俄方求和时）
+news_event = {
+	id = TFR_CRN.28
+	title = TFR_CRN.28.t
+	desc = TFR_CRN.28.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.28.a
+	}
+}
+
+# 29 — 中国战败（全局新闻，365 天时间耗尽时）
+news_event = {
+	id = TFR_CRN.29
+	title = TFR_CRN.29.t
+	desc = TFR_CRN.29.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CRN.29.a
+	}
+}

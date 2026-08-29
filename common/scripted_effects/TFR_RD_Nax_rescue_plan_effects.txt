@@ -36,3 +36,798 @@ TFR_NAX_weapon_effects = {
         max = 100
     }
 }
+
+rev_victory_south_america_war = {
+    every_country = {
+        limit = {
+            has_war_with = BRA
+        }
+        white_peace = BRA
+        white_peace = ARG
+    }
+    PRU = {
+        annex_country = {
+            target = BOL
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = PAR
+            transfer_troops = yes
+        }
+        every_state = {
+            limit = {
+                OR = {
+                    is_core_of = BOL
+                    is_core_of = PAR
+                }
+            }
+            transfer_state_to = PRU
+            add_core_of = PRU
+        }
+        set_cosmetic_tag = PRU_great
+    }
+    VEN = {
+        transfer_state = 906
+        add_state_core = 906
+    }
+    ECU = {
+        every_core_state = {
+            transfer_state_to = ELN
+            add_core_of = ELN
+        }
+    }
+    ELN = {
+        annex_country = {
+            target = ECU
+            transfer_troops = yes
+        }
+    }
+    495 = {
+        set_demilitarized_zone = yes
+    }
+    BRA = {
+        add_timed_idea = {
+            idea = BRA_farmer_revolution
+            days = 500
+        }
+    }
+    ARG = {
+        set_cosmetic_tag = ARG_what_the_fuck
+        kill_ideology_leader = market_liberal
+        create_country_leader = {
+            name = AN1_anarchy_char
+            picture = "gfx/Leaders/ZZZ/ZZZ_anarchy.png"
+            ideology = left_anarchist
+        }
+        set_politics = {
+            ruling_party = libertarian_socialist
+            elections_allowed = no
+            election_frequency = 60
+            last_election = "2021.9.5"
+        }
+        set_popularities = {
+            totalitarian_socialist = 5
+            communist = 10
+            libertarian_socialist = 20
+            social_democrat = 5
+            social_liberal = 5
+            market_liberal = 5
+            conservative = 10
+            authoritarian_democrat = 20
+            nationalist = 10
+            fascist = 5
+            national_socialist = 5
+        }
+        news_event = {
+            id = nax.4
+            days = 3
+            random_hours = 6
+        }
+    }
+    BRA = {
+        dismantle_faction = yes
+    }
+
+}
+
+react_victory_south_america_war = {
+    every_country = {
+        limit = {
+            has_war_with = NIC
+        }
+        white_peace = PIC
+    }
+    PRU = {
+        promote_character = PRU_alberto_fujimori_char
+        set_politics = {
+            ruling_party = authoritarian_democrat
+            elections_allowed = no
+            last_election = "2022.2.22"
+            election_frequency = 60
+        }
+        add_timed_idea = {
+            idea = PRU_warlords_idea
+            days = 1000
+        }
+        add_timed_idea = {
+            idea = PRU_rural_massacre
+            days = 500
+        }
+    }
+    ELN = {
+        every_core_state = {
+            transfer_state_to = COL
+            add_core_of = COL
+            remove_core_of = ELN
+        }
+    }
+    COL = {
+        set_politics = {
+            ruling_party = nationalist
+            elections_allowed = no
+            last_election = "2019.1.1"
+            election_frequency = 60
+        }
+    }
+    VEN = {
+        create_country_leader = {
+            name = AN1_anarchy_char
+            picture = "gfx/Leaders/ZZZ/ZZZ_anarchy.png"
+            ideology = left_anarchist
+        }
+        set_politics = {
+            ruling_party = libertarian_socialist
+            elections_allowed = no
+            election_frequency = 60
+            last_election = "2021.9.5"
+        }
+        set_popularities = {
+            totalitarian_socialist = 5
+            communist = 10
+            libertarian_socialist = 20
+            social_democrat = 5
+            social_liberal = 5
+            market_liberal = 5
+            conservative = 10
+            authoritarian_democrat = 20
+            nationalist = 10
+            fascist = 5
+            national_socialist = 5
+        }
+    }
+    PTF = {
+        puppet = NIC
+    }
+    NIC = {
+        set_cosmetic_tag = NIC_PTF_sub
+    }
+}
+
+MEX_buff_normal_effect = {
+    if = {
+        limit = { 
+            country_exists = ZAP
+        }
+        ZAP = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.1
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+            }
+        }
+    }
+    else = {
+        MEX = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.05
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.1
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+            }
+        }
+    }
+}
+MEX_buff_hard_effect = {
+    if = {
+        limit = { 
+            country_exists = ZAP
+        }
+        ZAP = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.15
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.2
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.2
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.2
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea_hard
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea_hard
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+            }
+        }
+    }
+    else = {
+        MEX = {
+            add_to_variable = {
+                PRC_MEX_modifier_army_attack_factor_var = 0.15
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_defence_factor_var = 0.2
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_core_defence_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_cas_damage_reduction_var = 0.2
+            }
+            add_to_variable = {
+                PRC_MEX_modifier_army_org_factor_var = 0.2
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = PRC_MEX_modifier_idea0
+                        add_idea = PRC_MEX_modifier_idea_hard
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    add_ideas = PRC_MEX_modifier_idea_hard
+                }
+                hidden_effect = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_MEX_modifier
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+MEX_pretrain_for_the_worst_display = {
+    custom_effect_tooltip = MEX_pretrain_for_the_worst_tt
+    meta_effect = {
+        text = {
+            show_ideas_tooltip = PRC_MEX_the_horror_of_decade_[PRC_level]
+        }
+        PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+    }
+    custom_effect_tooltip = MEX_pretrain_for_the_worst_tt2
+    if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var > 0
+            }
+            check_variable = {
+                MEX_pretrain_for_the_worst_var < 3
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_low
+    }
+    else_if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var > 0
+            }
+            check_variable = {
+                MEX_pretrain_for_the_worst_var < 5
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_medium
+    }
+    else_if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var > 0
+            }
+            check_variable = {
+                MEX_pretrain_for_the_worst_var < 6
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_high
+    }
+    else_if = {
+        limit = { 
+            check_variable = {
+                MEX_pretrain_for_the_worst_var = 6
+            }
+        }
+        show_ideas_tooltip = MEX_the_horror_of_decade_insane
+    }
+    else = {
+        custom_effect_tooltip = MEX_pretrain_for_the_worst_tt3
+    }
+    custom_effect_tooltip = generic_skip_one_line_tt
+    set_temp_variable = {
+        PRC_level_new_temp = MEX_pretrain_for_the_worst_var
+    }
+    add_to_temp_variable = {
+        PRC_level_new_temp = 1
+    }
+    if = {
+        limit = { 
+            OR = {
+                has_country_flag = PTF_difficulty_Simple
+                has_country_flag = PTF_difficulty_Normal
+            }
+        }
+        if = {
+            limit = { 
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 5
+                }
+            }
+            custom_effect_tooltip = MEX_pretrain_for_the_worst_tt4
+            meta_effect = {
+                text = {
+                    effect_tooltip = {
+                        swap_ideas = {
+                            remove_idea = PRC_MEX_the_horror_of_decade_[PRC_level]
+                            add_idea = PRC_MEX_the_horror_of_decade_[PRC_level_new]
+                        }
+                    }
+                }
+                PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+                PRC_level_new = "[?PRC_level_new_temp|.0]"
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 2
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_low
+                    add_idea = MEX_the_horror_of_decade_medium
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 4
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_medium
+                    add_idea = MEX_the_horror_of_decade_high
+                }
+            }
+        }     
+    }
+    if = {
+        limit = { 
+            OR = {
+                has_country_flag = PTF_difficulty_Hard
+                has_country_flag = PTF_difficulty_Extremely_hard
+            }
+        }
+        if = {
+            limit = { 
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 6
+                }
+            }
+            custom_effect_tooltip = MEX_pretrain_for_the_worst_tt4
+            meta_effect = {
+                text = {
+                    effect_tooltip = {
+                        swap_ideas = {
+                            remove_idea = PRC_MEX_the_horror_of_decade_[PRC_level]
+                            add_idea = PRC_MEX_the_horror_of_decade_[PRC_level_new]
+                        }
+                    }
+                }
+                PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+                PRC_level_new = "[?PRC_level_new_temp|.0]"
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 2
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_low
+                    add_idea = MEX_the_horror_of_decade_medium
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 4
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_medium
+                    add_idea = MEX_the_horror_of_decade_high
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        MEX_pretrain_for_the_worst_var = 5
+                    }
+                }
+                swap_ideas = {
+                    remove_idea = MEX_the_horror_of_decade_high
+                    add_idea = MEX_the_horror_of_decade_insane
+                }
+            }
+        }
+        
+    }
+    
+}
+
+MEX_ZAP_get_division_template = {
+    division_template = {
+        name = "Endgame Division"
+        regiments = {
+            modern_armor = {
+                x = 0
+                y = 0
+            }
+            modern_armor = {
+                x = 0
+                y = 1
+            }
+            modern_armor = {
+                x = 0
+                y = 2
+            }
+            mechanized = {
+                x = 0
+                y = 3
+            }
+            mechanized = {
+                x = 0
+                y = 4
+            }
+            modern_armor = {
+                x = 1
+                y = 0
+            }
+            modern_armor = {
+                x = 1
+                y = 1
+            }
+            modern_armor = {
+                x = 1
+                y = 2
+            }
+            light_mechanized = {
+                x = 1
+                y = 3
+            }
+            light_mechanized = {
+                x = 1
+                y = 4
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 0
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 1
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 2
+            }
+            modern_sp_artillery_brigade = {
+                x = 2
+                y = 3
+            }
+            mechanized = {
+                x = 2
+                y = 4
+            }
+            spaa_brigade = {
+                x = 3
+                y = 0
+            }
+        }
+        support = {
+            signal_company = {
+                x = 0
+                y = 0
+            }
+            engineer = {
+                x = 0
+                y = 1
+            }
+        }
+        priority = 120
+    }
+}
+
+MEX_ZAP_fuck_off_PTF = {
+    PRC = {
+        meta_effect = {
+            text = {
+                add_timed_idea = {
+                    idea = PRC_MEX_the_horror_of_decade_[PRC_level]
+                    days = 180
+                }
+            }
+            PRC_level = "[?MEX_pretrain_for_the_worst_var|.0]"
+        }
+    }
+    if = {
+        limit = { 
+            country_exists = ZAP
+        }
+        ZAP = {
+            add_timed_idea = {
+                idea = MEX_wait_for_me
+                days = 10
+            }
+            MEX_ZAP_get_division_template = yes
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Willpower Brigade\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = ZAP
+                }
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Zhukov Division\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = ZAP
+                }
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = ZAP
+                }
+            }
+            if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 3
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_low
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_medium
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_high
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 6
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_insane
+                    days = 180
+                }
+            }
+        }
+        
+    }
+    else = {
+        MEX = {
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Willpower Brigade\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = MEX
+                }
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Zhukov Division\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = yes
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = MEX
+                }
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "division_template = \"Endgame Division\"  start_experience_factor = 1 start_equipment_factor = 1.0"
+                    allow_spawning_on_enemy_provs = no
+                    count = PRC.MEX_build_an_ultimate_army_var
+                    owner = MEX
+                }
+            }
+            if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 3
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_low
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var > 0
+                            MEX_pretrain_for_the_worst_var < 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_medium
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 5
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_high
+                    days = 180
+                }
+            }
+            else_if = {
+                limit = { 
+                    PRC = {
+                        check_variable = {
+                            MEX_pretrain_for_the_worst_var = 6
+                        }
+                    }
+                }
+                add_timed_idea = {
+                    idea = MEX_the_horror_of_decade_insane
+                    days = 180
+                }
+            }
+        }
+        
+    }
+    
+}

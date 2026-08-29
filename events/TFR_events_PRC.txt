@@ -10,6 +10,9 @@ country_event = {
 	trigger = {
 		tag = PRC
 	}
+	option = {
+		name = china.2.a
+	}
 }
 
 #President Xi Visits Myanmar
@@ -501,6 +504,10 @@ country_event = {
 	}
 	immediate = {
 		hidden_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = -15
+			}
 			set_country_flag = PRC_first_committee_transition_flag
 			add_timed_idea = {
 				idea = PRC_chinese_triumphalism
@@ -576,6 +583,10 @@ country_event = {
 		add_ideas = PRC_chen_wenqing_int
 		add_ideas = PRC_zhang_jun_sec
 		effect_tooltip = {
+			add_offsite_building = {
+				type = arms_factory
+				level = -15
+			}
 			focus_unlock = yes
 			transfer_state = 524
 			transfer_state = 1150
@@ -592,16 +603,15 @@ country_event = {
 				idea = PRC_chinese_triumphalism
 				days = 1000
 			}
-			swap_ideas = {
-				remove_idea = PRC_party_rectification_campaign_bf1e
-				add_idea = PRC_party_rectification_campaign_bf2
-			}
+			custom_effect_tooltip = PRC_nl_clean_house_tt
 		}
 		hidden_effect = {
 			remove_dynamic_modifier = {
 				modifier = PRC_party_rectification_campaign_another_dynamic
 			}
-			add_ideas = PRC_party_rectification_campaign_bf2
+			add_dynamic_modifier = {
+				modifier = PRC_party_rectification_campaign_twother_dynamic
+			}
 		}
 	}
 }
@@ -2720,14 +2730,27 @@ news_event = {
 	}
 	option = {
 		name = china.80.a
-		hidden_effect = {
-			PRC = {
-				set_country_flag = PRC_cold_war_flag
-			}
-			JAP = {
-				set_country_flag = JAP_cold_war_flag
+		trigger = {
+			tag = JAP
+		}
+		set_country_flag = JAP_cold_war_flag
+	}
+	option = {
+		name = china.80.b
+		trigger = {
+			tag = PRC
+		}
+		set_country_flag = PRC_cold_war_flag
+	}
+	option = {
+		name = china.80.c
+		trigger = {
+			NOT = {
+				tag = JAP
+				tag = PRC
 			}
 		}
+		
 	}
 }
 
@@ -3684,6 +3707,7 @@ country_event = {
 			}
 		}
 		EFF = {
+			add_ideas = EFF_left_unity_idea
 			add_equipment_to_stockpile = {
 				type = infantry_equipment_2
 				amount = 2000
@@ -3691,70 +3715,70 @@ country_event = {
 			}
 		}
 	}
-	option = {
-		name = china.117.b
-		set_temp_variable = {
-			var = PRC_influence_cen_var_temp
-			value = 0.05
-		}
-		PRC_add_influence_cen = yes
-		PRC = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = -2000
-				producer = PRC
-			}
-			add_ai_strategy = {
-				type = send_volunteers_desire
-				id = "SWZ"
-				value = 100
-			}
-			add_ai_strategy = {
-				type = support
-				id = "SWZ"
-				value = 300
-			}
-		}
-		SWZ = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = 2000
-				producer = PRC
-			}
-		}
-	}
-	option = {
-		name = china.117.c
-		set_temp_variable = {
-			var = PRC_influence_lib_var_temp
-			value = 0.05
-		}
-		PRC_add_influence_lib = yes
-		PRC = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = -2000
-				producer = PRC
-			}
-			add_ai_strategy = {
-				type = send_volunteers_desire
-				id = "SAF"
-				value = 100
-			}
-			add_ai_strategy = {
-				type = support
-				id = "SAF"
-				value = 300
-			}
-		}
-		SAF = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
-				amount = 1000
-				producer = PRC
-			}
-		}
-	}
+	# option = {
+	# 	name = china.117.b
+	# 	set_temp_variable = {
+	# 		var = PRC_influence_cen_var_temp
+	# 		value = 0.05
+	# 	}
+	# 	PRC_add_influence_cen = yes
+	# 	PRC = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = -2000
+	# 			producer = PRC
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = send_volunteers_desire
+	# 			id = "SWZ"
+	# 			value = 100
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = support
+	# 			id = "SWZ"
+	# 			value = 300
+	# 		}
+	# 	}
+	# 	SWZ = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = 2000
+	# 			producer = PRC
+	# 		}
+	# 	}
+	# }
+	# option = {
+	# 	name = china.117.c
+	# 	set_temp_variable = {
+	# 		var = PRC_influence_lib_var_temp
+	# 		value = 0.05
+	# 	}
+	# 	PRC_add_influence_lib = yes
+	# 	PRC = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = -2000
+	# 			producer = PRC
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = send_volunteers_desire
+	# 			id = "SAF"
+	# 			value = 100
+	# 		}
+	# 		add_ai_strategy = {
+	# 			type = support
+	# 			id = "SAF"
+	# 			value = 300
+	# 		}
+	# 	}
+	# 	SAF = {
+	# 		add_equipment_to_stockpile = {
+	# 			type = infantry_equipment_2
+	# 			amount = 1000
+	# 			producer = PRC
+	# 		}
+	# 	}
+	# }
 }
 
 country_event = {
@@ -4081,112 +4105,112 @@ country_event = {
 	}
 }
 
-country_event = {
-	#National People's Congress votes on Federalization
-	id = china.123
-	title = china.123.t
-	desc = china.123.d
-	picture = GFX_prc_megacity1
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-	}
-	option = {
-		name = china.123.a
-		effect_tooltip = {
-		}
-		hidden_effect = {
-			IF = {
-				LIMIT = {
-					check_variable = {
-						var = PRC_approval_rating_var_temp
-						value < 0.3
-					}
-				}
-				country_event = {
-					id = china.124
-					days = 1
-				}
-			}
-			IF = {
-				LIMIT = {
-					check_variable = {
-						var = PRC_approval_rating_var_temp
-						value > 0.3
-					}
-				}
-				country_event = {
-					id = china.125
-					days = 2
-				}
-			}
-		}
-	}
-}
+# country_event = {
+# 	#National People's Congress votes on Federalization
+# 	id = china.123
+# 	title = china.123.t
+# 	desc = china.123.d
+# 	picture = GFX_prc_megacity1
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 	}
+# 	option = {
+# 		name = china.123.a
+# 		effect_tooltip = {
+# 		}
+# 		hidden_effect = {
+# 			IF = {
+# 				LIMIT = {
+# 					check_variable = {
+# 						var = PRC_approval_rating_var_temp
+# 						value < 0.3
+# 					}
+# 				}
+# 				country_event = {
+# 					id = china.124
+# 					days = 1
+# 				}
+# 			}
+# 			IF = {
+# 				LIMIT = {
+# 					check_variable = {
+# 						var = PRC_approval_rating_var_temp
+# 						value > 0.3
+# 					}
+# 				}
+# 				country_event = {
+# 					id = china.125
+# 					days = 2
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 
-country_event = {
-	#Attempted Hardliner coup!
-	id = china.124
-	title = china.124.t
-	desc = china.124.d
-	picture = GFX_prc_megacity1
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-	}
-	option = {
-		name = china.124.a
-		1222 = {
-			set_demilitarized_zone = yes
-		}
-		1215 = {
-			set_demilitarized_zone = yes
-		}
-		1220 = {
-			set_demilitarized_zone = yes
-		}
-		596 = {
-			set_demilitarized_zone = yes
-		}
-		600 = {
-			set_demilitarized_zone = yes
-		}
-		595 = {
-			set_demilitarized_zone = yes
-		}
-		1218 = {
-			set_demilitarized_zone = yes
-		}
-		592 = {
-			set_demilitarized_zone = yes
-		}
-		591 = {
-			set_demilitarized_zone = yes
-		}
-		set_politics = {
-			ruling_party = totalitarian_socialist
-			elections_allowed = no
-			last_election = "2000.1.1"
-			election_frequency = 48
-		}
-		add_country_leader_role = {
-			character = PRC_li_zuocheng
-			promote_leader = yes
-			country_leader = {
-				ideology = left_wing_junta
-				expire = "2099.1.1.1"
-				traits = {
-				}
-			}
-		}
-		hidden_effect = {
-			country_event = {
-				#WANG YANG and Cabinet SHOT
-				id = china.1242
-			}
-		}
-	}
-}
+# country_event = {
+# 	#Attempted Hardliner coup!
+# 	id = china.124
+# 	title = china.124.t
+# 	desc = china.124.d
+# 	picture = GFX_prc_megacity1
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 	}
+# 	option = {
+# 		name = china.124.a
+# 		1222 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		1215 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		1220 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		596 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		600 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		595 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		1218 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		592 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		591 = {
+# 			set_demilitarized_zone = yes
+# 		}
+# 		set_politics = {
+# 			ruling_party = totalitarian_socialist
+# 			elections_allowed = no
+# 			last_election = "2000.1.1"
+# 			election_frequency = 48
+# 		}
+# 		add_country_leader_role = {
+# 			character = PRC_li_zuocheng
+# 			promote_leader = yes
+# 			country_leader = {
+# 				ideology = left_wing_junta
+# 				expire = "2099.1.1.1"
+# 				traits = {
+# 				}
+# 			}
+# 		}
+# 		hidden_effect = {
+# 			country_event = {
+# 				#WANG YANG and Cabinet SHOT
+# 				id = china.1242
+# 			}
+# 		}
+# 	}
+# }
 
 country_event = {
 	#WANG YANG and Cabinet SHOT
@@ -4796,8 +4820,19 @@ country_event = {
 	}
 	option = {
 		name = china.134.a
+		custom_effect_tooltip = china_134_tt
 		unlock_decision_category_tooltip = PRC_indo_pakistan_war
 		activate_mission = PRC_indo_pakistani_war_mission
+		RAJ = {
+			country_event = {
+				id = china.140
+			}
+		}
+		PAK = {
+			country_event = {
+				id = china.140
+			}
+		}
 	}
 }
 
@@ -4890,7 +4925,7 @@ country_event = {
 		add_doctrine_cost_reduction = {
 			cost_reduction = 0.75
 			uses = 1
-			category = land_doctrine
+			category = cat_old_land_doctrine
 		}
 	}
 	option = {
@@ -5011,6 +5046,9 @@ country_event = {
 	}
 	option = {
 		name = china.140.b
+		ai_chance = {
+			base = 0
+		}
 		if = {
 			limit = {
 				tag = RAJ
@@ -9959,10 +9997,9 @@ country_event = {
 				is_core_of = ROOT
 				industrial_complex > 4
 			}
-			add_building_construction = {
+			remove_building = {
 				type = industrial_complex
-				level = -1
-				instant_build = yes
+				level = 1
 			}
 		}
 		random_owned_controlled_state = {
@@ -9970,10 +10007,9 @@ country_event = {
 				is_core_of = ROOT
 				industrial_complex > 4
 			}
-			add_building_construction = {
+			remove_building = {
 				type = industrial_complex
-				level = -1
-				instant_build = yes
+				level = 1
 			}
 		}
 		set_temp_variable = {
@@ -10195,6 +10231,7 @@ country_event = {
 	option = {
 		name = china.311.a
 		add_political_power = 15
+		unlock_decision_category_tooltip = PRC_ready_for_global_economy_destory_category
 	}
 }
 
@@ -10210,6 +10247,7 @@ country_event = {
 	option = {
 		name = china.312.a
 		add_political_power = 35
+		custom_effect_tooltip = china_312_tt
 	}
 }
 
@@ -10484,6 +10522,9 @@ country_event = {
 			value = -0.025
 		}
 		add_industrial_development = yes
+
+		set_country_flag = PRC_power_outage_flag
+		custom_effect_tooltip = PRC_power_outage_flag_tt
 	}
 }
 
@@ -12930,7 +12971,66 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = china.700
+	title = china.700.t
+	desc = china.700.d
+	picture = GFX_event_prc_sun_jianguo1
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	#immediate = {
+	#}
+	option = {
+		name = china.700.a
+		navy_experience = 25
+		hidden_effect = {
+			PRC_sun_jianguo = {
+                unit_leader_event = {
+                    id = china.701
+                    days = 3
+                }
+            }
+		}
+	}
+}
+
 #Empire Burning
+unit_leader_event = {
+	id = china.701
+	title = china.701.t
+	desc = china.701.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = { #approved
+		name = china.701.a
+		mio:PRC_bohai_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+			complete_mio_trait = PRC_mio_cmc_funds
+			set_mio_flag = PRC_mio_flag_cmc_approve_ssn_funding
+		}
+		mio:PRC_csic_wuchang_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 10
+		}
+		add_debt_with_inflation = yes
+	}
+	option = {
+		name = china.701.b
+		mio:PRC_bohai_shipyard_organization = {
+			add_mio_funds_gain_factor = 0.10
+			complete_mio_trait = PRC_mio_Navy_Field_Test
+		}
+	}
+}
+
 country_event = {
 	id = china.493
 	title = china.493.t
@@ -12963,6 +13063,7 @@ country_event = {
 		name = china.500.a
 		air_experience = 25
 		set_country_flag = PRC_project_song_wencong_succeeded1
+		set_country_flag = PRC_project_song_wencong_success
 		if = {
 			limit = {
 				NOT = {
@@ -13039,7 +13140,7 @@ country_event = {
 	title = china.546.t
 	desc = china.546.d
 	is_triggered_only = yes
-	picture = GFX_PRC_type_100
+	picture = GFX_PLAN3 
 	immediate = {
 		set_country_flag = PRC_project_liao_yuan_succeed
 	}
@@ -13097,29 +13198,60 @@ country_event = {
 			main_battle_tank_chassis = 1
 		}
 		create_equipment_variant = {
-			name = "Type 100"
+			name = "ZTZ-100"
 			type = modern_tank_chassis_4
 			parent_version = 0
 			modules = {
 				main_armament_slot = tank_high_velocity_cannon_3
-				turret_type_slot = tank_modern_tank_turret
+				turret_type_slot = tank_unmanned_tank_turret
 				suspension_type_slot = tank_torsion_bar_suspension
-				armor_type_slot = tank_cast_armor
-				engine_type_slot = tank_gas_turbine_engine
-				special_type_slot_1 = tank_radio_2
-				special_type_slot_2 = auto_loader
-				special_type_slot_3 = empty
-				special_type_slot_4 = empty
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_advanced_electric_engine
+				special_type_slot_1 = remote_weapon_system_antitank
+				special_type_slot_2 = GL7_active_protection_system
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = anti_drone_laser_system
+				special_type_slot_5 = gunner_nv_3
+				special_type_slot_6 = wet_ammo_storage
+				special_type_slot_7 = tank_radio_3
 			}
 			upgrades = {
 				tank_nsb_engine_upgrade = 8
 				tank_nsb_armor_upgrade = 1
 			}
 		}
+		create_equipment_variant = {
+			name = "ZTZ-100A"
+			type = modern_tank_chassis_4
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_4
+				turret_type_slot = tank_unmanned_tank_turret
+				suspension_type_slot = tank_torsion_bar_suspension
+				armor_type_slot = tank_cast_armor
+				engine_type_slot = tank_advanced_electric_engine
+				special_type_slot_1 = remote_weapon_system_antitank
+				special_type_slot_2 = GL7_active_protection_system
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = anti_drone_laser_system
+				special_type_slot_5 = gunner_nv_3
+				special_type_slot_6 = wet_ammo_storage
+				special_type_slot_7 = tank_radio_3
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 12
+			}
+		}
 		add_equipment_to_stockpile = {
 			type = modern_tank_chassis_4
-			amount = 50
-			variant_name = "Type 100"
+			amount = 5
+			variant_name = "ZTZ-100"
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_chassis_4
+			amount = 5
+			variant_name = "ZTZ-100A"
 		}
 		set_technology = {
 			PLA_project_xuanwu = 1
@@ -13143,6 +13275,13 @@ country_event = {
 		name = china.999.a
 		PRC = {
 			create_faction = PRC_east_asian_defense_initative_faction
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
 			add_to_faction = LAO
 			add_to_faction = BRM
 			puppet = VIN
@@ -13170,6 +13309,13 @@ country_event = {
 		}
 		JAP = {
 			create_faction = PDTO
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
 			add_to_faction = AST
 			add_to_faction = INS
 			add_to_faction = MAL

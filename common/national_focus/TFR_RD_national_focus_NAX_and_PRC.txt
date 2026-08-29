@@ -13,11 +13,30 @@ shared_focus = {
     allow_branch = {
         has_country_flag = NAX_raj_Guerrilla_war_flag
     }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
+    }
+    bypass_effect = {
+        hidden_effect = {
+            NAX = {
+                add_war_support = 0.095
+                set_party_name = {
+                    ideology = communist
+                    long_name = NAX_nationalist_party_new_long
+                    name = NAX_nationalist_party_new
+                }
+            }
+        }
+    }
     completion_reward = {
         clr_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         custom_effect_tooltip = PRC_Southwestern_border_in_critical_condition_tt
         add_political_power = -50
         hidden_effect = {
+            scoped_play_song = "S01 - Brain Dead"
             NAX = {
                 add_war_support = 0.095
                 set_party_name = {
@@ -42,6 +61,12 @@ joint_focus = {
         custom_trigger_tooltip = {
             tooltip = War_PRC
             tag = PRC
+        }
+    }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
         }
     }
     joint_trigger = {
@@ -76,9 +101,9 @@ joint_focus = {
             name = land_doc_bonus
             cost_reduction = 0.35
             uses = 1
-            category = land_doctrine
+            category = cat_old_land_doctrine
         }
-        army_experience = -100
+        army_experience = -50
         set_temp_variable = {
             PRC_army_reform_progress_temp = 1.5
         }
@@ -112,6 +137,12 @@ joint_focus = {
             original_tag = NAX
         }
     }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
+    }
     prerequisite = {
         focus = PRC_Mobilize_the_military
     }
@@ -135,7 +166,7 @@ joint_focus = {
             name = air_doc_bonus
             cost_reduction = 0.35
             uses = 1
-            category = air_doctrine
+            category = cat_old_air_doctrine
         }
         add_timed_idea = {
             idea = PRC_Ensure_logistical_support_ideas
@@ -163,6 +194,12 @@ joint_focus = {
     prerequisite = {
         focus = PRC_Mobilize_the_military
         focus = NAX_The_Liberation_War
+    }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
     }
     available = {
         OR = {
@@ -235,7 +272,7 @@ joint_focus = {
                 name = land_doc_bonus
                 cost_reduction = 0.75
                 uses = 1
-                category = land_doctrine
+                category = cat_old_land_doctrine
             }
             add_equipment_to_stockpile = {
                 type = infantry_equipment_1
@@ -284,7 +321,7 @@ joint_focus = {
                         has_dlc = "By Blood Alone"
                     }
                 }
-                add_equipment_to_stockpile = {type = fighter_equipment_2 amount = 50 producer = PRC }
+                add_equipment_to_stockpile = { type = fighter_equipment_2 amount = 50 producer = PRC }
             }
         }
     }
@@ -310,6 +347,12 @@ joint_focus = {
             }
         }
     }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
+    }
     joint_trigger = {
         OR = {
             original_tag = PRC
@@ -324,12 +367,17 @@ joint_focus = {
     }
     relative_position_id = PRC_Mobilize_the_military
     completion_reward_joint_originator = {
+        add_days_mission_timeout = {
+            mission = NAX_Limited_Time_Mission
+            days = 25
+        }
         custom_effect_tooltip = PRC_Operation_Thunder_banners_tt
         if = {
             limit = {
                 has_country_flag = NAX_War_whether_to_choose_flag
             }
             clr_country_flag = NAX_raj_Guerrilla_war_flag
+            custom_effect_tooltip = Prc_NewLeft_sihai_cheng_ping_flag_tt
             set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
             focus_unlock = yes
         }
@@ -400,6 +448,12 @@ joint_focus = {
             }
         }
     }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
+    }
     joint_trigger = {
         OR = {
             original_tag = PRC
@@ -468,6 +522,12 @@ joint_focus = {
             }
         }
     }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
+    }
     joint_trigger = {
         OR = {
             original_tag = PRC
@@ -521,6 +581,12 @@ joint_focus = {
     y = 1
     ai_will_do = {
         factor = 500
+    }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
     }
     available = {
         custom_trigger_tooltip = {
@@ -616,6 +682,12 @@ joint_focus = {
     ai_will_do = {
         factor = 200
     }
+    bypass = {
+        OR = {
+            has_country_flag = PAK_lost_indo_pakistan_war
+            has_country_flag = PAK_won_indo_pakistan_war
+        }
+    }
     available = {
         if = {
             limit = {
@@ -694,11 +766,13 @@ joint_focus = {
                     transfer_state = 1368
                     every_state = {
                         limit = {
-                            state = 1367
-                            state = 432
-                            state = 1366
-                            state = 1369
-                            state = 1368
+                            OR = {
+                                state = 1367
+                                state = 432
+                                state = 1366
+                                state = 1369
+                                state = 1368
+                            }
                         }
                         add_core_of = NAX
                     }
@@ -714,11 +788,13 @@ joint_focus = {
                     hidden_effect = {
                         every_state = {
                             limit = {
-                                state = 1367
-                                state = 432
-                                state = 1366
-                                state = 1369
-                                state = 1368
+                                OR = {
+                                    state = 1367
+                                    state = 432
+                                    state = 1366
+                                    state = 1369
+                                    state = 1368
+                                }
                             }
                             add_core_of = NAX
                         }
@@ -726,6 +802,7 @@ joint_focus = {
                 }
             }
         }
+        custom_effect_tooltip = Prc_NewLeft_sihai_cheng_ping_flag_tt
         set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
         if = {
             limit = { 
@@ -751,6 +828,64 @@ joint_focus = {
                 }
             }
             custom_effect_tooltip = Brothers_in_Arms_tt
+        }
+    }
+    bypass_effect = {
+        set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+        clr_country_flag = NAX_raj_Guerrilla_war_flag
+        hidden_effect = {
+            focus_unlock = yes
+        }
+        if = {
+            limit = { 
+                PRC = {
+                    has_country_flag = PAK_won_indo_pakistan_war
+                }
+            }
+            NAX = {
+                transfer_state = 1367
+                transfer_state = 432
+                transfer_state = 1366
+                transfer_state = 1369
+                transfer_state = 1368
+                every_state = {
+                    limit = {
+                        OR = {
+                            state = 1367
+                            state = 432
+                            state = 1366
+                            state = 1369
+                            state = 1368
+                        }
+                    }
+                    add_core_of = NAX
+                }
+            }
+        }
+        else_if = {
+            limit = { 
+                PRC = {
+                    has_country_flag = PAK_lost_indo_pakistan_war
+                }
+            }
+            NAX = {
+                add_war_support = -0.10
+                add_stability = -0.25
+                hidden_effect = {
+                    every_state = {
+                        limit = {
+                            OR = {
+                                state = 1367
+                                state = 432
+                                state = 1366
+                                state = 1369
+                                state = 1368
+                            }
+                        }
+                        add_core_of = NAX
+                    }
+                }
+            }
         }
     }
 }

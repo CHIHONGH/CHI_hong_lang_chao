@@ -37,6 +37,26 @@ ideas = {
 		}
 	}
 	country = {
+		PRC_arab_ideas = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = yes
+				original_tag = PRC
+			}
+			modifier = {
+				political_power_gain = 0.035
+				stability_factor = 0.10
+				income_growth_factor = 0.05 #月度收入增长
+				personal_value_factor = 0.05 #个人产值系数
+				misc_income = 0.15 #杂项收入
+				personal_expense = 0.015 #私人消费
+				society_development_monthly = 0.015 #社会发展系数
+				poverty_development_monthly = 0.015 #贫困发展系数
+				academic_development_monthly = 0.015 #教育发展系数
+			}
+			removal_cost = 1
+		}
+
 		PRC_miracle_forged = {
 			picture = GFX_idea_CHI_silent_dawn_idea
 			allowed = {
@@ -130,7 +150,7 @@ ideas = {
 		PRC_WLI_idea = {
 			#世界解放国际
 			name = PRC_WLI_modifiers			#"世界解放国际"
-			picture = GFX_PRC_idea_world_jiefang
+			picture = PRC_world_jiefang
 			allowed = {
 				tag = PRC
 			}
@@ -179,6 +199,7 @@ ideas = {
 				communist_drift = 0.01
 				libertarian_socialist_drift = 0.01
 				social_democrat_drift = 0.01
+				send_volunteer_size = 2
 			}
 		}
 		PRC_Religious_forces_fight_back_idea = {
@@ -238,34 +259,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				decryption_power = 3
-			}
-		}
-		The_Roar_of_Africa = {
-			picture = PRC_socialist_chinese_dream_idea
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-			}
-		}
-		Che_Guevara_is_back = {
-			picture = PRC_socialist_chinese_dream_idea
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-			}
-		}
-		The_red_tide_is_back = {
-			picture = PRC_socialist_chinese_dream_idea
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
+				decryption_power = 50
 			}
 		}
 		#以下为民族精神 整饬当地情况
@@ -305,6 +299,285 @@ ideas = {
 				production_factory_max_efficiency_factor = 0.03
 				academic_development_monthly = 0.005
 				society_development_monthly = 0.008
+			}
+		}
+		PRC_integration_research_institutions = {
+			picture = PRC_chinas_new_digital_era_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.15
+				consumer_goods_factor = 0.075
+				expense_growth_factor = -0.1
+				research_speed_factor = 0.1
+			}
+			on_remove = {
+				add_research_slot = 1
+				add_to_variable = {
+					NEMS_consumer_goods_factor_dynamic_var = -0.05
+				}
+				add_to_variable = {
+					NEMS_expense_growth_factor_dynamic_var = -0.05
+				}
+				add_to_variable = {
+					NEMS_production_speed_buildings_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_production_factory_start_efficiency_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.075
+				}
+				add_to_variable = {
+					NEMS_global_building_slots_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_personal_value_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					NEMS_business_value_factor_dynamic_var = -0.05
+				}
+				add_to_variable = {
+					NEMS_society_development_monthly_dynamic_var = 0.005
+				}
+				add_to_variable = {
+					NEMS_farming_development_monthly_dynamic_var = 0.005
+				}
+				add_to_variable = {
+					NEMS_industrial_development_monthly_dynamic_var = 0.005
+				}
+
+			}
+		}
+		PRC_five_year_ahead = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				communist_drift = 0.025
+				libertarian_socialist_drift = 0.025
+				production_factory_efficiency_gain_factor = 0.075
+				industrial_capacity_factory = 0.05
+			}
+		}
+		PRC_break_old_rules = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_start_efficiency_factor = -0.25
+				line_change_production_efficiency_factor = -0.2
+				industrial_development_monthly = -0.02
+			}
+			on_remove = {
+				add_ideas = {
+					PRC_production_democracy
+					PRC_socialism_female
+				}
+				country_event = {
+					id = prcs.93
+					days = 1
+					random_hours = 20
+				}
+			}
+		}
+		PRC_break_education_chain = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.2
+				industrial_capacity_factory = -0.1
+				expense_growth_factor = 0.15
+				academic_development_monthly = -0.02
+				industrial_development_monthly = -0.01
+			}
+			on_remove = {
+            	set_country_flag = nl_PRC_build_learning_society_flag
+				add_ideas = PRC_encourage_lifelong_education
+			}
+		}
+		PRC_beyond_coldness = {
+			picture = PRC_socialist_chinese_dream_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.2
+				stability_weekly = 0.002
+				production_factory_max_efficiency_factor = -0.1
+				society_development_monthly = 0.005
+			}
+			on_remove = {
+            	add_to_variable = {
+					PRC_mic_stability_factor_dynamic_var = 0.025
+				}
+				add_to_variable = {
+					PRC_mic_war_support_factor_dynamic_var = 0.025
+				}
+				add_to_variable = {
+					PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.075
+				}
+				add_to_variable = {
+					PRC_mic_monthly_population_dynamic_var = 0.025
+				}
+				add_to_variable = {
+					PRC_mic_experience_loss_factor_dynamic_var = -0.1
+				}
+			}
+		}
+		EFF_left_unity_idea = {
+			picture = VEN_world_anti_imperialist_platform_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				army_attack_factor = 0.1
+				communist_drift = 0.03
+				libertarian_socialist_drift = 0.03
+			}
+		}
+		PRC_china_supplies = {
+			picture = PRC_chinese_communist_party
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				land_reinforce_rate = 0.03
+				army_attack_factor = 0.06
+				breakthrough_factor = 0.06
+				army_org_factor = 0.1
+			}
+
+			cancel = {
+				NOT = {
+					has_government = totalitarian_socialist
+					has_government = communist
+					has_government = libertarian_socialist
+					has_government = social_democrat
+				}
+			}
+			on_remove = {
+				if = {
+					limit = { 
+						OR = {
+							tag = GER
+							tag = FRA
+							tag = SOV
+						}
+					}
+					PRC = {
+						clr_country_flag = PRC_choose_a_side_flag
+					}
+				}
+			}
+		}
+		PRC_china_trade = {
+			picture = PRC_chinese_communist_party
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.1
+				trade_opinion_factor = 0.15
+				tax_business_rate_factor = 0.1
+			}
+			cancel = {
+				NOT = {
+					has_government = totalitarian_socialist
+					has_government = communist
+					has_government = libertarian_socialist
+					has_government = social_democrat
+				}
+			}
+		}
+		JAP_CNNC_activated = {
+			picture = GER_new_stasi_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				war_stability_factor = -0.05
+				communist_drift = 0.02
+				totalitarian_socialist = 0.01
+				army_non_core_attack_factor = -0.1
+			}
+		}
+		JPL_CNNC_activated = {
+			name = JAP_CNNC_activated
+			picture = GER_new_stasi_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				surrender_limit = 0.1
+				army_core_defence_factor = 0.15
+				army_morale_factor = 0.1
+			}
+		}
+		PRK_chaotic_atmosphere = {
+			picture = PRK_anarchy
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.2
+				consumer_goods_factor = 0.25
+				stability_factor = -0.35
+				supply_node_range = -0.3
+				society_development_monthly = -0.02
 			}
 		}
 	}

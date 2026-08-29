@@ -1,0 +1,3383 @@
+USA_second_american_civil_war_category = {
+	PTF_reunify_america_decision = {
+		icon = USA_american_reunification
+		cancel_if_not_visible = yes
+		cost = 0
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_completed_focus = PTF_form_the_national_front
+			}
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+			has_completed_focus = PTF_one_nation_one_solution
+			USA_has_states_secured = yes
+			USA_has_militias_secured = yes
+			USA_has_gangs_secured = yes
+			USA_has_separatists_secured = yes
+			USA_has_rivals_secured = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			country_event = {
+				id = ptf.3
+			}
+			if = {
+				limit = {
+					has_idea = NSM_integrated_nationalist_militaries
+				}
+				remove_ideas = NSM_integrated_nationalist_militaries
+			}
+		}
+		remove_effect = {
+		}
+	}
+	# PTF_reunify_new_england_decision = {
+	# 	icon = USA_american_reunification
+	# 	cancel_if_not_visible = yes
+	# 	cost = 0
+	# 	allowed = {
+	# 		original_tag = PTF
+	# 	}
+	# 	visible = {
+	# 		NOT = {
+	# 			has_cosmetic_tag = PTF_GOP_fail
+	# 		}
+	# 	}
+	# 	fire_only_once = yes
+	# 	available = {
+	# 		has_full_control_of_state = 795
+	# 		has_full_control_of_state = 1077
+	# 		has_full_control_of_state = 357
+	# 		has_full_control_of_state = 794
+	# 		has_full_control_of_state = 1114
+	# 		has_full_control_of_state = 1078
+	# 		has_full_control_of_state = 1080
+	# 		has_full_control_of_state = 793
+	# 		has_full_control_of_state = 1079
+	# 		has_full_control_of_state = 792
+	# 		has_full_control_of_state = 1115
+	# 		has_full_control_of_state = 358
+	# 		has_full_control_of_state = 1116
+	# 		has_full_control_of_state = 1117
+	# 		has_full_control_of_state = 1118
+	# 		has_full_control_of_state = 918
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 100
+	# 	}
+	# 	complete_effect = {
+	# 		country_event = {
+	# 			id = ptf.1
+	# 		}
+	# 	}
+	# }
+	PTF_attack_biden_decision = {
+		icon = generic_nationalism
+		war_with_on_remove = USB
+		fire_only_once = yes
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+			country_exists = USB
+			OR = {
+				has_completed_focus = PTF_form_the_national_front
+				has_completed_focus = PTF_one_nation_one_solution
+			}
+		}
+		available = {
+			date > 2024.10.30
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		days_remove = 14
+		modifier = {
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = USB
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					has_country_flag = PTF_infiltrated_pennsylvania
+				}
+				load_oob = PTF_pa_uprising
+			}
+			if = {
+				limit = {
+					has_country_flag = PTF_infiltrated_nj
+				}
+				load_oob = PTF_nj_uprising
+			}
+			if = {
+				limit = {
+					has_country_flag = PTF_infiltrated_oh
+				}
+				load_oob = PTF_oh_uprising
+			}
+			if = {
+				limit = {
+					has_country_flag = PTF_infiltrated_wv
+				}
+				load_oob = PTF_wv_uprising
+			}
+		}
+	}
+	PTF_attack_FROM_decision = {
+		icon = generic_prepare_civil_war
+		war_with_target_on_remove = yes
+		fire_only_once = no
+		days_remove = 14
+		target_array = USA.faction_tag_array
+		custom_cost_text = NSM_attack_APA_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+			NOT = {
+				FROM = {
+					has_country_flag = USA_nationalist_autonomies
+				}
+			}
+		}
+		target_root_trigger = {
+			has_completed_focus = PTF_one_nation_one_solution
+		}
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+					is_ally_with = ROOT
+					tag = USB
+				}
+				OR = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					any_other_country = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_puppet_of = ROOT
+						}
+						any_controlled_state = {
+							any_neighbor_state = {
+								is_controlled_by = PREV.PREV.PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		available = {
+			date > 2024.8.15
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+		remove_effect = {
+			war_with_FROM = yes
+		}
+	}
+	PTF_infiltrate_pennsylvania_decision = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			has_full_control_of_state = 795
+			has_full_control_of_state = 1077
+			has_full_control_of_state = 357
+			has_full_control_of_state = 794
+			has_full_control_of_state = 1114
+			has_full_control_of_state = 1078
+			has_full_control_of_state = 1080
+			has_full_control_of_state = 793
+			has_full_control_of_state = 1079
+			has_full_control_of_state = 792
+			has_full_control_of_state = 1115
+			has_full_control_of_state = 358
+			has_full_control_of_state = 1116
+			has_full_control_of_state = 1117
+			has_full_control_of_state = 1118
+			has_full_control_of_state = 918
+			country_exists = USB
+			NOT = {
+				has_war_with = USB
+			}
+			has_completed_focus = PTF_one_nation_against_invasion
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_infiltrating_state
+			}
+		}
+		highlight_states = {
+			state = 360
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		days_remove = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_country_flag = PTF_infiltrating_state
+		}
+		remove_effect = {
+			custom_effect_tooltip = PTF_infiltrate_pennsylvania_decision_tt
+			hidden_effect = {
+				set_country_flag = PTF_infiltrated_pennsylvania
+				clr_country_flag = PTF_infiltrating_state
+			}
+		}
+	}
+	PTF_infiltrate_nj_decision = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			has_full_control_of_state = 795
+			has_full_control_of_state = 1077
+			has_full_control_of_state = 357
+			has_full_control_of_state = 794
+			has_full_control_of_state = 1114
+			has_full_control_of_state = 1078
+			has_full_control_of_state = 1080
+			has_full_control_of_state = 793
+			has_full_control_of_state = 1079
+			has_full_control_of_state = 792
+			has_full_control_of_state = 1115
+			has_full_control_of_state = 358
+			has_full_control_of_state = 1116
+			has_full_control_of_state = 1117
+			has_full_control_of_state = 1118
+			has_full_control_of_state = 918
+			country_exists = USB
+			NOT = {
+				has_war_with = USB
+			}
+			has_completed_focus = PTF_one_nation_against_invasion
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_infiltrating_state
+			}
+		}
+		highlight_states = {
+			state = 359
+		}
+		ai_will_do = {
+			base = 10
+		}
+		cost = 35
+		days_remove = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_country_flag = PTF_infiltrating_state
+		}
+		remove_effect = {
+			custom_effect_tooltip = PTF_infiltrate_nj_decision_tt
+			hidden_effect = {
+				set_country_flag = PTF_infiltrated_nj
+				clr_country_flag = PTF_infiltrating_state
+			}
+		}
+	}
+	PTF_infiltrate_oh_decision = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			has_full_control_of_state = 795
+			has_full_control_of_state = 1077
+			has_full_control_of_state = 357
+			has_full_control_of_state = 794
+			has_full_control_of_state = 1114
+			has_full_control_of_state = 1078
+			has_full_control_of_state = 1080
+			has_full_control_of_state = 793
+			has_full_control_of_state = 1079
+			has_full_control_of_state = 792
+			has_full_control_of_state = 1115
+			has_full_control_of_state = 358
+			has_full_control_of_state = 1116
+			has_full_control_of_state = 1117
+			has_full_control_of_state = 1118
+			has_full_control_of_state = 918
+			country_exists = USB
+			NOT = {
+				has_war_with = USB
+			}
+			has_completed_focus = PTF_one_nation_against_invasion
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_infiltrating_state
+			}
+		}
+		highlight_states = {
+			state = 1246
+		}
+		ai_will_do = {
+			base = 10
+		}
+		cost = 35
+		days_remove = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_country_flag = PTF_infiltrating_state
+		}
+		remove_effect = {
+			custom_effect_tooltip = PTF_infiltrate_oh_decision_tt
+			hidden_effect = {
+				set_country_flag = PTF_infiltrated_oh
+				clr_country_flag = PTF_infiltrating_state
+			}
+		}
+	}
+	PTF_infiltrate_wv_decision = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			has_full_control_of_state = 795
+			has_full_control_of_state = 1077
+			has_full_control_of_state = 357
+			has_full_control_of_state = 794
+			has_full_control_of_state = 1114
+			has_full_control_of_state = 1078
+			has_full_control_of_state = 1080
+			has_full_control_of_state = 793
+			has_full_control_of_state = 1079
+			has_full_control_of_state = 792
+			has_full_control_of_state = 1115
+			has_full_control_of_state = 358
+			has_full_control_of_state = 1116
+			has_full_control_of_state = 1117
+			has_full_control_of_state = 1118
+			has_full_control_of_state = 918
+			country_exists = USB
+			NOT = {
+				has_war_with = USB
+			}
+			has_completed_focus = PTF_one_nation_against_invasion
+			USB = {
+				has_full_control_of_state = 896
+			}
+			NOT = {
+				has_cosmetic_tag = PTF_GOP_fail
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_infiltrating_state
+			}
+		}
+		highlight_states = {
+			state = 896
+		}
+		ai_will_do = {
+			base = 10
+		}
+		cost = 35
+		days_remove = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_country_flag = PTF_infiltrating_state
+		}
+		remove_effect = {
+			custom_effect_tooltip = PTF_infiltrate_wv_decision_tt
+			hidden_effect = {
+				set_country_flag = PTF_infiltrated_wv
+				clr_country_flag = PTF_infiltrating_state
+			}
+		}
+	}
+	PTF_capture_dc = {
+		activation = {
+			always = no
+		}
+		available = {
+			PTF = {
+				controls_state = 931
+			}
+		}
+		is_good = no
+		days_mission_timeout = 200
+		selectable_mission = no
+		complete_effect = {
+			add_war_support = 0.05
+			add_political_power = 50
+		}
+		timeout_effect = {
+			add_war_support = -0.1
+			add_political_power = -50
+		}
+	}
+	PTF_capture_detroit = {
+		activation = {
+			always = no
+		}
+		available = {
+			PTF = {
+				controls_state = 393
+				controls_state = 1093
+			}
+		}
+		is_good = no
+		days_mission_timeout = 200
+		selectable_mission = no
+		complete_effect = {
+			add_war_support = 0.05
+			add_stability = 0.05
+			add_political_power = 75
+		}
+		timeout_effect = {
+			add_war_support = -0.1
+			add_political_power = -50
+		}
+	}
+	PTF_reclaim_america = {
+		activation = {
+			always = no
+		}
+		available = {
+			has_country_flag = PTF_reunified_flag
+		}
+		is_good = no
+		days_mission_timeout = 1095
+		selectable_mission = no
+		complete_effect = {
+			add_war_support = 0.1
+			add_stability = 0.1
+			add_political_power = 100
+			PTF_increase_rousseau_power = yes
+			set_temp_variable = {
+				var = PTF_national_support_var_temp
+				value = 0.15
+			}
+			PTF_add_national_support = yes
+		}
+		timeout_effect = {
+			add_war_support = -0.15
+			add_stability = -0.15
+			add_political_power = -200
+			PTF_decrease_rousseau_power = yes
+			set_temp_variable = {
+				var = PTF_national_support_var_temp
+				value = -0.2
+			}
+			PTF_add_national_support = yes
+		}
+	}
+}
+
+PTF_the_patriot_front_category = {
+	PTF_american_history_protection_act = {
+		icon = GFX_PTF_Blueshirts_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.025
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_political_cornucopia_dummy_idea
+					add_idea = PTF_american_history_protection_act_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_politics_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PTF_politics_academic_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_politics_war_support_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	PTF_department_of_culture = {
+		icon = GFX_PTF_Blueshirts_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.15
+			}
+			add_society_development = yes
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.03
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_political_cornucopia_dummy_idea
+					add_idea = PTF_department_of_culture_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_politics_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	PTF_marriage_protection_act = {
+		icon = GFX_PTF_Spartanists_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.15
+			}
+			add_society_development = yes
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.05
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_political_cornucopia_dummy_idea
+					add_idea = PTF_marriage_protection_act_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_politics_society_development_monthly_dynamic_var
+					value = -0.01
+				}
+				add_to_variable = {
+					var = PTF_politics_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PTF_politics_monthly_population_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+	}
+	PTF_minority_independence_act = {
+		icon = GFX_PTF_Spartanists_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.15
+			}
+			add_society_development = yes
+		}
+		remove_effect = {
+			add_ideas = lower_race
+			add_ideas = lower_racial_integration
+		}
+	}
+	PTF_emergency_conscription_act = {
+		icon = GFX_PTF_W2R_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 150
+		days_remove = 35
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = 0.1
+		}
+		remove_effect = {
+			add_ideas = high_conscription
+		}
+	}
+	PTF_seditious_ideologies_act = {
+		icon = GFX_PTF_Hamiltonians_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 100
+		days_remove = 70
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.035
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.035
+			}
+			add_stability = 0.05
+			set_temp_variable = {
+				var = recore_pp_var_temp
+				value = -5
+			}
+		}
+	}
+	PTF_great_american_landscape_act = {
+		icon = GFX_PTF_Blueshirts_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_necessary_reforms
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 100
+		days_remove = 70
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PTF_national_support_var_temp
+				value = 0.05
+			}
+			PTF_add_national_support = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_political_cornucopia_dummy_idea
+					add_idea = PTF_great_american_landscape_act_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_politics_resistance_growth_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = PTF_politics_foreign_subversive_activites_dynamic_var
+					value = -0.15
+				}
+			}
+		}
+	}
+	PTF_rally_the_blueshirts = {
+		icon = GFX_PTF_Blueshirts_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_cult_of_rousseau
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 30
+		days_remove = 70
+		days_re_enable = 15
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = -0.025
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.035
+			}
+		}
+	}
+	PTF_rally_the_hamiltonians = {
+		icon = GFX_PTF_Hamiltonians_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_a_new_fascism
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 30
+		days_remove = 70
+		days_re_enable = 15
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = -0.025
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.035
+			}
+		}
+	}
+	PTF_rally_the_jacksonians = {
+		icon = GFX_PTF_Jacksonians_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_party_of_the_people
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 30
+		days_remove = 70
+		days_re_enable = 15
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_war_support = -0.025
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.035
+			}
+		}
+	}
+	PTF_rally_the_njp = {
+		icon = GFX_PTF_Spartanists_decision
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_reclaim_the_past
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 15
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = -0.05
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.05
+			}
+		}
+	}
+	PTF_rosseau_visits_the_frontlines = {
+		icon = PTF_DEC_ICON_fasces
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_next_washington
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 15
+		days_remove = 7
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_war_support = 0.05
+		}
+		remove_effect = {
+			country_event = {
+				id = ptf.110
+			}
+		}
+	}
+	PTF_evacuate_new_york = {
+		icon = generic_scorched_earth
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_salt_the_earth
+		}
+		available = {
+			has_full_control_of_state = 918
+		}
+		ai_will_do = {
+			base = 2
+		}
+		highlight_states = {
+			state = 918
+		}
+		cost = 10
+		days_remove = 20
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_manpower = -20000
+			add_war_support = -0.05
+		}
+		remove_effect = {
+			918 = {
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				remove_building = {
+					type = office_park
+					level = 3
+				}
+				remove_building = {
+					type = dockyard
+					level = 1
+				}
+				remove_building = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.05
+			}
+		}
+	}
+	PTF_evacuate_boston = {
+		icon = generic_scorched_earth
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_salt_the_earth
+		}
+		available = {
+			has_full_control_of_state = 357
+		}
+		ai_will_do = {
+			base = 2
+		}
+		highlight_states = {
+			state = 357
+		}
+		cost = 10
+		days_remove = 20
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_manpower = -20000
+			add_war_support = -0.05
+		}
+		remove_effect = {
+			918 = {
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				remove_building = {
+					type = office_park
+					level = 2
+				}
+				remove_building = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.05
+			}
+		}
+	}
+	PTF_rebuild_boston = {
+		icon = generic_plant_material
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_rebuild_the_northeastern_corridor
+		}
+		available = {
+			has_full_control_of_state = 357
+		}
+		ai_will_do = {
+			base = 2
+		}
+		highlight_states = {
+			state = 357
+		}
+		cost = 25
+		days_remove = 100
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = 0.02
+		}
+		remove_effect = {
+			357 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PTF_rebuild_nyc = {
+		icon = generic_plant_material
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_rebuild_the_northeastern_corridor
+		}
+		available = {
+			has_full_control_of_state = 918
+		}
+		ai_will_do = {
+			base = 2
+		}
+		highlight_states = {
+			state = 918
+		}
+		cost = 25
+		days_remove = 100
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = 0.02
+		}
+		remove_effect = {
+			918 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PTF_rebuild_dc = {
+		icon = generic_plant_material
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_rebuild_the_northeastern_corridor
+		}
+		available = {
+			has_full_control_of_state = 931
+		}
+		ai_will_do = {
+			base = 2
+		}
+		highlight_states = {
+			state = 931
+		}
+		cost = 25
+		days_remove = 100
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = 0.02
+		}
+		remove_effect = {
+			931 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PTF_rebuild_philly = {
+		icon = generic_plant_material
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_rebuild_the_northeastern_corridor
+		}
+		available = {
+			has_full_control_of_state = 1069
+		}
+		ai_will_do = {
+			base = 2
+		}
+		highlight_states = {
+			state = 1069
+		}
+		cost = 25
+		days_remove = 100
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = 0.02
+		}
+		remove_effect = {
+			1069 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PTF_seek_international_donations = {
+		icon = generic_attract_foreign_investors
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_soil
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 30
+		days_remove = 50
+		days_re_enable = 100
+		fire_only_once = no
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.03
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+	}
+	PTF_NSC131_recruiting = {
+		icon = GFX_PTF_NSC131_decision
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		available = {
+		}
+		fire_only_once = yes
+		remove_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			custom_effect_tooltip = PTF_NSC131_recruiting_tt
+			hidden_effect = {
+				load_oob = PTF_NSC131_oob
+			}
+		}
+		cost = 15
+	}
+	PTF_LOS_integration = {
+		icon = generic_flag
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_our_southern_brethern
+			country_exists = LOS
+		}
+		available = {
+			any_neighbor_country = {
+				tag = LOS
+			}
+		}
+		fire_only_once = yes
+		remove_effect = {
+			annex_country = {
+				target = LOS
+				transfer_troops = yes
+			}
+			hidden_effect = {
+				LOS = {
+					set_nationality = {
+						target_country = ROOT
+						character = LOS_ike_baker
+						character = LOS_michael_tubbs
+						character = LOS_michael_hill
+					}
+				}
+			}
+		}
+		cost = 300
+	}
+	PTF_w2r_camps = {
+		icon = GFX_PTF_W2R_decision
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_our_forest_fighters
+		}
+		available = {
+		}
+		fire_only_once = yes
+		remove_effect = {
+			army_experience = 50
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.08
+			}
+		}
+		cost = 25
+	}
+}
+
+PTF_propaganda_campaigns_category = {
+	PTF_save_for_your_country = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_department_of_reconstruction
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 100
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			industry_repair_factor = 0.2
+			industry_free_repair_factor = 0.2
+			consumer_goods_factor = -0.05
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	PTF_rural_recovery_program = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_revive_the_american_hinterlands
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			political_power_gain = 0.05
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+		}
+	}
+	PTF_industrial_development_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_reawaken_the_industrial_giant
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 100
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			production_speed_buildings_factor = 0.05
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+		}
+	}
+	PTF_spirit_of_jackson = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_jacksons_militias
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			army_org_factor = 0.1
+			modifier_army_sub_unit_infantry_attack_factor = 0.1
+			recruitable_population_factor = 0.1
+			weekly_manpower = 1000
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_war_support = -0.025
+		}
+	}
+	PTF_arm_the_army = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_call_for_mass_mobilization
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_ideas = PTF_arm_the_army_idea
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			remove_ideas = PTF_arm_the_army_idea
+			add_campaign_slot = yes
+		}
+	}
+	PTF_coordinate_logistics = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_call_for_mass_mobilization
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			supply_consumption_factor = -0.1
+			attrition = -0.1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	PTF_forged_in_fire_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_forged_in_fire
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			experience_gain_army_unit = 0.15
+			experience_loss_factor = -0.25
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_war_support = -0.05
+		}
+	}
+	PTF_rolling_thunder_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_rolling_thunder_program
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			air_strategic_bomber_bombing_factor = 0.25
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_war_support = -0.05
+		}
+	}
+	PTF_reclaiming_america_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_reclaiming_america
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 140
+		fire_only_once = no
+		modifier = {
+			compliance_growth = 0.2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_war_support = -0.05
+		}
+	}
+	PTF_sell_war_bonds = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_national_revival_plan
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 50
+		days_re_enable = 100
+		fire_only_once = no
+		modifier = {
+			consumer_goods_factor = -0.1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_stability = -0.01
+		}
+	}
+	PTF_new_american_man_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_the_new_american_man
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 75
+		fire_only_once = no
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_stability = -0.01
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+		}
+	}
+	PTF_peacekeeping_decision = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_form_the_oia
+		}
+		available = {
+			NOT = {
+				has_stability > 0.85
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 40
+		days_remove = 100
+		days_re_enable = 75
+		modifier = {
+			stability_weekly = 0.003
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			add_stability = 0.025
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.03
+			}
+		}
+	}
+	PTF_restoring_our_way_of_life = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_rebuild_the_american_way_of_living
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+		cost = 50
+		days_remove = 50
+		days_re_enable = 100
+		fire_only_once = no
+		modifier = {
+			industry_free_repair_factor = 0.3
+			industry_repair_factor = 0.3
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	PTF_destruction_of_corporate_architecture_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		available = {
+			has_completed_focus = PTF_revive_classical_culture
+		}
+		fire_only_once = yes
+		remove_effect = {
+			country_event = {
+				id = ptf.25
+				days = 15
+			}
+			country_event = {
+				id = ptf.18
+				days = 25
+			}
+		}
+		cost = 75
+	}
+	PTF_propaganda_campaign_dec = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+			has_completed_focus = PTF_one_hand
+		}
+		available = {
+		}
+		fire_only_once = no
+		remove_effect = {
+			set_temp_variable = {
+				var = PTF_national_support_var_temp
+				value = 0.05
+			}
+			PTF_add_national_support = yes
+		}
+		cost = 100
+		days_remove = 75
+		days_re_enable = 100
+	}
+	PTF_promote_SoC_prop = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+			#has_completed_focus = PTF_spread_our_propaganda   
+			always = no
+		}
+		available = {
+		}
+		fire_only_once = no
+		modifier = {
+			authoritarian_democrat_drift = 0.05
+		}
+		cost = 75
+		days_remove = 55
+		days_re_enable = 50
+	}
+	PTF_promote_fascist_prop = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+			#has_completed_focus = PTF_spread_our_propaganda
+			always = no
+		}
+		available = {
+		}
+		fire_only_once = no
+		modifier = {
+			fascist_drift = 0.05
+		}
+		cost = 75
+		days_remove = 55
+		days_re_enable = 50
+	}
+	PTF_support_american_businesses = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		available = {
+		}
+		fire_only_once = no
+		modifier = {
+			industrial_capacity_factory = 0.05
+			consumer_goods_factor = -0.025
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 0.1
+			}
+		}
+		days_re_enable = 150
+		custom_cost_text = dx_more_than_10B
+		complete_effect = {
+			subtract_from_variable = {
+				var = income_var
+				value = 0.1
+			}
+		}
+		cost = 50
+		days_remove = 100
+		days_re_enable = 150
+	}
+	PTF_distribute_local_aid = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		available = {
+		}
+		fire_only_once = no
+		modifier = {
+			war_support_weekly = 0.025
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 0.01
+			}
+		}
+		days_re_enable = 150
+		custom_cost_text = dx_more_than_100B
+		complete_effect = {
+			subtract_from_variable = {
+				var = income_var
+				value = 0.01
+			}
+		}
+		cost = 25
+		days_remove = 35
+		days_re_enable = 100
+	}
+	PTF_supporting_farmers = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_agricultural_renewal_plan
+		}
+		available = {
+			has_completed_focus = PTF_agricultural_renewal_plan
+		}
+		fire_only_once = no
+		modifier = {
+			farming_development_monthly = 0.025
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 0.01
+			}
+		}
+		days_re_enable = 150
+		custom_cost_text = dx_more_than_100B
+		complete_effect = {
+			subtract_from_variable = {
+				var = income_var
+				value = 0.01
+			}
+		}
+		cost = 30
+		days_remove = 35
+		days_re_enable = 100
+	}
+	PTF_w2r_continuing_development = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 100
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_our_forest_fighters
+		}
+		available = {
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 0.01
+			}
+		}
+		custom_cost_text = dx_more_than_100B
+		modifier = {
+			training_time_factor = -0.2
+		}
+		fire_only_once = no
+		remove_effect = {
+			subtract_from_variable = {
+				var = income_var
+				value = 0.01
+			}
+		}
+		cost = 35
+		days_remove = 50
+		days_re_enable = 100
+	}
+}
+
+PTF_cultural_revival_category = {
+	#unused
+	###American Renaissance
+	PTF_reclaiming_the_arts = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			#has_completed_focus = PTF_adopt_a_neoclassical_aesthetic                                         
+		}
+		available = {
+			#has_completed_focus = PTF_adopt_a_neoclassical_aesthetic                                         
+		}
+		fire_only_once = yes
+		remove_effect = {
+			country_event = {
+				id = ptf.25
+				days = 15
+			}
+			country_event = {
+				id = ptf.18
+				days = 25
+			}
+		}
+		cost = 75
+	}
+	PTF_restoring_american_cinema = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			#has_completed_focus = PTF_adopt_a_neoclassical_aesthetic                                         
+		}
+		available = {
+			#has_completed_focus = PTF_adopt_a_neoclassical_aesthetic                                         
+		}
+		fire_only_once = yes
+		remove_effect = {
+			country_event = {
+				id = ptf.25
+				days = 15
+			}
+			country_event = {
+				id = ptf.18
+				days = 25
+			}
+		}
+		cost = 75
+	}
+	PTF_fascist_aethetics = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			#has_completed_focus = PTF_adopt_a_neoclassical_aesthetic                                         
+		}
+		available = {
+			#has_completed_focus = PTF_adopt_a_neoclassical_aesthetic                                         
+		}
+		fire_only_once = yes
+		remove_effect = {
+			country_event = {
+				id = ptf.25
+				days = 15
+			}
+			country_event = {
+				id = ptf.18
+				days = 25
+			}
+		}
+		cost = 75
+	}
+	###Forge a Pan-European Identity
+	PTF_honoring_europa = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			#has_completed_focus = PTF_forge_a_pan_european_identity                                         
+		}
+		available = {
+			#has_completed_focus = PTF_forge_a_pan_european_identity                                         
+		}
+		fire_only_once = yes
+		remove_effect = {
+		}
+		cost = 100
+	}
+	###A New Modernity
+	PTF_art_deco_revival = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_america_first
+		}
+		available = {
+			has_completed_focus = PTF_america_first
+		}
+		fire_only_once = yes
+		remove_effect = {
+		}
+		cost = 150
+	}
+	PTF_promote_neo_futurism = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_america_first
+		}
+		available = {
+			has_completed_focus = PTF_america_first
+		}
+		fire_only_once = yes
+		remove_effect = {
+		}
+		cost = 25
+	}
+}
+
+PTF_national_front_category = {
+}
+
+PTF_resource_development_cat = {
+	PTF_develop_cn_steel = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 1077
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 1077
+			}
+		}
+	}
+	PTF_develop_ca_steel = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 949
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 949
+			}
+		}
+	}
+	PTF_develop_il_steel = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 396
+				has_full_control_of_state = 1245
+				has_full_control_of_state = 396
+			}
+		}
+		cost = 70
+		fire_only_once = yes
+		days_remove = 140
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 396
+			}
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 1245
+			}
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 1068
+			}
+		}
+	}
+	PTF_develop_il_steel2 = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 1151
+				has_full_control_of_state = 1247
+				has_full_control_of_state = 1246
+			}
+		}
+		cost = 70
+		fire_only_once = yes
+		days_remove = 140
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 1151
+			}
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 1247
+			}
+			add_resource = {
+				type = steel
+				amount = 50
+				state = 1246
+			}
+		}
+	}
+	PTF_develop_wv_oil = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 896
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 35
+				state = 896
+			}
+		}
+	}
+	PTF_develop_tx_oil = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 980
+				has_full_control_of_state = 958
+				has_full_control_of_state = 976
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		days_remove = 125
+		modifier = {
+			civilian_factory_use = 4
+		}
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 50
+				state = 980
+			}
+			add_resource = {
+				type = oil
+				amount = 50
+				state = 958
+			}
+			add_resource = {
+				type = oil
+				amount = 50
+				state = 976
+			}
+		}
+	}
+	PTF_develop_nd_oil = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 1239
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 35
+				state = 1239
+			}
+		}
+	}
+	PTF_develop_ut_oil = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 380
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 35
+				state = 380
+			}
+		}
+	}
+	PTF_develop_ny_aluminium = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 1118
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			add_resource = {
+				type = aluminium
+				amount = 35
+				state = 1118
+			}
+		}
+	}
+	PTF_develop_midwestern_aluminium = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 1002
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 140
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			add_resource = {
+				type = aluminium
+				amount = 105
+				state = 1002
+			}
+		}
+	}
+	PTF_develop_sc_aluminium = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_invest_in_the_resource_industry
+		}
+		available = {
+			PTF = {
+				has_full_control_of_state = 1023
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 140
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			add_resource = {
+				type = aluminium
+				amount = 35
+				state = 1023
+			}
+		}
+	}
+}
+
+PTF_canada_crisis_category = {
+	PTF_looming_canadian_intervention_mission = {
+		is_good = no
+		days_mission_timeout = 140
+		activation = {
+			always = no
+		}
+		available = {
+			PTF_canadian_relations_friendly = yes
+		}
+		cancel_trigger = {
+			PTF_canadian_relations_bad = yes
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_political_power = 100
+			set_temp_variable = {
+				var = PTF_national_support_var_temp
+				value = 0.1
+			}
+			PTF_add_national_support = yes
+		}
+		timeout_effect = {
+			#country_event = {
+			#	id = ptf.156
+			#}
+		}
+		cancel_effect = {
+			#country_event = {
+			#	id = ptf.156
+			#}
+		}
+	}
+	PTF_canadian_war_mission = {
+		is_good = yes
+		days_mission_timeout = 175
+		activation = {
+			always = no
+		}
+		available = {
+			OR = {
+				controls_state = 276
+				AND = {
+					controls_state = 465
+					controls_state = 464
+					controls_state = 468
+				}
+			}
+		}
+		timeout_effect = {
+			news_Event = {
+				id = ptf.107
+			}
+		}
+		complete_effect = {
+			country_event = {
+				id = ptf.106
+			}
+		}
+	}
+	PTF_demand_dissident_deportation = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_country_flag = PTF_canada_crisis_flag
+		}
+		available = {
+		}
+		cost = 10
+		fire_only_once = no
+		days_remove = 5
+		days_re_enable = 60
+		remove_effect = {
+			random_list = {
+				60 = {
+					country_event = {
+						id = ptf.97
+					}
+				}
+				40 = {
+					country_event = {
+						id = ptf.98
+					}
+				}
+			}
+		}
+	}
+	PTF_send_diplomatic_delegation = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_country_flag = PTF_canada_crisis_flag
+		}
+		available = {
+			PTF_canadian_relations_ok = yes
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 4
+		complete_effect = {
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.03
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = PTF_canadian_relations_improve
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_canadian_relations_var
+					value = 1
+				}
+			}
+		}
+	}
+	PTF_hold_the_kingston_conference = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_country_flag = PTF_canada_crisis_flag
+		}
+		available = {
+			PTF_canadian_relations_ok = yes
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 14
+		complete_effect = {
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.05
+			}
+		}
+		remove_effect = {
+			country_event = {
+				id = ptf.99
+			}
+		}
+	}
+}
+
+PTF_balance_of_power_category = {
+	PTF_calm_down_blueshirts = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+		}
+		available = {
+			power_balance_value = {
+				id = PTF_power_balance
+				value < -0.35
+			}
+		}
+		cost = 25
+		days_remove = 7
+		days_re_enable = 90
+		fire_only_once = no
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.05
+			}
+		}
+	}
+	PTF_calm_down_authdem = {
+		icon = generic_nationalism
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+		}
+		available = {
+			power_balance_value = {
+				id = PTF_power_balance
+				value > 0.35
+			}
+		}
+		cost = 25
+		days_remove = 7
+		days_re_enable = 90
+		fire_only_once = no
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.05
+			}
+		}
+	}
+	PTF_ignite_the_masses_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_one_hand
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 35
+		days_re_enable = 75
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PTF_national_support_var_temp
+				value = 0.025
+			}
+			PTF_add_national_support = yes
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.025
+			}
+		}
+	}
+	PTF_suppress_gop_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_one_hand
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 30
+		days_remove = 15
+		days_re_enable = 100
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = -0.05
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.025
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = 0.035
+			}
+		}
+	}
+	PTF_suppress_NSC_decision = {
+		icon = generic_nationalism
+		ai_will_do = {
+			base = 1
+		}
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			has_completed_focus = PTF_a_thousand_voices
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 30
+		days_remove = 15
+		days_re_enable = 100
+		fire_only_once = no
+		modifier = {
+		}
+		complete_effect = {
+			add_war_support = -0.05
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = -0.035
+			}
+			add_power_balance_value = {
+				id = PTF_power_balance
+				value = -0.05
+			}
+		}
+	}
+}
+
+PTF_healing_the_divide_category = {
+	PTF_rebuild_east_coast = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_east_coast_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_east_coast_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+	PTF_rebuild_rust_belt = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_rust_belt_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_rust_belt_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+	PTF_rebuild_south = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_south_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_south_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+	PTF_rebuild_southwest = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_southwest_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_southwest_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+	PTF_rebuild_great_lakes = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_great_lakes_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_great_lakes_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+	PTF_rebuild_central_district = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_central_district_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_central_district_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+	PTF_rebuild_pacific_coast = {
+		icon = generic_construction
+		allowed = {
+			tag = PTF
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PTF_rebuild_pacific_coast_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PTF_rebuild_time_flag
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PTF_rebuild_time_flag
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PTF_america_reunited_dummy_idea
+					add_idea = PTF_rebuild_region_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_factory_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_industrial_capacity_dockyard_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.0125
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_political_power_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_war_support_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_conscription_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_business_value_factor_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PTF_america_reunited_personal_value_factor_dynamic_var
+					value = 0.01
+				}
+			}
+			set_country_flag = PTF_rebuild_pacific_coast_flag
+			clr_country_flag = PTF_rebuild_time_flag
+		}
+	}
+}
+
+debug_decisions = {
+	PTF_annex_new_england_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				original_tag = PTF
+				original_tag = GMA
+			}
+		}
+		visible = {
+			country_exists = GMA
+			country_exists = PTF
+		}
+		available = {
+			tag = PTF
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			PTF_local_theatre_win_debug_effect = yes
+		}
+		remove_effect = {
+		}
+	}
+}

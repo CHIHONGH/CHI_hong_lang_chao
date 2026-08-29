@@ -104,9 +104,7 @@ set_technology = {
 	fuel_refining = 1
 
 	## Doctrines ##
-	mass_assault = 1
-	air_superiority = 1
-	Tide_of_Iron = 1
+	tide_of_iron = 1
 
 	#Armor
 	gwtank_chassis = 1
@@ -251,6 +249,7 @@ add_ideas = {
 	#PTF_End_of_communism_idea
 	PTF_hidden_idea
 	PTF_American_Defense_idea
+	PTF_divine_mandate_idea
 
 	#Laws
 	partial_mobilization
@@ -280,11 +279,6 @@ add_ideas = {
 	low_interest_rates
 	
 	ZZZ_provisional_government
-}
-
-add_timed_idea = {
-    idea = PTF_nationalist_sentiment_idea
-    days = 1080
 }
 
 set_party_name = {
@@ -399,7 +393,7 @@ if = {
 		has_dlc = "No Step Back"
 	}
 	create_equipment_variant = {
-		name = "Abrams X"
+		name = "M1E3 Abrams"
 		type = modern_tank_chassis_4
 		parent_version = 0
 		modules = {
@@ -423,7 +417,7 @@ if = {
 		icon = "gfx/interface/technologies/armor/MBT_2006_M1A2_Abrams.dds"
 	}
 	create_equipment_variant = {
-		name = "M10 Booker"
+		name = "MPF"
 		type = light_tank_chassis_2
 		parent_version = 0
 		modules = {
@@ -465,7 +459,7 @@ if = {
 		icon = "gfx/interface/technologies/armor/LT_2000_M1128_Stryker.dds"
 	}
 	create_equipment_variant = {
-		name = "ACV-30"
+		name = "ACV-X"
 		type = amphibious_tank_chassis_1
 		parent_version = 0
 		modules = {
@@ -493,7 +487,7 @@ if = {
 	}
 
 	create_equipment_variant = {
-		name = "F-75"
+		name = "F-35(Fighter)"
 		type = small_plane_airframe_4
 		modules = {
 			fixed_main_weapon_slot = aircraft_cannon_1_1x
@@ -512,7 +506,7 @@ if = {
 	}
 
 	create_equipment_variant = {
-		name = "A-20"
+		name = "F-35(CAS)"
 		type = small_plane_cas_airframe_4
 		modules = {
 			fixed_main_weapon_slot = medium_bomb_bay
@@ -530,25 +524,8 @@ if = {
 		icon = "GFX_USA_CAS2_medium"
 	}
 
-	#create_equipment_variant = {
-    #    name = "F-75 D"
-    #    type = cv_small_plane_cas_airframe_4
-    #    modules = {
-    #        fixed_main_weapon_slot = medium_bomb_bay
-	#		fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-	#		fixed_auxiliary_weapon_slot_2 = medium_bomb_bay
-	#		engine_type_slot = engine_4_2x
-	#		special_type_slot_1 = fuel_tanks_small
-	#		special_type_slot_2 = ai_targeting_computer_small
-	#		special_type_slot_3 = non_strategic_materials_small_3
-	#		special_type_slot_4 = non_strategic_materials_small_3
-	#		special_type_slot_5 = empty
-    #    }
-    #    icon = "GFX_USA_fighter5_medium"
-    #}
-
 	create_equipment_variant = {
-		name = "F-75 C"
+		name = "F-36 Lightning III"
 		type = cv_small_plane_naval_bomber_airframe_4
 		modules = {
 			fixed_main_weapon_slot = torpedo_mounting
@@ -563,26 +540,9 @@ if = {
 		}
 		icon = "GFX_USA_fighter3_medium"
 	}
-
-	create_equipment_variant = {
-        name = "F-75 B"
-        type = cv_small_plane_airframe_4
-        modules = {
-            fixed_main_weapon_slot = aircraft_cannon_1_1x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
-			engine_type_slot = engine_4_1x
-			special_type_slot_1 = ai_targeting_computer_small
-			special_type_slot_2 = ai_targeting_computer_small
-			special_type_slot_3 = ai_targeting_computer_small
-			special_type_slot_4 = ai_targeting_computer_small
-			special_type_slot_5 = ai_targeting_computer_small
-        }
-        icon = "GFX_USA_fighter5_medium"
-    }
 	
 	create_equipment_variant = {
-		name = "B-2" 
+		name = "B-21" 
 		type = large_plane_airframe_3
 		modules = {
 			fixed_main_weapon_slot = aircraft_cannon_2_1x

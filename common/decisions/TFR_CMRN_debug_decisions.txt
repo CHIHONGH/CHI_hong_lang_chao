@@ -1,0 +1,217 @@
+# TFR_中蒙谈判 - 调试决议
+# 启动谈判用，依赖 TFR 的 debug_decisions 类别（is_debug = yes）
+debug_decisions = {
+
+	########################################################################
+	# 启动中蒙和统谈判
+	########################################################################
+	TFR_CMRN_start_negotiation_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			NOT = { has_global_flag = TFR_CMRN_negotiation_accessible }
+			country_exists = MON
+			tag = PRC
+		}
+		complete_effect = {
+			set_global_flag = TFR_CMRN_negotiation_accessible
+			MON = { TFR_CMRN_init_negotiation = yes }
+		}
+	}
+
+	########################################################################
+	# 重置谈判（清空全部变量和旗标，可再次启动）
+	########################################################################
+	TFR_CMRN_reset_negotiation_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			OR = {
+				has_global_flag = TFR_CMRN_negotiation_ended
+				has_global_flag = TFR_CMRN_negotiation_active
+			}
+			tag = PRC
+			country_exists = MON
+		}
+		complete_effect = {
+			clr_global_flag = TFR_CMRN_negotiation_ended
+			clr_global_flag = TFR_CMRN_negotiation_accessible
+			clr_global_flag = TFR_CMRN_negotiation_active
+			clr_global_flag = TFR_CMRN_prc_annexed
+			clr_global_flag = TFR_CMRN_war_declared
+			clr_global_flag = TFR_CMRN_round_1_active
+			clr_global_flag = TFR_CMRN_round_2_active
+			clr_global_flag = TFR_CMRN_round_3_active
+			clr_global_flag = TFR_CMRN_round_1_complete
+			clr_global_flag = TFR_CMRN_round_2_complete
+			clr_global_flag = TFR_CMRN_round_3_complete
+			MON = {
+				set_variable = { TFR_CMRN_unification_tendency = 0 }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+				set_variable = { TFR_CMRN_negotiation_round = 0 }
+				set_variable = { TFR_CMRN_hidden_will = 0 }
+				set_variable = { TFR_CMRN_prc_round_actions = 0 }
+				set_variable = { TFR_CMRN_mon_round_actions = 0 }
+				set_variable = { TFR_CMRN_tendency_frame = 1 }
+				set_variable = { TFR_CMRN_influence_frame = 1 }
+				set_variable = { TFR_CMRN_prc_convo_slot1 = 0 }
+				set_variable = { TFR_CMRN_prc_convo_slot2 = 0 }
+				set_variable = { TFR_CMRN_prc_convo_slot3 = 0 }
+				set_variable = { TFR_CMRN_mon_convo_slot1 = 0 }
+				set_variable = { TFR_CMRN_mon_convo_slot2 = 0 }
+				set_variable = { TFR_CMRN_mon_convo_slot3 = 0 }
+				set_variable = { TFR_CMRN_prc_last_convo_idx = 0 }
+				set_variable = { TFR_CMRN_mon_last_convo_idx = 0 }
+			}
+			PRC = {
+				set_variable = { TFR_CMRN_prc_convo_slot1 = 0 }
+				set_variable = { TFR_CMRN_prc_convo_slot2 = 0 }
+				set_variable = { TFR_CMRN_prc_convo_slot3 = 0 }
+			}
+		}
+	}
+
+	########################################################################
+	# 强制和平统一（跳过计时，直接吞并）
+	########################################################################
+	TFR_CMRN_force_unification_debug = {
+		icon = generic_communism
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			has_global_flag = TFR_CMRN_negotiation_active
+			NOT = { has_global_flag = TFR_CMRN_negotiation_ended }
+			country_exists = MON
+		}
+		complete_effect = {
+			set_global_flag = TFR_CMRN_prc_annexed
+			set_global_flag = TFR_CMRN_negotiation_ended
+			clr_global_flag = TFR_CMRN_negotiation_active
+			clr_global_flag = TFR_CMRN_round_1_active
+			clr_global_flag = TFR_CMRN_round_2_active
+			clr_global_flag = TFR_CMRN_round_3_active
+			MON = {
+				every_core_state = { add_core_of = PRC }
+			}
+			PRC = {
+				annex_country = {
+					target = MON
+					transfer_troops = yes
+				}
+				news_event = { id = TFR_CMRN.5 days = 2 }
+			}
+		}
+	}
+
+	########################################################################
+	# 强制宣战
+	########################################################################
+	TFR_CMRN_force_war_debug = {
+		icon = generic_war
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			has_global_flag = TFR_CMRN_negotiation_active
+			NOT = { has_global_flag = TFR_CMRN_negotiation_ended }
+			country_exists = MON
+		}
+		complete_effect = {
+			set_global_flag = TFR_CMRN_negotiation_ended
+			clr_global_flag = TFR_CMRN_negotiation_active
+			set_global_flag = TFR_CMRN_war_declared
+			clr_global_flag = TFR_CMRN_round_1_active
+			clr_global_flag = TFR_CMRN_round_2_active
+			clr_global_flag = TFR_CMRN_round_3_active
+			declare_war_on = { target = MON type = annex_everything }
+			news_event = { id = TFR_CMRN.6 days = 1 }
+		}
+	}
+
+	########################################################################
+	TFR_CMRN_show_vars_debug = {
+		icon = generic_research
+		ai_will_do = { factor = 0 }
+		available =  { always = no }
+		visible = {
+			tag = PRC
+			country_exists = MON
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_debug_vars_tt
+		}
+	}
+
+	########################################################################
+	# 战后调试：设置战争旗标（用于进入战后阶段）
+	########################################################################
+	TFR_CMRN_postwar_start_debug = {
+		icon = generic_war
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			NOT = { has_global_flag = TFR_CMRN_war_declared }
+			country_exists = MON
+		}
+		complete_effect = {
+			set_global_flag = TFR_CMRN_war_declared
+			set_global_flag = TFR_CMRN_negotiation_ended
+			clr_global_flag = TFR_CMRN_negotiation_active
+			custom_effect_tooltip = TFR_CMRN_debug_war_flag_set
+		}
+	}
+
+	########################################################################
+	# 战后调试：全部省份整肃
+	########################################################################
+	TFR_CMRN_postwar_pacify_all_debug = {
+		icon = generic_army_leadership
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			has_global_flag = TFR_CMRN_war_declared
+			NOT = { country_exists = MON }
+		}
+		complete_effect = {
+			330 = { TFR_CMRN_pacify_state = yes }
+			1388 = { TFR_CMRN_pacify_state = yes }
+			1389 = { TFR_CMRN_pacify_state = yes }
+			1390 = { TFR_CMRN_pacify_state = yes }
+			1391 = { TFR_CMRN_pacify_state = yes }
+		}
+	}
+
+	########################################################################
+	# 战后调试：全部省份完成治理
+	########################################################################
+	TFR_CMRN_postwar_complete_all_debug = {
+		icon = generic_diplomacy
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			has_global_flag = TFR_CMRN_war_declared
+			NOT = { country_exists = MON }
+			NOT = { has_global_flag = TFR_CMRN_postwar_complete }
+		}
+		complete_effect = {
+			# 整肃全部 5 省（加核心 + 加 modefier）
+			330 = { TFR_CMRN_pacify_state = yes }
+			1388 = { TFR_CMRN_pacify_state = yes }
+			1389 = { TFR_CMRN_pacify_state = yes }
+			1390 = { TFR_CMRN_pacify_state = yes }
+			1391 = { TFR_CMRN_pacify_state = yes }
+			# 国家变量直接设 0（跳过 3 步重建流程）
+			set_variable = { var = TFR_CMRN_mz_build value = 0 }
+			set_variable = { var = TFR_CMRN_mz_manpower value = 0 }
+			set_variable = { var = TFR_CMRN_mz_factory value = 0 }
+			# 执行最终结算
+			TFR_CMRN_check_all_cleared = yes
+		}
+	}
+}

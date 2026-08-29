@@ -1,0 +1,64 @@
+scripted_gui = {
+
+	TFR_space_station_gui = {#窗口：天河工程总览（嵌入决议面板）
+		context_type = decision_category
+		window_name = "TFR_space_station_window"
+##
+		effects = {
+		}
+##
+		triggers = {
+			# 舱段状态：灰=未完成 绿=已完成（交替显隐）
+			tianhe_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_tianhe } }
+			}
+			tianhe_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_tianhe }
+			}
+			wentian_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_wentian } }
+			}
+			wentian_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_wentian }
+			}
+			mengtian_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_mengtian } }
+			}
+			mengtian_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_mengtian }
+			}
+			xuntian_gray_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_xuntian } }
+			}
+			xuntian_green_visible = {
+				PRC = { has_country_flag = PRC_space_done_xuntian }
+			}
+			# 轨道核打击平台状态
+			nuclear_not_ready_visible = {
+				PRC = { NOT = { has_country_flag = PRC_space_done_nuclear_platform } }
+			}
+			nuclear_ready_visible = {
+				PRC = { has_country_flag = PRC_space_done_nuclear_platform }
+			}
+		}
+##
+		properties = {
+			# frame 索引 1-based：完成 0 个决议=帧1(空)，完成 n 个=帧 n+1（帧数=决议数+1）
+			phase1_bar = {
+				frame = PRC:PRC_space_phase1_count
+			}
+			phase2_bar = {
+				frame = PRC:PRC_space_phase2_count
+			}
+			phase3_bar = {
+				frame = PRC:PRC_space_phase3_count
+			}
+			phase4_bar = {
+				frame = PRC:PRC_space_phase4_count
+			}
+			phase5_bar = {
+				frame = PRC:PRC_space_phase5_count
+			}
+		}
+	}
+}

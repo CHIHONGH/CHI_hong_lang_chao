@@ -1,0 +1,494 @@
+# TFR_中俄谈判 - 边境冲突脚本效果
+# 黑线 SOV（非梅德韦杰夫/非红色）时替代谈判路线
+# 逐州边境战争（原生 start_border_war），按相邻可达推进
+# 双轨优势：PRC.adv_* 变量 → 目标州 dynamic modifier（local_attack/defense 变量绑定）
+# 全面升级：365 天限时任务，时间耗尽判定中国输（白和+赔款）
+# 库页岛(537)：其余 7 州全部收回后自动获得
+# 运行作用域：全部在 PRC 作用域调用（除注明外）
+
+##############################################################################
+# 冲突初始化 — 启动边境冲突时调用
+##############################################################################
+TFR_CRN_conflict_init = {
+	set_global_flag = TFR_CRN_conflict_active
+	set_global_flag = TFR_CRN_conflict_accessible
+	PRC = {
+		set_country_flag = TFR_CRN_PRC_started_conflict
+		set_variable = { var = TFR_CRN_prc_bonus value = 0 }
+		set_variable = { var = TFR_CRN_sov_bonus value = 0 }
+		set_variable = { var = TFR_CRN_prc_advantage value = 0 }
+		set_variable = { var = TFR_CRN_sov_advantage value = 0 }
+		set_variable = { var = TFR_CRN_states_taken value = 0 }
+	}
+	TFR_CRN_clear_target_flags = yes
+	TFR_CRN_calc_advantage = yes
+	TFR_CRN_advance_target = yes
+	PRC = { country_event = { id = TFR_CRN.20 } }
+}
+
+##############################################################################
+# 清除全部目标州旗标
+##############################################################################
+TFR_CRN_clear_target_flags = {
+	clr_global_flag = TFR_CRN_target_408
+	clr_global_flag = TFR_CRN_target_409
+	clr_global_flag = TFR_CRN_target_657
+	clr_global_flag = TFR_CRN_target_1328
+	clr_global_flag = TFR_CRN_target_1293
+	clr_global_flag = TFR_CRN_target_560
+	clr_global_flag = TFR_CRN_target_329
+}
+
+##############################################################################
+# 优势重算 — 基础 0 + 形势加成（SOV 战争/投降倾向/稳定度）+ 施压累计（上限 100）
+# 施压累计满 100 → 对方忍无可忍直接宣战（TFR_CRN_check_pressure_explosion）
+# 运行在 PRC 作用域
+# 注意：SOV 情景加成在 SOV 域计算后写 SOV 持久变量，再回 PRC 组装——
+#        temp 变量存在当前作用域对象上，跨作用域累加会丢失（历史 bug 已修）
+##############################################################################
+TFR_CRN_calc_advantage = {
+	set_temp_variable = { adv_prc = SOV.TFR_CRN_sov_situational }
+	add_to_temp_variable = { adv_prc = TFR_CRN_prc_bonus }
+	set_temp_variable = { adv_sov = 0 }
+	add_to_temp_variable = { adv_sov = TFR_CRN_sov_bonus }
+	# 钳位 0~100
+	if = { limit = { check_variable = { adv_prc > 100 } } set_temp_variable = { adv_prc = 100 } }
+	if = { limit = { check_variable = { adv_prc < 0 } } set_temp_variable = { adv_prc = 0 } }
+	if = { limit = { check_variable = { adv_sov > 100 } } set_temp_variable = { adv_sov = 100 } }
+	if = { limit = { check_variable = { adv_sov < 0 } } set_temp_variable = { adv_sov = 0 } }
+	set_variable = { var = TFR_CRN_prc_advantage value = adv_prc }
+	set_variable = { var = TFR_CRN_sov_advantage value = adv_sov }
+	TFR_CRN_update_advantage_frames = yes
+	TFR_CRN_check_pressure_explosion = yes
+}
+
+##############################################################################
+# SOV 情景加成计算 — 运行在 SOV 作用域
+# 结果写 SOV.TFR_CRN_sov_situational（0~45），由 calc_advantage 在 PRC 域读取
+# 问题修复：原实现把这三项累加进 PRC 域的 temp 变量，在 SOV 子块内实际落到了
+#           SOV 域，导致战争形势加成全部丢失（数值崩塌）；现改为持久变量中转
+##############################################################################
+TFR_CRN_calc_sov_situational = {
+	set_variable = { var = TFR_CRN_sov_situational value = 0 }
+	# SOV 深陷战争 → +15
+	if = { limit = { has_war = yes } add_to_variable = { var = TFR_CRN_sov_situational value = 15 } }
+	# 投降倾向（0~100% → 0~30）
+	set_temp_variable = { surv = surrender_progress }
+	multiply_temp_variable = { surv = 0.3 }
+	round_variable = surv
+	add_to_variable = { var = TFR_CRN_sov_situational value = surv }
+	# 稳定度惩罚（低于 100% 每 1% 扣 1，最多 15）
+	set_temp_variable = { stab = stability }
+	multiply_temp_variable = { stab = 100 }
+	subtract_from_temp_variable = { stab = 100 }
+	multiply_temp_variable = { stab = -1 }
+	if = { limit = { check_variable = { stab < 0 } } set_temp_variable = { stab = 0 } }
+	if = { limit = { check_variable = { stab > 15 } } set_temp_variable = { stab = 15 } }
+	round_variable = stab
+	add_to_variable = { var = TFR_CRN_sov_situational value = stab }
+	# 钳位 0~45
+	if = { limit = { check_variable = { TFR_CRN_sov_situational > 45 } } set_variable = { var = TFR_CRN_sov_situational value = 45 } }
+	if = { limit = { check_variable = { TFR_CRN_sov_situational < 0 } } set_variable = { var = TFR_CRN_sov_situational value = 0 } }
+}
+
+##############################################################################
+# 施压引爆检查 — 任一方施压累计满 100 → 对方忍无可忍直接宣战
+# 中方施压满 → 俄方宣战中国；俄方施压满 → 中国宣战俄方
+# 运行在 PRC 作用域（每个施压决议后由 calc_advantage 调用）
+##############################################################################
+TFR_CRN_check_pressure_explosion = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = TFR_CRN_full_war_active }
+			NOT = { has_global_flag = TFR_CRN_conflict_ended }
+			has_global_flag = TFR_CRN_conflict_active
+			check_variable = { TFR_CRN_prc_bonus >= 100 }
+		}
+		TFR_CRN_pressure_explosion_by_sov = yes
+	}
+	else_if = {
+		limit = {
+			NOT = { has_global_flag = TFR_CRN_full_war_active }
+			NOT = { has_global_flag = TFR_CRN_conflict_ended }
+			has_global_flag = TFR_CRN_conflict_active
+			check_variable = { TFR_CRN_sov_bonus >= 100 }
+		}
+		TFR_CRN_pressure_explosion_by_prc = yes
+	}
+}
+
+##############################################################################
+# 中方施压满 100 → 俄方忍无可忍，对华宣战（全面战争 + 365 天限时）
+##############################################################################
+TFR_CRN_pressure_explosion_by_sov = {
+	TFR_CRN_cancel_current_border_war = yes
+	TFR_CRN_remove_advantage_modifier = yes
+	set_global_flag = TFR_CRN_full_war_active
+	SOV = { declare_war_on = { target = PRC type = annex_everything } }
+	activate_mission = TFR_CRN_full_war_timer
+	country_event = { id = TFR_CRN.23 }
+	news_event = { id = TFR_CRN.27 }
+}
+
+##############################################################################
+# 俄方施压满 100 → 中国忍无可忍，对俄宣战（全面战争 + 365 天限时）
+##############################################################################
+TFR_CRN_pressure_explosion_by_prc = {
+	TFR_CRN_cancel_current_border_war = yes
+	TFR_CRN_remove_advantage_modifier = yes
+	set_global_flag = TFR_CRN_full_war_active
+	declare_war_on = { target = SOV type = annex_everything }
+	activate_mission = TFR_CRN_full_war_timer
+	country_event = { id = TFR_CRN.30 }
+	news_event = { id = TFR_CRN.27 }
+}
+
+##############################################################################
+# 【已废弃】优势差 → 州级战斗修正变量的连续换算
+# 五段制改造后由 modifiers 文件常量档位承担（TFR_CRN_frontline_initiative_t1~5 / TFR_CRN_enemy_exhaustion_t1~5），
+# 优势差只用于选档（见 TFR_CRN_attach_advantage_modifier），不再写入变量引用
+##############################################################################
+
+##############################################################################
+# 进度条帧计算（0~100 → 帧 1~21）— 优势双条 + 施压双条
+##############################################################################
+TFR_CRN_update_advantage_frames = {
+	set_variable = { var = TFR_CRN_prc_adv_frame value = TFR_CRN_prc_advantage }
+	multiply_variable = { var = TFR_CRN_prc_adv_frame value = 0.2 }
+	round_variable = TFR_CRN_prc_adv_frame
+	add_to_variable = { TFR_CRN_prc_adv_frame = 1 }
+	set_variable = { var = TFR_CRN_sov_adv_frame value = TFR_CRN_sov_advantage }
+	multiply_variable = { var = TFR_CRN_sov_adv_frame value = 0.2 }
+	round_variable = TFR_CRN_sov_adv_frame
+	add_to_variable = { TFR_CRN_sov_adv_frame = 1 }
+	set_variable = { var = TFR_CRN_prc_pressure_frame value = TFR_CRN_prc_bonus }
+	multiply_variable = { var = TFR_CRN_prc_pressure_frame value = 0.2 }
+	round_variable = TFR_CRN_prc_pressure_frame
+	add_to_variable = { TFR_CRN_prc_pressure_frame = 1 }
+	set_variable = { var = TFR_CRN_sov_pressure_frame value = TFR_CRN_sov_bonus }
+	multiply_variable = { var = TFR_CRN_sov_pressure_frame value = 0.2 }
+	round_variable = TFR_CRN_sov_pressure_frame
+	add_to_variable = { TFR_CRN_sov_pressure_frame = 1 }
+}
+
+##############################################################################
+# 目标州挂载州级战斗修正（五段制）— 运行在 PRC
+# 按优势差 D = PRC优势 - SOV优势 选档（t0 不挂 / t1~t5）：
+#   D ≥80 → t5(+25%)   ≥60 → t4(+20%)   ≥40 → t3(+15%)   ≥20 → t2(+10%)   ≥0 → t1(+5%)   D<0 → 不挂
+# 档位写入 PRC.TFR_CRN_current_tier，由 STATE 作用域 helper 执行挂载
+##############################################################################
+TFR_CRN_attach_advantage_modifier = {
+	set_temp_variable = { adv_diff = TFR_CRN_prc_advantage }
+	subtract_from_temp_variable = { adv_diff = TFR_CRN_sov_advantage }
+	set_temp_variable = { tier = 0 }
+	if = { limit = { check_variable = { adv_diff >= 80 } } set_temp_variable = { tier = 5 } }
+	else_if = { limit = { check_variable = { adv_diff >= 60 } } set_temp_variable = { tier = 4 } }
+	else_if = { limit = { check_variable = { adv_diff >= 40 } } set_temp_variable = { tier = 3 } }
+	else_if = { limit = { check_variable = { adv_diff >= 20 } } set_temp_variable = { tier = 2 } }
+	else_if = { limit = { check_variable = { adv_diff >= 0 } } set_temp_variable = { tier = 1 } }
+	else = { set_temp_variable = { tier = 0 } }
+	set_variable = { var = TFR_CRN_current_tier value = tier }
+	# 对当前目标州挂载（tier=0 时 helper 不挂任何东西）
+	if = { limit = { has_global_flag = TFR_CRN_target_408 } 408 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_409 } 409 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_657 } 657 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_1328 } 1328 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_1293 } 1293 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_560 } 560 = { TFR_CRN_attach_tier_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_329 } 329 = { TFR_CRN_attach_tier_state = yes } }
+}
+
+##############################################################################
+# 按档位挂载修正 — 运行在 STATE 作用域（当前目标州）
+# 同档位同时挂 prc 系 + sov 系（数值一致，仅图/名不同）
+##############################################################################
+TFR_CRN_attach_tier_state = {
+	if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 5 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 4 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 3 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 2 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 }
+	}
+	else_if = { limit = { PRC = { check_variable = { TFR_CRN_current_tier = 1 } } }
+		add_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 }
+		add_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 }
+	}
+	# tier=0（中国劣势）不挂任何修正
+}
+
+##############################################################################
+# 移除全部州上的战斗修正（五段制 10 个 ID；推进/终局清理）
+# 对不存在的修正 remove 为无害空操作
+##############################################################################
+TFR_CRN_remove_advantage_modifier = {
+	408 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	409 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	657 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	1328 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	1293 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	560 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	329 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+	537 = { remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_frontline_initiative_t5 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t1 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t2 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t3 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t4 } remove_dynamic_modifier = { modifier = TFR_CRN_enemy_exhaustion_t5 } }
+}
+
+##############################################################################
+# 推进目标 — 按优先级找第一个未收回且相邻可达的州
+# 顺序：408→409→657→1328→1293→560→329（560 需先拿相邻州，329 需蒙古）
+# 全部收回 → 库页岛自动获得（537）
+# 仅设置目标旗标；战斗修正由「发动边境战争」时挂载（战后即移除）
+# 运行在 PRC 作用域
+##############################################################################
+TFR_CRN_advance_target = {
+	TFR_CRN_remove_advantage_modifier = yes
+	TFR_CRN_clear_target_flags = yes
+	if = { limit = { 408 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_408 }
+	else_if = { limit = { 409 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_409 }
+	else_if = { limit = { 657 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_657 }
+	else_if = { limit = { 1328 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_1328 }
+	else_if = { limit = { 1293 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_1293 }
+	else_if = { limit = { 560 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_560 }
+	else_if = { limit = { 329 = { NOT = { is_core_of = PRC } TFR_CRN_target_reachable = yes } } set_global_flag = TFR_CRN_target_329 }
+	else = { TFR_CRN_sakhalin_transfer = yes }
+}
+
+##############################################################################
+# 发动边境战争 — 按当前目标州选择 attacker（候选表按实测邻接硬编码）
+# 运行在 PRC 作用域
+##############################################################################
+TFR_CRN_start_border_war_on_target = {
+	# 408 海参崴：候选 717 / 1415 / 1416
+	if = { limit = { has_global_flag = TFR_CRN_target_408 controls_state = 717 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 717 num_provinces = 4 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 408 num_provinces = 4 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_408 controls_state = 1415 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1415 num_provinces = 4 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 408 num_provinces = 4 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_408 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1416 num_provinces = 4 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 408 num_provinces = 4 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	# 409 伯力：候选 717
+	else_if = { limit = { has_global_flag = TFR_CRN_target_409 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 717 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 409 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	# 657 奇穆尼窝集：候选 717
+	else_if = { limit = { has_global_flag = TFR_CRN_target_657 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 717 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 657 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	# 1328 海兰泡：候选 714 / 717 / 1424
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1328 controls_state = 714 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 714 num_provinces = 4 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 1328 num_provinces = 4 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1328 controls_state = 717 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 717 num_provinces = 4 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 1328 num_provinces = 4 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1328 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1424 num_provinces = 4 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 1328 num_provinces = 4 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	# 1293 外兴安岭：候选 1424
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1293 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1424 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 1293 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	# 560 庙街：候选 409 / 657 / 1328 / 1293（已收回的相邻州）
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 controls_state = 409 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 409 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 560 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 controls_state = 657 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 657 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 560 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 controls_state = 1328 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1328 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 560 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1293 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 560 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	# 329 图瓦：候选 330 / 1388（蒙古边境州，需 PRC 控制）
+	else_if = { limit = { has_global_flag = TFR_CRN_target_329 controls_state = 330 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 330 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 329 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+	else_if = { limit = { has_global_flag = TFR_CRN_target_329 }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { state = 1388 num_provinces = 3 on_win = TFR_CRN.21 on_lose = TFR_CRN.22 on_cancel = TFR_CRN.22 }
+			defender = { state = 329 num_provinces = 3 on_win = TFR_CRN.22 on_lose = TFR_CRN.21 on_cancel = TFR_CRN.22 }
+		}
+	}
+}
+
+##############################################################################
+# 边境战争胜利结算 — 当前目标州转移 + 移除战斗修正 + 推进下一目标
+# 运行在 PRC 作用域（事件 TFR_CRN.21 的 PRC 选项调用）
+##############################################################################
+TFR_CRN_border_war_win = {
+	if = { limit = { has_global_flag = TFR_CRN_target_408 } 408 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_409 } 409 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_657 } 657 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_1328 } 1328 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_1293 } 1293 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_560 } 560 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { has_global_flag = TFR_CRN_target_329 } 329 = { TFR_CRN_transfer_state = yes } }
+	# 边境战争结束 → 战斗修正消失
+	TFR_CRN_remove_advantage_modifier = yes
+	# 收回计数 +1（GUI 进度显示）
+	add_to_variable = { var = TFR_CRN_states_taken value = 1 }
+	TFR_CRN_advance_target = yes
+}
+
+##############################################################################
+# 边境战争失败/取消结算 — 移除战斗修正 + 重算优势（冷却由玩家自行再战）
+# 运行在 PRC 作用域（事件 TFR_CRN.22 的 PRC 选项调用）
+##############################################################################
+TFR_CRN_border_war_lose = {
+	# 边境战争结束 → 战斗修正消失
+	TFR_CRN_remove_advantage_modifier = yes
+	# 重新计算优势（SOV 击退后形势变化）
+	TFR_CRN_calc_advantage = yes
+}
+
+##############################################################################
+# 取消进行中的边境战争（15 个候选分支；无战争时为无害空操作）
+##############################################################################
+TFR_CRN_cancel_current_border_war = {
+	if = { limit = { has_global_flag = TFR_CRN_target_408 controls_state = 717 } cancel_border_war = { attacker = 717 defender = 408 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_408 controls_state = 1415 } cancel_border_war = { attacker = 1415 defender = 408 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_408 } cancel_border_war = { attacker = 1416 defender = 408 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_409 } cancel_border_war = { attacker = 717 defender = 409 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_657 } cancel_border_war = { attacker = 717 defender = 657 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1328 controls_state = 714 } cancel_border_war = { attacker = 714 defender = 1328 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1328 controls_state = 717 } cancel_border_war = { attacker = 717 defender = 1328 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1328 } cancel_border_war = { attacker = 1424 defender = 1328 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_1293 } cancel_border_war = { attacker = 1424 defender = 1293 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 controls_state = 409 } cancel_border_war = { attacker = 409 defender = 560 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 controls_state = 657 } cancel_border_war = { attacker = 657 defender = 560 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 controls_state = 1328 } cancel_border_war = { attacker = 1328 defender = 560 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_560 } cancel_border_war = { attacker = 1293 defender = 560 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_329 controls_state = 330 } cancel_border_war = { attacker = 330 defender = 329 } }
+	else_if = { limit = { has_global_flag = TFR_CRN_target_329 } cancel_border_war = { attacker = 1388 defender = 329 } }
+}
+
+##############################################################################
+# 全面战争胜利 — SOV 求和：白和（PRC 胜方）+ 全部 8 州转移
+# 触发：on_monthly 判定 SOV 投降>10% 或当前目标州被 PRC 占领
+# 运行在 PRC 作用域
+##############################################################################
+TFR_CRN_full_war_win = {
+	white_peace = SOV
+	# 全部未收回的州转移
+	if = { limit = { 408 = { NOT = { is_core_of = PRC } } } 408 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 409 = { NOT = { is_core_of = PRC } } } 409 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 657 = { NOT = { is_core_of = PRC } } } 657 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 1328 = { NOT = { is_core_of = PRC } } } 1328 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 1293 = { NOT = { is_core_of = PRC } } } 1293 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 560 = { NOT = { is_core_of = PRC } } } 560 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 329 = { NOT = { is_core_of = PRC } } } 329 = { TFR_CRN_transfer_state = yes } }
+	if = { limit = { 537 = { NOT = { is_core_of = PRC } } } 537 = { TFR_CRN_transfer_state = yes } }
+	# 全面胜利：全部州已收回
+	set_variable = { var = TFR_CRN_states_taken value = 8 }
+	TFR_CRN_conflict_end = yes
+	country_event = { id = TFR_CRN.24 }
+	news_event = { id = TFR_CRN.28 }
+}
+
+##############################################################################
+# 全面战争失败 — 365 天时间耗尽：白和（SOV 胜方）+ 中国赔偿
+# 运行在 PRC 作用域（限时任务 timeout_effect 调用）
+##############################################################################
+TFR_CRN_full_war_lose = {
+	SOV = { white_peace = PRC }
+	# 赔偿：中国债务 + 500，另送 SOV 装备
+	set_temp_variable = { debt_var_temp = 500 }
+	add_debt = yes
+	SOV = { add_equipment_to_stockpile = { infantry_equipment = 10000 support_equipment = 2000 } }
+	TFR_CRN_conflict_end = yes
+	country_event = { id = TFR_CRN.25 }
+	news_event = { id = TFR_CRN.29 }
+}
+
+##############################################################################
+# 库页岛自动获得 — 其余 7 州全部收回后调用
+# 运行在 PRC 作用域
+##############################################################################
+TFR_CRN_sakhalin_transfer = {
+	537 = { TFR_CRN_transfer_state = yes }
+	# 库页岛自动获得：全部州已收回
+	set_variable = { var = TFR_CRN_states_taken value = 8 }
+	TFR_CRN_conflict_end = yes
+	news_event = { id = TFR_CRN.26 }
+}
+
+##############################################################################
+# 冲突终局清理 — 旗标/计时器/修正
+##############################################################################
+TFR_CRN_conflict_end = {
+	clr_global_flag = TFR_CRN_conflict_active
+	clr_global_flag = TFR_CRN_full_war_active
+	set_global_flag = TFR_CRN_conflict_ended
+	TFR_CRN_clear_target_flags = yes
+	TFR_CRN_remove_advantage_modifier = yes
+	PRC = { remove_mission = TFR_CRN_full_war_timer }
+}

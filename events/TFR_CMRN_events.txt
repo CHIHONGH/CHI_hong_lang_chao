@@ -1,0 +1,143 @@
+# TFR_中蒙谈判 - 事件文件
+# 计时由 mission days_mission_timeout 驱动
+
+add_namespace = TFR_CMRN
+
+##############################################################################
+# 谈判开始通知（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CMRN.1
+	title = TFR_CMRN.1.t
+	desc = TFR_CMRN.1.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.1.a
+	}
+}
+
+##############################################################################
+# 第二轮开始（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CMRN.2
+	title = TFR_CMRN.2.t
+	desc = TFR_CMRN.2.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.2.a
+	}
+}
+
+##############################################################################
+# 第三轮开始（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CMRN.3
+	title = TFR_CMRN.3.t
+	desc = TFR_CMRN.3.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.3.a
+	}
+}
+
+##############################################################################
+# 和平统一成功（全局新闻）
+##############################################################################
+news_event = {
+	id = TFR_CMRN.5
+	title = TFR_CMRN.5.t
+	desc = TFR_CMRN.5.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.5.a
+	}
+}
+
+##############################################################################
+# 谈判破裂 - 开战新闻（全局新闻）
+##############################################################################
+news_event = {
+	id = TFR_CMRN.6
+	title = TFR_CMRN.6.t
+	desc = TFR_CMRN.6.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.6.a
+	}
+}
+
+##############################################################################
+# 战争决议确认 — PRC 专属 country_event
+##############################################################################
+country_event = {
+	id = TFR_CMRN.7
+	title = TFR_CMRN.7.t
+	desc = TFR_CMRN.7.d
+	picture = GFX_report_event_generic_war
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.7.a
+		clr_global_flag = TFR_CMRN_negotiation_accessible
+		set_global_flag = TFR_CMRN_war_declared
+		# 清理残留任务和冷却决议（避免"老鼠屎"留在面板上）
+		remove_mission = TFR_CMRN_round_1_timer
+		remove_mission = TFR_CMRN_round_2_timer
+		remove_mission = TFR_CMRN_round_3_timer
+		remove_decision_on_cooldown = TFR_CMRN_grassland_silk_road
+		remove_decision_on_cooldown = TFR_CMRN_railway_gauge
+		remove_decision_on_cooldown = TFR_CMRN_full_economic_integration
+		remove_decision_on_cooldown = TFR_CMRN_economic_incentive_r2
+		declare_war_on = { target = MON type = annex_everything }
+		news_event = { id = TFR_CMRN.6 days = 3 }
+	}
+}
+
+##############################################################################
+# 战后结算 — 军管区全部解除（PRC 专属）
+##############################################################################
+country_event = {
+	id = TFR_CMRN.8
+	title = TFR_CMRN.8.t
+	desc = TFR_CMRN.8.d
+	picture = GFX_report_event_generic_political
+	is_triggered_only = yes
+
+	option = {
+		name = TFR_CMRN.8.a
+	}
+}
+
+##############################################################################
+# 战后阶段开始 — MON 被消灭，进入军管区治理
+##############################################################################
+country_event = {
+	id = TFR_CMRN.9
+	title = TFR_CMRN.9.t
+	desc = TFR_CMRN.9.d
+	picture = GFX_report_event_generic_war
+
+	trigger = {
+		tag = PRC
+		has_global_flag = TFR_CMRN_war_declared
+		NOT = { country_exists = MON }
+		NOT = { has_global_flag = TFR_CMRN_postwar_started }
+	}
+
+	option = {
+		name = TFR_CMRN.9.a
+		set_global_flag = TFR_CMRN_postwar_started
+	}
+}

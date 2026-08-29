@@ -436,6 +436,29 @@ ideas = {
 				}
 			}
 		}
+		PRC_encourage_lifelong_education = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_PRC_redirected_education_law
+			allowed = {
+				tag = PRC
+			}
+			visible = {
+				has_country_flag = nl_PRC_build_learning_society_flag
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				stability_factor = 0.075
+				research_speed_factor = 0.15
+				personal_expense = 0.5
+				academic_development_monthly = 0.015
+				industrial_development_monthly = 0.005
+				farming_development_monthly = 0.005
+			}
+		}
 		PRC_redirected_education_law = {
 			removal_cost = -1
 			cost = 100
@@ -540,6 +563,59 @@ ideas = {
 				political_power_gain = 0.05
 				non_core_manpower = -0.5
 				society_development_monthly = 0.003
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		PRC_chinese_nation_policy_2 = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = PRC_chinese_nation_policy
+			allowed = {
+				tag = PRC
+			}
+			visible = {
+				has_country_flag = PRC_chinese_nation_policy_2_flag
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			available = {
+			}
+			modifier = {
+				stability_factor = -0.025
+				political_power_gain = -0.1
+				non_core_manpower = 0.1
+				production_speed_buildings_factor = 0.05
+				society_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		PRC_chinese_nation_policy_3 = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = PRC_chinese_nation_policy
+			allowed = {
+				tag = PRC
+			}
+			visible = {
+				has_country_flag = PRC_chinese_nation_policy_3_flag
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			available = {
+			}
+			modifier = {
+				stability_factor = -0.5
+				political_power_gain = -0.2
+				production_speed_buildings_factor = 0.1
+				society_development_monthly = 0.01
 			}
 			ai_will_do = {
 				base = 1
@@ -754,6 +830,7 @@ ideas = {
 			default = yes
 			visible = {
 				tag = PRC
+				has_country_flag = nl_PRC_founding_labor_society_flag
 			}
 			available = {
 				#启用条件
@@ -762,11 +839,11 @@ ideas = {
 			allowed_to_remove = {
 			}
 			modifier = {
-				MONTHLY_POPULATION = -0.075
+				MONTHLY_POPULATION = -0.2
 				stability_factor = -0.1
-				industrial_capacity_factory = 0.125
-				industrial_capacity_dockyard = 0.125
-				society_development_monthly = 0.005
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				society_development_monthly = 0.01
 			}
 		}
 	}
@@ -1505,6 +1582,28 @@ ideas = {
 			}
 			ai_will_do = {
 				base = 2
+			}
+		}
+		PRC_chinese_surveillance_system_2 = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_security_special_PRC
+			visible = {
+				original_tag = PRC
+				has_country_flag = nl_PRC_labor_revolution_flag
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = -0.175
+				personal_expense = 0.125
+				resistance_growth = -0.3
+				resistance_decay = 0.3
+				compliance_growth = 0.3
+				society_development_monthly = 0.002
 			}
 		}
 		PRC_chinese_surveillance_system = {

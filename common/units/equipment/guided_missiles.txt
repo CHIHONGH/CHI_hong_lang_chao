@@ -18,6 +18,7 @@ equipments = {
 		# Air vs Navy - high damage / low hit chance / hard to hurt
 		naval_strike_attack = 1.5
 		naval_strike_targetting = 0.6
+		air_defence = 10000
 
 		#Space taken in convoy
 		lend_lease_cost = 1.5
@@ -45,10 +46,10 @@ equipments = {
 		
 		air_range = 1000
 		maximum_speed = 1640
-		air_agility = 80
-		air_bombing = 300
+		air_agility = 160
+		air_bombing = 800
 		
-		# build_cost_ic = 36
+		build_cost_ic = 28
 	}
 
 	guided_missile_equipment_2 = {
@@ -66,10 +67,10 @@ equipments = {
 		
 		air_range = 1300
 		maximum_speed = 5760
-		air_agility = 120
-		air_bombing = 450
+		air_agility = 220
+		air_bombing = 950
 		
-		build_cost_ic = 50
+		build_cost_ic = 32
 	}
 	
 	guided_missile_equipment_3 = {
@@ -87,14 +88,14 @@ equipments = {
 		
 		air_range = 5000
 		maximum_speed = 9999
-		air_agility = 160
-		air_bombing = 600
+		air_agility = 400
+		air_bombing = 1200
 		
-		build_cost_ic = 64
+		build_cost_ic = 42
 	}
 
-	cruise_antiship_missile_equipment_1 = { #鹰击-21
-		year = 2025
+	cruise_antiship_missile_equipment_1 = { #鹰击-62
+		year = 2004
 		picture = PRC_cruise_antiship_missile_equipment_1
 
 		allow_mission_type = {
@@ -108,15 +109,67 @@ equipments = {
 		one_use_only = yes
 		sprite = missile_default
 		
-		air_range = 1500
-		maximum_speed = 12000
+		air_range = 800
+		maximum_speed = 1006
 		air_attack = 1
-		air_defence = 10000
-		air_agility = 10000
-		naval_strike_attack = 600
-		naval_strike_targetting = 200
-		reliability = 0.9
+		air_agility = 150
+		naval_strike_attack = 160
+		naval_strike_targetting = 85
+		reliability = 0.7
+		
+		build_cost_ic = 24
+	}
+
+	cruise_antiship_missile_equipment_2 = { #鹰击-18
+		year = 2020
+		picture = PRC_cruise_antiship_missile_equipment_2
+
+		allow_mission_type = {
+			#naval_kamikaze
+			port_strike
+			naval_bomber
+		}
+
+		archetype = guided_missile_equipment
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+		
+		air_range = 1000
+		maximum_speed = 2160
+		air_attack = 1
+		air_agility = 200
+		naval_strike_attack = 200
+		naval_strike_targetting = 100
+		reliability = 0.8
 		
 		build_cost_ic = 32
+	}
+
+	cruise_antiship_missile_equipment_3 = { #鹰击-21
+		year = 2025
+		picture = PRC_cruise_antiship_missile_equipment_3
+
+		allow_mission_type = {
+			#naval_kamikaze
+			port_strike
+			naval_bomber
+		}
+
+		archetype = guided_missile_equipment
+		parent = cruise_antiship_missile_equipment_1
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+		
+		air_range = 1500
+		maximum_speed = 4320
+		air_attack = 1
+		air_agility = 400
+		naval_strike_attack = 260
+		naval_strike_targetting = 120
+		reliability = 0.9
+		
+		build_cost_ic = 42
 	}
 }
