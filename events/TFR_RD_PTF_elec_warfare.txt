@@ -11,22 +11,27 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		# 仅当尚未发生任何削弱时初始化（南海获胜削弱与获知预排同天发生，
-		# 若 count 已被削弱置 1，跳过硬初始化防止覆盖档位）
-		if = {
-			limit = {
-				NOT = { check_variable = { PTF_elec_count > 0 } }
-			}
-			PTF = {
-				set_variable = { PTF_elec_vis = -0.6 }
-				set_variable = { PTF_elec_def = 0.4 }
-				set_variable = { PTF_elec_ret = 0.25 }
-				set_variable = { PTF_elec_spt = 0.25 }
-				set_variable = { PTF_elec_ngt = 0.15 }
-				set_variable = { PTF_elec_pos = -0.2 }
-				set_variable = { PTF_elec_count = 0 }
+		# 动态修正挂载与初始化分离：修正无条件挂载（has_dynamic_modifier 守卫防重挂，
+		# 避免南海获胜削弱先行时 count>0 导致整块跳过、修正永不挂载）
+		PTF = {
+			if = {
+				limit = {
+					NOT = { has_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic } }
+				}
 				add_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic }
 			}
+		}
+		# 仅当尚未发生任何削弱时初始化（南海获胜削弱与获知预排同天发生，
+		# 若 count 已被削弱置 1，跳过硬初始化防止覆盖档位）；
+		# 数值以档位表为准，直接调用 set_stage 置 count=0 档（vis -0.85/pos -0.25），
+		# 与 PTF_elec_set_stage、假精神 0 档一致，避免手写数值漂移
+		if = {
+			limit = {
+				PTF = {
+					NOT = { check_variable = { PTF_elec_count > 0 } }
+				}
+			}
+			PTF_elec_set_stage = yes
 		}
 	}
 
