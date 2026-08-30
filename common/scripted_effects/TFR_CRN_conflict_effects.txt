@@ -437,7 +437,16 @@ TFR_CRN_cancel_current_border_war = {
 # 运行在 PRC 作用域
 ##############################################################################
 TFR_CRN_full_war_win = {
-	white_peace = SOV
+	# 双侧白和：PRC 与其全部敌国（含 CSTO 盟友）逐一白和
+	every_enemy_country = {
+		white_peace = PREV
+	}
+	# SOV 与其全部敌国（含可能参战的 PRC 盟友）逐一白和
+	SOV = {
+		every_enemy_country = {
+			white_peace = PREV
+		}
+	}
 	# 全部未收回的州转移
 	if = { limit = { 408 = { NOT = { is_core_of = PRC } } } 408 = { TFR_CRN_transfer_state = yes } }
 	if = { limit = { 409 = { NOT = { is_core_of = PRC } } } 409 = { TFR_CRN_transfer_state = yes } }
@@ -459,7 +468,16 @@ TFR_CRN_full_war_win = {
 # 运行在 PRC 作用域（限时任务 timeout_effect 调用）
 ##############################################################################
 TFR_CRN_full_war_lose = {
-	SOV = { white_peace = PRC }
+	# 双侧白和：PRC 与其全部敌国（含 CSTO 盟友）逐一白和
+	every_enemy_country = {
+		white_peace = PREV
+	}
+	# SOV 与其全部敌国（含可能参战的 PRC 盟友）逐一白和
+	SOV = {
+		every_enemy_country = {
+			white_peace = PREV
+		}
+	}
 	# 赔偿：中国债务 + 500，另送 SOV 装备
 	set_temp_variable = { debt_var_temp = 500 }
 	add_debt = yes

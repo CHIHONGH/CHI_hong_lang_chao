@@ -35,4 +35,34 @@ on_actions = {
 			}
 		}
 	}
+
+	# CSTO 及独联体盟友被中国击溃（完全投降）→ 立刻倒戈成为中国傀儡
+	# on_capitulation：投降瞬间触发，ROOT = 投降国
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						tag = BLR
+						tag = ARM
+						tag = TAJ
+						tag = KAZ
+						tag = KYR
+						tag = UZB
+						tag = TMS
+					}
+					has_war_with = PRC
+				}
+				# 与全部交战国白和（含 PRC 及其可能参战的盟友）
+				# 倒戈：成为中国傀儡
+				PRC = {
+					set_autonomy = {
+						target = PREV
+						autonomy_state = autonomy_puppet
+						freedom_level = 0.5
+					}
+				}
+			}
+		}
+	}
 }
