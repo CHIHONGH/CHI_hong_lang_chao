@@ -704,6 +704,7 @@ PRC_export_revolution = {
                     leave_faction = yes
                 }
                 CAM = {
+                    load_focus_tree = WLI_tree
                     JAP_leave_PEC = yes
                     set_country_flag = eadi_member
                     set_cosmetic_tag = PRC_cam
@@ -1429,6 +1430,7 @@ PRC_export_revolution = {
             }
             hidden_effect = {
                 SIG = {
+                    load_focus_tree = WLI_tree
                     set_cosmetic_tag = PRC_repolice_gonh
                     create_country_leader = {
                         name = "新加坡人民委员会"
@@ -2547,6 +2549,14 @@ PRC_export_revolution = {
             custom_effect_tooltip = PRC_Srl_tootip
             hidden_effect = {
                 SRL = {
+                    remove_ideas = {
+                        SRL_economic_ruin_idea
+                        commonwealth_of_nations_member
+                    }
+                    add_timed_idea = {
+                        idea = SRL_economic_ruin_idea
+                        days = 120
+                    }
                     set_cosmetic_tag = PRC_repolice_gonh
                     set_politics = {
                         ruling_party = communist
