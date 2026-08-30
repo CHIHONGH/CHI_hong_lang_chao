@@ -1,0 +1,42 @@
+add_namespace = prc_elec_warfare
+
+# ==================== 幽灵屏障衔接：南海对峙结束后的获知事件 ====================
+# 仅衔接事件本体（其余系统文件由会话同步流程补齐）：
+# 挂载：prcs.3146 hidden_effect 预排（days=5），仅一次
+# 效果：PTF 初始化幽灵屏障变量并挂动态精神
+# 注意：add_dynamic_modifier 依赖 dynamic_modifiers/TFR_RD_PTF_elec_warfare_dynamic_modifiers.txt、
+#       tooltip 依赖 scripted_effects + ideas，系统文件同步前会有缺失日志属正常
+country_event = {
+	id = prc_elec_warfare.101
+	title = prc_elec_warfare.101.t
+	desc = prc_elec_warfare.101.d
+	picture = GFX_Event_USA_fleet
+	is_triggered_only = yes
+
+	immediate = {
+		# 仅当尚未发生任何削弱时初始化（南海获胜削弱与获知预排同天发生，
+		# 若 count 已被削弱置 1，跳过硬初始化防止覆盖档位）
+		if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count > 0 } }
+			}
+			PTF = {
+				set_variable = { PTF_elec_vis = -0.85 }
+				set_variable = { PTF_elec_def = 0.4 }
+				set_variable = { PTF_elec_ret = 0.25 }
+				set_variable = { PTF_elec_spt = 0.25 }
+				set_variable = { PTF_elec_ngt = 0.15 }
+				set_variable = { PTF_elec_pos = -0.25 }
+				set_variable = { PTF_elec_count = 0 }
+				add_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic }
+			}
+		}
+	}
+
+	option = {
+		name = prc_elec_warfare.101.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}

@@ -2880,6 +2880,17 @@ country_event = {
                 id = prcs.3143
                 days = 1
             }
+            # 幽灵屏障衔接：南海对峙尘埃落定数日后，侦测到美海军新型电子战系统
+            if = {
+                limit = {
+                    NOT = { has_country_flag = prc_elec_known_done }
+                }
+                set_country_flag = prc_elec_known_done
+                country_event = {
+                    id = prc_elec_warfare.101
+                    days = 5
+                }
+            }
         }
         
     }
