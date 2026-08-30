@@ -1,4 +1,4 @@
-| 2026-08-20 | 同步 space force(提交 8c104d4 上一条 9f97897 的修复 2b941ce):幽灵屏障 101 事件三处修复(limit 移入 PTF 域/修正挂载分离防重挂/初始化数值对齐档位表) | 1 文件(+17/-12) | 完成 |
+| 2026-08-20 | 同步 space force(提交 298effe,子项目 2b941ce):幽灵屏障获知事件 101 三处修复——防覆盖 limit 移入 PTF 域(原 PRC 域检查恒真,南海削弱被重置吞掉)/add_dynamic_modifier 与初始化分离 has_dynamic_modifier 防重挂(原同块 count>0 时修正永不挂载)/初始化数值改调 PTF_elec_set_stage 置 count=0 档(vis -0.85/pos -0.25 与档位表一致) | 1 文件(+17/-12) | 完成 |
 | 2026-08-20 | 同步 space force(提交 9f97897):幽灵屏障电子战系统定稿(10档变量动态精神+假精神11档1:1,档9/10 else_if 修复,获知事件101防覆盖);MIO 图标26个+PTF 画像5变体+各类装备模块图标与 gfx 注册;工作区改动:PTF 游戏规则改名/startup 删事件/难度事件去 triggered_only | 110 文件(+24689/-17338) | 完成 |
 | 2026-08-20 | 同步中俄谈判(提交 a48a1dd):on_capitulation 投降倒戈(has_war_with 判定、CSTO+UZB+TMS 完全投降即傀儡)、双侧白和 every_enemy_country、debug 启动不可见修复(communist 意识形态)、冲突线 AI 化+reset 清镜像、清理过时调试决议 | 8 文件(+57/-24) | 完成 |
 | 2026-08-20 | 同步 space force(提交 cd95e50):忠诚僚机控制模块任务加成微调、debug决议补漏low_observability_kit(16项)、坦克模块数值微调、补3漏网模块解锁科技(ship_unmanned_helicopter/tank_advanced_electric_engine/tank_high_velocity_cannon_4,debug补3项现15项) | 4 文件(+59/-11) | 完成 |
