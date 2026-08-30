@@ -1,3 +1,4 @@
+| 2026-08-20 | 同步 space force(提交 9f97897):幽灵屏障电子战系统定稿(10档变量动态精神+假精神11档1:1,档9/10 else_if 修复,获知事件101防覆盖);MIO 图标26个+PTF 画像5变体+各类装备模块图标与 gfx 注册;工作区改动:PTF 游戏规则改名/startup 删事件/难度事件去 triggered_only | 110 文件(+24689/-17338) | 完成 |
 | 2026-08-20 | 同步中俄谈判(提交 a48a1dd):on_capitulation 投降倒戈(has_war_with 判定、CSTO+UZB+TMS 完全投降即傀儡)、双侧白和 every_enemy_country、debug 启动不可见修复(communist 意识形态)、冲突线 AI 化+reset 清镜像、清理过时调试决议 | 8 文件(+57/-24) | 完成 |
 | 2026-08-20 | 同步 space force(提交 cd95e50):忠诚僚机控制模块任务加成微调、debug决议补漏low_observability_kit(16项)、坦克模块数值微调、补3漏网模块解锁科技(ship_unmanned_helicopter/tank_advanced_electric_engine/tank_high_velocity_cannon_4,debug补3项现15项) | 4 文件(+59/-11) | 完成 |
 | 2026-08-20 | 同步 space force(提交 8ccc572):5装备模块解锁科技+debug决议一键获取(遥控武器站/反无人机激光/GL7主动防护/舰载激光/低可探测套件)、坦克模块库遥控武器站分类与数值调整、057国策激光配置、飞机模块忠诚僚机/综合电子战、GUI删3个set_temp_variable、装备图标更换(删YJ-18/83、玄武装甲图标移入NVX_naval_icons)、tremendous_power加carrier max_organisation=20;删残留5;用户手工改动:事件ZTZ-100换装+新增ZTZ-100A变体 | 18 文件(+570/-60) | 完成 |
