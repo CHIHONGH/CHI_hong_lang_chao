@@ -4513,7 +4513,7 @@ PRC_export_revolution = {
             custom_trigger_tooltip = {
                 tooltip = MEX_build_an_ultimate_army_tt
                 check_variable = {
-                    MEX_build_an_ultimate_army_var < 4
+                    MEX_build_an_ultimate_army_var < 3
                 }
             }
             
@@ -4530,7 +4530,7 @@ PRC_export_revolution = {
                     country_exists = ZAP
                 }
                 ZAP = {
-                    army_experience = 150
+                    army_experience = 200
                     if = {
                         limit = { 
                             check_variable = {
@@ -4543,7 +4543,7 @@ PRC_export_revolution = {
                         }
                         add_offsite_building = {
                             type = arms_factory
-                            level = 2
+                            level = 5
                         }
                         division_template = {
                             name = "Willpower Brigade"
@@ -4664,9 +4664,22 @@ PRC_export_revolution = {
                             priority = 90
                         }
                     }
+                    else_if = {
+                        limit = { 
+                            check_variable = {
+                                PRC.MEX_build_an_ultimate_army_var = 1
+                            }
+                        }
+                        add_mastery_bonus = {
+                            name = MEX_build_an_ultimate_army
+                            bonus = 2
+                            days = 250
+                            folder = land
+                        }
+                    }
                     random_owned_controlled_state = {
                         create_unit = {
-                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
                             count = 3
                             owner = ZAP
@@ -4674,7 +4687,7 @@ PRC_export_revolution = {
                     }
                     random_owned_controlled_state = {
                         create_unit = {
-                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
                             count = 3
                             owner = ZAP
@@ -4684,7 +4697,7 @@ PRC_export_revolution = {
             }
             else = {
                 MEX = {
-                    army_experience = 150
+                    army_experience = 200
                     if = {
                         limit = { 
                             check_variable = {
@@ -4697,7 +4710,7 @@ PRC_export_revolution = {
                         }
                         add_offsite_building = {
                             type = arms_factory
-                            level = 2
+                            level = 5
                         }
                         division_template = {
                             name = "Willpower Brigade"
@@ -4818,9 +4831,22 @@ PRC_export_revolution = {
                             priority = 90
                         }
                     }
+                    else_if = {
+                        limit = { 
+                            check_variable = {
+                                PRC.MEX_build_an_ultimate_army_var = 1
+                            }
+                        }
+                        add_mastery_bonus = {
+                            name = MEX_build_an_ultimate_army
+                            bonus = 2
+                            days = 250
+                            folder = land
+                        }
+                    }
                     random_owned_controlled_state = {
                         create_unit = {
-                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
                             count = 3
                             owner = MEX
@@ -4828,7 +4854,7 @@ PRC_export_revolution = {
                     }
                     random_owned_controlled_state = {
                         create_unit = {
-                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
                             count = 3
                             owner = MEX
@@ -5249,7 +5275,7 @@ PRC_export_revolution = {
         cost = 25
         days_remove = 14
         fire_only_once = yes
-        remove_effect = {
+        complete_effect = {
             set_country_flag = MEX_interfere_civil_war_saberta_flag
         }
         remove_effect = {

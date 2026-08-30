@@ -10225,13 +10225,20 @@ PRC_indo_pakistan_war = {
 	# 	}
 	# }
 	PRC_solve_the_basic_problem = {
+		icon = GFX_decision_generic_crossed_guns
 		visible = {
 			tag = PRC
 		}
-		days_remove = 50
 		highlight_states = {
-			443 1381 1380
+			highlight_state_targets = {
+				state = 443
+				state = 1381
+				state = 1380
+			}
 		}
+		cost = 50
+		days_remove = 50
+		days_re_enable = 10
 		complete_effect = {
 			PAK = {
 				add_offsite_building = {
