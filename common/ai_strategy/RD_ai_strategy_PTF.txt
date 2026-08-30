@@ -376,7 +376,7 @@ PTF_air_base = {
 		original_tag = PTF
 	}
 	enable = {
-		PRC = { NOT = { has_country_flag = PTF_difficulty_Simple } }
+		PRC = { NOT = { has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode } } }
 		date > 2026.06.01
 		num_of_civilian_factories > 450
 	}
@@ -523,7 +523,7 @@ PTF_Simple_1 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Simple
+			has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode }
 		}
 		num_divisions < 200
 		NOT = { num_divisions > 300 }
@@ -547,7 +547,7 @@ PTF_Simple_2 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Simple
+			has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode }
 		}
 		num_divisions > 300
 	}
@@ -571,7 +571,7 @@ PTF_Simple_3 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Simple
+			has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode }
 		}
 		num_divisions > 450
 	}
@@ -589,7 +589,7 @@ PTF_Normal_1 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Normal
+			has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode }
 		}
 		num_divisions < 200
 		NOT = { num_divisions > 300 }
@@ -613,7 +613,7 @@ PTF_Normal_2 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Normal
+			has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode }
 		}
 		num_divisions > 300
 	}
@@ -637,7 +637,7 @@ PTF_Normal_3 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Normal
+			has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode }
 		}
 		num_divisions > 500
 	}
@@ -655,7 +655,7 @@ PTF_Hard_1 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Hard
+			has_game_rule = { rule = The_PTF_Path option = PTF_Hard_Mode }
 		}
 		num_divisions < 650
 	}
@@ -674,7 +674,7 @@ PTF_Hard_2 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Hard
+			has_game_rule = { rule = The_PTF_Path option = PTF_Hard_Mode }
 		}
 		num_divisions > 650
 	}
@@ -697,7 +697,7 @@ PTF_EX_1 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Extremely_hard
+			has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode }
 		}
 		num_divisions < 700
 	}
@@ -716,7 +716,7 @@ PTF_EX_2 = {
     }
 	enable = {
 		PRC = {
-			has_country_flag = PTF_difficulty_Extremely_hard
+			has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode }
 		}
 		num_divisions > 700
 	}
@@ -739,7 +739,7 @@ PTF_Hamster = { #民国股神
     }
 	enable = {
 		num_divisions > 500
-		NOT = { PRC = { has_country_flag = PTF_difficulty_Simple } }
+		NOT = { PRC = { has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode } } }
 	}
 	abort_when_not_enabled = yes
 

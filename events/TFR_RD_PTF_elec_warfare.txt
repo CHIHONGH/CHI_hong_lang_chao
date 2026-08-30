@@ -1,11 +1,8 @@
 add_namespace = prc_elec_warfare
 
-# ==================== 幽灵屏障衔接：南海对峙结束后的获知事件 ====================
-# 仅衔接事件本体（其余系统文件由会话同步流程补齐）：
-# 挂载：prcs.3146 hidden_effect 预排（days=5），仅一次
+# ==================== 南海对峙结束后的获知事件 ====================
+# 挂载：prcs.3146 主选项 hidden_effect 预排（days=5），仅一次
 # 效果：PTF 初始化幽灵屏障变量并挂动态精神
-# 注意：add_dynamic_modifier 依赖 dynamic_modifiers/TFR_RD_PTF_elec_warfare_dynamic_modifiers.txt、
-#       tooltip 依赖 scripted_effects + ideas，系统文件同步前会有缺失日志属正常
 country_event = {
 	id = prc_elec_warfare.101
 	title = prc_elec_warfare.101.t
@@ -21,12 +18,12 @@ country_event = {
 				NOT = { check_variable = { PTF_elec_count > 0 } }
 			}
 			PTF = {
-				set_variable = { PTF_elec_vis = -0.85 }
+				set_variable = { PTF_elec_vis = -0.6 }
 				set_variable = { PTF_elec_def = 0.4 }
 				set_variable = { PTF_elec_ret = 0.25 }
 				set_variable = { PTF_elec_spt = 0.25 }
 				set_variable = { PTF_elec_ngt = 0.15 }
-				set_variable = { PTF_elec_pos = -0.25 }
+				set_variable = { PTF_elec_pos = -0.2 }
 				set_variable = { PTF_elec_count = 0 }
 				add_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic }
 			}
@@ -35,6 +32,236 @@ country_event = {
 
 	option = {
 		name = prc_elec_warfare.101.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# ==================== 削弱源事件对 ====================
+# 编号：201/202 南海胜；203/204 轨道电子战阵列；205/206 击沉荣耀舰；207/208 核弹夏威夷
+#       209/210 首占夏威夷；211/212 日本资料；213/214 占领西雅图；301/302 反制研究
+# 所有事件均为通知式：削弱实际效果由各挂点调用 PTF_elec_weaken/collapse 执行，
+# 选项 tooltip 通过假精神展示当前体系状态（无图标纯文字）
+
+# --- 南海对峙胜利 ---
+country_event = {
+	id = prc_elec_warfare.201
+	title = prc_elec_warfare.201.t
+	desc = prc_elec_warfare.201.d
+	picture = GFX_Event_fleet_comfront
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.201.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.202
+	title = prc_elec_warfare.202.t
+	desc = prc_elec_warfare.202.d
+	picture = GFX_Event_fleet_comfront
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.202.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 轨道电子对抗阵列 ---
+country_event = {
+	id = prc_elec_warfare.203
+	title = prc_elec_warfare.203.t
+	desc = prc_elec_warfare.203.d
+	picture = GFX_Event_space_force2
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.203.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.204
+	title = prc_elec_warfare.204.t
+	desc = prc_elec_warfare.204.d
+	picture = GFX_Event_space_force2
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.204.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 击沉舰队荣耀 ---
+country_event = {
+	id = prc_elec_warfare.205
+	title = prc_elec_warfare.205.t
+	desc = prc_elec_warfare.205.d
+	picture = GFX_Event_USA_fleet
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.205.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.206
+	title = prc_elec_warfare.206.t
+	desc = prc_elec_warfare.206.d
+	picture = GFX_Event_USA_fleet
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.206.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 核弹轰炸夏威夷 ---
+country_event = {
+	id = prc_elec_warfare.207
+	title = prc_elec_warfare.207.t
+	desc = prc_elec_warfare.207.d
+	picture = GFX_Event_navy
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.207.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.208
+	title = prc_elec_warfare.208.t
+	desc = prc_elec_warfare.208.d
+	picture = GFX_Event_navy
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.208.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 首占夏威夷 ---
+country_event = {
+	id = prc_elec_warfare.209
+	title = prc_elec_warfare.209.t
+	desc = prc_elec_warfare.209.d
+	picture = GFX_Event_navy
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.209.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.210
+	title = prc_elec_warfare.210.t
+	desc = prc_elec_warfare.210.d
+	picture = GFX_Event_navy
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.210.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 日本技术资料缴获 ---
+country_event = {
+	id = prc_elec_warfare.211
+	title = prc_elec_warfare.211.t
+	desc = prc_elec_warfare.211.d
+	picture = GFX_Event_pen
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.211.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.212
+	title = prc_elec_warfare.212.t
+	desc = prc_elec_warfare.212.d
+	picture = GFX_Event_pen
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.212.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 占领西雅图（机密尽泄，直接终档） ---
+country_event = {
+	id = prc_elec_warfare.213
+	title = prc_elec_warfare.213.t
+	desc = prc_elec_warfare.213.d
+	picture = GFX_Event_USA_soldiers
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.213.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.214
+	title = prc_elec_warfare.214.t
+	desc = prc_elec_warfare.214.d
+	picture = GFX_Event_USA_soldiers
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.214.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+
+# --- 反制研究完成 ---
+country_event = {
+	id = prc_elec_warfare.301
+	title = prc_elec_warfare.301.t
+	desc = prc_elec_warfare.301.d
+	picture = GFX_Event_space_force
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.301.a
+		effect_tooltip = {
+			PTF_elec_dummy_stage = yes
+		}
+	}
+}
+country_event = {
+	id = prc_elec_warfare.302
+	title = prc_elec_warfare.302.t
+	desc = prc_elec_warfare.302.d
+	picture = GFX_Event_space_force
+	is_triggered_only = yes
+	option = {
+		name = prc_elec_warfare.302.a
 		effect_tooltip = {
 			PTF_elec_dummy_stage = yes
 		}

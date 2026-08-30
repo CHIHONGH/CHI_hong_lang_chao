@@ -2858,6 +2858,24 @@ country_event = {
                 }
             }
             set_country_flag = NHDG_PRC_victory_hidden_flag
+            # 幽灵屏障：南海电子战获胜——随机摧毁 1 艘美导弹巡洋舰（battleship 型）+ 削弱一次
+            if = {
+                limit = {
+                    NOT = { has_country_flag = prc_elec_nanhai_done }
+                }
+                set_country_flag = prc_elec_nanhai_done
+                PTF = {
+                    destroy_ships = {
+                        type = battleship
+                        count = 1
+                    }
+                }
+                PTF_elec_weaken = yes
+                country_event = { id = prc_elec_warfare.201 }
+                PTF = {
+                    country_event = { id = prc_elec_warfare.202 }
+                }
+            }
         }
         else_if = {
             limit = {
@@ -2880,7 +2898,7 @@ country_event = {
                 id = prcs.3143
                 days = 1
             }
-            # 幽灵屏障衔接：南海对峙尘埃落定数日后，侦测到美海军新型电子战系统
+            # 幽灵屏障：南海冲突尘埃落定数日后，我方侦测到美海军新型电子战系统
             if = {
                 limit = {
                     NOT = { has_country_flag = prc_elec_known_done }
@@ -4779,3 +4797,41 @@ country_event = {
             }
         }
     }
+
+# ============ 侧翼：中国太空时代 剧情事件（合并自 beta） ============
+country_event = {
+    #####航天食品改革#####
+    id = prcs.53
+    title = prcs.53.t
+    desc = prcs.53.d
+    picture = GFX_PRC_space_food
+    is_triggered_only = yes
+    trigger = {
+        tag = PRC
+    }
+    option = {
+        name = prcs.53.a
+        hidden_effect = {
+            country_event = {
+                id = prcs.54
+                days = 100
+                random_days = 20
+            }
+        }
+    }
+}
+
+country_event = {
+    #####新式航天飞行器设计#####
+    id = prcs.54
+    title = prcs.54.t
+    desc = prcs.54.d
+    picture = GFX_PRC_space_jet
+    is_triggered_only = yes
+    trigger = {
+        tag = PRC
+    }
+    option = {
+        name = prcs.54.a
+    }
+}

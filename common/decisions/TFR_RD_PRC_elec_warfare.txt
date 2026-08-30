@@ -1,0 +1,79 @@
+# ==================== PRC 电子战反制（幽灵屏障削弱决议） ====================
+# 触发链：南海对峙后获知（prc_elec_warfare.101）→ 本类别决议出现
+# 180 天反制研究可重复执行；日本技术资料缴获一次性
+PRC_elec_countermeasures = {
+	# 反制研究项目（对美战争期间可重复，每次完成削弱 1 次）
+	PRC_elec_countermeasure_research = {
+		icon = GFX_decision_PRC_early_warning_satellite
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = prc_elec_known_done
+			has_war_with = PTF
+			NOT = {
+				has_country_flag = prc_elec_collapsed
+			}
+			PTF = {
+				NOT = {
+					check_variable = {
+						PTF_elec_count < 10
+					}
+					# 以上为 count >= 10 时隐藏
+				}
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_elec_countermeasure_available_tt
+				PTF = {
+					check_variable = {
+						PTF_elec_count < 10
+					}
+				}
+			}
+		}
+		cost = 50
+		days_remove = 180
+		remove_effect = {
+			PTF_elec_weaken = yes
+			country_event = { id = prc_elec_warfare.301 }
+			PTF = {
+				country_event = { id = prc_elec_warfare.302 }
+			}
+		}
+	}
+	# 缴获日本技术资料（日本投降/消亡后一次性）
+	PRC_elec_japan_tech = {
+		icon = GFX_decision_PRC_national_orbital_strategy_committee
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = prc_elec_known_done
+			OR = {
+				NOT = {
+					country_exists = JAP
+				}
+				JAP = {
+					has_capitulated = yes
+				}
+				JAP = {
+					is_ally_with = PRC
+				}
+			}
+		}
+		available = {
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 30
+		remove_effect = {
+			PTF_elec_weaken = yes
+			country_event = { id = prc_elec_warfare.211 }
+			PTF = {
+				country_event = { id = prc_elec_warfare.212 }
+			}
+		}
+	}
+}

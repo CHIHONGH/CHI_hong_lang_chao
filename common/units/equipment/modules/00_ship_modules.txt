@@ -793,41 +793,6 @@ equipment_modules = {
 		critical_parts = { damaged_light_guns }
 	}
 
-	ship_electromagnetic_gun = {
-		abbreviation = "sau"
-		category = ship_light_medium_battery
-		gui_category = ship_medium_battery
-		sfx = sfx_ui_sd_module_turret
-		parent = ship_light_medium_battery_4
-		add_stats = {
-			lg_attack = 14
-			build_cost_ic = 800
-		}
-		multiply_stats = {
-			naval_speed = -0.03
-		}
-		add_average_stats = {
-			lg_armor_piercing = 50
-			max_strength = 20
-		}
-		build_cost_resources = {
-			steel = 1
-		}
-
-		forbid_module_categories = {
-
-		}
-
-		can_convert_from = {
-			module_category = ship_medium_battery
-			convert_cost_ic = 600
-			convert_cost_resources = {
-				steel = 1
-			}
-		}
-		critical_parts = { damaged_light_guns }
-	}
-
 	dp_ship_medium_1 = {
 		abbreviation = "sdq"
 		category = ship_light_medium_battery
@@ -1173,30 +1138,6 @@ equipment_modules = {
 		}
 	}
 
-	ship_weapon_laser_system = {
-		abbreviation = "wls"
-		category = ship_anti_air
-		parent = ship_anti_air_4
-		sfx = sfx_ui_sd_module_turret
-
-		add_equipment_type = anti_air
-		add_stats = {
-			anti_air_attack = 8
-			lg_attack = 2.5
-			build_cost_ic = 280
-		}
-		
-		multiply_stats = {
-			naval_speed = -0.005
-			anti_air_attack = 0.25
-		}
-
-		can_convert_from = {
-			module_category = ship_anti_air
-			convert_cost_ic = 300
-		}
-	}
-
 
 ### ### ###  ###      ##   ##  #  # ### ###   ##  #        ## #   #  ## ### ### #   # 
 #    #  #  # #       #  # #  # ## #  #  #  # #  # #       #    # #  #    #  #   ## ## 
@@ -1498,31 +1439,6 @@ equipment_modules = {
 			convert_cost_ic = 230
 		}
 	}
-	light_ship_nuclear_engine = {
-		abbreviation = "sbq"
-		category = light_ship_engine
-		parent = light_ship_engine_4
-		sfx = sfx_ui_sd_module_engine
-
-		
-		add_stats = {
-			build_cost_ic = 170
-			reliability = 0.05
-		}
-		
-		multiply_stats = {
-			fuel_consumption = -1
-			surface_visibility = -0.1
-			naval_speed = 1
-			build_cost_ic = 0.25
-			naval_range = 5
-		}
-		
-		can_convert_from = {
-			module_category = light_ship_engine
-			convert_cost_ic = 300
-		}
-	}
 	sub_ship_engine_1 = {
 		abbreviation = "sbr"
 		category = sub_ship_engine
@@ -1653,7 +1569,6 @@ equipment_modules = {
 			naval_speed = 0.15
 			build_cost_ic = 0.25
 			fuel_consumption = -1
-			sub_visibility = -0.25
 		}
 		
 		can_convert_from = {
@@ -1680,7 +1595,6 @@ equipment_modules = {
 			naval_speed = 0.25
 			build_cost_ic = 0.30
 			fuel_consumption = -1
-			sub_visibility = -0.35
 		}
 		
 		can_convert_from = {
@@ -1910,32 +1824,6 @@ equipment_modules = {
 			convert_cost_ic = 4800
 		}
 	}
-	heavy_ship_nuclear_engine = {
-		abbreviation = "scc"
-		category = heavy_ship_engine
-		parent = heavy_ship_engine_4
-		gfx = sub_ship_nuclear_engine_1
-		sfx = sfx_ui_sd_module_engine
-
-		
-		add_stats = {
-			build_cost_ic = 720
-			reliability = 0.1
-		}
-		
-		multiply_stats = {
-			fuel_consumption = -1
-			surface_visibility = -0.1
-			naval_speed = 1
-			build_cost_ic = 0.2
-			naval_range = 5
-		}
-		
-		can_convert_from = {
-			module_category = heavy_ship_engine
-			convert_cost_ic = 5000
-		}
-	}
 	carrier_ship_engine_1 = {
 		abbreviation = "scd"
 		category = carrier_ship_engine
@@ -2044,31 +1932,7 @@ equipment_modules = {
 			convert_cost_ic = 2300
 		}
 	}
-	carrier_ship_nuclear_engine = {
-		abbreviation = "scg"
-		category = carrier_ship_engine
-		parent = carrier_ship_engine_4
-		gfx = sub_ship_nuclear_engine_1
-		sfx = sfx_ui_sd_module_engine
 
-		add_stats = {
-			build_cost_ic = 670
-			reliability = 0.1
-		}
-		
-		multiply_stats = {
-			fuel_consumption = -1
-			surface_visibility = -0.1
-			naval_speed = 0.95
-			build_cost_ic = 0.2
-			naval_range = 5
-		}
-		
-		can_convert_from = {
-			module_category = carrier_ship_engine
-			convert_cost_ic = 4000
-		}
-	}
 	
 
 
@@ -2555,21 +2419,6 @@ equipment_modules = {
 		}
 	}
 
-	ship_unmanned_helicopter = {
-		abbreviation = "suh"
-		category = ship_airplane_launcher
-		parent = ship_airplane_launcher_2
-		add_stats = {
-			surface_detection = 15
-			sub_detection = 5.5
-			build_cost_ic = 140
-		}
-		can_convert_from = {
-			module_category = ship_airplane_launcher
-			convert_cost_ic = 80
-		}
-	}
-
 ###  ###  ##  # #      ## ###   ##   ##  ### 
 #  # #   #  # # #     #   #  # #  # #  # #   
 #  # ##  #    ##       #  ###  #### #    ##  
@@ -2591,26 +2440,6 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 1
-		}
-		dismantle_cost_ic = 700
-	}
-
-	ship_super_deck_space = {
-		abbreviation = "sda"
-		category = ship_deck_space
-		gfx = ship_deck_space
-
-		add_equipment_type = capital_ship
-		add_stats = {
-			carrier_size = 4
-			build_cost_ic = 2200
-		}
-		manpower = 800 #outside the add_stats section for code reasons
-		multiply_stats = {
-			naval_speed = -0.07
-		}
-		build_cost_resources = {
-			steel = 2
 		}
 		dismantle_cost_ic = 700
 	}
@@ -2782,28 +2611,6 @@ equipment_modules = {
 		dismantle_cost_ic = 7500
 		
 	}
-	ship_armor_bb_molin = {
-		abbreviation = "sdi"
-		category = ship_heavy_armor
-		gfx = ship_armor_molin
-		parent = ship_armor_bb_3
-		multiply_stats = {
-			build_cost_ic = 0.25
-			max_strength = 0.15
-		}
-		build_cost_resources = {
-			steel = 1
-			aluminium = 2
-		}
-		add_stats = {
-			armor_value = 30
-			surface_visibility = -15
-			naval_torpedo_enemy_critical_chance_factor = -0.3
-			naval_torpedo_damage_reduction_factor = 0.3
-		}
-		dismantle_cost_ic = 7500
-		
-	}
 	ship_armor_bc_3 = {
 		abbreviation = "sdj"
 		category = ship_heavy_armor
@@ -2848,28 +2655,6 @@ equipment_modules = {
 			naval_torpedo_damage_reduction_factor = 0.25
 		}
 		dismantle_cost_ic = 8200
-		
-	}
-	ship_armor_shbb_molin = {
-		abbreviation = "sk"
-		category = ship_super_heavy_armor
-		gfx = ship_armor_molin
-		parent = ship_armor_bb_3
-		multiply_stats = {
-			build_cost_ic = 0.25
-			max_strength = 0.15
-		}
-		build_cost_resources = {
-			steel = 2
-			aluminium = 4
-		}
-		add_stats = {
-			armor_value = 40
-			surface_visibility = -20
-			naval_torpedo_enemy_critical_chance_factor = -0.4
-			naval_torpedo_damage_reduction_factor = 0.4
-		}
-		dismantle_cost_ic = 7500
 		
 	}
 	ship_armor_cruiser_1 = {
@@ -2946,23 +2731,6 @@ equipment_modules = {
 			chromium = 1
 		}
 	}
-	ship_armor_cruiser_EHIHS = {
-		abbreviation = "sdo"
-		category = ship_cruiser_armor
-		gfx = ship_armor_thin_4
-		parent = ship_armor_cruiser_4
-		dismantle_cost_ic = 4000
-
-		add_stats = {
-			build_cost_ic = 850
-			max_strength = 120
-		}
-		
-		build_cost_resources = {
-			steel = 1
-			tungsten = 1
-		}
-	}
 	ship_armor_carrier_deck = {
 		abbreviation = "sdp"
 		category = ship_carrier_armor
@@ -2984,12 +2752,254 @@ equipment_modules = {
 		dismantle_cost_ic = 2500
 	}
 
+	ship_electromagnetic_gun = {
+		abbreviation = "sau"
+		category = ship_light_medium_battery
+		gui_category = ship_medium_battery
+		gfx = ship_electromagnetic_gun
+		sfx = sfx_ui_sd_module_turret
+		parent = ship_light_medium_battery_4
+		add_stats = {
+			lg_attack = 14
+			build_cost_ic = 800
+		}
+		multiply_stats = {
+			naval_speed = -0.03
+		}
+		add_average_stats = {
+			lg_armor_piercing = 50
+			max_strength = 20
+		}
+		build_cost_resources = {
+			steel = 1
+		}
+
+		forbid_module_categories = {
+
+		}
+
+		can_convert_from = {
+			module_category = ship_medium_battery
+			convert_cost_ic = 600
+			convert_cost_resources = {
+				steel = 1
+			}
+		}
+		critical_parts = { damaged_light_guns }
+	}
+
+	ship_weapon_laser_system = {
+		abbreviation = "wls"
+		category = ship_anti_air
+		parent = ship_anti_air_4
+		gfx = ship_weapon_laser_system
+		sfx = sfx_ui_sd_module_turret
+
+		add_equipment_type = anti_air
+		add_stats = {
+			anti_air_attack = 8
+			lg_attack = 2.5
+			build_cost_ic = 280
+		}
+		
+		multiply_stats = {
+			naval_speed = -0.005
+			anti_air_attack = 0.25
+		}
+
+		can_convert_from = {
+			module_category = ship_anti_air
+			convert_cost_ic = 300
+		}
+	}
+
+	light_ship_nuclear_engine = {
+		abbreviation = "sbq"
+		category = light_ship_engine
+		parent = light_ship_engine_4
+		gfx = light_ship_nuclear_engine
+		sfx = sfx_ui_sd_module_engine
+
+		
+		add_stats = {
+			build_cost_ic = 170
+			reliability = 0.05
+		}
+		
+		multiply_stats = {
+			fuel_consumption = -1
+			surface_visibility = -0.1
+			naval_speed = 1
+			build_cost_ic = 0.25
+			naval_range = 5
+		}
+		
+		can_convert_from = {
+			module_category = light_ship_engine
+			convert_cost_ic = 300
+		}
+	}
+
+	heavy_ship_nuclear_engine = {
+		abbreviation = "scc"
+		category = heavy_ship_engine
+		parent = heavy_ship_engine_4
+		gfx = heavy_ship_nuclear_engine
+		sfx = sfx_ui_sd_module_engine
+
+		
+		add_stats = {
+			build_cost_ic = 720
+			reliability = 0.1
+		}
+		
+		multiply_stats = {
+			fuel_consumption = -1
+			surface_visibility = -0.1
+			naval_speed = 1
+			build_cost_ic = 0.2
+			naval_range = 5
+		}
+		
+		can_convert_from = {
+			module_category = heavy_ship_engine
+			convert_cost_ic = 5000
+		}
+	}
+
+	carrier_ship_nuclear_engine = {
+		abbreviation = "scg"
+		category = carrier_ship_engine
+		parent = carrier_ship_engine_4
+		gfx = carrier_ship_nuclear_engine
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			build_cost_ic = 670
+			reliability = 0.1
+		}
+		
+		multiply_stats = {
+			fuel_consumption = -1
+			surface_visibility = -0.1
+			naval_speed = 0.95
+			build_cost_ic = 0.2
+			naval_range = 5
+		}
+		
+		can_convert_from = {
+			module_category = carrier_ship_engine
+			convert_cost_ic = 4000
+		}
+	}
+	
+
+	ship_unmanned_helicopter = {
+		abbreviation = "suh"
+		category = ship_airplane_launcher
+		parent = ship_airplane_launcher_2
+		gfx = ship_unmanned_helicopter
+		add_stats = {
+			surface_detection = 15
+			sub_detection = 5.5
+			build_cost_ic = 140
+		}
+		can_convert_from = {
+			module_category = ship_airplane_launcher
+			convert_cost_ic = 80
+		}
+	}
+
+	ship_super_deck_space = {
+		abbreviation = "sda"
+		category = ship_deck_space
+		gfx = ship_super_deck_space
+
+		add_equipment_type = capital_ship
+		add_stats = {
+			carrier_size = 4
+			build_cost_ic = 2200
+		}
+		manpower = 800 #outside the add_stats section for code reasons
+		multiply_stats = {
+			naval_speed = -0.07
+		}
+		build_cost_resources = {
+			steel = 2
+		}
+		dismantle_cost_ic = 700
+	}
+
+	ship_armor_bb_molin = {
+		abbreviation = "sdi"
+		category = ship_heavy_armor
+		gfx = ship_armor_bb_molin
+		parent = ship_armor_bb_3
+		multiply_stats = {
+			build_cost_ic = 0.25
+			max_strength = 0.15
+		}
+		build_cost_resources = {
+			steel = 1
+			aluminium = 2
+		}
+		add_stats = {
+			armor_value = 30
+			surface_visibility = -15
+			naval_torpedo_enemy_critical_chance_factor = -0.3
+			naval_torpedo_damage_reduction_factor = 0.3
+		}
+		dismantle_cost_ic = 7500
+		
+	}
+
+	ship_armor_shbb_molin = {
+		abbreviation = "sk"
+		category = ship_super_heavy_armor
+		gfx = ship_armor_shbb_molin
+		parent = ship_armor_bb_3
+		multiply_stats = {
+			build_cost_ic = 0.25
+			max_strength = 0.15
+		}
+		build_cost_resources = {
+			steel = 2
+			aluminium = 4
+		}
+		add_stats = {
+			armor_value = 40
+			surface_visibility = -20
+			naval_torpedo_enemy_critical_chance_factor = -0.4
+			naval_torpedo_damage_reduction_factor = 0.4
+		}
+		dismantle_cost_ic = 7500
+		
+	}
+
+	ship_armor_cruiser_EHIHS = {
+		abbreviation = "sdo"
+		category = ship_cruiser_armor
+		gfx = ship_armor_thin_4
+		parent = ship_armor_cruiser_4
+		dismantle_cost_ic = 4000
+
+		add_stats = {
+			build_cost_ic = 850
+			max_strength = 120
+		}
+		
+		build_cost_resources = {
+			steel = 1
+			tungsten = 1
+		}
+	}
+
 	# Rocket Modules
 
 	ship_missile_launcher_1 = {
 		abbreviation = "sml"
 		category = ship_rocket
-		gfx = ship_missile_launcher_mod
+		gfx = ship_missile_launcher_1
 		sfx = sfx_ui_sd_module_turret
 		add_equipment_type = { missile_launcher capital_ship }
 		allow_equipment_type = missile
@@ -3024,7 +3034,7 @@ equipment_modules = {
 		abbreviation = "sml"
 		parent = ship_missile_launcher_1
 		category = heavy_ship_rocket
-		gfx = ship_missile_launcher_mod
+		gfx = ship_missile_launcher_2
 		sfx = sfx_ui_sd_module_turret
 		add_equipment_type = { missile_launcher capital_ship }
 		allow_equipment_type = { missile ballistic_missile }

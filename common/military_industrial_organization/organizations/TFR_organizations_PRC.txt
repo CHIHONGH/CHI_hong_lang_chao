@@ -3151,13 +3151,13 @@ PRC_CASC_organization = {
 	trait = {#快速发射能力
 		token = PRC_mio_trait_rapid_launch
 		name = PRC_mio_trait_rapid_launch
-		icon = GFX_generic_mio_trait_icon_naval_speed
+		icon = GFX_tfr_mio_icon_rapid_launch
 
 		relative_position_id = PRC_mio_trait_rocket_upgrade
 		all_parents = { PRC_mio_trait_rocket_upgrade }
 		position = { x = -1 y = 2 }
 		available = {
-			FROM = { has_completed_focus = PLA_orbital_drop_new }
+			
 		}
 		on_complete = {
 			FROM = {
@@ -3199,7 +3199,7 @@ PRC_CASC_organization = {
 		all_parents = { PRC_mio_trait_rocket_upgrade }
 		position = { x = 0 y = 1 }
 		available = {
-			FROM = { has_completed_focus = PLA_orbital_drop_new }
+			
 		}
 		on_complete = {
 			FROM = {
@@ -3220,6 +3220,11 @@ PRC_CASC_organization = {
 				set_variable = { PRC.space_dec_airdrop_days = 120 }
 				set_variable = { PRC.space_dec_interception_days = 120 }
 				set_variable = { PRC.space_dec_nuclear_platform_days = 150 }
+				set_variable = { PRC.space_dec_crew_expansion_1_days = 182 }
+				set_variable = { PRC.space_dec_crew_expansion_2_days = 182 }
+				set_variable = { PRC.space_dec_crew_expansion_3_days = 182 }
+				set_variable = { PRC.space_dec_crew_expansion_4_days = 182 }
+				set_variable = { PRC.space_dec_crew_expansion_5_days = 182 }
 			}
 		}
 
@@ -3229,7 +3234,7 @@ PRC_CASC_organization = {
 	trait = {#天基侦察网络
 		token = PRC_mio_trait_Space_based_reconnaissance_network
 		name = PRC_mio_trait_Space_based_reconnaissance_network
-		icon = GFX_tfr_mio_icon_UAV_investigation_unit
+		icon = GFX_tfr_mio_icon_space_based_reconnaissance_network
 		special_trait_background = yes
 		relative_position_id = PRC_mio_trait_rocket_upgrade
 		all_parents = { PRC_mio_trait_rocket_upgrade }
@@ -4685,7 +4690,7 @@ PRC_helicopter_design_institute_organization = {
 	trait = {#先进复合材料旋翼
 		token = PRC_mio_trait_advanced_composite_rotor
 		name = PRC_mio_trait_advanced_composite_rotor
-		icon = GFX_generic_mio_department_icon_plane_general
+		icon = GFX_tfr_mio_icon_advanced_composite_rotor
 		special_trait_background = yes
 
 		position = { x = 4 y = 1 }
@@ -4723,7 +4728,7 @@ PRC_helicopter_design_institute_organization = {
 	trait = {#直升机电力系统
 		token = PRC_mio_trait_electrical_power_system
 		name = PRC_mio_trait_electrical_power_system
-		icon = GFX_generic_mio_trait_icon_efficiency_gain
+		icon = GFX_tfr_mio_icon_electrical_power_system
 		special_trait_background = yes
 
 		position = { x = 4 y = 2 }
@@ -4760,7 +4765,7 @@ PRC_helicopter_design_institute_organization = {
 	trait = {#空中突击指挥系统
 		token = PRC_mio_trait_air_assault_command
 		name = PRC_mio_trait_air_assault_command
-		icon = GFX_generic_mio_trait_icon_breakthrough
+		icon = GFX_tfr_mio_icon_air_assault_command
 		special_trait_background = yes
 
 		position = { x = 4 y = 3 }
@@ -4844,7 +4849,7 @@ PRC_china_power_grid_organization = {
 	trait = {#电网基建
 		token = PRC_mio_trait_power_grid_basic
 		name = PRC_mio_trait_power_grid_basic
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_basic
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
@@ -4867,7 +4872,7 @@ PRC_china_power_grid_organization = {
 	trait = {#高效发电
 		token = PRC_mio_trait_power_grid_eff
 		name = PRC_mio_trait_power_grid_eff
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_eff
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
@@ -4894,7 +4899,7 @@ PRC_china_power_grid_organization = {
 	trait = {#特高压输电
 		token = PRC_mio_trait_power_grid_uhv
 		name = PRC_mio_trait_power_grid_uhv
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_uhv
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
@@ -4921,7 +4926,7 @@ PRC_china_power_grid_organization = {
 	trait = {#全国互联电网
 		token = PRC_mio_trait_power_grid_national
 		name = PRC_mio_trait_power_grid_national
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_national
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 5 } }
@@ -4948,7 +4953,7 @@ PRC_china_power_grid_organization = {
 	trait = {#电力市场改革
 		token = PRC_mio_trait_power_grid_reform
 		name = PRC_mio_trait_power_grid_reform
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_reform
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
@@ -4971,7 +4976,7 @@ PRC_china_power_grid_organization = {
 	trait = {#需求侧管理
 		token = PRC_mio_trait_power_grid_demand
 		name = PRC_mio_trait_power_grid_demand
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_demand
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 1 } }
@@ -4994,7 +4999,7 @@ PRC_china_power_grid_organization = {
 	trait = {#储能系统
 		token = PRC_mio_trait_power_grid_storage
 		name = PRC_mio_trait_power_grid_storage
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_storage
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
@@ -5021,7 +5026,7 @@ PRC_china_power_grid_organization = {
 	trait = {#智能调度
 		token = PRC_mio_trait_power_grid_dispatch
 		name = PRC_mio_trait_power_grid_dispatch
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_dispatch
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 3 } }
@@ -5048,7 +5053,7 @@ PRC_china_power_grid_organization = {
 	trait = {#全球能源互联网
 		token = PRC_mio_trait_power_grid_global
 		name = PRC_mio_trait_power_grid_global
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_global
 
 		available = {
 			FROM = { check_variable = { PRC_power_grid_invest_total_var = 8 } }
@@ -5079,7 +5084,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资核电站1
 		token = PRC_mio_trait_power_grid_nuclear_1
 		name = PRC_mio_trait_power_grid_nuclear_1
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_nuclear
 		special_trait_background = yes
 		position = { x = 9 y = 0 }
 		visible = {
@@ -5109,7 +5114,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资核电站2
 		token = PRC_mio_trait_power_grid_nuclear_2
 		name = PRC_mio_trait_power_grid_nuclear_2
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_nuclear
 		special_trait_background = yes
 		position = { x = 9 y = 0 }
 		visible = {
@@ -5139,7 +5144,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资核电站3
 		token = PRC_mio_trait_power_grid_nuclear_3
 		name = PRC_mio_trait_power_grid_nuclear_3
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_nuclear
 		special_trait_background = yes
 		position = { x = 9 y = 0 }
 		visible = {
@@ -5169,7 +5174,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资核电站4
 		token = PRC_mio_trait_power_grid_nuclear_4
 		name = PRC_mio_trait_power_grid_nuclear_4
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_nuclear
 		special_trait_background = yes
 		position = { x = 9 y = 0 }
 		visible = {
@@ -5199,7 +5204,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资核电站5（加倍）
 		token = PRC_mio_trait_power_grid_nuclear_5
 		name = PRC_mio_trait_power_grid_nuclear_5
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_nuclear
 		special_trait_background = yes
 		position = { x = 9 y = 0 }
 		visible = {
@@ -5243,7 +5248,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资火电站1
 		token = PRC_mio_trait_power_grid_thermal_1
 		name = PRC_mio_trait_power_grid_thermal_1
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_thermal
 		special_trait_background = yes
 		position = { x = 9 y = 1 }
 		visible = {
@@ -5283,7 +5288,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资火电站2
 		token = PRC_mio_trait_power_grid_thermal_2
 		name = PRC_mio_trait_power_grid_thermal_2
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_thermal
 		special_trait_background = yes
 		position = { x = 9 y = 1 }
 		visible = {
@@ -5323,7 +5328,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资火电站3
 		token = PRC_mio_trait_power_grid_thermal_3
 		name = PRC_mio_trait_power_grid_thermal_3
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_thermal
 		special_trait_background = yes
 		position = { x = 9 y = 1 }
 		visible = {
@@ -5363,7 +5368,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资火电站4
 		token = PRC_mio_trait_power_grid_thermal_4
 		name = PRC_mio_trait_power_grid_thermal_4
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_thermal
 		special_trait_background = yes
 		position = { x = 9 y = 1 }
 		visible = {
@@ -5403,7 +5408,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资火电站5（加倍）
 		token = PRC_mio_trait_power_grid_thermal_5
 		name = PRC_mio_trait_power_grid_thermal_5
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_thermal
 		special_trait_background = yes
 		position = { x = 9 y = 1 }
 		visible = {
@@ -5467,7 +5472,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资太阳能1
 		token = PRC_mio_trait_power_grid_solar_1
 		name = PRC_mio_trait_power_grid_solar_1
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_solar
 		special_trait_background = yes
 		position = { x = 9 y = 2 }
 		visible = {
@@ -5507,7 +5512,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资太阳能2
 		token = PRC_mio_trait_power_grid_solar_2
 		name = PRC_mio_trait_power_grid_solar_2
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_solar
 		special_trait_background = yes
 		position = { x = 9 y = 2 }
 		visible = {
@@ -5547,7 +5552,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资太阳能3
 		token = PRC_mio_trait_power_grid_solar_3
 		name = PRC_mio_trait_power_grid_solar_3
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_solar
 		special_trait_background = yes
 		position = { x = 9 y = 2 }
 		visible = {
@@ -5587,7 +5592,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资太阳能4
 		token = PRC_mio_trait_power_grid_solar_4
 		name = PRC_mio_trait_power_grid_solar_4
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_solar
 		special_trait_background = yes
 		position = { x = 9 y = 2 }
 		visible = {
@@ -5627,7 +5632,7 @@ PRC_china_power_grid_organization = {
 	trait = {#投资太阳能5（加倍）
 		token = PRC_mio_trait_power_grid_solar_5
 		name = PRC_mio_trait_power_grid_solar_5
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_power_grid_solar
 		special_trait_background = yes
 		position = { x = 9 y = 2 }
 		visible = {
@@ -5780,7 +5785,7 @@ PRC_china_railway_organization = {
 	trait = {#智能高铁 — 高铁网络优化工程
 		token = PRC_mio_trait_network_optimization
 		name = PRC_mio_trait_network_optimization
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		icon = GFX_tfr_mio_icon_network_optimization
 
 		relative_position_id = PRC_mio_trait_gaotie_lingpao
 
@@ -5874,7 +5879,7 @@ PRC_china_railway_organization = {
 	trait = {#智慧运维
 		token = PRC_mio_trait_smart_maintenance
 		name = PRC_mio_trait_smart_maintenance
-		icon = GFX_generic_mio_trait_icon_reliability
+		icon = GFX_tfr_mio_icon_smart_maintenance
 
 		relative_position_id = PRC_mio_trait_network_optimization
 
@@ -5944,7 +5949,7 @@ PRC_china_railway_organization = {
 	trait = {#川藏铁路
 		token = PRC_mio_trait_sichuan_tibet
 		name = PRC_mio_trait_sichuan_tibet
-		icon = GFX_generic_mio_trait_icon_hardness
+		icon = GFX_tfr_mio_icon_sichuan_tibet
 
 		relative_position_id = PRC_mio_trait_line_construction
 
@@ -5971,7 +5976,7 @@ PRC_china_railway_organization = {
 	trait = {#综合枢纽
 		token = PRC_mio_trait_comprehensive_hub
 		name = PRC_mio_trait_comprehensive_hub
-		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		icon = GFX_tfr_mio_icon_comprehensive_hub
 
 		relative_position_id = PRC_mio_trait_hub_upgrade
 
@@ -5993,7 +5998,7 @@ PRC_china_railway_organization = {
 	trait = {#数字孪生
 		token = PRC_mio_trait_digital_twin
 		name = PRC_mio_trait_digital_twin
-		icon = GFX_generic_mio_trait_icon_detection
+		icon = GFX_tfr_mio_icon_digital_twin
 
 		relative_position_id = PRC_mio_trait_smart_maintenance
 
@@ -6037,7 +6042,7 @@ PRC_china_railway_organization = {
 	trait = {#5G+北斗应用
 		token = PRC_mio_trait_5g_beidou
 		name = PRC_mio_trait_5g_beidou
-		icon = GFX_generic_mio_trait_icon_detection
+		icon = GFX_tfr_mio_icon_5g_beidou
 
 		relative_position_id = PRC_mio_trait_smart_config
 
@@ -6059,7 +6064,7 @@ PRC_china_railway_organization = {
 	trait = {#跨国联运实验
 		token = PRC_mio_trait_international_railway
 		name = PRC_mio_trait_international_railway
-		icon = GFX_generic_mio_trait_icon_strategic_attack
+		icon = GFX_tfr_mio_icon_international_railway
 
 		relative_position_id = PRC_mio_trait_sichuan_tibet
 
@@ -6081,7 +6086,7 @@ PRC_china_railway_organization = {
 	trait = {#城市群轨道网
 		token = PRC_mio_trait_urban_rail
 		name = PRC_mio_trait_urban_rail
-		icon = GFX_generic_mio_trait_icon_naval_strike_targetting
+		icon = GFX_tfr_mio_icon_urban_rail
 
 		relative_position_id = PRC_mio_trait_comprehensive_hub
 
@@ -6103,7 +6108,7 @@ PRC_china_railway_organization = {
 	trait = {#智能检测系统
 		token = PRC_mio_trait_inspection_system
 		name = PRC_mio_trait_inspection_system
-		icon = GFX_generic_mio_trait_icon_detection
+		icon = GFX_tfr_mio_icon_inspection_system
 
 		relative_position_id = PRC_mio_trait_digital_twin
 

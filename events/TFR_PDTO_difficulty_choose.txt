@@ -1,10 +1,10 @@
-﻿add_namespace = pdto_difficulty_choose
+﻿add_namespace = red_dawn_guide
 
 # ==================== 引导页1：游玩须知 ====================
 country_event = {
-	id = pdto_difficulty_choose.1
-	title = pdto_difficulty_choose.1.t
-	desc = pdto_difficulty_choose.1.d
+	id = red_dawn_guide.1
+	title = red_dawn_guide.1.t
+	desc = red_dawn_guide.1.d
 	is_triggered_only = yes
 
 	trigger = {
@@ -12,155 +12,95 @@ country_event = {
 	}
 
 	option = {
-		name = pdto_difficulty_choose.1.a
+		name = red_dawn_guide.1.a
 		ai_chance = { base = 10 }
-		country_event = { id = pdto_difficulty_choose.2 }
+		country_event = { id = red_dawn_guide.2 }
 	}
 	option = {
-		name = pdto_difficulty_choose.1.b
+		name = red_dawn_guide.1.b
 		ai_chance = { base = 0 }
-		country_event = { id = pdto_difficulty_choose.6 }
 	}
 }
 
 # ==================== 引导页2：剧本 ====================
 country_event = {
-	id = pdto_difficulty_choose.2
-	title = pdto_difficulty_choose.2.t
-	desc = pdto_difficulty_choose.2.d
+	id = red_dawn_guide.2
+	title = red_dawn_guide.2.t
+	desc = red_dawn_guide.2.d
 	is_triggered_only = yes
 
 	option = {
-		name = pdto_difficulty_choose.2.a
+		name = red_dawn_guide.2.a
 		ai_chance = { base = 10 }
-		country_event = { id = pdto_difficulty_choose.3 }
+		country_event = { id = red_dawn_guide.3 }
 	}
 	option = {
-		name = pdto_difficulty_choose.2.b
+		name = red_dawn_guide.2.b
 		ai_chance = { base = 0 }
-		country_event = { id = pdto_difficulty_choose.1 }
+		country_event = { id = red_dawn_guide.1 }
 	}
 }
 
 # ==================== 引导页3：陆军 ====================
 country_event = {
-	id = pdto_difficulty_choose.3
-	title = pdto_difficulty_choose.3.t
-	desc = pdto_difficulty_choose.3.d
+	id = red_dawn_guide.3
+	title = red_dawn_guide.3.t
+	desc = red_dawn_guide.3.d
 	is_triggered_only = yes
 
 	option = {
-		name = pdto_difficulty_choose.3.a
+		name = red_dawn_guide.3.a
 		ai_chance = { base = 10 }
-		country_event = { id = pdto_difficulty_choose.4 }
+		country_event = { id = red_dawn_guide.4 }
 	}
 	option = {
-		name = pdto_difficulty_choose.3.b
+		name = red_dawn_guide.3.b
 		ai_chance = { base = 0 }
-		country_event = { id = pdto_difficulty_choose.2 }
+		country_event = { id = red_dawn_guide.2 }
 	}
 }
 
 # ==================== 引导页4：空军与太空军 ====================
 country_event = {
-	id = pdto_difficulty_choose.4
-	title = pdto_difficulty_choose.4.t
-	desc = pdto_difficulty_choose.4.d
+	id = red_dawn_guide.4
+	title = red_dawn_guide.4.t
+	desc = red_dawn_guide.4.d
 	is_triggered_only = yes
 
 	option = {
-		name = pdto_difficulty_choose.4.a
+		name = red_dawn_guide.4.a
 		ai_chance = { base = 10 }
-		country_event = { id = pdto_difficulty_choose.5 }
+		country_event = { id = red_dawn_guide.5 }
 	}
 	option = {
-		name = pdto_difficulty_choose.4.b
+		name = red_dawn_guide.4.b
 		ai_chance = { base = 0 }
-		country_event = { id = pdto_difficulty_choose.3 }
+		country_event = { id = red_dawn_guide.3 }
 	}
 }
 
 # ==================== 引导页5：海军 ====================
 country_event = {
-	id = pdto_difficulty_choose.5
-	title = pdto_difficulty_choose.5.t
-	desc = pdto_difficulty_choose.5.d
+	id = red_dawn_guide.5
+	title = red_dawn_guide.5.t
+	desc = red_dawn_guide.5.d
 	is_triggered_only = yes
 
 	option = {
-		name = pdto_difficulty_choose.5.a
+		name = red_dawn_guide.5.a
 		ai_chance = { base = 10 }
-		country_event = { id = pdto_difficulty_choose.6 }
 	}
 	option = {
-		name = pdto_difficulty_choose.5.b
+		name = red_dawn_guide.5.b
 		ai_chance = { base = 0 }
-		country_event = { id = pdto_difficulty_choose.4 }
+		country_event = { id = red_dawn_guide.4 }
 	}
 }
 
-# ==================== 引导页6：难度选择 ====================
+# ==================== PTF 难度激活（难度选择已移至游戏规则，本事件由规则侧接线触发） ====================
 country_event = {
-	id = pdto_difficulty_choose.6
-	title = pdto_difficulty_choose.6.t
-	desc = pdto_difficulty_choose.6.d
-	is_triggered_only = yes
-
-	trigger = {
-		tag = PRC
-	}
-
-	option = {
-		name = pdto_difficulty_choose.6.a
-		ai_chance = { base = 10 }
-		custom_effect_tooltip = PTF_choose_Simple
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Simple
-			PTF = {
-				country_event = { id = pdto_difficulty_choose.7 }
-			}
-		}
-	}
-	option = {
-		name = pdto_difficulty_choose.6.b
-		ai_chance = { base = 0 }
-		custom_effect_tooltip = PTF_choose_Normal
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Normal
-			PTF = {
-				country_event = { id = pdto_difficulty_choose.7 }
-			}
-		}
-	}
-	option = {
-		name = pdto_difficulty_choose.6.c
-		ai_chance = { base = 0 }
-		custom_effect_tooltip = PTF_choose_Hard
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Hard
-			PTF = {
-				country_event = { id = pdto_difficulty_choose.7 }
-			}
-		}
-	}
-	option = {
-		name = pdto_difficulty_choose.6.d
-		ai_chance = { base = 0 }
-		custom_effect_tooltip = PTF_choose_Extremely_hard
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Extremely_hard
-			PTF = {
-				country_event = { id = pdto_difficulty_choose.7 }
-			}
-		}
-	}
-}
-
-# ==================== PTF 难度激活（保留原有逻辑） ====================
-country_event = {
-	id = pdto_difficulty_choose.7
+	id = red_dawn_guide.7
 	hidden = yes
-	is_triggered_only = yes
 	fire_only_once = yes
 
 	trigger = {
@@ -169,14 +109,14 @@ country_event = {
 
 	immediate = {
 		if = {
-			limit = { PRC = { has_country_flag = PTF_difficulty_Simple } }
+			limit = { PRC = { has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode } } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_I_idea
 				PTF_Counter_revolutionary_center_I_idea
 			}
 		}
 		if = {
-			limit = { PRC = { has_country_flag = PTF_difficulty_Normal } }
+			limit = { PRC = { has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode } } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_II_idea
 				PTF_Counter_revolutionary_center_II_idea
@@ -184,7 +124,7 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { PRC = { has_country_flag = PTF_difficulty_Hard } }
+			limit = { PRC = { has_game_rule = { rule = The_PTF_Path option = PTF_Hard_Mode } } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_III_idea
 				PTF_Counter_revolutionary_center_III_idea
@@ -192,7 +132,7 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { PRC = { has_country_flag = PTF_difficulty_Extremely_hard } }
+			limit = { PRC = { has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode } } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_III_idea
 				PTF_Counter_revolutionary_center_III_idea

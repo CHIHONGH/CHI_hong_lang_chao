@@ -383,6 +383,8 @@ PRC_space_militarization = {
 		}
 		remove_effect = {
 			set_country_flag = PRC_space_done_tianhe
+			set_variable = { PRC_oss_station_capacity = 3 }
+			custom_effect_tooltip = PRC_oss_capacity_init_tt
 			add_to_variable = { var = PRC_space_phase3_count value = 1 }
 			effect_tooltip = {
 				swap_ideas = {
@@ -399,6 +401,7 @@ PRC_space_militarization = {
 			tag = PRC
 		}
 		available = {
+			has_country_flag = PRC_space_done_tianhe
 		}
 		visible = {
 			OR = {
@@ -409,7 +412,6 @@ PRC_space_militarization = {
 			has_country_flag = PRC_space_done_comm_const
 			has_country_flag = PRC_space_done_beidou
 			has_country_flag = PRC_space_done_early_warning
-			has_country_flag = PRC_space_done_tianhe
 		}
 		modifier = {
 			research_speed_factor = -0.1
@@ -439,6 +441,8 @@ PRC_space_militarization = {
 			tag = PRC
 		}
 		available = {
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_tianhe
 		}
 		visible = {
 			OR = {
@@ -449,7 +453,6 @@ PRC_space_militarization = {
 			has_country_flag = PRC_space_done_comm_const
 			has_country_flag = PRC_space_done_beidou
 			has_country_flag = PRC_space_done_early_warning
-			has_country_flag = PRC_space_done_wentian
 		}
 		modifier = {
 			civilian_factory_use = 10
@@ -479,13 +482,13 @@ PRC_space_militarization = {
 			tag = PRC
 		}
 		available = {
+			has_country_flag = PRC_space_done_tianhe
 		}
 		visible = {
 			OR = {
 				has_completed_focus = PLA_when_that_day_comes
 				has_country_flag = TFR_space_gui_debug
 			}
-			has_country_flag = PRC_space_done_tianhe
 		}
 		modifier = {
 			research_speed_factor = -0.1
@@ -724,6 +727,152 @@ PRC_space_militarization = {
 		}
 	}
 
+	# ==================== 阶段 IV-B 空间站驻留扩容 ====================
+	# 承载力 PRC_oss_station_capacity（天和完成时初始化 3）：每档 +3，决定太空陆战队在轨驻留上限
+	# 成本线性递增：民用工厂 4/8/12/16/20，债务每档 +100；时长 365 天，受「重型火箭运载工程」特质减半（182 天）
+	PRC_station_crew_expansion_1_new_left = { # 空间站驻留扩容 I：新增居住舱段
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			OR = {
+				has_completed_focus = PLA_when_that_day_comes
+				has_country_flag = TFR_space_gui_debug
+			}
+			has_country_flag = PRC_space_done_tianhe
+			has_country_flag = PRC_space_done_wentian
+			has_country_flag = PRC_space_done_mengtian
+		}
+		modifier = {
+			civilian_factory_use = 4
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = PRC.space_dec_crew_expansion_1_days?365
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 100 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_crew_expansion_1
+			add_to_variable = { var = PRC_oss_station_capacity value = 3 tooltip = PRC_station_crew_expansion_tt }
+		}
+	}
+	PRC_station_crew_expansion_2_new_left = { # 空间站驻留扩容 II：增殖实验舱段
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			OR = {
+				has_completed_focus = PLA_when_that_day_comes
+				has_country_flag = TFR_space_gui_debug
+			}
+			has_country_flag = PRC_space_done_crew_expansion_1
+		}
+		modifier = {
+			civilian_factory_use = 8
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = PRC.space_dec_crew_expansion_2_days?365
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 200 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_crew_expansion_2
+			add_to_variable = { var = PRC_oss_station_capacity value = 3 tooltip = PRC_station_crew_expansion_tt }
+		}
+	}
+	PRC_station_crew_expansion_3_new_left = { # 空间站驻留扩容 III：专区生活舱段
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			OR = {
+				has_completed_focus = PLA_when_that_day_comes
+				has_country_flag = TFR_space_gui_debug
+			}
+			has_country_flag = PRC_space_done_crew_expansion_2
+		}
+		modifier = {
+			civilian_factory_use = 12
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = PRC.space_dec_crew_expansion_3_days?365
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 300 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_crew_expansion_3
+			add_to_variable = { var = PRC_oss_station_capacity value = 3 tooltip = PRC_station_crew_expansion_tt }
+		}
+	}
+	PRC_station_crew_expansion_4_new_left = { # 空间站驻留扩容 IV：轮换保障体系
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			OR = {
+				has_completed_focus = PLA_when_that_day_comes
+				has_country_flag = TFR_space_gui_debug
+			}
+			has_country_flag = PRC_space_done_crew_expansion_3
+		}
+		modifier = {
+			civilian_factory_use = 16
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = PRC.space_dec_crew_expansion_4_days?365
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 400 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_crew_expansion_4
+			add_to_variable = { var = PRC_oss_station_capacity value = 3 tooltip = PRC_station_crew_expansion_tt }
+		}
+	}
+	PRC_station_crew_expansion_5_new_left = { # 空间站驻留扩容 V：专用军事驻留舱
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			OR = {
+				has_completed_focus = PLA_when_that_day_comes
+				has_country_flag = TFR_space_gui_debug
+			}
+			has_country_flag = PRC_space_done_crew_expansion_4
+		}
+		modifier = {
+			civilian_factory_use = 20
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = PRC.space_dec_crew_expansion_5_days?365
+		complete_effect = {
+			set_temp_variable = { debt_var_temp = 500 } add_debt = yes
+		}
+		remove_effect = {
+			set_country_flag = PRC_space_done_crew_expansion_5
+			add_to_variable = { var = PRC_oss_station_capacity value = 3 tooltip = PRC_station_crew_expansion_tt }
+		}
+	}
+
 	# ==================== 阶段 V 战力 ====================
 	PRC_orbital_ew_module_new_left = { # 建设轨道电子对抗阵列
 		icon = GFX_decision_PRC_orbital_ew_module
@@ -758,6 +907,13 @@ PRC_space_militarization = {
 			set_country_flag = PRC_space_done_ecm_array
 			add_to_variable = { var = PRC_space_phase5_count value = 1 }
 			add_command_power = 50
+			# 幽灵屏障：轨道电子对抗阵列压制美海军电子战体系，削弱 2 次
+			PTF_elec_weaken = yes
+			PTF_elec_weaken = yes
+			country_event = { id = prc_elec_warfare.203 }
+			PTF = {
+				country_event = { id = prc_elec_warfare.204 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_pla_space_force_dummy
@@ -925,5 +1081,262 @@ PRC_space_militarization = {
 			add_to_variable = { var = PRC_pla_space_force_command_power_gain_mult_dynamic value = 0.10 }
 			add_to_variable = { var = PRC_pla_space_force_max_command_power_mult_dynamic value = 0.15 }
 		}
+	}
+	# ==================== 侧翼：中国太空时代（合并自 beta 决议链） ====================
+	# 解锁：完成国策 PRC_nl_dawn_project（曙光工程）后可见（该国策在 beta，子项目内暂不可见，后续国策变动时处理）
+	# 奖励：长期修正走动态修正 PRC_chinese_space_age_dynamic，与天军动态精神两套并行互不干扰
+
+	PRC_nl_stellar_exploration = {
+		icon = GFX_computers
+		allowed = {
+			tag = PRC
+		}
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_nl_dawn_project
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 120
+		complete_effect = {
+			custom_effect_tooltip = PRC_chinese_space_age_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = PRC_chinese_space_age_dynamic
+				}
+			}
+		}
+		remove_effect = {
+			unlock_decision_tooltip = PRC_asteroid_mining_programme_new_left
+			unlock_decision_tooltip = PRC_new_moon_race_programme_new_left
+			unlock_decision_tooltip = PRC_expand_satellite_launching_programme_new_left
+
+
+
+			set_country_flag = PRC_nl_stellar_exploration_flag
+			hidden_effect = {
+				country_event = {
+					id = prcs.53
+					days = 40
+					random_days = 50
+				}
+			}
+		}
+
+	}
+	PRC_asteroid_mining_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.06
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -50
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_asteroid_mining_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_consumer_goods_factor_dynamic
+				value = -0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_income_growth_factor_dynamic
+				value = 0.065
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_business_value_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_lack_of_resource_penalty_factor_dynamic
+				value = -0.06
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_asteroid_mining_programme
+		cost = 100
+	}
+	PRC_new_moon_race_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = 0.1
+			consumer_goods_factor = 0.05
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -35
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_moon_landing_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.005
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_society_development_monthly_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_speed_infrastructure_factor_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_political_power_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_industrial_capacity_factory_dynamic
+				value = 0.05
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_new_moon_race_programme
+		cost = 100
+	}
+	PRC_expand_satellite_launching_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = -0.05
+			consumer_goods_factor = 0.02
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -20
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_expand_satellite_launching_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_factory_efficiency_gain_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_speed_buildings_factor_dynamic
+				value = 0.0125
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_income_growth_factor_dynamic
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_business_value_factor_dynamic
+				value = 0.015
+			}
+		}
+		days_remove = 180
+		days_re_enable = 365
+		icon = GFX_decision_PRC_expand_satellite_launching_programme
+		cost = 65
+	}
+	# 决议：太空育种工程（一次性）
+	PRC_space_breeding_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = -0.05
+			consumer_goods_factor = 0.02
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -30
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_space_breeding_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_farming_development_monthly_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.05
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_space_breeding_programme
+		cost = 100
+	}
+	# 决议：深空探测计划（一次性）
+	PRC_deep_space_exploration_programme_new_left = {
+		visible = {
+			has_country_flag = PRC_nl_stellar_exploration_flag
+		}
+		modifier = {
+			political_power_gain = -0.05
+			consumer_goods_factor = 0.02
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -30
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_deep_space_exploration_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_society_development_monthly_dynamic
+				value = 0.01
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_deep_space_exploration_programme
+		cost = 100
 	}
 }

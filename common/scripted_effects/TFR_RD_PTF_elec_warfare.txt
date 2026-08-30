@@ -1,0 +1,230 @@
+# ==================== PTF 幽灵屏障：档位设置与削弱 ====================
+# 档位表（PTF_elec_count = 削弱次数，0~10，用户 2026-08-30 定稿；
+# 下表为百分比，变量实际赋值为其 1/100，即 60% -> 0.6；每档独立取值，全为 5 的倍数）：
+#   count=0:  vis-85% def+40% ret+25% spt+25% ngt+15% pos-25%
+#   count=1:  vis-75% def+35% ret+20% spt+20% ngt+10% pos-20%
+#   count=2:  vis-70% def+30% ret+15% spt+15% ngt+5%  pos-15%
+#   count=3:  vis-65% def+25% ret+10% spt+10% ngt+5%  pos-15%
+#   count=4:  vis-55% def+20% ret+10% spt+5%  ngt-5%  pos-10%
+#   count=5:  vis-45% def+20% ret+10% spt+5%  ngt+0%  pos-5%
+#   count=6:  vis-25% def+15% ret-5%  spt+0%  ngt-5%  pos+0%
+#   count=7:  vis-15% def+5%  ret-10% spt+0%  ngt-5%  pos+0%
+#   count=8:  vis+0%  def-5%  ret-20% spt+0%  ngt-5%  pos+0%
+#   count=9:  vis+5%  def-5%  ret-25% spt+0%  ngt-5%  pos+0%
+#   count=10: vis+15% def-15% ret-25% spt+0%  ngt-5%  pos+0%（终档，全负面反噬）
+
+# 按当前 PTF_elec_count 重设六个变量（任意作用域可调用，内部自动进 PTF 域）
+PTF_elec_set_stage = {
+	PTF = {
+		if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 10 } }
+			}
+			set_variable = { PTF_elec_vis = 0.15 }
+			set_variable = { PTF_elec_def = -0.15 }
+			set_variable = { PTF_elec_ret = -0.25 }
+			set_variable = { PTF_elec_spt = 0 }
+			set_variable = { PTF_elec_ngt = -0.05 }
+			set_variable = { PTF_elec_pos = 0 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 9 } }
+			}
+			set_variable = { PTF_elec_vis = 0.05 }
+			set_variable = { PTF_elec_def = -0.05 }
+			set_variable = { PTF_elec_ret = -0.25 }
+			set_variable = { PTF_elec_spt = 0 }
+			set_variable = { PTF_elec_ngt = -0.05 }
+			set_variable = { PTF_elec_pos = 0 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 8 } }
+			}
+			set_variable = { PTF_elec_vis = 0 }
+			set_variable = { PTF_elec_def = -0.05 }
+			set_variable = { PTF_elec_ret = -0.2 }
+			set_variable = { PTF_elec_spt = 0 }
+			set_variable = { PTF_elec_ngt = -0.05 }
+			set_variable = { PTF_elec_pos = 0 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 7 } }
+			}
+			set_variable = { PTF_elec_vis = -0.15 }
+			set_variable = { PTF_elec_def = 0.05 }
+			set_variable = { PTF_elec_ret = -0.1 }
+			set_variable = { PTF_elec_spt = 0 }
+			set_variable = { PTF_elec_ngt = -0.05 }
+			set_variable = { PTF_elec_pos = 0 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 6 } }
+			}
+			set_variable = { PTF_elec_vis = -0.25 }
+			set_variable = { PTF_elec_def = 0.15 }
+			set_variable = { PTF_elec_ret = -0.05 }
+			set_variable = { PTF_elec_spt = 0 }
+			set_variable = { PTF_elec_ngt = -0.05 }
+			set_variable = { PTF_elec_pos = 0 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 5 } }
+			}
+			set_variable = { PTF_elec_vis = -0.45 }
+			set_variable = { PTF_elec_def = 0.2 }
+			set_variable = { PTF_elec_ret = 0.1 }
+			set_variable = { PTF_elec_spt = 0.05 }
+			set_variable = { PTF_elec_ngt = 0 }
+			set_variable = { PTF_elec_pos = -0.05 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 4 } }
+			}
+			set_variable = { PTF_elec_vis = -0.55 }
+			set_variable = { PTF_elec_def = 0.2 }
+			set_variable = { PTF_elec_ret = 0.1 }
+			set_variable = { PTF_elec_spt = 0.05 }
+			set_variable = { PTF_elec_ngt = -0.05 }
+			set_variable = { PTF_elec_pos = -0.10 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 3 } }
+			}
+			set_variable = { PTF_elec_vis = -0.65 }
+			set_variable = { PTF_elec_def = 0.25 }
+			set_variable = { PTF_elec_ret = 0.1 }
+			set_variable = { PTF_elec_spt = 0.1 }
+			set_variable = { PTF_elec_ngt = 0.05 }
+			set_variable = { PTF_elec_pos = -0.15 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 2 } }
+			}
+			set_variable = { PTF_elec_vis = -0.70 }
+			set_variable = { PTF_elec_def = 0.3 }
+			set_variable = { PTF_elec_ret = 0.15 }
+			set_variable = { PTF_elec_spt = 0.15 }
+			set_variable = { PTF_elec_ngt = 0.05 }
+			set_variable = { PTF_elec_pos = -0.15 }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 1 } }
+			}
+			set_variable = { PTF_elec_vis = -0.75 }
+			set_variable = { PTF_elec_def = 0.35 }
+			set_variable = { PTF_elec_ret = 0.2 }
+			set_variable = { PTF_elec_spt = 0.2 }
+			set_variable = { PTF_elec_ngt = 0.1 }
+			set_variable = { PTF_elec_pos = -0.20 }
+		}
+		else = {
+			set_variable = { PTF_elec_vis = -0.85 }
+			set_variable = { PTF_elec_def = 0.4 }
+			set_variable = { PTF_elec_ret = 0.25 }
+			set_variable = { PTF_elec_spt = 0.25 }
+			set_variable = { PTF_elec_ngt = 0.15 }
+			set_variable = { PTF_elec_pos = -0.25 }
+		}
+	}
+}
+
+# 削弱 1 次（次数 +1 后按新档位置档），上限 10 次
+PTF_elec_weaken = {
+	PTF = {
+		add_to_variable = { PTF_elec_count = 1 }
+		if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 10 } }
+			}
+			set_variable = { PTF_elec_count = 10 }
+		}
+	}
+	PTF_elec_set_stage = yes
+}
+
+# 体系彻底崩溃（占领西雅图，直接置终档）
+PTF_elec_collapse = {
+	PTF = {
+		set_variable = { PTF_elec_count = 10 }
+	}
+	PTF_elec_set_stage = yes
+}
+
+# 整档展示假精神（事件选项 tooltip 用；11 档 1:1 精确对应，无图标纯文字+数值展示）
+# 用法：effect_tooltip = { PTF_elec_dummy_stage = yes }（作用于 PTF）
+PTF_elec_dummy_stage = {
+	PTF = {
+		if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 10 } }
+			}
+			add_ideas = PTF_elec_dummy_10
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 9 } }
+			}
+			add_ideas = PTF_elec_dummy_9
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 8 } }
+			}
+			add_ideas = PTF_elec_dummy_8
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 7 } }
+			}
+			add_ideas = PTF_elec_dummy_7
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 6 } }
+			}
+			add_ideas = PTF_elec_dummy_6
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 5 } }
+			}
+			add_ideas = PTF_elec_dummy_5
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 4 } }
+			}
+			add_ideas = PTF_elec_dummy_4
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 3 } }
+			}
+			add_ideas = PTF_elec_dummy_3
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 2 } }
+			}
+			add_ideas = PTF_elec_dummy_2
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { PTF_elec_count < 1 } }
+			}
+			add_ideas = PTF_elec_dummy_1
+		}
+		else = {
+			add_ideas = PTF_elec_dummy_0
+		}
+	}
+}
