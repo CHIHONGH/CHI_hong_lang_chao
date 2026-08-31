@@ -13372,6 +13372,180 @@ PRC_great_asian_war = {
 			}
 		}
 	}
+	PRC_JAP_red_army_mission = {
+        icon = GFX_PRC_new_left_decision
+        # activation = {
+        #     has_global_flag = pan_asian_war_ongoing
+        # }
+        # available = {
+        #     country_exists = JPL
+        # }
+        # selectable_mission = no
+        # is_good = no
+        # days_mission_timeout = 25
+		visible = {
+			
+		}
+		available = {
+			NOT = {
+				country_exists = JPL
+			}
+		}
+		days_remove = 25
+        fire_only_once = yes
+        timeout_effect = {
+            ROOT = {
+                set_autonomy = {
+                    target = JPL
+                    autonomous_state = autonomy_communist
+                    freedom_level = 0.3
+                }
+            }
+            hidden_effect = {
+                remove_mission = PRC_JAP_red_army_mission
+                news_event = nlnews.7
+                scoped_play_song = "S02 - Magnafried"
+            }
+            JPL = {
+                create_country_leader = {
+                    name = "白井聪"
+                    picture = "gfx/leaders/JPL_baijincong.png"
+                    ideology = marxism_leninism
+                }
+                transfer_state = 528
+                add_state_core = 528
+                transfer_state = 526
+                transfer_state = 530
+                transfer_state = 536
+                division_template = {
+                    name = "Militia divisions"
+                    is_locked = no
+                    force_allow_recruiting = yes
+					regiments = {
+						modern_armor = {
+							x = 0
+							y = 0
+						}
+						modern_armor = {
+							x = 0
+							y = 1
+						}
+						modern_armor = {
+							x = 0
+							y = 2
+						}
+						mechanized = {
+							x = 0
+							y = 3
+						}
+						mechanized = {
+							x = 0
+							y = 4
+						}
+						modern_armor = {
+							x = 1
+							y = 0
+						}
+						modern_armor = {
+							x = 1
+							y = 1
+						}
+						modern_armor = {
+							x = 1
+							y = 2
+						}
+						light_mechanized = {
+							x = 1
+							y = 3
+						}
+						light_mechanized = {
+							x = 1
+							y = 4
+						}
+						modern_sp_artillery_brigade = {
+							x = 2
+							y = 0
+						}
+						modern_sp_artillery_brigade = {
+							x = 2
+							y = 1
+						}
+						modern_sp_artillery_brigade = {
+							x = 2
+							y = 2
+						}
+						modern_sp_artillery_brigade = {
+							x = 2
+							y = 3
+						}
+						mechanized = {
+							x = 2
+							y = 4
+						}
+						spaa_brigade = {
+							x = 3
+							y = 0
+						}
+					}
+					support = {
+						signal_company = {
+							x = 0
+							y = 0
+						}
+						engineer = {
+							x = 0
+							y = 1
+						}
+					}
+
+                    priority = 0
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"Militia divisions\" start_experience_factor = 1 start_equipment_factor = 1.0"
+                        owner = JPL
+                        count = 10
+                    }
+                }
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment_1
+                    amount = 10000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment_1
+                    amount = 600
+                    producer = PRC
+                }
+                declare_war_on = {
+                    target = JAP
+                    type = annex_everything
+                }
+				hidden_effect = {
+					add_timed_idea = {
+						idea = JPL_the_ultimate
+						days = 10
+					}
+				}
+				
+            }
+			hidden_effect = {
+				JAP = {
+					add_timed_idea = {
+						idea = JAP_the_ultimate_JPL
+						days = 10
+					}
+				}
+				PTF = {
+					add_timed_idea = {
+						idea = PTF_the_ultimate_JPL
+						days = 10
+					}
+				}
+			}
+        }
+    }
+
 	PRC_operation_showtime = {
 		icon = GFX_JAP_election_day
 		visible = {
