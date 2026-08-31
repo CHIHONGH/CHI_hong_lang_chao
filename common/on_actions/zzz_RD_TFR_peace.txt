@@ -689,6 +689,47 @@ on_actions = {
                 }
                 set_global_flag = skip_default_capitulation
             }
+            if = {
+                limit = { 
+                    ROOT = {
+                        OR = {
+                            original_tag = JPL
+                        }
+                    }
+                    FROM = {
+                        original_tag = PRC
+                    }
+                }
+                JPL = {
+                    white_peace = FROM
+                    every_controlled_state = {
+                        limit = {
+                            NOT = {
+                                is_controlled_by = JPL
+                            }
+                            is_core_of = JPL
+                        }
+                        transfer_state_to = JPL
+                        set_state_owner_to = JPL
+                        set_state_controller_to = JPL
+                    }
+                    set_politics = {	
+                        ruling_party = communist
+                        #last_election = 2019.3.24
+                        #election_frequency = 48
+                        elections_allowed = no
+                    }
+
+                    set_popularities = {
+                        totalitarian_socialist = 20
+                        social_democrat = 20
+                        libertarian_socialist = 20
+                        communist = 40
+                    }
+
+                }
+                set_global_flag = skip_default_capitulation
+            }
             log = "[GetDateText]: FROM: [From.GetName] ROOT: [Root.GetName] on_capitulation"
             set_global_flag = show_peace_popup_alert
             FROM = {
