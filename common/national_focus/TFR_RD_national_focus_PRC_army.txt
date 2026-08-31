@@ -1726,9 +1726,9 @@ shared_focus = {
     }
     available = {
         has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
-        check_variable = { PRC_space_phase1_count >= 5 }
-        check_variable = { PRC_space_phase2_count >= 4 }
-        check_variable = { PRC_space_phase3_count >= 4 }
+        NOT = { check_variable = { PRC_space_phase1_count < 5 } }
+        NOT = { check_variable = { PRC_space_phase2_count < 4 } }
+        NOT = { check_variable = { PRC_space_phase3_count < 4 } }
         custom_trigger_tooltip = {
             tooltip = PLA_orbital_drop_available_tt
             always = no
