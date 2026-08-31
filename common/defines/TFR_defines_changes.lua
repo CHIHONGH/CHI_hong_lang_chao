@@ -303,6 +303,7 @@
 	NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 24.0	-- hit profile for depth charges
 	NDefines.NNavy.CARRIER_STACK_PENALTY = 999 --红色黎明标记 取消航母堆叠惩罚
 	NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0 --红色黎明标记 取消航母堆叠惩罚
+	NDefines.NAir.MISSILE_LAUNCHER_CAPACITY = 128 --红色黎明标记 128垂直发射单元
 	NDefines.NNavy.CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0 -- 0
 	NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 6
 	NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 24 -- 8 -- hours where all get to attack
