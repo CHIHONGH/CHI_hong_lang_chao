@@ -33,6 +33,7 @@
 | 2026-08-16 | git 重组：提交 space force 最新成果（8398d38）、分支改名 TFR-CMRN → RedDaw_beta、文件夹改名进行中 | 14 文件（决议/空间站/GUI/图标素材）+ .gitignore | 完成 |
 | 2026-08-16 | 同步 space force 太空军事化与空间站系统（f7d6951）；同步 decision_research/PRC_test（a59951e）；F 组同步（d8d46f1） | TFR_RD_space_militarization、TFR_space_station 全套、难度事件链修复版、space_force_unit.gfx 等 | 完成 |
 | 2026-08-15 | 同步 CRN 中俄谈判（c5b8c6e、0d7f839）；同步 CMRN 多轮（5a1c1e9~36f7480） | TFR_CRN_*、TFR_CMRN_* | 完成 |
+| 2026-08-31 | 同步 space force(62b1076)+PTF 舰名池:①PTF history 三科技(基础/改进反舰巡航导弹+ASBM_launcher VLS);②加强决议三档统一 6 航母 48 巡洋(scripted_effects 2299→989 行);③新 names_ships/PTF_ship_names.txt(135 船名,prefix USS,两组)+PTF_l_english.yml 补 key+新建 PTF_l_simp_chinese.yml(BOM);同步前按用户拍板先提交 beta 工作区未提交改动(2a61c80:PTF 精神增强/AI 任务模板/静态修正/本地化增删,含 4 个 replace yml 删除+3 新增);注意:同步覆盖了 2a61c80 中 5 文件(space force 旧版为准,差异存于 git 历史) | 8 文件(+274/-1662)+新 3 文件 | 完成(0ac6962 同步+7f0feac 补 3 州名) |
 
 ## 待办 / 注意
 
