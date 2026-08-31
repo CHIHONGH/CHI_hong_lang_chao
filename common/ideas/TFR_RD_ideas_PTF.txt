@@ -286,7 +286,7 @@ ideas = {
 				}
 				carrier = {
 					build_cost_ic = -0.25
-					carrier_size = 5
+					carrier_size = 2
 					reliability = 1
 				}
 				small_plane_airframe = {
@@ -333,9 +333,8 @@ ideas = {
 				army_org_regain = 0.75
 				army_bonus_air_superiority_factor = 0.1
 
-				naval_damage_factor = 0.25
-				navy_capital_ship_attack_factor = 0.25
-				navy_capital_ship_defence_factor = 0.25
+				navy_capital_ship_attack_factor = 0.15
+				navy_capital_ship_defence_factor = 0.15
 				naval_torpedo_damage_reduction_factor = 0.75
 				screening_without_screens = 0.75
 				naval_detection = 0.35
@@ -356,12 +355,12 @@ ideas = {
 					reliability = 0.25
 				}
 				capital_ship = {
-					build_cost_ic = -0.75
+					build_cost_ic = -0.5
 					reliability = 1
 				}
 				carrier = {
-					build_cost_ic = -0.75
-					carrier_size = 10
+					build_cost_ic = -0.5
+					carrier_size = 4
 					reliability = 1
 				}
 				small_plane_airframe = {
@@ -445,15 +444,13 @@ ideas = {
 				max_dig_in = 5
 				max_dig_in_factor = 0.25
 				#air_range_factor = 0.25
-				air_attack_factor = 0.5
-				air_agility_factor = 0.5
-				air_defence_factor = 0.5
-				air_mission_efficiency = 0.5
+				air_attack_factor = 0.25
+				air_agility_factor = 0.25
+				air_defence_factor = 0.25
+				air_mission_efficiency = 0.25
 				army_org_regain = 0.5
-				naval_damage_factor = 0.25
 				navy_org_factor = 0.5
 				naval_detection = 0.25
-				#naval_speed_factor = 0.25 #呼！速度超快
 				navy_capital_ship_attack_factor = 0.25
 				navy_capital_ship_defence_factor = 0.25
 				naval_torpedo_damage_reduction_factor = 0.25
@@ -481,7 +478,7 @@ ideas = {
 		PTF_popular_uprising_idea = { #死亡2000w 揭竿而起
 
 			allowed = {
-				always = yes
+				has_war = yes
 			}
 
 			removal_cost = -1
@@ -491,8 +488,8 @@ ideas = {
 				army_defence_factor = -0.75
 				breakthrough_factor = -0.75
 				army_org_factor = -0.75
-				army_core_attack_factor = -0.25
-				army_core_defence_factor = -0.25
+				army_core_attack_factor = 0.50
+				army_core_defence_factor = 0.50
 
 				war_support_factor = -1
 				war_stability_factor = -1
@@ -507,7 +504,12 @@ ideas = {
 		PTF_publicly_oppose_war_idea = { #死亡1000w 公开反战
 
 			allowed = {
-				always = yes
+				has_war = yes
+			}
+			on_remove = {
+				add_political_power = -100
+				add_stability = -0.10
+				add_war_support = -0.10
 			}
 
 			removal_cost = -1
@@ -517,8 +519,8 @@ ideas = {
 				army_defence_factor = -0.5
 				breakthrough_factor = -0.5
 				army_org_factor = -0.5
-				army_core_attack_factor = -0.15
-				army_core_defence_factor = -0.15
+				army_core_attack_factor = 0.25
+				army_core_defence_factor = 0.25
 
 				war_support_factor = -0.75
 				war_stability_factor = -0.75
@@ -531,7 +533,16 @@ ideas = {
 		PTF_fear_of_war_idea = { #死亡500w 畏惧战争
 
 			allowed = {
-				always = yes
+				has_war = yes
+			}
+			on_remove = {
+				add_political_power = -100
+				add_stability = -0.10
+				add_war_support = -0.10
+				add_timed_idea = {
+					idea = PTF_publicly_oppose_war_idea
+					days = 180
+				}
 			}
 
 			removal_cost = -1
@@ -552,7 +563,16 @@ ideas = {
 		PTF_war_weariness_idea = { #死亡200w 厌战情绪
 
 			allowed = {
-				always = yes
+				has_war = yes
+			}
+			on_remove = {
+				add_political_power = -100
+				add_stability = -0.10
+				add_war_support = -0.10
+				add_timed_idea = {
+					idea = PTF_fear_of_war_idea
+					days = 180
+				}
 			}
 
 			removal_cost = -1
@@ -569,13 +589,24 @@ ideas = {
 				industrial_capacity_dockyard = -0.25
 			}
 		}
-	}
-
-	hidden_ideas = {
 
 		PTF_divine_mandate_idea = {
 			allowed = {
 				always = yes
+			}
+			cancel = {
+				OR = {
+					has_war_with = MEX
+				}
+			}
+			on_remove = {
+				add_political_power = -100
+				add_stability = -0.10
+				add_war_support = -0.10
+				add_timed_idea = {
+					idea = PTF_war_weariness_idea
+					days = 180
+				}
 			}
 
 			modifier = {
@@ -588,29 +619,32 @@ ideas = {
 
 			targeted_modifier = {
 				tag = APA
-				attack_bonus_against = 10
-				defense_bonus_against = 10
-				breakthrough_bonus_against = 10
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
 			}
 			targeted_modifier = {
 				tag = CAN
-				attack_bonus_against = 10
-				defense_bonus_against = 10
-				breakthrough_bonus_against = 10
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
 			}
 			targeted_modifier = {
 				tag = USB
-				attack_bonus_against = 10
-				defense_bonus_against = 10
-				breakthrough_bonus_against = 10
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
 			}
 			targeted_modifier = {
 				tag = USC
-				attack_bonus_against = 10
-				defense_bonus_against = 10
-				breakthrough_bonus_against = 10
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
 			}
 		}
+	}
+
+	hidden_ideas = {
 		PTF_hidden_idea = {				
 			allowed = {
 				always = yes
@@ -644,10 +678,7 @@ ideas = {
 				misc_income = 50 #杂项收入
 				production_factory_efficiency_gain_factor = 100
 				factory_energy_consumption = -1
-				required_garrison_factor = -0.75
-				resistance_activity = -1
 				resistance_target = -0.2
-				compliance_growth = 2
 				#air_fuel_consumption_factor = -0.9
 				#army_fuel_consumption_factor = -0.9
 				#navy_fuel_consumption_factor = -0.9
@@ -664,12 +695,7 @@ ideas = {
 				naval_accidents_chance = -2
 				naval_attrition = -2
 				repair_speed_factor = 5
-				naval_retreat_speed = 1 #调头战神
-				#convoy_retreat_speed = 1
-				#naval_detection = 7 #假装自己有个雷达加成
-				navy_visibility = -0.58
 				naval_supply_consumption_factor = -0.95
-				#naval_speed_factor = 0.75 #呼！速度超快
 			}
 		}
 	}
