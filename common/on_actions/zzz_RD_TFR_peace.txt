@@ -669,6 +669,26 @@ on_actions = {
                 }
                 set_global_flag = skip_default_capitulation
             }
+            if = {
+                limit = { 
+                    ROOT = {
+                        OR = {
+                            original_tag = JPL
+                        }
+                    }
+                    FROM = {
+                        original_tag = JAP
+                    }
+                }
+                JAP = {
+                    annex_country = {
+                        target = JPL
+                        transfer_troops = no
+                    }
+                    
+                }
+                set_global_flag = skip_default_capitulation
+            }
             log = "[GetDateText]: FROM: [From.GetName] ROOT: [Root.GetName] on_capitulation"
             set_global_flag = show_peace_popup_alert
             FROM = {
