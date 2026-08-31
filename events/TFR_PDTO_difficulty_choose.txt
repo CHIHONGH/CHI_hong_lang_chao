@@ -109,14 +109,14 @@ country_event = {
 
 	immediate = {
 		if = {
-			limit = { PRC = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } } }
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_I_idea
 				PTF_Counter_revolutionary_center_I_idea
 			}
 		}
 		if = {
-			limit = { PRC = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode } } }
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_II_idea
 				PTF_Counter_revolutionary_center_II_idea
@@ -124,20 +124,32 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { PRC = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode } } }
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_III_idea
 				PTF_Counter_revolutionary_center_III_idea
 				PTF_Anti_communist_fortress_idea
 			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
 		}
 		if = {
-			limit = { PRC = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode } } }
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_III_idea
 				PTF_Counter_revolutionary_center_III_idea
 				PTF_Anti_communist_fortress_idea
 				PTF_End_of_communism_idea
+			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
 			}
 		}
 		set_technology = { tide_of_iron = 1 }
