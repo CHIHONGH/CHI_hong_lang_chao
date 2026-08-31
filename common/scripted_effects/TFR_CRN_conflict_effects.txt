@@ -102,7 +102,7 @@ TFR_CRN_check_pressure_explosion = {
 			NOT = { has_global_flag = TFR_CRN_full_war_active }
 			NOT = { has_global_flag = TFR_CRN_conflict_ended }
 			has_global_flag = TFR_CRN_conflict_active
-			check_variable = { TFR_CRN_prc_bonus >= 100 }
+			NOT = { check_variable = { TFR_CRN_prc_bonus < 100 } }
 		}
 		TFR_CRN_pressure_explosion_by_sov = yes
 	}
@@ -111,7 +111,7 @@ TFR_CRN_check_pressure_explosion = {
 			NOT = { has_global_flag = TFR_CRN_full_war_active }
 			NOT = { has_global_flag = TFR_CRN_conflict_ended }
 			has_global_flag = TFR_CRN_conflict_active
-			check_variable = { TFR_CRN_sov_bonus >= 100 }
+			NOT = { check_variable = { TFR_CRN_sov_bonus < 100 } }
 		}
 		TFR_CRN_pressure_explosion_by_prc = yes
 	}
@@ -181,11 +181,11 @@ TFR_CRN_attach_advantage_modifier = {
 	set_temp_variable = { adv_diff = TFR_CRN_prc_advantage }
 	subtract_from_temp_variable = { adv_diff = TFR_CRN_sov_advantage }
 	set_temp_variable = { tier = 0 }
-	if = { limit = { check_variable = { adv_diff >= 80 } } set_temp_variable = { tier = 5 } }
-	else_if = { limit = { check_variable = { adv_diff >= 60 } } set_temp_variable = { tier = 4 } }
-	else_if = { limit = { check_variable = { adv_diff >= 40 } } set_temp_variable = { tier = 3 } }
-	else_if = { limit = { check_variable = { adv_diff >= 20 } } set_temp_variable = { tier = 2 } }
-	else_if = { limit = { check_variable = { adv_diff >= 0 } } set_temp_variable = { tier = 1 } }
+	if = { limit = { NOT = { check_variable = { adv_diff < 80 } } } set_temp_variable = { tier = 5 } }
+	else_if = { limit = { NOT = { check_variable = { adv_diff < 60 } } } set_temp_variable = { tier = 4 } }
+	else_if = { limit = { NOT = { check_variable = { adv_diff < 40 } } } set_temp_variable = { tier = 3 } }
+	else_if = { limit = { NOT = { check_variable = { adv_diff < 20 } } } set_temp_variable = { tier = 2 } }
+	else_if = { limit = { NOT = { check_variable = { adv_diff < 0 } } } set_temp_variable = { tier = 1 } }
 	else = { set_temp_variable = { tier = 0 } }
 	set_variable = { var = TFR_CRN_current_tier value = tier }
 	# 对当前目标州挂载（tier=0 时 helper 不挂任何东西）
