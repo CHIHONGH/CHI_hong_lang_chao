@@ -5,7 +5,7 @@ ideas = {
 			cancel = {
 				PRC = {
 					NOT = {
-						has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode }
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
 					}
 				}
 			}
@@ -55,7 +55,7 @@ ideas = {
 			cancel = {
 				PRC = {
 					NOT = {
-						has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode }
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
 					}
 				}
 			}
@@ -105,8 +105,8 @@ ideas = {
 				PRC = {
 					NOT = {
 						OR = {
-							has_game_rule = { rule = The_PTF_Path option = PTF_Hard_Mode }
-							has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
 						}
 					}
 				}
@@ -164,7 +164,7 @@ ideas = {
 			cancel = {
 				PRC = {
 					NOT = {
-						has_game_rule = { rule = The_PTF_Path option = PTF_Simple_Mode }
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
 					}
 				}
 			}
@@ -227,7 +227,7 @@ ideas = {
 			cancel = {
 				PRC = {
 					NOT = {
-						has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode }
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
 					}
 				}
 			}
@@ -274,7 +274,7 @@ ideas = {
 				armor = {
 					build_cost_ic = -0.2
 					reliability = 1.25
-					armor_value = 1
+					armor_value = 1.5
 				}
 				mechanized_equipment = {
 					build_cost_ic = -0.2
@@ -301,8 +301,8 @@ ideas = {
 				PRC = {
 					NOT = {
 						OR = {
-							has_game_rule = { rule = The_PTF_Path option = PTF_Hard_Mode }
-							has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
 						}
 					}
 				}
@@ -348,7 +348,8 @@ ideas = {
 				armor = {
 					build_cost_ic = -0.5
 					reliability = 1.25
-					armor_value = 1.5
+					armor_value = 2.5
+					ap_attack = 0.25
 				}
 				mechanized_equipment = {
 					build_cost_ic = -0.2
@@ -361,6 +362,7 @@ ideas = {
 				carrier = {
 					build_cost_ic = -0.5
 					carrier_size = 4
+					max_strength = 100
 					reliability = 1
 				}
 				small_plane_airframe = {
@@ -397,9 +399,9 @@ ideas = {
 				PRC = {
 					NOT = {
 						OR = {
-							has_game_rule = { rule = The_PTF_Path option = PTF_Normal_Mode }
-							has_game_rule = { rule = The_PTF_Path option = PTF_Hard_Mode }
-							has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
 						}
 					}
 				}
@@ -425,7 +427,7 @@ ideas = {
 		PTF_End_of_communism_idea = {
 
 			cancel = {
-				PRC = { NOT = { has_game_rule = { rule = The_PTF_Path option = PTF_Extremely_Hard_Mode } } }
+				PRC = { NOT = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode } } }
 				PTF = { has_idea = PTF_popular_uprising_idea }
 			}
 			allowed = {
