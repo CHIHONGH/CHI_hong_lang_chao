@@ -200,6 +200,8 @@ ideas = {
 				screening_without_screens = 0.25
 				naval_detection = 0.1
 				navy_org_factor = 0.25
+				
+				naval_speed_factor = 0.1
 			}
 
 			equipment_bonus = { #保底坦克
@@ -329,7 +331,7 @@ ideas = {
 				army_armor_attack_factor = 1
 				air_mission_efficiency = 0.1
 				army_org_regain = 0.75
-				army_bonus_air_superiority_factor = 0.15
+				army_bonus_air_superiority_factor = 0.1
 
 				naval_damage_factor = 0.25
 				navy_capital_ship_attack_factor = 0.25
@@ -451,11 +453,11 @@ ideas = {
 				naval_damage_factor = 0.25
 				navy_org_factor = 0.5
 				naval_detection = 0.25
+				#naval_speed_factor = 0.25 #呼！速度超快
 				navy_capital_ship_attack_factor = 0.25
 				navy_capital_ship_defence_factor = 0.25
 				naval_torpedo_damage_reduction_factor = 0.25
 				screening_without_screens = 0.25
-				naval_speed_factor = 0.25
 				#weekly_manpower = 10000
 
 				industrial_capacity_factory = 2
@@ -473,53 +475,6 @@ ideas = {
 				attack_bonus_against = 0.25
 				defense_bonus_against = 0.25
 				breakthrough_bonus_against = 0.5
-			}
-		}
-
-		PTF_divine_mandate_idea = {
-			allowed = {
-				always = yes
-			}
-			cancel = {
-				has_war_with = MEX
-			}
-			removal_cost = -1
-
-			modifier = {
-				army_attack_factor = 0.5
-				army_defence_factor = 0.5
-				breakthrough_factor = 0.5
-
-				war_support_factor = 0.5
-				war_stability_factor = 0.5
-
-				industrial_capacity_factory = 0.5
-				industrial_capacity_dockyard = 0.5
-			}
-
-			targeted_modifier = {
-				tag = APA
-				attack_bonus_against = 2
-				defense_bonus_against = 2
-				breakthrough_bonus_against = 2
-			}
-			targeted_modifier = {
-				tag = CAN
-				attack_bonus_against = 2
-				defense_bonus_against = 2
-				breakthrough_bonus_against = 2
-			}
-			targeted_modifier = {
-				tag = USB
-				attack_bonus_against = 2
-				defense_bonus_against = 2
-				breakthrough_bonus_against = 2
-			}
-			targeted_modifier = {
-				tag = USC
-				attack_bonus_against = 2
-				defense_bonus_against = 2
-				breakthrough_bonus_against = 2
 			}
 		}
 
@@ -617,6 +572,45 @@ ideas = {
 	}
 
 	hidden_ideas = {
+
+		PTF_divine_mandate_idea = {
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				war_support_factor = 0.5
+				war_stability_factor = 0.5
+
+				industrial_capacity_factory = 0.5
+				industrial_capacity_dockyard = 0.5
+			}
+
+			targeted_modifier = {
+				tag = APA
+				attack_bonus_against = 10
+				defense_bonus_against = 10
+				breakthrough_bonus_against = 10
+			}
+			targeted_modifier = {
+				tag = CAN
+				attack_bonus_against = 10
+				defense_bonus_against = 10
+				breakthrough_bonus_against = 10
+			}
+			targeted_modifier = {
+				tag = USB
+				attack_bonus_against = 10
+				defense_bonus_against = 10
+				breakthrough_bonus_against = 10
+			}
+			targeted_modifier = {
+				tag = USC
+				attack_bonus_against = 10
+				defense_bonus_against = 10
+				breakthrough_bonus_against = 10
+			}
+		}
 		PTF_hidden_idea = {				
 			allowed = {
 				always = yes
@@ -634,7 +628,7 @@ ideas = {
 				country_resource_steel = 4000
 				country_resource_tungsten = 2000
 				trade_laws_cost_factor = 10
-				min_export = -0.05
+				min_export = -0.25
 				personal_expense_factor = -0.5 #个人消费 -50%
 				battalion_upkeep_factor = -0.5 #陆军维护 -50%
 				aircraft_upkeep_factor = -0.5 #空军维护 -50%
@@ -650,7 +644,13 @@ ideas = {
 				misc_income = 50 #杂项收入
 				production_factory_efficiency_gain_factor = 100
 				factory_energy_consumption = -1
+				required_garrison_factor = -0.75
+				resistance_activity = -1
 				resistance_target = -0.2
+				compliance_growth = 2
+				#air_fuel_consumption_factor = -0.9
+				#army_fuel_consumption_factor = -0.9
+				#navy_fuel_consumption_factor = -0.9
 				experience_gain_army = 1
 				experience_gain_air = 1
 				experience_gain_navy = 1
@@ -664,7 +664,12 @@ ideas = {
 				naval_accidents_chance = -2
 				naval_attrition = -2
 				repair_speed_factor = 5
+				naval_retreat_speed = 1 #调头战神
+				#convoy_retreat_speed = 1
+				#naval_detection = 7 #假装自己有个雷达加成
+				navy_visibility = -0.58
 				naval_supply_consumption_factor = -0.95
+				#naval_speed_factor = 0.75 #呼！速度超快
 			}
 		}
 	}
