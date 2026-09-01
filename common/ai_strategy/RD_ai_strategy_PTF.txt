@@ -22,19 +22,58 @@ PTF_u_will_be_hostile_to_communism = { #蒋公附体
 }
 
 CAN_WTF_the_UAV_is_mine = { #我真的没有无人机了
+	allowed = {
+		original_tag = CAN
+	}
 	enable = {
 		NOT = { original_tag = CAN }
 	}
 	enable_reverse = {
-		is_ai = no
+		CAN = { always = yes }
 	}
 	reversed = yes
 	ai_strategy = {
-		type = ignore_claim
+		type = antagonize
 		id = CAN
-		value = 1
+		value = 500
 	}
 }
+
+PTF_show_mercy = { #手下留情，坦克开慢点，别一下碾死日共就好
+	allowed = {
+		original_tag = PTF
+	}
+	enable = {
+		has_war_with = PRC
+	}
+	abort = {
+		has_global_flag = RAJ_india_dead
+		OR = {
+			JAP = { exists = no }
+			JAP = { is_subject_of = PRC }
+		}	
+	}
+	ai_strategy = {
+		type = front_unit_request
+		country_trigger = {
+			tag = JPL
+		}
+		value = -1000
+	}
+	ai_strategy = {
+		type = front_control
+		tate_trigger = {
+			is_owned_by = JPL
+			is_core_of = JPL
+		}
+		priority = 999
+		ratio = 0.1
+		ordertype = careful
+		execute_order = no
+		manual_attack = no
+	}
+}
+
 
 PTF_dragon_killer = { #反攻大陆或东南苦山行
 	allowed = {
@@ -460,7 +499,7 @@ PTF_expert_ai = { #优势在我
 	ai_strategy = {
 		type = unit_ratio
 		id = fighter
-		value = 100
+		value = 200
 	}
 	ai_strategy = {
 		type = unit_ratio
@@ -472,15 +511,30 @@ PTF_expert_ai = { #优势在我
 		id = strategic_bomber
 		value = 20
 	}
+	ai_strategy = { #反舰导弹工程
+		type = equipment_variant_production_factor
+		id = guided_missile_equipment
+		value = 20
+	}
 	ai_strategy = {
-		type = unit_ratio
-		id = guided_missile
-		value = 40
+		type = equipment_production_min_factories_archetype
+		id = guided_missile_equipment
+		value = 5
+	}
+	ai_strategy = { 
+		type = production_upgrade_desire_offset
+		id = cruise_antiship_missile_equipment_2
+		value = 200
+	}
+	ai_strategy = { #不造攻击直升机
+		type = equipment_variant_production_factor
+		id = attack_helicopter_equipment
+		value = -100
 	}
 	ai_strategy = { #不造攻击直升机
 		type = equipment_production_min_factories_archetype
 		id = attack_helicopter_equipment
-		value = -100
+		value = -1000
 	}
 	ai_strategy = { #不造舰载战斗机
 		type = equipment_production_min_factories_archetype
@@ -557,12 +611,12 @@ PTF_expert_ai = { #优势在我
 	ai_strategy = {
 		type = role_ratio
 		id = naval_carrier
-		value = 8
+		value = 20
 	}
 	ai_strategy = {
 		type = role_ratio
 		id = naval_capital_bb
-		value = 92
+		value = 80
 	}
 ####
 	ai_strategy = { #留一点
