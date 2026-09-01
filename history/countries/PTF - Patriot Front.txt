@@ -188,6 +188,90 @@ set_technology = {
 	modern_large_airframe = 1
 }
 
+#集安学说
+set_grand_doctrine = csto_eastern_doctrine
+set_sub_doctrine = light_assault_groups #轻型突击群
+set_sub_doctrine = lightning_strikes #闪电突袭
+set_sub_doctrine = flanking_attacks #侧翼攻击
+set_sub_doctrine = scorching_earth #焦土政策
+set_sub_doctrine = electronic_warfare #电子战
+set_sub_doctrine = complex_engineering #综合工程
+
+#存在舰队
+set_grand_doctrine = new_fleet_in_being
+set_sub_doctrine = capital_hunters #主力舰猎手
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = capital_hunters
+}
+set_sub_doctrine = wolfpacks #猎杀狼群
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = wolfpacks
+}
+set_sub_doctrine = carrier_battlegroups #航母舰队集群
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = carrier_battlegroups
+}
+set_sub_doctrine = naval_gunfire_support #海军炮火支援
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = naval_gunfire_support
+}
+
+#制空作战
+set_grand_doctrine = counter_air_operations
+set_sub_doctrine = aerial_dominance #空中霸权
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = aerial_dominance
+}
+set_sub_doctrine = supply_hunting #后勤猎杀
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = supply_hunting
+}
+set_sub_doctrine = continental_bombings #洲际轰炸
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = continental_bombings
+}
+set_sub_doctrine = striking_heart #核心打击
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = striking_heart
+}
+set_sub_doctrine = mobile_support #机动支援
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = mobile_support
+}
+
+#精英特种
+set_grand_doctrine = special_forces_quality
+set_sub_doctrine = ship_shore_coordination #船岸协调
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = ship_shore_coordination
+}
+set_sub_doctrine = air_ground_coordination #空地协同
+add_daily_mastery = {
+    amount = 1
+    days = 1200
+    sub_doctrine = air_ground_coordination
+}
+
 recruit_character = PTF_thomas_rousseau_char_revolution
 #recruit_character = PTF_Graham_Whitson_char
 #recruit_character = PTF_Benjamin_Daley_char
@@ -250,7 +334,6 @@ add_ideas = {
 	#PTF_End_of_communism_idea
 	PTF_hidden_idea
 	PTF_American_Defense_idea
-	PTF_divine_mandate_idea
 
 	#Laws
 	partial_mobilization
@@ -280,6 +363,10 @@ add_ideas = {
 	low_interest_rates
 	
 	ZZZ_provisional_government
+}
+add_timed_idea = {
+	idea = PTF_divine_mandate_idea
+	days = 1200
 }
 
 set_party_name = {
@@ -488,7 +575,7 @@ if = {
 	}
 
 	create_equipment_variant = {
-		name = "F-35(Fighter)"
+		name = "F-35 Fighter"
 		type = small_plane_airframe_4
 		modules = {
 			fixed_main_weapon_slot = aircraft_cannon_1_1x
@@ -507,7 +594,7 @@ if = {
 	}
 
 	create_equipment_variant = {
-		name = "F-35(CAS)"
+		name = "F-35 CAS"
 		type = small_plane_cas_airframe_4
 		modules = {
 			fixed_main_weapon_slot = medium_bomb_bay
