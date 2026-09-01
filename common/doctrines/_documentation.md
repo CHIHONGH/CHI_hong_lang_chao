@@ -18,6 +18,68 @@
 * add_daily_mastery
 * add_mastery_bonus
 
+### add_mastery
+
+一次性添加造诣。
+
+```
+add_mastery = {
+    amount = 100
+    # 过滤器(全部可选,不写则视为全部通过):
+    folder = land
+    grand_doctrine = mobile_warfare
+    sub_doctrine = mobile_infantry
+    track = infantry
+    index = 1
+}
+```
+
+- `amount = <int>` —— 要添加的造诣量
+- `folder` / `grand_doctrine` / `sub_doctrine` / `track` / `index` —— 可选过滤器,精确指定向哪些路线施加造诣。某过滤器未出现即视为通过;例如不写任何过滤器 = 向所有文件夹的所有激活路线添加造诣
+
+### add_daily_mastery
+
+在持续时间内每天添加造诣。
+
+```
+add_daily_mastery = {
+    amount = 0.5
+    days = 90
+    name = CHI_military_affairs_commission_sea
+    # 过滤器(全部可选,不写则视为全部通过):
+    folder = land
+    grand_doctrine = mobile_warfare
+    sub_doctrine = mobile_infantry
+    track = infantry
+    index = 1
+}
+```
+
+- `amount = <float>` —— 每日添加的造诣量
+- `days = <int>` —— 每日造诣增益的持续天数
+- `name = <loc_key>` —— 本地化键,用于描述中显示造诣来源(原版惯例填国策 id / 效果来源)
+- `folder` / `grand_doctrine` / `sub_doctrine` / `track` / `index` —— 可选过滤器,语义同 add_mastery
+
+注意:`folder` / `grand_doctrine` / `sub_doctrine` / `track` 均为**单值字符串**；若子学说定义了多条路线(如特殊部队的 `track = { 多个 }`),单值 `track` 无法表达,应使用 `sub_doctrine` 过滤器。写在 history 文件中同样生效(该效果作用域为 COUNTRY)。
+
+### add_mastery_bonus
+
+在持续时间内为造诣成长提供加成因子。
+
+```
+add_mastery_bonus = {
+    name = CZE_establish_air_defense_zones
+    bonus = 0.10
+    days = 365
+    sub_doctrine = air_subdoctrine_fighter_homeland_defense
+}
+```
+
+- `bonus = <float>` —— 加成因子,如 0.1 = +10%
+- `days = <int>` —— 加成持续天数
+- `name = <loc_key>` —— 本地化键,显示造诣增益来源
+- 过滤器参数同上,全部可选
+
 ## 学说触发器(Doctrine Triggers)
 
 * has_completed_subdoctrine
