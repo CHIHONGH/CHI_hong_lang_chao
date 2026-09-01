@@ -62,16 +62,15 @@ PTF_show_mercy = { #手下留情，坦克开慢点，别一下碾死日共就好
 		value = -1000
 	}
 	ai_strategy = {
-		type = front_control
-		tate_trigger = {
-			is_owned_by = JPL
+	    type = front_control
+	    state_trigger = {
+	        is_owned_by = JPL
 			is_core_of = JPL
-		}
-		priority = 999
-		ratio = 0.1
-		ordertype = careful
-		execute_order = no
-		manual_attack = no
+	    }
+	    ratio = 0.1
+   		ordertype = front
+   		execution_type = careful
+		value = 1000
 	}
 }
 

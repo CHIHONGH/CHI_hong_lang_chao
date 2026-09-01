@@ -344,6 +344,75 @@ scripted_gui = {
 				frame = PRC.OSS_nuclear_triad3_button_var?1
 			}
 		}
+		ai_enabled = { always = yes }
+		ai_check = { always = yes }
+		ai_check_scope  = { controller = { OR = { has_war_with = PRC tag = PRC } } }
+		ai_test_interval = 4
+		ai_test_variance = 2
+		ai_test_scopes = test_enemy_controlled_states
+		ai_max_weight_taken_per_test = 100
+		ai_weights = {
+			oss_spy_satellite_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						controller = { NOT = { has_country_flag = PRC_oss_spy_satellite_surveillance } }
+						add = 100
+					}
+				}
+			}
+			oss_ECM_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						any_neighbor_state = {
+							NOT = { is_fully_controlled_by = PRC }   # 邻州非我方完全控制
+							controller = { has_war_with = PRC }      # 邻州控制国与我方交战
+						}
+						add = 100
+					}
+				}
+			}
+			oss_orbital_support_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						any_neighbor_state = {
+							NOT = { is_fully_controlled_by = PRC }   # 邻州非我方完全控制
+							controller = { has_war_with = PRC }      # 邻州控制国与我方交战
+						}
+						add = 20
+					}
+				}
+			}
+			oss_thermonuclear_strike_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						add = 200
+						is_fully_controlled_by = controller
+						controller = {
+							has_war_with = PRC divisions_in_state = { state = PREV size > 15 }
+						}
+					}
+					modifier = {
+						add = 50
+						is_fully_controlled_by = controller
+						controller = {
+							has_war_with = PRC divisions_in_state = { state = PREV size > 10 }
+						}
+					}
+					modifier = {
+						add = 10
+						is_fully_controlled_by = controller
+						controller = {
+							has_war_with = PRC divisions_in_state = { state = PREV size > 6 }
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	PRC_oss_enter_window = {#窗口：省份决议
