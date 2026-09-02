@@ -13074,8 +13074,13 @@ country_event = {
 				modern_small_airframe = 1
 			}
 		}
+		set_technology = {
+			unmanned_aircraft = 1
+			loyal_wingman_control = 1
+			integrated_electronic_warfare = 1
+		}
 		create_equipment_variant = {
-			name = "Chengdu J-36"
+			name = "成飞 歼-36"
 			type = small_plane_airframe_4
 			modules = {
 				fixed_main_weapon_slot = aircraft_cannon_1_1x
@@ -13084,11 +13089,29 @@ country_event = {
 				fixed_auxiliary_weapon_slot_3 = aircraft_cannon_1_1x
 				fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
 				engine_type_slot = engine_4_2x
-				special_type_slot_1 = hmg_defense_turret
-				special_type_slot_2 = ai_targeting_computer_small
-				special_type_slot_3 = radio_navigation_2
-				special_type_slot_4 = fuel_tanks_small
-				special_type_slot_5 = lmg_defense_turret_2x
+				special_type_slot_1 = loyal_wingman_control_module
+				special_type_slot_2 = integrated_electronic_warfare_system
+				special_type_slot_3 = low_observability_kit
+				special_type_slot_4 = self_sealing_fuel_tanks_small_3
+				special_type_slot_5 = self_sealing_fuel_tanks_small_3
+			}
+			icon = "GFX_PRC_j_36_eq2"
+		}
+		create_equipment_variant = {
+			name = "沈飞 歼-50"
+			type = small_plane_airframe_4
+			modules = {
+				fixed_main_weapon_slot = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_3 = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
+				engine_type_slot = engine_4_2x
+				special_type_slot_1 = unmanned_module_small
+				special_type_slot_2 = integrated_electronic_warfare_system
+				special_type_slot_3 = low_observability_kit
+				special_type_slot_4 = self_sealing_fuel_tanks_small_3
+				special_type_slot_5 = self_sealing_fuel_tanks_small_3
 			}
 			icon = "GFX_PRC_j_36_eq2"
 		}
@@ -13096,15 +13119,30 @@ country_event = {
 			equipment = {
 				type = small_plane_airframe_4
 				creator = "PRC"
-				version_name = "Chengdu J-36"
+				version_name = "成飞 歼-36"
 			}
-			requested_factories = 10
+			requested_factories = 5
+			efficiency = 100
+		}
+		add_equipment_production = {
+			equipment = {
+				type = small_plane_airframe_4
+				creator = "PRC"
+				version_name = "沈飞 歼-50"
+			}
+			requested_factories = 5
 			efficiency = 100
 		}
 		add_equipment_to_stockpile = {
 			type = small_plane_airframe_4
-			variant_name = "Chengdu J-36"
-			amount = 50
+			variant_name = "成飞 歼-36"
+			amount = 100
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = small_plane_airframe_4
+			variant_name = "沈飞 歼-50"
+			amount = 100
 			producer = PRC
 		}
 		custom_effect_tooltip = PRC_project_song_wencong_succeeded_tt
@@ -13157,6 +13195,9 @@ country_event = {
 			var = PRC_army_reform_progress_temp
 			value = 3.5
 		}
+		set_technology = {
+			ship_weapon_laser_system = 1
+		}
 		PRC_add_army_reform_progress = yes
 		add_to_variable = {
 			PRC_PLA_navy_anti_air_attack_factor = 0.1
@@ -13196,31 +13237,66 @@ country_event = {
 		PRC_add_army_reform_progress = yes
 		set_technology = {
 			main_battle_tank_chassis = 1
+			remote_weapon_system = 1
+			GL7_active_protection_system = 1
+			tank_advanced_electric_engine = 1
+			tank_high_velocity_cannon_4 = 1
 		}
 		create_equipment_variant = {
-			name = "Type 100"
+			name = "ZTZ-100"
 			type = modern_tank_chassis_4
 			parent_version = 0
 			modules = {
 				main_armament_slot = tank_high_velocity_cannon_3
-				turret_type_slot = tank_modern_tank_turret
+				turret_type_slot = tank_unmanned_tank_turret
 				suspension_type_slot = tank_torsion_bar_suspension
-				armor_type_slot = tank_cast_armor
-				engine_type_slot = tank_gas_turbine_engine
-				special_type_slot_1 = tank_radio_2
-				special_type_slot_2 = auto_loader
-				special_type_slot_3 = empty
-				special_type_slot_4 = empty
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_advanced_electric_engine
+				special_type_slot_1 = remote_weapon_system_antitank
+				special_type_slot_2 = GL7_active_protection_system
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = anti_drone_laser_system
+				special_type_slot_5 = gunner_nv_3
+				special_type_slot_6 = wet_ammo_storage
+				special_type_slot_7 = tank_radio_3
 			}
 			upgrades = {
 				tank_nsb_engine_upgrade = 8
-				tank_nsb_armor_upgrade = 1
+				tank_nsb_armor_upgrade = 8
+			}
+		}
+		create_equipment_variant = {
+			name = "ZTZ-100A"
+			type = modern_tank_chassis_4
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_4
+				turret_type_slot = tank_unmanned_tank_turret
+				suspension_type_slot = tank_torsion_bar_suspension
+				armor_type_slot = tank_cast_armor
+				engine_type_slot = tank_advanced_electric_engine
+				special_type_slot_1 = remote_weapon_system_antitank
+				special_type_slot_2 = GL7_active_protection_system
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = anti_drone_laser_system
+				special_type_slot_5 = gunner_nv_3
+				special_type_slot_6 = wet_ammo_storage
+				special_type_slot_7 = tank_radio_3
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 14
 			}
 		}
 		add_equipment_to_stockpile = {
 			type = modern_tank_chassis_4
+			amount = 200
+			variant_name = "ZTZ-100"
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_chassis_4
 			amount = 50
-			variant_name = "Type 100"
+			variant_name = "ZTZ-100A"
 		}
 		set_technology = {
 			PLA_project_xuanwu = 1
