@@ -1,0 +1,441 @@
+scripted_gui = {
+
+	RD_TFR_PRC_states_decisions_window = {#窗口：省份决议
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		window_name = "RD_TFR_PRC_states_decisions_window"
+##
+		visible = {
+			ROOT = { tag = PRC }
+			PRC = { NOT = { has_country_flag = PRC_oss_miniwindow } }
+			OR = {
+				NOT = { controller = { is_controlled_by_ROOT_or_ally = yes } }
+				AND = {
+					NOT = { is_fully_controlled_by = PRC }
+					is_controlled_by = PRC
+				}
+			}
+			OR = {	#这里写条件
+				#has_country_flag = 
+				PRC = {has_completed_focus = PLA_orbital_drop_new}
+			}
+		}
+##
+		effects = {
+			PRC_oss_miniwindow_button_click = {#收起窗口
+				PRC = { set_country_flag = PRC_oss_miniwindow }
+			}
+			oss_spy_satellite_click = {#间谍卫星监控
+				controller = {
+					set_country_flag = { 
+						flag = PRC_oss_spy_satellite_surveillance
+						days = 180
+						value = 1
+					}
+					PRC = {
+						add_intel = {
+							target = PREV
+							civilian_intel = 40
+							army_intel = 20
+							navy_intel = 40
+							airforce_intel = 25
+						}
+						add_political_power = oss_spy_satellite_click_pp_var?-150
+					}
+				}
+				PRC_oss_spy_satellite = yes
+			}
+			oss_ECM_click = {#电子战
+				PRC = {
+					add_political_power = oss_ECM_click_pp_var?-40
+					add_equipment_to_stockpile = {
+						type = ballistic_missile_equipment_3
+						amount = -1
+						producer = PRC
+					}
+				}
+				set_state_flag = { 
+					flag = PRC_ECM_state
+					days = 30
+					value = 1
+				}
+				PRC_electronic_warfare = yes
+			}
+			oss_orbital_support_click = {#轨道支援
+				set_state_flag = { 
+					flag = PRC_orbital_support_2
+					days = 2
+					value = 1
+				}
+				set_state_flag = { 
+					flag = PRC_orbital_support
+					days = 16
+					value = 1
+				}
+				oss_orbital_support = yes
+			}
+			oss_tactical_nuclerar_strike_click = {#战术核打击
+				PRC = {
+					add_command_power = -10
+					add_equipment_to_stockpile = {
+						type = nuclear_missile_equipment_1
+						amount = -1
+						producer = PRC
+					}
+				}
+				set_state_flag = { 
+					flag = PRC_nuclear_strike_state
+					days = 14
+					value = 1
+				}
+				set_state_flag = { 
+					flag = oss_tactical_nuclerar_strike_click_flag
+					days = 1
+					value = 1
+				}
+				oss_tactical_nuclerar_strike = yes
+			}
+			oss_thermonuclear_strike_click = {#战略核打击
+				PRC = {
+					add_command_power = -20
+					add_equipment_to_stockpile = {
+						type = nuclear_missile_equipment_2
+						amount = -1
+						producer = PRC
+					}
+				}
+				set_state_flag = { 
+					flag = PRC_nuclear_strike_state
+					days = 14
+					value = 1
+				}
+				set_state_flag = { 
+					flag = oss_thermonuclear_strike_click_flag
+					days = 1
+					value = 1
+				}
+				oss_thermonuclear_strike = yes
+			}
+			PRC_nuclear_code_button_click = {
+				PRC = {
+					set_country_flag = has_oss_nuclear_trigger_code
+				}
+			}
+			OSS_nuclear_triad2_button_click = {#保险1
+				PRC = {
+					if = {
+						limit = {
+							check_variable = { OSS_nuclear_triad2_button_var = 2 }
+						}
+						set_variable = { OSS_nuclear_triad2_button_var = 1 }
+					}
+					else = {
+						set_variable = { OSS_nuclear_triad2_button_var = 2 }
+					}
+				}
+			}
+			OSS_nuclear_triad3_button_click = {#保险2
+				PRC = {
+					if = {
+						limit = {
+							check_variable = { OSS_nuclear_triad3_button_var = 2 }
+						}
+						set_variable = { OSS_nuclear_triad3_button_var = 1 }
+					}
+					else = {
+						set_variable = { OSS_nuclear_triad3_button_var = 2 }
+					}
+				}
+			}
+			OSS_nuclear_triad1_button_click = {#毁灭一切
+				every_country = {
+					news_event = ChinaOSS.2
+				}
+				oss_nuclear_counterattack = yes
+			}
+		}
+##
+		triggers = {
+			PRC_oss_miniwindow_button_visible = {
+				PRC = { NOT = { has_country_flag = PRC_oss_miniwindow } }
+			}
+			oss_spy_satellite_click_enabled = {
+				controller = { NOT = { has_country_flag = PRC_oss_spy_satellite_surveillance } }
+				PRC = { has_political_power > 100 }
+				PRC = { has_country_flag = PRC_space_done_recon_sat }
+				NOT = {
+					is_fully_controlled_by = PRC
+					is_controlled_by = PRC
+				}
+			}
+			oss_ECM_click_enabled = {
+				NOT = { has_state_flag = PRC_ECM_state }
+				OR = {
+					controller = { has_war_with = PRC }
+					AND = {
+						NOT = { is_fully_controlled_by = PRC }
+						is_controlled_by = PRC
+					}
+				}
+				PRC = {
+					has_political_power > 10
+					has_equipment = {
+						ballistic_missile_equipment_3 > 0
+					}
+					has_country_flag = PRC_space_done_ecm_array
+				}
+			}
+			oss_orbital_support_click_enabled = {
+				OR = {
+					controller = { has_war_with = PRC }
+					AND = {
+						NOT = { is_fully_controlled_by = PRC }
+						is_controlled_by = PRC
+					}
+				}
+				NOT = { has_state_flag = PRC_orbital_support }
+				PRC = {
+					#NOT = { has_country_flag = PRC_orbital_support }
+					check_variable = { PRC_oss_space_armed_forces_num > 2 }
+					has_country_flag = PRC_space_done_airdrop
+				}
+			}
+			PRC_nuclear_code_button_click_enabled = {
+				PRC = { has_completed_focus = PRC_martial_law }
+			}
+			oss_tactical_nuclerar_strike_click_enabled = {
+				PRC = {
+					command_power > 5
+					has_equipment = {
+						nuclear_missile_equipment_1 > 0
+					}
+					has_country_flag = PRC_space_done_nuclear_platform
+				}
+				NOT = { has_state_flag = PRC_nuclear_strike_state }
+				controller = { has_war_with = PRC }
+			}
+			oss_thermonuclear_strike_click_enabled = {
+				NOT = { has_state_flag = PRC_nuclear_strike_state }
+				PRC = {
+					command_power > 5
+					has_equipment = {
+						nuclear_missile_equipment_2 > 0
+					}
+					has_country_flag = PRC_space_done_nuclear_platform
+				}
+				controller = { has_war_with = PRC }
+			}
+			OSS_nuclear_triad2_button_click_enabled = {
+				PRC = {
+					OR = { #投降度大于50%或者死亡一千五百万人
+						surrender_progress > 0.5
+						casualties_k > 15000
+					}
+				}
+			}
+			OSS_nuclear_triad3_button_click_enabled = {
+				PRC = {
+					has_war = yes
+				}
+			}
+			OSS_nuclear_triad1_button_click_enabled = {
+				PRC = {
+					always = no #全都是懒狗导致的，但凡多两个活人这个功能都能用
+					has_war = yes
+					OR = { #投降度大于50%或者死亡一千五百万人
+						surrender_progress > 0.5
+						casualties_k > 15000
+					}
+					check_variable = {
+						OSS_nuclear_triad2_button_var = 2
+					}
+					check_variable = {
+						OSS_nuclear_triad3_button_var = 2
+					}
+				}
+			}
+
+			OSS_nuclear_triad1_button_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+			OSS_nuclear_triad2_button_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+			OSS_nuclear_triad3_button_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+			oss_tactical_nuclerar_strike_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+			oss_thermonuclear_strike_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+			
+			PRC_oss_secret_key2_icon_1_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+			PRC_oss_secret_key2_icon_2_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+			PRC_nuclear_code_button_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+
+			oss_nuclear_force1_text_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+			oss_nuclear_force2_text_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+			oss_nuclear_force3_text_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+			oss_nuclear_force4_text_visible = {
+				PRC = { NOT = { has_country_flag = has_oss_nuclear_trigger_code } }
+			}
+			oss_nuclear_force5_text_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+			oss_nuclear_force6_text_visible = {
+				PRC = { has_country_flag = has_oss_nuclear_trigger_code }
+			}
+
+			oss_tactical_nuclerar_strike_icon_visible = {
+				This = { has_state_flag = oss_tactical_nuclerar_strike_click_flag }
+			}
+			oss_thermonuclear_strike_icon_visible = {
+				This = { has_state_flag = oss_thermonuclear_strike_click_flag }
+			}
+			oss_spy_satellite_icon_visible = {
+				controller = { has_country_flag = PRC_oss_spy_satellite_surveillance }
+			}
+			oss_ECM_icon_visible = {
+				This = { has_state_flag = PRC_ECM_state }
+			}
+			oss_orbital_support_icon_visible = {
+				This = { has_state_flag = PRC_orbital_support_2 }
+			}
+		}
+##
+		properties = { 	#这段代码其实是一串bug,只是不报错，但是删了它会让OSS的七个可交互按钮图片纹理不能正常显示,修复它并使其规范化需要以下三个步骤：
+						#将gfx中对应的图片替换为单帧
+						#更改frame = my_var 为 image = "[get_my_icon_texture]"
+						#删除对应的上方visible条件 my_icon_visible = { trigger }
+						#由于这玩意既不报错也不影响游戏所以我没有修复它
+			oss_spy_satellite = {
+				frame = THIS.oss_spy_satellite_var?1
+			}
+			oss_ECM = {
+				frame = THIS.oss_ECM_var?1
+			}
+			oss_orbital_support = {
+				frame = THIS.oss_orbital_support_var?1
+			}
+			oss_tactical_nuclerar_strike = {
+				frame = THIS.oss_tactical_nuclerar_strike_var?1
+			}
+			oss_thermonuclear_strike = {
+				frame = THIS.oss_thermonuclear_strike_var?1
+			}
+			OSS_nuclear_triad2_button = { #这个不能删，该按钮没有BUG
+				frame = PRC.OSS_nuclear_triad2_button_var?1
+			}
+			OSS_nuclear_triad3_button = { #这个不能删，该按钮没有BUG
+				frame = PRC.OSS_nuclear_triad3_button_var?1
+			}
+		}
+		ai_enabled = { always = yes }
+		ai_check = { always = yes }
+		ai_check_scope  = { controller = { OR = { has_war_with = PRC tag = PRC } } }
+		ai_test_interval = 4
+		ai_test_variance = 2
+		ai_test_scopes = test_enemy_controlled_states
+		ai_max_weight_taken_per_test = 100
+		ai_weights = {
+			oss_spy_satellite_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						controller = { NOT = { has_country_flag = PRC_oss_spy_satellite_surveillance } }
+						add = 100
+					}
+				}
+			}
+			oss_ECM_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						any_neighbor_state = {
+							NOT = { is_fully_controlled_by = PRC }   # 邻州非我方完全控制
+							controller = { has_war_with = PRC }      # 邻州控制国与我方交战
+						}
+						add = 100
+					}
+				}
+			}
+			oss_orbital_support_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						any_neighbor_state = {
+							NOT = { is_fully_controlled_by = PRC }   # 邻州非我方完全控制
+							controller = { has_war_with = PRC }      # 邻州控制国与我方交战
+						}
+						add = 20
+					}
+				}
+			}
+			oss_thermonuclear_strike_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						add = 200
+						NOT = { is_fully_controlled_by = THIS }
+						controller = {
+							has_war_with = PRC divisions_in_state = { state = PREV size > 15 }
+						}
+					}
+					modifier = {
+						add = 50
+						controller = {
+							has_war_with = PRC divisions_in_state = { state = PREV size > 10 }
+						}
+					}
+					modifier = {
+						add = 10
+						controller = {
+							has_war_with = PRC divisions_in_state = { state = PREV size > 6 }
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	PRC_oss_enter_window = {#窗口：省份决议
+		context_type = selected_state_context
+		window_name = "PRC_oss_enter_window"
+##
+		visible = {
+			ROOT = { tag = PRC }
+			NOT = { controller = { is_controlled_by_ROOT_or_ally = yes } }
+			OR = {	#这里写条件
+				#has_country_flag = 
+				PRC = {has_completed_focus = PLA_orbital_drop_new}
+			}
+		}
+
+		effects = {
+			PRC_oss_expandwindow_button_click = {#展开窗口
+				PRC = { clr_country_flag = PRC_oss_miniwindow }
+			}
+		}
+
+		triggers = {
+			PRC_oss_expandwindow_button_visible = {
+				PRC = { has_country_flag = PRC_oss_miniwindow }
+			}
+		}
+	}
+}

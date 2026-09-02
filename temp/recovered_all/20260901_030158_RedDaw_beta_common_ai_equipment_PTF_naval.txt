@@ -1,0 +1,110 @@
+naval_capital_battleship = {
+	category = naval
+	
+	blocked_for = {}
+	
+	available_for = {
+		PTF
+	}
+	
+	roles = {
+		naval_capital_bb
+	}
+	
+	priority = {
+		factor = 5000
+	}
+
+	capital_battleship_advanced = {
+	
+		priority = {
+			factor = 100
+		}
+
+		role_icon_index = 1
+		
+		target_variant = {
+			match_value = 2250.0
+			
+			type = ship_hull_heavy_4
+			modules = {
+				fixed_ship_battery_slot = ship_missile_launcher_1
+				fixed_ship_anti_air_slot = ship_anti_air_4
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+				fixed_ship_radar_slot = ship_radar_4
+				fixed_ship_engine_slot = heavy_ship_engine_4
+				fixed_ship_secondaries_slot = ship_secondaries_3
+				fixed_ship_armor_slot = ship_armor_bb_3
+				front_1_custom_slot = ship_missile_launcher_1
+				mid_1_custom_slot = ship_missile_launcher_1
+				mid_2_custom_slot = ship_missile_launcher_1
+				mid_3_custom_slot = ship_missile_launcher_1
+				rear_1_custom_slot = ship_airplane_launcher_2
+			}
+		}
+		
+		allowed_modules = {
+			heavy_ship_engine_4
+			ship_anti_air_4
+			ship_secondaries_3
+			ship_missile_launcher_1
+			ship_heavy_battery_4
+			ship_radar_4
+			ship_fire_control_system_3
+			ship_armor_bb_3
+			ship_airplane_launcher_2
+		}
+	}
+}
+
+naval_carrier = {
+	category = naval
+	
+	blocked_for = {}
+	
+	available_for = {
+		PTF
+	}
+	
+	roles = {
+		naval_carrier
+	}
+	
+	priority = {
+		factor = 1000
+	}
+
+	carrier_advanced = {
+	
+		priority = {
+			factor = 100
+		}
+
+		role_icon_index = 7
+		
+		target_variant = {
+			match_value = 1750.0
+			
+			type = ship_hull_carrier_3
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_deck_space
+				fixed_ship_anti_air_slot = ship_anti_air_4
+				fixed_ship_radar_slot = ship_radar_4
+				fixed_ship_engine_slot = carrier_ship_engine_4
+				fixed_ship_secondaries_slot = empty
+				front_1_custom_slot = ship_deck_space
+				mid_1_custom_slot = ship_deck_space
+				mid_2_custom_slot = ship_deck_space
+			}
+		}
+		
+		allowed_modules = {
+			ship_anti_air_4
+			carrier_ship_engine_4
+			ship_radar_4
+			ship_deck_space
+		}
+	}
+
+}

@@ -1,0 +1,906 @@
+# focus_tree = {
+#     id = PTF_American
+#     country = {
+#         factor = 0
+#     }
+#     default = no
+#     shared_focus = USA_liberate_the_great_north
+#     shared_focus = USA_secure_the_south
+#     #
+# }
+#!gfx:interface/New_left_Collection_of_files/goals/PTF_national_focus.gfx
+shared_focus = {
+    id = PTF_soaring_white_eagle
+    icon = GFX_focus_PTF_soaring_white_eagle
+    cost = 1 # 21 days = 3 cost
+    allow_branch = {
+        has_country_flag = USA_war_with_PRC_flag
+    }
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_soaring_white_eagle completion_reward"
+        add_political_power = 200
+        PRC = {
+            country_event = {
+                id = prcs.3091
+                days = 10
+            }
+        }
+    }
+    x = 0
+    y = 14
+    ai_will_do = {
+        factor = 0
+        modifier = {
+			add = 1000
+			OR = {
+                date > 2029.01.01
+                PRC = {
+                    OR = {
+                        has_shine_effect_on_focus = Moving_towards_victory
+                        has_completed_focus = Moving_towards_victory
+                        has_war_with = JAP
+                    }
+                }
+                JAP = { has_active_mission = JAP_korean_war_joining }
+            }
+		}
+        modifier = {
+			add = 20
+			PRC = {
+                has_completed_focus = PLA_The_iron_flow_miles
+            }
+		}
+    }
+    available = {
+        PRC = {
+            has_completed_focus = PLA_The_iron_flow_miles
+        }
+    }
+}
+shared_focus = {
+    id = PTF_storming_back_into_tne_pacific
+    icon = GFX_focus_PTF_storming_back_into_tne_pacific
+    cost = 2 # 28 days = 4 cost
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_storming_back_into_tne_pacific completion_reward"
+        set_temp_variable = {
+            var = military_development_var_temp
+            value = 0.20
+        }
+        add_military_development = yes
+        #括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
+        #value正值代表+ 负值代表减
+        news_event = {
+            id = prcs.3163
+            days = 5
+        }
+    }
+    x = 2
+    y = 0
+    relative_position_id = PTF_forge_the_chain
+    prerequisite = {
+        focus = PTF_the_new_marshal_plan
+    }
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+        is_ally_with = JAP
+    }
+}
+shared_focus = {
+    id = USA_liberate_the_great_north
+    icon = {
+        trigger = {
+            OR = {
+                tag = USB
+                tag = USC
+            }
+        }
+        value = GFX_focus_USA_liberate_the_great_north1
+    }
+    icon = {
+        trigger = {
+            tag = PTF
+        }
+        value = GFX_focus_USA_liberate_the_great_north_PTF
+    }
+    icon = {
+        value = GFX_focus_USA_liberate_the_great_north
+    }
+    search_filters = {
+        FOCUS_FILTER_ANNEXATION
+    }
+    x = -1
+    y = 1
+    relative_position_id = PTF_soaring_white_eagle
+    prerequisite = {
+        focus = PTF_soaring_white_eagle
+    }
+    cost = 2
+    available_if_capitulated = yes
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+        USA_controls_all_cores_trigger = yes
+    }
+    bypass = {
+        CAN = {
+            OR = {
+                exists = no
+                is_subject_of = ROOT
+                is_in_faction_with = ROOT
+            }
+        }
+        QUE = {
+            OR = {
+                exists = no
+                is_subject_of = ROOT
+                is_in_faction_with = ROOT
+            }
+        }
+        USN = {
+            OR = {
+                exists = no
+                is_subject_of = ROOT
+                is_in_faction_with = ROOT
+            }
+        }
+    }
+    completion_reward = {
+        unlock_decision_tooltip = USA_operation_crimson_decision
+        every_state = {
+            limit = {
+                OR = {
+                    is_core_of = CAN
+                    is_core_of = QUE
+                    is_core_of = USN
+                }
+            }
+            add_claim_by = ROOT
+        }
+    }
+}
+shared_focus = {
+    id = USA_secure_the_south
+    icon = {
+        trigger = {
+            tag = PTF
+        }
+        value = GFX_focus_USA_secure_the_south_PTF
+    }
+    icon = {
+        value = GFX_focus_USA_secure_the_south
+    }
+    search_filters = {
+        FOCUS_FILTER_ANNEXATION
+    }
+    available_if_capitulated = yes
+    x = 1
+    y = 1
+    relative_position_id = PTF_soaring_white_eagle
+    prerequisite = {
+        focus = PTF_soaring_white_eagle
+    }
+    cost = 2
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+        USA_controls_all_cores_trigger = yes
+    }
+    completion_reward = {
+        unlock_decision_tooltip = USA_operation_green_decision
+    }
+}
+shared_focus = {
+    id = PTF_the_new_marshal_plan
+    icon = GFX_focus_PTF_the_new_marshal_plan
+    cost = 2
+    prerequisite = {
+        focus = USA_liberate_the_great_north
+    }
+    prerequisite = {
+        focus = USA_secure_the_south
+    }
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_the_new_marshal_plan completion_reward"
+        unlock_decision_tooltip = USA_operation_gray_decision
+        JAP = {
+            random_owned_controlled_state = {
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 3
+                    instant_build = yes
+                }
+            }
+            set_temp_variable = {
+                var = society_development_var_temp
+                value = 0.15
+            }
+            add_society_development = yes
+        }
+        AST = {
+            random_owned_controlled_state = {
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 3
+                    instant_build = yes
+                }
+            }
+            set_temp_variable = {
+                var = society_development_var_temp
+                value = 0.15
+            }
+            add_society_development = yes
+        }
+        NZL = {
+            random_owned_controlled_state = {
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 3
+                    instant_build = yes
+                }
+            }
+            set_temp_variable = {
+                var = society_development_var_temp
+                value = 0.15
+            }
+            add_society_development = yes
+        }
+        KOR = {
+            random_owned_controlled_state = {
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 3
+                    instant_build = yes
+                }
+            }
+            set_temp_variable = {
+                var = society_development_var_temp
+                value = 0.15
+            }
+            add_society_development = yes
+        }
+    }
+    x = 0
+    y = 2
+    ai_will_do = {
+        factor = 1000
+    }
+    relative_position_id = PTF_soaring_white_eagle
+    available = {
+    }
+}
+shared_focus = {
+    id = PTF_freedom_of_navgation
+    icon = GFX_focus_PTF_freedom_of_navgation
+    cost = 2
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_freedom_of_navgation completion_reward"
+        # 解发南海对峙事件链
+        PRC = {
+            country_event = {
+                id = prcs.3136
+                days = 500
+            }
+        }
+    }
+    x = -3
+    y = 0
+    relative_position_id = PTF_stranglehold
+    prerequisite = {
+        focus = PTF_forge_the_chain
+    }
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+}
+shared_focus = {
+    id = PTF_defeated_but_unbowed
+    icon = GFX_focus_PTF_defeated_but_unbowed
+    cost = 2
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_defeated_but_unbowed completion_reward"
+        custom_effect_tooltip = PTF_unit_tt
+        hidden_effect = {
+            # 世解(WLI)之内每有一个成员，获得三个编制为火星兵的师
+            #every_country = {
+            #    limit = {
+            #        is_in_faction_with = PRC
+            #    }
+            #    PTF = {
+            #        random_owned_controlled_state = {
+            #            create_unit = {
+            #                division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+            #                owner = PTF
+            #                count = 3
+            #            }
+            #        }
+            #    }
+            #}
+            random_owned_controlled_state = {
+                create_unit = {
+                    division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                    owner = PTF
+                    count = 3
+                }
+            }
+            PRC = {
+                every_allied_country = {
+                    PTF = {
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "name = \"Usa Army\" division_template = \"huo_xing_bing\" start_experience_factor = 0.2"
+                                owner = PTF
+                                count = 3
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    x = 0
+    y = 2
+    prerequisite = {
+        focus = PTF_freedom_of_navgation
+    }
+    relative_position_id = PTF_freedom_of_navgation
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+
+}
+shared_focus = {
+    id = PTF_fortress_of_freedom
+    icon = GFX_focus_PTF_fortress_of_freedom
+    cost = 2
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_fortress_of_freedom completion_reward"
+        add_ideas = higher_welfare # 提升一级福利水平 (工人权力也包含在内)
+        add_ideas = high_education # 提升一级教育制度
+        add_ideas = city_on_a_hill_gods_country # 添加buff山巅之城，主佑之地
+        # 触发全球新闻事件:起草 新民权法案
+        news_event = {
+            id = prcs.3164
+            days = 0
+        }
+    }
+    x = -1
+    y = 1
+    prerequisite = {
+        focus = PTF_freedom_of_navgation
+    }
+    relative_position_id = PTF_stranglehold
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+}
+shared_focus = {
+    id = PTF_roaring_steel
+    icon = GFX_focus_PTF_roaring_steel
+    cost = 2
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_roaring_steel completion_reward"
+        every_country = {
+            limit = {
+                is_in_faction_with = PTF
+            }
+            add_ideas = arsenal_of_democracy
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }
+            }
+        }
+    }
+    x = 2
+    y = 0
+    relative_position_id = PTF_stranglehold
+    prerequisite = {
+        focus = PTF_storming_back_into_tne_pacific
+    }
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+}
+shared_focus = {
+    id = PTF_oil_the_blade
+    icon = GFX_focus_PTF_oil_the_blade
+    cost = 2
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_oil_the_blade completion_reward"
+        hidden_effect = {
+            random_owned_controlled_state = {
+                limit = {
+                    is_owned_by = PTF
+                    is_coastal = yes
+                }
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = dockyard
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+        }
+        custom_effect_tooltip = PTF_oil_the_blade_tt
+        set_temp_variable = {
+            var = industrial_development_var_temp
+            value = 0.10
+        }
+        add_industrial_development = yes
+        add_ideas = reshape_military_industrial_complex # 获得buff：重塑军工复合体
+    }
+    x = 1
+    y = 1
+    prerequisite = {
+        focus = PTF_roaring_steel
+    }
+    relative_position_id = PTF_roaring_steel
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+}
+shared_focus = {
+    id = PTF_project_jupiter
+    icon = GFX_focus_PTF_project_jupiter
+    cost = 2
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_project_jupiter completion_reward"
+        # 获得两张空军加成100%/提前1年惩罚抵免的加成卡
+        # This can be done with add_tech_bonus for air doctrines or aircraft.
+        add_tech_bonus = {
+            bonus = 1.0
+            uses = 2
+            category = air_doctrine
+        }
+        set_technology = {
+            improved_small_airframe = 1
+        }
+        hidden_effect = {
+            news_event = prcs.3165
+        }
+    }
+    x = -1
+    y = 1
+    relative_position_id = PTF_oil_the_blade
+    prerequisite = {
+        focus = PTF_oil_the_blade
+    }
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+}
+shared_focus = {
+    id = PTF_forge_the_chain
+    icon = GFX_focus_PTF_forge_the_chain
+    cost = 2
+    x = -1
+    y = 1
+    prerequisite = {
+        focus = PTF_the_new_marshal_plan
+    }
+    relative_position_id = PTF_the_new_marshal_plan
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_forge_the_chain completion_reward"
+        custom_effect_tooltip = PTF_set_politics_for_asia
+        hidden_effect = {
+            JAP = {
+                division_template = {
+                    name = "usa marrun"
+                    priority = 2
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 2 y = 0 }
+                        motorized = { x = 2 y = 1 }
+                    }
+
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                    }
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = JAP
+                        count = 3
+                    }
+                }
+            }
+            KOR = {
+                division_template = {
+                    name = "usa marrun"
+                    priority = 2
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 2 y = 0 }
+                        motorized = { x = 2 y = 1 }
+                    }
+
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                    }
+                }
+                set_politics = {
+                    ruling_party = authoritarian_democrat
+                    last_election = "2020.1.1"
+                    elections_allowed = no
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = KOR
+                        count = 3
+                    }
+                }
+            }
+            AST = {
+                division_template = {
+                    name = "usa marrun"
+                    priority = 2
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 2 y = 0 }
+                        motorized = { x = 2 y = 1 }
+                    }
+
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                    }
+                }
+                set_politics = {
+                    ruling_party = authoritarian_democrat
+                    last_election = "2020.1.1"
+                    elections_allowed = no
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = AUS
+                        count = 3
+                    }
+                }
+            }
+            RAJ = {
+                division_template = {
+                    name = "usa marrun"
+                    priority = 2
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 2 y = 0 }
+                        motorized = { x = 2 y = 1 }
+                    }
+
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                    }
+                }
+                set_politics = {
+                    ruling_party = authoritarian_democrat
+                    last_election = "2020.1.1"
+                    elections_allowed = no
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = NZL
+                        count = 3
+                    }
+                }
+            }
+            NZL = {
+                division_template = {
+                    name = "usa marrun"
+                    priority = 2
+                    regiments = {
+                        motorized = { x = 0 y = 0 }
+                        motorized = { x = 0 y = 1 }
+                        motorized = { x = 1 y = 0 }
+                        motorized = { x = 1 y = 1 }
+                        motorized = { x = 2 y = 0 }
+                        motorized = { x = 2 y = 1 }
+                    }
+
+                    support = {
+                        engineer = { x = 0 y = 0 }
+                    }
+                }
+                set_politics = {
+                    ruling_party = authoritarian_democrat
+                    last_election = "2020.1.1"
+                    elections_allowed = no
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"usa marrun\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = NZL
+                        count = 3
+                    }
+                }
+            }
+            every_country = {
+                limit = {
+                    is_in_faction_with = PTF
+                    NOT = {
+                        original_tag = PTF
+                    }
+                }
+                set_temp_variable = {
+                    var = society_development_var_temp
+                    value = 0.15
+                }
+                add_society_development = yes
+            }
+        }
+    }
+}
+shared_focus = {
+    id = PTF_stranglehold
+    icon = GFX_focus_PTF_stranglehold
+    cost = 2
+    x = -1
+    y = 1
+    relative_position_id = PTF_storming_back_into_tne_pacific
+    prerequisite = {
+        focus = PTF_forge_the_chain
+        focus = PTF_storming_back_into_tne_pacific
+    }
+    ai_will_do = {
+        factor = 1000
+    }
+    available = {
+    }
+    completion_reward = {
+        log = "[GetDateText]: [Root.GetName]: focus PTF_stranglehold completion_reward"
+        # PTF自己军事发展度：+10%
+        set_temp_variable = {
+            var = military_development_var_temp
+            value = 0.10
+        }
+        add_military_development = yes
+        #括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
+        # 在朝韩边界添加三级陆上要塞（韩国地区）
+        # State 1041 - 韩国北部边境
+        1041 = {
+            add_building_construction = {
+                type = bunker
+                province = 13691
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 13693
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 13695
+                level = 3
+                instant_build = yes
+            }
+        }
+        # State 871 - 韩国西北边境
+        871 = {
+            add_building_construction = {
+                type = bunker
+                province = 13688
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 4004
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 14248
+                level = 3
+                instant_build = yes
+            }
+        }
+
+        # 在印中、印巴边界添加三级陆上要塞（印度地区）
+        # State 428 - 印度东北边境
+        428 = {
+            add_building_construction = {
+                type = bunker
+                province = 4064
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 1103
+                level = 3
+                instant_build = yes
+            }
+        }
+        # State 433 - 印度北部边境
+        433 = {
+            add_building_construction = {
+                type = bunker
+                province = 14724
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 4149
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 1908
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 14729
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 7998
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 14732
+                level = 3
+                instant_build = yes
+            }
+        }
+        # State 1379 - 印度西北边境
+        1379 = {
+            add_building_construction = {
+                type = bunker
+                province = 12868
+                level = 3
+                instant_build = yes
+            }
+            add_building_construction = {
+                type = bunker
+                province = 2032
+                level = 3
+                instant_build = yes
+            }
+        }
+        # State 1373 - 印度西部边境
+        1373 = {
+            add_building_construction = {
+                type = bunker
+                province = 12708
+                level = 3
+                instant_build = yes
+            }
+        }
+        # State 437 - 印度中部边境
+        437 = {
+            add_building_construction = {
+                type = bunker
+                province = 3989
+                level = 3
+                instant_build = yes
+            }
+        }
+        # State 789 - 印度南部边境
+        789 = {
+            add_building_construction = {
+                type = bunker
+                province = 4435
+                level = 3
+                instant_build = yes
+            }
+        }
+    }
+}
+shared_focus = {
+    id = PTF_the_final_crusade
+    icon = GFX_focus_PTF_the_final_crusade
+    cost = 1
+    x = 0
+    y = 3
+    relative_position_id = PTF_stranglehold
+    prerequisite = { focus = PTF_stranglehold }
+    prerequisite = { focus = PTF_fortress_of_freedom }
+    prerequisite = { focus = PTF_defeated_but_unbowed }
+    prerequisite = { focus = PTF_project_jupiter }
+    ai_will_do = {
+        factor = 1000
+    }
+    completion_reward = {
+        add_war_support = 0.20
+        add_political_power = 1000
+        if = {
+            limit = { 
+                PRC = {
+                    has_country_flag = RD_no_dont_kill_me_graygoo_flag1
+                }
+            }
+            hidden_effect = {
+                remove_ideas = {
+                    PTF_Fascist_military_revolution_I_idea
+                    PTF_Counter_revolutionary_center_I_idea
+                    PTF_Fascist_military_revolution_II_idea
+                    PTF_Counter_revolutionary_center_II_idea
+                    PTF_Fascist_military_revolution_III_idea
+                    PTF_Counter_revolutionary_center_III_idea
+                    PTF_Anti_communist_fortress_idea
+                    PTF_End_of_communism_idea
+                }
+            }	
+            custom_effect_tooltip = RD_graygoo_will_stop_haunting_me_tt
+        }
+    }
+}

@@ -1,0 +1,1835 @@
+ideas = {
+	hidden_ideas = {
+		MEX_wait_for_me = {
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				org_damage_multiplier = -0.95
+				str_damage_multiplier = -0.95
+				org_loss_at_low_org_factor = -0.15
+				dig_in_speed_factor = 0.5
+				max_dig_in_factor = 0.5
+				army_speed_factor = 0.5
+				terrain_penalty_reduction = 0.75
+			}
+		} 
+		PTF_wait_for_me = {
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_speed_factor = -0.95
+			}
+		} 
+	}
+	country = {
+		#陆军
+		###改革人民解放军军政工作
+		PLA_pla_army_1 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+			}
+		}
+		
+		#建立联合作战指挥部
+		PLA_pla_army_2 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15	#陆军核心攻击
+				army_core_defence_factor = 0.15	#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+			}
+		}
+		#新型陆军向前进
+		PLA_pla_army_3 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15	#陆军核心攻击
+				army_core_defence_factor = 0.15	#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+			}
+		}
+		#炮兵决胜，信火一体
+		PLA_pla_army_4 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15	#陆军核心攻击
+				army_core_defence_factor = 0.15	#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4	#宽度
+					instant = yes
+				}
+			}
+		}
+		#联勤部队体系改革
+		PLA_pla_army_5 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15	#陆军核心攻击
+				army_core_defence_factor = 0.15	#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15	#补给消耗
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4	#宽度
+					instant = yes
+				}
+			}
+		}
+		#横扫千军如卷席
+		PLA_pla_army_6 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15	#陆军核心攻击
+				army_core_defence_factor = 0.15	#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15	#补给消耗
+				command_power_gain = 0.15	#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#导弹部队现代化
+		PLA_pla_army_7 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25	#破译能力
+				crypto_strength = 1	#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15	#陆军核心攻击
+				army_core_defence_factor = 0.15	#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15	#补给消耗
+				command_power_gain = 0.15	#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+				army_armor_attack_factor = 0.15		#装甲攻击
+				army_attack_factor = 0.025		#陆军进攻
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#强化战场支援
+		PLA_pla_army_8 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25		#破译能力
+				crypto_strength = 1		#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15		#陆军核心攻击
+				army_core_defence_factor = 0.15		#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15		#补给消耗
+				command_power_gain = 0.15		#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+				army_armor_attack_factor = 0.15		#装甲攻击
+				army_attack_factor = 0.025		#陆军进攻
+				org_loss_when_moving = -0.25	#移动中组织度损失
+				terrain_penalty_reduction = 0.3		#地形惩罚降低
+				army_fuel_consumption_factor = -0.3		#陆军燃料消耗
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#为了全人类的解放
+		PLA_pla_army_9 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25		#破译能力
+				crypto_strength = 1		#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15		#陆军核心攻击
+				army_core_defence_factor = 0.15		#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.1		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15		#补给消耗
+				command_power_gain = 0.15		#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+				army_armor_attack_factor = 0.15		#装甲攻击
+				army_attack_factor = 0.025		#陆军进攻
+				org_loss_when_moving = -0.25	#移动中组织度损失
+				terrain_penalty_reduction = 0.3		#地形惩罚降低
+				army_fuel_consumption_factor = -0.3		#陆军燃料消耗
+				land_reinforce_rate = 0.075		#增援率
+				army_morale = 0.075		#陆军组织度恢复速率
+				planning_speed = 0.15		#计划速度
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#铸造决胜之剑
+		PLA_pla_army_10 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25		#破译能力
+				crypto_strength = 1		#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15		#陆军核心攻击
+				army_core_defence_factor = 0.15		#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.2		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15		#补给消耗
+				command_power_gain = 0.15		#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+				army_armor_attack_factor = 0.15		#装甲攻击
+				army_attack_factor = 0.05		#陆军进攻
+				org_loss_when_moving = -0.25	#移动中组织度损失
+				terrain_penalty_reduction = 0.3		#地形惩罚降低
+				army_fuel_consumption_factor = -0.3		#陆军燃料消耗
+				land_reinforce_rate = 0.075		#增援率
+				army_morale = 0.075		#陆军组织度恢复速率
+				planning_speed = 0.15		#计划速度
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#三子归边
+		PLA_pla_army_11 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25		#破译能力
+				crypto_strength = 1		#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15		#陆军核心攻击
+				army_core_defence_factor = 0.15		#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.3		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15		#补给消耗
+				command_power_gain = 0.15		#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+				army_armor_attack_factor = 0.15		#装甲攻击
+				army_attack_factor = 0.05		#陆军进攻
+				org_loss_when_moving = -0.25	#移动中组织度损失
+				terrain_penalty_reduction = 0.3		#地形惩罚降低
+				army_fuel_consumption_factor = -0.3		#陆军燃料消耗
+				land_reinforce_rate = 0.075		#增援率
+				army_morale = 0.075		#陆军组织度恢复速率
+				planning_speed = 0.15		#计划速度
+				max_command_power = 50		#最大指挥点数提高
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#铁流两万五千里
+		PLA_pla_army_12 = {
+			name = PLA_plaa
+			picture = PRC_pla
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25		#破译能力
+				crypto_strength = 1		#加密等级
+				intel_network_gain_factor = 0.25	#情报网增长强度
+				army_core_attack_factor = 0.15		#陆军核心攻击
+				army_core_defence_factor = 0.15		#陆军核心防御
+				experience_gain_army_unit_factor = 0.1	#陆军经验增长
+				battalion_upkeep_factor = 0.3		#陆军维护费系数
+				research_speed_factor = 0.1		#研究速度
+				army_speed_factor = 0.15	#陆军师速度
+				attrition = -0.25		#损耗
+				supply_node_range = 0.25	#补给范围
+				supply_consumption_factor = -0.15		#补给消耗
+				command_power_gain = 0.15		#每日指挥点
+				land_doctrine_cost_factor = -0.1	#陆军学说花费
+				experience_gain_army_factor = 0.15	#陆军经验增长
+				army_armor_attack_factor = 0.15		#装甲攻击
+				army_attack_factor = 0.075		#陆军进攻
+				org_loss_when_moving = -0.25	#移动中组织度损失
+				terrain_penalty_reduction = 0.3		#地形惩罚降低
+				army_fuel_consumption_factor = -0.3		#陆军燃料消耗
+				land_reinforce_rate = 0.075		#增援率
+				army_morale = 0.075		#陆军组织度恢复速率
+				planning_speed = 0.15		#计划速度
+				max_command_power = 50		#最大指挥点数提高
+				army_org_factor = 0.05		#陆军组织度
+			}
+			equipment_bonus = {
+				self_propelled_artillery = {
+					soft_attack = 0.25		#软攻
+					hard_attack = 0.25		#硬攻
+					breakthrough = 0.25		#突破
+					combat_width = -0.4		#宽度
+					instant = yes
+				}
+			}
+		}
+		#海军
+		#建立联合作战指挥部
+		PLA_plan_navy_1 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+			}
+		}
+		#建设新锐人民海军
+		PLA_plan_navy_2 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.2		#海军航程系数
+				naval_coordination = 0.2		#舰队协同性
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失		没找到，暂放
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+			}
+		}
+		#重拾电磁武库舰
+		PLA_plan_navy_3 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.2		#海军航程系数
+				naval_coordination = 0.2		#舰队协同性
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+				navy_capital_ship_attack_factor = 0.25		#主力舰攻击
+				navy_capital_ship_defence_factor = 0.25		#主力舰防御
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
+			}
+		}
+		#改革航母战斗群
+		PLA_plan_navy_4 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.2		#海军航程系数
+				naval_coordination = 0.2		#舰队协同性
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+				navy_capital_ship_attack_factor = 0.25		#主力舰攻击
+				navy_capital_ship_defence_factor = 0.25		#主力舰防御
+				sortie_efficiency = 0.2		#舰载机出击效率
+				navy_anti_air_attack_factor = 0.2	#舰船防空	
+				spotting_chance = 0.2		#索敌速度
+				navy_screen_defence_factor = 0.25	#屏卫舰防御
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
+			}
+		}
+		#艟艨巨舰直东指
+		PLA_plan_navy_5 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.2		#海军航程系数
+				naval_coordination = 0.35		#舰队协同性
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+				navy_capital_ship_attack_factor = 0.25		#主力舰攻击
+				navy_capital_ship_defence_factor = 0.25		#主力舰防御
+				sortie_efficiency = 0.4		#舰载机出击效率
+				navy_anti_air_attack_factor = 0.2	#舰船防空	
+				spotting_chance = 0.2		#索敌速度
+				navy_screen_defence_factor = 0.25	#屏卫舰防御
+				navy_org = 0.15		#海军组织度
+				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
+			}
+		}
+		#导弹部队现代化
+		PLA_plan_navy_6 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.2		#海军航程系数
+				naval_coordination = 0.35		#舰队协同性
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+				navy_capital_ship_attack_factor = 0.45		#主力舰攻击
+				navy_capital_ship_defence_factor = 0.25		#主力舰防御
+				sortie_efficiency = 0.4		#舰载机出击效率
+				navy_anti_air_attack_factor = 0.4	#舰船防空	
+				spotting_chance = 0.2		#索敌速度
+				navy_screen_defence_factor = 0.25	#屏卫舰防御
+				navy_org = 0.15		#海军组织度
+				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
+			}
+			# equipment_bonus = {
+			# 	destroyer = {	#小型护卫舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	light_cruiser = {	#护卫舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	heavy_cruiser = {	#驱逐舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	battleship = {	#战列巡洋舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	battle_cruiser = {	#导弹巡洋舰
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		instant = yes
+			# 	}
+			# 	carrier = {		#航母
+			# 		naval_light_gun_hit_chance_factor = 0.05	
+			# 		naval_heavy_gun_hit_chance_factor = 0.1 
+			# 		surface_visibility = -0.1	#可见度
+			# 		max_organisation = 0.2	#组织度
+			# 		max_strength = 0.1		#hp
+			# 		instant = yes
+			# 	}
+			# }
+		}
+		#强化战场支援
+		PLA_plan_navy_7 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.45		#海军航程系数
+				naval_coordination = 0.35		#舰队协同性
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+				navy_capital_ship_attack_factor = 0.45		#主力舰攻击
+				navy_capital_ship_defence_factor = 0.25		#主力舰防御
+				sortie_efficiency = 0.4		#舰载机出击效率
+				navy_anti_air_attack_factor = 0.4	#舰船防空	
+				spotting_chance = 0.2		#索敌速度
+				navy_screen_defence_factor = 0.25	#屏卫舰防御
+				navy_org = 0.15		#海军组织度
+				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
+				repair_speed_factor = 0.3		#船只维修速度
+				navy_fuel_consumption_factor = -0.3		#海军燃料消耗
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
+			}
+		}
+		#铁流两万五千里
+		PLA_plan_navy_8 = {
+			name = PLA_plan
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1		#轻炮命中率
+				naval_heavy_gun_hit_chance_factor = 0.1		#重炮命中率
+				experience_gain_navy_factor = 0.1		#海军经验增长
+				navy_max_range_factor = 0.45		#海军航程系数
+				naval_coordination = 0.35		#舰队协同性
+				industrial_capacity_dockyard = 0.1	#海军船坞生产
+				navy_capital_ship_attack_factor = 0.45		#主力舰攻击
+				navy_capital_ship_defence_factor = 0.25		#主力舰防御
+				sortie_efficiency = 0.5		#舰载机出击效率
+				navy_anti_air_attack_factor = 0.4	#舰船防空	
+				spotting_chance = 0.2		#索敌速度
+				navy_screen_defence_factor = 0.25	#屏卫舰防御
+				navy_org = 0.15		#海军组织度
+				naval_torpedo_reveal_chance_factor = -0.2		#鱼雷暴露几率
+				repair_speed_factor = 0.3		#船只维修速度
+				navy_fuel_consumption_factor = -0.3		#海军燃料消耗
+				strike_force_movement_org_loss = -0.15 #打击舰队组织度损失
+				shore_bombardment_bonus = 0.25	#对岸炮击
+			}
+		}
+
+		#空军
+		#建立联合作战指挥部
+		PLA_plaaf_air_1 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.3 #空军训练经验增长
+			}
+		}
+		#次世代空军
+		PLA_plaaf_air_2 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.10		#空军攻击
+				air_defence_factor = 0.10		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.15		#夺取制空效率
+			}
+		}
+		#空军装备革命性发展
+		PLA_plaaf_air_3 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.35		#空军攻击
+				air_defence_factor = 0.35		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.15		#夺取制空效率
+				air_agility_factor = 0.25		#空军机动
+				air_maximum_speed_factor = 0.2		#空军速度
+			}
+		}
+		#飞机生产流水线
+		PLA_plaaf_air_4 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.35		#空军攻击
+				air_defence_factor = 0.35		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.15		#夺取制空效率
+				air_agility_factor = 0.25		#空军机动
+				air_maximum_speed_factor = 0.2		#空军速度
+			}
+			equipment_bonus = {
+				small_plane_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.125
+					instant = yes
+				}
+			}
+		}
+		#玉宇澄清万里埃
+		PLA_plaaf_air_5 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.35		#空军攻击
+				air_defence_factor = 0.35		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.35		#夺取制空效率
+				air_agility_factor = 0.25		#空军机动
+				air_maximum_speed_factor = 0.2		#空军速度
+				air_mission_efficiency = 0.15		#空军任务效率
+				air_wing_xp_loss_when_killed_factor = -0.25		#联队受损时经验损失
+			}
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.125
+					instant = yes
+				}
+			}
+		}
+		#导弹部队现代化
+		PLA_plaaf_air_6 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.35		#空军攻击
+				air_defence_factor = 0.35		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.35		#夺取制空效率
+				air_agility_factor = 0.25		#空军机动
+				air_maximum_speed_factor = 0.2		#空军速度
+				air_mission_efficiency = 0.15		#空军任务效率
+				air_wing_xp_loss_when_killed_factor = -0.25		#联队受损时经验损失
+				air_strategic_bomber_bombing_factor = 0.15		#战略轰炸
+				production_speed_radar_station_factor = 0.35		#雷达站建造速度
+				production_speed_anti_air_building_factor = 0.125		#防空设施建造速度
+			}
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.125
+					instant = yes
+				}
+			}
+		}
+		#强化战场支援
+		PLA_plaaf_air_7 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.35		#空军攻击
+				air_defence_factor = 0.35		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.35		#夺取制空效率
+				air_agility_factor = 0.25		#空军机动
+				air_maximum_speed_factor = 0.2		#空军速度
+				air_mission_efficiency = 0.15		#空军任务效率
+				air_wing_xp_loss_when_killed_factor = -0.45		#联队受损时经验损失
+				air_strategic_bomber_bombing_factor = 0.15		#战略轰炸
+				production_speed_radar_station_factor = 0.35		#雷达站建造速度
+				production_speed_anti_air_building_factor = 0.125		#防空设施建造速度
+				air_range_factor = 0.25		#空军航程
+				air_fuel_consumption_factor = -0.3		#空军燃料消耗
+			}
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.125
+					instant = yes
+				}
+			}
+		}
+		#铁流两万五千里
+		PLA_plaaf_air_8 = {
+			name = PLA_plaaf
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				air_attack_factor = 0.35		#空军攻击
+				air_defence_factor = 0.35		#空军防御
+				experience_gain_air = 0.1		#空军经验增长
+				air_training_xp_gain_factor = 0.4	 #空军训练经验增长
+				air_superiority_efficiency = 0.35		#夺取制空效率
+				air_agility_factor = 0.25		#空军机动
+				air_maximum_speed_factor = 0.2		#空军速度
+				air_mission_efficiency = 0.15		#空军任务效率
+				air_wing_xp_loss_when_killed_factor = -0.45		#联队受损时经验损失
+				air_strategic_bomber_bombing_factor = 0.15		#战略轰炸
+				production_speed_radar_station_factor = 0.35		#雷达站建造速度
+				production_speed_anti_air_building_factor = 0.125		#防空设施建造速度
+				air_range_factor = 0.25		#空军航程
+				air_fuel_consumption_factor = -0.3		#空军燃料消耗
+				air_ace_generation_chance_factor = 0.15		#王牌飞行员产生几率
+				air_cas_efficiency = 0.1		#密接支援任务效率
+			}
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.125
+					instant = yes
+				}
+			}
+		}
+		
+		PAL_the_better_revolutionary_enthusiasm_idea = {
+			#革命热情
+			picture = PRC_one_heart_idea
+			#图片不予添加
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.15
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				drift_defence_factor = 0.25
+				production_speed_coastal_bunker_factor = 0.15
+			}
+		}
+		PAL_the_International_Brigade_idea = {
+		#国际纵队 战时
+			picture = PRC_vanguard_of_communism_idea
+			#图片不予添加
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				weekly_manpower = 2000
+				industrial_capacity_factory = 0.1
+				army_attack_factor = 0.05
+				breakthrough_factor = 0.05
+				experience_loss_factor = -0.15
+			}
+		}
+		PAL_the_International_Brigade_nowar_idea = {
+		#国际纵队 非战时
+			picture = PRC_vanguard_of_communism_idea
+			#图片不予添加
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				weekly_manpower = -150
+				send_volunteer_size = 8
+				send_volunteers_tension_limit = -1
+			}
+		}
+		#以下为人民解放军军政改革修正
+		PLA_pl_JZGG_1 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+			}
+		}
+		PLA_pl_JZGG_2 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+				conscription_factor = 0.15		#适役人口
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+
+				political_power_gain = 0.25
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				offensive_war_stability_factor = 0.3
+				war_support_factor = 0.1
+				operation_outcome = 0.5
+				military_development_monthly = 0.005
+				
+			}
+		}
+		PLA_pl_JZGG_3 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+				conscription_factor = 0.15		#适役人口
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				max_planning = 0.2		#最大计划上限
+				planning_speed = 0.2		#计划速度
+				supply_consumption_factor = -0.1		#补给消耗
+				out_of_supply_factor = -0.5		#缺乏补给惩罚
+				military_development_monthly = 0.005		#军事发展月度
+			}
+		}
+		PLA_pl_JZGG_4 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+				conscription_factor = 0.15		#适役人口
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				max_planning = 0.2		#最大计划上限
+				planning_speed = 0.2		#计划速度
+				supply_consumption_factor = -0.1		#补给消耗
+				out_of_supply_factor = -0.5		#缺乏补给惩罚
+				military_development_monthly = 0.005		#军事发展月度
+				army_org_factor = 0.1		#陆军组织度
+				army_morale_factor = 0.1		#陆军组织度恢复速率
+				send_volunteer_size = 2		#志愿军上限
+				air_volunteer_cap = 300		#空军志愿军上限
+			}
+		}
+		PLA_pl_JZGG_5 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+				conscription_factor = 0.15		#适役人口
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				max_planning = 0.2		#最大计划上限
+				planning_speed = 0.2		#计划速度
+				supply_consumption_factor = -0.1		#补给消耗
+				out_of_supply_factor = -0.5		#缺乏补给惩罚
+				military_development_monthly = 0.005		#军事发展月度
+				army_org_factor = 0.1		#陆军组织度
+				army_morale_factor = 0.1		#陆军组织度恢复速率
+				send_volunteer_size = 2		#志愿军上限
+				air_volunteer_cap = 300		#空军志愿军上限
+				weekly_manpower = 1500		#每周人力
+				resistance_target = -0.15		#抵抗目标
+				resistance_growth_on_our_occupied_states = -0.2		#抵抗目标增长
+				amphibious_invasion = 0.5		#登陆速度
+				terrain_penalty_reduction = 0.2		#地形惩罚降低
+			}
+		}
+		PLA_pl_JZGG_6 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+				conscription_factor = 0.15		#适役人口
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				max_planning = 0.2		#最大计划上限
+				planning_speed = 0.2		#计划速度
+				supply_consumption_factor = -0.1		#补给消耗
+				out_of_supply_factor = -0.5		#缺乏补给惩罚
+				military_development_monthly = 0.005		#军事发展月度
+				army_org_factor = 0.1		#陆军组织度
+				army_morale_factor = 0.1		#陆军组织度恢复速率
+				send_volunteer_size = 2		#志愿军上限
+				air_volunteer_cap = 300		#空军志愿军上限
+				weekly_manpower = 1500		#每周人力
+				resistance_target = -0.15		#抵抗目标
+				resistance_growth_on_our_occupied_states = -0.2		#抵抗目标增长
+				amphibious_invasion = 0.5		#登陆速度
+				terrain_penalty_reduction = 0.2		#地形惩罚降低
+				navy_intel_factor = 0.25		#海军情报
+				airforce_intel_factor = 0.25		#空军情报
+				army_intel_factor = 0.25		#陆军情报
+				civilian_intel_factor = 0.25		#民政情报
+				decryption_power = 15		#破译能力
+				compliance_growth_on_our_occupied_states = 0.005		#顺从度增长
+			}
+		}
+		PLA_pl_JZGG_7 = {
+			name = PLA_military_and_political_reform_dynamic
+			picture = PRC_awakened_dragon_idea
+			#未添加照片
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+			}
+			modifier = {
+				political_power_gain = 0.15		#每日政治点获取
+				offensive_war_stability_factor = 0.15		#侵略战争对稳定度修正
+				war_support_factor = 0.15		#战争支持度修正
+				conscription_factor = 0.15		#适役人口
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				max_planning = 0.2		#最大计划上限
+				planning_speed = 0.2		#计划速度
+				supply_consumption_factor = -0.1		#补给消耗
+				out_of_supply_factor = -0.5		#缺乏补给惩罚
+				military_development_monthly = 0.015		#军事发展月度
+				army_org_factor = 0.1		#陆军组织度
+				army_morale_factor = 0.1		#陆军组织度恢复速率
+				send_volunteer_size = 5		#志愿军上限
+				air_volunteer_cap = 300		#空军志愿军上限
+				weekly_manpower = 1500		#每周人力
+				resistance_target = -0.15		#抵抗目标
+				resistance_growth_on_our_occupied_states = -0.2		#抵抗目标增长
+				amphibious_invasion = 0.5		#登陆速度
+				terrain_penalty_reduction = 0.2		#地形惩罚降低
+				navy_intel_factor = 0.25		#海军情报
+				airforce_intel_factor = 0.25		#空军情报
+				army_intel_factor = 0.25		#陆军情报
+				civilian_intel_factor = 0.25		#民政情报
+				decryption_power = 15		#破译能力
+				compliance_growth_on_our_occupied_states = 0.005		#顺从度增长
+				army_attack_factor = 0.15		#陆军师攻击
+				society_development_monthly = 0.01		#月社会发展
+			}
+		}
+
+		#中国太空霸权
+		PLA_china_space_hegemony = {
+			picture = PRC_chinese_space_age
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				air_weather_penalty = -0.5
+				air_night_penalty = -0.5
+				air_carrier_night_penalty_reduction_factor = 0.25
+				army_attack_factor = 0.1 #单位攻击
+				army_defence_factor = 0.1 #单位防御
+				army_speed_factor = 0.1
+				max_planning = 0.25
+				coordination = 0.2
+				naval_coordination = 0.2
+				civilian_intel_factor = 1
+				army_intel_factor = 1
+				navy_intel_to_others_factor = 1
+				airforce_intel_factor = 1
+			}
+		}
+
+		PRC_MEX_the_horror_of_decade_0 = {
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_1 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				terrain_penalty_reduction = 0.1
+				cas_damage_reduction = 0.1
+				supply_consumption_factor = -0.1
+				out_of_supply_factor = -0.1
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_2 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				pocket_penalty = -0.1
+				terrain_penalty_reduction = 0.15
+				cas_damage_reduction = 0.15
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_3 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				pocket_penalty = -0.15
+				terrain_penalty_reduction = 0.2
+				cas_damage_reduction = 0.2
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					air_attack = 0.05
+				}
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_4 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				army_strength_factor = 0.1
+				org_loss_when_moving = -0.1
+				org_loss_at_low_org_factor = -0.1
+				pocket_penalty = -0.15
+				terrain_penalty_reduction = 0.2
+				cas_damage_reduction = 0.2
+				supply_consumption_factor = -0.2
+				out_of_supply_factor = -0.2
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					air_attack = 0.1
+				}
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_5 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.1
+				army_morale_factor = 0.1
+				pocket_penalty = -0.1
+				terrain_penalty_reduction = 0.15
+				cas_damage_reduction = 0.15
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					air_attack = 0.15
+				}
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+		}
+		PRC_MEX_the_horror_of_decade_6 = {
+			name = PRC_MEX_the_horror_of_decade_0
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.25
+				army_attack_speed_factor = 0.25
+				army_org_factor = 0.15
+				army_morale_factor = 0.15
+				army_strength_factor = 0.15
+				org_loss_when_moving = -0.15
+				org_loss_at_low_org_factor = -0.15
+				pocket_penalty = -0.35
+				terrain_penalty_reduction = 0.25
+				cas_damage_reduction = 0.25
+				supply_consumption_factor = -0.3
+				out_of_supply_factor = -0.3
+			}
+			equipment_bonus = {
+				anti_air_equipment = {
+					air_attack = 0.2
+				}
+			}
+			cancel = {	
+				OR = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					MEX = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+					ZAP = {
+						OR = {
+							is_subject_of = PTF
+							exists = no
+						}
+					}
+				}
+			}
+			
+		}
+		MEX_the_horror_of_decade_low = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = PTF
+				defense_bonus_against = 0.15
+			}
+		}
+		MEX_the_horror_of_decade_medium = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.25
+				org_loss_when_moving = -0.25
+			}
+			targeted_modifier = {
+				tag = PTF
+				defense_bonus_against = 0.3
+			}
+		}
+		MEX_the_horror_of_decade_high = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.2
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.25
+				org_loss_when_moving = -0.25
+				org_damage_multiplier = -0.5
+				cas_damage_reduction = 0.5
+				air_superiority_bonus_in_combat = 0.25
+			}
+			targeted_modifier = {
+				tag = PTF
+				defense_bonus_against = 0.5
+			}
+		}
+		MEX_the_horror_of_decade_insane = {
+			name = MEX_the_horror_of_decade
+			picture = PRC_supremacy_of_the_great_nation
+			allowed = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.35
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.15
+				army_strength_factor = 0.1
+				breakthrough_factor = 0.1
+				army_speed_factor = 0.25
+				experience_loss_factor = -0.35
+				org_loss_when_moving = -0.5
+				org_damage_multiplier = -0.5
+				cas_damage_reduction = 0.5
+				supply_consumption_factor = -0.15
+				supply_node_range = 0.5
+				air_superiority_bonus_in_combat = 0.25
+			}
+			targeted_modifier = {
+				tag = PTF
+				defense_bonus_against = 0.75
+			}
+		}
+
+		
+	}
+	training_laws = {
+		law = yes
+		use_list_view = yes
+		PRC_party_commands_the_guns_1 = {
+		#改革人民解放军军政工作
+		#修正
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_party_commands_the_guns
+			allowed = {
+				tag = PRC
+			}
+			allowed_to_remove = {
+				always = no 
+			}
+			visible = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PLA_reform_of_military_and_political_work
+					NOT = {
+						has_idea = PRC_party_commands_the_guns
+						has_idea = PRC_party_commands_the_guns_2
+						has_idea = PRC_party_commands_the_guns_3
+						has_idea = PRC_party_commands_the_guns_4
+						has_idea = PRC_party_commands_the_guns_5
+						has_idea = PRC_party_commands_the_guns_6
+					}
+				}
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.03
+				minimum_training_level = 0.05
+				training_time_army_factor = 0.1
+				army_org_factor = 0.1
+				coordination_bonus = 0.075
+				special_forces_cap = 0.15
+				battalion_upkeep_factor = 0.25
+				aircraft_upkeep_factor = 0.25
+				ship_upkeep_factor = 0.25
+				military_development_monthly = 0.01
+				drift_defence_factor = 0.25
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		PRC_party_commands_the_guns_2 = {
+		#重提世界革命
+		#在_1的基础上进行追加
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_party_commands_the_guns
+			allowed = {
+				tag = PRC
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			visible = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PLA_reform_of_military_and_political_work
+					NOT = {
+						has_idea = PRC_party_commands_the_guns
+						has_idea = PRC_party_commands_the_guns_1
+						has_idea = PRC_party_commands_the_guns_3
+						has_idea = PRC_party_commands_the_guns_4
+						has_idea = PRC_party_commands_the_guns_5
+						has_idea = PRC_party_commands_the_guns_6
+					}
+				}
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.03
+				minimum_training_level = 0.05
+				training_time_army_factor = -0.1
+				army_org_factor = 0.1
+				coordination_bonus = 0.075
+				special_forces_cap = 0.15
+				battalion_upkeep_factor = 0.25
+				aircraft_upkeep_factor = 0.25
+				ship_upkeep_factor = 0.25
+				military_development_monthly = 0.01
+				drift_defence_factor = 0.25
+				mobilization_speed = 0.5
+				industry_air_damage_factor = -0.2
+				industry_repair_factor = 0.5
+			}
+			ai_will_do = {
+				base = 1
+			}
+  	    }
+		PRC_party_commands_the_guns_3 = {
+		#不忘红军部队老传统
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_party_commands_the_guns
+			allowed = {
+				tag = PRC
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			visible = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PLA_reform_of_military_and_political_work
+					NOT = {
+						has_idea = PRC_party_commands_the_guns
+						has_idea = PRC_party_commands_the_guns_1
+						has_idea = PRC_party_commands_the_guns_2
+						has_idea = PRC_party_commands_the_guns_4
+						has_idea = PRC_party_commands_the_guns_5
+						has_idea = PRC_party_commands_the_guns_6
+					}
+				}
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.03
+				land_reinforce_rate = 0.05
+				minimum_training_level = 0.05
+				training_time_army_factor = -0.1
+				army_org_factor = 0.15
+				army_morale = 0.1
+				coordination_bonus = 0.075
+				special_forces_cap = 0.15
+				battalion_upkeep_factor = 0.25
+				aircraft_upkeep_factor = 0.25
+				ship_upkeep_factor = 0.25
+				military_development_monthly = 0.01
+				drift_defence_factor = 0.25
+				mobilization_speed = 0.5
+				industry_air_damage_factor = -0.2
+				industry_repair_factor = 0.5
+				air_power_projection_factor = 0.15
+				naval_speed_factor = 0.15
+			}
+			ai_will_do = {
+				base = 1
+			}
+  	    }
+		PRC_party_commands_the_guns_4 = {
+		#军民团结如一心
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_party_commands_the_guns
+			allowed = {
+				tag = PRC
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			visible = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PLA_reform_of_military_and_political_work
+					NOT = {
+						has_idea = PRC_party_commands_the_guns
+						has_idea = PRC_party_commands_the_guns_1
+						has_idea = PRC_party_commands_the_guns_2
+						has_idea = PRC_party_commands_the_guns_3
+						has_idea = PRC_party_commands_the_guns_5
+						has_idea = PRC_party_commands_the_guns_6
+					}
+				}
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.1
+				land_reinforce_rate = 0.05
+				minimum_training_level = -0.05
+				training_time_army_factor = -0.1
+				army_org_factor = 0.15
+				army_morale = 0.1
+				coordination_bonus = 0.075
+				special_forces_cap = 0.15
+				battalion_upkeep_factor = 0.15
+				aircraft_upkeep_factor = 0.15
+				ship_upkeep_factor = 0.15
+				military_development_monthly = 0.01
+				drift_defence_factor = 0.25
+				mobilization_speed = 0.5
+				industry_air_damage_factor = -0.2
+				industry_repair_factor = 0.5
+				air_power_projection_factor = 0.15
+				naval_speed_factor = 0.15
+			}
+			ai_will_do = {
+				base = 1
+			}
+  	    }
+		PRC_party_commands_the_guns_5 = {
+		#为了全人类的解放
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_party_commands_the_guns
+			allowed = {
+				tag = PRC
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			visible = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PLA_reform_of_military_and_political_work
+					NOT ={
+						has_idea = PRC_party_commands_the_guns
+						has_idea = PRC_party_commands_the_guns_1
+						has_idea = PRC_party_commands_the_guns_2
+						has_idea = PRC_party_commands_the_guns_3
+						has_idea = PRC_party_commands_the_guns_4
+						has_idea = PRC_party_commands_the_guns_6
+					}
+				}
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.1		#适役人口
+				land_reinforce_rate = 0.05		#陆军增援率
+				minimum_training_level = -0.15		#最低训练水平
+				training_time_army_factor = -0.3		#陆军训练时间
+				army_org_factor = 0.15		#陆军组织度
+				army_morale = 0.1		#陆军组织度回复速率
+				coordination_bonus = 0.15		#协同性
+				special_forces_cap = 0.15		#特种部队上限
+				battalion_upkeep_factor = 0.15		#陆军维护费用
+				aircraft_upkeep_factor = 0.15		#空军维护费用
+				ship_upkeep_factor = 0.15		#海军维护费用
+				military_development_monthly = 0.015		#军事发展月度
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				mobilization_speed = 0.5		#动员速度
+				industry_air_damage_factor = -0.2		#工厂受轰炸易损性
+				industry_repair_factor = 0.5		#工厂维修速度
+				air_power_projection_factor = 0.15		#跨空域力量投射修正系数
+				naval_speed_factor = 0.15		#海军速度
+				party_popularity_stability_factor = 0.2			#党派受欢迎度稳定性系数
+			}
+			ai_will_do = {
+				base = 1
+			}
+  	    }
+		PRC_party_commands_the_guns_6 = {
+		#起来，全世界受苦的人
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_party_commands_the_guns
+			allowed = {
+				tag = PRC
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			visible = {
+				tag = PRC
+				has_completed_focus = PLA_reform_of_military_and_political_work
+				NOT = {
+					has_idea = PRC_party_commands_the_guns
+					has_idea = PRC_party_commands_the_guns_1
+					has_idea = PRC_party_commands_the_guns_2
+					has_idea = PRC_party_commands_the_guns_3
+					has_idea = PRC_party_commands_the_guns_4
+					has_idea = PRC_party_commands_the_guns_5
+				}
+			}
+			available = {
+			}
+			modifier = {
+				conscription_factor = 0.1		#适役人口
+				land_reinforce_rate = 0.05		#陆军增援率
+				minimum_training_level = -0.15		#最低训练水平
+				training_time_army_factor = -0.3		#陆军训练时间
+				army_org_factor = 0.15		#陆军组织度
+				army_morale = 0.1		#陆军组织度回复速率
+				coordination_bonus = 0.15		#协同性
+				special_forces_cap = 0.15		#特种部队上限
+				battalion_upkeep_factor = 0.15		#陆军维护费用
+				aircraft_upkeep_factor = 0.15		#空军维护费用
+				ship_upkeep_factor = 0.15		#海军维护费用
+				military_development_monthly = 0.015		#军事发展月度
+				drift_defence_factor = 0.25		#意识形态抵抗力度
+				mobilization_speed = 0.5		#动员速度
+				industry_air_damage_factor = -0.2		#工厂受轰炸易损性
+				industry_repair_factor = 0.5		#工厂维修速度
+				air_power_projection_factor = 0.15		#跨空域力量投射修正系数
+				naval_speed_factor = 0.15		#海军速度
+				party_popularity_stability_factor = 0.2			#党派受欢迎度稳定性系数
+				army_defence_factor = 0.15			#陆军防御
+				army_core_defence_factor = 0.2			#陆军核心领土防御
+				max_dig_in = 2			#堑壕上限
+				dig_in_speed = 0.15			#堑壕速度
+			}
+			ai_will_do = {
+				base = 1
+			}
+  	    }
+    }
+}

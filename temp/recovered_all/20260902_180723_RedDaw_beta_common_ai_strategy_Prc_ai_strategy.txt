@@ -1,0 +1,229 @@
+Usa_attack_Prc_plan = {
+	allowed = { #---指定战略对日美中印AI生效
+		or = {
+			original_tag = JAP
+			original_tag = PTF
+			original_tag = RAJ
+		}
+	}
+
+	enable = { #---何时生效？与中美处于战争状态
+		has_completed_focus = Moving_towards_victory
+	}
+
+	abort_when_not_enabled = yes #--当enalb条件不生效时候即取消这条AI行为
+
+	ai_strategy = {
+		type = invasion_unit_request
+		area = china_vs_usa   #--这里意思就是海军入侵上面我所提到的轴心国核心区域，即德意所在的地块，这样英美AI就会分兵海军入侵这些区域
+		value = 350
+	}
+
+	ai_strategy = {
+		type = front_control
+		area = china_vs_usa  #--这里同样意思就是在刚才我在上面定义的轴心国核心区域，让英美AI在此处画进宫线，而且无脑进攻
+		ratio = 0.5
+		ordertype = front
+		execution_type = rush #--rush就是AI执行激进计划 balanced就是平衡计划 careful 就是小心计划，就是玩家划线平推的时候那个将领界面执行的三个方式
+		execute_order = yes #---这里就是无脑进攻的意思，yes就是无脑进攻，no就是打死也不在这个区域进攻
+	} 
+
+	ai_strategy = {
+		type = front_unit_request
+		tag = PRC
+		tag = CAM
+		tag = VIN
+		tag = LAO
+		tag = PAK
+		tag = PRK
+		area = china_vs_usa
+		value = 500
+	}
+
+	ai_strategy = {
+	    type = force_concentration_front_factor
+		tag = PRC
+		area = china_vs_usa
+	    value = 450
+	}
+}
+
+Prc_attack_Prc_plan = {
+	allowed = { #---指定战略对日美中印AI生效
+		original_tag = PRC
+	}
+
+	enable = { #---何时生效？与中美处于战争状态
+		has_completed_focus = Moving_towards_victory
+	}
+
+	abort_when_not_enabled = yes #--当enalb条件不生效时候即取消这条AI行为
+
+	ai_strategy = {
+		type = invasion_unit_request
+		area = usa_vs_china   #--这里意思就是海军入侵上面我所提到的轴心国核心区域，即德意所在的地块，这样英美AI就会分兵海军入侵这些区域
+		value = 350
+	}
+
+	ai_strategy = {
+		type = front_control
+		area = usa_vs_china  #--这里同样意思就是在刚才我在上面定义的轴心国核心区域，让英美AI在此处画进宫线，而且无脑进攻
+		ratio = 0.5
+		ordertype = front
+		execution_type = rush #--rush就是AI执行激进计划 balanced就是平衡计划 careful 就是小心计划，就是玩家划线平推的时候那个将领界面执行的三个方式
+		execute_order = yes #---这里就是无脑进攻的意思，yes就是无脑进攻，no就是打死也不在这个区域进攻
+	} 
+	
+	ai_strategy = {
+		type = front_unit_request
+		tag = PTF
+		tag = JAP
+		area = usa_vs_china
+		value = 500
+	}
+
+	ai_strategy = {
+	    type = force_concentration_front_factor
+		tag = PRC
+		area = usa_vs_china
+	    value = 450
+	}
+}
+
+PAK_help_your_teammates = {
+	allowed = {
+		original_tag = PAK
+	}
+
+	enable = {
+		PRC = {
+			has_war_with = CHI
+		}
+	}
+
+	abort = {
+		OR = {
+			has_country_flag = PAK_won_indo_pakistan_war
+			has_country_flag = PAK_lost_indo_pakistan_war
+		}
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = supply_node
+		value = 100
+	}
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		value = 100
+	}
+
+	ai_strategy = {
+		type = min_wanted_supply_trucks
+		value = 500
+	}
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = advanced_infantry_weapons2
+		value = 100
+	}
+}
+
+South_america_help_your_teammates = {
+	allowed = {
+		OR = {
+			original_tag = ELN
+			original_tag = VEN
+			original_tag = NIC
+			original_tag = BRA
+			original_tag = ARG
+			original_tag = ECU
+			original_tag = BOL
+		}
+	}
+	enable = {
+		OR = {
+			has_government = totalitarian_socialist
+			has_government = communist
+			has_government = libertarian_socialist
+			has_government = social_democrat
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = support
+		id = MEX
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = ZAP
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = CAN
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = PRC
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = PAK
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = PRK
+		value = 100
+	}
+}
+
+North_america_help_your_teammates = {
+	allowed = {
+		OR = {
+			original_tag = MEX
+			original_tag = ZAP
+			original_tag = CEN
+			original_tag = BRA
+			original_tag = ARG
+			original_tag = ECU
+			original_tag = BOL
+		}
+	}
+	enable = {
+		OR = {
+			has_government = totalitarian_socialist
+			has_government = communist
+			has_government = libertarian_socialist
+			has_government = social_democrat
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = support
+		id = CAN
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = PRC
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = PAK
+		value = 100
+	}
+	ai_strategy = {
+		type = support
+		id = PRK
+		value = 100
+	}
+}

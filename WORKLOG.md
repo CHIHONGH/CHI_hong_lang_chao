@@ -1,14 +1,8 @@
-| 2026-09-03 | **merge --abort 事故恢复(提交 b33142b)**:用户回退要求被误用 git merge --abort 整锅端,丢 09-01~09-03 手工工作;从 VSCode 本地历史恢复 94 文件快照(与 History 原始快照字节级校验一致),写回 66 个有差异文件(排除最后编辑 4 文件:TFR_organizations_PRC.txt/PRC_eventpictures.gfx/RD_PRC_mio.gfx/RD_PTF_ideas.gfx 未写回;taiwan_war/PLA_nl_tech/空壳 PTF loc 为 test-branch 原版内容亦未写回);备份备份合并在 Backup_merge_0903/;PR51 合并已取消,冲突清单在 temp/merge_conflicts_list.txt | 66 文件(+53244/-39741) | 完成 |
-| 2026-08-20 | 同步 space force(提交 298effe,子项目 2b941ce):幽灵屏障获知事件 101 三处修复——防覆盖 limit 移入 PTF 域(原 PRC 域检查恒真,南海削弱被重置吞掉)/add_dynamic_modifier 与初始化分离 has_dynamic_modifier 防重挂(原同块 count>0 时修正永不挂载)/初始化数值改调 PTF_elec_set_stage 置 count=0 档(vis -0.85/pos -0.25 与档位表一致) | 1 文件(+17/-12) | 完成 |
-| 2026-08-20 | 同步 space force(提交 9f97897):幽灵屏障电子战系统定稿(10档变量动态精神+假精神11档1:1,档9/10 else_if 修复,获知事件101防覆盖);MIO 图标26个+PTF 画像5变体+各类装备模块图标与 gfx 注册;工作区改动:PTF 游戏规则改名/startup 删事件/难度事件去 triggered_only | 110 文件(+24689/-17338) | 完成 |
-| 2026-08-20 | 同步中俄谈判(提交 a48a1dd):on_capitulation 投降倒戈(has_war_with 判定、CSTO+UZB+TMS 完全投降即傀儡)、双侧白和 every_enemy_country、debug 启动不可见修复(communist 意识形态)、冲突线 AI 化+reset 清镜像、清理过时调试决议 | 8 文件(+57/-24) | 完成 |
-| 2026-08-20 | 同步 space force(提交 cd95e50):忠诚僚机控制模块任务加成微调、debug决议补漏low_observability_kit(16项)、坦克模块数值微调、补3漏网模块解锁科技(ship_unmanned_helicopter/tank_advanced_electric_engine/tank_high_velocity_cannon_4,debug补3项现15项) | 4 文件(+59/-11) | 完成 |
-| 2026-08-20 | 同步 space force(提交 8ccc572):5装备模块解锁科技+debug决议一键获取(遥控武器站/反无人机激光/GL7主动防护/舰载激光/低可探测套件)、坦克模块库遥控武器站分类与数值调整、057国策激光配置、飞机模块忠诚僚机/综合电子战、GUI删3个set_temp_variable、装备图标更换(删YJ-18/83、玄武装甲图标移入NVX_naval_icons)、tremendous_power加carrier max_organisation=20;删残留5;用户手工改动:事件ZTZ-100换装+新增ZTZ-100A变体 | 18 文件(+570/-60) | 完成 |
-| 2026-08-20 | 同步 space force(提交 5d9ea65):核引擎模块改名闭环(heavy_ship_nuclear_engine)、EHIHS装甲/电磁炮科技+2新模块、超重直升机idea、新建00_tank_modules.txt坦克模块库、ship_anti_air_4父级修正、三军动态修正按MD同步(删11弃用绑定+22新绑定)、假精神22 dummy增删改、军改国策18项同步MD | 11 文件(+2149/-145,新1) | 完成 |
 # WORKLOG：RedDaw_beta（整合版，原 CHI_hong_lang_chao）
 
 > 会话交接日志：会话结束前更新，新会话开始前先读。
 > 铁律：唯一上传远程的库（GitHub CHIHONGH 名下，分支 RedDaw_beta）；不得触碰 CHI_HONGzhengshiban 分支。
+> **合并纪律（2026-09-03 用户铁律）**：合并处理期间严禁任何清空暂存区/重建索引的操作（git merge --abort、reset --hard、重新 fetch+merge 重拉）。冲突解决只能单向流动：改文件 → git add → git commit；每步等用户确认。暂存区内容 = 用户手改成果，不可重来。
 
 ## 项目定位
 
@@ -18,6 +12,13 @@
 
 | 日期 | 会话任务 | 改动文件 | 状态 |
 |---|---|---|---|
+| 2026-09-03 | **merge --abort 事故恢复(提交 b33142b)**:用户回退要求被误用 git merge --abort 整锅端,丢 09-01~09-03 手工工作;从 VSCode 本地历史恢复 94 文件快照(与 History 原始快照字节级校验一致),写回 66 个有差异文件(排除最后编辑 4 文件:TFR_organizations_PRC.txt/PRC_eventpictures.gfx/RD_PRC_mio.gfx/RD_PTF_ideas.gfx 未写回;taiwan_war/PLA_nl_tech/空壳 PTF loc 为 test-branch 原版内容亦未写回);合并态备份在 Backup_merge_0903/;此后**重新拉取合并(203 冲突)**,冲突归属已用 VSCode 历史分类(A 你改过 70/B 没碰过 60/C 两边改 73),清单在 temp/merge_conflicts_categorized.txt,等待用户拍板 | 66 文件(+53244/-39741) | 完成 |
+| 2026-08-20 | 同步 space force(提交 298effe,子项目 2b941ce):幽灵屏障获知事件 101 三处修复——防覆盖 limit 移入 PTF 域(原 PRC 域检查恒真,南海削弱被重置吞掉)/add_dynamic_modifier 与初始化分离 has_dynamic_modifier 防重挂(原同块 count>0 时修正永不挂载)/初始化数值改调 PTF_elec_set_stage 置 count=0 档(vis -0.85/pos -0.25 与档位表一致) | 1 文件(+17/-12) | 完成 |
+| 2026-08-20 | 同步 space force(提交 9f97897):幽灵屏障电子战系统定稿(10档变量动态精神+假精神11档1:1,档9/10 else_if 修复,获知事件101防覆盖);MIO 图标26个+PTF 画像5变体+各类装备模块图标与 gfx 注册;工作区改动:PTF 游戏规则改名/startup 删事件/难度事件去 triggered_only | 110 文件(+24689/-17338) | 完成 |
+| 2026-08-20 | 同步中俄谈判(提交 a48a1dd):on_capitulation 投降倒戈(has_war_with 判定、CSTO+UZB+TMS 完全投降即傀儡)、双侧白和 every_enemy_country、debug 启动不可见修复(communist 意识形态)、冲突线 AI 化+reset 清镜像、清理过时调试决议 | 8 文件(+57/-24) | 完成 |
+| 2026-08-20 | 同步 space force(提交 cd95e50):忠诚僚机控制模块任务加成微调、debug决议补漏low_observability_kit(16项)、坦克模块数值微调、补3漏网模块解锁科技(ship_unmanned_helicopter/tank_advanced_electric_engine/tank_high_velocity_cannon_4,debug补3项现15项) | 4 文件(+59/-11) | 完成 |
+| 2026-08-20 | 同步 space force(提交 8ccc572):5装备模块解锁科技+debug决议一键获取(遥控武器站/反无人机激光/GL7主动防护/舰载激光/低可探测套件)、坦克模块库遥控武器站分类与数值调整、057国策激光配置、飞机模块忠诚僚机/综合电子战、GUI删3个set_temp_variable、装备图标更换(删YJ-18/83、玄武装甲图标移入NVX_naval_icons)、tremendous_power加carrier max_organisation=20;删残留5;用户手工改动:事件ZTZ-100换装+新增ZTZ-100A变体 | 18 文件(+570/-60) | 完成 |
+| 2026-08-20 | 同步 space force(提交 5d9ea65):核引擎模块改名闭环(heavy_ship_nuclear_engine)、EHIHS装甲/电磁炮科技+2新模块、超重直升机idea、新建00_tank_modules.txt坦克模块库、ship_anti_air_4父级修正、三军动态修正按MD同步(删11弃用绑定+22新绑定)、假精神22 dummy增删改、军改国策18项同步MD | 11 文件(+2149/-145,新1) | 完成 |
 | 2026-08-17 | 增量同步中俄谈判新提交（冲突修正图标去原版化：TFR_CRN_prc_buff/sov_debuff 自建图标 2 PNG + TFR_CRN_modifiers.gfx 注册 + dynamic_modifiers 改用自有 GFX、战斗修正本地化统一为"边境冲突"，提交 6be56ae）；当日发现并回滚另一会话误提交的本地化 key 小写化改动（36549b3，yml 改小写但代码引用仍大写，大小写不匹配会导致游戏内显示原始 key） | TFR_CRN_conflict_modifiers.txt、TFR_CRN_modifiers.gfx（新）、TFR_CRN_prc_buff/sov_debuff.png（新）、TFR_CRN_l_simp_chinese.yml；另回滚 4 个 yml | 完成 |
 | 2026-08-18 | 同步中俄谈判 3 新提交（提交 e0631a6）：冲突修正命名去黑话（frontline_initiative/enemy_exhaustion）、清理调试决议+删孤儿 key、冲突线 AI 化（PRC 自主推进）、修复 debug 谈判不可见（红系判定 communist+5 处脚本本地化改名+categories visible 放开） | 6 文件 | 完成 |
 | 2026-08-18 | 同步 space force（提交 ea73db2）：space force 工作区未提交改动一并带入——科技改名（PRC_nuclear_ship_engine→nuclear_ship_engine / PRC_xuanwu_armor→molin_armor，旧名无残留）、PTF 天命 idea 与 build_cost 调整、AI 策略（is_ai=yes / AI 模板加 PRC / TFR_ai_strategy_PRC 等 8 个新增文件与 beta 原有一致无需另带）、经济法律 ideas 对齐 | 15 文件 | 完成 |
@@ -41,3 +42,4 @@
 - 文件夹改名 `CHI_hong_lang_chao` → `RedDaw_beta` 曾被占用中断，待用户确认无进程占用后完成
 - 太空军师模板创建已从「三子归边」国策移除（随 space force 重构），后续接入方式待定
 - 本地领先远程若干提交，推送前需更新 remote（仓库改名后）
+- **PR51(test-branch→RedDaw_beta)合并进行中(203 冲突)**：归属分类 A 你改过 70 / B 没碰过 60 / C 两边改 73，清单在 `temp/merge_conflicts_categorized.txt`；处理期间严格遵守上方合并纪律，只单向流动

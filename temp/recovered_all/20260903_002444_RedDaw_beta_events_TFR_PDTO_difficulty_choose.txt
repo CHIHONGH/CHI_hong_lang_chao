@@ -1,0 +1,157 @@
+add_namespace = red_dawn_guide
+
+# ==================== 引导页1：游玩须知 ====================
+country_event = {
+	id = red_dawn_guide.1
+	title = red_dawn_guide.1.t
+	desc = red_dawn_guide.1.d
+	is_triggered_only = yes
+
+	trigger = {
+		tag = PRC
+	}
+
+	option = {
+		name = red_dawn_guide.1.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.2 }
+	}
+	option = {
+		name = red_dawn_guide.1.b
+		ai_chance = { base = 0 }
+	}
+}
+
+# ==================== 引导页2：剧本 ====================
+country_event = {
+	id = red_dawn_guide.2
+	title = red_dawn_guide.2.t
+	desc = red_dawn_guide.2.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.2.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.3 }
+	}
+	option = {
+		name = red_dawn_guide.2.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.1 }
+	}
+}
+
+# ==================== 引导页3：陆军 ====================
+country_event = {
+	id = red_dawn_guide.3
+	title = red_dawn_guide.3.t
+	desc = red_dawn_guide.3.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.3.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.4 }
+	}
+	option = {
+		name = red_dawn_guide.3.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.2 }
+	}
+}
+
+# ==================== 引导页4：空军与太空军 ====================
+country_event = {
+	id = red_dawn_guide.4
+	title = red_dawn_guide.4.t
+	desc = red_dawn_guide.4.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.4.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.5 }
+	}
+	option = {
+		name = red_dawn_guide.4.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.3 }
+	}
+}
+
+# ==================== 引导页5：海军 ====================
+country_event = {
+	id = red_dawn_guide.5
+	title = red_dawn_guide.5.t
+	desc = red_dawn_guide.5.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.5.a
+		ai_chance = { base = 10 }
+	}
+	option = {
+		name = red_dawn_guide.5.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.4 }
+	}
+}
+
+# ==================== PTF 难度激活（难度选择已移至游戏规则，本事件由规则侧接线触发） ====================
+country_event = {
+	id = red_dawn_guide.7
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = PTF
+	}
+
+	immediate = {
+		if = {
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
+			add_ideas = {
+				PTF_Fascist_military_revolution_I_idea
+				PTF_Counter_revolutionary_center_I_idea
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode } }
+			add_ideas = {
+				PTF_Fascist_military_revolution_II_idea
+				PTF_Counter_revolutionary_center_II_idea
+				PTF_Anti_communist_fortress_idea
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode } }
+			add_ideas = {
+				PTF_Fascist_military_revolution_III_idea
+				PTF_Counter_revolutionary_center_III_idea
+				PTF_Anti_communist_fortress_idea
+			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode } }
+			add_ideas = {
+				PTF_Fascist_military_revolution_III_idea
+				PTF_Counter_revolutionary_center_III_idea
+				PTF_Anti_communist_fortress_idea
+				PTF_End_of_communism_idea
+			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
+		}
+		set_technology = { tide_of_iron = 1 }
+	}
+}
