@@ -1,152 +1,331 @@
-focus_tree = {
-	id = dummy_2
-	country = {
-		factor = 0
-	}
-	default = no
-	focus = {
+	shared_focus = {
 		id = PRC_nl_road_to_revolution
-		x = 4
-		y = 0
-		cost = 0
+		x = 54
+		y = 1
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_road_to_revolution_focus
+		allow_branch = {
+			has_country_flag = Prc_NewLeft_focus_key
+		}
+		available = {
+			has_country_flag = PRC_for_policy_tree_available
+        	has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
+		completion_reward = {
+			add_political_power = 100
+			custom_effect_tooltip = PRC_revolutionary_tt
+			unlock_decision_category_tooltip = PRC_export_revolution
+       		set_country_flag = PRC_world_revolution
+			create_faction = WLI
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+				if = {
+					limit = {
+						VIN = {
+							has_country_flag = eadi_member
+							has_country_leader = {
+								character = VIN_vo_van_thuong_char
+								ruling_only = yes
+							}
+						}
+					}
+					add_to_faction = VIN
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						VIN = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						VIN = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						VIN = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
+					VIN = {
+						load_focus_tree = WLI_tree
+					}
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = PRC_WLI_modifiers
+			}
+			# add_ideas = {
+			# 	PRC_WLI_idea
+			# }
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_global_revolution
 		x = -3
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_global_revolution_focus
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		relative_position_id = PRC_nl_road_to_revolution
+		completion_reward = {
+			add_political_power = 100
+			custom_effect_tooltip = PRC_revolutionary_tt
+			unlock_decision_category_tooltip = PRC_export_revolution
+			add_ideas = PRC_birthplace_of_the_revolution_idea
+			unlock_decision_tooltip = PRC_armed_neutral
+			unlock_decision_tooltip = PRC_choose_a_side
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_hearts_of_bravery
 		x = -1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_hearts_of_bravery_focus
 		prerequisite = {
 			focus = PRC_nl_global_revolution
 		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		relative_position_id = PRC_nl_global_revolution
+		completion_reward = {
+			unlock_decision_tooltip = EFF_political_support
+			unlock_decision_tooltip = EFF_economic_support
+			unlock_decision_tooltip = EFF_military_support
+			unlock_decision_tooltip = RCG_political_support
+			unlock_decision_tooltip = RCG_economic_support
+			unlock_decision_tooltip = RCG_military_support
+			unlock_decision_tooltip = EFF_assist_revolution
+			unlock_decision_tooltip = South_American_assist_revolution
+
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_storm_across_west_asia
 		x = 1
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_storm_across_west_asia_focus
 		prerequisite = {
 			focus = PRC_nl_hearts_of_bravery
 		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		relative_position_id = PRC_nl_hearts_of_bravery
+		completion_reward = {
+			unlock_decision_tooltip = PRC_AFG_commies
+			unlock_decision_tooltip = PRC_iran_status_quo
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_WLI_collective_action
-		x = 2
-		y = 4
-		cost = 0
+		x = 1
+		y = 1
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_WLI_collective_action_focus
+		relative_position_id = PRC_nl_storm_across_west_asia
 		prerequisite = {
 			focus = PRC_nl_storm_across_west_asia
 		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
+		completion_reward = {
+			set_country_flag = PRC_Unified_Military_Command_for_Southeast_Asia
+			custom_effect_tooltip = PRC_Unified_Military_Command_for_Southeast_Asia
+			unlock_decision_tooltip = Establish_a_unified_command_system
+			unlock_decision_tooltip = Military_Exercises
+			
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_flame_of_asia
 		x = 3
 		y = 1
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_flame_of_asia_focus
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		relative_position_id = PRC_nl_road_to_revolution
+		completion_reward = {
+			country_event = {
+				id = prcs.3168
+				hours = 12
+			}
+			unlock_decision_tooltip = PRC_sanction_japan
+			unlock_decision_tooltip = PRC_sanction_korea
+			unlock_decision_tooltip = PRC_sanction_india
+			unlock_decision_tooltip = PRC_sanction_australia
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_spring_of_korea
-		x = 8
-		y = 2
-		cost = 0
+		x = 1
+		y = 1
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
+		relative_position_id = PRC_nl_flame_of_asia
 		icon = GFX_focus_PRC_nl_spring_of_korea_focus
+		available = {
+			has_country_flag = PRK_disaster_flag
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_flame_of_asia
 		}
+		completion_reward = {
+			activate_mission = PRC_radiated_sun
+			unlock_decision_tooltip = PRK_find_the_gap
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_restore_JAP_commies
-		x = 7
-		y = 3
-		cost = 0
+		x = -1
+		y = 1
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
+		relative_position_id = PRC_nl_spring_of_korea
 		icon = GFX_focus_PRC_nl_restore_JAP_commies_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_spring_of_korea
 		}
+		completion_reward = {
+			JAP = {
+				add_stability = -0.20
+				custom_effect_tooltip = Japanese_Red_Army_infighting
+			}
+			country_event = {
+				id = prcs.3160
+				days = 16
+			}
+			set_country_flag = form_jap_red_army
+			unlock_decision_tooltip = PRC_JAP_red_army
+			unlock_decision_tooltip = PRC_JAP_arms
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_WLI_command_line
-		x = 6
-		y = 4
-		cost = 0
+		x = -1
+		y = 1
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
+		relative_position_id = PRC_nl_restore_JAP_commies
 		icon = GFX_focus_PRC_nl_WLI_command_line_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_restore_JAP_commies
 		}
+		completion_reward = {
+			effect_tooltip = {
+				unlock_national_focus = WLI_joint_command_center
+			}
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_into_south_america
 		x = -1
 		y = 2
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_into_south_america_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
 		relative_position_id = PRC_nl_road_to_revolution
+		completion_reward = {
+			unlock_decision_tooltip = PRU_military_support
+			unlock_decision_tooltip = VEN_military_support
+			unlock_decision_tooltip = ELN_military_support
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_red_south_asia
 		x = 1
 		y = 2
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_red_south_asia_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_road_to_revolution
 		}
 		relative_position_id = PRC_nl_road_to_revolution
+		completion_reward = {
+			unlock_decision_tooltip = PRC_invite_SriLanka
+			unlock_decision_tooltip = PRC_Promote_Laheer
+			unlock_decision_tooltip = PRC_PAK_People_Front
+			unlock_decision_tooltip = PRC_bangladesh_revolution
+			unlock_decision_tooltip = PRC_red_bhutan
+			unlock_decision_tooltip = PRC_red_nepal
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_flame_in_pacific
 		x = 0
 		y = 3
-		cost = 0
+		cost = 5
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		icon = GFX_focus_PRC_nl_flame_in_pacific_focus
+		available = {
+			has_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
+		}
 		prerequisite = {
 			focus = PRC_nl_into_south_america
 		}
@@ -154,14 +333,26 @@ focus_tree = {
 			focus = PRC_nl_red_south_asia
 		}
 		relative_position_id = PRC_nl_road_to_revolution
+		completion_reward = {
+			unlock_decision_tooltip = PRC_PHIred_rebellion
+			unlock_decision_tooltip = PRC_fire_Kuala_Lumpur
+			unlock_decision_tooltip = PRC_equator_awaken
+			unlock_decision_tooltip = PRC_contact_mynamar_comrades
+			unlock_decision_tooltip = PRC_laos_seize_power
+			unlock_decision_tooltip = PRC_contact_THA_guerria
+			unlock_decision_tooltip = PRC_khmer_rouge
+		}
 	}
-	focus = {
+	shared_focus = {
 		id = PRC_nl_toward_victory
 		x = 0
 		y = 2
-		cost = 0
+		cost = 10
 		cancel_if_invalid = yes
 		continue_if_invalid = no
+		will_lead_to_war_with = PTF
+		will_lead_to_war_with = JAP
+		will_lead_to_war_with = RAJ
 		icon = GFX_focus_PRC_nl_toward_victory_focus
 		prerequisite = {
 			focus = PRC_nl_WLI_collective_action
@@ -173,5 +364,100 @@ focus_tree = {
 			focus = PRC_nl_WLI_command_line
 		}
 		relative_position_id = PRC_nl_flame_in_pacific
+		
+		select_effect = {
+			PTF = {
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = PRC
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = consider_weak
+					id = PRC
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = conquer
+					id = PRC
+					value = 1000
+				}
+			}
+			PRK = {
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = KOR
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = consider_weak
+					id = KOR
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = conquer
+					id = KOR
+					value = 1000
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = PRC_korean_war_picture_tt
+			custom_effect_tooltip = tooltip_white_line
+			hidden_effect = {
+				news_event = {
+					id = prcs.3166 
+					days = 13
+				}
+				country_event = {
+					id = china.1722
+					days = 1
+				}
+				country_event = {
+					id = china.1723
+					days = 3
+				}
+				country_event = {
+					id = china.1724
+					days = 4
+				}
+				country_event = {
+					id = china.1725
+					days = 7
+				}
+				country_event = {
+					id = china.1726
+					days = 9
+				}
+				# country_event = {
+				# 	id = china.1727
+				# 	days = 7
+				# }
+				# country_event = {
+				# 	id = china.1728
+				# 	days = 7
+				# }
+				country_event = {
+					id = china.1729
+					days = 11
+				}
+			}
+			PRK = {
+				country_event = nk.14
+			}
+			effect_tooltip = {
+				PRK = {
+					add_war_support = 0.15
+					add_timed_idea = {
+						idea = PRK_surprise_offensive
+						days = 50
+					}
+				}
+			}
+			custom_effect_tooltip = PRC_rd_this_the_gaw
+			hidden_effect = {
+				set_global_flag = GAW_soon
+			}
+		}
+
 	}
-}

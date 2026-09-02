@@ -1,6 +1,103 @@
 # 外交决议
 PRC_export_revolution = {
     #输出革命
+    PRC_choose_a_side = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            NOT = {
+                has_country_flag = PRC_armed_neutral_flag
+                has_country_flag = PRC_choose_a_side_flag
+            }
+            has_country_flag = CHN_Display_Europe
+            has_completed_focus = PRC_nl_global_revolution
+        }
+        available = {
+            OR = {
+                GER = {
+                    OR = {
+                        has_government = totalitarian_socialist
+                        has_government = communist
+                        has_government = libertarian_socialist
+                        has_government = social_democrat
+                    }
+                }
+                FRA = {
+                    OR = {
+                        has_government = totalitarian_socialist
+                        has_government = communist
+                        has_government = libertarian_socialist
+                        has_government = social_democrat
+                    }
+                }
+                SOV = {
+                    OR = {
+                        has_government = totalitarian_socialist
+                        has_government = communist
+                        has_government = libertarian_socialist
+                        has_government = social_democrat
+                    }
+                }
+            }
+        }
+        cost = 50
+        days_remove = 15
+        complete_effect = {
+            set_country_flag = PRC_choose_a_side_flag
+        }
+        remove_effect = {
+            every_country = {
+                limit = {
+                    OR = {
+                        tag = SOV
+                        tag = FRA
+                        tag = GER
+                    }
+                    OR = {
+                        has_government = totalitarian_socialist
+                        has_government = communist
+                        has_government = libertarian_socialist
+                        has_government = social_democrat
+                    }
+                }
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+                add_ideas = PRC_china_trade
+            }
+            add_ideas = PRC_china_trade
+        }
+    }
+    PRC_armed_neutral = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            NOT = {
+                has_country_flag = PRC_choose_a_side_flag
+                has_country_flag = PRC_armed_neutral_flag
+            }
+            has_country_flag = CHN_Display_Europe
+            has_completed_focus = PRC_nl_global_revolution
+        }
+        cost = 50
+        days_remove = 15
+        complete_effect = {
+            set_country_flag = {
+                flag = PRC_armed_neutral_flag
+                days = 750
+                value = 1
+            }
+        }
+        remove_effect = {
+            add_offsite_building = {
+                type = industrial_complex
+                level = 3
+            }
+        }
+    }
     PRC_rebuilding_lraq = {
         icon = GFX_PRC_new_left_decision
         visible = {
@@ -55,7 +152,7 @@ PRC_export_revolution = {
     PRC_contact_mynamar_comrades = {
         icon = GFX_PRC_new_left_decision
         visible = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Mynamar_selected
         }
         fire_only_once = yes
@@ -68,7 +165,7 @@ PRC_export_revolution = {
     PRC_myanmar_commies_reunite = {
         icon = GFX_PRC_new_left_decision
         visible = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Mynamar_selected
             has_country_flag = Mynamar_contacted
         }
@@ -92,7 +189,7 @@ PRC_export_revolution = {
     PRC_united_front_MYA = {
         icon = GFX_PRC_new_left_decision
         visible = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Mynamar_selected
             has_country_flag = Mynamar_contacted
         }
@@ -119,11 +216,11 @@ PRC_export_revolution = {
     PRC_end_the_junta = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Mynamar_contacted
         }
         visible = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Mynamar_selected
             has_country_flag = MYA_commies_reunited
         }
@@ -178,6 +275,39 @@ PRC_export_revolution = {
             # 	add_to_faction = MND
             # }
             add_to_faction = MND
+            if = {
+                limit = { 
+                    has_dynamic_modifier = WLI_collective_army_modifier
+                }
+                MND = {
+                    add_dynamic_modifier = {
+                        modifier = WLI_collective_army_modifier
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                }
+                MND = {
+                    add_dynamic_modifier = {
+                        modifier = WLI_economic_cooperation_modifier
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = PRC_WLI_modifiers
+                }
+                MND = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_WLI_modifiers
+                    }
+                }
+            }
+            MND = {
+                load_focus_tree = WLI_tree
+            }
             hidden_effect = {
                 BRM = {
                     leave_faction = yes
@@ -271,11 +401,11 @@ PRC_export_revolution = {
     PRC_contact_THA_guerria = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
             has_country_flag = Thailand_selected
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         fire_only_once = yes
         cost = 25
@@ -319,11 +449,11 @@ PRC_export_revolution = {
     PRC_reform_THA_communists = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
             has_country_flag = Thailand_selected
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = THA_guerriaed
         }
         fire_only_once = yes
@@ -344,10 +474,10 @@ PRC_export_revolution = {
     PRC_thailand_communist = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Sparks_on_the_MekongRiver
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Thailand_selected
             has_country_flag = THA_commies_reformed
         }
@@ -433,10 +563,10 @@ PRC_export_revolution = {
         #老挝
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Adjust_path_in_Indochina
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Adjust_path_in_Indochina
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Laos_selected
         }
         fire_only_once = yes
@@ -475,6 +605,36 @@ PRC_export_revolution = {
                 }
                 PRC = {
                     add_to_faction = LAO
+                    if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						LAO = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						LAO = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						LAO = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
                     add_to_variable = {
                         CPC_frame = 8
                     }
@@ -486,6 +646,9 @@ PRC_export_revolution = {
                     add_to_variable = {
                         PRC_Lib_Int_Dir_Var = 1
                     }
+                }
+                LAO = {
+                    load_focus_tree = WLI_tree
                 }
             }
             add_to_variable = {
@@ -512,10 +675,10 @@ PRC_export_revolution = {
         #柬埔寨
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Adjust_path_in_Indochina
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Adjust_path_in_Indochina
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Cambodia_selected
         }
         fire_only_once = yes
@@ -541,7 +704,9 @@ PRC_export_revolution = {
                     leave_faction = yes
                 }
                 CAM = {
+                    load_focus_tree = WLI_tree
                     JAP_leave_PEC = yes
+                    set_country_flag = eadi_member
                     set_cosmetic_tag = PRC_cam
                     set_party_name = {
                         ideology = communist
@@ -561,6 +726,36 @@ PRC_export_revolution = {
                 }
                 PRC = {
                     add_to_faction = CAM
+                    if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						CAM = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						CAM = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						CAM = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
                     add_to_variable = {
                         CPC_frame = 8
                     }
@@ -572,6 +767,9 @@ PRC_export_revolution = {
                     add_to_variable = {
                         PRC_Lib_Int_Dir_Var = 1
                     }
+                }
+                CAM = {
+                    load_focus_tree = WLI_tree
                 }
             }
             add_to_variable = {
@@ -594,71 +792,71 @@ PRC_export_revolution = {
             base = 10
         }
     }
-    PRC_retrace_HoChiMinh = {
-        #越南
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Adjust_path_in_Indochina
-        }
-        visible = {
-            tag = PRC
-            has_completed_focus = Adjust_path_in_Indochina
-            has_country_flag = Vietnam_selected
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 23
-        highlight_states = {
-            highlight_state_targets = {
-                state = 671
-            }
-        }
-        on_map_mode = map_and_decisions_view
-        remove_effect = {
-            custom_effect_tooltip = PRC_Vin_tootip
-            JAP_leave_PEC = yes
-            hidden_effect = {
-                VIN = {
-                    leave_faction = yes
-                }
-                PRC = {
-                    declare_war_on = {
-                        target = VIN
-                        type = topple_government
-                    }
-                    add_to_variable = {
-                        CPC_frame = 2
-                    }
-                    clamp_variable = {
-                        var = CPC_frame
-                        min = 0
-                        max = 100
-                    }
-                    add_to_variable = {
-                        PRC_Lib_Int_Dir_Var = 1
-                    }
-                }
-            }
-            hidden_effect = {
-                news_event = {
-                    id = prcs.5
-                    hours = 2
-                }
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
+    # PRC_retrace_HoChiMinh = {
+    #     #越南
+    #     icon = GFX_PRC_new_left_decision
+    #     available = {
+    #         has_completed_focus = Adjust_path_in_Indochina
+    #     }
+    #     visible = {
+    #         tag = PRC
+    #         has_completed_focus = Adjust_path_in_Indochina
+    #         has_country_flag = Vietnam_selected
+    #     }
+    #     fire_only_once = yes
+    #     cost = 25
+    #     days_remove = 23
+    #     highlight_states = {
+    #         highlight_state_targets = {
+    #             state = 671
+    #         }
+    #     }
+    #     on_map_mode = map_and_decisions_view
+    #     remove_effect = {
+    #         custom_effect_tooltip = PRC_Vin_tootip
+    #         JAP_leave_PEC = yes
+    #         hidden_effect = {
+    #             VIN = {
+    #                 leave_faction = yes
+    #             }
+    #             PRC = {
+    #                 declare_war_on = {
+    #                     target = VIN
+    #                     type = topple_government
+    #                 }
+    #                 add_to_variable = {
+    #                     CPC_frame = 2
+    #                 }
+    #                 clamp_variable = {
+    #                     var = CPC_frame
+    #                     min = 0
+    #                     max = 100
+    #                 }
+    #                 add_to_variable = {
+    #                     PRC_Lib_Int_Dir_Var = 1
+    #                 }
+    #             }
+    #         }
+    #         hidden_effect = {
+    #             news_event = {
+    #                 id = prcs.5
+    #                 hours = 2
+    #             }
+    #         }
+    #     }
+    #     ai_will_do = {
+    #         base = 10
+    #     }
+    # }
     PRC_PHIred_rebellion = {
         #菲律宾
         icon = GFX_PRC_new_left_decision
         available = {
             #has_war_with = JAP
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Philipine_selected
         }
         fire_only_once = yes
@@ -671,7 +869,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            custom_effect_tooltip = PRC_Mal_tootip
+            custom_effect_tooltip = PRC_PHIred_rebellion_tt
             hidden_effect = {
                 if = {
                     limit = {
@@ -847,10 +1045,10 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         available = {
             # has_war_with = JAP
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Malaysia_selected
         }
         fire_only_once = yes
@@ -903,6 +1101,8 @@ PRC_export_revolution = {
                     add_state_core = 816
                     transfer_state = 333
                     add_state_core = 333
+                    transfer_state = 834
+                    add_state_core = 834
                     division_template = {
                         name = "Militia divisions"
                         is_locked = no
@@ -1009,10 +1209,10 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         available = {
             #has_war_with = JAP
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Indonesia_selected
         }
         fire_only_once = yes
@@ -1025,7 +1225,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
-            custom_effect_tooltip = PRC_Mal_tootip
+            custom_effect_tooltip = PRC_equator_awaken_tt
             hidden_effect = {
                 news_event = prcs.80
                 if = {
@@ -1204,10 +1404,10 @@ PRC_export_revolution = {
         #新加坡
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
         }
         visible = {
-            has_completed_focus = Ignite_the_Malay_Archipelago
+            has_completed_focus = PRC_nl_flame_in_pacific
             has_country_flag = Malaysia_selected
         }
         fire_only_once = yes
@@ -1220,6 +1420,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         remove_effect = {
+            custom_effect_tooltip = PRC_Sig_tootip
             ROOT = {
                 set_autonomy = {
                     target = SIG
@@ -1227,9 +1428,9 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            custom_effect_tooltip = PRC_Sig_tootip
             hidden_effect = {
                 SIG = {
+                    load_focus_tree = WLI_tree
                     set_cosmetic_tag = PRC_repolice_gonh
                     create_country_leader = {
                         name = "新加坡人民委员会"
@@ -1254,6 +1455,36 @@ PRC_export_revolution = {
                 }
                 PRC = {
                     add_to_faction = SIG
+                    if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						SIG = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						SIG = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						SIG = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
                     add_to_variable = {
                         CPC_frame = 4
                     }
@@ -1265,6 +1496,9 @@ PRC_export_revolution = {
                     add_to_variable = {
                         PRC_Lib_Int_Dir_Var = 1
                     }
+                }
+                CAM = {
+                    load_focus_tree = SIG
                 }
             }
             add_to_variable = {
@@ -1291,10 +1525,10 @@ PRC_export_revolution = {
     PRC_iran_status_quo = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = IRA_selected
         }
         fire_only_once = yes
@@ -1308,10 +1542,10 @@ PRC_export_revolution = {
     PRC_coordinate_ira_leftie = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = IRA_selected
             has_country_flag = IRA_quo_viewed
         }
@@ -1342,10 +1576,10 @@ PRC_export_revolution = {
     PRC_ira_common_front = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = IRA_selected
             has_country_flag = IRA_leftie_coord
         }
@@ -1367,10 +1601,10 @@ PRC_export_revolution = {
     PRC_break_the_chains = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = IRA_selected
             has_country_flag = IRA_leftie_coord
         }
@@ -1492,80 +1726,58 @@ PRC_export_revolution = {
         }
     }
     PRC_radiated_sun = {
-        #射日朝鲜
+        #金，你交权吧……
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Shoot_the_sun
-        }
-        visible = {
-            has_completed_focus = Shoot_the_sun
-            has_country_flag = North_Korea_selected
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 15
-        highlight_states = {
-            highlight_state_targets = {
-                state = 1043
-            }
-        }
-        on_map_mode = map_and_decisions_view
-        remove_effect = {
-            custom_effect_tooltip = PRC_Prk_tootip
-            hidden_effect = {
-                declare_war_on = {
-                    target = PRK
-                    type = puppet_wargoal_focus
-                }
+            custom_trigger_tooltip = {
+                tooltip = PRC_radiated_sun_tt
                 PRK = {
-                    add_stability = -0.1
-                }
-                country_event = {
-                    id = china.1711
-                }
-                news_event = {
-                    id = prcs.4
-                    hours = 2
-                }
-                add_to_variable = {
-                    CPC_frame = 3
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
+                    OR = {
+                        check_variable = {
+                           PRK_executed_decisions = 3
+                        }
+                        NOT = {
+                            has_idea = PRK_chaotic_atmosphere
+                        }                       
+                    }
                 }
             }
         }
-        ai_will_do = {
-            base = 10
+        activation = {
+            always = no
         }
-    }
-    PRC_unfreeze_DPRK = {
-        #朝鲜解冻
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Promote_the_thawing_of_DPRK
-        }
-        visible = {
-            has_completed_focus = Promote_the_thawing_of_DPRK
-            has_country_flag = North_Korea_selected
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 56
-        highlight_states = {
-            highlight_state_targets = {
-                state = 1043
+        is_good = no
+        selectable_mission = no
+        days_mission_timeout = 75
+        complete_effect = {
+            add_political_power = 50
+            PRK = {
+                add_political_power = 100
+                add_stability = 0.05
             }
         }
-        on_map_mode = map_and_decisions_view
-        remove_effect = {
-            hidden_effect = {
-                PRK = {
+        timeout_effect = {
+            custom_effect_tooltip = PRC_radiated_sun_tt2
+            PRK = {
+                load_focus_tree = WLI_tree
+                if = {
+                    limit = { 
+                        check_variable = {
+                           PRK_executed_decisions = 2
+                        }
+                    }
+                    remove_ideas = PRK_chaotic_atmosphere
+                    create_country_leader = {
+                        name = PRK_Cho_Yong_Won
+                        picture = GFX_PRK_Cho_Yong_Won
+                        ideology = left_nationalism
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        election_allowed = no
+                        election_frequency = 60
+                        last_election = "2021.7.1"
+                    }
                     remove_ideas = {
                         PRK_heavy_sanctions_idea
                         PRK_Total_Control_idea
@@ -1576,14 +1788,45 @@ PRC_export_revolution = {
                         PRK_Choe_Pu_Il_int
                     }
                 }
-                PRK = {
-                    set_popularities = {
-                        totalitarian_socialist = 100
+                else_if = {
+                    limit = { 
+                        check_variable = {
+                           PRK_executed_decisions = 1
+                        }
                     }
+                    hidden_effect = {
+                        remove_ideas = PRK_chaotic_atmosphere
+                        add_timed_idea = {
+                            idea = PRK_chaotic_atmosphere
+                            days = 500
+                        }
+                    } 
                     create_country_leader = {
-                        name = "朝鲜人民代表大会"
-                        desc = "POLITICS_CHAOXIAN_DESC"
-                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                        name = PRK_Cho_Yong_Won
+                        picture = GFX_PRK_Cho_Yong_Won
+                        ideology = left_nationalism
+                    }
+                    set_politics = {
+                        ruling_party = communist
+                        election_allowed = no
+                        election_frequency = 60
+                        last_election = "2021.7.1"
+                    }
+                    remove_ideas = {
+                        PRK_heavy_sanctions_idea
+                        PRK_Total_Control_idea
+                        PRK_Kim_Jae_ryong_hog
+                        PRK_Ri_Yong_ho_for
+                        PRK_O_Su_yong_eco
+                        PRK_Jong_Kyong_thaek_sec
+                        PRK_Choe_Pu_Il_int
+                    }
+                }
+                else = {
+                    set_cosmetic_tag = PRK_chinese_puppet_communist
+                    create_country_leader = {
+                        name = PRK_civ_war_juche
+                        picture = GFX_portrait_PRC_army
                         ideology = left_wing_junta
                     }
                     remove_ideas = {
@@ -1595,22 +1838,224 @@ PRC_export_revolution = {
                         PRK_Jong_Kyong_thaek_sec
                         PRK_Choe_Pu_Il_int
                     }
-                    set_party_name = {
-                        ideology = totalitarian_socialist
-                        long_name = PRK_nationalist_party_new_left_long
-                        name = PRK_nationalist_party_new_left
+                }
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        PRK_executed_decisions = 1
                     }
-                    inherit_technology = PRC
-                    set_cosmetic_tag = PRK_repolice_gonh
-                    set_politics = {
-                        ruling_party = totalitarian_socialist
-                        election_frequency = 60
-                        elections_allowed = no
+                }
+                KOR = {
+                    transfer_state = 1045
+                    transfer_state = 1044
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        PRK_executed_decisions = 0
+                    }
+                }
+                KOR = {
+                    transfer_state = 1045
+                    transfer_state = 1042
+                    transfer_state = 1046
+                    transfer_state = 1044
+                }
+            }
+            add_to_faction = PRK
+            if = {
+                limit = { 
+                    has_dynamic_modifier = WLI_collective_army_modifier
+                }
+                PRK = {
+                    add_dynamic_modifier = {
+                        modifier = WLI_collective_army_modifier
                     }
                 }
             }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                }
+                PRK = {
+                    add_dynamic_modifier = {
+                        modifier = WLI_economic_cooperation_modifier
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    has_dynamic_modifier = PRC_WLI_modifiers
+                }
+                PRK = {
+                    add_dynamic_modifier = {
+                        modifier = PRC_WLI_modifiers
+                    }
+                }
+            }
+        }
+    }
+    PRK_find_the_gap = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_completed_focus = PRC_nl_spring_of_korea
+        }
+        cost = 30
+        days_remove = 20
+        fire_only_once = yes
+        remove_effect = {
+            custom_effect_tooltip = PRK_find_the_gap_tt
+            set_country_flag = PRK_find_the_gap_flag
             add_to_variable = {
-                CPC_frame = 2
+                PRK_executed_decisions = 1
+            }
+            every_state = {
+                limit = {
+                    OR = {
+                        state = 527
+                        state = 875
+                    }
+                }
+                set_demilitarized_zone = yes
+            }
+
+            news_event = prcs.90
+        }
+    }
+    PRK_stir_up_trouble = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_country_flag = PRK_find_the_gap_flag
+        }
+        available = {
+            command_power > 25
+            has_equipment = {
+                infantry_equipment > 2000
+            }
+        }
+        days_remove = 20
+        fire_only_once = yes
+        complete_effect = {
+            add_command_power = -25
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = -2000
+            }
+        }
+        remove_effect = {
+            add_to_variable = {
+                PRK_executed_decisions = 1
+            }
+            custom_effect_tooltip = PRK_stir_up_trouble_tt
+            set_country_flag = PRK_stir_up_trouble_flag
+            every_state = {
+                limit = {
+                    OR = {
+                        state = 1050
+                        state = 874
+                        state = 873
+                    }
+                }
+                set_demilitarized_zone = yes
+            }
+            country_event = prcs.91
+        }
+    }
+    PRK_aid_to_korean_insurgents = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            has_country_flag = PRK_stir_up_trouble_flag
+        }
+        available = {
+            command_power > 25
+        }
+        days_remove = 20
+        fire_only_once = yes
+        remove_effect = {
+            add_to_variable = {
+                PRK_executed_decisions = 1
+            }
+            custom_effect_tooltip = PRK_aid_to_korean_insurgents_tt
+            PRK = {
+                create_country_leader = {
+                    name = "朝鲜人民代表大会"
+                    desc = "POLITICS_CHAOXIAN_DESC"
+                    picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                    ideology = left_wing_junta
+                }
+                remove_ideas = {
+                    PRK_heavy_sanctions_idea
+                    PRK_Total_Control_idea
+                    PRK_Kim_Jae_ryong_hog
+                    PRK_Ri_Yong_ho_for
+                    PRK_O_Su_yong_eco
+                    PRK_Jong_Kyong_thaek_sec
+                    PRK_Choe_Pu_Il_int
+                }
+                set_party_name = {
+                    ideology = totalitarian_socialist
+                    long_name = PRK_nationalist_party_new_left_long
+                    name = PRK_nationalist_party_new_left
+                }
+                set_cosmetic_tag = PRK_rev
+                inherit_technology = PRC
+                remove_ideas = PRK_chaotic_atmosphere
+                every_owned_state = {
+                    limit = {
+                        is_demilitarized_zone = yes
+                    }
+                    set_demilitarized_zone = no
+                }
+            }
+            add_to_variable = {
+                CPC_frame = 4
+            }
+            clamp_variable = {
+                var = CPC_frame
+                min = 0
+                max = 100
+            }
+            news_event = prcs.92
+        }
+    }
+    PRC_DPRK_industry = {
+        #朝鲜工业
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            PRK = {
+                NOT = {
+                    has_idea = PRK_chaotic_atmosphere
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            has_country_flag = CHN_Display_East_Asia
+        }
+        fire_only_once = no
+        cost = 0
+        days_remove = 28
+        days_re_enable = 30
+        modifier = {
+            civilian_factory_use = 5
+        }
+        remove_effect = {
+            PRK = {
+                add_offsite_building = {
+                    type = industrial_complex
+                    level = 1
+                }
+                set_temp_variable = {
+                    var = industrial_development_var_temp
+                    value = 0.03
+                }
+                add_industrial_development = yes
+            }
+            add_to_variable = {
+                CPC_frame = 1
             }
             clamp_variable = {
                 var = CPC_frame
@@ -1620,20 +2065,177 @@ PRC_export_revolution = {
             add_to_variable = {
                 PRC_Lib_Int_Dir_Var = 1
             }
-            effect_tooltip = {
-                PRK = {
-                    set_party_name = {
-                        ideology = totalitarian_socialist
-                        long_name = PRK_nationalist_party_new_left_long
-                        name = PRK_nationalist_party_new_left
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+    PRC_DPRK_mechanized = {
+        #朝鲜机械化
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            PRK = {
+                NOT = {
+                    has_idea = PRK_chaotic_atmosphere
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            has_country_flag = CHN_Display_East_Asia
+        }
+        fire_only_once = no
+        cost = 25
+        days_remove = 15
+        days_re_enable = 30
+        modifier = {
+        }
+        complete_effect = {
+            PRC = {
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = -97
+                }
+                add_income_with_inflation = yes
+                add_to_variable = {
+                    CPC_frame = 1
+                }
+                clamp_variable = {
+                    var = CPC_frame
+                    min = 0
+                    max = 100
+                }
+                add_to_variable = {
+                    PRC_Lib_Int_Dir_Var = 1
+                }
+            }
+            PRK = {
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = 97
+                }
+                add_income_with_inflation = yes
+                set_temp_variable = {
+                    var = farming_development_var_temp
+                    value = 0.1
+                }
+                add_farming_development = yes
+                set_temp_variable = {
+                    var = society_development_var_temp
+                    value = 0.05
+                }
+                add_society_development = yes
+                if = {
+                    limit = {
+                        NOT = {
+                            has_opinion_modifier = large_increase
+                        }
+                    }
+                    # 决议效果写在这里
+                    add_opinion_modifier = {
+                        target = PRC
+                        modifier = large_increase
                     }
                 }
+                random_owned_controlled_state = {
+                    limit = {
+                        free_building_slots = {
+                            building = industrial_complex
+                            size > 2
+                        }
+                    }
+                    add_building_construction = {
+                        type = industrial_complex
+                        level = 1
+                        instant_build = yes
+                    }
+                    add_building_construction = {
+                        type = arms_factory
+                        level = 2
+                        instant_build = yes
+                    }
+                }
+            }
+        }
+        remove_effect = {
+            country_event = {
+                id = china.1716
+            }
+        }
+        remove_effect = {
+            country_event = {
+                id = china.1716
             }
         }
         ai_will_do = {
             base = 10
         }
     }
+    PRC_DPRK_arms = {
+        #朝鲜武装
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            PRK = {
+                NOT = {
+                    has_idea = PRK_chaotic_atmosphere
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            has_country_flag = CHN_Display_East_Asia
+        }
+        fire_only_once = no
+        cost = 50
+        days_remove = 20
+        days_re_enable = 10
+        remove_effect = {
+            PRK = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 8550
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 1050
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = artillery_equipment
+                    amount = 995
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = motorized_equipment
+                    amount = 995
+                    producer = PRC
+                }
+                set_temp_variable = {
+                    var = military_development_var_temp
+                    value = 0.25
+                }
+                add_military_development = yes
+            }
+            add_to_variable = {
+                CPC_frame = 1
+            }
+            clamp_variable = {
+                var = CPC_frame
+                min = 0
+                max = 100
+            }
+            add_to_variable = {
+                PRC_Lib_Int_Dir_Var = 1
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+
     PRC_red_ROK = {
         #韩国
         icon = GFX_PRC_new_left_decision
@@ -1721,19 +2323,21 @@ PRC_export_revolution = {
         #不丹
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             # BHU = {
             # 	communist > 0.65
             # }
         }
         visible = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Butan_selected
         }
         fire_only_once = yes
         cost = 50
         days_remove = 28
         remove_effect = {
+            
+            custom_effect_tooltip = PRC_Bhu_tootip
             ROOT = {
                 set_autonomy = {
                     target = BHU
@@ -1741,10 +2345,39 @@ PRC_export_revolution = {
                     freedom_level = 0.3
                 }
             }
-            custom_effect_tooltip = PRC_Bhu_tootip
             hidden_effect = {
                 PRC = {
                     add_to_faction = BHU
+                    if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						BHU = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						BHU = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						BHU = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
                     add_to_variable = {
                         CPC_frame = 1
                     }
@@ -1759,6 +2392,7 @@ PRC_export_revolution = {
                 }
                 BHU = {
                     set_cosmetic_tag = PRC_repolice_gonh
+                    load_focus_tree = WLI_tree
                     set_party_name = {
                         ideology = communist
                         long_name = BHU_nationalist_party_long
@@ -1803,16 +2437,17 @@ PRC_export_revolution = {
         #尼泊尔
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Nepal_selected
         }
         fire_only_once = yes
         cost = 10
         days_remove = 14
         remove_effect = {
+            custom_effect_tooltip = PRC_Nep_tootip
             ROOT = {
                 set_autonomy = {
                     target = NEP
@@ -1831,12 +2466,42 @@ PRC_export_revolution = {
                     PRC_Lib_Int_Dir_Var = 1
                 }
             }
-            custom_effect_tooltip = PRC_Nep_tootip
             hidden_effect = {
                 NEP = {
                     set_cosmetic_tag = PRC_repolice_gonh
+                    load_focus_tree = WLI_tree
                     PRC = {
                         add_to_faction = NEP
+                        if = {
+                            limit = { 
+                                has_dynamic_modifier = WLI_collective_army_modifier
+                            }
+                            NEP = {
+                                add_dynamic_modifier = {
+                                    modifier = WLI_collective_army_modifier
+                                }
+                            }
+                        }
+                        if = {
+                            limit = { 
+                                has_dynamic_modifier = WLI_economic_cooperation_modifier
+                            }
+                            NEP = {
+                                add_dynamic_modifier = {
+                                    modifier = WLI_economic_cooperation_modifier
+                                }
+                            }
+                        }
+                        if = {
+                            limit = { 
+                                has_dynamic_modifier = PRC_WLI_modifiers
+                            }
+                            NEP = {
+                                add_dynamic_modifier = {
+                                    modifier = PRC_WLI_modifiers
+                                }
+                            }
+                        }
                     }
                     promote_character = NEP_jilan
                     set_politics = {
@@ -1858,10 +2523,10 @@ PRC_export_revolution = {
         #斯里兰卡
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Responding_to_the_people_of_the_subcontinent
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Sri_Lanka_selected
         }
         fire_only_once = yes
@@ -1889,6 +2554,14 @@ PRC_export_revolution = {
             custom_effect_tooltip = PRC_Srl_tootip
             hidden_effect = {
                 SRL = {
+                    remove_ideas = {
+                        SRL_economic_ruin_idea
+                        commonwealth_of_nations_member
+                    }
+                    add_timed_idea = {
+                        idea = SRL_economic_ruin_idea
+                        days = 120
+                    }
                     set_cosmetic_tag = PRC_repolice_gonh
                     set_politics = {
                         ruling_party = communist
@@ -1910,8 +2583,39 @@ PRC_export_revolution = {
                         picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
                         ideology = marxism_leninism
                     }
+                    load_focus_tree = WLI_tree
                 }
                 add_to_faction = SRL
+                if = {
+                    limit = { 
+                        has_dynamic_modifier = WLI_collective_army_modifier
+                    }
+                    SRL = {
+                        add_dynamic_modifier = {
+                            modifier = WLI_collective_army_modifier
+                        }
+                    }
+                }
+                if = {
+                    limit = { 
+                        has_dynamic_modifier = WLI_economic_cooperation_modifier
+                    }
+                    SRL = {
+                        add_dynamic_modifier = {
+                            modifier = WLI_economic_cooperation_modifier
+                        }
+                    }
+                }
+                if = {
+                    limit = { 
+                        has_dynamic_modifier = PRC_WLI_modifiers
+                    }
+                    SRL = {
+                        add_dynamic_modifier = {
+                            modifier = PRC_WLI_modifiers
+                        }
+                    }
+                }
             }
             add_to_variable = {
                 PRC_WLI_consumer_factor = -0.01
@@ -1938,10 +2642,10 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         visible = {
             has_country_flag = Pakistan_selected
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 25
         days_remove = 25
@@ -1972,10 +2676,10 @@ PRC_export_revolution = {
         icon = GFX_PRC_new_left_decision
         visible = {
             has_country_flag = Pakistan_selected
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 25
         fire_only_once = yes
@@ -1984,15 +2688,15 @@ PRC_export_revolution = {
             PAK = {
                 add_popularity = {
                     ideology = communist
-                    popularity = 0.02
+                    popularity = 0.05
                 }
                 add_popularity = {
                     ideology = libertarian_socialist
-                    popularity = 0.02
+                    popularity = 0.05
                 }
                 add_popularity = {
                     ideology = social_democrat
-                    popularity = 0.02
+                    popularity = 0.05
                 }
             }
             add_to_variable = {
@@ -2012,13 +2716,18 @@ PRC_export_revolution = {
     PRC_PAK_advocation_to_teens = {
         icon = GFX_PRC_new_left_decision
         visible = {
+            NOT = {
+                PAK = {
+                    has_government = communist
+                }
+            }
             AND = {
                 has_country_flag = Pakistan_selected
-                has_completed_focus = Brothers_of_South_Asia
+                has_completed_focus = PRC_nl_red_south_asia
             }
         }
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 25
         days_remove = 30
@@ -2041,7 +2750,7 @@ PRC_export_revolution = {
     PRC_unite_PAK = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
             PAK = {
                 communist > 0.2
                 OR = {
@@ -2051,7 +2760,7 @@ PRC_export_revolution = {
             }
         }
         visible = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Pakistan_selected
             has_country_flag = PRC_PAK_People_Front_flag
             has_country_flag = PAK_Laheer
@@ -2078,6 +2787,36 @@ PRC_export_revolution = {
                 }
                 PRC = {
                     add_to_faction = PAK
+                    if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						PAK = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						PAK = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						PAK = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
                     add_to_variable = {
                         CPC_frame = 4
                     }
@@ -2091,6 +2830,7 @@ PRC_export_revolution = {
                     }
                 }
                 PAK = {
+                    load_focus_tree = WLI_tree
                     remove_ideas = PAK_fervent_nationalism
                     remove_ideas = commonwealth_of_nations_member
                     set_cosmetic_tag = PAK_name
@@ -2125,14 +2865,290 @@ PRC_export_revolution = {
             base = 10
         }
     }
+    PRC_PAK_industry = {
+        #巴基斯坦
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+        }
+        visible = {
+            has_completed_focus = PRC_nl_WLI_collective_action
+            has_country_flag = Pakistan_selected
+        }
+        fire_only_once = no
+        days_remove = 35
+        days_re_enable = 50
+        cost = 35
+        complete_effect = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -3.5
+            }
+            add_income = yes
+            #hidden_effect = {
+            #	random_list = {
+            #		60 = {
+            #		}
+            #		40 = {
+            #			country_event = { id = china.153 days = 10 }
+            #		}
+            #	}
+            #}
+            PAK = {
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = 0.95
+                }
+                random_list = {
+                    60 = {
+                    }
+                    40 = {
+                        random_owned_controlled_state = {
+                            limit = {
+                                is_core_of = ROOT
+                                free_building_slots = {
+                                    building = industrial_complex
+                                    size > 1
+                                    include_locked = yes
+                                }
+                            }
+                            add_extra_state_shared_building_slots = 2
+                            add_building_construction = {
+                                type = industrial_complex
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+                add_income = yes
+                set_temp_variable = {
+                    var = industrial_development_var_temp
+                    value = 0.05
+                }
+                add_industrial_development = yes
+                if = {
+                    limit = {
+                        NOT = {
+                            has_idea = PRC_pakistan_industrial_support
+                        }
+                    }
+                    add_timed_idea = {
+                        idea = PRC_pakistan_industrial_support
+                        days = 70
+                    }
+                }
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+    PRC_invest_pakistan_military = {
+        available = {
+            PAK = {
+                OR = {
+                    has_country_flag = PAK_lost_indo_pakistan_war
+                    has_country_flag = PAK_won_indo_pakistan_war
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_red_south_asia
+            has_country_flag = Pakistan_selected
+            PRC = {
+                is_ally_with = PAK
+            }
+        }
+        fire_only_once = no
+        days_remove = 35
+        days_re_enable = 50
+        cost = 50
+        complete_effect = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -0.6
+            }
+            add_income = yes
+            hidden_effect = {
+            }
+            PAK = {
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = 0.6
+                }
+                add_income = yes
+                set_temp_variable = {
+                    var = military_development_var_temp
+                    value = 0.05
+                }
+                add_military_development = yes
+                if = {
+                    limit = {
+                        NOT = {
+                            has_idea = PRC_pakistan_military_support
+                        }
+                    }
+                    add_timed_idea = {
+                        idea = PRC_pakistan_military_support
+                        days = 70
+                    }
+                }
+            }
+        }
+    }
+    PRC_invest_pakistan_industry = {
+        available = {
+            PAK = {
+                OR = {
+                    has_country_flag = PAK_lost_indo_pakistan_war
+                    has_country_flag = PAK_won_indo_pakistan_war
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_red_south_asia
+            has_country_flag = Pakistan_selected
+            PRC = {
+                is_ally_with = PAK
+            }
+        }
+        fire_only_once = no
+        days_remove = 35
+        days_re_enable = 50
+        cost = 35
+        complete_effect = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -3.5
+            }
+            add_income = yes
+            PAK = {
+                set_temp_variable = {
+                    var = income_var_temp
+                    value = 0.95
+                }
+                random_list = {
+                    60 = {
+                        random_owned_controlled_state = {
+                            limit = {
+                                is_core_of = ROOT
+                                free_building_slots = {
+                                    building = industrial_complex
+                                    size > 1
+                                    include_locked = yes
+                                }
+                            }
+                            add_extra_state_shared_building_slots = 1
+                            add_building_construction = {
+                                type = industrial_complex
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                    40 = {
+                        random_owned_controlled_state = {
+                            limit = {
+                                is_core_of = ROOT
+                                free_building_slots = {
+                                    building = industrial_complex
+                                    size > 1
+                                    include_locked = yes
+                                }
+                            }
+                            add_extra_state_shared_building_slots = 2
+                            add_building_construction = {
+                                type = industrial_complex
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+                add_income = yes
+                set_temp_variable = {
+                    var = industrial_development_var_temp
+                    value = 0.05
+                }
+                add_industrial_development = yes
+            }
+        }
+    }
+    PRC_train_pakistan_army = {
+        available = {
+            PAK = {
+                OR = {
+                    has_country_flag = PAK_lost_indo_pakistan_war
+                    has_country_flag = PAK_won_indo_pakistan_war
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_red_south_asia
+            has_country_flag = Pakistan_selected
+            PRC = {
+                is_ally_with = PAK
+            }
+        }
+        fire_only_once = no
+        days_remove = 35
+        days_re_enable = 150
+        ai_will_do = {
+            base = 10
+        }
+        cost = 50
+        complete_effect = {
+            PAK = {
+                1321 = {
+                    create_unit = {
+                        division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = PAK
+                        count = 5
+                    }
+                    create_unit = {
+                        division = "division_template = \"Armored Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = PAK
+                        count = 2
+                    }
+                }
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment_1
+                    amount = 1500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = anti_tank_equipment_1
+                    amount = 300
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = anti_air_equipment_1
+                    amount = 300
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = motorized_equipment
+                    amount = 500
+                    producer = PRC
+                }
+            }
+        }
+    }
+
     PRC_bangladesh_revolution = {
         #孟加拉
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Brothers_of_South_Asia
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = Banglandash_selected
         }
         fire_only_once = yes
@@ -2175,9 +3191,40 @@ PRC_export_revolution = {
                     #set_cosmetic_tag = PRC_military_administration
                     #add_ideas = PRC_unwilling_ally
                     JAP_leave_PEC = yes
+                    load_focus_tree = WLI_tree
                 }
                 PRC = {
                     add_to_faction = BAN
+                    if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						BAN = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						BAN = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						BAN = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
                     add_to_variable = {
                         CPC_frame = 3
                     }
@@ -2221,7 +3268,7 @@ PRC_export_revolution = {
             }
         }
         available = {
-            has_completed_focus = Comrade_in_India
+            has_completed_focus = PRC_nl_red_south_asia
         }
         cost = 50
         days_remove = 50
@@ -2237,10 +3284,10 @@ PRC_export_revolution = {
     PRC_reunite_india = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Comrade_in_India
+            has_completed_focus = PRC_nl_red_south_asia
         }
         visible = {
-            has_completed_focus = Comrade_in_India
+            has_completed_focus = PRC_nl_red_south_asia
             has_country_flag = India_selected
         }
         fire_only_once = yes
@@ -2262,14 +3309,50 @@ PRC_export_revolution = {
             base = 10
         }
     }
+    PRC_india_maoism = {
+        #印共毛
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = PRC_nl_red_south_asia
+        }
+        visible = {
+            has_completed_focus = PRC_nl_red_south_asia
+            has_country_flag = India_selected
+        }
+        fire_only_once = no
+        cost = 50
+        days_remove = 28
+        days_re_enable = 30
+        remove_effect = {
+            custom_effect_tooltip = PRC_ina
+            add_to_variable = {
+                PRC_india_maoism_count = 1
+            }
+            add_to_variable = {
+                CPC_frame = 1
+            }
+            clamp_variable = {
+                var = CPC_frame
+                min = 0
+                max = 100
+            }
+            add_to_variable = {
+                PRC_Lib_Int_Dir_Var = 1
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+
     #阿富汗
     PRC_AFG_commies = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = AFG_selected
         }
         fire_only_once = yes
@@ -2288,10 +3371,10 @@ PRC_export_revolution = {
     PRC_AFG_internal_conflict = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = AFG_selected
             has_country_flag = AFG_commies_flag
         }
@@ -2349,14 +3432,14 @@ PRC_export_revolution = {
     PRC_spring_thunder = {
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             OR = {
                 country_exists = AFG
                 country_exists = TAL
             }
         }
         visible = {
-            has_completed_focus = The_Spring_of_West_Asia
+            has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = AFG_selected
             has_country_flag = AFG_conflict_boiling
         }
@@ -2455,6 +3538,1881 @@ PRC_export_revolution = {
         }
         ai_will_do = {
             base = 10
+        }
+    }
+    PRC_new_arab = {
+        #阿拉伯革新
+        icon = GFX_PRC_new_left_decision
+        available = {
+            has_completed_focus = PRC_nl_storm_across_west_asia
+        }
+        visible = {
+            AND = {
+                country_exists = CPP
+                country_exists = CPA
+                CPA = {
+                    has_war = no
+                }
+                CPP = {
+                    has_war = no
+                }
+            }
+            has_completed_focus = PRC_nl_storm_across_west_asia
+            has_country_flag = CHN_Display_West_Asia
+        }
+        fire_only_once = yes
+        cost = 25
+        days_remove = 15
+        modifier = {
+            civilian_factory_use = 30
+        }
+        complete_effect = {
+            set_temp_variable = {
+                var = income_var_temp
+                value = -335
+            }
+            add_income_with_inflation = yes
+        }
+        remove_effect = {
+            if = {
+                limit = {
+                    country_exists = CPA
+                }
+                CPA = {
+                    set_temp_variable = {
+                        var = income_var_temp
+                        value = 179
+                    }
+                    add_income_with_inflation = yes
+                    random_owned_controlled_state = {
+                        limit = {
+                            is_core_of = CPA
+                        }
+                        add_extra_state_shared_building_slots = 2
+                        add_building_construction = {
+                            type = industrial_complex
+                            level = 2
+                            instant_build = yes
+                        }
+                    }
+                    add_research_slot = 1
+                    add_stability = 0.25
+                    add_ideas = PRC_arab_ideas
+                }
+            }
+            if = {
+                limit = {
+                    country_exists = CPP
+                }
+                CPP = {
+                    set_temp_variable = {
+                        var = industrial_development_var_temp
+                        value = 0.15
+                    }
+                    add_industrial_development = yes
+                    set_temp_variable = {
+                        var = poverty_development_var_temp
+                        value = 0.10
+                    }
+                    add_poverty_development = yes
+                    set_temp_variable = {
+                        var = society_development_var_temp
+                        value = 0.10
+                    }
+                    add_society_development = yes
+                    random_owned_controlled_state = {
+                        limit = {
+                            is_core_of = CPP
+                        }
+                        add_extra_state_shared_building_slots = 2
+                        add_building_construction = {
+                            type = industrial_complex
+                            level = 2
+                            instant_build = yes
+                        }
+                    }
+                    set_temp_variable = {
+                        var = income_var_temp
+                        value = 179
+                    }
+                    add_income_with_inflation = yes
+                    add_research_slot = 1
+                    add_stability = 0.25
+                    add_ideas = PRC_arab_ideas
+                    
+                }
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+    PRC_new_west_asia = {
+        #西亚
+        icon = GFX_PRC_new_left_decision
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = PRC_nl_new_west_asia_trigger_tooltip
+                tag = PRC
+                country_exists = CPA
+                country_exists = CPP
+            }
+            hidden_trigger = {
+                has_completed_focus = PRC_nl_storm_across_west_asia
+                NOT = {
+                    has_country_flag = terrorist_clr
+                }
+            }
+        }
+        visible = {
+            has_completed_focus = PRC_nl_storm_across_west_asia
+            NOT = {
+                has_country_flag = terrorist_clr
+            }
+            has_country_flag = CHN_Display_West_Asia
+        }
+        fire_only_once = yes
+        cost = 0
+        days_remove = 28
+        days_re_enable = 30
+        modifier = {
+            civilian_factory_use = 15
+        }
+        complete_effect = {
+            add_political_power = -35
+        }
+        remove_effect = {
+            add_to_variable = {
+                Attempted_terrorist_plot_factor = 0.15
+            }
+            add_to_variable = {
+                Attempted_terrorist_plot_pp_factor = 0.05
+            }
+            country_event = {
+                id = china.1703
+            }
+        }
+        ai_will_do = {
+            base = 10
+        }
+    }
+
+    #非洲
+    EFF_political_support = {
+        visible = {
+            has_completed_focus = PRC_nl_hearts_of_bravery
+            has_country_flag = SAF_selected
+        }
+        available = {
+            EFF = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            EFF = {
+                add_stability = 0.1
+                add_war_support = 0.1
+                set_temp_variable = {
+                    society_development_var_temp = 0.25
+                }
+                add_society_development = yes
+            }
+        }
+    }
+
+    EFF_economic_support = {
+        visible = {
+            has_completed_focus = PRC_nl_hearts_of_bravery
+            has_country_flag = SAF_selected
+        }
+        available = {
+            EFF = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            EFF = {
+                add_offsite_building = {
+                    type = arms_factory
+				    level = 2
+                }
+                set_temp_variable = {
+                    industrial_development_var_temp = 0.2
+                }
+                add_industrial_development = yes
+            }
+        }
+    }
+
+    EFF_military_support = {
+        visible = {
+            has_completed_focus = PRC_nl_hearts_of_bravery
+            has_country_flag = SAF_selected
+        }
+        available = {
+            EFF = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            EFF = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 3000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = modern_tank_equipment
+                    amount = 40
+                    producer = PRC
+                }
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+            }
+            
+        }
+    }
+
+    RCG_political_support = {
+        visible = {
+            has_completed_focus = PRC_nl_hearts_of_bravery
+            has_country_flag = COG_selected
+        }
+        available = {
+            RCG = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            RCG = {
+                add_stability = 0.1
+                add_war_support = 0.1
+                set_temp_variable = {
+                    society_development_var_temp = 0.25
+                }
+                add_society_development = yes
+            }
+        }
+    }
+
+    RCG_economic_support = {
+        visible = {
+            has_completed_focus = PRC_nl_hearts_of_bravery
+            has_country_flag = COG_selected
+        }
+        available = {
+            RCG = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            RCG = {
+                add_offsite_building = {
+                    type = arms_factory
+				    level = 2
+                }
+                set_temp_variable = {
+                    industrial_development_var_temp = 0.2
+                }
+                add_industrial_development = yes
+            }
+        }
+    }
+
+    RCG_military_support = {
+        visible = {
+            has_country_flag = COG_selected
+        }
+        available = {
+            RCG = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            RCG = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 3000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = modern_tank_equipment
+                    amount = 40
+                    producer = PRC
+                }
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+            }
+            
+        }
+    }
+
+    #南美洲
+    PRU_military_support = {
+        visible = {
+            has_completed_focus = PRC_nl_into_south_america
+            has_country_flag = South_America_selected
+        }
+        available = {
+            PRU = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            PRU = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 3000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = modern_tank_equipment
+                    amount = 40
+                    producer = PRC
+                }
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+                
+            }
+            
+        }
+    }
+
+
+    VEN_military_support = {
+        visible = {
+            has_completed_focus = PRC_nl_into_south_america
+            has_country_flag = South_America_selected
+        }
+        available = {
+            VEN = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            VEN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 3000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = modern_tank_equipment
+                    amount = 40
+                    producer = PRC
+                }
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+            }
+            
+        }
+    }
+    ELN_military_support = {
+        visible = {
+            has_completed_focus = PRC_nl_into_south_america
+            has_country_flag = South_America_selected
+        }
+        available = {
+            ELN = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        days_re_enable = 30
+        remove_effect = {
+            ELN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 3000
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 500
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = modern_tank_equipment
+                    amount = 40
+                    producer = PRC
+                }
+                if = {
+                    limit = { 
+                        NOT = {
+                            has_idea = PRC_china_supplies
+                        }
+                    }
+                    add_ideas = PRC_china_supplies
+                }
+            }
+            
+        }
+    }
+
+
+    EFF_assist_revolution = {
+        visible = {
+            has_country_flag = COG_selected
+        }
+        available = {
+            EFF = {
+                exists = yes
+            }
+        }
+        cost = 30
+        days_remove = 30
+        fire_only_once = yes
+        remove_effect = {
+            EFF = {
+                capital_scope = {
+                    division = "division_template = \"EFF Militia\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                    owner = EFF
+                    count = 3
+                }
+            }
+        }
+    }
+
+    #北美洲
+    PTF_MEX_intervention_mission = {
+        activation = {
+            always = no
+        }
+        available = {
+            always = no
+        }
+        days_mission_timeout = 220
+        selectable_mission = no
+        timeout_effect = {
+            custom_effect_tooltip = PTF_MEX_intervention_mission_tt
+            set_country_flag = PTF_MEX_intervention_flag
+            PTF = {
+                activate_decision = USA_operation_green_decision
+            }
+            effect_tooltip = {
+                MEX_ZAP_fuck_off_PTF = yes
+            }
+        }
+    }
+    MEX_add_bunker = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_conservative
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        complete_effect = {
+
+        }
+        modifier = {
+            consumer_goods_factor = 0.075
+        }
+        remove_effect = {
+            every_state = {
+                limit = {
+                    OR = {
+                        is_owned_by = MEX
+                        is_owned_by = ZAP
+                    }
+                    OR = {
+                        is_capital = yes
+                        any_neighbor_state = {
+                            is_owned_by = PTF
+                        }
+                    }
+                    
+                }
+                add_building_construction = {
+                    type = bunker
+                    level = 1
+                    province = {
+                        all_provinces = yes
+                        limit_to_border = yes
+                        limit_to_victory_point = yes
+                    }
+                    instant_build = yes
+                }
+            }
+            if = {
+                limit = { 
+                    has_country_flag = PTF_difficulty_Normal
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 1
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 1
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Hard
+                        has_country_flag = PTF_difficulty_Extremely_hard
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 2
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        every_core_state = {
+                            add_building_construction = {
+                                type = bunker
+                                level = 2
+                                province = {
+                                    all_provinces = yes
+                                    limit_to_victory_point = yes
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    MEX_buff = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_conservative
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 30
+        days_re_enable = 30
+        complete_effect = {
+            if = {
+                limit = { 
+                    NOT = {
+                        has_country_flag = MEX_buff_flag
+                    }
+                }
+                SIA = {
+                    set_nationality = {
+                        target_country = MEX
+                        character = SIA_bak
+                    }
+                }
+                set_country_flag = MEX_buff
+            }
+        }
+        modifier = {
+            experience_gain_army_factor = -0.2
+            command_power_gain_mult = -0.5
+        }
+        remove_effect = {
+            if = {
+                limit = {
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
+                }
+                MEX_buff_normal_effect = yes
+            }
+            else = {
+                MEX_buff_hard_effect = yes
+            }
+            
+        }
+    }
+    MEX_train = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_conservative
+            OR = {
+                ZAP = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        complete_effect = {
+
+        }
+        modifier = {
+            experience_gain_army_unit_factor = -0.2
+            command_power_gain = -0.2
+        }
+        remove_effect = {
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 3
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 3
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 4
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 10
+                                owner = MEX
+                            }
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    has_country_flag = PTF_difficulty_Hard
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 5
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 5
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 5
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 15
+                                owner = MEX
+                            }
+                        }
+                    }
+                }
+            }
+            else = {
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 7
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 7
+                                owner = ZAP
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            create_unit = {
+                                division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+                                allow_spawning_on_enemy_provs = no
+                                count = 6
+                                owner = ZAP
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        capital_scope = {
+                            create_unit = {
+                                division = "division_template = \"Brigada Infanteria\" start_experience_factor = 0.6 start_equipment_factor = 1."
+                                allow_spawning_on_enemy_provs = no
+                                count = 20
+                                owner = MEX
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    MEX_ultra_technology = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+                has_global_flag = PTF_oh_shit_mexico_flag
+            }
+        }
+        available = {
+            
+        }
+        cost = 40
+        days_remove = 20
+        fire_only_once = yes
+        remove_effect = {
+            if = {
+                limit = { 
+                    country_exists = ZAP
+                }
+                ZAP = {
+                    inherit_technology = PRC
+                    remove_ideas = ai_disabled_production
+                }
+            }
+            else = {
+                MEX = {
+                    inherit_technology = PRC
+                }
+            }
+        }
+    }
+    MEX_build_an_ultimate_army = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+                has_global_flag = PTF_oh_shit_mexico_flag
+            }
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = MEX_build_an_ultimate_army_tt
+                check_variable = {
+                    MEX_build_an_ultimate_army_var < 3
+                }
+            }
+            
+        }
+        cost = 25
+        days_remove = 20
+        modifier = {
+            consumer_goods_factor = 0.1
+            experience_gain_army_unit_factor = -0.1
+        }
+        remove_effect = {
+            if = {
+                limit = { 
+                    country_exists = ZAP
+                }
+                ZAP = {
+                    army_experience = 200
+                    if = {
+                        limit = { 
+                            check_variable = {
+                                PRC.MEX_build_an_ultimate_army_var = 0
+                            }
+                        }
+                        add_offsite_building = {
+                            type = industrial_complex
+                            level = 5
+                        }
+                        add_offsite_building = {
+                            type = arms_factory
+                            level = 5
+                        }
+                        division_template = {
+                            name = "Willpower Brigade"
+                            regiments = {
+                                special_forces = {
+                                    x = 0
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 3
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 3
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                        division_template = {
+                            name = "Zhukov Division"
+                            regiments = {
+                                modern_armor = {
+                                    x = 0
+                                    y = 0
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 1
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 2
+                                }
+                                light_mechanized = {
+                                    x = 0
+                                    y = 3
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 0
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 1
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                                logistics_company = {
+                                    x = 0
+                                    y = 3
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                    }
+                    else_if = {
+                        limit = { 
+                            check_variable = {
+                                PRC.MEX_build_an_ultimate_army_var = 1
+                            }
+                        }
+                        add_mastery_bonus = {
+                            name = MEX_build_an_ultimate_army
+                            bonus = 2
+                            days = 250
+                            folder = land
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = ZAP
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1"
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = ZAP
+                        }
+                    }
+                }
+            }
+            else = {
+                MEX = {
+                    army_experience = 200
+                    if = {
+                        limit = { 
+                            check_variable = {
+                                PRC.MEX_build_an_ultimate_army_var = 0
+                            }
+                        }
+                        add_offsite_building = {
+                            type = industrial_complex
+                            level = 5
+                        }
+                        add_offsite_building = {
+                            type = arms_factory
+                            level = 5
+                        }
+                        division_template = {
+                            name = "Willpower Brigade"
+                            regiments = {
+                                special_forces = {
+                                    x = 0
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 0
+                                    y = 3
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 0
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 1
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 2
+                                }
+                                special_forces = {
+                                    x = 1
+                                    y = 3
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                        division_template = {
+                            name = "Zhukov Division"
+                            regiments = {
+                                modern_armor = {
+                                    x = 0
+                                    y = 0
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 1
+                                }
+                                modern_armor = {
+                                    x = 0
+                                    y = 2
+                                }
+                                light_mechanized = {
+                                    x = 0
+                                    y = 3
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 0
+                                }
+                                light_mechanized = {
+                                    x = 1
+                                    y = 1
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 0
+                                }
+                                modern_sp_artillery_brigade = {
+                                    x = 2
+                                    y = 1
+                                }
+                            }
+                            support = {
+                                engineer = {
+                                    x = 0
+                                    y = 0
+                                }
+                                spaa_company = {
+                                    x = 0
+                                    y = 1
+                                }
+                                signal_company = {
+                                    x = 0
+                                    y = 2
+                                }
+                                logistics_company = {
+                                    x = 0
+                                    y = 3
+                                }
+                            }
+                            is_locked = yes
+                            priority = 90
+                        }
+                    }
+                    else_if = {
+                        limit = { 
+                            check_variable = {
+                                PRC.MEX_build_an_ultimate_army_var = 1
+                            }
+                        }
+                        add_mastery_bonus = {
+                            name = MEX_build_an_ultimate_army
+                            bonus = 2
+                            days = 250
+                            folder = land
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = MEX
+                        }
+                    }
+                    random_owned_controlled_state = {
+                        create_unit = {
+                            division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1"
+                            allow_spawning_on_enemy_provs = no
+                            count = 3
+                            owner = MEX
+                        }
+                    }
+                }
+            }
+            add_to_variable = {
+                MEX_build_an_ultimate_army_var = 1
+            }
+        }
+    }
+    MEX_pretrain_for_the_worst = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+                has_global_flag = PTF_oh_shit_mexico_flag
+            }
+        }
+        available = {
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
+                }
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 5
+                }
+            }
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Hard
+                        has_country_flag = PTF_difficulty_Extremely_hard
+                    }
+                }
+                check_variable = {
+                    MEX_pretrain_for_the_worst_var < 6
+                }
+            }
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        modifier = {
+            command_power_gain_mult = -0.3
+        }
+        remove_effect = {  
+            MEX_pretrain_for_the_worst_display = yes
+            add_to_variable = {
+                MEX_pretrain_for_the_worst_var = 1
+            }
+        }
+    }
+    MEX_prepare_accordingly = {
+        visible = {
+            has_country_flag = MEX_selected
+            has_country_flag = PRC_MEX_PTF_bold
+            OR = {
+                ZAP = {
+                    AND = {
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }
+                }
+                MEX = {
+                    AND = {
+                        has_government = communist
+                        has_country_flag = MEX_mexican_unifier_flag
+                        exists = yes
+                    }	
+                }
+            }
+            NOT = {
+                PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+                has_global_flag = PTF_oh_shit_mexico_flag
+            }
+        }
+        available = {
+            
+        }
+        cost = 20
+        days_remove = 20
+        days_re_enable = 20
+        modifier = {
+            consumer_goods_factor = 0.15
+        }
+        remove_effect = {
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Simple
+                        has_country_flag = PTF_difficulty_Normal
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    OR = {
+                        has_country_flag = PTF_difficulty_Hard
+                        has_country_flag = PTF_difficulty_Extremely_hard
+                    }
+                }
+                if = {
+                    limit = { 
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+                else = {
+                    MEX = {
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = anti_air_building
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = air_base
+                                level = 2
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                        random_owned_controlled_state = {
+                            add_building_construction = {
+                                type = infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    PTF_MEX_war_mission = {
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            NOT = {
+                country_exists = MEX
+                country_exists = ZAP
+            }
+        }
+        days_mission_timeout = 180
+        selectable_mission = no
+        cancel_effect = {
+            add_command_power = 15
+            if = {
+                limit = {
+                    has_country_flag = PRC_MEX_PTF_bold
+                }
+                add_political_power = -50
+                add_war_support = -0.1
+                add_popularity = {
+                    ideology = totalitarian_socialist
+                    popularity = -0.05
+                }
+                add_popularity = {
+                    ideology = communist
+                    popularity = -0.1
+                }
+                add_popularity = {
+                    ideology = libertarian_socialist
+                    popularity = -0.1
+                }
+                add_popularity = {
+                    ideology = social_democrat
+                    popularity = -0.05
+                }
+            }
+        }
+        timeout_effect = {
+            effect_tooltip = {
+                PTF = {
+                    white_peace = MEX
+                    white_peace = ZAP
+                    add_timed_idea = {
+                        idea = JAP_shame_defeat
+                        days = 365
+                    }
+                }
+                if = {
+                    limit = {
+                        country_exists = ZAP
+                    }
+                    ZAP = {
+                        remove_dynamic_modifier = {
+                            modifier = PRC_MEX_modifier
+                        }
+                        load_focus_tree = WLI_tree
+                    }
+                    add_to_faction = ZAP
+                }
+                else = {
+                    MEX = {
+                        remove_dynamic_modifier = {
+                            modifier = PRC_MEX_modifier
+                        }
+                        load_focus_tree = WLI_tree
+                    }
+                    add_to_faction = MEX
+                }
+            }
+        }
+    }
+    MEX_interfere_civil_war_saberta = {
+        visible = {
+            has_country_flag = MEX_selected
+            NOT = {
+                has_country_flag = MEX_interfere_civil_war_coup_flag
+                any_other_country = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+            }
+        }
+        cost = 25
+        days_remove = 14
+        fire_only_once = yes
+        complete_effect = {
+            set_country_flag = MEX_interfere_civil_war_saberta_flag
+        }
+        remove_effect = {
+            custom_effect_tooltip = MEX_interfere_civil_war_saberta_tt
+            ZAP = {
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+						allow_spawning_on_enemy_provs = no
+                        count = 1
+						owner = ZAP
+                    }
+                }
+                random_owned_controlled_state = {
+                    create_unit = {
+                        division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+						allow_spawning_on_enemy_provs = no
+                        count = 1
+						owner = ZAP
+                    }
+                }
+                random_owned_controlled_state = {
+                    create_unit = {
+                        division = "division_template = \"rigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+						allow_spawning_on_enemy_provs = no
+                        count = 1
+						owner = ZAP
+                    }
+                }
+            }
+        }
+    }
+    MEX_interfere_civil_war_coup = {
+        visible = {
+            has_country_flag = MEX_selected
+            NOT = {
+                has_country_flag = MEX_interfere_civil_war_saberta_flag
+                any_other_country = {
+                    has_country_flag = MEX_mexican_unifier_flag
+                }
+            }
+        }
+        cost = 35
+        days_remove = 7
+        fire_only_once = yes
+        complete_effect = {
+            set_country_flag = MEX_interfere_civil_war_coup_flag
+        }
+        remove_effect = {
+            custom_effect_tooltip = MEX_interfere_civil_war_coup_tt
+           
+            MEX = {
+                create_country_leader = {
+                    name = MEX_pavel_blanco
+                    picture = GFX_MEX_pavel_blanco
+                    ideology = left_nationalism
+                }
+                set_politics = {
+                    ruling_party = communist
+                    election_frequency = 60
+                    last_election = "2024.1.1"
+                    election_allowed = no
+                }
+                white_peace = ZAP
+                diplomatic_relation = {
+                    country = ZAP
+                    relation = non_aggression_pact
+                    active = yes
+                }
+                give_military_access = ZAP
+            }
+            ZAP = {
+                give_military_access = MEX
+            }
+        }
+    }
+    South_American_assist_revolution = {
+        visible = {
+            has_country_flag = South_America_selected
+        }
+        available = {
+            ELN = {
+                has_war = yes
+            }
+        }
+        cost = 50
+        days_remove = 30
+        days_re_enable = 60
+        modifier = {
+            supply_consumption_factor = -0.2
+            out_of_supply_factor = -0.2
+            no_supply_grace = 24
+            pocket_penalty = -0.2
+        }
+        remove_effect = {
+            custom_effect_tooltip = South_American_assist_revolution_tt
+            ELN = {
+                add_equipment_to_stockpile = {
+                    type = train_equipment
+                    amount = 20
+                    producer = PRC
+                }
+                add_equipment_to_stockpile = {
+                    type = motorized_equipment
+                    amount = 250
+                    producer = PRC
+                }
+                capital_scope = {
+                    add_building_construction = {
+                        type = infrastructure
+                        level = 1
+                        instant_build = yes
+                    }
+                    create_unit = {
+                        division = "division_template = \"Brigada de Infanteria\"  start_experience_factor = 0.6 start_equipment_factor = 1.0"
+						allow_spawning_on_enemy_provs = yes
+                        count = 3
+						owner = ZAP
+                    }
+                }
+
+            }
         }
     }
     PRC_mongolia_war = {
@@ -2574,10 +5532,11 @@ PRC_export_revolution = {
         #情报
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Red_Dongying_Project
+            has_completed_focus = PRC_nl_restore_JAP_commies
         }
         visible = {
-            has_completed_focus = Red_Dongying_Project
+            has_completed_focus = PRC_nl_restore_JAP_commies
+            has_country_flag = Japan_selected
         }
         fire_only_once = yes
         cost = 0
@@ -2585,7 +5544,11 @@ PRC_export_revolution = {
         complete_effect = {
             add_timed_idea = {
                 idea = PRC_JAP_intel
-                days = 365
+                days = 250
+            }
+            add_decryption = {
+                target = JAP
+                amount = 1000
             }
         }
         ai_will_do = {
@@ -2596,10 +5559,11 @@ PRC_export_revolution = {
         #秘密联合
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Contact_the_Jap_left
+            has_completed_focus = PRC_nl_restore_JAP_commies
         }
         visible = {
-            has_completed_focus = Contact_the_Jap_left
+            has_completed_focus = PRC_nl_restore_JAP_commies
+            has_country_flag = Japan_selected
         }
         fire_only_once = yes
         cost = 75
@@ -2625,91 +5589,26 @@ PRC_export_revolution = {
             base = 10
         }
     }
-    PRC_JAP_red_army_mission = {
+    PRC_JAP_supply_CNNC = {
         icon = GFX_PRC_new_left_decision
-        activation = {
-            has_global_flag = pan_asian_war_ongoing
-        }
         available = {
-            country_exists = JPL
+            has_completed_focus = PRC_nl_restore_JAP_commies
+            has_country_flag = PRC_JAP_secret_united
         }
-        selectable_mission = no
-        is_good = no
-        days_mission_timeout = 25
+        visible = {
+            has_completed_focus = PRC_nl_restore_JAP_commies
+            has_country_flag = Japan_selected
+        }
         fire_only_once = yes
-        timeout_effect = {
-            ROOT = {
-                set_autonomy = {
-                    target = JPL
-                    autonomous_state = autonomy_communist
-                    freedom_level = 0.3
-                }
-            }
-            hidden_effect = {
-                remove_mission = PRC_JAP_red_army_mission
-                news_event = nlnews.7
-                scoped_play_song = "S02 - Magnafried"
+        cost = 35
+        days_remove = 35
+        remove_effect = {
+            set_country_flag = PRC_JAP_supply_CNNC_flag
+            JAP = {
+                add_ideas = JAP_CNNC_activated
             }
             JPL = {
-                create_country_leader = {
-                    name = "白井聪"
-                    picture = "gfx/leaders/JPL_baijincong.png"
-                    ideology = marxism_leninism
-                }
-                transfer_state = 528
-                add_state_core = 528
-                transfer_state = 526
-                transfer_state = 530
-                transfer_state = 536
-                division_template = {
-                    name = "Militia divisions"
-                    is_locked = no
-                    force_allow_recruiting = yes
-                    regiments = {
-                        militia = {
-                            x = 0
-                            y = 0
-                        }
-                        militia = {
-                            x = 0
-                            y = 1
-                        }
-                        militia = {
-                            x = 0
-                            y = 2
-                        }
-                        militia = {
-                            x = 0
-                            y = 3
-                        }
-                        militia = {
-                            x = 0
-                            y = 4
-                        }
-                    }
-                    priority = 0
-                }
-                capital_scope = {
-                    create_unit = {
-                        division = "division_template = \"Militia divisions\" start_experience_factor = 1 start_equipment_factor = 1.0"
-                        owner = JPL
-                        count = 10
-                    }
-                }
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment_1
-                    amount = 10000
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment_1
-                    amount = 600
-                    producer = PRC
-                }
-                declare_war_on = {
-                    target = JAP
-                    type = annex_everything
-                }
+                add_ideas = JPL_CNNC_activated
             }
         }
     }
@@ -2717,11 +5616,11 @@ PRC_export_revolution = {
         #红军
         icon = GFX_PRC_new_left_decision
         available = {
-            has_completed_focus = Formation_of_JAP_Red_Army
-            has_country_flag = PRC_JAP_secret_united
+            has_completed_focus = PRC_nl_restore_JAP_commies
+            has_country_flag = PRC_JAP_supply_CNNC_flag
         }
         visible = {
-            has_completed_focus = Formation_of_JAP_Red_Army
+            has_completed_focus = PRC_nl_restore_JAP_commies
         }
         fire_only_once = yes
         cost = 100
@@ -2761,6 +5660,7 @@ PRC_export_revolution = {
             base = 10
         }
     }
+    
     Establish_a_unified_command_system = {
         #构建统一指挥体系
         icon = GFX_PRC_new_left_decision
@@ -2768,7 +5668,7 @@ PRC_export_revolution = {
             NOT = {
                 has_global_flag = pan_asian_war_ongoing
             }
-            has_completed_focus = Coordination_of_the_World_Liberation_Army
+            has_completed_focus = PRC_nl_WLI_collective_action
             PRC = {
                 OR = {
                     is_ally_with = SRI
@@ -2790,7 +5690,7 @@ PRC_export_revolution = {
             }
         }
         visible = {
-            has_completed_focus = Coordination_of_the_World_Liberation_Army
+            has_completed_focus = PRC_nl_WLI_collective_action
         }
         fire_only_once = yes
         cost = 25
@@ -2884,10 +5784,43 @@ PRC_export_revolution = {
             base = 10
         }
     }
-    #移除老版本外交遗留代码
-}
-
-PRC_assistance2communist = {
+    PRC_sanction_japan = {
+		available = {
+			NOT = {
+				has_war_with = JAP
+				is_ally_with = JAP
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_nl_flame_of_asia
+            has_country_flag = Japan_selected
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 150
+			}
+			add_debt = yes
+		}
+		remove_effect = {
+			send_embargo = JAP
+			JAP = {
+				country_event = {
+					id = china.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
     PRC_JAP_arms = {
         #武装
         icon = GFX_PRC_new_left_decision
@@ -2896,6 +5829,7 @@ PRC_assistance2communist = {
         }
         visible = {
             has_country_flag = form_jap_red_army
+            has_country_flag = Japan_selected
         }
         fire_only_once = no
         cost = 50
@@ -2936,658 +5870,80 @@ PRC_assistance2communist = {
             base = 10
         }
     }
-    #援助外国
-    PRC_india_maoism = {
-        #印共毛
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Comrade_in_India
-        }
-        visible = {
-            has_completed_focus = Comrade_in_India
-        }
-        fire_only_once = no
-        cost = 50
-        days_remove = 28
-        days_re_enable = 30
-        remove_effect = {
-            custom_effect_tooltip = PRC_ina
-            add_to_variable = {
-                PRC_india_maoism_count = 1
-            }
-            add_to_variable = {
-                CPC_frame = 1
-            }
-            clamp_variable = {
-                var = CPC_frame
-                min = 0
-                max = 100
-            }
-            add_to_variable = {
-                PRC_Lib_Int_Dir_Var = 1
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_new_arab = {
-        #阿拉伯革新
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Moisturizing_things_silently
-        }
-        visible = {
-            AND = {
-                country_exists = CPP
-                country_exists = CPA
-                CPA = {
-                    has_war = no
-                }
-                CPP = {
-                    has_war = no
-                }
-            }
-            has_completed_focus = Moisturizing_things_silently
-        }
-        fire_only_once = yes
-        cost = 25
-        days_remove = 15
-        modifier = {
-            civilian_factory_use = 30
-        }
-        complete_effect = {
-            set_temp_variable = {
-                var = income_var_temp
-                value = -335
-            }
-            add_income_with_inflation = yes
-        }
-        remove_effect = {
-            if = {
-                limit = {
-                    country_exists = CPA
-                }
-                CPA = {
-                    set_temp_variable = {
-                        var = income_var_temp
-                        value = 179
-                    }
-                    add_income_with_inflation = yes
-                    random_owned_controlled_state = {
-                        limit = {
-                            is_core_of = CPA
-                        }
-                        add_extra_state_shared_building_slots = 2
-                        add_building_construction = {
-                            type = industrial_complex
-                            level = 2
-                            instant_build = yes
-                        }
-                    }
-                    add_research_slot = 1
-                    add_stability = 0.25
-                    add_ideas = PRC_arab_ideas
-                }
-            }
-            if = {
-                limit = {
-                    country_exists = CPP
-                }
-                CPP = {
-                    set_temp_variable = {
-                        var = industrial_development_var_temp
-                        value = 0.15
-                    }
-                    add_industrial_development = yes
-                    set_temp_variable = {
-                        var = poverty_development_var_temp
-                        value = 0.10
-                    }
-                    add_poverty_development = yes
-                    set_temp_variable = {
-                        var = society_development_var_temp
-                        value = 0.10
-                    }
-                    add_society_development = yes
-                    random_owned_controlled_state = {
-                        limit = {
-                            is_core_of = CPP
-                        }
-                        add_extra_state_shared_building_slots = 2
-                        add_building_construction = {
-                            type = industrial_complex
-                            level = 2
-                            instant_build = yes
-                        }
-                    }
-                    set_temp_variable = {
-                        var = income_var_temp
-                        value = 179
-                    }
-                    add_income_with_inflation = yes
-                    add_research_slot = 1
-                    add_stability = 0.25
-                    add_ideas = PRC_arab_ideas
-                    
-                }
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_new_west_asia = {
-        #西亚
-        icon = GFX_PRC_new_left_decision
-        available = {
-            custom_trigger_tooltip = {
-                tooltip = PRC_nl_new_west_asia_trigger_tooltip
-                tag = PRC
-                country_exists = CPA
-                country_exists = CPP
-            }
-            hidden_trigger = {
-                has_completed_focus = Moisturizing_things_silently
-                NOT = {
-                    has_country_flag = terrorist_clr
-                }
-            }
-        }
-        visible = {
-            has_completed_focus = Moisturizing_things_silently
-            NOT = {
-                has_country_flag = terrorist_clr
-            }
-        }
-        fire_only_once = yes
-        cost = 0
-        days_remove = 28
-        days_re_enable = 30
-        modifier = {
-            civilian_factory_use = 15
-        }
-        complete_effect = {
-            add_political_power = -35
-        }
-        remove_effect = {
-            add_to_variable = {
-                Attempted_terrorist_plot_factor = 0.15
-            }
-            add_to_variable = {
-                Attempted_terrorist_plot_pp_factor = 0.05
-            }
-            country_event = {
-                id = china.1703
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_DPRK_industry = {
-        #朝鲜工业
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Assist_in_the_modernization_of_DPRK
-        }
-        visible = {
-            has_completed_focus = Assist_in_the_modernization_of_DPRK
-        }
-        fire_only_once = no
-        cost = 0
-        days_remove = 28
-        days_re_enable = 30
-        modifier = {
-            civilian_factory_use = 5
-        }
-        remove_effect = {
-            PRK = {
-                add_offsite_building = {
-                    type = industrial_complex
-                    level = 1
-                }
-                set_temp_variable = {
-                    var = industrial_development_var_temp
-                    value = 0.03
-                }
-                add_industrial_development = yes
-            }
-            add_to_variable = {
-                CPC_frame = 1
-            }
-            clamp_variable = {
-                var = CPC_frame
-                min = 0
-                max = 100
-            }
-            add_to_variable = {
-                PRC_Lib_Int_Dir_Var = 1
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_DPRK_mechanized = {
-        #朝鲜机械化
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Assist_in_the_modernization_of_DPRK
-        }
-        visible = {
-            has_completed_focus = Assist_in_the_modernization_of_DPRK
-        }
-        fire_only_once = no
-        cost = 25
-        days_remove = 15
-        days_re_enable = 30
-        modifier = {
-        }
-        complete_effect = {
-            PRC = {
-                set_temp_variable = {
-                    var = income_var_temp
-                    value = -97
-                }
-                add_income_with_inflation = yes
-                add_to_variable = {
-                    CPC_frame = 1
-                }
-                clamp_variable = {
-                    var = CPC_frame
-                    min = 0
-                    max = 100
-                }
-                add_to_variable = {
-                    PRC_Lib_Int_Dir_Var = 1
-                }
-            }
-            PRK = {
-                set_temp_variable = {
-                    var = income_var_temp
-                    value = 97
-                }
-                add_income_with_inflation = yes
-                set_temp_variable = {
-                    var = farming_development_var_temp
-                    value = 0.1
-                }
-                add_farming_development = yes
-                set_temp_variable = {
-                    var = society_development_var_temp
-                    value = 0.05
-                }
-                add_society_development = yes
-                if = {
-                    limit = {
-                        NOT = {
-                            has_opinion_modifier = large_increase
-                        }
-                    }
-                    # 决议效果写在这里
-                    add_opinion_modifier = {
-                        target = PRC
-                        modifier = large_increase
-                    }
-                }
-                random_owned_controlled_state = {
-                    limit = {
-                        free_building_slots = {
-                            building = industrial_complex
-                            size > 2
-                        }
-                    }
-                    add_building_construction = {
-                        type = industrial_complex
-                        level = 1
-                        instant_build = yes
-                    }
-                    add_building_construction = {
-                        type = arms_factory
-                        level = 2
-                        instant_build = yes
-                    }
-                }
-            }
-        }
-        remove_effect = {
-            country_event = {
-                id = china.1716
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_DPRK_arms = {
-        #朝鲜武装
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Assist_in_the_modernization_of_DPRK
-        }
-        visible = {
-            has_completed_focus = Assist_in_the_modernization_of_DPRK
-        }
-        fire_only_once = no
-        cost = 50
-        days_remove = 20
-        days_re_enable = 10
-        remove_effect = {
-            PRK = {
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment
-                    amount = 8550
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment
-                    amount = 1050
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = artillery_equipment
-                    amount = 995
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = motorized_equipment
-                    amount = 995
-                    producer = PRC
-                }
-                set_temp_variable = {
-                    var = military_development_var_temp
-                    value = 0.25
-                }
-                add_military_development = yes
-            }
-            add_to_variable = {
-                CPC_frame = 1
-            }
-            clamp_variable = {
-                var = CPC_frame
-                min = 0
-                max = 100
-            }
-            add_to_variable = {
-                PRC_Lib_Int_Dir_Var = 1
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_PAK_industry = {
-        #巴基斯坦
-        icon = GFX_PRC_new_left_decision
-        available = {
-            has_completed_focus = Brothers_of_South_Asia
-        }
-        visible = {
-            has_completed_focus = Brothers_of_South_Asia
-        }
-        fire_only_once = no
-        days_remove = 35
-        days_re_enable = 50
-        cost = 35
-        complete_effect = {
-            set_temp_variable = {
-                var = income_var_temp
-                value = -3.5
-            }
-            add_income = yes
-            #hidden_effect = {
-            #	random_list = {
-            #		60 = {
-            #		}
-            #		40 = {
-            #			country_event = { id = china.153 days = 10 }
-            #		}
-            #	}
-            #}
-            PAK = {
-                set_temp_variable = {
-                    var = income_var_temp
-                    value = 0.95
-                }
-                random_list = {
-                    60 = {
-                    }
-                    40 = {
-                        random_owned_controlled_state = {
-                            limit = {
-                                is_core_of = ROOT
-                                free_building_slots = {
-                                    building = industrial_complex
-                                    size > 1
-                                    include_locked = yes
-                                }
-                            }
-                            add_extra_state_shared_building_slots = 2
-                            add_building_construction = {
-                                type = industrial_complex
-                                level = 2
-                                instant_build = yes
-                            }
-                        }
-                    }
-                }
-                add_income = yes
-                set_temp_variable = {
-                    var = industrial_development_var_temp
-                    value = 0.05
-                }
-                add_industrial_development = yes
-                if = {
-                    limit = {
-                        NOT = {
-                            has_idea = PRC_pakistan_industrial_support
-                        }
-                    }
-                    add_timed_idea = {
-                        idea = PRC_pakistan_industrial_support
-                        days = 70
-                    }
-                }
-            }
-        }
-        ai_will_do = {
-            base = 10
-        }
-    }
-    PRC_invest_pakistan_military = {
-        available = {
-            PAK = {
-                OR = {
-                    has_country_flag = PAK_lost_indo_pakistan_war
-                    has_country_flag = PAK_won_indo_pakistan_war
-                }
-            }
-        }
-        visible = {
-            has_completed_focus = Brothers_of_South_Asia
-            PRC = {
-                is_ally_with = PAK
-            }
-        }
-        fire_only_once = no
-        days_remove = 35
-        days_re_enable = 50
-        cost = 50
-        complete_effect = {
-            set_temp_variable = {
-                var = income_var_temp
-                value = -0.6
-            }
-            add_income = yes
-            hidden_effect = {
-            }
-            PAK = {
-                set_temp_variable = {
-                    var = income_var_temp
-                    value = 0.6
-                }
-                add_income = yes
-                set_temp_variable = {
-                    var = military_development_var_temp
-                    value = 0.05
-                }
-                add_military_development = yes
-                if = {
-                    limit = {
-                        NOT = {
-                            has_idea = PRC_pakistan_military_support
-                        }
-                    }
-                    add_timed_idea = {
-                        idea = PRC_pakistan_military_support
-                        days = 70
-                    }
-                }
-            }
-        }
-    }
-    PRC_invest_pakistan_industry = {
-        available = {
-            PAK = {
-                OR = {
-                    has_country_flag = PAK_lost_indo_pakistan_war
-                    has_country_flag = PAK_won_indo_pakistan_war
-                }
-            }
-        }
-        visible = {
-            has_completed_focus = Brothers_of_South_Asia
-            PRC = {
-                is_ally_with = PAK
-            }
-        }
-        fire_only_once = no
-        days_remove = 35
-        days_re_enable = 50
-        cost = 35
-        complete_effect = {
-            set_temp_variable = {
-                var = income_var_temp
-                value = -3.5
-            }
-            add_income = yes
-            PAK = {
-                set_temp_variable = {
-                    var = income_var_temp
-                    value = 0.95
-                }
-                random_list = {
-                    60 = {
-                        random_owned_controlled_state = {
-                            limit = {
-                                is_core_of = ROOT
-                                free_building_slots = {
-                                    building = industrial_complex
-                                    size > 1
-                                    include_locked = yes
-                                }
-                            }
-                            add_extra_state_shared_building_slots = 1
-                            add_building_construction = {
-                                type = industrial_complex
-                                level = 1
-                                instant_build = yes
-                            }
-                        }
-                    }
-                    40 = {
-                        random_owned_controlled_state = {
-                            limit = {
-                                is_core_of = ROOT
-                                free_building_slots = {
-                                    building = industrial_complex
-                                    size > 1
-                                    include_locked = yes
-                                }
-                            }
-                            add_extra_state_shared_building_slots = 2
-                            add_building_construction = {
-                                type = industrial_complex
-                                level = 2
-                                instant_build = yes
-                            }
-                        }
-                    }
-                }
-                add_income = yes
-                set_temp_variable = {
-                    var = industrial_development_var_temp
-                    value = 0.05
-                }
-                add_industrial_development = yes
-            }
-        }
-    }
-    PRC_train_pakistan_army = {
-        available = {
-            PAK = {
-                OR = {
-                    has_country_flag = PAK_lost_indo_pakistan_war
-                    has_country_flag = PAK_won_indo_pakistan_war
-                }
-            }
-        }
-        visible = {
-            has_completed_focus = Brothers_of_South_Asia
-            PRC = {
-                is_ally_with = PAK
-            }
-        }
-        fire_only_once = no
-        days_remove = 35
-        days_re_enable = 150
-        ai_will_do = {
-            base = 10
-        }
-        cost = 50
-        complete_effect = {
-            PAK = {
-                1321 = {
-                    create_unit = {
-                        division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
-                        owner = PAK
-                        count = 5
-                    }
-                    create_unit = {
-                        division = "division_template = \"Armored Division\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
-                        owner = PAK
-                        count = 2
-                    }
-                }
-                add_equipment_to_stockpile = {
-                    type = infantry_equipment_1
-                    amount = 1500
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = anti_tank_equipment_1
-                    amount = 300
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = anti_air_equipment_1
-                    amount = 300
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = support_equipment
-                    amount = 500
-                    producer = PRC
-                }
-                add_equipment_to_stockpile = {
-                    type = motorized_equipment
-                    amount = 500
-                    producer = PRC
-                }
-            }
-        }
-    }
+
+	PRC_sanction_india = {
+		available = {
+			has_completed_focus = PRC_nl_flame_of_asia
+			NOT = {
+				has_war_with = RAJ
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_nl_flame_of_asia
+            has_country_flag = Japan_selected
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 125
+			}
+			add_debt = yes
+		}
+		remove_effect = {
+			send_embargo = RAJ
+			RAJ = {
+				country_event = {
+					id = china.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
+	PRC_sanction_australia = {
+		available = {
+			NOT = {
+				has_war_with = AST
+				is_ally_with = AST
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_economic_war_with_the_pdto
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 75
+			}
+			add_debt = yes
+		}
+		remove_effect = {
+			send_embargo = AST
+			AST = {
+				country_event = {
+					id = china.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
     #############原版援助APLA决议######################
     PRCnl_send_apla_weapons = {
         icon = GFX_decision_category_america_burning_category
@@ -3597,7 +5953,7 @@ PRC_assistance2communist = {
             }
         }
         visible = {
-            has_completed_focus = Two_red_flags
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = no
@@ -3636,7 +5992,7 @@ PRC_assistance2communist = {
             }
         }
         visible = {
-            has_completed_focus = Two_red_flags
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = no
@@ -3681,7 +6037,7 @@ PRC_assistance2communist = {
         available = {
         }
         visible = {
-            has_completed_focus = Two_red_flags
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = yes
@@ -3704,7 +6060,7 @@ PRC_assistance2communist = {
             }
         }
         visible = {
-            has_completed_focus = Two_red_flags
+            has_country_flag = South_America_selected
             country_exists = APA
         }
         fire_only_once = no
@@ -3775,8 +6131,8 @@ PRC_assistance2communist = {
             base = 10
         }
     }
-    ###############################################################
 }
+
 
 PRC_ussr_diplomacy = {
     #对苏外交

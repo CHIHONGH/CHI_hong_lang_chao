@@ -962,3 +962,76 @@ PTF_mind_your_own_business = { #别管其他国家
 		value = 1000
 	}
 }
+PTF_south_america_strategy = {
+	allowed = {
+		original_tag = PTF
+	}
+	enable = {
+		VEN = {
+			has_war_with = ARG
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = BRA
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = ARG
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = ECU
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = BOL
+		value = 100
+	}
+}
+
+PTF_south_america_war = {
+	allowed = {
+		OR = {
+			tag = ELS
+			tag = NIC
+			tag = GUA
+			tag = HON
+			tag = COS
+			tag = VEN
+			tag = CEN
+		}
+	}
+	enable = {
+		is_in_faction_with = VEN
+		PTF = {
+			OR = {
+				has_war_with = ZAP
+				has_war_with = MEX
+				has_war_with = PRC
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = ZAP
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = MEX
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = PRC
+		value = 100
+	}
+
+}

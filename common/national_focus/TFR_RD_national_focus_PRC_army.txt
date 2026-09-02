@@ -18,6 +18,30 @@ shared_focus = {
     cancel_if_invalid = yes
     #relative_position_id =
     completion_reward = {
+        set_variable = {
+            PLA_new_left_decryption_power_dynamic_var = 25
+        }
+        set_variable = {
+            PLA_new_left_crypto_strength_dynamic_var = 1
+        }
+        set_variable = {
+            PLA_new_left_intel_network_gain_factor_dynamic_var = 0.25
+        }
+        set_variable = {
+            PLA_plaaf_var_experience_gain_air = 0.1
+        }
+        set_variable = {
+            PLA_plaaf_var_air_training_xp_gain_factor = 0.3
+        }
+        set_variable = {
+            PLA_plan_naval_light_gun_hit_chance_factor_var = 0.1
+        }
+        set_variable = {
+            PLA_plan_naval_heavy_gun_hit_chance_factor_var = 0.1
+        }
+        set_variable = {
+            PLA_plan_experience_gain_navy_factor_var = 0.1
+        }
         hidden_effect = {
             scoped_play_song = "RD_msc_2"
         }
@@ -257,7 +281,7 @@ shared_focus = {
         add_doctrine_cost_reduction = {
             cost_reduction = 0.5
             name = PLA_not_forget_the_traditions_of_the_Red_Army
-            category = cat_old_land_doctrine
+            category = land_doctrine
         }
         if = {
             limit = {
@@ -607,7 +631,7 @@ shared_focus = {
         add_doctrine_cost_reduction = {
             cost_reduction = 0.5
             name = PLA_New_LuJun_Xiangqianjin
-            category = cat_old_land_doctrine
+            category = land_doctrine
         }
         effect_tooltip = {
             swap_ideas = {
@@ -921,6 +945,9 @@ shared_focus = {
         set_temp_variable = {
             var = military_development_var_temp
             value = 0.1
+        }
+        set_technology = {
+            unmanned_aircraft = 1
         }
         set_technology = {
             unmanned_aircraft = 1

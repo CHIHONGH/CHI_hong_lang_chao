@@ -5,10 +5,10 @@ PRC_nems_system = {
 		tag = PRC
 	}
 	visible = {
-		NOT = {
-			has_country_flag = PRC_nl_NEMS_model_end_flag
-		}
-		has_completed_focus = PRC_nl_automation_model
+		# NOT = {
+		# 	has_country_flag = PRC_nl_NEMS_model_end_flag
+		# }
+		has_completed_focus = nl_PRC_promote_industrial_innovation
 	}
 	priority = 99
 }
@@ -20,7 +20,8 @@ PRC_dawn_project = {
 		tag = PRC
 	}
 	visible = {
-		has_completed_focus = PRC_nl_dawn_project
+		# has_completed_focus = PRC_nl_dawn_project
+		always = no
 	}
 	priority = 99
 }
@@ -52,17 +53,17 @@ PRC_export_revolution = {
 	priority = 199
 }
 
-PRC_assistance2communist = {
-	icon = GFX_PRC_new_left_decision
-	visible_when_empty = yes
-	allowed = {
-		tag = PRC
-	}
-	visible = {
-		has_country_flag = PRC_world_revolution
-	}
-	priority = 195
-}
+# PRC_assistance2communist = {
+# 	icon = GFX_PRC_new_left_decision
+# 	visible_when_empty = yes
+# 	allowed = {
+# 		tag = PRC
+# 	}
+# 	visible = {
+# 		has_country_flag = PRC_world_revolution
+# 	}
+# 	priority = 195
+# }
 
 PRC_ussr_diplomacy = {
 	icon = GFX_PRC_new_left_decision
@@ -113,26 +114,27 @@ PRC_new_left_pla_reformation = {
     priority = 5
 }
 
-PRC_Rt_People_Democracy = {
-	icon = GFX_PRC_new_left_decision
-	allowed = {
-		tag = PRC
-	}
-	visible = {
-		has_country_flag = PRC_clean_house_start
-	}
-	priority = 2
-}
-PRC_Youth_Ideological_Education = {
-	icon = GFX_PRC_new_left_decision
-	allowed = {
-		tag = PRC
-	}
-	visible = {
-		has_country_flag = PRC_ideological_education_flag
-	}
-	priority = 1
-}
+# PRC_Rt_People_Democracy = {
+# 	icon = GFX_PRC_new_left_decision
+# 	allowed = {
+# 		tag = PRC
+# 	}
+# 	visible = {
+# 		has_country_flag = PRC_clean_house_start
+# 	}
+# 	priority = 2
+# }
+# PRC_Youth_Ideological_Education = {
+# 	icon = GFX_PRC_new_left_decision
+# 	allowed = {
+# 		tag = PRC
+# 	}
+# 	visible = {
+# 		has_country_flag = PRC_ideological_education_flag
+# 	}
+# 	priority = 1
+# }
+
 PRC_ready_for_global_economy_destory_category = {
 	visible_when_empty = yes
 	scripted_gui = custom_decision_view
@@ -165,12 +167,11 @@ PRC_solve_economy_crisis = {
 
 PRC_gaizaodaxingqiye_category = { #决议组：改造国内大型企业
 	icon = GFX_decision_category_PRC_internal_factions_icon
-	picture = GFX_decision_cat_PRC_enviroment
 	allowed = {
 		tag = PRC
 	}
 	visible = {
-        has_completed_focus = PRC_nl_reform_production_relation
+        has_completed_focus = nl_PRC_reconstruct_planning_commission
 	}
 	priority = 5
 }

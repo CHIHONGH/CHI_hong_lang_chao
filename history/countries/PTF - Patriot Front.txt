@@ -1,15 +1,32 @@
 ﻿capital = 1077
+capital = 1077
 
+oob = ""
 oob = ""
 
 set_research_slots = 5
 set_convoys = 50
 set_stability = 0.6
 set_war_support = 0.6
+set_research_slots = 5
+set_convoys = 50
+set_stability = 0.6
+set_war_support = 0.6
 
+set_country_flag = shithole_country
 set_country_flag = shithole_country
 
 
+set_variable = { 
+	var = Diplomats_Var 
+	value = 1 
+}
+
+set_variable = {
+	var = PTF_rousseau_power_var
+	value = 3
+}
+set_major = yes
 set_variable = { 
 	var = Diplomats_Var 
 	value = 1 
@@ -350,7 +367,20 @@ set_politics = {
 	election_frequency = 48
 	elections_allowed = no
 }
+set_politics = {	
+	ruling_party = fascist
+	last_election = "2020.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
 
+set_popularities = {
+	fascist = 47
+	nationalist = 13
+	authoritarian_democrat = 23
+	national_socialist = 11
+	conservative = 6
+}
 set_popularities = {
 	fascist = 47
 	nationalist = 13
@@ -363,7 +393,28 @@ set_variable = {
 	var = PTF_national_support_var
 	value = 0.23
 }
+set_variable = {
+	var = PTF_national_support_var
+	value = 0.23
+}
 
+add_ideas = {
+	#Country Ideas
+	PTF_second_continental_army1_idea
+	PTF_political_cornucopia_idea
+	PTF_economic_instability_idea
+	PTF_low_popular_support_idea
+
+	#PTF_Fascist_military_revolution_I_idea
+	#PTF_Counter_revolutionary_center_I_idea
+	#PTF_Fascist_military_revolution_II_idea
+	#PTF_Counter_revolutionary_center_II_idea
+	#PTF_Fascist_military_revolution_III_idea
+	#PTF_Counter_revolutionary_center_III_idea
+	#PTF_Anti_communist_fortress_idea
+	#PTF_End_of_communism_idea
+	PTF_hidden_idea
+	PTF_American_Defense_idea
 add_ideas = {
 	#Country Ideas
 	PTF_second_continental_army1_idea
@@ -692,8 +743,15 @@ if = {
 		icon = "GFX_USA_strategic_bomber3_medium"
 	}
 }
+		}
+		icon = "GFX_USA_strategic_bomber3_medium"
+	}
+}
 
 every_possible_country = {
+	limit = {
+		NOT =  { USA_is_civil_war_faction = yes }
+	}
 	limit = {
 		NOT =  { USA_is_civil_war_faction = yes }
 	}
@@ -704,7 +762,24 @@ add_opinion_modifier = {
 	target = ATW
 	modifier = opinion_begruding_ally
 }
+add_opinion_modifier = {
+	target = ATW
+	modifier = opinion_begruding_ally
+}
 
+add_opinion_modifier = {
+	target = NSM
+	modifier = opinion_begruding_ally
+}
+
+add_offsite_building = {
+	type = industrial_complex
+	level = 20
+}
+add_offsite_building = {
+	type = arms_factory
+	level = 20
+}
 add_opinion_modifier = {
 	target = NSM
 	modifier = opinion_begruding_ally

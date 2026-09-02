@@ -556,48 +556,6 @@ country_event = {
 }
 
 country_event = {
-    id = prcs.3017
-    title = prcs.3017.t
-    desc = prcs.3017.d
-    picture = GFX_PRC_black
-    is_triggered_only = yes
-    option = {
-        name = prcs.3017.a
-        set_country_flag = PRC_grassroots_lost
-        hidden_effect = {
-            country_event = {
-                id = prcs.3038
-                days = 460
-            }
-        }
-        custom_effect_tooltip = PRC_tfr_nl_china_heiyun_a_tt
-        effect_tooltip = {
-            swap_ideas = {
-                remove_idea = PRC_party_rectification_campaign_empty
-                add_idea = PRC_party_rectification_campaign_heiyun
-            }
-        }
-        add_to_variable = {
-            PPRC_st_var = 0.1
-        }
-        add_to_variable = {
-            PPRC_ad_drift_var = -0.03
-        }
-    }
-    option = {
-        name = prcs.3017.b
-        country_event = {
-            id = prcs.3018
-            days = 13
-            random_days = 9
-        }
-        custom_effect_tooltip = PRC_tfr_nl_china_heiyun_b_tt
-        add_political_power = -50
-        add_stability = -0.1
-    }
-}
-
-country_event = {
     id = prcs.3018
     title = prcs.3018.t
     desc = prcs.3018.d
@@ -686,9 +644,9 @@ country_event = {
         add_to_variable = {
             PPRC_st_var = 0.15
         }
-        add_to_variable = {
-            PPRC_consumer_num_var = -0.15
-        }
+        # add_to_variable = {
+        #     PPRC_consumer_num_var = -0.15
+        # }
         add_to_variable = {
             PPRC_ad_drift_var = -0.05
         }
@@ -935,7 +893,7 @@ country_event = {
             id = prcs.3033
             days = 10
         }
-        custom_effect_tooltip = PRC_tfr_nl_china_tongtoupidai_tt
+        # custom_effect_tooltip = PRC_tfr_nl_china_tongtoupidai_tt
         custom_effect_tooltip = PRC_tfr_nl_china_yizezuopaiyanlun_tt
     }
 }
@@ -1208,6 +1166,7 @@ country_event = {
     option = {
         name = prcs.3042.a
         set_country_flag = PRC_grassroots_ord
+        custom_effect_tooltip = PRC_grassroots_ord_tt
     }
 }
 
@@ -1613,7 +1572,7 @@ country_event = {
         name = prcs.3071.a
         country_event = {
             id = prcs.3122
-            days = 0
+            days = 1
         }
     }
 }
@@ -1667,6 +1626,18 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3076.a
+        hidden_effect = {
+            country_event = {
+                id = prcs.3077
+                days = 50
+                random_days = 15
+            }
+            country_event = {
+                id = prcs.3078
+                days = 720
+                random_days = 15
+            }
+        }
     }
 }
 country_event = {
@@ -1687,6 +1658,11 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3078.a
+        country_event = {
+            id = prcs.3079
+            days = 2
+            random_hours = 15
+        }
     }
 }
 country_event = {
@@ -1845,10 +1821,6 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3088.a
-        country_event = {
-            id = prcs.3075
-            days = 31
-        }
     }
 }
 country_event = {
@@ -1953,6 +1925,41 @@ country_event = {
                     add_faction_goal = faction_goal_placeholder_short_term
                     set_faction_leader = yes
                     add_to_faction = PTF
+                    if = {
+                        limit = {
+                            VIN = {
+                                has_country_flag = pdto_member
+                                NOT = {
+                                    has_country_leader = {
+                                        character = VIN_to_lam_char
+                                    }
+                                }
+                            }
+                        }
+                        add_to_faction = VIN
+                        VIN = {
+                            if = {
+                                limit = {
+                                    JAP = {
+                                        has_completed_focus = JAP_reinforce_pdto
+                                        NOT = {
+                                            has_completed_focus = JAP_continue_military_integration
+                                        }
+                                    }
+                                }
+                                add_ideas = JAP_PDTO_member_1
+                            }
+                            else_if = {
+                                limit = {
+                                    JAP = {
+                                        has_completed_focus = JAP_reinforce_pdto
+                                        has_completed_focus = JAP_continue_military_integration
+                                    }
+                                }
+                                add_ideas = JAP_PDTO_member_2
+                            }
+                        }
+                    }
                 }
             }
             
@@ -2357,9 +2364,6 @@ country_event = {
                 PRC = {
                     add_to_faction = PRK
                 }
-                PRK = {
-                    set_country_flag = eadi_member
-                }
                 news_event = news.346
             }
             declare_war_on = {
@@ -2516,7 +2520,6 @@ country_event = {
             id = prcs.3133
             days = 7
         }
-        #custom_effect_tooltip = PRC_tfr_nl_china_taikongjunhaizaizuo_tt
     }
 }
 country_event = {
@@ -2527,7 +2530,6 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3133.a
-        #custom_effect_tooltip = PRC_tfr_nl_china_taikongjunguihaizaizuo_tt
     }
 }
 country_event = {
@@ -2696,7 +2698,7 @@ country_event = {
         name = prcs.3141.a
         trigger = {
             PRC = {
-                has_tech = base_sam_missile
+                has_tech = modern_air_defense_systems
                 has_tech = advanced_ballistic_missile
             }
         }
@@ -2712,7 +2714,7 @@ country_event = {
         trigger = {
             NOT = {
                 PRC = {
-                    has_tech = base_sam_missile
+                    has_tech = modern_air_defense_systems
                     has_tech = advanced_ballistic_missile
                 }
             }
@@ -2822,7 +2824,7 @@ country_event = {
         }
     }
 }
-########没本地化的事件
+########æ²¡æœ¬åœ°åŒ–çš„äº‹ä»¶
 country_event = {
     id = prcs.3144
     title = prcs.3144.t
@@ -2858,24 +2860,6 @@ country_event = {
                 }
             }
             set_country_flag = NHDG_PRC_victory_hidden_flag
-            # 幽灵屏障：南海电子战获胜——随机摧毁 1 艘美导弹巡洋舰（battleship 型）+ 削弱一次
-            if = {
-                limit = {
-                    NOT = { has_country_flag = prc_elec_nanhai_done }
-                }
-                set_country_flag = prc_elec_nanhai_done
-                PTF = {
-                    destroy_ships = {
-                        type = battleship
-                        count = 1
-                    }
-                }
-                PTF_elec_weaken = yes
-                country_event = { id = prc_elec_warfare.201 }
-                PTF = {
-                    country_event = { id = prc_elec_warfare.202 }
-                }
-            }
         }
         else_if = {
             limit = {
@@ -2897,17 +2881,6 @@ country_event = {
             country_event = {
                 id = prcs.3143
                 days = 1
-            }
-            # 幽灵屏障：南海冲突尘埃落定数日后，我方侦测到美海军新型电子战系统
-            if = {
-                limit = {
-                    NOT = { has_country_flag = prc_elec_known_done }
-                }
-                set_country_flag = prc_elec_known_done
-                country_event = {
-                    id = prc_elec_warfare.101
-                    days = 5
-                }
             }
         }
         
@@ -3745,7 +3718,7 @@ country_event = {
         add_poverty_development = yes
     }
 }
-# 绳之以法
+# ç»³ä¹‹ä»¥æ³•
 country_event = {
     id = prcs.3175
     title = prcs.3175.t
@@ -3756,7 +3729,7 @@ country_event = {
         name = prcs.3175.a
     }
 }
-# 落地生根
+# è�½åœ°ç”Ÿæ ¹
 country_event = {
     id = prcs.3176
     title = prcs.3176.t
@@ -3768,7 +3741,7 @@ country_event = {
     }
 }
 
-# “饭团”
+# â€œé¥­å›¢â€�
 country_event = {
     id = prcs.3177
     title = prcs.3177.t
@@ -3780,7 +3753,7 @@ country_event = {
     }
 }
 
-# 被人民做局了……（一）
+# è¢«äººæ°‘å�šå±€äº†â€¦â€¦ï¼ˆä¸€ï¼‰
 country_event = {
     id = pcsr.3178
     title = prcs.3178.t
@@ -3796,7 +3769,7 @@ country_event = {
     }
 }
 
-# 被人民做局了……（二）
+# è¢«äººæ°‘å�šå±€äº†â€¦â€¦ï¼ˆäºŒï¼‰
 country_event = {
     id = prcs.3179
     title = prcs.3179.t
@@ -3808,7 +3781,7 @@ country_event = {
     }
 }
 
-# 摆摊一事
+# æ‘†æ‘Šä¸€äº‹
 country_event = {
     id = prcs.3180
     title = prcs.3180.t
@@ -3820,7 +3793,7 @@ country_event = {
     }
 }
 
-# 如履薄冰
+# å¦‚å±¥è–„å†°
 country_event = {
     id = prcs.3181
     title = prcs.3181.t
@@ -3836,7 +3809,7 @@ country_event = {
     }
 }
 
-# 长刃落下
+# é•¿åˆƒè�½ä¸‹
 country_event = {
     id = prcs.3182
     title = prcs.3182.t
@@ -3848,7 +3821,7 @@ country_event = {
     }
 }
 
-# 日升日落
+# æ—¥å�‡æ—¥è�½
 country_event = {
     id = prcs.3183
     title = prcs.3183.t
@@ -3864,7 +3837,7 @@ country_event = {
     }
 }
 
-# 车上密谈
+# è½¦ä¸Šå¯†è°ˆ
 country_event = {
     id = prcs.3184
     title = prcs.3184.t
@@ -3892,7 +3865,7 @@ country_event = {
     }
 }
 
-# 杨柳依依
+# æ�¨æŸ³ä¾�ä¾�
 country_event = {
     id = prcs.3185
     title = prcs.3185.t
@@ -3921,7 +3894,7 @@ country_event = {
     }
 }
 
-# 秦岭草莽
+# ç§¦å²­è�‰èŽ½
 country_event = {
     id = prcs.3186
     title = prcs.3186.t
@@ -3937,7 +3910,7 @@ country_event = {
     }
 }
 
-# 玉兰树簌
+# çŽ‰å…°æ ‘ç°Œ
 country_event = {
     id = prcs.3187
     title = prcs.3187.t
@@ -3953,7 +3926,7 @@ country_event = {
     }
 }
 
-# 映山红遍
+# æ˜ å±±çº¢é��
 country_event = {
     id = prcs.3188
     title = prcs.3188.t
@@ -3970,7 +3943,7 @@ country_event = {
     }
 }
 
-# 冰山下的来客
+# å†°å±±ä¸‹çš„æ�¥å®¢
 country_event = {
     id = prcs.3189
     title = prcs.3189.t
@@ -3986,7 +3959,7 @@ country_event = {
     }
 }
 
-# 工作报告
+# å·¥ä½œæŠ¥å‘Š
 country_event = {
     id = prcs.3190
     title = prcs.3190.t
@@ -3998,7 +3971,7 @@ country_event = {
     }
 }
 
-# 针锋相对（一）
+# é’ˆé”‹ç›¸å¯¹ï¼ˆä¸€ï¼‰
 country_event = {
     id = prcs.3191
     title = prcs.3191.t
@@ -4014,7 +3987,7 @@ country_event = {
     }
 }
 
-# 针锋相对（二）
+# é’ˆé”‹ç›¸å¯¹ï¼ˆäºŒï¼‰
 country_event = {
     id = prcs.3192
     title = prcs.3192.t
@@ -4030,7 +4003,7 @@ country_event = {
     }
 }
 
-# 转机
+# è½¬æœº
 country_event = {
     id = prcs.3193
     title = prcs.3193.t
@@ -4066,7 +4039,7 @@ country_event = {
     }
 }
 
-# 务实改革
+# åŠ¡å®žæ”¹é�©
 country_event = {
     id = prcs.3194
     title = prcs.3194.t
@@ -4187,7 +4160,7 @@ country_event = {
     }
 }
 
-    # 利剑？
+    # åˆ©å‰‘ï¼Ÿ
     country_event = {
         id = prcs.3195
         title = prcs.3195.t
@@ -4206,7 +4179,7 @@ country_event = {
         }
     }
 
-    # 公仆？
+    # å…¬ä»†ï¼Ÿ
     country_event = {
         id = prcs.3196
         title = prcs.3196.t
@@ -4224,7 +4197,7 @@ country_event = {
         }
     }
 
-    # 大会启幕
+    # å¤§ä¼šå�¯å¹•
     country_event = {
         id = prcs.3197
         title = prcs.3197.t
@@ -4363,7 +4336,7 @@ country_event = {
             }
         }
     }
-    # 便民建设
+    # ä¾¿æ°‘å»ºè®¾
     country_event = {
         id = prcs.3198
         title = prcs.3198.t
@@ -4468,7 +4441,7 @@ country_event = {
         }
     }
 
-    # 枷落新生（上）
+    # æž·è�½æ–°ç”Ÿï¼ˆä¸Šï¼‰
     country_event = {
         id = prcs.3199
         title = prcs.3199.t
@@ -4488,7 +4461,7 @@ country_event = {
         }
     }
 
-    # 枷落新生（下）
+    # æž·è�½æ–°ç”Ÿï¼ˆä¸‹ï¼‰
     country_event = {
         id = prcs.3200
         title = prcs.3200.t
@@ -4504,7 +4477,7 @@ country_event = {
         }
     }
 
-    # 除阀清源
+    # é™¤é˜€æ¸…æº�
     country_event = {
         id = prcs.3201
         title = prcs.3201.t
@@ -4517,7 +4490,7 @@ country_event = {
         }
     }
 
-    # 一网打尽
+    # ä¸€ç½‘æ‰“å°½
     country_event = {
         id = prcs.3202
         title = prcs.3202.t
@@ -4529,7 +4502,7 @@ country_event = {
         }
     }
 
-    # “闹剧”
+    # â€œé—¹å‰§â€�
     country_event = {
         id = prcs.3203
         title = prcs.3203.t
@@ -4549,21 +4522,8 @@ country_event = {
         }
     }
 
-    # 苍蝇也要拍
-    country_event = {
-        id = prcs.3204
-        title = prcs.3204.t
-        desc = prcs.3204.d
-        picture = GFX_Event_Template101
-        is_triggered_only = yes
-        option = {
-            name = prcs.3204.a
-            add_stability = 0.05
-            add_political_power = 10
-        }
-    }
 
-    # 银杏叶
+    # é“¶æ��å�¶
     country_event = {
         id = prcs.3205
         title = prcs.3205.t
@@ -4641,7 +4601,7 @@ country_event = {
         }
     }
 
-    # 高原补给
+    # é«˜åŽŸè¡¥ç»™
     country_event = {
         id = prcs.3208
         title = prcs.3208.t
@@ -4653,7 +4613,7 @@ country_event = {
         }
     }
 
-    # 旧方法，新构想 (1)
+    # æ—§æ–¹æ³•ï¼Œæ–°æž„æƒ³ (1)
     country_event = {
         id = prcs.3209
         title = prcs.3209.t
@@ -4669,7 +4629,7 @@ country_event = {
         }
     }
 
-    # 旧方法，新构想 (2)
+    # æ—§æ–¹æ³•ï¼Œæ–°æž„æƒ³ (2)
     country_event = {
         id = prcs.3210
         title = prcs.3210.t
@@ -4685,7 +4645,7 @@ country_event = {
         }
     }
 
-    # 旧方法，新构想 (3)
+    # æ—§æ–¹æ³•ï¼Œæ–°æž„æƒ³ (3)
     country_event = {
         id = prcs.3211
         title = prcs.3211.t
@@ -4697,7 +4657,7 @@ country_event = {
         }
     }
 
-    # 迭代系统
+    # è¿­ä»£ç³»ç»Ÿ
     country_event = {
         id = prcs.3212
         title = prcs.3212.t
@@ -4709,129 +4669,495 @@ country_event = {
         immediate = {
             hidden_effect = {
                 country_event = { id = prcs.3212 days = 365 }
+                activate_mission = NEMS_self_deploy
             }
         }
 
         option = {
             name = prcs.3212.a
-            custom_effect_tooltip = prcs_3212_a_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.05
+            set_temp_variable = {
+                var = nems_jindu_rating_var_temp
+                value = 1
             }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.025
+            nems_jindu = yes
+            effect_tooltip = {
+                activate_mission = NEMS_self_deploy
             }
         }
 
-        option = {
-            name = prcs.3212.b
-            custom_effect_tooltip = prcs_3212_b_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.025
-            }
-        }
+        # option = {
+        #     name = prcs.3212.b
+        #     custom_effect_tooltip = prcs_3212_b_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.05
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.025
+        #     }
+        # }
 
-        option = {
-            name = prcs.3212.c
-            custom_effect_tooltip = prcs_3212_c_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.05
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.025
-            }
-        }
+        # option = {
+        #     name = prcs.3212.c
+        #     custom_effect_tooltip = prcs_3212_c_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.05
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.025
+        #     }
+        # }
 
-        option = {
-            name = prcs.3212.e
-            custom_effect_tooltip = prcs_3212_e_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.05
-            }
-        }
+        # option = {
+        #     name = prcs.3212.e
+        #     custom_effect_tooltip = prcs_3212_e_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.025
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.05
+        #     }
+        # }
 
-        option = {
-            name = prcs.3212.f
-            custom_effect_tooltip = prcs_3212_f_tt
-            add_to_variable = {
-                PRC_mic_production_speed_buildings_factor_dynamic_var = 0.0375
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_factory_dynamic_var = 0.0375
-            }
-            add_to_variable = {
-                PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.0375
-            }
-            add_to_variable = {
-                PRC_mic_research_speed_factor_dynamic_var = 0.0375
-            }
-        }
+        # option = {
+        #     name = prcs.3212.f
+        #     custom_effect_tooltip = prcs_3212_f_tt
+        #     add_to_variable = {
+        #         PRC_mic_production_speed_buildings_factor_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_factory_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_industrial_capacity_dockyard_dynamic_var = 0.0375
+        #     }
+        #     add_to_variable = {
+        #         PRC_mic_research_speed_factor_dynamic_var = 0.0375
+        #     }
+        # }
     }
 
-# ============ 侧翼：中国太空时代 剧情事件（合并自 beta） ============
 country_event = {
-    #####航天食品改革#####
-    id = prcs.53
-    title = prcs.53.t
-    desc = prcs.53.d
-    picture = GFX_PRC_space_food
+    id = prcs.3017
+    title = prcs.3017.t
+    desc = prcs.3017.d
+    picture = GFX_PRC_black
     is_triggered_only = yes
-    trigger = {
-        tag = PRC
-    }
     option = {
-        name = prcs.53.a
+        name = prcs.3017.a
+        set_country_flag = PRC_grassroots_lost
         hidden_effect = {
             country_event = {
-                id = prcs.54
-                days = 100
-                random_days = 20
+                id = prcs.3213
+                days = 13
+                random_days = 9
             }
+        }
+        custom_effect_tooltip = PRC_tfr_nl_china_heiyun_a_tt
+        effect_tooltip = {
+            swap_ideas = {
+                remove_idea = PRC_party_rectification_campaign_empty
+                add_idea = PRC_party_rectification_campaign_heiyun
+            }
+        }
+        add_to_variable = {
+            PPRC_st_var = 0.1
+        }
+        add_to_variable = {
+            PPRC_ad_drift_var = -0.03
+        }
+    }
+    option = {
+        name = prcs.3017.b
+        country_event = {
+            id = prcs.3018
+            days = 13
+            random_days = 9
+        }
+        custom_effect_tooltip = PRC_tfr_nl_china_heiyun_b_tt
+        add_political_power = -50
+        add_stability = -0.1
+    }
+}
+
+country_event = {
+    id = prcs.3213
+    title = prcs.3213.t
+    desc = prcs.3213.d
+    picture = GFX_PRC_Generic_Unity
+    is_triggered_only = yes
+    option = {
+        name = prcs.3213.a
+        country_event = {
+            id = prcs.3214
+            days = 7
         }
     }
 }
 
 country_event = {
-    #####新式航天飞行器设计#####
-    id = prcs.54
-    title = prcs.54.t
-    desc = prcs.54.d
-    picture = GFX_PRC_space_jet
+    id = prcs.3214
+    title = prcs.3214.t
+    desc = prcs.3214.d
+    picture = GFX_PRC_Generic_Unity
     is_triggered_only = yes
-    trigger = {
-        tag = PRC
-    }
     option = {
-        name = prcs.54.a
+        name = prcs.3214.a
+        country_event = {
+            id = prcs.3215
+            days = 14
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3215
+    title = prcs.3215.t
+    desc = prcs.3215.d
+    picture = GFX_PRC_red_flag
+    is_triggered_only = yes
+    option = {
+        name = prcs.3215.a
+        add_manpower = -1949
+        add_to_variable = {
+            PPRC_pp_g_var = 0.25
+        }
+        add_to_variable = {
+            PPRC_st_var = 0.2
+        }
+        add_to_variable = {
+            PPRC_consumer_num_var = -0.05
+        }
+        add_to_variable = {
+            PPRC_nt_drift_var = -0.03
+        }
+        add_to_variable = {
+            PPRC_society_dev_var = 0.003
+        }
+        country_event = {
+            id = prcs.3216
+            days = 14
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3216
+    title = prcs.3216.t
+    desc = prcs.3216.d
+    picture = GFX_PRC_swat2
+    is_triggered_only = yes
+    option = {
+        name = prcs.3216.a
+        country_event = {
+            id = prcs.3217
+            days = 14
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3217
+    title = prcs.3217.t
+    desc = prcs.3217.d
+    picture = GFX_PRC_mao_protest
+    is_triggered_only = yes
+    option = {
+        name = prcs.3217.a
+        country_event = {
+            id = prcs.3218
+            days = 3
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3218
+    title = prcs.3218.t
+    desc = prcs.3218.d
+    picture = GFX_PRC_black
+    is_triggered_only = yes
+    option = {
+        name = prcs.3218.a
+        country_event = {
+            id = prcs.3219
+            days = 14
+            random_days = 9
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3219
+    title = prcs.3219.t
+    desc = prcs.3219.d
+    picture = GFX_PRC_little_guangzhou
+    is_triggered_only = yes
+    option = {
+        name = prcs.3219.a
+        country_event = {
+            id = prcs.3220
+            days = 14
+            random_days = 9
+        }
+
+    }
+}
+
+country_event = {
+    id = prcs.3220
+    title = prcs.3220.t
+    desc = prcs.3220.d
+    picture = GFX_PRC_loyalty_to_the_party
+    is_triggered_only = yes
+    option = {
+        name = prcs.3220.a
+        country_event = {
+            id = prcs.3221
+            days = 21
+            random_days = 9
+        }
+        add_to_variable = {
+            PPRC_st_var = 0.2
+        }
+        add_to_variable = {
+            PPRC_com_drift_var = 0.04
+        }
+        add_to_variable = {
+            PPRC_ts_drift_var = -0.04
+        }
+        add_to_variable = {
+            PPRC_industry_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_farming_dev_var = 0.003
+        }
+        
+    }
+}
+
+country_event = {
+    id = prcs.3221
+    title = prcs.3221.t
+    desc = prcs.3221.d
+    picture = GFX_PRC_huchunhua
+    is_triggered_only = yes
+    option = {
+        name = prcs.3221.a
+        custom_effect_tooltip = prcs_3221_tt
+        country_event = {
+            id = prcs.3222
+            days = 21
+            random_days = 9
+        }
+        add_stability = 0.15
+    }
+}
+
+country_event = {
+    id = prcs.3222
+    title = prcs.3222.t
+    desc = prcs.3222.d
+    picture = GFX_PRC_oh_no_jap
+    is_triggered_only = yes
+    option = {
+        name = prcs.3222.a
+        add_manpower = -9178
+        add_to_variable = {
+            PPRC_pp_g_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_personal_value_var = -0.125
+        }
+        add_to_variable = {
+            PPRC_society_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_ad_drift_var = -0.02
+        }
+        add_to_variable = {
+            PPRC_nt_drift_var = -0.02
+        }
+        
+        country_event = {
+            id = prcs.3223
+            days = 14
+            random_days = 9
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3223
+    title = prcs.3223.t
+    desc = prcs.3223.d
+    picture = GFX_PRC_oh_no_jap
+    is_triggered_only = yes
+    option = {
+        name = prcs.3223.a
+        add_to_variable = {
+            PPRC_pp_g_var = 0.03
+        }
+        add_to_variable = {
+            PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_ad_drift_var = -0.03
+        }
+        
+        country_event = {
+            id = prcs.3224
+            days = 14
+            random_days = 9
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3224
+    title = prcs.3224.t
+    desc = prcs.3224.d
+    picture = GFX_PRC_proletariat_democracy
+    is_triggered_only = yes
+    option = {
+        name = prcs.3224.a
+        custom_effect_tooltip = prcs_3224_tt
+        add_to_variable = {
+            PPRC_pp_g_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_start_efficiency_var = 0.05   
+        }
+        add_to_variable = {
+            PPRC_society_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_com_drift_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_sd_drift_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_ad_drift_var = -0.02
+        }
+        add_to_variable = {
+            PPRC_nt_drift_var = -0.02
+        }
+        
+        country_event = {
+            id = prcs.3225
+            days = 14
+            random_days = 9
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3225
+    title = prcs.3225.t
+    desc = prcs.3225.d
+    picture = GFX_PRC_swat
+    is_triggered_only = yes
+    option = {
+        name = prcs.3225.a
+        add_to_variable = {
+            PPRC_st_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_nt_drift_var = -0.1
+        }
+        add_to_variable = {
+            PPRC_ls_drift_var = -0.02
+        }
+        
+        country_event = {
+            id = prcs.3226
+            days = 14
+            random_days = 9
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3226
+    title = prcs.3226.t
+    desc = prcs.3226.d
+    picture = GFX_PRC_party_office
+    is_triggered_only = yes
+    option = {
+        name = prcs.3226.a
+        add_political_power = 50
+        add_to_variable = {
+            PPRC_max_efficiency_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_poverty_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_com_drift_var = 0.02
+        }
+        
+        country_event = {
+            id = prcs.3227
+            days = 14
+            random_days = 9
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3227
+    title = prcs.3227.t
+    desc = prcs.3227.d
+    picture = GFX_PRC_a_meeting
+    is_triggered_only = yes
+    option = {
+        name = prcs.3227.a
+        custom_effect_tooltip = prcs_3227_tt
+        add_to_variable = {
+            PPRC_pp_var = -0.05
+        }
+        add_to_variable = {
+            PPRC_start_efficiency_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_academic_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_industry_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_farming_dev_var = 0.003
+        }
+        add_to_variable = {
+            PPRC_sd_drift_var = 0.02
+        }
+        add_to_variable = {
+            PPRC_com_drift_var = 0.05
+        }
+        add_to_variable = {
+            PPRC_nt_drift_var = -0.02
+        }
+        add_to_variable = {
+            PPRC_ad_drift_var = -0.02
+        }
+        
     }
 }

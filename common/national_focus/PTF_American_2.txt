@@ -29,6 +29,10 @@ shared_focus = {
         add_political_power = 150
         add_manpower = 100000
         news_event = rd_ptf_news.2
+        PTF = {
+            set_faction_leader = yes
+        } 
+        # ptf成为太约领袖
     }
 }
 
@@ -82,12 +86,29 @@ shared_focus = {
                 allow_spawning_on_enemy_provs = yes
             }
         }
-        every_allied_country = {
+        every_country = {
+            limit = {
+                OR = {
+                    tag = RAJ
+                    tag = JAP
+                    tag = PAP
+                    tag = NZL
+                    tag = AST
+                    tag = KOR
+                }
+                has_war_with = PRC
+            }
             add_timed_idea = {
                 idea = kingside_castling
                 days = 180
             }
         }
+        # every_allied_country = {
+        #     add_timed_idea = {
+        #         idea = kingside_castling
+        #         days = 180
+        #     }
+        # }
     }
 }
 
@@ -110,12 +131,29 @@ shared_focus = {
     }
     completion_reward = {
         log = "[GetDateText]: [Root.GetName]: Focus PTF_alexander_re_conquest"
-        every_allied_country = {
+        every_country = {
+            limit = {
+                OR = {
+                    tag = RAJ
+                    tag = JAP
+                    tag = PAP
+                    tag = NZL
+                    tag = AST
+                    tag = KOR
+                }
+                has_war_with = PRC
+            }
             add_timed_idea = {
                 idea = operation_alexander
                 days = 180
             }
         }
+        # every_allied_country = {
+        #     add_timed_idea = {
+        #         idea = operation_alexander
+        #         days = 180
+        #     }
+        # }
     }
 }
 
@@ -132,12 +170,29 @@ shared_focus = {
     }
     completion_reward = {
         log = "[GetDateText]: [Root.GetName]: Focus PTF_operation_cross"
-         every_allied_country = {
+        every_country = {
+            limit = {
+                OR = {
+                    tag = RAJ
+                    tag = JAP
+                    tag = PAP
+                    tag = NZL
+                    tag = AST
+                    tag = KOR
+                }
+                has_war_with = PRC
+            }
             add_timed_idea = {
                 idea = operation_cross
                 days = 180
             }
         }
+        #  every_allied_country = {
+        #     add_timed_idea = {
+        #         idea = operation_cross
+        #         days = 180
+        #     }
+        # }
     }
 }
 
@@ -470,12 +525,29 @@ shared_focus = {
             }
         }
         log = "[GetDateText]: [Root.GetName]: Focus PTF_king_flank_pawns"
-        every_allied_country = {
+        every_country = {
+            limit = {
+                OR = {
+                    tag = RAJ
+                    tag = JAP
+                    tag = PAP
+                    tag = NZL
+                    tag = AST
+                    tag = KOR
+                }
+                has_war_with = PRC
+            }
             add_timed_idea = {
                 idea = sacrifice_attack_king
-                days = 180 
+                days = 180
             }
         }
+        # every_allied_country = {
+        #     add_timed_idea = {
+        #         idea = sacrifice_attack_king
+        #         days = 180 
+        #     }
+        # }
     }
 }
 
