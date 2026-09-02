@@ -10410,24 +10410,6 @@ JAP_foreign_policy_cat = {
 				}
 				if = {
 					limit = {
-						tag = VIN
-					}
-					OR = {
-						AND = {
-							check_variable = { 
-								global.JAP_influence_VIN_var > 0.7
-							}
-							check_variable = { 
-								global.PRC_influence_VIN_var < 0.3
-							}
-						}
-						check_variable = { 
-							global.JAP_influence_VIN_var > 0.99
-						}
-					}
-				}
-				if = {
-					limit = {
 						tag = LAO
 					}
 					OR = {
@@ -10554,7 +10536,7 @@ JAP_foreign_policy_cat = {
 				}
 			}
 		}
-		targets = { BRM VIN LAO CAM INS MAL PHI SIG SIA }
+		targets = { BRM LAO CAM INS MAL PHI SIG SIA }
 		complete_effect = {
 			JAP = {
 				add_to_faction = FROM
@@ -11551,15 +11533,47 @@ JAP_great_asian_war = {
 		}
 
 		timeout_effect = {
+			if = {
+				limit = { 
+					PRC = {
+						has_country_flag = RD_no_dont_kill_me_graygoo_flag2
+					}
+				}
+				hidden_effect = {
+					PTF = {
+						remove_ideas = {
+							PTF_Fascist_military_revolution_I_idea
+							PTF_Counter_revolutionary_center_I_idea
+							PTF_Fascist_military_revolution_II_idea
+							PTF_Counter_revolutionary_center_II_idea
+							PTF_Fascist_military_revolution_III_idea
+							PTF_Counter_revolutionary_center_III_idea
+							PTF_Anti_communist_fortress_idea
+							PTF_End_of_communism_idea
+						}
+					}
+					
+				}	
+				
+			}
 			declare_war_on = {
 				target = PRK
 				type = annex_everything
 			}
 			add_to_faction = KOR
+			NAX = {
+				load_focus_tree = NAX_focus
+			}
 			KOR = {
 				set_country_flag = pdto_member
 			}
 			news_event = jap.1001
+			hidden_effect = {
+				add_ideas = JAP_balance_sheet
+				PTF = {
+					add_ideas = PTF_balance_sheet
+				}
+			}
 		}
 	}
 	JAP_authorize_north_korean_intervention = {
