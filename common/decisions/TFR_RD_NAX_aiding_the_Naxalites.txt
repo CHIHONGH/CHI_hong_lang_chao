@@ -28,17 +28,21 @@ NAX_aiding_the_Naxalites_category = {
         visible = {
         }
         cancel_trigger = {
-            OR = {
-                has_country_flag = PAK_won_indo_pakistan_war
-                has_country_flag = PAK_lost_indo_pakistan_war
-            }
+            PAK = {
+                OR = {
+                    has_country_flag = PAK_won_indo_pakistan_war
+                    has_country_flag = PAK_lost_indo_pakistan_war
+                }
+            } 
         }
         cancel_effect = {
             remove_mission = NAX_Nasser_Mass_Power
             remove_mission = NAX_Limited_Time_Mission
             if = {
                 limit = { 
-                    has_country_flag = PAK_won_indo_pakistan_war
+                    PAK = {
+                        has_country_flag = PAK_won_indo_pakistan_war
+                    }
                 }
                 NAX = {
                     set_country_flag = NAX_win_indian_wool_war
