@@ -1,0 +1,111 @@
+# ==================== PTF 幽灵屏障：on_actions 削弱钩子 ====================
+# on_pride_of_the_fleet_sunk：ROOT=荣耀舰主国，FROM=击沉者（原版 04_mtg 用法）
+# on_nuke_drop：ROOT=投放国，FROM=被炸州（原版 00_on_actions 用法）
+# on_state_control_changed：ROOT=新控制国，FROM=旧控制国，FROM.FROM=州（原版 15_mun 用法）
+# 所有效果只在中国侧首次满足时执行一次（PRC flag 防重）
+on_actions = {
+	on_pride_of_the_fleet_sunk = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = PRC }
+				}
+				FROM = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = prc_elec_potf_done }
+						}
+						set_country_flag = prc_elec_potf_done
+						PTF_elec_weaken = yes
+						country_event = { id = prc_elec_warfare.205 }
+						PTF = {
+							country_event = { id = prc_elec_warfare.206 }
+						}
+					}
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { tag = PRC }
+					FROM = { state = 629 }
+				}
+				ROOT = {
+					# 削弱额度与首占夏威夷共享（核弹/占领合计只削弱一次）
+					if = {
+						limit = {
+							NOT = { has_country_flag = prc_elec_hawaii_done }
+						}
+						set_country_flag = prc_elec_hawaii_done
+						PTF_elec_weaken = yes
+					}
+					# 事件播报独立于削弱（首次核弹炸夏威夷才弹）
+					if = {
+						limit = {
+							NOT = { has_country_flag = prc_elec_nuke_fired }
+						}
+						set_country_flag = prc_elec_nuke_fired
+						country_event = { id = prc_elec_warfare.207 }
+						PTF = {
+							country_event = { id = prc_elec_warfare.208 }
+						}
+					}
+				}
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			# 首占夏威夷（州 629）：削弱额度与核弹轰炸共享（合计只削弱一次）
+			if = {
+				limit = {
+					ROOT = { tag = PRC }
+					FROM.FROM = { state = 629 }
+				}
+				ROOT = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = prc_elec_hawaii_done }
+						}
+						set_country_flag = prc_elec_hawaii_done
+						PTF_elec_weaken = yes
+					}
+					# 事件播报独立于削弱（首次占领才弹）
+					if = {
+						limit = {
+							NOT = { has_country_flag = prc_elec_hawaii_occ }
+						}
+						set_country_flag = prc_elec_hawaii_occ
+						country_event = { id = prc_elec_warfare.209 }
+						PTF = {
+							country_event = { id = prc_elec_warfare.210 }
+						}
+					}
+				}
+			}
+			# 首占西雅图（州 386）：体系彻底崩溃，直接终档
+			if = {
+				limit = {
+					ROOT = { tag = PRC }
+					FROM.FROM = { state = 386 }
+				}
+				ROOT = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = prc_elec_seattle_done }
+						}
+						set_country_flag = prc_elec_seattle_done
+						PTF_elec_collapse = yes
+						country_event = { id = prc_elec_warfare.213 }
+						PTF = {
+							country_event = { id = prc_elec_warfare.214 }
+						}
+					}
+				}
+			}
+		}
+	}
+}

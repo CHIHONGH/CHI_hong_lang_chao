@@ -11,32 +11,32 @@ scripted_gui = {
 		}
 		effects = {
 			xp_button1_click = {
-				army_experience = -50
+				army_experience = -100
 				add_mastery = {
-					amount = 20
+					amount = 25
 					folder = land
 				}
 			}
 			xp_button2_click = {
-				navy_experience = -50
+				navy_experience = -100
 				add_mastery = {
-					amount = 20
+					amount = 25
 					folder = naval
 				}
 			}
 			xp_button3_click = {
-				air_experience = -50
+				air_experience = -100
 				add_mastery = {
-					amount = 20
+					amount = 25
 					folder = air
 				}
 			}
 			xp_button4_click = {
-				army_experience = -15
-				air_experience = -15
-				navy_experience = -15
+				army_experience = -25
+				air_experience = -25
+				navy_experience = -25
 				add_mastery = {
-					amount = 20
+					amount = 15
 					folder = special_forces
 				}
 			}
@@ -44,60 +44,60 @@ scripted_gui = {
 
 		triggers = {
 			xp_button1_click_enabled = {
-				has_army_experience > 50
+				has_army_experience > 100
 			}
 			xp_button2_click_enabled = {
-				has_navy_experience > 50
+				has_navy_experience > 100
 			}
 			xp_button3_click_enabled = {
-				has_air_experience > 50
+				has_air_experience > 100
 			}
 			xp_button4_click_enabled = {
-				has_army_experience > 15
-				has_navy_experience > 14
-				has_air_experience > 15
+				has_army_experience > 25
+				has_navy_experience > 25
+				has_air_experience > 25
 			}
 		}
 
-		ai_weights = {
-			xp_button1_click = {
-				ai_will_do = {
-					base = 10
-					modifier = {
-						add = 100
-						has_army_experience > 300
-					}
-				}
-			}
-			xp_button2_click = {
-				ai_will_do = {
-					base = 10
-					modifier = {
-						add = 100
-						has_navy_experience > 300
-					}
-				}
-			}
-			xp_button3_click = {
-				ai_will_do = {
-					base = 10
-					modifier = {
-						add = 100
-						has_air_experience > 300
-					}
-				}
-			}
-			xp_button4_click = {
-				ai_will_do = {
-					base = 10
-					modifier = {
-						add = 150
-						has_army_experience > 200
-						has_air_experience > 200
-						has_navy_experience > 200
-					}
-				}
-			}
-		}
+		# ai_weights = {
+		# 	xp_button1_click = {
+		# 		ai_will_do = {
+		# 			base = 10
+		# 			modifier = {
+		# 				add = 100
+		# 				has_army_experience > 300
+		# 			}
+		# 		}
+		# 	}
+		# 	xp_button2_click = {
+		# 		ai_will_do = {
+		# 			base = 10
+		# 			modifier = {
+		# 				add = 100
+		# 				has_navy_experience > 300
+		# 			}
+		# 		}
+		# 	}
+		# 	xp_button3_click = {
+		# 		ai_will_do = {
+		# 			base = 10
+		# 			modifier = {
+		# 				add = 100
+		# 				has_air_experience > 300
+		# 			}
+		# 		}
+		# 	}
+		# 	xp_button4_click = {
+		# 		ai_will_do = {
+		# 			base = 10
+		# 			modifier = {
+		# 				add = 150
+		# 				has_army_experience > 200
+		# 				has_air_experience > 200
+		# 				has_navy_experience > 200
+		# 			}
+		# 		}
+		# 	}
+		# }
 	}
 }

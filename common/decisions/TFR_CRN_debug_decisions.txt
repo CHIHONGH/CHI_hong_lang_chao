@@ -1,0 +1,189 @@
+# TFR_中俄谈判 - 调试决议
+debug_decisions = {
+
+	########################################################################
+	# 启动中俄外东北谈判（设置旗标使其可见）
+	########################################################################
+	TFR_CRN_start_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			NOT = { has_global_flag = TFR_CRN_negotiation_accessible }
+			country_exists = SOV
+		}
+		complete_effect = {
+			SOV = { TFR_CRN_init_negotiation = yes }
+		}
+	}
+
+	########################################################################
+	# 重置谈判（清空全部变量和旗标）
+	########################################################################
+	TFR_CRN_reset_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			OR = {
+				has_global_flag = TFR_CRN_negotiation_ended
+				has_global_flag = TFR_CRN_negotiation_active
+				has_global_flag = TFR_CRN_negotiation_failed
+				has_global_flag = TFR_CRN_negotiation_success
+			}
+		}
+		complete_effect = {
+			clr_global_flag = TFR_CRN_negotiation_ended
+			clr_global_flag = TFR_CRN_negotiation_accessible
+			clr_global_flag = TFR_CRN_negotiation_active
+			clr_global_flag = TFR_CRN_negotiation_failed
+			clr_global_flag = TFR_CRN_negotiation_success
+			clr_global_flag = TFR_CRN_round_1_active
+			clr_global_flag = TFR_CRN_round_2_active
+			clr_global_flag = TFR_CRN_round_3_active
+			clr_global_flag = TFR_CRN_round_1_complete
+			clr_global_flag = TFR_CRN_round_2_complete
+			clr_global_flag = TFR_CRN_round_3_complete
+			clr_global_flag = TFR_CRN_round_1_success
+			clr_global_flag = TFR_CRN_round_2_success
+			clr_global_flag = TFR_CRN_round_3_success
+			clr_global_flag = TFR_CRN_round_1_failed
+			clr_global_flag = TFR_CRN_round_2_failed
+			clr_global_flag = TFR_CRN_round_3_failed
+			clr_global_flag = TFR_CRN_PRC_made_first_move
+			PRC = {
+				clr_country_flag = TFR_CRN_PRC_started_negotiation
+				clr_country_flag = TFR_CRN_PRC_r1_repeat_used
+				clr_country_flag = TFR_CRN_PRC_r2_repeat_used
+				clr_country_flag = TFR_CRN_PRC_r3_repeat_used
+				remove_mission = TFR_CRN_round_1_timer
+				remove_mission = TFR_CRN_round_2_timer
+				remove_mission = TFR_CRN_round_3_timer
+				remove_decision_on_cooldown = TFR_CRN_coastal_development
+				# 会谈记录 PRC 域镜像一并清空（防止重置后重开谈判显示上次会话旧文本）
+				clear_variable = TFR_CRN_prc_convo_slot1
+				clear_variable = TFR_CRN_prc_convo_slot2
+				clear_variable = TFR_CRN_prc_convo_slot3
+				clear_variable = TFR_CRN_sov_convo_slot1
+				clear_variable = TFR_CRN_sov_convo_slot2
+				clear_variable = TFR_CRN_sov_convo_slot3
+			}
+			SOV = {
+				clear_variable = TFR_CRN_desperation
+				clear_variable = TFR_CRN_concession_willingness
+				clear_variable = TFR_CRN_negotiation_round
+				clear_variable = TFR_CRN_prc_round_actions
+				clear_variable = TFR_CRN_sov_round_actions
+				clear_variable = TFR_CRN_prc_convo_slot1
+				clear_variable = TFR_CRN_prc_convo_slot2
+				clear_variable = TFR_CRN_prc_convo_slot3
+				clear_variable = TFR_CRN_sov_convo_slot1
+				clear_variable = TFR_CRN_sov_convo_slot2
+				clear_variable = TFR_CRN_sov_convo_slot3
+				clear_variable = TFR_CRN_prc_last_convo_idx
+				clear_variable = TFR_CRN_sov_last_convo_idx
+				clear_variable = TFR_CRN_desp_frame
+				clear_variable = TFR_CRN_concession_frame
+			}
+		}
+	}
+
+	########################################################################
+	# 强制完成全部领土转交（8省全部给 PRC）
+	########################################################################
+	TFR_CRN_force_all_debug = {
+		icon = generic_communism
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			country_exists = SOV
+		}
+		complete_effect = {
+			329 = { TFR_CRN_transfer_state = yes }
+			408 = { TFR_CRN_transfer_state = yes }
+			560 = { TFR_CRN_transfer_state = yes }
+			409 = { TFR_CRN_transfer_state = yes }
+			657 = { TFR_CRN_transfer_state = yes }
+			1328 = { TFR_CRN_transfer_state = yes }
+			1293 = { TFR_CRN_transfer_state = yes }
+			537 = { TFR_CRN_transfer_state = yes }
+		}
+	}
+
+	########################################################################
+	# 启动边境冲突（黑线 SOV 调试入口）
+	########################################################################
+	TFR_CRN_start_conflict_debug = {
+		icon = generic_war
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			NOT = { has_global_flag = TFR_CRN_conflict_accessible }
+			country_exists = SOV
+			NOT = { SOV = { TFR_CRN_sov_negotiable = yes } }
+		}
+		complete_effect = {
+			TFR_CRN_conflict_init = yes
+		}
+	}
+
+	########################################################################
+	# 重置边境冲突
+	########################################################################
+	TFR_CRN_reset_conflict_debug = {
+		icon = generic_political_discourse
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			OR = {
+				has_global_flag = TFR_CRN_conflict_active
+				has_global_flag = TFR_CRN_conflict_ended
+			}
+		}
+		complete_effect = {
+			clr_global_flag = TFR_CRN_conflict_active
+			clr_global_flag = TFR_CRN_conflict_accessible
+			clr_global_flag = TFR_CRN_conflict_ended
+			clr_global_flag = TFR_CRN_full_war_active
+			TFR_CRN_clear_target_flags = yes
+			TFR_CRN_remove_advantage_modifier = yes
+			PRC = {
+				clr_country_flag = TFR_CRN_PRC_started_conflict
+				clear_variable = TFR_CRN_prc_bonus
+				clear_variable = TFR_CRN_sov_bonus
+				clear_variable = TFR_CRN_prc_advantage
+				clear_variable = TFR_CRN_sov_advantage
+				clear_variable = TFR_CRN_prc_adv_frame
+				clear_variable = TFR_CRN_sov_adv_frame
+				clear_variable = TFR_CRN_current_tier
+				remove_mission = TFR_CRN_full_war_timer
+			}
+			SOV = {
+				clear_variable = TFR_CRN_sov_situational
+			}
+		}
+	}
+
+	########################################################################
+	# 调试：设 PRC 优势 = 100 / SOV 优势 = 0（测试碾压局面）
+	########################################################################
+	TFR_CRN_set_prc_advantage_debug = {
+		icon = generic_research
+		ai_will_do = { factor = 0 }
+		allowed = { is_ai = no }
+		visible = {
+			tag = PRC
+			has_global_flag = TFR_CRN_conflict_active
+		}
+		complete_effect = {
+			set_variable = { var = TFR_CRN_prc_advantage value = 100 }
+			set_variable = { var = TFR_CRN_sov_advantage value = 0 }
+			TFR_CRN_update_advantage_frames = yes
+		}
+	}
+}

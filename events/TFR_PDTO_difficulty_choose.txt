@@ -1,66 +1,105 @@
-﻿add_namespace = choose
+add_namespace = red_dawn_guide
 
+# ==================== 引导页1：游玩须知 ====================
 country_event = {
-	id = choose.1
-	title = choose.1.t
-	desc = choose.1.de
+	id = red_dawn_guide.1
+	title = red_dawn_guide.1.t
+	desc = red_dawn_guide.1.d
 	is_triggered_only = yes
-	fire_only_once = yes
 
 	trigger = {
 		tag = PRC
 	}
 
-	#picture = 
-
 	option = {
-		name = choose.1.a
-		ai_chance = {
-			base = 10
-		}
-		custom_effect_tooltip = PTF_choose_Simple
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Simple
-		}
+		name = red_dawn_guide.1.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.2 }
 	}
 	option = {
-		name = choose.1.b
-		ai_chance = {
-			base = 0
-		}
-		custom_effect_tooltip = PTF_choose_Normal
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Normal
-		}
-	}
-	option = {
-		name = choose.1.c
-		ai_chance = {
-			base = 0
-		}
-		custom_effect_tooltip = PTF_choose_Hard
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Hard
-		}
-	}
-	option = {
-		name = choose.1.d
-		ai_chance = {
-			base = 0
-		}
-		custom_effect_tooltip = PTF_choose_Extremely_hard
-		hidden_effect = {
-			set_country_flag = PTF_difficulty_Extremely_hard
-		}
-	}
-
-	after = {
-		country_event = choose.3
+		name = red_dawn_guide.1.b
+		ai_chance = { base = 0 }
 	}
 }
 
+# ==================== 引导页2：剧本 ====================
 country_event = {
-	id = choose.2
+	id = red_dawn_guide.2
+	title = red_dawn_guide.2.t
+	desc = red_dawn_guide.2.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.2.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.3 }
+	}
+	option = {
+		name = red_dawn_guide.2.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.1 }
+	}
+}
+
+# ==================== 引导页3：陆军 ====================
+country_event = {
+	id = red_dawn_guide.3
+	title = red_dawn_guide.3.t
+	desc = red_dawn_guide.3.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.3.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.4 }
+	}
+	option = {
+		name = red_dawn_guide.3.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.2 }
+	}
+}
+
+# ==================== 引导页4：空军与太空军 ====================
+country_event = {
+	id = red_dawn_guide.4
+	title = red_dawn_guide.4.t
+	desc = red_dawn_guide.4.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.4.a
+		ai_chance = { base = 10 }
+		country_event = { id = red_dawn_guide.5 }
+	}
+	option = {
+		name = red_dawn_guide.4.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.3 }
+	}
+}
+
+# ==================== 引导页5：海军 ====================
+country_event = {
+	id = red_dawn_guide.5
+	title = red_dawn_guide.5.t
+	desc = red_dawn_guide.5.d
+	is_triggered_only = yes
+
+	option = {
+		name = red_dawn_guide.5.a
+		ai_chance = { base = 10 }
+	}
+	option = {
+		name = red_dawn_guide.5.b
+		ai_chance = { base = 0 }
+		country_event = { id = red_dawn_guide.4 }
+	}
+}
+
+# ==================== PTF 难度激活（难度选择已移至游戏规则，本事件由规则侧接线触发） ====================
+country_event = {
+	id = red_dawn_guide.7
 	hidden = yes
 	fire_only_once = yes
 
@@ -70,22 +109,14 @@ country_event = {
 
 	immediate = {
 		if = {
-			limit = {
-				PRC = {
-					has_country_flag = PTF_difficulty_Simple
-				}
-			}
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_I_idea
 				PTF_Counter_revolutionary_center_I_idea
 			}
 		}
 		if = {
-			limit = {
-				PRC = {
-					has_country_flag = PTF_difficulty_Normal
-				}
-			}
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_II_idea
 				PTF_Counter_revolutionary_center_II_idea
@@ -93,61 +124,54 @@ country_event = {
 			}
 		}
 		if = {
-			limit = {
-				PRC = {
-					has_country_flag = PTF_difficulty_Hard
-				}
-			}
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_III_idea
 				PTF_Counter_revolutionary_center_III_idea
 				PTF_Anti_communist_fortress_idea
 			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
 		}
 		if = {
-			limit = {
-				PRC = {
-					has_country_flag = PTF_difficulty_Extremely_hard
-				}
-			}
+			limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode } }
 			add_ideas = {
 				PTF_Fascist_military_revolution_III_idea
 				PTF_Counter_revolutionary_center_III_idea
 				PTF_Anti_communist_fortress_idea
 				PTF_End_of_communism_idea
 			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
 		}
-
-		set_technology = {
-			Tide_of_Iron = 1
-		}
-		
+		set_technology = { tide_of_iron = 1 }
 	}
 }
-
+# ==================== PRC AI作弊激活 ====================
 country_event = {
-	id = choose.3
-	title = choose.3.t
-	desc = choose.3.de
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		name = choose.3.a
-		set_country_flag = RD_no_dont_kill_me_graygoo_flag
-		custom_effect_tooltip = choose_3_a_tt
+	id = red_dawn_guide.8
+	hidden = yes
+
+	trigger = {
+		tag = PRC
+		is_ai = yes
+		NOT = {
+			has_idea = PRC_hidden_idea
+			has_idea = agaricus_sinodeliciosus
+		}
 	}
-	option = {
-		name = choose.3.b
-		set_country_flag = RD_no_dont_kill_me_graygoo_flag1
-		custom_effect_tooltip = choose_3_b_tt
-	}
-	option = {
-		name = choose.3.c
-		set_country_flag = RD_no_dont_kill_me_graygoo_flag2
-		custom_effect_tooltip = choose_3_c_tt
-	}
-	option = {
-		name = choose.3.e
-		custom_effect_tooltip = choose_3_e_tt
+	immediate = {
+		add_ideas = {
+			PRC_hidden_idea
+			agaricus_sinodeliciosus
+		}
 	}
 }

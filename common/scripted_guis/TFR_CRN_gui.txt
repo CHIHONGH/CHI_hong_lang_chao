@@ -1,0 +1,127 @@
+# TFR_中俄谈判 - 脚本 GUI
+# 旗标驱动会谈记录，嵌入 PRC 决策类别
+
+scripted_gui = {
+	TFR_CRN_negotiation_gui = {
+		window_name = "TFR_CRN_negotiation_gui_window"
+		context_type = decision_category
+
+		triggers = {
+			top_folder_button_click_enabled = {
+				set_temp_variable = { folder_frame = 1 }
+				set_temp_variable = { flag_y = 16 }
+			}
+
+			# PRC 槽 1（最新，y=320）
+			prc_s1_1_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 1 } }
+			prc_s1_2_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 2 } }
+			prc_s1_3_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 3 } }
+			prc_s1_4_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 4 } }
+			prc_s1_5_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 5 } }
+			prc_s1_6_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 6 } }
+			prc_s1_7_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 7 } }
+			prc_s1_8_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 8 } }
+			prc_s1_9_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 9 } }
+			prc_s1_10_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 10 } }
+			prc_s1_11_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 11 } }
+			prc_s1_12_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 12 } }
+			prc_s1_13_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 13 } }
+			prc_s1_14_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 14 } }
+			prc_s1_15_visible = { check_variable = { TFR_CRN_prc_convo_slot1 = 15 } }
+
+			# PRC 槽 2（中间，y=380）
+			prc_s2_1_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 1 } }
+			prc_s2_2_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 2 } }
+			prc_s2_3_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 3 } }
+			prc_s2_4_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 4 } }
+			prc_s2_5_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 5 } }
+			prc_s2_6_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 6 } }
+			prc_s2_7_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 7 } }
+			prc_s2_8_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 8 } }
+			prc_s2_9_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 9 } }
+			prc_s2_10_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 10 } }
+			prc_s2_11_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 11 } }
+			prc_s2_12_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 12 } }
+			prc_s2_13_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 13 } }
+			prc_s2_14_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 14 } }
+			prc_s2_15_visible = { check_variable = { TFR_CRN_prc_convo_slot2 = 15 } }
+
+			# PRC 槽 3（最旧，y=440）
+			prc_s3_1_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 1 } }
+			prc_s3_2_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 2 } }
+			prc_s3_3_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 3 } }
+			prc_s3_4_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 4 } }
+			prc_s3_5_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 5 } }
+			prc_s3_6_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 6 } }
+			prc_s3_7_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 7 } }
+			prc_s3_8_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 8 } }
+			prc_s3_9_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 9 } }
+			prc_s3_10_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 10 } }
+			prc_s3_11_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 11 } }
+			prc_s3_12_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 12 } }
+			prc_s3_13_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 13 } }
+			prc_s3_14_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 14 } }
+			prc_s3_15_visible = { check_variable = { TFR_CRN_prc_convo_slot3 = 15 } }
+
+			# SOV 槽 1（最新，y=320）
+			sov_s1_1_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 1 } }
+			sov_s1_2_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 2 } }
+			sov_s1_3_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 3 } }
+			sov_s1_4_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 4 } }
+			sov_s1_5_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 5 } }
+			sov_s1_6_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 6 } }
+			sov_s1_7_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 7 } }
+			sov_s1_8_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 8 } }
+			sov_s1_9_visible = { check_variable = { TFR_CRN_sov_convo_slot1 = 9 } }
+
+			# SOV 槽 2（中间，y=380）
+			sov_s2_1_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 1 } }
+			sov_s2_2_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 2 } }
+			sov_s2_3_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 3 } }
+			sov_s2_4_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 4 } }
+			sov_s2_5_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 5 } }
+			sov_s2_6_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 6 } }
+			sov_s2_7_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 7 } }
+			sov_s2_8_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 8 } }
+			sov_s2_9_visible = { check_variable = { TFR_CRN_sov_convo_slot2 = 9 } }
+
+			# SOV 槽 3（最旧，y=440）
+			sov_s3_1_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 1 } }
+			sov_s3_2_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 2 } }
+			sov_s3_3_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 3 } }
+			sov_s3_4_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 4 } }
+			sov_s3_5_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 5 } }
+			sov_s3_6_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 6 } }
+			sov_s3_7_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 7 } }
+			sov_s3_8_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 8 } }
+			sov_s3_9_visible = { check_variable = { TFR_CRN_sov_convo_slot3 = 9 } }
+		}
+
+		properties = {
+			desperation_progbar = { frame = SOV:TFR_CRN_desp_frame }
+			concession_progbar = { frame = SOV:TFR_CRN_concession_frame }
+		}
+
+	}
+}
+
+scripted_gui = {
+	TFR_CRN_conflict_gui = {
+		window_name = "TFR_CRN_conflict_gui_window"
+		context_type = decision_category
+
+		triggers = {
+			top_folder_button_click_enabled = {
+				set_temp_variable = { folder_frame = 1 }
+				set_temp_variable = { flag_y = 16 }
+			}
+		}
+
+		properties = {
+			prc_adv_progbar = { frame = PRC:TFR_CRN_prc_adv_frame }
+			sov_adv_progbar = { frame = PRC:TFR_CRN_sov_adv_frame }
+			prc_pressure_progbar = { frame = PRC:TFR_CRN_prc_pressure_frame }
+			sov_pressure_progbar = { frame = PRC:TFR_CRN_sov_pressure_frame }
+		}
+	}
+}

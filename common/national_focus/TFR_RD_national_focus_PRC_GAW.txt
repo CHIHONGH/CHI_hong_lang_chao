@@ -301,6 +301,23 @@
                     count = 1
                 }
             }
+            hidden_effect = {
+                country_event = {
+                    id = ChinaOSS.105
+                    days = 20
+                    random_hours = 12
+                }
+                if = {
+                    limit = {
+                        has_country_flag = PRC_space_done_interception
+                    }
+                    country_event = {
+                        id = ChinaOSS.3
+                        days = 10
+                        random_hours = 12
+                    }
+                }
+            }
         }
     }
 
@@ -546,12 +563,13 @@
         completion_reward = {
             add_equipment_to_stockpile = {
                 type = nuclear_missile_equipment_1
-                amount = 20
+                amount = 10
             }
             add_equipment_to_stockpile = {
                 type = nuclear_missile_equipment_2
-                amount = 20
+                amount = 10
             }
+            add_command_power = 100
             every_allied_country = {
                 every_core_state = {
                     limit = {
@@ -560,10 +578,17 @@
                         }
                     }
                     damage_units = {
-                        org_damage = 0.9
+                        org_damage = 0.5
                     }
                 }
             }
+            hidden_effect = {
+                country_event = {
+                    id = ChinaOSS.104
+                    random_hours = 12
+                }
+            }
+            custom_effect_tooltip = PRC_nuclear_enable_tt
         }
     }
 # }

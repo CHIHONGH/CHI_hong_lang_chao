@@ -1,0 +1,161 @@
+PRC_fighter = {
+
+	category = air
+	available_for = { PRC }
+	roles = {
+		air_fighter
+	}
+	priority = {
+		factor = 1000
+	}
+
+	improved_fighter_default = {
+		priority = {
+			factor = 10
+			modifier = { 
+				has_tech = advanced_small_airframe 
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 3000
+			type = small_plane_airframe_2
+			modules={
+			engine_type_slot=engine_1_1x
+			special_type_slot_1 = ai_targeting_computer_small
+			special_type_slot_2 = ai_targeting_computer_small
+			special_type_slot_3 = radio_navigation_1
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_4 = heavy_mg_4x
+		}
+		}
+
+		allowed_modules = {
+			engine_1_1x
+			engine_2_1x
+			engine_3_1x
+			engine_4_1x
+			ai_targeting_computer_small
+			radio_navigation_1
+			heavy_mg_4x
+		}
+	}
+
+	jet_fighter_default = {
+		priority = {
+			factor = 10
+		}
+
+		target_variant = {
+			match_value = 5000
+			type = small_plane_airframe_4
+			modules={
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = fuel_tanks_small
+			special_type_slot_2 = ai_targeting_computer_small
+			special_type_slot_3 = ai_targeting_computer_small
+			special_type_slot_4 = ai_targeting_computer_small
+			fixed_main_weapon_slot = aircraft_cannon_1_1x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+			fixed_auxiliary_weapon_slot_3 = aircraft_cannon_1_1x
+			fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
+			special_type_slot_5 = ai_targeting_computer_small
+		}
+		}
+
+		allowed_modules = { 
+			engine_1_1x
+			engine_2_1x
+			engine_3_1x
+			engine_4_1x
+			ai_targeting_computer_small
+			radio_navigation_1
+			heavy_mg_4x
+			aircraft_cannon_1_1x
+		}
+	}
+}
+
+PRC_CAS = {
+
+	category = air
+	available_for = { PRC }
+	roles = {
+		air_cas
+	}
+	priority = {
+		factor = 1000
+	}
+
+	cas_2 = {
+		priority = {
+			factor = 200
+		}
+		target_variant = {
+			match_value = 1500
+			type = small_plane_cas_airframe_2
+			modules={
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = fuel_tanks_small
+				fixed_main_weapon_slot = small_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+				fixed_auxiliary_weapon_slot_2 = bomb_locks
+			}
+		}
+		allowed_modules = {
+			engine_1_1x
+			engine_2_1x
+			engine_3_1x
+			engine_4_1x
+			small_bomb_bay
+			bomb_lock
+			fuel_tanks_small
+		}
+	}
+}
+
+generic_cv_naval_bomber = {
+	category = air
+	available_for = { PRC }
+	roles = {
+		air_cas
+	}
+	priority = {
+		factor = 1000
+	}
+
+	cv_naval_bomber_2 = {
+		priority = {
+			factor = 200
+			
+		}
+
+		target_variant = {
+			match_value = 1500
+			type = cv_small_plane_naval_bomber_airframe_2
+			modules={
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = radio_navigation_1
+				special_type_slot_2 = fuel_tanks_small
+				fixed_main_weapon_slot = torpedo_mounting
+				fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+			}
+
+		}
+
+		allowed_modules = {
+			engine_1_1x
+			engine_2_1x
+			engine_3_1x
+			engine_4_1x
+			torpedo_mounting
+			radio_navigation_1
+			fuel_tanks_small
+		}
+	}
+}
