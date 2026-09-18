@@ -18,6 +18,7 @@
 			custom_effect_tooltip = PRC_revolutionary_tt
 			unlock_decision_category_tooltip = PRC_export_revolution
        		set_country_flag = PRC_world_revolution
+			set_country_flag = eadi_member
 			create_faction = WLI
 			hidden_effect = {
 				remove_faction_goal = faction_goal_the_atomic_race
@@ -265,9 +266,10 @@
 			focus = PRC_nl_restore_JAP_commies
 		}
 		completion_reward = {
-			effect_tooltip = {
-				unlock_national_focus = WLI_joint_command_center
-			}
+			
+				complete_national_focus = WLI_joint_command_center
+			
+			
 		}
 	}
 	shared_focus = {
@@ -354,6 +356,7 @@
 		will_lead_to_war_with = JAP
 		will_lead_to_war_with = RAJ
 		icon = GFX_focus_PRC_nl_toward_victory_focus
+		available = { PTF = { is_in_faction_with = JAP } }
 		prerequisite = {
 			focus = PRC_nl_WLI_collective_action
 		}
