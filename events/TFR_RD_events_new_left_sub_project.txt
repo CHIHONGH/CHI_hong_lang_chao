@@ -258,13 +258,6 @@ country_event = {
         add_to_variable = {
             PPRC_building_var = 0.05
         }
-        remove_ideas = {
-            PRC_the_separatist_problem
-        }
-        add_timed_idea = {
-            idea = PRC_the_separatist_problem
-            days = 240
-        }
     }
 }
 
@@ -1572,7 +1565,7 @@ country_event = {
         name = prcs.3071.a
         country_event = {
             id = prcs.3122
-            days = 1
+            hours = 8
         }
     }
 }
@@ -2338,7 +2331,7 @@ country_event = {
         name = prcs.3122.a
         news_event = {
             id = prcs.3121
-            days = 0
+            hours = 8
         }
         hidden_effect = {
             PRC_gaw_start = yes
@@ -2358,15 +2351,10 @@ country_event = {
             }
         }
         hidden_effect = {
-            if = {
-                limit = {
-                    has_completed_focus = Promote_the_thawing_of_DPRK
-                }
-                PRC = {
-                    add_to_faction = PRK
-                }
-                news_event = news.346
+            PRC = {
+                add_to_faction = PRK
             }
+            news_event = news.346
             declare_war_on = {
                 target = KOR
                 type = annex_everything
@@ -2543,7 +2531,7 @@ country_event = {
         name = prcs.3134.a
         country_event = {
             id = prcs.3135
-            days = 0
+            days = 1
         }
     }
 }
@@ -3111,7 +3099,7 @@ country_event = {
         custom_effect_tooltip = PRC_tfr_nl_china_diyibu_a_tt
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_dummy_idea
+                remove_idea = PRC_made_in_china_dummy_idea0
                 add_idea = PRC_nl_diyibu_a_idea
             }
         }
@@ -3139,7 +3127,7 @@ country_event = {
         add_society_development = yes
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_dummy_idea
+                remove_idea = PRC_made_in_china_dummy_idea0
                 add_idea = PRC_nl_diyibu_b_idea
             }
         }
@@ -3164,7 +3152,7 @@ country_event = {
         custom_effect_tooltip = PRC_tfr_nl_china_diyibu_c_tt
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_dummy_idea
+                remove_idea = PRC_made_in_china_dummy_idea0
                 add_idea = PRC_nl_diyibu_c_idea
             }
         }
@@ -3223,7 +3211,7 @@ country_event = {
         name = prcs.3162.a
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_dummy_idea
+                remove_idea = PRC_made_in_china_dummy_idea0
                 add_idea = PRC_nl_gengyunjiaqiang_a_idea
             }
         }
@@ -3242,7 +3230,7 @@ country_event = {
         add_political_power = -100
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_dummy_idea
+                remove_idea = PRC_made_in_china_dummy_idea0
                 add_idea = PRC_nl_gengyunjiaqiang_b_idea
             }
         }
@@ -3268,7 +3256,7 @@ country_event = {
         add_stability = -0.1
         effect_tooltip = {
             swap_ideas = {
-                remove_idea = PRC_made_in_china_dummy_idea
+                remove_idea = PRC_made_in_china_dummy_idea0
                 add_idea = PRC_nl_gengyunjiaqiang_a_idea
             }
         }
@@ -4539,7 +4527,7 @@ country_event = {
         id = prcs.3205
         title = prcs.3205.t
         desc = prcs.3205.d
-
+        picture = GFX_Event_PRC_jets
         is_triggered_only = yes
         option = {
             name = prcs.3205.a

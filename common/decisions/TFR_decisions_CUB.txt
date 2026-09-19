@@ -373,11 +373,15 @@ great_asian_war_decisions = {
 			PRC = {
 				has_war = no
 				NOT = {
-					has_war_with = JAP
-					has_war_with = RAJ
-					has_war_with = AST
-					has_war_with = PTF
+					OR = {
+						has_war_with = JAP
+						has_war_with = RAJ
+						has_war_with = AST
+					}
 				}
+			}
+			PTF = {
+				surrender_progress > 0.15
 			}
 		}
 		days_mission_timeout = 999
@@ -426,6 +430,13 @@ great_asian_war_decisions = {
 				white_peace = PRC
 				dismantle_faction = yes
 			}
+			every_country = {
+				limit = {
+					has_war_with = PTF
+				}
+				white_peace = PTF
+			}
+			PRC_PTF_gaw = yes
 			news_event = {
 				id = prcs.3120
 				days = 0

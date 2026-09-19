@@ -4120,7 +4120,11 @@ PRC_export_revolution = {
             }
             if = {
                 limit = { 
-                    has_country_flag = PTF_difficulty_Normal
+                    OR = {
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+                    }
+                    
                 }
                 if = {
                     limit = { 
@@ -4157,8 +4161,8 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
-                        has_country_flag = PTF_difficulty_Hard
-                        has_country_flag = PTF_difficulty_Extremely_hard
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
                     }
                 }
                 if = {
@@ -4248,8 +4252,9 @@ PRC_export_revolution = {
             if = {
                 limit = {
                     OR = {
-                        has_country_flag = PTF_difficulty_Simple
-                        has_country_flag = PTF_difficulty_Normal
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
                     }
                 }
                 MEX_buff_normal_effect = yes
@@ -4299,8 +4304,9 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
-                        has_country_flag = PTF_difficulty_Simple
-                        has_country_flag = PTF_difficulty_Normal
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
                     }
                 }
                 if = {
@@ -4349,7 +4355,7 @@ PRC_export_revolution = {
             }
             else_if = {
                 limit = {
-                    has_country_flag = PTF_difficulty_Hard
+                    has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
                 }
                 if = {
                     limit = { 
@@ -4691,7 +4697,7 @@ PRC_export_revolution = {
                         create_unit = {
                             division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
-                            count = 3
+                            count = 5
                             owner = ZAP
                         }
                     }
@@ -4699,7 +4705,7 @@ PRC_export_revolution = {
                         create_unit = {
                             division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
-                            count = 3
+                            count = 5
                             owner = ZAP
                         }
                     }
@@ -4858,7 +4864,7 @@ PRC_export_revolution = {
                         create_unit = {
                             division = "division_template = \"Willpower Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
-                            count = 3
+                            count = 5
                             owner = MEX
                         }
                     }
@@ -4866,7 +4872,7 @@ PRC_export_revolution = {
                         create_unit = {
                             division = "division_template = \"Zhukov Division\" start_experience_factor = 0.6 start_equipment_factor = 1"
                             allow_spawning_on_enemy_provs = no
-                            count = 3
+                            count = 5
                             owner = MEX
                         }
                     }
@@ -4908,8 +4914,9 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
-                        has_country_flag = PTF_difficulty_Simple
-                        has_country_flag = PTF_difficulty_Normal
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
                     }
                 }
                 check_variable = {
@@ -4919,8 +4926,8 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
-                        has_country_flag = PTF_difficulty_Hard
-                        has_country_flag = PTF_difficulty_Extremely_hard
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
                     }
                 }
                 check_variable = {
@@ -4981,8 +4988,9 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
-                        has_country_flag = PTF_difficulty_Simple
-                        has_country_flag = PTF_difficulty_Normal
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
                     }
                 }
                 if = {
@@ -5084,8 +5092,8 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
-                        has_country_flag = PTF_difficulty_Hard
-                        has_country_flag = PTF_difficulty_Extremely_hard
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
                     }
                 }
                 if = {
@@ -5205,10 +5213,18 @@ PRC_export_revolution = {
             always = no
         }
         cancel_trigger = {
-            NOT = {
-                country_exists = MEX
-                country_exists = ZAP
-            }
+            MEX = {
+				OR = {
+					is_subject_of = PTF
+					exists = no
+				}
+			}
+			ZAP = {
+				OR = {
+					is_subject_of = PTF
+					exists = no
+				}
+			}
         }
         days_mission_timeout = 180
         selectable_mission = no

@@ -323,7 +323,11 @@ ideas = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
 			available = {
-				has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
+				OR = {
+					has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
+					has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+					has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+				}	
 			}
 			allowed = {
 				always = yes
@@ -371,10 +375,7 @@ ideas = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
 			available = {
-				OR = {
-					has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
-					has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
-				}
+				has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
 			}
 			allowed = {
 				always = yes
@@ -915,6 +916,14 @@ ideas = {
 	}
 
 	hidden_ideas = {
+		PTF_just_fucking_surrender_idea = {
+			allowed = {
+				always = yes
+			}
+			modifier = {
+				surrender_limit = -0.75
+			}
+		}
 		PTF_hidden_idea = {				
 			allowed = {
 				always = yes

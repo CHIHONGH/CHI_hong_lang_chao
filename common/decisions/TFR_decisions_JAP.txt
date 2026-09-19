@@ -11533,29 +11533,6 @@ JAP_great_asian_war = {
 		}
 
 		timeout_effect = {
-			if = {
-				limit = { 
-					PRC = {
-						has_country_flag = RD_no_dont_kill_me_graygoo_flag2
-					}
-				}
-				hidden_effect = {
-					PTF = {
-						remove_ideas = {
-							PTF_Fascist_military_revolution_I_idea
-							PTF_Counter_revolutionary_center_I_idea
-							PTF_Fascist_military_revolution_II_idea
-							PTF_Counter_revolutionary_center_II_idea
-							PTF_Fascist_military_revolution_III_idea
-							PTF_Counter_revolutionary_center_III_idea
-							PTF_Anti_communist_fortress_idea
-							PTF_End_of_communism_idea
-						}
-					}
-					
-				}	
-				
-			}
 			declare_war_on = {
 				target = PRK
 				type = annex_everything
@@ -11571,6 +11548,13 @@ JAP_great_asian_war = {
 			hidden_effect = {
 				add_ideas = JAP_balance_sheet
 				PTF = {
+					if = {
+						limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
+						remove_ideas = {
+							PTF_Fascist_military_revolution_I_idea
+							PTF_Counter_revolutionary_center_I_idea
+						}
+					}
 					add_ideas = PTF_balance_sheet
 				}
 			}

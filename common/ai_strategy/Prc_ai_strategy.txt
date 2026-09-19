@@ -227,3 +227,32 @@ North_america_help_your_teammates = {
 		value = 100
 	}
 }
+
+MEX_dont_defend_south_you_idiot = {
+	allowed = {
+		OR = {
+			original_tag = MEX
+			original_tag = ZAP
+		}
+	}
+	enable = {
+		has_country_flag = MEX_mexican_unifier_flag
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = PTF
+		value = 100
+	}
+	ai_strategy = {
+		type = force_concentration_front_factor
+		tag = PTF
+		value = 100
+	}
+	ai_strategy = {
+		type = front_unit_request
+		country_trigger = {
+			original_tag = PTF	
+		}
+		value = 100
+	}
+}

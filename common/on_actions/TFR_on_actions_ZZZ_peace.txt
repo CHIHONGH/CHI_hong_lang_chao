@@ -1081,6 +1081,31 @@ on_actions = {
 					}
 					set_global_flag = skip_default_capitulation
 				}
+				# NAX BAN accidentally killed by PDTO and then by EADI
+				if = {
+					limit = { 
+						ROOT = {
+							OR = {
+								original_tag = NAX
+								original_tag = BAN
+							}
+						}
+						FROM = {
+							original_tag = PRC
+						}
+					}
+					ROOT = {
+						white_peace = FROM
+					}
+					PRC = {
+						set_autonomy = {
+							target = ROOT
+							autonomous_state = autonomy_communist
+							freedom_level = 0.3
+						}
+					}
+				}
+
 				if = {
 					limit = { 
 						ROOT = {
