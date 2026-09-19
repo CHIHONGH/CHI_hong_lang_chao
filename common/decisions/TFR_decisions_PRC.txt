@@ -13357,10 +13357,19 @@ PRC_great_asian_war = {
 		priority = 99
 		icon = GFX_SOV_decision_nato_war_deadline
 		available = {
-			hidden_trigger = {
-				always = no
+			PRC = {
+				has_war = no
+				NOT = {
+					OR = {
+						has_war_with = JAP
+						has_war_with = RAJ
+						has_war_with = AST
+					}
+				}
 			}
-			has_country_flag = PRC_kill_em_all_flag
+			PTF = {
+				surrender_progress > 0.15
+			}
 		}
 		days_mission_timeout = 200
 		activation = {
@@ -13405,14 +13414,33 @@ PRC_great_asian_war = {
 			activate_mission = PRC_GAW_war_exhaustion
 		}
 		complete_effect = {
-			hidden_effect = {
+			remove_mission = PRC_GAW_war_exhaustion
+			effect_tooltip = {
 				PRC = {
+					remove_mission = PRC_GAW_war_exhaustion
 					country_event = china.1001
 				}
-			}
-			news_event = {
-				id = news.413
-				days = 1
+				news_event = {
+					id = news.413
+					days = 1
+				}
+				every_country = {
+					limit = {
+						has_war_with = PRC
+					}
+					white_peace = PRC
+					dismantle_faction = yes
+				}
+				every_country = {
+					limit = {
+						has_war_with = PTF
+					}
+					white_peace = PTF
+				}
+				news_event = {
+					id = prcs.3120
+					days = 0
+				}
 			}
 		}
 	}
