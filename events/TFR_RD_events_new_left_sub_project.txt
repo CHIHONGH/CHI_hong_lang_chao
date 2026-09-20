@@ -1270,6 +1270,7 @@ country_event = {
     desc = prcs.3050.d
     picture = GFX_Event_Template53
     is_triggered_only = yes
+    fire_only_once = yes
     option = {
         name = prcs.3050.a
         country_event = {
@@ -2369,6 +2370,9 @@ country_event = {
                         type = annex_everything
                     }
                 }
+            }
+            AST = {
+                add_ideas = AST_just_fucking_surrender_idea
             }
         }
     }
@@ -4653,7 +4657,7 @@ country_event = {
         }
     }
 
-    # è¿­ä»£ç³»ç»Ÿ
+    # NEMS自主迭代
     country_event = {
         id = prcs.3212
         title = prcs.3212.t
@@ -4664,7 +4668,7 @@ country_event = {
 
         immediate = {
             hidden_effect = {
-                country_event = { id = prcs.3212 days = 365 }
+                # country_event = { id = prcs.3212 days = 365 }
                 activate_mission = NEMS_self_deploy
             }
         }

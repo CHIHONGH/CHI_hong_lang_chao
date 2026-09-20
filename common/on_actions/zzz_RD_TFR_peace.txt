@@ -1318,6 +1318,37 @@ on_actions = {
                     }
                 }
             }
+            else = {
+                if = {
+                    limit = {
+                        FROM = {
+							OR = {
+								original_tag = PRC
+								is_ally_with = PRC
+							}
+						}
+                        ROOT = {
+                            original_tag = PTF
+                        }
+                    }
+                    FROM = {
+                        white_peace = PTF
+                        country_event = {
+                            id = prcs.3134
+                            days = 4
+                        }
+                        
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = PTF
+                        }
+                        white_peace = PTF
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+            }
         }
     }
     on_declare_war = {

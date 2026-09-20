@@ -13358,7 +13358,6 @@ PRC_great_asian_war = {
 		icon = GFX_SOV_decision_nato_war_deadline
 		available = {
 			PRC = {
-				has_war = no
 				NOT = {
 					OR = {
 						has_war_with = JAP
@@ -13368,7 +13367,13 @@ PRC_great_asian_war = {
 				}
 			}
 			PTF = {
-				surrender_progress > 0.15
+				OR = {
+					surrender_progress > 0.15
+					NOT = {
+						has_war_with = PRC
+					}
+				}
+				
 			}
 		}
 		days_mission_timeout = 200

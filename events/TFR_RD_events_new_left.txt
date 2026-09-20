@@ -4711,7 +4711,16 @@ country_event = {
     }
     option = {
         name = china.1725.a
-        add_to_faction = NAX
+        NAX = {
+            give_military_access = PRC
+            PRC = {
+                every_allied_country = {
+                    NAX = {
+                        give_military_access = PREV
+                    }
+                }
+            }
+        }
     }
     # option = {
     #     name = china.1725.b
