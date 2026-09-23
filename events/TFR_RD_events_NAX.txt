@@ -34,27 +34,73 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = nax.3.a
-        if = {
-            limit = {
-                NAX = {
-                    has_country_flag = NAX_win_indian_wool_war
+        hidden_effect = {
+            if = {
+                limit = {
+                    NAX = {
+                        has_country_flag = NAX_win_indian_wool_war
+                    }
+                }
+                news_event = {
+                    id = nax.2
+                    hours = 10
                 }
             }
-            news_event = {
-                id = nax.2
-                hours = 10
-            }
-        }
-        else_if = {
-            limit = {
-                NAX = {
-                    has_country_flag = NAX_lost_indian_wool_war
+            else_if = {
+                limit = {
+                    NAX = {
+                        has_country_flag = NAX_lost_indian_wool_war
+                    }
+                }
+                news_event = {
+                    id = nax.1
+                    hours = 10
                 }
             }
-            news_event = {
-                id = nax.1
-                hours = 10
-            }
         }
+    }
+}
+
+news_event = {
+    id = nax.4
+    title = nax.4.t
+    desc = nax.4.d
+    picture = GFX_Event_ARG_chao
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = nax.4.a
+        
+    }
+}
+
+country_event = {
+    id = nax.5
+    title = nax.5.t
+    desc = nax.5.d
+    picture = GFX_report_event_generic
+    is_triggered_only = yes
+
+    option = {
+        name = nax.5.a
+        create_country_leader = {
+            name = VEN_jesus_faria
+            picture = GFX_VEN_jesus_faria
+            ideology = marxism_leninism
+        }
+        retire_character = VEN_nicolas_maduro_char
+    }
+}
+
+news_event = {
+    id = nax.6
+    title = nax.6.t
+    desc = nax.6.d
+    picture = GFX_report_event_generic
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = nax.6.a
+        
     }
 }

@@ -22,27 +22,47 @@ shared_focus = {
         PRC = {
             country_event = {
                 id = prcs.3091
-                days = 10
+                days = 1
             }
         }
     }
     x = 0
     y = 14
     ai_will_do = {
-        factor = 1000
+        factor = 0
+        modifier = {
+			add = 1000
+			OR = {
+                date > 2029.01.01
+                PRC = {
+                    OR = {
+                        has_shine_effect_on_focus = Moving_towards_victory
+                        has_completed_focus = Moving_towards_victory
+                        has_war_with = JAP
+                    }
+                }
+                JAP = { has_active_mission = JAP_korean_war_joining }
+            }
+		}
+        modifier = {
+			add = 20
+			PRC = {
+                has_completed_focus = PLA_The_iron_flow_miles
+            }
+		}
     }
     available = {
+        PRC = {
+            has_completed_focus = PLA_The_iron_flow_miles
+        }
     }
 }
 shared_focus = {
     id = PTF_storming_back_into_tne_pacific
     icon = GFX_focus_PTF_storming_back_into_tne_pacific
-    cost = 2 # 28 days = 4 cost
+    cost = 4
     completion_reward = {
         log = "[GetDateText]: [Root.GetName]: focus PTF_storming_back_into_tne_pacific completion_reward"
-        PTF = {
-            set_faction_leader = yes
-        } # ptf成为太约领袖
         set_temp_variable = {
             var = military_development_var_temp
             value = 0.20
@@ -50,6 +70,9 @@ shared_focus = {
         add_military_development = yes
         #括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
         #value正值代表+ 负值代表减
+        PTF = {
+            set_faction_leader = yes
+        } 
         news_event = {
             id = prcs.3163
             days = 5
@@ -71,22 +94,16 @@ shared_focus = {
 shared_focus = {
     id = USA_liberate_the_great_north
     icon = {
-        trigger = {
+        GFX_focus_USA_liberate_the_great_north1 = {
             OR = {
                 tag = USB
                 tag = USC
             }
         }
-        value = GFX_focus_USA_liberate_the_great_north1
-    }
-    icon = {
-        trigger = {
-            tag = PTF
+        GFX_focus_USA_liberate_the_great_north_PTF = {
+             tag = PTF
         }
-        value = GFX_focus_USA_liberate_the_great_north_PTF
-    }
-    icon = {
-        value = GFX_focus_USA_liberate_the_great_north
+        GFX_focus_USA_liberate_the_great_north = yes
     }
     search_filters = {
         FOCUS_FILTER_ANNEXATION
@@ -145,13 +162,10 @@ shared_focus = {
 shared_focus = {
     id = USA_secure_the_south
     icon = {
-        trigger = {
+        GFX_focus_USA_secure_the_south_PTF = {
             tag = PTF
         }
-        value = GFX_focus_USA_secure_the_south_PTF
-    }
-    icon = {
-        value = GFX_focus_USA_secure_the_south
+        GFX_focus_USA_secure_the_south = yes
     }
     search_filters = {
         FOCUS_FILTER_ANNEXATION
@@ -283,7 +297,7 @@ shared_focus = {
         PRC = {
             country_event = {
                 id = prcs.3136
-                days = 2
+                days = 500
             }
         }
     }
@@ -862,5 +876,25 @@ shared_focus = {
     completion_reward = {
         add_war_support = 0.20
         add_political_power = 1000
+        if = {
+            limit = { 
+                PRC = {
+                    has_country_flag = RD_no_dont_kill_me_graygoo_flag1
+                }
+            }
+            hidden_effect = {
+                remove_ideas = {
+                    PTF_Fascist_military_revolution_I_idea
+                    PTF_Counter_revolutionary_center_I_idea
+                    PTF_Fascist_military_revolution_II_idea
+                    PTF_Counter_revolutionary_center_II_idea
+                    PTF_Fascist_military_revolution_III_idea
+                    PTF_Counter_revolutionary_center_III_idea
+                    PTF_Anti_communist_fortress_idea
+                    PTF_End_of_communism_idea
+                }
+            }	
+            custom_effect_tooltip = RD_graygoo_will_stop_haunting_me_tt
+        }
     }
 }

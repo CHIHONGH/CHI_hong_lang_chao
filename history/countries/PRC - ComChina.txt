@@ -1,17 +1,10 @@
 capital = 608
 set_temp_variable = { PRC_at_dingdongji = 5 }
-####################################
 set_variable = { CPC_st_var = 0.15 }
 set_variable = { CPC_drift_defence_factor_var = 0.25 }
 set_variable = { CPC_crypto_strength_var = 1 }
 set_variable = { personal_value_factor = 0.2 }
-
-#set_variable = {  =  }
-
-
-#  add_dynamic_modifier = {
-#      modifier = PRC_corrupt_bureaucrats
-#  }
+set_temp_variable = { PRC_at_dingdongji = 5 }
 
 complete_national_focus = lockdown_wuhan
 ###################################
@@ -39,6 +32,7 @@ if = {
         set_naval_oob = "PRC_2000_naval_legacy"
     }
 }
+
 send_embargo = CHI
 add_dynamic_modifier = {
     modifier = PRC_made_in_china_dynamic
@@ -49,92 +43,74 @@ add_dynamic_modifier = {
 add_dynamic_modifier = {
     modifier = PRC_nl_jingji3_d3C0_dynamic
 }
-
 add_dynamic_modifier = {
     modifier = PRC_nl_jingji5_d0_dynamic
 }
-
 add_dynamic_modifier = {
     modifier = PRC_chinese_enviroment_dynamic
 }
-
 set_variable = {
     var = PRC_mic_recruitable_population_factor_dynamic_var
     value = -0.20
 }
-
 set_variable = {
     var = PRC_mic_poverty_development_monthly_dynamic_var
     value = 0.01
 }
-
 set_variable = {
-    var = PRC_mic_business_value_dynamic_var
+    var = PRC_mic_business_value_factor_dynamic_var
     value = -0.10
 }
-
 set_variable = {
     var = PRC_mic_faction_trade_opinion_factor_dynamic_var
     value = 0.15
 }
-
 set_variable = {
     var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
     value = -0.10
 }
-
 set_variable = {
     var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
     value = -0.05
 }
-
 set_variable = {
     var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
     value = 0.10
 }
-
 set_variable = {
     var = PRC_mic_consumer_goods_factor_dynamic_var
     value = 0.05
 }
-
 set_variable = {
     var = PRC_mic_research_speed_factor_dynamic_var
     value = -0.07
 }
-
 set_variable = {
     var = PRC_ce_personal_expense_factor_dynamic_var
     value = 0.10
 }
-
 set_variable = {
     var = PRC_ce_society_development_monthly_dynamic_var
     value = -0.01
 }
-
 set_variable = {
     var = PRC_ce_industrial_capacity_factory_dynamic_var
     value = 0.10
 }
-
 set_variable = {
     var = PRC_ce_income_growth_factor_dynamic_var
     value = -0.10
 }
-
 set_variable = {
     var = PRC_ce_production_speed_buildings_factor_dynamic_var
     value = 0.10
 }
-
 set_variable = {
     var = PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var
     value = 0.0
 }
 
 #党的组织：盘根错节
-
 set_variable = {
     var = PPRC_pp_g_var
     value = -0.15
@@ -151,9 +127,14 @@ set_variable = {
 }
 
 set_variable = {
-    var = PPRC_consumer_num_var
+    var = PPRC_consumer_var
     value = 0.2
 }
+
+# set_variable = {
+#     var = PPRC_consumer_num_var
+#     value = 0.2
+# }
 
 set_variable = {
     var = PPRC_business_value_var
@@ -194,6 +175,7 @@ set_variable = {
 activate_mission = PRC_meet_2020_goal
 
 #NPC
+#NPC
 
 set_variable = {
     var = PRC_approval_rating_var
@@ -206,47 +188,38 @@ set_variable = {
     var = global.PRC_influence_CAM_var
     value = 0.65
 }
-
 set_variable = {
     var = global.PRC_influence_INS_var
     value = 0.1
 }
-
 set_variable = {
     var = global.PRC_influence_LAO_var
     value = 0.7
 }
-
 set_variable = {
     var = global.PRC_influence_MAL_var
     value = 0.25
 }
-
 set_variable = {
     var = global.PRC_influence_BRM_var
     value = 0.3
 }
-
 set_variable = {
     var = global.PRC_influence_PHI_var
     value = 0.1
 }
-
 set_variable = {
     var = global.PRC_influence_SIG_var
     value = 0.3
 }
-
 set_variable = {
     var = global.PRC_influence_SIA_var
     value = 0.4
 }
-
 set_variable = {
     var = global.PRC_influence_VIN_var
     value = 0.3
 }
-
 set_variable = {
     var = RD_PLA_political_slot_left_var
     value = 1
@@ -259,7 +232,6 @@ set_variable = {
     var = RD_PLA_political_slot_right_var
     value = 1
 }
-
 set_variable = {
     RD_PLA_political_available_slots = 3
 }
@@ -268,15 +240,14 @@ add_dynamic_modifier = {
     modifier = PRC_influence_nat_dynamic
 }
 add_dynamic_modifier = {
+    modifier = PRC_influence_new_dynamic
+}
+add_dynamic_modifier = {
     modifier = PRC_influence_cen_dynamic
 }
 add_dynamic_modifier = {
     modifier = PRC_influence_lib_dynamic
 }
-add_dynamic_modifier = {
-    modifier = PRC_influence_new_dynamic
-}
-
 
 
 set_research_slots = 4
@@ -298,8 +269,6 @@ set_variable = {
     value = 3
 }
 
-
-###############
 set_technology = {
     ## Infantry ##
     infantry_weapons1 = 1
@@ -336,7 +305,22 @@ set_technology = {
     tech_military_police = 1
     tech_signal_company = 1
     tech_maintenance_company = 1
+    ## Support Companies ##
+    tech_support = 1
+    tech_engineers = 1
+    tech_recon = 1
+    tech_field_hospital = 1
+    tech_logistics_company = 1
+    tech_military_police = 1
+    tech_signal_company = 1
+    tech_maintenance_company = 1
 
+    ## Armor ##
+    mechanised_infantry1 = 1
+    mechanised_infantry2 = 1
+    light_mechanized_infantry1 = 1
+    light_mechanized_infantry2 = 1
+    amphibious_mechanized_infantry1 = 1
     ## Armor ##
     mechanised_infantry1 = 1
     mechanised_infantry2 = 1
@@ -357,11 +341,34 @@ set_technology = {
     antitank2 = 1
     antiair1 = 1
     antiair2 = 1
+    ## Artillery ##
+    gw_artillery = 1
+    artillery1 = 1
+    interwar_antitank = 1
+    interwar_antiair = 1
+    rocket_artillery = 1
+    self_propelled_aa1 = 1
+    interwar_artillery = 1
+    sp_artillery1 = 1
+    antitank1 = 1
+    antitank2 = 1
+    antiair1 = 1
+    antiair2 = 1
 
     ## Air ##
     attack_helicopter_1 = 1
     utility_helicopter_1 = 1
+    ## Air ##
+    attack_helicopter_1 = 1
+    utility_helicopter_1 = 1
 
+    ## Engineering ##
+    electronic_mechanical_engineering = 1
+    radio = 1
+    power_plants = 1
+    nuclear_reactors = 1
+    energy_farms = 1
+    #nukes = 1
     ## Engineering ##
     electronic_mechanical_engineering = 1
     radio = 1
@@ -375,11 +382,27 @@ set_technology = {
     synth_oil_experiments = 1
     fuel_silos = 1
     fuel_refining = 1
+    ## Industry ##
+    basic_machine_tools = 1
+    synth_oil_experiments = 1
+    fuel_silos = 1
+    fuel_refining = 1
 
     ## Doctrines ##
-    mass_assault = 1
-    fleet_in_being = 1
-    air_superiority = 1
+    # mass_assault = 1
+    # fleet_in_being = 1
+    # air_superiority = 1
+
+    ## Guided Missile ##
+    suicide_drone_tech1 = 1
+    suicide_drone_tech2 = 1
+    base_ballistic_missile = 1
+    improved_ballistic_missile = 1
+    #advanced_ballistic_missile = 1
+    base_cruise_antiship_missile = 1
+    improved_cruise_antiship_missile = 1
+    base_sam_missile = 1
+    Nuclear_Missiles = 1
 }
 
 if = {
@@ -436,21 +459,6 @@ if = {
         submarine_mine_laying = 1
     }
 }
-
-if = {
-    limit = {
-        NOT = { has_dlc = "No Step Back" }
-    }
-    set_technology = {
-        main_battle_tank1 = 1
-        main_battle_tank2 = 1
-        main_battle_tank3 = 1
-        light_tank1 = 1
-        light_tank2 = 1
-        amphibious_tank1 = 1
-        amphibious_mechanized_infantry1 = 1
-    }
-}
 if = {
     limit = {
         has_dlc = "No Step Back"
@@ -473,6 +481,20 @@ if = {
         auto_loader_tech = 1
         legacy_armor_designs = 1
         auto_cannon_tech = 1
+    }
+}
+if = {
+    limit = {
+        NOT = { has_dlc = "No Step Back" }
+    }
+    set_technology = {
+        main_battle_tank1 = 1
+        main_battle_tank2 = 1
+        main_battle_tank3 = 1
+        light_tank1 = 1
+        light_tank2 = 1
+        amphibious_tank1 = 1
+        amphibious_mechanized_infantry1 = 1
     }
 }
 
@@ -525,7 +547,6 @@ if = {
     }
     create_intelligence_agency = yes
 }
-
 create_equipment_variant = { name = "歼-6" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 2 plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = yes }
 create_equipment_variant = { name = "歼-7" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 5 plane_engine_upgrade = 5 plane_reliability_upgrade = 5 } obsolete = yes }
 create_equipment_variant = { name = "轰-5" type = strat_bomber_equipment_1  obsolete = yes }
@@ -536,6 +557,8 @@ add_ideas = {
     PRC_personal_expense_factor_fix
     PRC_the_separatist_problem
     PRC_coronavirus_pandemic_idea4
+    PRC_hidden_idea #中国AI加强
+    agaricus_sinodeliciosus #中国美味蘑菇
     #Ministers
     PRC_li_keqiang_hog
     PRC_yang_jiechi_for
@@ -555,8 +578,6 @@ add_ideas = {
 
     #army spirits
     PRC_complacent_officers_spirit
-
-
 
     low_immigration
     higher_race
@@ -582,147 +603,14 @@ country_event = {
     id = prcs.2
     days = 1825
 }
-#618 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
 
-#617 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#287 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#619 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#788 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#322 = {
-#	start_resistance = yes
-#	set_compliance = 20
-#	set_resistance = 25
-#	set_garrison_strength = 2.0
-#}
-
-#618 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#326 = {
-#	start_resistance = yes
-#	set_compliance = 60
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1158 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1159 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1160 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1161 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1162 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1163 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1164 = {
-#	start_resistance = yes
-#	set_compliance = 10
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-#1165 = {
-#	start_resistance = yes
-#	set_compliance = 30
-#	set_resistance = 35
-#	set_garrison_strength = 2.0
-#}
-
-#1155 = {
-#	start_resistance = yes
-#	set_compliance = 40
-#	set_resistance = 25
-#	set_garrison_strength = 2.0
-#}
-#1153 = {
-#	start_resistance = yes
-#	set_compliance = 40
-#	set_resistance = 25
-#	set_garrison_strength = 2.0
-#}
-#1156 = {
-#	start_resistance = yes
-#	set_compliance = 40
-#	set_resistance = 25
-#	set_garrison_strength = 2.0
-#}
 1157 = {
     start_resistance = yes
     set_compliance = 40
     set_resistance = 25
     set_garrison_strength = 2.0
 }
-#1152 = {
-#	start_resistance = yes
-#	set_compliance = 40
-#	set_resistance = 25
-#	set_garrison_strength = 2.0
-#}
+
 1154 = {
     start_resistance = yes
     set_compliance = 40
@@ -736,88 +624,6 @@ country_event = {
     set_resistance = 35
     set_garrison_strength = 2.0
 }
-
-#326 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#729 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1166 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#621 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#612 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-
-#Xinjiang
-#287 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#617 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#618 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#619 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1158 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1159 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1160 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1161 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1162 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1163 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1164 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1165 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-
-#Tibet
-#788 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#322 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1153 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1155 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1156 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1157 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1152 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-#1154 = {
-#	add_dynamic_modifier = { modifier = autonomous_state }
-#}
-
-#give_guarantee = PRK
 
 add_opinion_modifier = {
     target = JAP
@@ -853,13 +659,19 @@ CAM = {
     recruit_character = CAM_Khieu_Samphan
 }
 BHU = {
+}
+BHU = {
     recruit_character = BHU_leaders
+}
+NEP = {
 }
 NEP = {
     recruit_character = NEP_jilan
 }
 VIN = {
     recruit_character = VIN_Vo_Van_Thuong
+}
+BRM = {
 }
 BRM = {
     recruit_character = BRM_Nini_Jue
@@ -936,7 +748,79 @@ recruit_character = PRC_yin_yong
 recruit_character = PRC_wen_yunsong
 recruit_character = PRC_man_guangzhi
 recruit_character = PRC_ultimate_npc
+recruit_character = PRC_xi_jinping
+recruit_character = PRC_Hu_Chunhua
+recruit_character = PRC_wang_yang
+recruit_character = PRC_cheng_wenqing
+recruit_character = PRC_li_zuocheng
+recruit_character = PRC_hao_mingjin
+recruit_character = PRC_wu_weihua
+recruit_character = PRC_wan_gang
+recruit_character = PRC_long_march
+recruit_character = PRC_Han_Weiguo
+recruit_character = PRC_Xu_Qiliang
+recruit_character = PRC_Wang_Xiubin
+recruit_character = PRC_Wu_Yanan
+recruit_character = PRC_Huang_Ming
+recruit_character = PRC_Ding_Laihang
+recruit_character = PRC_Wang_Qiang
+recruit_character = PRC_he_wei
+recruit_character = PRC_Li_Yuchao
+recruit_character = PRC_He_Weidong
+recruit_character = PRC_Li_Qiaoming
+recruit_character = PRC_Li_Shangfu
+recruit_character = PRC_Lin_Xiangyang
+recruit_character = PRC_Liu_Zhenli
+recruit_character = PRC_Wang_Haijiang
+recruit_character = PRC_Wu_Shenzhou
+recruit_character = PRC_Xu_Deqing
+recruit_character = PRC_Xu_Qiling
+recruit_character = PRC_Zhang_Shengmin
+recruit_character = PRC_Zhang_Youxia
+recruit_character = PRC_Zhao_Zongqi
+recruit_character = PRC_Zhu_Shengling
+#recruit_character = PRC_chang_wanquan
+#recruit_character = PRC_song_puxuan
+recruit_character = PRC_Chang_Dingqiu
+recruit_character = PRC_Yi_Xiaoguang
+recruit_character = PRC_Hu_Zhongming
+recruit_character = PRC_li_xianyu
+recruit_character = PRC_wei_fenghe
+recruit_character = PRC_wang_ning
+recruit_character = PRC_Qin_Shengxiang
+recruit_character = PRC_Shen_Jinlong
+recruit_character = PRC_yuan_yubai
+#recruit_character = PRC_zhu_qiu
+recruit_character = PRC_hsia_sun
+recruit_character = PRC_luo_jin
+#recruit_character = PRC_luo_wu
+recruit_character = PRC_lu_hao
+recruit_character = PRC_bo_xilai
+recruit_character = PRC_wang_yi
+recruit_character = PRC_liao_peng
+recruit_character = PRC_hu_wu
+recruit_character = PRC_zhu_shen
+recruit_character = PRC_cheng_lu
+recruit_character = PRC_Miao_Hua
+recruit_character = PRC_Dong_Jun
+recruit_character = PRC_Li_Yujie
+recruit_character = PRC_Wang_Hai
+recruit_character = PRC_Zheng_Jianbang
+recruit_character = PRC_Ding_Zhongli
+recruit_character = PRC_Xie_Fuzhan
+recruit_character = PRC_Liu_Qibao
+recruit_character = PRC_chen_jining
+recruit_character = PRC_CPC_RL
+recruit_character = PRC_CPC_CB
+recruit_character = PRC_Mao_Yuanxin
+recruit_character = PRC_ciu_zhiyuan
+recruit_character = PRC_wang_wenbin
+recruit_character = PRC_yin_yong
+recruit_character = PRC_wen_yunsong
+recruit_character = PRC_man_guangzhi
+recruit_character = PRC_ultimate_npc
 
+activate_advisor = PRC_Xu_Qiliang_air_chief
 activate_advisor = PRC_Xu_Qiliang_air_chief
 
 #Events
@@ -1080,7 +964,6 @@ if = {
         }
         icon = "GFX_PRC_corvette_2"
     }
-
 
     ## 护卫舰 ##
     create_equipment_variant = { #Frigate 1
@@ -1292,7 +1175,6 @@ if = {
             rear_1_custom_slot = ship_torpedo_sub_2
         }
     }
-
 }
 
 if = {
@@ -1388,19 +1270,6 @@ if = {
 if = {
     limit = {
         has_dlc = "By Blood Alone"
-    }
-    create_equipment_variant = {
-        name = "歼-15T“飞鲨”"
-        type = cv_small_plane_naval_bomber_airframe_1
-        modules = {
-            fixed_main_weapon_slot = torpedo_mounting
-            fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
-            fixed_auxiliary_weapon_slot_2 = empty
-            engine_type_slot = engine_2_1x
-            special_type_slot_1 = hmg_defense_turret
-            special_type_slot_2 = hmg_defense_turret
-        }
-        icon = "GFX_PRC_J15_fly_shark"
     }
 
     create_equipment_variant = {
@@ -1504,20 +1373,6 @@ if = {
     }
 
     create_equipment_variant = {
-        name = "歼轰-7“飞豹”"
-        type = small_plane_cas_airframe_1
-        modules = {
-            fixed_main_weapon_slot = bomb_locks
-            fixed_auxiliary_weapon_slot_1 = bomb_locks
-            fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
-            engine_type_slot = engine_2_1x
-            special_type_slot_1 = hmg_defense_turret
-            special_type_slot_2 = hmg_defense_turret
-        }
-        icon = "GFX_PRC_CAS2_medium"
-    }
-
-    create_equipment_variant = {
         name = "Su-30MKK"
         type = small_plane_cas_airframe_1
         modules = {
@@ -1530,7 +1385,6 @@ if = {
         }
         icon = "GFX_PRC_Su30MKK"
     }
-
     create_equipment_variant = {
         name = "轰-5"
         type = large_plane_airframe_0
@@ -1557,7 +1411,6 @@ if = {
             special_type_slot_1 = empty
             special_type_slot_2 = empty
             special_type_slot_3 = bomb_sights_1
-
         }
         icon = "GFX_PRC_H6"
     }

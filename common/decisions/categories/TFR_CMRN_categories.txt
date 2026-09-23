@@ -1,0 +1,48 @@
+# TFR_中蒙谈判 - 决策类别
+# PRC 类别含 GUI 显示变量
+
+# PRC 谈判决议类别（含 GUI 显示统一倾向和外交影响）
+TFR_CMRN_negotiation_category = {
+	icon = GFX_goal_generic_diplomacy
+	priority = 50
+
+	allowed = {
+		tag = PRC
+	}
+
+	visible = {
+		has_global_flag = TFR_CMRN_negotiation_accessible
+		country_exists = MON
+	}
+
+	scripted_gui = TFR_CMRN_negotiation_gui
+}
+
+# MON 谈判决议类别（蒙古视角）
+TFR_CMRN_mon_negotiation_category = {
+	icon = GFX_goal_generic_diplomacy
+	priority = 50
+
+	allowed = {
+		tag = MON
+	}
+
+	visible = {
+		has_global_flag = TFR_CMRN_negotiation_accessible
+	}
+}
+
+# PRC 战后治理决议类别（军管区管理 + 最终结算）
+TFR_CMRN_postwar_category = {
+	icon = GFX_goal_generic_army_occupation
+	priority = 40
+
+	allowed = {
+		tag = PRC
+	}
+
+	visible = {
+		has_global_flag = TFR_CMRN_war_declared
+		NOT = { country_exists = MON }
+	}
+}

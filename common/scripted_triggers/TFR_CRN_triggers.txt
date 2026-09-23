@@ -1,0 +1,122 @@
+# TFR_中俄谈判 - 脚本触发器
+
+##############################################################################
+# 谈判进行中 + SOV 存在
+##############################################################################
+TFR_CRN_negotiation_can_trade = {
+	has_global_flag = TFR_CRN_negotiation_active
+	has_global_flag = TFR_CRN_negotiation_accessible
+	NOT = { has_global_flag = TFR_CRN_negotiation_ended }
+	country_exists = SOV
+}
+
+##############################################################################
+# 第1轮活跃 + SOV 存在
+##############################################################################
+TFR_CRN_round_1_can_trade = {
+	TFR_CRN_negotiation_can_trade = yes
+	has_global_flag = TFR_CRN_round_1_active
+	has_global_flag = TFR_CRN_PRC_made_first_move
+}
+
+##############################################################################
+# 第2轮活跃 + SOV 存在
+##############################################################################
+TFR_CRN_round_2_can_trade = {
+	TFR_CRN_negotiation_can_trade = yes
+	has_global_flag = TFR_CRN_round_2_active
+}
+
+##############################################################################
+# 第3轮活跃 + SOV 存在
+##############################################################################
+TFR_CRN_round_3_can_trade = {
+	TFR_CRN_negotiation_can_trade = yes
+	has_global_flag = TFR_CRN_round_3_active
+}
+
+##############################################################################
+# 边境冲突系统
+##############################################################################
+
+# 路由判定：SOV 是否可谈判（梅德韦杰夫 或 红色系且非杜金）
+# 其余一切（杜金欧亚国/阿里汉诺夫大斯拉夫/纳瓦利内等）→ 不可谈判 → 边境冲突
+TFR_CRN_sov_negotiable = {
+	OR = {
+		has_country_leader = {
+			character = SOV_dmitry_medvedev
+			ruling_only = yes
+		}
+		AND = {
+			OR = {
+				has_government = libertarian_socialist
+				# TFR 顶层意识形态为 communist（非原版 communism），写错则红系判定恒 false
+				has_government = communist
+				has_government = totalitarian_socialist
+			}
+			NOT = {
+				has_country_leader = {
+					character = SOV_alexander_dugin
+					ruling_only = yes
+				}
+			}
+		}
+	}
+}
+
+# 边境冲突可启动（PRC 侧）：黑线 SOV + 谈判未启用 + 冲突未进行/未结束
+TFR_CRN_conflict_can_start = {
+	tag = PRC
+	country_exists = SOV
+	NOT = { SOV = { TFR_CRN_sov_negotiable = yes } }
+	NOT = { has_global_flag = TFR_CRN_negotiation_accessible }
+	NOT = { has_global_flag = TFR_CRN_conflict_active }
+	NOT = { has_global_flag = TFR_CRN_conflict_ended }
+}
+
+# 目标州可达（STATE 作用域）：任一相邻州被 PRC 控制
+# 天然实现：329 需先控制蒙古边境州（330/1388）、560 需先拿下相邻 SOV 州
+TFR_CRN_target_reachable = {
+	any_neighbor_state = {
+		is_controlled_by = PRC
+	}
+}
+
+# 存在当前目标州
+TFR_CRN_has_target = {
+	OR = {
+		has_global_flag = TFR_CRN_target_408
+		has_global_flag = TFR_CRN_target_409
+		has_global_flag = TFR_CRN_target_657
+		has_global_flag = TFR_CRN_target_1328
+		has_global_flag = TFR_CRN_target_1293
+		has_global_flag = TFR_CRN_target_560
+		has_global_flag = TFR_CRN_target_329
+	}
+}
+
+# 边境冲突进行中（PRC 侧）
+TFR_CRN_conflict_active_trigger = {
+	tag = PRC
+	has_global_flag = TFR_CRN_conflict_active
+	NOT = { has_global_flag = TFR_CRN_conflict_ended }
+}
+
+# 全面战争胜利条件：SOV 投降>10% 或任一目标州被 PRC 占领
+# 用于限时任务 timeout_effect 判断与「接受俄方求和」决议
+TFR_CRN_full_war_win_conditions = {
+	OR = {
+		SOV = { surrender_progress > 0.1 }
+		SOV = {
+			OR = {
+				408 = { is_controlled_by = PRC }
+				409 = { is_controlled_by = PRC }
+				657 = { is_controlled_by = PRC }
+				1328 = { is_controlled_by = PRC }
+				1293 = { is_controlled_by = PRC }
+				560 = { is_controlled_by = PRC }
+				329 = { is_controlled_by = PRC }
+			}
+		}
+	}
+}

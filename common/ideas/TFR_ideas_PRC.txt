@@ -1,5 +1,102 @@
 ideas = {
 	hidden_ideas = {
+		PRC_hidden_idea = {				
+			name = PRC_hidden_idea
+			allowed = {
+				always = yes
+			}
+			available = {
+				is_ai = yes
+			}
+			cancel = {
+				has_global_flag = PRC_japanese_gaw_victory_global
+			}
+			removal_cost = -1
+			
+			modifier = {
+				cic_construction_boost_factor = 0.25
+				consumer_goods_factor = -0.25
+				consumer_goods_expected_value = -0.1
+				global_building_slots = 2
+				global_building_slots_factor = 0.25
+				industry_air_damage_factor = -0.99
+				static_anti_air_hit_chance_factor = 2
+				static_anti_air_damage_factor = 2
+
+				fuel_gain_factor = 5
+				country_resource_oil = 200
+				country_resource_aluminium = 200
+				country_resource_chromium = 200
+				country_resource_rubber = 200
+				country_resource_steel = 400
+				country_resource_tungsten = 100
+				battalion_upkeep_factor = -0.5 #陆军维护 -50%
+				aircraft_upkeep_factor = -0.5 #空军维护 -50%
+				ship_upkeep_factor = -0.5 #海军维护 -50%
+				military_factory_upkeep_factor = -0.75 #军工维护 -75%
+				dockyard_upkeep_factor = -0.75 #船坞维护 -75%
+				interest_rate_factor = -0.99 #利率系数 -99%
+				business_value_factor = 0.4 #商业产值 +40%
+				personal_value_factor = 0.8 #个人产值 +0.8
+				inflation_monthly = -0.001 #月度通胀 -0.1%
+				expense_growth_factor = -0.5 #月度支出 -50%
+				misc_income = 50 #杂项收入
+				production_factory_efficiency_gain_factor = 100
+				factory_energy_consumption = -1
+				resistance_target = -0.2
+				# air_fuel_consumption_factor = 0.8
+				# army_fuel_consumption_factor = 0.8
+				# navy_fuel_consumption_factor = 0.8
+				compliance_gain = 0.5
+				experience_gain_army = 0.1
+				experience_gain_air = 0.1
+				experience_gain_navy = 0.1
+				max_command_power = 180
+				command_power_gain = 2
+
+				supply_node_range = 4
+				experience_gain_army_unit = 50
+				navy_max_range_factor = 2
+				naval_accidents_chance = -2
+				naval_attrition = -2
+				repair_speed_factor = 5
+				naval_supply_consumption_factor = -0.60
+			}
+		}
+		JAP_balance_sheet = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				surrender_limit = -0.2
+			}
+			targeted_modifier = {
+				tag = JPL
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.05
+				breakthrough_bonus_against = -0.1
+			}
+		}
+		PTF_balance_sheet = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				surrender_limit = -0.2
+			}
+			targeted_modifier = {
+				tag = JPL
+				attack_bonus_against = -0.2
+				defense_bonus_against = -0.1
+				breakthrough_bonus_against = -0.2
+			}
+		}
 		PRC_nationalist_insurgency = {
 			picture = PRC_hong_kong_protests
 			allowed = {
@@ -107,6 +204,82 @@ ideas = {
 		}
 	}
 	country = {
+		agaricus_sinodeliciosus = { #中国美味蘑菇
+			#picture = 
+			name = agaricus_sinodeliciosus
+			allowed = {
+				tag = PRC
+			}
+			available = {
+				is_ai = yes
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			cancel = {
+				has_global_flag = PRC_japanese_gaw_victory_global
+			}
+
+			modifier = {
+				trade_opinion_factor = 5
+				production_speed_buildings_factor = 2
+
+				political_power_gain = 2
+				political_power_factor = 1
+				production_factory_max_efficiency_factor = 2
+				production_factory_start_efficiency_factor = 1
+				industrial_capacity_dockyard = 2
+				industrial_capacity_factory = 1
+
+				army_attack_factor = 0.5
+				breakthrough_factor = 0.5
+				army_defence_factor = 0.5
+				ground_attack = 1
+				land_night_attack = 0.25
+				max_planning = 1
+				max_planning_factor = 0.5
+				planning_speed = 5
+				max_dig_in = 25
+				max_organisation_factor = 0.5
+				army_speed_factor = 0.88
+				air_agility_factor = 0.75
+				air_attack_factor = 0.75
+				air_defence_factor = 0.75
+				naval_damage_factor = 0.75
+				naval_hit_chance = 1
+				naval_night_attack = 0.25
+				naval_torpedo_screen_penetration_factor = 0.66
+				naval_defense_factor = 0.75
+				naval_detection = 2
+				naval_speed_factor = 0.5
+				navy_anti_air_attack_factor = 1.2
+				navy_org_factor = 1
+			}
+		}
+		PRC_redirected_money_idea = {
+			name = PRC_redirected_money_idea
+			picture = PRC_peoples_and_honest_economy
+			traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+				
+			modifier = {
+				society_development_monthly = -0.005
+				academic_development_monthly = -0.005
+				political_power_gain = -0.1
+				military_development_monthly = 0.015
+				stability_factor = -0.025				
+			}
+		}
 		PRC_creation_of_full_scale_missile_cruisers_idea = { #timed for 250 days
 			name = PRC_creation_of_full_scale_missile_cruisers
 			picture = PRC_mass_naval_production
@@ -2499,6 +2672,1043 @@ ideas = {
 				production_speed_infrastructure_factor = 0.25
 			}
 		}
+		PRC_made_in_china_dummy_idea17 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_factory_start_efficiency_factor = -0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea18 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.15
+			}
+		}
+		PRC_made_in_china_dummy_idea19 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				# factory_energy_consumption = -0.1 #C类来源已注释
+				production_lack_of_resource_penalty_factor = -0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea20 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.1
+				tax_business_rate = 0.1
+				expense_growth_factor = 0.15
+			}
+		}
+		PRC_made_in_china_dummy_idea21 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea22 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = 0.05
+				# production_cost_infrastructure_factor = -0.05 #C类来源已注释
+			}
+		}
+		PRC_made_in_china_dummy_idea23 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.1
+				expense_growth_factor = 0.05
+				inflation_monthly = 0.001
+			}
+		}
+		PRC_made_in_china_dummy_idea24 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = 0.001
+				experience_loss_factor = -0.05
+				expense_growth_factor = 0.1
+				personal_expense_factor = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea25 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+				industrial_capacity_factory = 0.075
+				personal_value_factor = 0.075
+				society_development_monthly = 0.005
+			}
+		}
+		PRC_made_in_china_dummy_idea26 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = 0.1
+				stability_factor = 0.04
+				line_change_production_efficiency_factor = 0.075
+				production_factory_efficiency_gain_factor = 0.075
+			}
+		}
+		PRC_made_in_china_dummy_idea27 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				production_factory_start_efficiency_factor = 0.05
+				expense_growth_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea28 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				supply_consumption_factor = -0.1
+				# supply_node_range = 0.075 #C类来源已注释
+				# production_cost_infrastructure_factor = -0.075 #C类来源已注释
+			}
+		}
+		PRC_made_in_china_dummy_idea29 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.1
+				global_building_slots_factor = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea29a = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.1
+				global_building_slots_factor = 0.075
+				tax_business_rate = 0.01
+				business_value_factor = 0.03
+			}
+		}
+		PRC_made_in_china_dummy_idea29b = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.1
+				global_building_slots_factor = 0.125
+				production_factory_efficiency_gain_factor = 0.02
+			}
+		}
+		PRC_made_in_china_dummy_idea29c = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.1
+				global_building_slots_factor = 0.125
+				production_factory_max_efficiency_factor = 0.01
+			}
+		}
+		PRC_made_in_china_dummy_idea30 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.2
+				society_development_monthly = 0.01
+				decryption_power = 0.2
+			}
+		}
+		PRC_made_in_china_dummy_idea30a = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+				society_development_monthly = 0.01
+				decryption_power_factor = 0.2
+				tax_business_rate = 0.01
+				business_value_factor = 0.03
+			}
+		}
+		PRC_made_in_china_dummy_idea30b = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				society_development_monthly = 0.01
+				decryption_power = 0.2
+				production_factory_efficiency_gain_factor = 0.02
+			}
+		}
+		PRC_made_in_china_dummy_idea30c = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				society_development_monthly = 0.01
+				decryption_power = 0.2
+				production_factory_max_efficiency_factor = 0.01
+			}
+		}
+		PRC_made_in_china_dummy_idea31 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_cost_infrastructure_factor = -0.1
+				#production_cost_rail_way_factor = -0.1 #来源已注释
+				supply_consumption_factor = -0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea31a = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				# production_cost_infrastructure_factor = -0.075 #C类来源已注释
+				#production_cost_rail_way_factor = -0.1 #来源已注释
+				supply_consumption_factor = -0.05
+				tax_business_rate = 0.01
+				business_value_factor = 0.03
+			}
+		}
+		PRC_made_in_china_dummy_idea31b = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				# production_cost_infrastructure_factor = -0.125 #C类来源已注释
+				#production_cost_rail_way_factor = -0.1 #来源已注释
+				supply_consumption_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.02
+			}
+		}
+		PRC_made_in_china_dummy_idea31c = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_cost_infrastructure_factor = -0.125
+				#production_cost_rail_way_factor = -0.1 #来源已注释
+				supply_consumption_factor = -0.05
+				production_factory_max_efficiency_factor = 0.01
+			}
+		}
+		PRC_made_in_china_dummy_idea32 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea32a = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.075
+				industrial_capacity_dockyard = 0.075
+				tax_business_rate = 0.01
+				business_value_factor = 0.03
+			}
+		}
+		PRC_made_in_china_dummy_idea32b = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.125
+				industrial_capacity_dockyard = 0.125
+				production_factory_efficiency_gain_factor = 0.02
+			}
+		}
+		PRC_made_in_china_dummy_idea32c = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.125
+				industrial_capacity_dockyard = 0.125
+				production_factory_max_efficiency_factor = 0.01
+			}
+		}
+		PRC_made_in_china_dummy_idea33 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				misc_income = 25
+				business_value_factor = 0.1
+				personal_value_factor = 0.1
+				income_growth_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea33a = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				misc_income = 25
+				business_value_factor = 0.13
+				personal_value_factor = 0.1
+				income_growth_factor = 0.05
+				tax_business_rate = 0.01
+			}
+		}
+		PRC_made_in_china_dummy_idea33b = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				misc_income = 25
+				business_value_factor = 0.125
+				personal_value_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.02
+			}
+		}
+		PRC_made_in_china_dummy_idea33c = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				misc_income = 25
+				business_value_factor = 0.125
+				personal_value_factor = 0.1
+				production_factory_max_efficiency_factor = 0.01
+			}
+		}
+		PRC_made_in_china_dummy_idea34 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				income_growth_factor = -0.1
+				inflation_monthly = -0.001
+				industrial_capacity_factory = 0.075
+				industrial_capacity_dockyard = 0.075
+				production_speed_buildings_factor = 0.075
+			}
+		}
+		PRC_made_in_china_dummy_idea35 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				expense_growth_factor = -0.05
+				# military_industrial_organization_funds_gain = 0.05
+				# military_industrial_organization_research_bonus = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea36 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.05
+				production_factory_efficiency_gain_factor = 0.05
+				personal_expense_factor = -0.03
+				misc_income = 20
+			}
+		}
+		PRC_made_in_china_dummy_idea37 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.15
+				stability_factor = -0.05
+				production_factory_max_efficiency_factor = 0.075
+				production_speed_industrial_complex_factor = 0.125
+				income_growth_factor = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea38 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_start_efficiency_factor = 0.05
+				expense_growth_factor = -0.05
+				income_growth_factor = 0.05
+				business_value_factor = 0.05
+				personal_expense_factor = -0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea39 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.15
+				misc_income = 25
+				stability_factor = 0.025
+				income_growth_factor = 0.1
+				production_factory_start_efficiency_factor = 0.05
+				society_development_monthly = 0.005
+			}
+		}
+		PRC_made_in_china_dummy_idea40 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				global_building_slots_factor = 0.1 #转为系数
+				research_speed_factor = 0.05
+				personal_value_factor = -0.075
+				business_value_factor = -0.075
+			}
+		}
+		PRC_made_in_china_dummy_idea41 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				expense_growth_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea42 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				personal_value_factor = 0.1
+				business_value_factor = 0.1
+				expense_growth_factor = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea43 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				monthly_population = 0.1
+				supply_consumption_factor = 0.05
+				farming_development_monthly = 0.005
+			}
+		}
+		PRC_made_in_china_dummy_idea44 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				personal_value_factor = 0.05
+				# supply_node_range = 0.05 #C类来源已注释
+			}
+		}
+		PRC_made_in_china_dummy_idea45 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea46 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_start_efficiency_factor = 0.05
+				line_change_production_efficiency_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea47 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.075
+			}
+		}
+		PRC_made_in_china_dummy_idea48 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_power_plant_factor = 0.125
+				production_speed_nuclear_reactor_factor = 0.125
+			}
+		}
+		PRC_made_in_china_dummy_idea49 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea50 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea51 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_dockyard_factor = 0.075
+				industrial_capacity_dockyard = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea52 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.1
+				personal_value_factor = -0.125
+				business_value_factor = -0.125
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.075
+			}
+		}
+		PRC_made_in_china_dummy_idea53 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industry_air_damage_factor = -0.1
+				global_building_slots_factor = 0.1 #转为系数
+				production_factory_max_efficiency_factor = 0.1
+				# production_cost_industrial_complex_factor = -0.075 #C类来源已注释
+				# production_cost_infrastructure_factor = -0.075 #C类来源已注释
+			}
+		}
+		PRC_made_in_china_dummy_idea54 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				income_growth_factor = 0.07
+				personal_value_factor = 0.05
+				farming_development_monthly = 0.005
+			}
+		}
+		PRC_made_in_china_dummy_idea55 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = 0.1
+				line_change_production_efficiency_factor = 0.05
+				research_speed_factor = 0.03
+			}
+		}
+		PRC_made_in_china_dummy_idea56 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.1
+				monthly_population = 0.05
+				production_factory_efficiency_gain_factor = 0.06
+				production_factory_max_efficiency_factor = 0.05
+				income_growth_factor = 0.08
+			}
+		}
+		PRC_made_in_china_dummy_idea57 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.075
+				research_speed_factor = 0.05
+				academic_development_monthly = 0.005
+			}
+		}
+		PRC_made_in_china_dummy_idea58 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.05
+				production_speed_buildings_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		PRC_made_in_china_dummy_idea59 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_office_park_factor = 0.125
+				expense_growth_factor = 0.015
+				business_value_factor = 0.07
+				industrial_capacity_factory = 0.025
+			}
+		}
+		PRC_made_in_china_dummy_idea60 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				production_factory_efficiency_gain_factor = 0.075
+				monthly_population = 0.04
+				experience_loss_factor = -0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea61 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				global_building_slots_factor = 0.05
+				conscription_factor = 0.05
+				experience_loss_factor = -0.05
+				society_development_monthly = 0.005
+			}
+		}
+		PRC_made_in_china_dummy_idea62 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.05
+				industrial_capacity_factory = 0.05
+				personal_value_factor = 0.035
+				business_value_factor = 0.035
+			}
+		}
+		PRC_made_in_china_dummy_idea63 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				party_popularity_stability_factor = 0.15
+				offensive_war_stability_factor = 0.1
+			}
+		}
+		PRC_made_in_china_dummy_idea64 = {
+			picture = GFX_idea_PRC_made_in_china
+			name = PRC_made_in_china_idea1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.1
+				production_factory_max_efficiency_factor = 0.075
+				consumer_goods_factor = -0.1
+				income_growth_factor = 0.15
+			}
+		}
 		PRC_nl_shipbuilding_ingenuity_idea = {
 			#Just Made For Tooltip, Dynamic Modifier is used instead
 			picture = GFX_idea_PRC_made_in_china
@@ -2943,7 +4153,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				fuel_gain_factor = 0.1
+				# fuel_gain_factor = 0.1 #C类来源已注释
 				income_growth_factor = 0.05
 				trade_opinion_factor = 0.05
 			}
@@ -3272,7 +4482,7 @@ ideas = {
 				income_growth_factor = 0.1
 				production_factory_efficiency_gain_factor = 0.05
 				personal_value_factor = 0.1
-				military_industrial_organization_research_bonus = 0.05
+				# military_industrial_organization_research_bonus = 0.05
 				battalion_upkeep_factor = -0.1
 			}
 		}
@@ -3560,7 +4770,7 @@ ideas = {
 					value = 0.005
 				}
 				add_to_variable = {
-					var = PRC_mic_production_speed_infrastructure_factor_dynamic_var
+					var = PPRC_infrust_var
 					value = 0.035
 				}
 				add_to_variable = {
@@ -3592,7 +4802,7 @@ ideas = {
 			}
 			on_remove = {
 				add_to_variable = {
-					var = PRC_mic_stability_factor_dynamic_var
+					var = PPRC_st_var
 					value = 0.07
 				}
 				add_to_variable = {
@@ -3799,8 +5009,8 @@ ideas = {
 			modifier = {
 				business_value_factor = 0.05
 				industrial_development_monthly = 0.005
-				military_industrial_organization_funds_gain = 0.1
-				military_industrial_organization_research_bonus = 0.1
+				# military_industrial_organization_funds_gain = 0.1
+				# military_industrial_organization_research_bonus = 0.1
 				consumer_goods_factor = -0.025
 			}
 		}
@@ -3818,8 +5028,8 @@ ideas = {
 			modifier = {
 				business_value_factor = 0.05
 				research_speed_factor = 0.05
-				military_industrial_organization_funds_gain = 0.1
-				military_industrial_organization_research_bonus = 0.1
+				# military_industrial_organization_funds_gain = 0.1
+				# military_industrial_organization_research_bonus = 0.1
 				consumer_goods_factor = -0.025
 			}
 		}
@@ -4245,8 +5455,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				military_industrial_organization_research_bonus = 0.05
-				military_industrial_organization_funds_gain = 0.05
+				# military_industrial_organization_research_bonus = 0.05
+				# military_industrial_organization_funds_gain = 0.05
 				industrial_capacity_factory = 0.025
 				stability_factor = 0.05
 				business_value_factor = -0.085
@@ -4264,8 +5474,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				military_industrial_organization_research_bonus = -0.05
-				military_industrial_organization_funds_gain = -0.05
+				# military_industrial_organization_research_bonus = -0.05
+				# military_industrial_organization_funds_gain = -0.05
 				industrial_capacity_factory = -0.025
 				stability_factor = -0.025
 				business_value_factor = 0.075
@@ -5956,6 +7166,32 @@ ideas = {
 				line_change_production_efficiency_factor = 0.075
 			}
 		}
+		PRC_communist_party_of_china_dummy18 = {
+			name = PRC_communist_party_of_china_dynamic
+			picture = PRC_chinese_communist_party
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+			}
+		}
+		PRC_party_rectification_campaign_dummy = {
+			name = PRC_party_rectification_campaign_dynamic
+			picture = GFX_idea_PRC_party_rectification_campaign3
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+			}
+		}
 		PRC_communist_angang_xianfa = {
 			name = PRC_angang_xianfa
 			picture = PRC_socialist_dream_idea
@@ -6616,6 +7852,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				naval_doctrine_cost_factor = -0.1
+				naval_mastery_gain_factor = 0.2
 				amphibious_invasion = 0.2
 				invasion_preparation = -0.5
 				naval_damage_factor = 0.2
@@ -6631,6 +7869,8 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				land_doctrine_cost_factor = -0.1
+				land_mastery_gain_factor = 0.2
 				training_time_army_factor = -0.35
 			}
 		}
@@ -6645,11 +7885,14 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_attack_factor = -0.2
-				army_defence_factor = -0.2
-				breakthrough_factor = -0.1
-				air_cas_efficiency = -0.2
-				experience_loss_factor = 0.15
+				experience_gain_army_unit_factor = -0.15
+				naval_speed_factor = -0.1
+				air_wing_xp_loss_when_killed_factor = 0.1
+				land_mastery_gain_factor = -0.1
+				air_mastery_gain_factor = -0.1
+				naval_mastery_gain_factor = -0.5
+				# experience_loss_factor = 0.15
+				# land_doctrine_cost_factor = 0.3
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea2 = {
@@ -6663,11 +7906,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_attack_factor = -0.125
-				army_defence_factor = -0.125
-				breakthrough_factor = -0.075
-				air_cas_efficiency = -0.125
-				experience_loss_factor = 0.075
+				land_mastery_gain_factor = -0.08
+				air_mastery_gain_factor = -0.08
+				naval_mastery_gain_factor = -0.4
+				experience_gain_army_unit_factor = -0.12
+				naval_speed_factor = -0.08
+				air_wing_xp_loss_when_killed_factor = 0.08
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea3 = {
@@ -6681,10 +7925,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_attack_factor = -0.125
-				breakthrough_factor = -0.075
-				air_cas_efficiency = -0.1
-				experience_loss_factor = 0.05
+				land_mastery_gain_factor = -0.06
+				air_mastery_gain_factor = -0.06
+				naval_mastery_gain_factor = -0.3
+				experience_gain_army_unit_factor = -0.09
+				naval_speed_factor = -0.06
+				air_wing_xp_loss_when_killed_factor = 0.06
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea4 = {
@@ -6698,9 +7944,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_defence_factor = -0.125
-				air_cas_efficiency = -0.1
-				experience_loss_factor = 0.05
+				land_mastery_gain_factor = -0.04
+				air_mastery_gain_factor = -0.04
+				naval_mastery_gain_factor = -0.2
+				experience_gain_army_unit_factor = -0.06
+				naval_speed_factor = -0.04
+				air_wing_xp_loss_when_killed_factor = 0.04
 			}
 		}
 		PRC_insufficient_understanding_of_modern_warfare_idea5 = {
@@ -6714,8 +7963,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				air_cas_efficiency = -0.1
-				experience_loss_factor = 0.025
+				land_mastery_gain_factor = -0.02
+				air_mastery_gain_factor = -0.02
+				naval_mastery_gain_factor = -0.1
+				experience_gain_army_unit_factor = -0.03
+				naval_speed_factor = -0.02
+				air_wing_xp_loss_when_killed_factor = 0.02
 			}
 		}
 		PRC_final_offensive_idea = {
@@ -9337,13 +10590,13 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				stability_factor = 0.075
-				political_power_factor = 0.15
-				consumer_goods_factor = 0.075
-				industrial_capacity_factory = -0.2
-				industrial_capacity_dockyard = -0.2
+				stability_factor = 0.05
+				political_power_factor = 0.25
+				consumer_goods_factor = 0.05
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
 				production_speed_industrial_complex_factor = -0.1
-				production_speed_arms_factory_factor = -0.3
+				production_speed_arms_factory_factor = -0.2
 			}
 		}
 		PRC_fatal_mistake_idea = {

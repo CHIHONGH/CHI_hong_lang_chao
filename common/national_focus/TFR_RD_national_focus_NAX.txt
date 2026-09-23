@@ -7,8 +7,9 @@ focus_tree = {
 			tag = NAX
 		}
 	}
-
+	default = no
 	shared_focus = PRC_Southwestern_border_in_critical_condition
+	shared_focus = WLI_red_flag_flying_high
 	#!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
 	focus = {
 		id = NAX_battle_for_liberation
@@ -49,10 +50,41 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = NAX_rifles_on_load_tooltip
 			hidden_effect = {
-				news_event = nlnews.6
+				# news_event = nlnews.6
 				PRC = {
 					add_to_faction = NAX
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						NAX = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
 				}
+				mark_focus_tree_layout_dirty = yes
 			}
 		}
 		ai_will_do = {
@@ -339,7 +371,7 @@ focus_tree = {
 				add_compliance = 15
 				add_resistance = -15
 			}
-			add_stability = 0,025
+			add_stability = 0.025
 		}
 	}
 	focus = {

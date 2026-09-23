@@ -1241,11 +1241,11 @@ add_GDP = {
 	#Personal Income Per 100k
 	set_variable = {
 		var = personal_value_var
-		value = max_manpower_k
+		value = max_manpower
 	}
 	multiply_variable = {
 		var = personal_value_var
-		value = 0.01		#Turns 1k to 100k
+		value = 0.00001		#Turns 1 to 100k
 	}
 	multiply_variable = {
 		var = personal_value_var
@@ -1862,11 +1862,11 @@ add_GDP = {
 	#Social Spending Per 100k
 	set_variable = {
 		var = personal_expense_var
-		value = max_manpower_k
+		value = max_manpower
 	}
 	multiply_variable = {
 		var = personal_expense_var
-		value = 0.01		#Turns 1k to 100k
+		value = 0.00001		#Turns 1 to 100k
 	}
 	multiply_variable = {
 		var = personal_expense_var
@@ -4545,6 +4545,7 @@ remove_economy_types = {
 		ZZZ_collective_capitalism
 		ZZZ_oligopolistic_capitalism
 		ZZZ_welfare_capitalism
+		ZZZ_cabal_economy
 		ZZZ_corporatism
 		ZZZ_managed_economy
 		ZZZ_command_economy
@@ -4564,6 +4565,7 @@ remove_economy_types = {
 		ZZZ_party_state_capitalism
 		ZZZ_left_corporatism
 		ZZZ_liberal_corporatism
+		ZZZ_inclusive_capitalism
 	}
 }
 change_economy_type_capitalism = {
@@ -4746,12 +4748,6 @@ change_economy_type_maga_capitalism = {
 	hidden_effect = {
 		remove_economy_types = yes
 		add_ideas = ZZZ_maga_capitalism
-	}
-}
-change_economy_type_auto_socialism1 = {
-	swap_ideas = {
-		remove_idea = auto_socialism
-		add_idea = auto_socialism1
 	}
 }
 #Government Types Change

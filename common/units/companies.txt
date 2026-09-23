@@ -1,0 +1,454 @@
+sub_units = {
+	mbt_company = {
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			armor
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_tanks
+			category_front_line
+			category_all_armor
+			category_army
+		}
+
+	
+		combat_width = 2
+	
+		#Size Definitions
+		manpower = 150
+		max_organisation = 23.07
+		max_strength = 25
+		default_morale = 0.3
+		training_time = 180
+		weight = 0.5
+
+		supply_consumption = 0.03
+		
+		can_be_parachuted = no
+
+				
+		defense = -0.66
+		breakthrough = -0.50
+		soft_attack = -0.55
+		hard_attack = -0.55
+
+		essential = {
+			modern_tank_chassis
+		}
+		
+		transport = modern_tank_chassis
+
+		need = {
+			modern_tank_chassis = 14
+			support_equipment = 5
+		}
+
+		plains = {
+			#attack = 0.1
+			defence = 0.05
+			
+		}
+		forest = {
+			attack = -0.05
+			
+		}
+		hills = {
+			attack = -0.07
+			
+		}
+		mountain = {
+			attack = -0.1
+			defence = -0.1
+			
+		}
+		urban = {
+			attack = 0.075
+			defence = 0.05
+		}
+		jungle = {
+			attack = -0.04
+			
+		}
+		marsh = {
+			attack = -0.04
+		}
+		amphibious = {
+			attack = -0.02
+		}
+	}
+	
+	spaa_company = {
+		sprite = infantry
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = yes
+		
+		type = {
+			armor
+			anti_air
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_tanks
+			category_front_line
+			category_all_armor
+			category_army
+		}
+
+		combat_width = 0
+
+		need = {
+			spaa_equipment = 6
+		}
+		
+		manpower = 183
+		max_organisation = 25
+		default_morale = 0.1
+		max_strength = 0.6
+		training_time = 180
+		weight = 1.25
+		supply_consumption = 0.02
+		
+		can_be_parachuted = yes
+
+		defense = -0.66
+		breakthrough = -0.66
+		soft_attack = -0.66
+		hard_attack = -0.66
+		air_attack = -0.44
+		
+		transport = spaa_equipment
+		
+	}
+	
+	spa_company = {
+		sprite = infantry
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = yes
+		
+		type = {
+			armor
+			artillery
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_tanks
+			category_front_line
+			category_all_armor
+			category_army
+		}
+
+		combat_width = 0
+
+		need = {
+			modern_tank_artillery_chassis = 6
+		}
+		
+		manpower = 183
+		max_organisation = 25
+		default_morale = 0.1
+		max_strength = 0.6
+		training_time = 180
+		weight = 1.25
+		supply_consumption = 0.03
+		
+		can_be_parachuted = no
+
+		defense = -0.66
+		breakthrough = -0.66
+		soft_attack = -0.35
+		hard_attack = -0.66
+		
+		transport = modern_tank_artillery_chassis
+		
+	}
+	
+	apc_company = {
+		sprite = infantry
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = yes
+		
+		type = {
+			mechanized
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_army
+		}
+
+		combat_width = 2
+
+		need = {
+			support_equipment = 6
+			light_mechanized_equipment = 14
+		}
+		
+		manpower = 150
+		max_organisation = 23.07
+		default_morale = 0.1
+		max_strength = 25
+		training_time = 180
+		weight = 0.5
+		supply_consumption = 0.03
+		
+		can_be_parachuted = no
+
+		defense = -0.11
+		breakthrough = -0.11
+		soft_attack = -0.65
+		hard_attack = -0.11
+		
+		transport = light_mechanized_equipment
+		
+		plains = {
+			defence = 0.01
+			
+		}
+		forest = {
+			attack = -0.01
+		}
+		hills = {
+			attack = -0.01
+			
+		}
+		mountain = {
+			attack = -0.01
+			defence = -0.01
+		}
+		urban = {
+			attack = 0.01 
+			defence = 0.01
+		}
+		
+	}
+	
+	
+	air_mechanized = {
+		sprite = infantry
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = yes
+		
+		type = {
+			mechanized
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_army
+		}
+
+		combat_width = 2
+
+		need = {
+			support_equipment = 6
+			mechanized_equipment = 14
+		}
+		
+		manpower = 150
+		max_organisation = 23.07
+		default_morale = 0.1
+		max_strength = 25
+		training_time = 180
+		weight = 0.5
+		supply_consumption = 0.03
+		
+		can_be_parachuted = yes
+
+		defense = -0.11
+		breakthrough = -0.11
+		soft_attack = -0.45
+		hard_attack = -0.11
+		
+		transport = mechanized_equipment
+		
+		plains = {
+			defence = 0.01
+			
+		}
+		forest = {
+			attack = -0.01
+		}
+		hills = {
+			attack = -0.01
+			
+		}
+		mountain = {
+			attack = -0.01
+			defence = -0.01
+		}
+		urban = {
+			attack = 0.01 
+			defence = 0.01
+		}
+		
+		battalion_mult = {
+			category = category_all_infantry
+			soft_attack = 0.15
+			add = yes
+		}
+	}
+	
+	exoskeleton_support = {
+		sprite = infantry
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = yes
+		affects_speed = no
+		
+		type = {
+			mechanized
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_army
+		}
+
+		combat_width = 2
+
+		need = {
+			infantry_equipment = 100
+			exoskeleton_equipment = 50
+			support_equipment = 10
+		}
+		
+		manpower = 150
+		max_organisation = 23.07
+		default_morale = 0.1
+		max_strength = 25
+		training_time = 180
+		weight = 0.5
+		supply_consumption = 0.03
+		
+		can_be_parachuted = yes
+
+		defense = -0.25
+		breakthrough = 0.15
+		soft_attack = 0.1
+		hard_attack = 0.1
+		
+		#transport = mechanized_equipment
+		
+		plains = {
+			defence = 0.1
+			
+		}
+		forest = {
+			attack = -0.1
+		}
+		hills = {
+			attack = 0.1
+			
+		}
+		mountain = {
+			attack = -0.01
+			defence = -0.01
+		}
+		urban = {
+			attack = 0.2
+			defence = 0.2
+		}
+		
+		battalion_mult = {
+			category = category_all_infantry
+			soft_attack = 0.1
+			add = yes
+		}
+	}
+	infiltrator_company = {
+		sprite = infantry
+		map_icon_category = infantry
+		special_forces = yes
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_special_forces
+		}
+
+		combat_width = 0
+
+		essential = {
+			support_equipment
+		}
+		need = {
+			infantry_equipment = 100
+			support_equipment = 20
+		}
+
+		max_strength = 5
+		max_organisation = 35
+		default_morale = 0.5
+		manpower = 200
+		training_time = 160
+		weight = 0.1
+		supply_consumption = 0.02
+
+		can_be_parachuted = yes
+
+		breakthrough = 1
+		initiative = 0.2
+		recon = 1
+		suppression_factor = 0.05
+
+		defense = -0.5
+		soft_attack = 0.2
+		hard_attack = 0.2
+
+		urban = {
+			attack = 0.2
+			movement = 0.2
+		}
+		fort = {
+			attack = 0.15
+		}
+	}
+}

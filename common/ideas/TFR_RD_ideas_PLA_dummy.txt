@@ -1,0 +1,400 @@
+# 三军军改假民族精神（仅 tooltip 展示本级增量，不实际生效）
+# 实际数值走动态修正 PLA_pla_army_dynamic / PLA_plan_navy_dynamic / PLA_plaaf_air_dynamic
+# （变量累积，见 dynamic_modifiers/TFR_RD_newmilitary_dynamic_modifiers.txt）
+# 用法：国策 completion_reward 中 effect_tooltip = { swap_ideas = { remove_idea = <占位> add_idea = <级别版> } }
+# 增量数值表：docs/三军军改装备加成记录.md（装备加成部分已搁置，故 4 级等为零增量）
+
+ideas = {
+	country = {
+		# ==================== 陆军 ====================
+		# 基础占位版（无修正，所有 swap 的 remove 侧）
+		PLA_pla_army_dummy = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		# 1 改革人民解放军军政工作
+		PLA_pla_army_dummy_1 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				decryption_power = 25
+				crypto_strength = 1
+				intel_network_gain_factor = 0.25
+			}
+		}
+		# 2 建立联合作战指挥部
+		PLA_pla_army_dummy_2 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.15
+				experience_gain_army_unit_factor = 0.1
+			}
+		}
+		# 3 新型陆军向前进
+		PLA_pla_army_dummy_3 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				battalion_upkeep_factor = 0.1
+				planning_decay_rate_factor = -0.25
+				max_planning = 0.1
+			}
+		}
+		# 4 炮兵决胜，信火一体
+		PLA_pla_army_dummy_4 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				battalion_upkeep_factor = 0.05
+				rocket_attack_factor = 0.1
+				recon_factor = 0.25
+				army_attack_factor = 0.05
+			}
+		}
+		# 5 联勤部队体系改革
+		PLA_pla_army_dummy_5 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.15
+				attrition = -0.25
+				supply_node_range = 0.25
+				supply_consumption_factor = -0.15
+			}
+		}
+		# 6 横扫千军如卷席
+		PLA_pla_army_dummy_6 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				command_power_gain = 0.15
+				army_org_factor = 0.1
+				breakthrough_factor = 0.15
+			}
+		}
+		# 7 导弹部队现代化
+		PLA_pla_army_dummy_7 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				rocket_attack_factor = 0.1
+				army_attack_factor = 0.05
+			}
+		}
+		# 8 强化战场支援
+		PLA_pla_army_dummy_8 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				org_loss_when_moving = -0.25
+				terrain_penalty_reduction = 0.25
+				army_fuel_consumption_factor = -0.25
+			}
+		}
+		# 9 为了全人类的解放
+		PLA_pla_army_dummy_9 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				land_reinforce_rate = 0.075
+				army_morale_factor = 0.12
+				planning_speed = 0.15
+			}
+		}
+		# 10 铸造决胜之剑
+		PLA_pla_army_dummy_10 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				battalion_upkeep_factor = 0.1
+				land_night_attack = 0.1
+				combat_width_factor = -0.15
+			}
+		}
+		# 11 三子归边
+		PLA_pla_army_dummy_11 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				battalion_upkeep_factor = 0.1
+				max_command_power = 50
+			}
+		}
+		# 12 铁流两万五千里
+		PLA_pla_army_dummy_12 = {
+			picture = PRC_pla
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.05
+				army_org_factor = 0.1
+			}
+		}
+
+		# ==================== 海军 ====================
+		PLA_plan_navy_dummy = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		# 1 建立联合作战指挥部
+		PLA_plan_navy_dummy_1 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				naval_light_gun_hit_chance_factor = 0.1
+				naval_heavy_gun_hit_chance_factor = 0.1
+				experience_gain_navy_factor = 0.1
+			}
+		}
+		# 2 建设新锐人民海军
+		PLA_plan_navy_dummy_2 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				ship_upkeep_factor = 0.15
+				naval_coordination = 0.1
+				industrial_capacity_dockyard = 0.2
+			}
+		}
+		# 3 重拾电磁武库舰
+		PLA_plan_navy_dummy_3 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				ship_upkeep_factor = 0.15
+				navy_capital_ship_attack_factor = 0.25
+				navy_capital_ship_defence_factor = 0.25
+			}
+		}
+		# 4 改革航母战斗群
+		PLA_plan_navy_dummy_4 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				ship_upkeep_factor = 0.15
+				sortie_efficiency = 0.4
+				navy_anti_air_attack_factor = 0.2
+				spotting_chance = 0.2
+				navy_screen_defence_factor = 0.25
+			}
+		}
+		# 5 艟艨巨舰直东指
+		PLA_plan_navy_dummy_5 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				ship_upkeep_factor = 0.15
+				naval_coordination = 0.1
+				naval_has_potf_in_combat_attack = 0.1
+				navy_org_factor = 0.15
+				naval_critical_score_chance_factor = 0.25
+			}
+		}
+		# 6 导弹部队现代化
+		PLA_plan_navy_dummy_6 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				navy_capital_ship_attack_factor = 0.1
+				navy_anti_air_attack_factor = 0.1
+			}
+		}
+		# 7 强化战场支援
+		PLA_plan_navy_dummy_7 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				navy_max_range_factor = 0.1
+				repair_speed_factor = 0.3
+				navy_fuel_consumption_factor = -0.25
+			}
+		}
+		# 8 铁流两万五千里
+		PLA_plan_navy_dummy_8 = {
+			picture = PRC_plan_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				screening_efficiency = 0.25
+			}
+		}
+
+		# ==================== 空军 ====================
+		PLA_plaaf_air_dummy = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		# 1 建立联合作战指挥部
+		PLA_plaaf_air_dummy_1 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				air_mission_xp_gain_factor = 0.1
+				air_ace_generation_chance_factor = 0.15
+			}
+		}
+		# 2 次世代空军
+		PLA_plaaf_air_dummy_2 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				aircraft_upkeep_factor = 0.1
+				air_attack_factor = 0.1
+				air_defence_factor = 0.1
+				air_training_xp_gain_factor = 0.1
+				air_superiority_efficiency = 0.15
+			}
+		}
+		# 3 空军装备革命性发展
+		PLA_plaaf_air_dummy_3 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				aircraft_upkeep_factor = 0.25
+				air_attack_factor = 0.2
+				air_defence_factor = 0.2
+				air_agility_factor = 0.2
+				air_maximum_speed_factor = 0.2
+			}
+		}
+		# 4 飞机生产流水线（原级仅装备加成，搁置中，零增量）
+		PLA_plaaf_air_dummy_4 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		# 5 玉宇澄清万里埃
+		PLA_plaaf_air_dummy_5 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				aircraft_upkeep_factor = 0.1
+				air_mission_efficiency = 0.15
+				air_superiority_detect_factor = 0.25
+				air_weather_penalty = -0.4
+				air_night_penalty = -0.4
+			}
+		}
+		# 6 导弹部队现代化
+		PLA_plaaf_air_dummy_6 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				air_strategic_bomber_bombing_factor = 0.25
+				air_bombing_targetting = 0.25
+				naval_strike_targetting_factor = 0.25
+			}
+		}
+		# 7 强化战场支援
+		PLA_plaaf_air_dummy_7 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				air_wing_xp_loss_when_killed_factor = -0.2
+				air_range_factor = 0.25
+				air_fuel_consumption_factor = -0.25
+			}
+		}
+		# 8 铁流两万五千里
+		PLA_plaaf_air_dummy_8 = {
+			picture = PRC_plaaf_dynamic
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				air_power_projection_factor = 0.15
+				air_cas_present_factor = 0.15
+			}
+		}
+	}
+}

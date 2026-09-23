@@ -38,15 +38,14 @@ focus_tree = {
         ai_will_do = {
             factor = 100
         }
-        cost = 4
+        cost = 3
 
         available = {
 
         }
 
-        bypass = {
-
-        }
+        
+        
         prerequisite = {
             focus = lockdown_wuhan
         }
@@ -72,18 +71,17 @@ focus_tree = {
         id = start_vaccine_research
         icon = GFX_focus_PRC_nl_start_vaccine_research
         ai_will_do = {
-            factor = 10
+            factor = 500
         }
-        cost = 4
+        cost = 3
         relative_position_id = covid_full_lockdown
         available = {
             has_completed_focus = adopt_dynamic_zero_policy
             has_completed_focus = promote_prevention_measures
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -108,17 +106,16 @@ focus_tree = {
         id = focus_on_vaccine_research
         icon = GFX_focus_PRC_nl_focus_on_vaccine_research
         ai_will_do = {
-            factor = 10
+            factor = 500
         }
-        cost = 3
+        cost = 2
 
         available = {
 
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -146,17 +143,16 @@ focus_tree = {
         id = promote_prevention_measures
         icon = GFX_focus_PRC_nl_promote_prevention_measures
         ai_will_do = {
-            factor = 10
+            factor = 500
         }
-        cost = 4
+        cost = 3
 
         available = {
 
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -180,17 +176,16 @@ focus_tree = {
         id = strict_lockdown_policy
         icon = GFX_focus_nl_strict_lockdown_policy
         ai_will_do = {
-            factor = 10
+            factor = 500
         }
-        cost = 4
+        cost = 3
 
         available = {
 
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -212,6 +207,7 @@ focus_tree = {
             }
             random_owned_controlled_state = {
                 limit = {
+                    office_park > 1
                     office_park > 1
                 }
                 remove_building = {
@@ -236,17 +232,16 @@ focus_tree = {
         id = adopt_dynamic_zero_policy
         icon = GFX_focus_PRC_nl_adopt_dynamic_zero_policy
         ai_will_do = {
-            factor = 10
+            factor = 500
         }
-        cost = 3
+        cost = 2
 
         available = {
 
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -276,9 +271,9 @@ focus_tree = {
         id = return_to_normal
         icon = GFX_focus_PRC_nl_return_to_normal
         ai_will_do = {
-            factor = 10
+            factor = 500
         }
-        cost = 4
+        cost = 3
         relative_position_id = promote_prevention_measures
         available = {
             NOT = {
@@ -292,9 +287,8 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -335,7 +329,7 @@ focus_tree = {
                 level = 3
             }
             add_offsite_building = {
-                type = industrial_complex
+                type = arms_factory
                 level = 3
             }
         }
@@ -359,7 +353,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             has_country_flag = PRC_li_keqiang_died_flag
@@ -372,15 +366,19 @@ focus_tree = {
                 }
                 add_to_variable = {
                     var = PRC_cpc_stability_factor_dynamic_var
-                    value = 0.15
+                    value = 0.15        # 【效果】稳定度 +15%（CPC修正）
                 }
                 add_to_variable = {
                     var = PRC_cpc_crypto_strength_dynamic_var
-                    value = 1
+                    value = 1           # 【效果】加密/机构强度 +1（CPC修正）
                 }
                 add_to_variable = {
                     var = PRC_cpc_drift_defence_factor_dynamic_var
-                    value = 0.25
+                    value = 0.25        # 【效果】意识形态漂移防御 +25%（CPC修正）
+                }
+                country_event = {
+                    id = prcs.3184
+                    days = 2
                 }
                 country_event = {
                     id = prcs.3184
@@ -393,14 +391,20 @@ focus_tree = {
             add_stability = -0.1
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.1
+                value = 0.1         # 【临时】新左派影响力度量 +10%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes         # 【脚本效果】增加新左派影响力（读上方 temp）
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.2
+                value = -0.2        # 【临时】建制派影响力度量 -20%
             }
-            PRC_add_influence_cen = yes
+            PRC_add_influence_cen = yes         # 【脚本效果】减少建制派影响力（读上方 temp）
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_communist_party_idea
+                    add_idea = PRC_communist_party_of_china_dummy18
+                }
+            }
             country_event = {
                 id = prc_change.4
                 days = 5
@@ -417,7 +421,7 @@ focus_tree = {
         cancel_if_invalid = no
         available_if_capitulated = yes
 
-        x = 11
+        x = 18
         y = 0
     }
 
@@ -437,9 +441,7 @@ focus_tree = {
             has_completed_focus = emergency_work_meeting
         }
 
-        bypass = {
-
-        }
+        
         relative_position_id = turbulence_returns_ship_runs_aground
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -451,15 +453,15 @@ focus_tree = {
                     add_idea = PRC_made_in_china_dummy_idea5
                 }
             }
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes       # 【脚本效果】减少石油产量
             add_political_power = 50
-            increase_welfare = yes
+            increase_welfare = yes          # 【脚本效果】增加福利
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】建制派影响力度量 -5%
             }
-            PRC_add_influence_cen = yes
-            decrease_taxes = yes
+            PRC_add_influence_cen = yes     # 【脚本效果】减少建制派影响力
+            decrease_taxes = yes            # 【脚本效果】减税
             hidden_effect = {
                 country_event = {
                     id = xjp.101
@@ -490,9 +492,8 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
+        
         relative_position_id = cross_the_black_gold_wasteland
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -504,25 +505,25 @@ focus_tree = {
                     add_idea = PRC_made_in_china_dummy_idea5
                 }
             }
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes     # 【脚本效果】减少石油产量
             set_temp_variable = {
                 var = PRC_influence_lib_var_temp
-                value = 0.025
+                value = 0.025       # 【临时】自由派影响力度量 +2.5%
             }
-            PRC_add_influence_lib = yes
+            PRC_add_influence_lib = yes     # 【脚本效果】增加自由派影响力
             set_temp_variable = {
                 var = industrial_development_var_temp
-                value = 0.075
+                value = 0.075       # 【临时】工业发展进度度量 +7.5%
             }
-            add_industrial_development = yes
+            add_industrial_development = yes    # 【脚本效果】增加工业发展
             hidden_effect = {
                 add_to_variable = {
                     var = PRC_mic_industrial_capacity_factory_dynamic_var
-                    value = 0.025
+                    value = 0.025       # 【效果】工厂产能 +2.5%（MIC修正）
                 }
                 add_to_variable = {
-                    var = PRC_mic_min_export_dynamic_var
-                    value = -0.05
+                    var = PPRC_min_export_var
+                    value = -0.05       # 【效果】最低出口系数 -5%（MIC修正；越低资源出口越少）
                 }
             }
 
@@ -548,19 +549,13 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
         relative_position_id = overseas_good_doctors
         completion_reward = {
-            set_temp_variable = {
-                var = PRC_enviromental_progress_temp
-                value = -0.025
-            }
-            PRC_add_enviromental_progress = yes
             effect_tooltip = {
                 swap_ideas = {
                     remove_idea = PRC_made_in_china_dummy_idea
@@ -652,16 +647,16 @@ focus_tree = {
             hidden_effect = {
                 add_to_variable = {
                     var = PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var
-                    value = 0.25
+                    value = 0.25        # 【效果】核反应堆建造速度 +25%（MIC修正）
                 }
                 add_to_variable = {
-                    var = PRC_mic_production_speed_energy_farm_factor_dynamic_var
-                    value = 0.25
+                    var = PPRC_energy_var
+                    value = 0.25        # 【效果】能源农场建造速度 +25%（MIC修正）
                 }
             }
             set_temp_variable = {
                 var = PRC_enviromental_progress_temp
-                value = 0.025
+                value = 0.025       # 【临时】环保进度度量 +2.5%
             }
             PRC_add_enviromental_progress = yes
             every_controlled_state = {
@@ -691,8 +686,8 @@ focus_tree = {
             }
             hidden_effect = {
                 add_to_variable = {
-                    var = PRC_mic_production_speed_energy_farm_factor_dynamic_var
-                    value = 0.25
+                    var = PPRC_energy_var
+                    value = 0.25        # 【效果】能源农场建造速度 +25%（MIC修正）
                 }
             }
         }
@@ -717,9 +712,8 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -727,15 +721,15 @@ focus_tree = {
         completion_reward = {
             add_political_power = 70
             unlock_decision_tooltip = PRC_kashgar_oil_contract
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes     # 【脚本效果】减少石油产量
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.025
+                value = 0.025       # 【临时】新左派影响力度量 +2.5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             set_temp_variable = {
                 var = PRC_enviromental_progress_temp
-                value = -0.025
+                value = -0.025      # 【临时】环保进度度量 -2.5%
             }
         }
         x = 1
@@ -759,23 +753,22 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
         relative_position_id = exploit_domestic_oil
         completion_reward = {
-            PRC_decrease_oil = yes
+            PRC_decrease_oil = yes     # 【脚本效果】减少石油产量
             set_temp_variable = {
                 var = PRC_enviromental_progress_temp
-                value = 0.05
+                value = 0.05        # 【临时】环保进度度量 +5%
             }
-            PRC_add_enviromental_progress = yes
+            PRC_add_enviromental_progress = yes    # 【脚本效果】增加环保进度
             set_temp_variable = {
                 var = debt_var_temp
-                value = 75
+                value = 75          # 【临时】债务度量 +75
             }
             add_debt_with_inflation = yes
         }
@@ -800,9 +793,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -815,9 +806,9 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = industrial_development_var_temp
-                value = 0.15
+                value = 0.15        # 【临时】工业发展进度度量 +15%
             }
-            add_industrial_development = yes
+            add_industrial_development = yes    # 【脚本效果】增加工业发展
             PRC_decrease_oil = yes
         }
         x = 1
@@ -857,6 +848,7 @@ focus_tree = {
             }
             add_political_power	= 20
         }
+        
         relative_position_id = turbulence_returns_ship_runs_aground
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -872,7 +864,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
         completion_reward = {
             add_political_power = -50
             country_event = {
@@ -885,17 +877,17 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】建制派影响力度量 -5%
             }
-            PRC_add_influence_cen = yes
+            PRC_add_influence_cen = yes     # 【脚本效果】减少建制派影响力
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.1
+                value = 0.1         # 【临时】新左派影响力度量 +10%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             add_popularity = {
                 ideology = libertarian_socialist
-                popularity = 0.05
+                popularity = 0.05    # 【效果】自由社会主义支持度 +5%
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -905,11 +897,11 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_stability_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】稳定度 +5%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_crypto_strength_dynamic_var
-                value = -1
+                value = -1          # 【效果】加密/机构强度 -1（CPC修正）
             }
         }
         available = {
@@ -918,9 +910,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -937,7 +927,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -945,9 +935,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
         relative_position_id = promote_system_reform
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -985,7 +973,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -994,9 +982,7 @@ focus_tree = {
             has_completed_focus = start_vaccine_research
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1024,7 +1010,7 @@ focus_tree = {
 
             set_temp_variable = {
                 var = debt_var_temp
-                value = 147
+                value = 147            # 【临时】债务度量 +147
             }
             add_debt = yes
             effect_tooltip = {
@@ -1035,11 +1021,11 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_stability_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】稳定度 +5%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_consumer_goods_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】消费品系数 +5%（CPC修正；越高民用工厂占比越大）
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1048,27 +1034,27 @@ focus_tree = {
                 }
             }
             add_to_variable = {
-                var = PRC_mic_stability_factor_dynamic_var
-                value = 0.03
+                var = PPRC_st_var
+                value = 0.03        # 【效果】稳定度 +3%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_consumer_goods_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】消费品系数 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_monthly_population_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】月度人口增长 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_personal_expense_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】个人开支系数 +5%（MIC修正；越高消费越高）
             }
 
             set_temp_variable = {
                 var = poverty_development_var_temp
-                value = 0.15
+                value = 0.15        # 【临时】扶贫发展进度度量 +15%
             }
-            add_poverty_development = yes
+            add_poverty_development = yes   # 【脚本效果】增加扶贫发展
         }
         x = 2
         y = 1
@@ -1082,7 +1068,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1090,9 +1076,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1100,7 +1084,7 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = debt_var_temp
-                value = 23
+                value = 23             # 【临时】债务度量 +23
             }
             add_debt = yes
             effect_tooltip = {
@@ -1111,19 +1095,19 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_consumer_goods_factor_dynamic_var
-                value = 0.03
+                value = 0.03        # 【效果】消费品系数 +3%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_monthly_population_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】月度人口增长 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_personal_value_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】个人价值系数 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_business_value_factor_dynamic_var
-                value = -0.025
+                value = -0.025      # 【效果】商业价值系数 -2.5%（MIC修正；越低商业活力越差）
             }
 
             add_stability = 0.05
@@ -1131,12 +1115,12 @@ focus_tree = {
             add_ideas = PRC_food_safety_reforms_idea
             set_temp_variable = {
                 var = society_development_var_temp
-                value = 0.05
+                value = 0.05        # 【临时】社会发展进度度量 +5%
             }
             add_society_development = yes
             set_temp_variable = {
                 var = farming_development_var_temp
-                value = 0.075
+                value = 0.075       # 【临时】农业发展进度度量 +7.5%
             }
             add_farming_development = yes
         }
@@ -1152,7 +1136,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1160,9 +1144,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1176,15 +1158,15 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_production_speed_buildings_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】建筑速度 +5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_expense_growth_factor_dynamic_var
-                value = -0.025
+                value = -0.025      # 【效果】开支增长系数 -2.5%（MIC修正）
             }
             add_to_variable = {
                 var = PRC_mic_business_value_factor_dynamic_var
-                value = 0.05
+                value = 0.05        # 【效果】商业价值系数 +5%（MIC修正）
             }
 
             random_owned_controlled_state = {
@@ -1215,7 +1197,7 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = debt_var_temp
-                value = 192
+                value = 192            # 【临时】债务度量 +192
             }
             add_debt = yes
         }
@@ -1234,7 +1216,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1242,9 +1224,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1252,7 +1232,7 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = PRC_influence_lib_var_temp
-                value = -0.02
+                value = -0.02       # 【临时】自由派影响力度量 -2%
             }
             PRC_add_influence_lib = yes
             effect_tooltip = {
@@ -1263,15 +1243,15 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_party_popularity_stability_factor_dynamic_var
-                value = 0.1
+                value = 0.1         # 【效果】政党支持度稳定系数 +10%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_consumer_goods_factor_dynamic_var
-                value = -0.05
+                value = -0.05       # 【效果】消费品系数 -5%（CPC修正；越低工厂越能转军工）
             }
             set_temp_variable = {
                 var = debt_var_temp
-                value = 74
+                value = 74             # 【临时】债务度量 +74
             }
             add_debt = yes
             add_manpower = -262
@@ -1289,7 +1269,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1299,9 +1279,7 @@ focus_tree = {
             has_completed_focus = return_to_normal
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1330,7 +1308,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1338,9 +1316,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1348,15 +1324,15 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = debt_var_temp
-                value = 186
+                value = 186           # 【临时】债务度量 +186
             }
-            add_debt = yes
+            add_debt = yes            # 【脚本效果】增加国家债务
             add_stability = 0.03
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.05
+                value = 0.05           # 【临时】新左派影响力度量 +5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes   # 【脚本效果】增加新左派影响力
 
             add_timed_idea = {
                 idea = PRC_stimulate_economy_idea
@@ -1378,7 +1354,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1386,9 +1362,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1403,11 +1377,11 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_cpc_poverty_development_monthly_dynamic_var
-                value = 0.005
+                value = 0.005       # 【效果】月度扶贫发展 +0.5%（CPC修正）
             }
             add_to_variable = {
                 var = PRC_cpc_society_development_monthly_dynamic_var
-                value = 0.005
+                value = 0.005       # 【效果】月度社会发展 +0.5%（CPC修正）
             }
 
             add_political_power = -50
@@ -1436,7 +1410,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1444,9 +1418,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1463,14 +1435,14 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.08
+                value = 0.08        # 【临时】新左派影响力度量 +8%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             set_temp_variable = {
                 var = PRC_approval_rating_var_temp
-                value = 0.05
+                value = 0.05        # 【临时】政党支持率度量 +5%
             }
-            PRC_add_party_approval = yes
+            PRC_add_party_approval = yes    # 【脚本效果】增加政党支持率
             custom_effect_tooltip = absorb_leftist_opposition_tt
         }
         x = -1
@@ -1485,7 +1457,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1493,9 +1465,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1503,7 +1473,7 @@ focus_tree = {
         completion_reward = {
             add_to_variable = {
                 var = PRC_cpc_political_power_gain_dynamic_var
-                value = 0.03
+                value = 0.03        # 【效果】月度政治点获得 +3%（CPC修正）
             }
             add_stability = 0.10
             effect_tooltip = {
@@ -1520,7 +1490,7 @@ focus_tree = {
             }
             add_to_variable = {
                 var = PRC_mic_personal_expense_factor_dynamic_var
-                value = -0.05
+                value = -0.05       # 【效果】个人开支系数 -5%（MIC修正）
             }
             add_political_power = -100
             add_popularity = {
@@ -1530,14 +1500,14 @@ focus_tree = {
 
             set_temp_variable = {
                 var = PRC_influence_nat_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】民族派影响力度量 -5%
             }
-            PRC_add_influence_nat = yes
+            PRC_add_influence_nat = yes     # 【脚本效果】减少民族派影响力
             set_temp_variable = {
                 var = PRC_influence_lib_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】自由派影响力度量 -5%
             }
-            PRC_add_influence_lib = yes
+            PRC_add_influence_lib = yes     # 【脚本效果】减少自由派影响力
         }
         x = -3
         y = 1
@@ -1554,7 +1524,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1562,9 +1532,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1572,7 +1540,7 @@ focus_tree = {
         completion_reward = {
             add_to_variable = {
                 var = PRC_cpc_drift_defence_factor_dynamic_var
-                value = -0.1
+                value = -0.1        # 【效果】意识形态漂移防御 -10%（CPC修正；越高越不易被转化）
             }
             effect_tooltip = {
                 swap_ideas = {
@@ -1603,7 +1571,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1611,9 +1579,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1623,9 +1589,9 @@ focus_tree = {
             add_stability = -0.075
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.05
+                value = 0.05         # 【临时】新左派影响力度量 +5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             add_popularity = {
                 ideology = libertarian_socialist
                 popularity = 0.03
@@ -1646,7 +1612,7 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 4
+        cost = 3
 
         available = {
             custom_trigger_tooltip = {
@@ -1654,9 +1620,7 @@ focus_tree = {
             }
         }
 
-        bypass = {
-
-        }
+        
 
         cancel_if_invalid = no
         available_if_capitulated = yes
@@ -1673,9 +1637,9 @@ focus_tree = {
             }
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.1
+                value = 0.1          # 【临时】新左派影响力度量 +10%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             hidden_effect = {
                 country_event = {
                     id = prcs.3101
@@ -1729,14 +1693,14 @@ focus_tree = {
         completion_reward = {
             set_temp_variable = {
                 var = PRC_influence_cen_var_temp
-                value = -0.05
+                value = -0.05       # 【临时】建制派影响力度量 -5%
             }
-            PRC_add_influence_cen = yes
+            PRC_add_influence_cen = yes     # 【脚本效果】减少建制派影响力
             set_temp_variable = {
                 var = PRC_influence_new_var_temp
-                value = 0.05
+                value = 0.05         # 【临时】新左派影响力度量 +5%
             }
-            PRC_add_influence_new = yes
+            PRC_add_influence_new = yes     # 【脚本效果】增加新左派影响力
             hidden_effect = {
                 add_country_leader_role = {
                     character = PRC_Hu_Chunhua
@@ -1802,20 +1766,21 @@ focus_tree = {
         ai_will_do = {
             factor = 10
         }
-        cost = 10
+        cost = 5
 
         available = {
 
         }
 
-        bypass = {
-
-        }
+        
+        cancelable = no
+        
         cancel_if_invalid = no
         available_if_capitulated = yes
         relative_position_id = prepare_for_20th_party_congress
         completion_reward = {
             custom_effect_tooltip = PRC_20big_effect
+           
            
             if = {
                 limit = {
@@ -1824,6 +1789,10 @@ focus_tree = {
                 custom_effect_tooltip = PRC_shake_up_the_politburo_tt
             }
             hidden_effect = {
+                set_variable = {
+                    var = PPRC_efficiency_gain_var
+                    value = -0.125
+                }
                 set_variable = {
                     var = PPRC_efficiency_gain_var
                     value = -0.125
@@ -1856,13 +1825,211 @@ focus_tree = {
                 }
             }
         }
-        x = -4
+        x = -10
         y = 2
         prerequisite = {
             focus = prepare_for_20th_party_congress
         }
         prerequisite = {
             focus = return_to_normal
+        }
+        prerequisite = { focus = nems_experiment }
+    }
+    focus = {
+        id = reform_electric_division
+        icon = GFX_focus_PRC_reform_electric_division
+        cost = 4
+        x = 8
+        y = 0
+        available = {
+            has_country_flag = PRC_power_outage_flag
+        }
+        completion_reward = { 
+            add_political_power = -50
+            modify_building_resources = {
+                building = energy_farm
+                resource = coal
+                amount = 1
+            }
+            add_to_variable = {
+                PRC_mic_consumer_goods_factor_dynamic_var = -0.1
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_start_efficiency_factor_dynamic_var = -0.05
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea17
+                }
+            }
+        }
+    }
+    focus = {
+        id = deprice_and_order
+        icon = GFX_focus_PRC_deprice_and_order
+        cost = 4
+        x = 0
+        y = 1
+        relative_position_id = reform_electric_division
+        prerequisite = { focus = reform_electric_division }
+        completion_reward = { 
+            add_political_power = -25
+            add_to_variable = {
+                PRC_mic_local_resources_factor_var = 0.1
+            }
+            add_to_variable = {
+                PRC_mic_production_factory_efficiency_gain_factor_dynamic_var = 0.15
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea18
+                }
+            }
+            country_event = {
+                id = prcs.3075
+                days = 3
+            }
+        }
+    }
+    focus = {
+        id = get_rid_of_bad_parts
+        icon = GFX_focus_PRC_get_rid_of_bad_parts
+        cost = 4
+        x = -1
+        y = 2
+        relative_position_id = deprice_and_order
+        prerequisite = { focus = deprice_and_order }
+        completion_reward = { 
+            add_political_power = -50
+            modify_building_resources = {
+                building = energy_farm
+                resource = coal
+                amount = 1
+            }
+            add_to_variable = {
+                PRC_ce_personal_expense_factor_dynamic_var = -0.1
+            }
+            add_to_variable = {
+                PRC_ce_income_growth_factor_dynamic_var = 0.1
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_chinese_enviroment_dummy
+                    add_idea = PRC_chinese_enviroment_dummy1
+                }
+            }
+        }
+    }
+    focus = {
+        id = electric_white_book
+        icon = GFX_focus_PRC_electric_white_book
+        cost = 4
+        x = 1
+        y = 1
+        relative_position_id = deprice_and_order
+        prerequisite = { focus = deprice_and_order }
+        completion_reward = { 
+            set_country_flag = electric_white_book_flag
+            add_political_power = 100
+            unlock_decision_tooltip = PRC_ecological_reconstruction_plan_yarlung_zangbo_river_phase_1
+            unlock_decision_tooltip = PRC_northwest_wind_solar_power
+            country_event = {
+                id = Chihong.77
+                days = 1
+                random_hours = 20
+            }
+        }
+    }
+    focus = {
+        id = expand_three_carbon_strategy
+        icon = GFX_focus_PRC_expand_three_carbon_strategy
+        cost = 4
+        x = 0
+        y = 2
+        relative_position_id = electric_white_book
+        prerequisite = { focus = electric_white_book }
+        completion_reward = { 
+            set_country_flag = expand_three_carbon_strategy_flag
+            add_political_power = 100
+            set_temp_variable = {
+                var = PRC_enviromental_progress_temp
+                value = 0.1
+            }
+            PRC_add_enviromental_progress = yes
+            # add_to_variable = {
+                # PRC_mic_factory_energy_consumption_var = -0.1
+            # }
+            add_to_variable = {
+                PRC_mic_production_lack_of_resource_penalty_factor_dynamic_var = -0.1
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = PRC_made_in_china_dummy_idea
+                    add_idea = PRC_made_in_china_dummy_idea19
+                }
+            }
+            unlock_decision_tooltip = PRC_carbon_dioxide_capture
+            unlock_decision_tooltip = PRC_carbon_cycle_technology
+        }
+    }
+    focus = {
+        id = nems_experiment
+        icon = GFX_focus_PRC_nems_experiment
+        cost = 4
+        x = 0
+        y = 5
+        relative_position_id = deprice_and_order
+        prerequisite = { focus = expand_three_carbon_strategy }
+        prerequisite = { focus = get_rid_of_bad_parts }
+        completion_reward = { 
+            add_political_power = -100
+            set_variable = {
+                PRC_NEMS_level = 1
+            }
+            set_variable = {
+                NEMS_consumer_goods_factor_dynamic_var = 0.1
+            }
+            set_variable = {
+                NEMS_expense_growth_factor_dynamic_var = 0.15
+            }
+            set_variable = {
+                NEMS_production_speed_buildings_factor_dynamic_var = 0.075
+            }
+            set_variable = {
+                NEMS_production_factory_start_efficiency_factor_dynamic_var = 0.05
+            }
+            set_variable = {
+                NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.05
+            }
+            set_variable = {
+                NEMS_global_building_slots_factor_dynamic_var = 0.075
+            }
+            set_variable = {
+                NEMS_personal_value_factor_dynamic_var = 0.1
+            }
+            set_variable = {
+                NEMS_business_value_factor_dynamic_var = 0.1
+            }
+            set_variable = {
+                NEMS_society_development_monthly_dynamic_var = 0.005
+            }
+            set_variable = {
+                NEMS_farming_development_monthly_dynamic_var = 0.005
+            }
+            set_variable = {
+                NEMS_industrial_development_monthly_dynamic_var = 0.005
+            }
+            effect_tooltip = {
+                add_ideas = PRC_NEMS
+            }
+            hidden_effect = {
+                add_dynamic_modifier = {
+                    modifier = PRC_NEMS_dynamic
+                }
+            }
+            
         }
     }
 }
@@ -1896,6 +2063,13 @@ shared_focus = {
     completion_reward = {
         news_event = china.133
         create_faction = PRC_east_asian_defense_initative_faction
+        hidden_effect = {
+                remove_faction_goal = faction_goal_the_atomic_race
+                add_faction_goal = faction_goal_placeholder_long_term
+                remove_faction_goal = faction_goal_a_military_base
+                add_faction_goal = faction_goal_placeholder_medium_term
+                add_faction_goal = faction_goal_placeholder_short_term
+            }
         add_threat = 1
         add_political_power = 150
         set_country_flag = eadi_member
@@ -4961,6 +5135,16 @@ shared_focus = {
                 days = 4
                 random_hours = 5
             }
+            country_event = {
+                id = ChinaOSS.105
+                days = 20
+                random_hours = 12
+            }
+            country_event = {
+                id = ChinaOSS.3
+                days = 10
+                random_hours = 12
+            }
         }
     }
 }
@@ -5278,16 +5462,17 @@ shared_focus = {
             idea = PRC_emergency_measures_idea
             days = 350
         }
-        if = {
-            limit = {
-                NOT = {
-                    has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
-                }
-            }
-            set_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
-            unlock_decision_tooltip = PRC_put_the_nuclear_arsenal_on_full_operational_alert
-            unlock_decision_tooltip = PRC_final_chance_thermonuclear
-        }
+        
+        # if = {
+        #     limit = {
+        #         NOT = {
+        #             has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+        #         }
+        #     }
+        #     set_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+        #     unlock_decision_tooltip = PRC_put_the_nuclear_arsenal_on_full_operational_alert
+        #     unlock_decision_tooltip = PRC_final_chance_thermonuclear
+        # }
     }
 }
 

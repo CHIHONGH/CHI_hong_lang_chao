@@ -1,13 +1,56 @@
+
+
 nems_jindu = {
 	custom_effect_tooltip = nems_jindu_tt
 	add_to_variable = {
 		var = nems_jindu_rating_var
 		value = nems_jindu_rating_var_temp
 	}
-	clamp_variable = {
-		var = nems_jindu_rating_var
-		min = 0
-		max = 1
+}
+
+nems_level_effect = {
+	custom_effect_tooltip = nems_level_effect_tt
+	add_to_variable = {
+		PRC_NEMS_level = 1
+	}
+	add_to_variable = {
+		NEMS_consumer_goods_factor_dynamic_var = -0.05
+	}
+	add_to_variable = {
+		NEMS_expense_growth_factor_dynamic_var = 0.05
+	}
+	add_to_variable = {
+		NEMS_production_speed_buildings_factor_dynamic_var = 0.05
+	}
+	add_to_variable = {
+		NEMS_production_factory_start_efficiency_factor_dynamic_var = 0.05
+	}
+	add_to_variable = {
+		NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.075
+	}
+	add_to_variable = {
+		NEMS_global_building_slots_factor_dynamic_var = 0.05
+	}
+	add_to_variable = {
+		NEMS_personal_value_factor_dynamic_var = 0.05
+	}
+	add_to_variable = {
+		NEMS_business_value_factor_dynamic_var = 0.05
+	}
+	add_to_variable = {
+		NEMS_society_development_monthly_dynamic_var = 0.005
+	}
+	add_to_variable = {
+		NEMS_farming_development_monthly_dynamic_var = 0.005
+	}
+	add_to_variable = {
+		NEMS_industrial_development_monthly_dynamic_var = 0.005
+	}
+	effect_tooltip = {
+		swap_ideas = {
+			remove_idea = PRC_NEMS0
+			add_idea = PRC_NEMS_level
+		}
 	}
 }
 

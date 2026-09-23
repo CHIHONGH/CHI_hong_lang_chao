@@ -1,0 +1,87 @@
+equipments = {
+	
+	sam_missile_equipment = { #红旗-1
+		year = 1955
+
+		#can_be_produced = {
+		#	
+		#}
+
+		allow_mission_type = {
+			#air_superiority
+			sam_mission
+		}
+
+		is_archetype = yes
+		is_buildable = yes
+		can_license = no
+		type = sam_missile
+		group_by = type
+		sprite = missile_default
+		air_map_icon_frame = 22
+		
+		interface_category = interface_category_air
+				
+		reliability = 0.95
+		#air_defence = 10000
+
+		# Air vs Navy - high damage / low hit chance / hard to hurt
+		#naval_strike_attack = 1.5
+		#naval_strike_targetting = 0.6
+
+		#Space taken in convoy
+		lend_lease_cost = 1.5
+		
+		build_cost_ic = 20
+		resources = {
+			aluminium = 1
+			tungsten = 1
+		}
+
+		fuel_consumption = 0
+	}
+	
+	sam_missile_equipment_1 = { #红旗-20
+		year = 2025
+		picture = PRC_sam_missile_equipment_1
+
+		archetype = sam_missile_equipment
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+		
+		air_range = 500
+		maximum_speed = 6100
+		air_agility = 500
+		air_bombing = 0
+		air_attack = 0.75 # Use this value to set the SAM AA factor, between 0-1
+	}
+
+	sam_missile_equipment_2 = { #红旗-29
+		year = 2025
+		picture = PRC_sam_missile_equipment_2
+
+		archetype = sam_missile_equipment
+		#parent = sam_missile_equipment_1
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+
+		allow_mission_type = {
+			#INTERCEPTION
+			sam_mission
+		}
+		
+		air_range = 3000
+		maximum_speed = 22000
+		air_agility = 500
+		air_bombing = 0
+		air_attack = 1 # Use this value to set the SAM AA factor, between 0-1
+
+		resources = {
+			aluminium = 2
+			tungsten = 1
+		}
+		build_cost_ic = 50
+	}
+}

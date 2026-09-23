@@ -9342,6 +9342,13 @@ USA_civil_war_over = {
 	clr_global_flag = USA_american_civil_war_global
 	clr_global_flag = USA_shattered_union_global
 	set_global_flag = USA_american_civil_war_over_global
+	if = {
+		limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode } }
+		remove_ideas = {
+			PTF_Fascist_military_revolution_II_idea
+			PTF_Counter_revolutionary_center_II_idea
+		}
+	}
 	set_country_flag = USA_unifier_flag
 	if = {
 		limit = {
