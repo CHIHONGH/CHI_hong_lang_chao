@@ -51,6 +51,7 @@ scripted_gui = {
 					has_idea = ZZZ_collective_capitalism2
 					has_idea = ZZZ_oligopolistic_capitalism
 					has_idea = ZZZ_welfare_capitalism
+					has_idea = ZZZ_cabal_economy
 					has_idea = ZZZ_corporatism
 					has_idea = ZZZ_managed_economy
 					has_idea = ZZZ_command_economy
@@ -70,8 +71,11 @@ scripted_gui = {
 					has_idea = ZZZ_left_corporatism
 					has_idea = ZZZ_liberal_corporatism
 					has_idea = ZZZ_kaiser_economy
+					has_idea = ZZZ_inclusive_capitalism
 					has_idea = ZZZ_OGAS
-					has_idea = ZZZ_ogas
+					has_idea = ZZZ_automation_socialism
+					has_idea = ZZZ_automation_socialism1
+					has_idea = ZZZ_automation_communism
 				}
 			}
 			TFR_capitalism_type_icon_visible = {
@@ -81,7 +85,16 @@ scripted_gui = {
 				has_idea = ZZZ_american_capitalism
 			}	
 			TFR_OGAS_type_politics_icon_visible = {
-				has_idea = ZZZ_ogas
+				has_idea = ZZZ_OGAS
+			}
+			TFR_auto_socialist_politics_icon_visible = {
+				has_idea = ZZZ_automation_socialism
+			}
+			TFR_auto_socialist1_politics_icon_visible = {
+				has_idea = ZZZ_automation_socialism1
+			}
+			TFR_auto_communist_politics_icon_visible = {
+				has_idea = ZZZ_automation_communism
 			}	
 			TFR_collective_capitalism_type_icon_visible = {
 				OR = {
@@ -423,6 +436,41 @@ scripted_gui = {
 					value = -50
 				}
 				add_debt = yes
+			}
+		}
+
+		triggers = {
+			Economic_Civilian_Investments_Button_click_enabled = {
+				NOT = {
+					OR = {
+						has_idea = generic_civilian_development_investments_idea
+						has_idea = generic_military_development_investments_idea
+					}
+				}
+			}
+			Economic_Military_Investments_Button_click_enabled = {
+				NOT = {
+					OR = {
+						has_idea = generic_civilian_development_investments_idea
+						has_idea = generic_military_development_investments_idea
+					}
+				}
+			}
+		}
+		
+		effects = {
+			Economic_Civilian_Investments_Button_click = {
+				add_timed_idea = {
+					idea = generic_civilian_development_investments_idea
+					days = 120
+				}
+			}
+			
+			Economic_Military_Investments_Button_click = {
+				add_timed_idea = {
+					idea = generic_military_development_investments_idea
+					days = 120
+				}
 			}
 		}
 

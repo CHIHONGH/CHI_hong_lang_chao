@@ -1,0 +1,57 @@
+# TFR_中蒙谈判 - 战后治理脚本效果
+# 军管区变量设在 PRC 国家作用域，dynamic_modifiers 用 PRC. 前缀引用
+
+##############################################################################
+# 整肃一个省份：获得核心 + 添加军管区 dynamic_modifier
+# 变量设在国家作用域（PRC），省份不必重复设
+# 调用前需处于 state 作用域
+##############################################################################
+TFR_CMRN_pacify_state = {
+	PRC = {
+		set_variable = { var = TFR_CMRN_mz_build value = -0.40 }
+		set_variable = { var = TFR_CMRN_mz_manpower value = -0.70 }
+		set_variable = { var = TFR_CMRN_mz_factory value = -0.50 }
+	}
+	add_core_of = PRC
+	add_dynamic_modifier = { modifier = TFR_CMRN_military_zone scope = THIS }
+}
+
+##############################################################################
+# 重建步骤：国家变量 +1/3（由 -0.40→0 分三步，精确整除）
+# 0.13333 + 0.13333 + 0.13334 = 0.40 （HOI4 定点数精确）
+# 步1: -0.40→-0.26667  步2: -0.26667→-0.13334  步3: -0.13334→0
+##############################################################################
+TFR_CMRN_rebuild_step = {
+	add_to_variable = { var = TFR_CMRN_mz_build value = 0.13333 }
+	add_to_variable = { var = TFR_CMRN_mz_manpower value = 0.23333 }
+	add_to_variable = { var = TFR_CMRN_mz_factory value = 0.16667 }
+}
+
+
+
+##############################################################################
+# 检查全部 5 省军管区是否均已解除 + 执行最终结算
+# 调用时需处于 PRC 作用域
+##############################################################################
+TFR_CMRN_check_all_cleared = {
+	if = {
+		limit = {
+			330 = { is_core_of = PRC }
+			1388 = { is_core_of = PRC }
+			1389 = { is_core_of = PRC }
+			1390 = { is_core_of = PRC }
+			1391 = { is_core_of = PRC }
+		}
+		set_global_flag = TFR_CMRN_postwar_complete
+		clr_global_flag = TFR_CMRN_war_declared
+		clear_variable = TFR_CMRN_mz_build
+		clear_variable = TFR_CMRN_mz_manpower
+		clear_variable = TFR_CMRN_mz_factory
+		330 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1388 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1389 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1390 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		1391 = { remove_dynamic_modifier = { modifier = TFR_CMRN_military_zone } }
+		country_event = { id = TFR_CMRN.8 }
+	}
+}

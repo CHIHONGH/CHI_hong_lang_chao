@@ -1,0 +1,472 @@
+# TFR_中蒙谈判 - MON 谈判决议
+# 蒙方在谈判中可以采取的回应策略
+# 回应次数受 PRC 本轮行动次数限制（MONvar < PRCvar）
+
+TFR_CMRN_mon_negotiation_category = {
+
+	########################################################################
+	# 第 1 轮 — MON 决议
+	# PRC 递交友好备忘录后，MON 先要求澄清才能开启其他选项
+	########################################################################
+
+	# 要求解释中方意图 — 开门回应，MON 的第一步
+	TFR_CMRN_mon_demand_clarification_r1 = {
+		icon = generic_political_discourse
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_PRC_made_first_move }
+		available = {
+			has_global_flag = TFR_CMRN_PRC_made_first_move
+			NOT = { has_global_flag = TFR_CMRN_MON_made_first_move }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_demand_clarify
+			set_global_flag = TFR_CMRN_MON_made_first_move
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 1 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 1 }
+			TFR_CMRN_shift_mon_convo = yes
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 1 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 8 }
+	}
+
+	# 强调中立传统
+	TFR_CMRN_mon_emphasize_neutrality_r1 = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_MON_made_first_move }
+		available = {
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_tendency_down
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 2 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 2 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_unification_tendency = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency < 0 } }
+				set_variable = { TFR_CMRN_unification_tendency = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 2 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# 接受边境发展援助
+	TFR_CMRN_mon_accept_border_aid_r1 = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_MON_made_first_move }
+		available = {
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_accept_aid
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 3 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 3 }
+			TFR_CMRN_shift_mon_convo = yes
+			add_to_variable = { TFR_CMRN_prc_influence = 0.05 }
+			add_to_variable = { TFR_CMRN_unification_tendency = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence > 1 } }
+				set_variable = { TFR_CMRN_prc_influence = 1 }
+			}
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency > 1 } }
+				set_variable = { TFR_CMRN_unification_tendency = 1 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 3 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+			add_political_power = 30
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	# 拖延谈判
+	TFR_CMRN_mon_delay_tactics_r1 = {
+		icon = generic_resistance
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_MON_made_first_move }
+		available = {
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_delay
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 4 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 4 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 4 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	########################################################################
+	# 第 2 轮 — MON 决议
+	# 内部动员 / 外交靠拢 / 主权声明
+	########################################################################
+
+	# 国内动员抗压
+	TFR_CMRN_mon_internal_mobilization_r2 = {
+		icon = generic_resistance
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_2_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_influence_down_moderate
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 5 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 5 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.08 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 5 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# 向苏联靠拢
+	TFR_CMRN_mon_lean_on_russia_r2 = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_2_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_lean_russia
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 6 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 6 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.05 }
+			subtract_from_variable = { TFR_CMRN_unification_tendency = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency < 0 } }
+				set_variable = { TFR_CMRN_unification_tendency = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 6 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	# 矿产主权声明
+	TFR_CMRN_mon_mineral_sovereignty_r2 = {
+		icon = generic_political_discourse
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_2_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_mineral
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 7 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 7 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 7 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	# 有条件合作
+	TFR_CMRN_mon_conditional_coop_r2 = {
+		icon = generic_industrial_concern
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_2_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_conditional
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 8 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 8 }
+			TFR_CMRN_shift_mon_convo = yes
+			add_to_variable = { TFR_CMRN_prc_influence = 0.05 }
+			add_to_variable = { TFR_CMRN_unification_tendency = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence > 1 } }
+				set_variable = { TFR_CMRN_prc_influence = 1 }
+			}
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency > 1 } }
+				set_variable = { TFR_CMRN_unification_tendency = 1 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 8 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	# 全国总动员
+	TFR_CMRN_mon_national_mobilization_r2 = {
+		icon = generic_army_leadership
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_2_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_2_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_national_mob
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 9 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 9 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.12 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 9 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 8 }
+	}
+
+	########################################################################
+	# 第 3 轮 — MON 决议
+	# 接受统一 / 国际介入 / 紧急状态
+	########################################################################
+
+	# 接受统一条件 — 一次性，成本高
+	TFR_CMRN_mon_accept_unification_r3 = {
+		icon = generic_communism
+		fire_only_once = yes
+		cost = 0
+		visible = {
+			has_global_flag = TFR_CMRN_round_3_active
+		}
+		available = {
+			has_global_flag = TFR_CMRN_round_3_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+			PRC = { has_country_flag = TFR_CMRN_PRC_did_cultural }
+			PRC = { has_country_flag = TFR_CMRN_PRC_did_pressure_r2 }
+			PRC = { has_country_flag = TFR_CMRN_PRC_did_final_plan }
+			PRC = { has_country_flag = TFR_CMRN_PRC_did_economic_integration }
+			PRC = { has_country_flag = TFR_CMRN_PRC_did_autonomy }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_tendency_up_massive
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 10 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 10 }
+			TFR_CMRN_shift_mon_convo = yes
+			add_to_variable = { TFR_CMRN_unification_tendency = 1 }
+			add_to_variable = { TFR_CMRN_prc_influence = 1 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence > 1 } }
+				set_variable = { TFR_CMRN_prc_influence = 1 }
+			}
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency > 1 } }
+				set_variable = { TFR_CMRN_unification_tendency = 1 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 10 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	# 请求联合国紧急介入
+	TFR_CMRN_mon_un_intervention_r3 = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_3_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_un_intervention
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 11 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 11 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.12 }
+			subtract_from_variable = { TFR_CMRN_unification_tendency = 0.08 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency < 0 } }
+				set_variable = { TFR_CMRN_unification_tendency = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 11 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 8 }
+	}
+
+	# 全民公决准备
+	TFR_CMRN_mon_referendum_r3 = {
+		icon = generic_political_discourse
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_3_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_tendency_down_big
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 12 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 12 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_unification_tendency = 0.08 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency < 0 } }
+				set_variable = { TFR_CMRN_unification_tendency = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 12 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 7 }
+	}
+
+	# 宣布国家紧急状态
+	TFR_CMRN_mon_state_of_emergency_r3 = {
+		icon = generic_resistance
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_3_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_emergency
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 13 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 13 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_prc_influence = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_prc_influence < 0 } }
+				set_variable = { TFR_CMRN_prc_influence = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 13 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 6 }
+	}
+
+	# 再次强调中立
+	TFR_CMRN_mon_reaffirm_neutrality_r3 = {
+		icon = generic_diplomacy
+		fire_only_once = yes
+		visible = { has_global_flag = TFR_CMRN_round_3_active }
+		available = {
+			has_global_flag = TFR_CMRN_round_3_active
+			has_global_flag = TFR_CMRN_MON_made_first_move
+			check_variable = { TFR_CMRN_mon_round_actions < TFR_CMRN_prc_round_actions }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CMRN_effect_mon_tendency_down
+			add_to_variable = { TFR_CMRN_mon_round_actions = 1 }
+			set_variable = { TFR_CMRN_mon_last_convo_idx = 14 }
+			set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 14 }
+			TFR_CMRN_shift_mon_convo = yes
+			subtract_from_variable = { TFR_CMRN_unification_tendency = 0.05 }
+			if = {
+				limit = { check_variable = { TFR_CMRN_unification_tendency < 0 } }
+				set_variable = { TFR_CMRN_unification_tendency = 0 }
+			}
+			TFR_CMRN_update_frames = yes
+			PRC = {
+				set_variable = { TFR_CMRN_mon_convo_last_idx_temp = 14 }
+				TFR_CMRN_shift_mon_convo = yes
+			}
+		}
+		ai_will_do = { factor = 5 }
+	}
+}

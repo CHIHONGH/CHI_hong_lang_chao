@@ -1,0 +1,68 @@
+# TFR_中俄谈判 - SOV 边境冲突回应决议
+# 黑线 SOV 冲突期间可采取的反制策略，影响 SOV 优势（sov_bonus，存 PRC 域）
+
+TFR_CRN_sov_conflict_category = {
+
+	# 远东增兵
+	TFR_CRN_sov_respond_buildup = {
+		icon = generic_military_industrial_complex
+		cost = 50
+		fire_only_once = no
+		days_remove = 45
+		visible = { has_global_flag = TFR_CRN_conflict_active }
+		available = {
+			has_global_flag = TFR_CRN_conflict_active
+			PRC = { check_variable = { TFR_CRN_sov_bonus < 100 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_respond_buildup
+			PRC = {
+				add_to_variable = { var = TFR_CRN_sov_bonus value = 10 }
+				TFR_CRN_calc_advantage = yes
+			}
+		}
+		ai_will_do = { factor = 5 }
+	}
+
+	# 全面动员
+	TFR_CRN_sov_respond_mobilize = {
+		icon = generic_army_leadership
+		cost = 100
+		fire_only_once = no
+		days_remove = 60
+		visible = { has_global_flag = TFR_CRN_conflict_active }
+		available = {
+			has_global_flag = TFR_CRN_conflict_active
+			PRC = { check_variable = { TFR_CRN_sov_bonus < 100 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_respond_mobilize
+			PRC = {
+				add_to_variable = { var = TFR_CRN_sov_bonus value = 15 }
+				TFR_CRN_calc_advantage = yes
+			}
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	# 战略退缩（示弱，放弃边境地区争夺）
+	TFR_CRN_sov_respond_backdown = {
+		icon = generic_diplomacy
+		cost = 25
+		fire_only_once = no
+		days_remove = 30
+		visible = { has_global_flag = TFR_CRN_conflict_active }
+		available = {
+			has_global_flag = TFR_CRN_conflict_active
+			PRC = { check_variable = { TFR_CRN_sov_bonus > -10 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = TFR_CRN_effect_sov_respond_backdown
+			PRC = {
+				add_to_variable = { var = TFR_CRN_sov_bonus value = -10 }
+				TFR_CRN_calc_advantage = yes
+			}
+		}
+		ai_will_do = { factor = 4 }
+	}
+}

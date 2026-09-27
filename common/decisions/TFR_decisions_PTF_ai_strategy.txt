@@ -7,23 +7,21 @@ PTF_ai_strategy = {
 
 		available = {
 			date > 2021.11.01
-			PRC = {
-				OR = {
-					has_country_flag = PTF_difficulty_Hard
-					has_country_flag = PTF_difficulty_Extremely_hard
-				}
+			OR = {
+				has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+				has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
 			}
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
 			create_equipment_variant = {
-				name = "Abrams X I"
+				name = "Abrams X"
 				type = modern_tank_chassis_4
 				parent_version = 0
 				modules = {
@@ -48,7 +46,7 @@ PTF_ai_strategy = {
 			}
 
 			create_equipment_variant = {
-				name = "M10 Booker I"
+				name = "M10 Booker"
 				type = light_tank_chassis_2
 				parent_version = 0
 				modules = {
@@ -70,7 +68,26 @@ PTF_ai_strategy = {
 			}
 
 			create_equipment_variant = {
-				name = "A-20 I"
+				name = "F-47A"
+				type = small_plane_airframe_4
+				modules = {
+					fixed_main_weapon_slot = aircraft_cannon_1_1x
+					fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+					fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+					fixed_auxiliary_weapon_slot_3 = aircraft_cannon_1_1x 
+					fixed_auxiliary_weapon_slot_4 = aircraft_cannon_1_1x
+					engine_type_slot = engine_4_1x
+					special_type_slot_1 = fuel_tanks_small
+					special_type_slot_2 = ai_targeting_computer_small
+					special_type_slot_3 = ai_targeting_computer_small
+					special_type_slot_4 = ai_targeting_computer_small
+					special_type_slot_5 = ai_targeting_computer_small
+				}
+				icon = "GFX_USA_fighter4_medium"
+			}
+
+			create_equipment_variant = {
+				name = "F-47B"
 				type = small_plane_cas_airframe_4
 				modules = {
 					fixed_main_weapon_slot = medium_bomb_bay
@@ -101,47 +118,94 @@ PTF_ai_strategy = {
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
-			## Missile Cruisers ##
-			create_equipment_variant = {
-				name = "Ticonderoga-class"
-				type = ship_hull_heavy_4
-				parent_version = 0
-				modules = {
-					fixed_ship_battery_slot = ship_heavy_battery_4
-					fixed_ship_anti_air_slot = ship_anti_air_4
-					fixed_ship_fire_control_system_slot = ship_fire_control_system_3
-					fixed_ship_radar_slot = ship_radar_4
-					fixed_ship_engine_slot = heavy_ship_engine_4
-					fixed_ship_secondaries_slot = ship_secondaries_3
-					fixed_ship_armor_slot = ship_armor_bb_3
-					front_1_custom_slot = ship_heavy_battery_4
-					mid_1_custom_slot = ship_heavy_battery_4
-					mid_2_custom_slot = ship_heavy_battery_4
-					mid_3_custom_slot = ship_heavy_battery_4
-					rear_1_custom_slot = ship_airplane_launcher_2
+			if = {
+				limit = {
+					OR = {
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+					}
+				}
+				## Missile Cruisers ##
+				create_equipment_variant = {
+					name = "Rousseau-class"
+					type = ship_hull_heavy_4
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_missile_launcher_1
+						fixed_ship_anti_air_slot = ship_anti_air_4
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+						fixed_ship_radar_slot = ship_radar_4
+						fixed_ship_engine_slot = heavy_ship_engine_4
+						fixed_ship_secondaries_slot = ship_secondaries_3
+						fixed_ship_armor_slot = ship_armor_bb_3
+						front_1_custom_slot = ship_missile_launcher_1
+						mid_1_custom_slot = ship_missile_launcher_1
+						mid_2_custom_slot = ship_missile_launcher_1
+						mid_3_custom_slot = ship_missile_launcher_1
+						rear_1_custom_slot = ship_airplane_launcher_2
+					}
+				}
+				## Carriers ##
+				create_equipment_variant = {
+					name = "Patriot-class"
+					type = ship_hull_carrier_3
+					parent_version = 0
+					modules = {
+						fixed_ship_deck_slot_1 = ship_super_deck_space
+						fixed_ship_deck_slot_2 = ship_super_deck_space
+						fixed_ship_anti_air_slot = ship_anti_air_4
+						fixed_ship_radar_slot = ship_radar_4
+						fixed_ship_engine_slot = carrier_ship_engine_4
+						fixed_ship_secondaries_slot = empty
+						front_1_custom_slot = ship_super_deck_space
+						mid_1_custom_slot = ship_super_deck_space
+						mid_2_custom_slot = ship_super_deck_space
+					}
 				}
 			}
-			## Carriers ##
-			create_equipment_variant = {
-				name = "Nimitz-class"
-				type = ship_hull_carrier_3
-				parent_version = 0
-				modules = {
-					fixed_ship_deck_slot_1 = ship_deck_space
-					fixed_ship_deck_slot_2 = ship_deck_space
-					fixed_ship_anti_air_slot = ship_anti_air_4
-					fixed_ship_radar_slot = ship_radar_4
-					fixed_ship_engine_slot = carrier_ship_engine_4
-					fixed_ship_secondaries_slot = empty
-					front_1_custom_slot = ship_deck_space
-					mid_1_custom_slot = ship_deck_space
-					mid_2_custom_slot = ship_deck_space
+			else = {
+				## Missile Cruisers ##
+				create_equipment_variant = {
+					name = "Rousseau-class"
+					type = ship_hull_heavy_4
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_4
+						fixed_ship_anti_air_slot = ship_anti_air_4
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_3
+						fixed_ship_radar_slot = ship_radar_4
+						fixed_ship_engine_slot = heavy_ship_engine_4
+						fixed_ship_secondaries_slot = ship_secondaries_3
+						fixed_ship_armor_slot = ship_armor_bb_3
+						front_1_custom_slot = ship_heavy_battery_4
+						mid_1_custom_slot = ship_heavy_battery_4
+						mid_2_custom_slot = ship_heavy_battery_4
+						mid_3_custom_slot = ship_heavy_battery_4
+						rear_1_custom_slot = ship_airplane_launcher_2
+					}
+				}
+				## Carriers ##
+				create_equipment_variant = {
+					name = "Patriot-class"
+					type = ship_hull_carrier_3
+					parent_version = 0
+					modules = {
+						fixed_ship_deck_slot_1 = ship_deck_space
+						fixed_ship_deck_slot_2 = ship_deck_space
+						fixed_ship_anti_air_slot = ship_anti_air_4
+						fixed_ship_radar_slot = ship_radar_4
+						fixed_ship_engine_slot = carrier_ship_engine_4
+						fixed_ship_secondaries_slot = empty
+						front_1_custom_slot = ship_deck_space
+						mid_1_custom_slot = ship_deck_space
+						mid_2_custom_slot = ship_deck_space
+					}
 				}
 			}
 		}
@@ -150,17 +214,18 @@ PTF_ai_strategy = {
 	USN_retire_warship = {
 		visible = {
 			original_tag = USN
+			is_ai = yes
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
 			transfer_navy = {
-				target = JAP
+				target = CAN
 			}
 		}
 	}
@@ -171,69 +236,17 @@ PTF_ai_strategy = {
 		}
 
 		available = {
-			PRC = {
-				has_country_flag = PTF_difficulty_Simple
-			}
 			NOT = { country_exists = USN }
 		}
 
 		ai_will_do = {
-			base = 1000
+			base = 100
 		}
 
 		fire_only_once = yes
 
 		complete_effect = {
 			PTF_naval_ambition_I_effect = yes
-		}
-	}
-
-	PTF_naval_ambition_II = {
-		visible = {
-			original_tag = PTF
-		}
-
-		available = {
-			PRC = {
-				has_country_flag = PTF_difficulty_Normal
-			}
-			NOT = { country_exists = USN }
-		}
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		fire_only_once = yes
-
-		complete_effect = {
-			PTF_naval_ambition_II_effect = yes
-		}
-	}
-
-	PTF_naval_ambition_III = {
-		visible = {
-			original_tag = PTF
-		}
-
-		available = {
-			PRC = {
-				OR = {
-					has_country_flag = PTF_difficulty_Hard
-					has_country_flag = PTF_difficulty_Extremely_hard
-				}
-			}
-			NOT = { country_exists = USN }
-		}
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		fire_only_once = yes
-
-		complete_effect = {
-			PTF_naval_ambition_III_effect = yes
 		}
 	}
 
@@ -252,11 +265,11 @@ PTF_ai_strategy = {
 
 		complete_effect = {
 			hidden_effect = {
-				PTF_naval_ambition_III_effect = yes
-				PTF_naval_ambition_III_effect = yes
-				PTF_naval_ambition_III_effect = yes
-				PTF_naval_ambition_III_effect = yes
-				PTF_naval_ambition_III_effect = yes
+				PTF_naval_ambition_I_effect = yes
+				PTF_naval_ambition_I_effect = yes
+				PTF_naval_ambition_I_effect = yes
+				PTF_naval_ambition_I_effect = yes
+				PTF_naval_ambition_I_effect = yes
 			}
 		}
 	}

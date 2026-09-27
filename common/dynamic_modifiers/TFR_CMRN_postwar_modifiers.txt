@@ -1,0 +1,12 @@
+# TFR_中蒙谈判 - 战后动态修正
+# 军管区 + 蒙古自治区，均使用 state 变量控制效果强度
+
+# 军管区 debuff（需 add_dynamic_modifier 添加后，enable 控制生效时机）
+# 变量从国家作用域读取（PRC.前缀），只需 3 个国家变量控制全部军管省
+TFR_CMRN_military_zone = {
+	enable = { controller = { tag = PRC } }
+	icon = GFX_TFR_CMRN_military_zone
+	state_production_speed_buildings_factor = PRC.TFR_CMRN_mz_build
+	local_manpower = PRC.TFR_CMRN_mz_manpower
+	local_factories = PRC.TFR_CMRN_mz_factory
+}

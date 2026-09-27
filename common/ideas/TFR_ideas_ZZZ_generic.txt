@@ -1,0 +1,774 @@
+ideas = {
+	hidden_ideas = {
+		i_dont_wanna_fight = {
+			removal_cost = -1
+			picture = SOV_fsb_kgb
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription_factor = -0.7
+				mobilization_speed = -0.5
+			}
+		}
+		i_dont_wanna_fight_sov = {
+			removal_cost = -1
+			picture = SOV_fsb_kgb
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription_factor = -0.45
+				mobilization_speed = -0.5
+			}
+		}
+		i_dont_wanna_fight_jap = {
+			removal_cost = -1
+			picture = SOV_fsb_kgb
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription_factor = -0.1
+				mobilization_speed = -0.5
+			}
+		}	
+		i_dont_wanna_join_ally = {
+			removal_cost = -1
+			picture = SOV_fsb_kgb
+			allowed = {
+				always = no
+			}
+			modifier = {
+				ai_join_ally_desire_factor = -1
+			}
+		}
+		i_dont_wanna_call_ally = {
+			removal_cost = -1
+			picture = SOV_fsb_kgb
+			allowed = {
+				always = no
+			}
+			modifier = {
+				ai_call_ally_desire_factor = -1
+			}
+		}
+		continuous_naval_production = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_dockyard = 0.2
+			}
+		}
+		continuous_air_production = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			equipment_bonus = {
+				small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				cv_small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				cv_small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				small_plane_naval_bomber_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				cv_small_plane_naval_bomber_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				medium_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				medium_plane_fighter_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				medium_plane_scout_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				large_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				large_plane_maritime_patrol_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				transport_plane_equipment = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+				guided_missile_equipment = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+			}
+		}
+	}
+	country = {
+		received_attache = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.025
+				army_defence_factor = 0.025
+				breakthrough_factor = 0.025
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				terrain_penalty_reduction = 0.05
+				enemy_army_bonus_air_superiority_factor = -0.05
+				land_reinforce_rate = 0.015
+				coordination_bonus = 0.05
+				combat_width_factor = -0.05
+				experience_gain_army_unit_factor = 0.05
+				experience_loss_factor = -0.05
+				air_wing_xp_loss_when_killed_factor = -0.05
+				air_training_xp_gain_factor = 0.05
+				air_superiority_bonus_in_combat = 0.05
+				air_mission_efficiency = 0.05
+				air_mission_xp_gain_factor = 0.05
+				army_retreat_speed_factor = 0.1
+				planning_speed = -0.05
+				max_planning_factor = 0.05
+				recon_factor = 0.05
+				max_dig_in_factor = 0.05
+				dig_in_speed_factor = 0.05
+			}
+		}
+		strikes_1 = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_production_bonus
+			modifier = {
+				consumer_goods_factor = 0.2
+				local_resources_factor = -0.2
+				industrial_capacity_factory = -0.2
+				industrial_capacity_dockyard = -0.2
+			}
+		}
+		strikes_2 = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_production_bonus
+			modifier = {
+				consumer_goods_factor = 0.3
+				local_resources_factor = -0.3
+				industrial_capacity_factory = -0.3
+				industrial_capacity_dockyard = -0.3
+			}
+		}
+		strikes_3 = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_production_bonus
+			modifier = {
+				consumer_goods_factor = 0.5
+				local_resources_factor = -0.5
+				industrial_capacity_factory = -0.5
+				industrial_capacity_dockyard = -0.5
+			}
+		}
+		generic_grain_shortage = {
+			picture = generic_covid
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.025
+				production_factory_max_efficiency_factor = -0.025
+				production_speed_buildings_factor = -0.05
+				MONTHLY_POPULATION = -0.4
+			}
+		}
+		generic_world_wide_financial_crisis_1 = {
+			picture = generic_world_wide_financial_crisis
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.25
+				poverty_development_monthly = -0.025
+				society_development_monthly = -0.01
+				income_growth_factor = -0.5
+				inflation_monthly_factor = 0.3
+				production_speed_buildings_factor = -0.05
+				business_value_factor = -0.25
+				personal_value_factor = -0.25
+			}
+		}
+		generic_world_wide_financial_crisis_2 = {
+			picture = generic_world_wide_financial_crisis
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.15
+				poverty_development_monthly = -0.015
+				society_development_monthly = -0.005
+				income_growth_factor = -0.3
+				inflation_monthly_factor = 0.2
+				business_value_factor = -0.1
+				personal_value_factor = -0.1
+			}
+		}
+		generic_world_wide_financial_crisis_3 = {
+			picture = generic_world_wide_financial_crisis
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.05
+				poverty_development_monthly = -0.005
+				income_growth_factor = -0.15
+				inflation_monthly_factor = 0.1
+				business_value_factor = -0.05
+				personal_value_factor = -0.05
+			}
+		}
+		lower_covid_cases = {
+			picture = generic_covid
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				date < 2023.1.1
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = -0.025
+				production_speed_buildings_factor = -0.05
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				local_resources_factor = -0.05
+				MONTHLY_POPULATION = -0.1
+			}
+		}
+		low_covid_cases = {
+			picture = generic_covid
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				date < 2023.1.1
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.2
+				production_factory_max_efficiency_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				local_resources_factor = -0.1
+				MONTHLY_POPULATION = -0.2
+			}
+		}
+		medium_covid_cases = {
+			picture = generic_covid
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				date < 2023.1.1
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.075
+				production_speed_buildings_factor = -0.15
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
+				local_resources_factor = -0.15
+				MONTHLY_POPULATION = -0.3
+			}
+		}
+		high_covid_cases = {
+			picture = generic_covid
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				date < 2023.1.1
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.4
+				production_factory_max_efficiency_factor = -0.1
+				production_speed_buildings_factor = -0.2
+				industrial_capacity_factory = -0.2
+				industrial_capacity_dockyard = -0.2
+				local_resources_factor = -0.2
+				MONTHLY_POPULATION = -0.4
+			}
+		}
+		higher_covid_cases = {
+			picture = generic_covid
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				date < 2023.1.1
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.5
+				production_factory_max_efficiency_factor = -0.125
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_factory = -0.25
+				industrial_capacity_dockyard = -0.25
+				local_resources_factor = -0.25
+				MONTHLY_POPULATION = -0.5
+			}
+		}
+		worker_strikes_1 = {
+			picture = FRA_factory_strikes
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.25
+				political_power_factor = -0.1
+			}
+		}
+		worker_strikes_2 = {
+			picture = FRA_factory_strikes
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.5
+				political_power_factor = -0.2
+			}
+		}
+		worker_strikes_3 = {
+			picture = FRA_factory_strikes
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.75
+				political_power_factor = -0.3
+			}
+		}
+		worker_strikes_4 = {
+			picture = FRA_factory_strikes
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -1
+				political_power_factor = -0.4
+			}
+		}
+		#Max Development
+		generic_research_boost_idea = {
+			#Academic Development
+			#Timed Idea, 175 Days
+			picture = generic_research
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				research_speed_factor = 0.05
+				academic_development_monthly = -0.01
+			}
+		}
+		generic_population_boost_idea = {
+			#Farming Development
+			#Timed Idea, 175 Days
+			picture = generic_morale_bonus
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				monthly_population = 0.2
+				farming_development_monthly = -0.01
+			}
+		}
+		generic_stability_boost_idea = {
+			#Poverty Development
+			#Timed Idea, 175 Days
+			picture = generic_stability
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = 0.05
+				poverty_development_monthly = -0.01
+			}
+		}
+		generic_construction_boost_idea = {
+			#Industrial Development
+			#Timed Idea, 175 Days
+			picture = generic_construction
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_development_monthly = -0.01
+			}
+		}
+		generic_organization_boost_idea = {
+			#Military Development
+			#Timed Idea, 175 Days
+			picture = generic_military_org
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				army_org_factor = 0.05
+				military_development_monthly = -0.01
+			}
+		}
+		generic_political_power_boost_idea = {
+			#Society Development
+			#Timed Idea, 175 Days
+			picture = generic_political_power
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = 0.2
+				society_development_monthly = -0.01
+			}
+		}
+		#Economic Actions
+		generic_print_money_idea = {
+			#Timed Idea, 175 Days
+			picture = generic_economic_stimulation
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				income_growth_factor = 0.5
+				inflation_monthly_factor = 0.5
+			}
+		}
+		generic_quantitative_tightening_idea = {
+			#Timed Idea, 175 Days
+			picture = generic_economic_stimulation
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				income_growth_factor = -0.5
+				inflation_monthly_factor = -0.5
+			}
+		}
+		generic_war_taxes_idea = {
+			picture = generic_systemic_corruption
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			available = {
+				has_war = yes
+			}
+			modifier = {
+				stability_factor = -0.1
+				tax_business_rate_factor = 0.25
+				tax_personal_rate_factor = 0.25
+			}
+		}
+		generic_civilian_development_investments_idea = {
+			picture = generic_civilian_development_investments
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = 0.1
+				production_speed_buildings_factor = 0.1
+				global_building_slots_factor = 0.15
+				inflation_monthly_factor = 0.25
+				expense_growth_factor = 0.5
+				income_growth_factor = -0.25
+				factory_energy_consumption = 0.1
+				farming_development_monthly = 0.005
+				poverty_development_monthly = 0.005
+			}
+		}
+		generic_military_development_investments_idea = {
+			picture = generic_military_development_investments
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			modifier = {
+				war_support_factor = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				inflation_monthly_factor = 0.25
+				expense_growth_factor = 0.25
+				income_growth_factor = -0.5
+				factory_energy_consumption = 0.1
+				academic_development_monthly = 0.005
+				military_development_monthly = 0.005
+			}
+		}
+	}
+	head_minister = {
+		vacant_hog = {
+			picture = generic_vacant
+			name = vacant
+			default = yes
+			cost = 0
+			allowed = {
+				always = yes
+			}
+			visible = {
+			}
+			allowed_to_remove = {
+				head_minister_trigger = yes
+			}
+			traits = {
+			}
+		}
+	}
+	foreign_minister = {
+		vacant_for = {
+			picture = generic_vacant
+			name = vacant
+			default = yes
+			cost = 0
+			allowed = {
+				always = yes
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+			}
+		}
+	}
+	economic_minister = {
+		vacant_eco = {
+			picture = generic_vacant
+			name = vacant
+			default = yes
+			cost = 0
+			allowed = {
+				always = yes
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+			}
+		}
+	}
+	interior_minister = {
+		vacant_sec = {
+			picture = generic_vacant
+			name = vacant
+			default = yes
+			cost = 0
+			allowed = {
+				always = yes
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+			}
+		}
+	}
+	intelligence_minister = {
+		vacant_int = {
+			picture = generic_vacant
+			name = vacant
+			default = yes
+			cost = 0
+			allowed = {
+				always = yes
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+			}
+		}
+	}
+	theorist_minister = {
+		vacant_theorist = {
+			picture = generic_vacant
+			name = vacant
+			default = yes
+			cost = 0
+			allowed = {
+				always = yes
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+			}
+		}
+	}
+}

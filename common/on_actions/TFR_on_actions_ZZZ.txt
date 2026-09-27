@@ -3821,7 +3821,21 @@ on_actions = {
 				#PRC kill USAstate
 				limit = {
 					FROM.FROM = {
-						state = 932
+						OR = {
+							state = 932
+							state = 1081
+							state = 994
+							state = 996
+							state = 378
+							state = 950
+							state = 942
+							state = 943
+							state = 944
+							state = 1298
+							state = 930
+							state = 954
+						}
+						
 					}
 					OR = {
 						FROM = {
@@ -3839,7 +3853,7 @@ on_actions = {
 							tag = PRC
 						}
 					}
-					not = {
+					NOT = {
 						has_global_flag = battle_of_San_Francisco
 					}
 				}

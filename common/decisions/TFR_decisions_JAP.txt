@@ -10410,24 +10410,6 @@ JAP_foreign_policy_cat = {
 				}
 				if = {
 					limit = {
-						tag = VIN
-					}
-					OR = {
-						AND = {
-							check_variable = { 
-								global.JAP_influence_VIN_var > 0.7
-							}
-							check_variable = { 
-								global.PRC_influence_VIN_var < 0.3
-							}
-						}
-						check_variable = { 
-							global.JAP_influence_VIN_var > 0.99
-						}
-					}
-				}
-				if = {
-					limit = {
 						tag = LAO
 					}
 					OR = {
@@ -10554,7 +10536,7 @@ JAP_foreign_policy_cat = {
 				}
 			}
 		}
-		targets = { BRM VIN LAO CAM INS MAL PHI SIG SIA }
+		targets = { BRM LAO CAM INS MAL PHI SIG SIA }
 		complete_effect = {
 			JAP = {
 				add_to_faction = FROM
@@ -11556,10 +11538,26 @@ JAP_great_asian_war = {
 				type = annex_everything
 			}
 			add_to_faction = KOR
+			NAX = {
+				load_focus_tree = NAX_focus
+			}
 			KOR = {
 				set_country_flag = pdto_member
 			}
 			news_event = jap.1001
+			hidden_effect = {
+				add_ideas = JAP_balance_sheet
+				PTF = {
+					if = {
+						limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
+						remove_ideas = {
+							PTF_Fascist_military_revolution_I_idea
+							PTF_Counter_revolutionary_center_I_idea
+						}
+					}
+					add_ideas = PTF_balance_sheet
+				}
+			}
 		}
 	}
 	JAP_authorize_north_korean_intervention = {

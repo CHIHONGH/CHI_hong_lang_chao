@@ -1,0 +1,210 @@
+add_namespace = COL
+
+#Election
+country_event = {
+	id = COL.1
+	title = COL.1.t
+	desc = COL.1.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = COL.1.a
+		COL = {
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = no
+				last_election = "2022.06.19"
+				election_frequency = 48
+			}
+
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.2
+			}
+		}
+
+		hidden_effect = {
+			news_event = { id = COL.2 days = 50 random_days = 35  }
+		}
+	}
+}
+
+#Coup
+country_event = {
+	id = COL.2
+	title = COL.2.t
+	desc = COL.2.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = COL.2.a
+		COL = {
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				last_election = "2022.06.19"
+				election_frequency = 48
+			}
+
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.40
+			}
+		}
+
+		hidden_effect = {
+			news_event = { id = COL.3 days = 45  }
+		}
+	}
+}
+
+#Factions spawn up
+country_event = {
+	id = COL.3
+	title = COL.3.t
+	desc = COL.3.d
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = COL.3.a
+		hidden_effect = {
+			news_event = { id = COL.4  }
+			set_global_flag = COL_civil_war_flag
+			add_ideas = COL_colombian_armed_forces
+			delete_unit_template_and_units = { division_template = "Brigada Mecanizada" }
+			CLS = {
+				add_state_core = 910
+				add_state_core = 493
+				add_state_core = 1320
+				add_state_core = 306
+				add_state_core = 486
+				add_state_core = 1319
+				transfer_state = 910
+				transfer_state = 493
+				load_oob = "CLS_Civil_War"
+				ELS = {
+					add_ai_strategy = {
+						type = send_volunteers_desire
+						id = CLS
+						value = 100
+					}
+				}
+			}
+
+			FRC = {
+				add_state_core = 910
+				add_state_core = 493
+				add_state_core = 1320
+				add_state_core = 306
+				add_state_core = 486
+				add_state_core = 1319
+				transfer_state = 1320
+				load_oob = "FRC_Civil_War"
+				add_ideas = FRC_revolutionary_mafia
+			}
+
+			ELN = {
+				add_state_core = 910
+				add_state_core = 493
+				add_state_core = 1320
+				add_state_core = 306
+				add_state_core = 486
+				add_state_core = 1319
+				transfer_state = 1319
+				load_oob = "ELN_Civil_War"
+				add_ideas = ELN_foquismo
+				VEN = {
+					add_ai_strategy = {
+						type = send_volunteers_desire
+						id = ELN
+						value = 100
+					}
+				}
+				CUB = {
+					add_ai_strategy = {
+						type = send_volunteers_desire
+						id = ELN
+						value = 100
+					}
+				}
+				NIC = {
+					add_ai_strategy = {
+						type = send_volunteers_desire
+						id = ELN
+						value = 100
+					}
+				}
+			}
+			CLS = {
+				declare_war_on = {
+					target = COL
+					type = civil_war
+				}
+				declare_war_on = {
+					target = FRC
+					type = civil_war
+				}		
+				declare_war_on = {
+					target = ELN
+					type = civil_war
+				}		
+			}
+	
+			FRC = {
+				declare_war_on = {
+					target = COL
+					type = civil_war
+				}	
+				declare_war_on = {
+					target = ELN
+					type = civil_war
+				}		
+			}
+	
+			ELN = {
+				declare_war_on = {
+					target = COL
+					type = civil_war
+				}			
+			}
+		}
+	}
+    
+}
+
+#Colombian Civil War
+news_event = {
+	id = COL.4
+	title = COL.4.t
+	desc = COL.4.d
+	picture = GFX_latin_american_war2
+		
+	major = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = COL.4.a
+		trigger = {
+			original_tag = COL
+		}
+
+		hidden_effect = {
+		
+		}
+	}  
+
+	option = { 
+		name = COL.4.b
+		
+		# if = {
+		# 	limit = {
+		# 		original_tag = SOV
+		# 		has_government = authoritarian_democrat
+		# 	}
+		# 	activate_mission = SOV_initiate_operation_otel_moskva 
+		# }
+	}
+}
