@@ -3659,7 +3659,7 @@ focus_tree = {
 			}
 		}
 		offset = {
-			x = 3
+			x = 8
 			y = 0
 			trigger = {
 				has_country_flag = USB_rebirth_flag
@@ -5398,6 +5398,12 @@ focus_tree = {
 				has_country_flag = USB_NSS_flag
 			}
 		}
+		offset = {
+			x = -8
+			trigger = {
+				has_country_flag = USB_rebirth_flag
+			}
+		}
 		ai_will_do = {
 			base = 100
 		}
@@ -6712,7 +6718,7 @@ focus_tree = {
 		id = USB_appeal_to_the_un
 		icon = GFX_focus_USB_appeal_to_the_un
 		relative_position_id = USB_emergency_presidential_powers
-		x = -1
+		x = 0
 		y = 1
 		cost = 5
 		available_if_capitulated = yes
@@ -9824,7 +9830,7 @@ focus_tree = {
 		}
 		cancelable = no
 		offset = {
-			x = 3
+			x = 4
 			y = -5
 			trigger = {
 				has_country_flag = USB_rebirth_flag
@@ -10627,6 +10633,7 @@ focus_tree = {
 			has_global_flag = USA_american_civil_war_over_global
 		}
 		completion_reward = {
+			add_manpower = 500000
 			add_war_support = 0.1
 			focus_unlock = yes
 		}
@@ -10867,870 +10874,870 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = USB_enemies_of_america
-		icon = GFX_focus_USB_enemies_of_america
-		x = -2
-		y = 6
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_the_end_of_history
-		}
-		prerequisite = {
-			focus = USB_the_enemy_within
-		}
-		available = {
-			has_completed_focus = USB_saint_of_sanity
-		}
-		allow_branch = {
-			has_completed_focus = USB_the_end_of_history
-		}
-		completion_reward = {
-			unlock_decision_tooltip = USB_ban_orthodoxy_decision
-			unlock_decision_tooltip = USB_neo_marshall_plan_decision
-			unlock_decision_tooltip = USB_chinese_exclusion_act_decision
-			unlock_decision_tooltip = USB_factories_for_claims_decision
-		}
-	}
-	focus = {
-		id = USB_presidential_economics
-		icon = GFX_focus_USB_presidential_economics
-		x = 6
-		y = 6
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_the_end_of_history
-		}
-		prerequisite = {
-			focus = USB_islands_of_civilization
-		}
-		available = {
-			has_completed_focus = USB_saint_of_sanity
-		}
-		allow_branch = {
-			has_completed_focus = USB_the_end_of_history
-		}
-		completion_reward = {
-			set_temp_variable = {
-				var = USA_reconstruction_progress_var_temp
-				value = 0.25
-			}
-			USA_add_reconstruction_progress = yes
-			every_owned_state = {
-				limit = {
-					OR = {
-						has_state_category = large_city
-						has_state_category = metropolis
-						has_state_category = conurbation
-						has_state_category = megalopolis
-					}
-				}
-				hidden_effect = {
-					add_manpower = -12500
-				}
-				add_compliance = 20
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = office_park
-					level = 1
-					instant_build = yes
-				}
-			}
-			change_economy_type_command_economy = yes
-		}
-	}
-	focus = {
-		id = USB_duty_in_death
-		icon = GFX_focus_USB_duty_in_death
-		x = -1
-		y = 7
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_enemies_of_america
-		}
-		completion_reward = {
-			custom_effect_tooltip = change_mobilization_law_tooltip
-			show_ideas_tooltip = USB_duty_in_death_law
-			hidden_effect = { add_ideas = USB_duty_in_death_law }
-			custom_effect_tooltip = tooltip_white_line
-			if = {
-				limit = {
-					has_idea = higher_supervision
-				}
-				swap_ideas = {
-					remove_idea = higher_supervision
-					add_idea = USB_duty_in_death_supervision_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = high_supervision
-				}
-				swap_ideas = {
-					remove_idea = high_supervision
-					add_idea = USB_duty_in_death_supervision_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = medium_supervision
-				}
-				swap_ideas = {
-					remove_idea = medium_supervision
-					add_idea = USB_duty_in_death_supervision_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = low_supervision
-				}
-				swap_ideas = {
-					remove_idea = low_supervision
-					add_idea = USB_duty_in_death_supervision_law
-				}
-			}
-			else = {
-				swap_ideas = {
-					remove_idea = lower_supervision
-					add_idea = USB_duty_in_death_supervision_law
-				}
-			}
-		}
-	}
-	focus = {
-		id = USB_national_synchronization_project
-		icon = GFX_focus_USB_national_synchronization_project
-		x = 5
-		y = 7
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_presidential_economics
-		}
-		completion_reward = {
-			set_temp_variable = {
-				var = USA_reconstruction_progress_var_temp
-				value = 0.25
-			}
-			USA_add_reconstruction_progress = yes
-			set_temp_variable = {
-				var = society_development_var_temp
-				value = 0.15
-			}
-			add_society_development = yes
-			set_temp_variable = {
-				var = industrial_development_var_temp
-				value = 0.15
-			}
-			add_industrial_development = yes
-			build_railway = {
-				level = 5
-				start_province = 13260
-				target_province = 6732
-			}
-			build_railway = {
-				level = 5
-				start_province = 13260
-				target_province = 13308
-			}
-			build_railway = {
-				level = 5
-				start_province = 3825
-				target_province = 13308
-			}
-			build_railway = {
-				level = 5
-				start_province = 14093
-				target_province = 13308
-			}
-			unlock_decision_tooltip = USB_west_coast_high_speed_rail_decision
-			unlock_decision_tooltip = USB_texas_high_speed_rail_decision
-			unlock_decision_tooltip = USB_chicago_high_speed_rail_decision
-			unlock_decision_tooltip = USB_atlanta_high_speed_rail_decision
-			unlock_decision_tooltip = USB_florida_high_speed_rail_decision
-		}
-	}
-	focus = {
-		id = USB_department_of_information
-		icon = GFX_focus_USB_department_of_information
-		x = 1
-		y = 7
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_saint_of_sanity
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					has_idea = higher_education
-				}
-				swap_ideas = {
-					remove_idea = higher_education
-					add_idea = USB_department_of_information_education_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = high_education
-				}
-				swap_ideas = {
-					remove_idea = high_education
-					add_idea = USB_department_of_information_education_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = medium_education
-				}
-				swap_ideas = {
-					remove_idea = medium_education
-					add_idea = USB_department_of_information_education_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = low_education
-				}
-				swap_ideas = {
-					remove_idea = low_education
-					add_idea = USB_department_of_information_education_law
-				}
-			}
-			else = {
-				swap_ideas = {
-					remove_idea = lower_education
-					add_idea = USB_department_of_information_education_law
-				}
-			}
-			unlock_decision_tooltip = USB_rewrite_american_history_decision
-			set_temp_variable = {
-				var = academic_development_var_temp
-				value = 0.2
-			}
-			add_academic_development = yes
-		}
-	}
-	focus = {
-		id = USB_arbitrary_terror
-		icon = GFX_focus_USB_arbitrary_terror
-		x = 3
-		y = 7
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_saint_of_sanity
-		}
-		completion_reward = {
-			add_political_power = 50
-			if = {
-				limit = {
-					has_idea = higher_prison
-				}
-				swap_ideas = {
-					remove_idea = higher_prison
-					add_idea = USB_indiscriminate_violence_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = high_prison
-				}
-				swap_ideas = {
-					remove_idea = high_prison
-					add_idea = USB_indiscriminate_violence_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = medium_prison
-				}
-				swap_ideas = {
-					remove_idea = medium_prison
-					add_idea = USB_indiscriminate_violence_law
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = low_prison
-				}
-				swap_ideas = {
-					remove_idea = low_prison
-					add_idea = USB_indiscriminate_violence_law
-				}
-			}
-			else = {
-				swap_ideas = {
-					remove_idea = lower_prison
-					add_idea = USB_indiscriminate_violence_law
-				}
-			}
-			random_owned_state = {
-				limit = {
-					has_active_resistance = yes
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 1
-				}
-				add_resistance = -10
-				add_compliance = 10
-			}
-			random_owned_state = {
-				limit = {
-					has_active_resistance = yes
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 1
-				}
-				add_resistance = -10
-				add_compliance = 10
-			}
-			random_owned_state = {
-				limit = {
-					has_active_resistance = yes
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 1
-				}
-				add_resistance = -10
-				add_compliance = 10
-			}
-			random_owned_state = {
-				limit = {
-					has_active_resistance = yes
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 1
-				}
-				add_resistance = -10
-				add_compliance = 10
-			}
-		}
-	}
-	focus = {
-		id = USB_perpetual_peacekeeping
-		icon = GFX_focus_USB_perpetual_peacekeeping
-		x = 2
-		y = 8
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_saint_of_sanity
-		}
-		completion_reward = {
-			add_ideas = USB_perpetual_peacekeeping_idea
-			custom_effect_tooltip = tooltip_white_line
-			enable_wargoal_justification = yes
-		}
-	}
-	focus = {
-		id = USB_america_dreaming
-		icon = GFX_focus_USB_america_dreaming
-		x = 1
-		y = 9
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_department_of_information
-		}
-		prerequisite = {
-			focus = USB_perpetual_peacekeeping
-		}
-		completion_reward = {
-			custom_effect_tooltip = USB_dreaming_of_america_tt
-			annex_country = { #they have no choice
-				target = USN
-				transfer_troops = yes
-			}
-			#unlock_decision_tooltip = USB_claim_the_cascadian_bioregion_decision
-			unlock_decision_tooltip = USB_claim_the_natural_borders_of_new_england_decision
-			unlock_decision_tooltip = USB_put_down_the_rabid_eagle_decision
-			unlock_decision_tooltip = USB_secure_our_front_yard_decision
-			#unlock_decision_tooltip = USB_rule_by_permission_decision
-			unlock_decision_tooltip = USB_reclaim_liberia_decision
-		}
-	}
-	focus = {
-		id = USB_nothing_but_slaughter
-		icon = GFX_focus_USB_nothing_but_slaughter
-		x = 3
-		y = 9
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_arbitrary_terror
-		}
-		completion_reward = {
-			country_event = {
-				id = bdnspch.110
-			}
-		}
-	}
-	focus = {
-		id = USB_investigate_the_inner_party
-		icon = GFX_focus_USB_investigate_the_inner_party
-		x = 0
-		y = 8
-		cost = 8
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = jailed_bernie_tt
-				NOT = { has_idea = USB_sanderite_conspiracy_idea }
-			}
-			custom_trigger_tooltip = {
-				tooltip = USB_bloomberg_destroyed_tt
-				NOT = { has_idea = USB_bloomberg_conspiracy_idea }
-			}
-		}
-		prerequisite = {
-			focus = USB_department_of_information
-		}
-		prerequisite = {
-			focus = USB_duty_in_death
-		}
-		prerequisite = {
-			focus = USB_the_republic_endures
-		}
-		cancelable = no
-		select_effect = {
-			hidden_effect = {
-				country_event = {
-					id = bdnspch.108
-					days = 4
-				}
-				#Bernie Escapes
-				country_event = {
-					id = bdnspch.105
-					days = 10
-				}
-				#Obama shot!
-			}
-		}
-		completion_reward = {
-			custom_effect_tooltip = USB_caligula_liberal_path_tt
-			hidden_effect = {
-				add_popularity = {
-					ideology = nationalist
-					popularity = -0.05
-				}
-				add_manpower = -5000
-			}
-			effect_tooltip = {
-				country_event = {
-					id = bdnspch.104
-				}
-				#The New Party System
-			}
-		}
-	}
-	focus = {
-		id = USB_the_proud_do_not_endure
-		icon = GFX_focus_USB_the_proud_do_not_endure
-		x = -1
-		y = 9
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_department_of_information
-		}
-		prerequisite = {
-			focus = USB_duty_in_death
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					has_idea = higher_female_service
-				}
-				swap_ideas = {
-					remove_idea = higher_female_service
-					add_idea = USB_all_american_recruitment_female_service
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = high_female_service
-				}
-				swap_ideas = {
-					remove_idea = high_female_service
-					add_idea = USB_all_american_recruitment_female_service
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = medium_female_service
-				}
-				swap_ideas = {
-					remove_idea = medium_female_service
-					add_idea = USB_all_american_recruitment_female_service
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = low_female_service
-				}
-				swap_ideas = {
-					remove_idea = low_female_service
-					add_idea = USB_all_american_recruitment_female_service
-				}
-			}
-			else = {
-				swap_ideas = {
-					remove_idea = lower_female_service
-					add_idea = USB_all_american_recruitment_female_service
-				}
-			}
-			#custom_effect_tooltip = tooltip_white_line
-			if = {
-				limit = {
-					has_idea = higher_racial_integration
-				}
-				swap_ideas = {
-					remove_idea = higher_racial_integration
-					add_idea = USB_all_american_recruitment_racial_integration
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = high_racial_integration
-				}
-				swap_ideas = {
-					remove_idea = high_racial_integration
-					add_idea = USB_all_american_recruitment_racial_integration
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = medium_racial_integration
-				}
-				swap_ideas = {
-					remove_idea = medium_racial_integration
-					add_idea = USB_all_american_recruitment_racial_integration
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = low_racial_integration
-				}
-				swap_ideas = {
-					remove_idea = low_racial_integration
-					add_idea = USB_all_american_recruitment_racial_integration
-				}
-			}
-			else = {
-				swap_ideas = {
-					remove_idea = lower_racial_integration
-					add_idea = USB_all_american_recruitment_racial_integration
-				}
-			}
-			#custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = change_exemptions_law_tooltip
-			show_ideas_tooltip =  no_draft_exemptions
-			hidden_effect = { add_ideas = no_draft_exemptions }
-		}
-	}
-	focus = {
-		id = USB_techno_supremacy
-		icon = GFX_focus_USB_techno_supremacy
-		x = 4
-		y = 8
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_arbitrary_terror
-		}
-		prerequisite = {
-			focus = USB_national_synchronization_project
-		}
-		prerequisite = {
-			focus = USB_the_supreme_commander
-		}
-		completion_reward = {
-			set_temp_variable = {
-				var = academic_development_var_temp
-				value = 0.25
-			}
-			add_academic_development = yes
-			add_ideas = USB_technosupremacy_idea
-			hidden_effect = {
-				#country_event = {
-				#	id = bdnspch.114
-				#	days = 14
-				#}
-				#rogue AIs sprout across the country
-			}
-		}
-	}
-	focus = {
-		id = USB_the_visible_hand
-		icon = GFX_focus_USB_the_visible_hand
-		x = 5
-		y = 9
-		cost = 5
-		relative_position_id = USB_rebirth
-		ai_will_do = {
-			base = 50
-		}
-		prerequisite = {
-			focus = USB_national_synchronization_project
-		}
-		completion_reward = {
-			set_temp_variable = {
-				var = USA_reconstruction_progress_var_temp
-				value = 0.25
-			}
-			USA_add_reconstruction_progress = yes
-			add_ideas = permanent_mobilization
-			custom_effect_tooltip = tooltip_white_line
-			add_ideas = lower_trade
-			every_owned_state = {
-				limit = {
-					OR = {
-						has_state_category = large_city
-						has_state_category = metropolis
-						has_state_category = conurbation
-						has_state_category = megalopolis
-					}
-				}
-				hidden_effect = {
-					add_manpower = -25000
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = office_park
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-	}
-	focus = {
-		id = USB_god_in_the_machine
-		icon = GFX_focus_USB_god_in_the_machine
-		x = 4
-		y = 10
-		cost = 5
-		relative_position_id = USB_rebirth
-		cancelable = no
-		ai_will_do = {
-			base = 50
-			modifier = {
-			    factor = 0
-			    OR = {
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Abrams
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Hunter
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Spencer
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Milley
-			        }
-			    }
-			}
-		}
-		prerequisite = {
-			focus = USB_techno_supremacy
-		}
-		prerequisite = {
-			focus = USB_the_visible_hand
-		}
-		mutually_exclusive = {
-			focus = USB_national_awakening
-		}
-		mutually_exclusive = {
-			focus = USB_the_union_forever
-		}
-		select_effect = {
-			scoped_play_song = "TFR_mu_tfr_caligulas_theme"
-			hidden_effect = {
-				country_event = {
-					id = bdnspch.98
-					days = 8
-				}
-			}
-		}
-		completion_reward = {
-			custom_effect_tooltip = USB_god_in_the_machine_tt
-			hidden_effect = {
-				country_event = {
-					id = bdnspch.99
-					days = 24
-				}
-			}
-		}
-	}
-	focus = {
-		id = USB_national_awakening
-		icon = GFX_focus_USB_national_awakening
-		x = 0
-		y = 10
-		cost = 5
-		relative_position_id = USB_rebirth
-		cancelable = no
-		ai_will_do = {
-			base = 50
-			modifier = {
-			    factor = 0
-			    OR = {
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Joseph
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Abrams
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Hunter
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Spencer
-			        }
-			    }
-			}
-		}
-		prerequisite = {
-			focus = USB_investigate_the_inner_party
-		}
-		prerequisite = {
-			focus = USB_the_proud_do_not_endure
-		}
-		mutually_exclusive = {
-			focus = USB_the_union_forever
-		}
-		mutually_exclusive = {
-			focus = USB_god_in_the_machine
-		}
-		completion_reward = {
-			custom_effect_tooltip = USB_national_awakening_tt
-			set_portraits = {
-				character = USB_joe_biden_char
-				civilian = {
-					large = "gfx/leaders/USB/Shadow_Biden.png"
-				}
-			}
-		}
-	}
-	focus = {
-		id = USB_the_union_forever
-		icon = GFX_focus_USB_the_union_forever
-		x = 2
-		y = 10
-		cost = 5
-		relative_position_id = USB_rebirth
-		cancelable = no
-		ai_will_do = {
-			base = 50
-			modifier = {
-			    factor = 0
-			    OR = {
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Joseph
-			        }
-			        has_game_rule = {
-			            rule = The_We_Love_Joe
-			            option = The_We_Love_Joe_Milley
-			        }
-			    }
-			}
-		}
-		prerequisite = {
-			focus = USB_america_dreaming
-		}
-		prerequisite = {
-			focus = USB_nothing_but_slaughter
-		}
-		prerequisite = {
-			focus = USB_perpetual_peacekeeping
-		}
-		mutually_exclusive = {
-			focus = USB_national_awakening
-		}
-		mutually_exclusive = {
-			focus = USB_god_in_the_machine
-		}
-		select_effect = {
-			hidden_effect = {
-				country_event = {
-					id = bdnspch.102
-					days = 14
-				}
-			}
-		}
-		completion_reward = {
-			custom_effect_tooltip = USB_union_forever_tt
-			hidden_effect = {
-				country_event = {
-					id = usb.76
-				}
-				#Bidens successor
-			}
-		}
-	}
+	# focus = {
+	# 	id = USB_enemies_of_america
+	# 	icon = GFX_focus_USB_enemies_of_america
+	# 	x = -2
+	# 	y = 6
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_end_of_history
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_enemy_within
+	# 	}
+	# 	available = {
+	# 		has_completed_focus = USB_saint_of_sanity
+	# 	}
+	# 	allow_branch = {
+	# 		has_completed_focus = USB_the_end_of_history
+	# 	}
+	# 	completion_reward = {
+	# 		unlock_decision_tooltip = USB_ban_orthodoxy_decision
+	# 		unlock_decision_tooltip = USB_neo_marshall_plan_decision
+	# 		unlock_decision_tooltip = USB_chinese_exclusion_act_decision
+	# 		unlock_decision_tooltip = USB_factories_for_claims_decision
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_presidential_economics
+	# 	icon = GFX_focus_USB_presidential_economics
+	# 	x = 6
+	# 	y = 6
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_end_of_history
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_islands_of_civilization
+	# 	}
+	# 	available = {
+	# 		has_completed_focus = USB_saint_of_sanity
+	# 	}
+	# 	allow_branch = {
+	# 		has_completed_focus = USB_the_end_of_history
+	# 	}
+	# 	completion_reward = {
+	# 		set_temp_variable = {
+	# 			var = USA_reconstruction_progress_var_temp
+	# 			value = 0.25
+	# 		}
+	# 		USA_add_reconstruction_progress = yes
+	# 		every_owned_state = {
+	# 			limit = {
+	# 				OR = {
+	# 					has_state_category = large_city
+	# 					has_state_category = metropolis
+	# 					has_state_category = conurbation
+	# 					has_state_category = megalopolis
+	# 				}
+	# 			}
+	# 			hidden_effect = {
+	# 				add_manpower = -12500
+	# 			}
+	# 			add_compliance = 20
+	# 			add_extra_state_shared_building_slots = 2
+	# 			add_building_construction = {
+	# 				type = industrial_complex
+	# 				level = 1
+	# 				instant_build = yes
+	# 			}
+	# 			add_building_construction = {
+	# 				type = office_park
+	# 				level = 1
+	# 				instant_build = yes
+	# 			}
+	# 		}
+	# 		change_economy_type_command_economy = yes
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_duty_in_death
+	# 	icon = GFX_focus_USB_duty_in_death
+	# 	x = -1
+	# 	y = 7
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_enemies_of_america
+	# 	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = change_mobilization_law_tooltip
+	# 		show_ideas_tooltip = USB_duty_in_death_law
+	# 		hidden_effect = { add_ideas = USB_duty_in_death_law }
+	# 		custom_effect_tooltip = tooltip_white_line
+	# 		if = {
+	# 			limit = {
+	# 				has_idea = higher_supervision
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = higher_supervision
+	# 				add_idea = USB_duty_in_death_supervision_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = high_supervision
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = high_supervision
+	# 				add_idea = USB_duty_in_death_supervision_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = medium_supervision
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = medium_supervision
+	# 				add_idea = USB_duty_in_death_supervision_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = low_supervision
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = low_supervision
+	# 				add_idea = USB_duty_in_death_supervision_law
+	# 			}
+	# 		}
+	# 		else = {
+	# 			swap_ideas = {
+	# 				remove_idea = lower_supervision
+	# 				add_idea = USB_duty_in_death_supervision_law
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_national_synchronization_project
+	# 	icon = GFX_focus_USB_national_synchronization_project
+	# 	x = 5
+	# 	y = 7
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_presidential_economics
+	# 	}
+	# 	completion_reward = {
+	# 		set_temp_variable = {
+	# 			var = USA_reconstruction_progress_var_temp
+	# 			value = 0.25
+	# 		}
+	# 		USA_add_reconstruction_progress = yes
+	# 		set_temp_variable = {
+	# 			var = society_development_var_temp
+	# 			value = 0.15
+	# 		}
+	# 		add_society_development = yes
+	# 		set_temp_variable = {
+	# 			var = industrial_development_var_temp
+	# 			value = 0.15
+	# 		}
+	# 		add_industrial_development = yes
+	# 		build_railway = {
+	# 			level = 5
+	# 			start_province = 13260
+	# 			target_province = 6732
+	# 		}
+	# 		build_railway = {
+	# 			level = 5
+	# 			start_province = 13260
+	# 			target_province = 13308
+	# 		}
+	# 		build_railway = {
+	# 			level = 5
+	# 			start_province = 3825
+	# 			target_province = 13308
+	# 		}
+	# 		build_railway = {
+	# 			level = 5
+	# 			start_province = 14093
+	# 			target_province = 13308
+	# 		}
+	# 		unlock_decision_tooltip = USB_west_coast_high_speed_rail_decision
+	# 		unlock_decision_tooltip = USB_texas_high_speed_rail_decision
+	# 		unlock_decision_tooltip = USB_chicago_high_speed_rail_decision
+	# 		unlock_decision_tooltip = USB_atlanta_high_speed_rail_decision
+	# 		unlock_decision_tooltip = USB_florida_high_speed_rail_decision
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_department_of_information
+	# 	icon = GFX_focus_USB_department_of_information
+	# 	x = 1
+	# 	y = 7
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_saint_of_sanity
+	# 	}
+	# 	completion_reward = {
+	# 		if = {
+	# 			limit = {
+	# 				has_idea = higher_education
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = higher_education
+	# 				add_idea = USB_department_of_information_education_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = high_education
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = high_education
+	# 				add_idea = USB_department_of_information_education_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = medium_education
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = medium_education
+	# 				add_idea = USB_department_of_information_education_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = low_education
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = low_education
+	# 				add_idea = USB_department_of_information_education_law
+	# 			}
+	# 		}
+	# 		else = {
+	# 			swap_ideas = {
+	# 				remove_idea = lower_education
+	# 				add_idea = USB_department_of_information_education_law
+	# 			}
+	# 		}
+	# 		unlock_decision_tooltip = USB_rewrite_american_history_decision
+	# 		set_temp_variable = {
+	# 			var = academic_development_var_temp
+	# 			value = 0.2
+	# 		}
+	# 		add_academic_development = yes
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_arbitrary_terror
+	# 	icon = GFX_focus_USB_arbitrary_terror
+	# 	x = 3
+	# 	y = 7
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_saint_of_sanity
+	# 	}
+	# 	completion_reward = {
+	# 		add_political_power = 50
+	# 		if = {
+	# 			limit = {
+	# 				has_idea = higher_prison
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = higher_prison
+	# 				add_idea = USB_indiscriminate_violence_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = high_prison
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = high_prison
+	# 				add_idea = USB_indiscriminate_violence_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = medium_prison
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = medium_prison
+	# 				add_idea = USB_indiscriminate_violence_law
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = low_prison
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = low_prison
+	# 				add_idea = USB_indiscriminate_violence_law
+	# 			}
+	# 		}
+	# 		else = {
+	# 			swap_ideas = {
+	# 				remove_idea = lower_prison
+	# 				add_idea = USB_indiscriminate_violence_law
+	# 			}
+	# 		}
+	# 		random_owned_state = {
+	# 			limit = {
+	# 				has_active_resistance = yes
+	# 			}
+	# 			damage_building = {
+	# 				type = infrastructure
+	# 				damage = 1
+	# 			}
+	# 			add_resistance = -10
+	# 			add_compliance = 10
+	# 		}
+	# 		random_owned_state = {
+	# 			limit = {
+	# 				has_active_resistance = yes
+	# 			}
+	# 			damage_building = {
+	# 				type = infrastructure
+	# 				damage = 1
+	# 			}
+	# 			add_resistance = -10
+	# 			add_compliance = 10
+	# 		}
+	# 		random_owned_state = {
+	# 			limit = {
+	# 				has_active_resistance = yes
+	# 			}
+	# 			damage_building = {
+	# 				type = infrastructure
+	# 				damage = 1
+	# 			}
+	# 			add_resistance = -10
+	# 			add_compliance = 10
+	# 		}
+	# 		random_owned_state = {
+	# 			limit = {
+	# 				has_active_resistance = yes
+	# 			}
+	# 			damage_building = {
+	# 				type = infrastructure
+	# 				damage = 1
+	# 			}
+	# 			add_resistance = -10
+	# 			add_compliance = 10
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_perpetual_peacekeeping
+	# 	icon = GFX_focus_USB_perpetual_peacekeeping
+	# 	x = 2
+	# 	y = 8
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_saint_of_sanity
+	# 	}
+	# 	completion_reward = {
+	# 		add_ideas = USB_perpetual_peacekeeping_idea
+	# 		custom_effect_tooltip = tooltip_white_line
+	# 		enable_wargoal_justification = yes
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_america_dreaming
+	# 	icon = GFX_focus_USB_america_dreaming
+	# 	x = 1
+	# 	y = 9
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_department_of_information
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_perpetual_peacekeeping
+	# 	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = USB_dreaming_of_america_tt
+	# 		annex_country = { #they have no choice
+	# 			target = USN
+	# 			transfer_troops = yes
+	# 		}
+	# 		#unlock_decision_tooltip = USB_claim_the_cascadian_bioregion_decision
+	# 		unlock_decision_tooltip = USB_claim_the_natural_borders_of_new_england_decision
+	# 		unlock_decision_tooltip = USB_put_down_the_rabid_eagle_decision
+	# 		unlock_decision_tooltip = USB_secure_our_front_yard_decision
+	# 		#unlock_decision_tooltip = USB_rule_by_permission_decision
+	# 		unlock_decision_tooltip = USB_reclaim_liberia_decision
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_nothing_but_slaughter
+	# 	icon = GFX_focus_USB_nothing_but_slaughter
+	# 	x = 3
+	# 	y = 9
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_arbitrary_terror
+	# 	}
+	# 	completion_reward = {
+	# 		country_event = {
+	# 			id = bdnspch.110
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_investigate_the_inner_party
+	# 	icon = GFX_focus_USB_investigate_the_inner_party
+	# 	x = 0
+	# 	y = 8
+	# 	cost = 8
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	available = {
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = jailed_bernie_tt
+	# 			NOT = { has_idea = USB_sanderite_conspiracy_idea }
+	# 		}
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = USB_bloomberg_destroyed_tt
+	# 			NOT = { has_idea = USB_bloomberg_conspiracy_idea }
+	# 		}
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_department_of_information
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_duty_in_death
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_republic_endures
+	# 	}
+	# 	cancelable = no
+	# 	select_effect = {
+	# 		hidden_effect = {
+	# 			country_event = {
+	# 				id = bdnspch.108
+	# 				days = 4
+	# 			}
+	# 			#Bernie Escapes
+	# 			country_event = {
+	# 				id = bdnspch.105
+	# 				days = 10
+	# 			}
+	# 			#Obama shot!
+	# 		}
+	# 	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = USB_caligula_liberal_path_tt
+	# 		hidden_effect = {
+	# 			add_popularity = {
+	# 				ideology = nationalist
+	# 				popularity = -0.05
+	# 			}
+	# 			add_manpower = -5000
+	# 		}
+	# 		effect_tooltip = {
+	# 			country_event = {
+	# 				id = bdnspch.104
+	# 			}
+	# 			#The New Party System
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_the_proud_do_not_endure
+	# 	icon = GFX_focus_USB_the_proud_do_not_endure
+	# 	x = -1
+	# 	y = 9
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_department_of_information
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_duty_in_death
+	# 	}
+	# 	completion_reward = {
+	# 		if = {
+	# 			limit = {
+	# 				has_idea = higher_female_service
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = higher_female_service
+	# 				add_idea = USB_all_american_recruitment_female_service
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = high_female_service
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = high_female_service
+	# 				add_idea = USB_all_american_recruitment_female_service
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = medium_female_service
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = medium_female_service
+	# 				add_idea = USB_all_american_recruitment_female_service
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = low_female_service
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = low_female_service
+	# 				add_idea = USB_all_american_recruitment_female_service
+	# 			}
+	# 		}
+	# 		else = {
+	# 			swap_ideas = {
+	# 				remove_idea = lower_female_service
+	# 				add_idea = USB_all_american_recruitment_female_service
+	# 			}
+	# 		}
+	# 		#custom_effect_tooltip = tooltip_white_line
+	# 		if = {
+	# 			limit = {
+	# 				has_idea = higher_racial_integration
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = higher_racial_integration
+	# 				add_idea = USB_all_american_recruitment_racial_integration
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = high_racial_integration
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = high_racial_integration
+	# 				add_idea = USB_all_american_recruitment_racial_integration
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = medium_racial_integration
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = medium_racial_integration
+	# 				add_idea = USB_all_american_recruitment_racial_integration
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_idea = low_racial_integration
+	# 			}
+	# 			swap_ideas = {
+	# 				remove_idea = low_racial_integration
+	# 				add_idea = USB_all_american_recruitment_racial_integration
+	# 			}
+	# 		}
+	# 		else = {
+	# 			swap_ideas = {
+	# 				remove_idea = lower_racial_integration
+	# 				add_idea = USB_all_american_recruitment_racial_integration
+	# 			}
+	# 		}
+	# 		#custom_effect_tooltip = tooltip_white_line
+	# 		custom_effect_tooltip = change_exemptions_law_tooltip
+	# 		show_ideas_tooltip =  no_draft_exemptions
+	# 		hidden_effect = { add_ideas = no_draft_exemptions }
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_techno_supremacy
+	# 	icon = GFX_focus_USB_techno_supremacy
+	# 	x = 4
+	# 	y = 8
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_arbitrary_terror
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_national_synchronization_project
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_supreme_commander
+	# 	}
+	# 	completion_reward = {
+	# 		set_temp_variable = {
+	# 			var = academic_development_var_temp
+	# 			value = 0.25
+	# 		}
+	# 		add_academic_development = yes
+	# 		add_ideas = USB_technosupremacy_idea
+	# 		hidden_effect = {
+	# 			#country_event = {
+	# 			#	id = bdnspch.114
+	# 			#	days = 14
+	# 			#}
+	# 			#rogue AIs sprout across the country
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_the_visible_hand
+	# 	icon = GFX_focus_USB_the_visible_hand
+	# 	x = 5
+	# 	y = 9
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	ai_will_do = {
+	# 		base = 50
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_national_synchronization_project
+	# 	}
+	# 	completion_reward = {
+	# 		set_temp_variable = {
+	# 			var = USA_reconstruction_progress_var_temp
+	# 			value = 0.25
+	# 		}
+	# 		USA_add_reconstruction_progress = yes
+	# 		add_ideas = permanent_mobilization
+	# 		custom_effect_tooltip = tooltip_white_line
+	# 		add_ideas = lower_trade
+	# 		every_owned_state = {
+	# 			limit = {
+	# 				OR = {
+	# 					has_state_category = large_city
+	# 					has_state_category = metropolis
+	# 					has_state_category = conurbation
+	# 					has_state_category = megalopolis
+	# 				}
+	# 			}
+	# 			hidden_effect = {
+	# 				add_manpower = -25000
+	# 			}
+	# 			add_extra_state_shared_building_slots = 2
+	# 			add_building_construction = {
+	# 				type = office_park
+	# 				level = 2
+	# 				instant_build = yes
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_god_in_the_machine
+	# 	icon = GFX_focus_USB_god_in_the_machine
+	# 	x = 4
+	# 	y = 10
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	cancelable = no
+	# 	ai_will_do = {
+	# 		base = 50
+	# 		modifier = {
+	# 		    factor = 0
+	# 		    OR = {
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Abrams
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Hunter
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Spencer
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Milley
+	# 		        }
+	# 		    }
+	# 		}
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_techno_supremacy
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_visible_hand
+	# 	}
+	# 	mutually_exclusive = {
+	# 		focus = USB_national_awakening
+	# 	}
+	# 	mutually_exclusive = {
+	# 		focus = USB_the_union_forever
+	# 	}
+	# 	select_effect = {
+	# 		scoped_play_song = "TFR_mu_tfr_caligulas_theme"
+	# 		hidden_effect = {
+	# 			country_event = {
+	# 				id = bdnspch.98
+	# 				days = 8
+	# 			}
+	# 		}
+	# 	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = USB_god_in_the_machine_tt
+	# 		hidden_effect = {
+	# 			country_event = {
+	# 				id = bdnspch.99
+	# 				days = 24
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_national_awakening
+	# 	icon = GFX_focus_USB_national_awakening
+	# 	x = 0
+	# 	y = 10
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	cancelable = no
+	# 	ai_will_do = {
+	# 		base = 50
+	# 		modifier = {
+	# 		    factor = 0
+	# 		    OR = {
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Joseph
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Abrams
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Hunter
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Spencer
+	# 		        }
+	# 		    }
+	# 		}
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_investigate_the_inner_party
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_the_proud_do_not_endure
+	# 	}
+	# 	mutually_exclusive = {
+	# 		focus = USB_the_union_forever
+	# 	}
+	# 	mutually_exclusive = {
+	# 		focus = USB_god_in_the_machine
+	# 	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = USB_national_awakening_tt
+	# 		set_portraits = {
+	# 			character = USB_joe_biden_char
+	# 			civilian = {
+	# 				large = "gfx/leaders/USB/Shadow_Biden.png"
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = USB_the_union_forever
+	# 	icon = GFX_focus_USB_the_union_forever
+	# 	x = 2
+	# 	y = 10
+	# 	cost = 5
+	# 	relative_position_id = USB_rebirth
+	# 	cancelable = no
+	# 	ai_will_do = {
+	# 		base = 50
+	# 		modifier = {
+	# 		    factor = 0
+	# 		    OR = {
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Joseph
+	# 		        }
+	# 		        has_game_rule = {
+	# 		            rule = The_We_Love_Joe
+	# 		            option = The_We_Love_Joe_Milley
+	# 		        }
+	# 		    }
+	# 		}
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_america_dreaming
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_nothing_but_slaughter
+	# 	}
+	# 	prerequisite = {
+	# 		focus = USB_perpetual_peacekeeping
+	# 	}
+	# 	mutually_exclusive = {
+	# 		focus = USB_national_awakening
+	# 	}
+	# 	mutually_exclusive = {
+	# 		focus = USB_god_in_the_machine
+	# 	}
+	# 	select_effect = {
+	# 		hidden_effect = {
+	# 			country_event = {
+	# 				id = bdnspch.102
+	# 				days = 14
+	# 			}
+	# 		}
+	# 	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = USB_union_forever_tt
+	# 		hidden_effect = {
+	# 			country_event = {
+	# 				id = usb.76
+	# 			}
+	# 			#Bidens successor
+	# 		}
+	# 	}
+	# }
 	focus = {
 		id = USB_america_the_beautiful
 		icon = GFX_focus_USB_america_the_beautiful
 		x = 2
-		y = 11
+		y = 7
 		cost = 10
 		cancelable = no
 		relative_position_id = USB_rebirth
@@ -11738,18 +11745,12 @@ focus_tree = {
 			base = 50
 		}
 		available = {
-			has_war = no
-			if = {
-				limit = {
-					has_country_flag = USB_caligula_ai_uprising_flag
-				}
-				has_country_flag = USB_ai_stable_flag
+			PRC = {
+				is_in_faction = yes
 			}
 		}
 		prerequisite = {
-			focus = USB_the_union_forever
-			focus = USB_national_awakening
-			focus = USB_god_in_the_machine
+			focus = USB_saint_of_sanity
 		}
 		select_effect = {
 			hidden_effect = {
@@ -11799,7 +11800,253 @@ focus_tree = {
 			#add_nuclear_bombs = 700
 		}
 	}
-	
+	# 2. 趁手工具
+	focus = {
+		id = USB_chenshou_gongju
+		icon = GFX_focus_USB_saint_of_sanity
+		prerequisite = { focus = USB_america_the_beautiful }
+		relative_position_id = USB_america_the_beautiful
+		x = -1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# 3. 恐惧式生产
+	focus = {
+		id = USB_kongjushi_shengchan
+		icon = GFX_focus_USB_the_visible_hand
+		prerequisite = { focus = USB_america_the_beautiful }
+		relative_position_id = USB_america_the_beautiful
+		x = 0
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_offscreen_civ_factories = 2
+		}
+	}
+
+	# 4. 远洋支点
+	focus = {
+		id = USB_yuanyang_zhidian
+		icon = GFX_focus_USB_perpetual_peacekeeping
+		prerequisite = { focus = USB_america_the_beautiful }
+		relative_position_id = USB_america_the_beautiful
+		x = 1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# 5. 只需忠诚...
+	focus = {
+		id = USB_zhixu_zhongcheng
+		icon = GFX_focus_USB_investigate_the_inner_party
+		prerequisite = { focus = USB_chenshou_gongju }
+		relative_position_id = USB_chenshou_gongju
+		x = -1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	# 6. 花言巧语...
+	focus = {
+		id = USB_huayan_qiaoyu
+		icon = GFX_focus_USB_the_proud_do_not_endure
+		prerequisite = { focus = USB_yuanyang_zhidian }
+		relative_position_id = USB_yuanyang_zhidian
+		x = 1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# 7. 引爆火药桶
+	focus = {
+		id = USB_yinbao_huoyaotong
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_zhixu_zhongcheng }
+		prerequisite = { focus = USB_kongjushi_shengchan }
+		prerequisite = { focus = USB_huayan_qiaoyu }
+		relative_position_id = USB_kongjushi_shengchan
+		x = 0
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.10
+		}
+	}
+
+	# 8. 全知，全能
+	focus = {
+		id = USB_quanzhi_quanneng
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_yinbao_huoyaotong }
+		relative_position_id = USB_yinbao_huoyaotong
+		x = -4
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# 9. 自杀式袭击
+	focus = {
+		id = USB_zishashi_xiji
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_yinbao_huoyaotong }
+		relative_position_id = USB_yinbao_huoyaotong
+		x = -2
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 10. 散播恐惧
+	focus = {
+		id = USB_sanbo_kongju
+		icon = GFX_focus_USB_arbitrary_terror
+		prerequisite = { focus = USB_yinbao_huoyaotong }
+		relative_position_id = USB_yinbao_huoyaotong
+		x = 0
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 11. 深水炸弹
+	focus = {
+		id = USB_shenshui_zhadan
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_yinbao_huoyaotong }
+		relative_position_id = USB_yinbao_huoyaotong
+		x = 2
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 12. 夜幕轰炸
+	focus = {
+		id = USB_yemu_hongzha
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_yinbao_huoyaotong }
+		relative_position_id = USB_yinbao_huoyaotong
+		x = 4
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 13. 系统偏差
+	focus = {
+		id = USB_xitong_piancha
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_quanzhi_quanneng }
+		prerequisite = { focus = USB_zishashi_xiji }
+		prerequisite = { focus = USB_sanbo_kongju }
+		mutually_exclusive = { focus = USB_zhongyan_zhi_sheng }
+		relative_position_id = USB_zishashi_xiji
+		x = 0
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# 14. 终焉之胜
+	focus = {
+		id = USB_zhongyan_zhi_sheng
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_sanbo_kongju }
+		prerequisite = { focus = USB_shenshui_zhadan }
+		prerequisite = { focus = USB_yemu_hongzha }
+		mutually_exclusive = { focus = USB_xitong_piancha }
+		relative_position_id = USB_shenshui_zhadan
+		x = 0
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.10
+		}
+	}
+
+	# 15. 死亡行军
+	focus = {
+		id = USB_siwang_xingjun
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_xitong_piancha }
+		relative_position_id = USB_xitong_piancha
+		x = -1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 16. 染色原野
+	focus = {
+		id = USB_ranse_yuanye
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_xitong_piancha focus = USB_zhongyan_zhi_sheng }
+		relative_position_id = USB_yinbao_huoyaotong
+		x = 0
+		y = 4
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 17. 毁灭行军
+	focus = {
+		id = USB_huimie_xingjun
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_zhongyan_zhi_sheng }
+		relative_position_id = USB_zhongyan_zhi_sheng
+		x = 1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	# 18. 世界依旧美丽？
+	focus = {
+		id = USB_shijie_yijiu_meili
+		icon = GFX_goal_unknown
+		prerequisite = { focus = USB_siwang_xingjun focus = USB_huimie_xingjun }
+		prerequisite = { focus = USB_ranse_yuanye }
+		relative_position_id = USB_ranse_yuanye
+		x = 0
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.10
+		}
+	}
 	
 	
 	#NSS
