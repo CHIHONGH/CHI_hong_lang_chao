@@ -11501,339 +11501,6 @@ USB_congressional_factions_caligula_category = {
 			country_event = bdnspch.100
 		}
 	}
-	USB_ban_orthodoxy_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		available = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 21
-		days_re_enable = 21
-		cancel_if_not_visible = yes
-		cost = 50
-		modifier = {
-			political_power_cost = 0.1
-		}
-		remove_effect = {
-			SOV = {
-				add_manpower = -10000
-				add_stability = -0.05
-				add_war_support = -0.05
-			}
-			USB = {
-				set_temp_variable = {
-					var = academic_development_var_temp
-					value = 0.03
-				}
-				add_academic_development = yes
-			}
-		}
-	}
-	USB_neo_marshall_plan_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		available = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		days_re_enable = 28
-		cancel_if_not_visible = yes
-		cost = 75
-		complete_effect = {
-			GER = {
-				set_temp_variable = {
-					var = debt_var_temp
-					value = 50
-				}
-				add_debt = yes
-			}
-			FRA = {
-				set_temp_variable = {
-					var = debt_var_temp
-					value = 50
-				}
-				add_debt = yes
-			}
-			random_state = {
-				limit = {
-					OR = {
-						is_core_of = GER
-						is_core_of = FRA
-					}
-					industrial_complex > 1
-				}
-				remove_building = {
-					type = industrial_complex
-					level = 2
-				}
-			}
-			random_state = {
-				limit = {
-					OR = {
-						is_core_of = GER
-						is_core_of = FRA
-					}
-					industrial_complex > 1
-				}
-				remove_building = {
-					type = industrial_complex
-					level = 2
-				}
-			}
-			random_state = {
-				limit = {
-					OR = {
-						is_core_of = GER
-						is_core_of = FRA
-					}
-					industrial_complex > 1
-				}
-				remove_building = {
-					type = industrial_complex
-					level = 2
-				}
-			}
-		}
-		remove_effect = {
-			USB = {
-				set_temp_variable = {
-					var = debt_var_temp
-					value = -100
-				}
-				add_debt = yes
-			}
-			random_state = {
-				limit = {
-					is_core_of = USB
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = USB
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = USB
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-	}
-	USB_chinese_exclusion_act_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		available = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		days_re_enable = 28
-		cancel_if_not_visible = yes
-		cost = 50
-		complete_effect = {
-			random_state = {
-				limit = {
-					OR = {
-						USA_is_washington_state = yes
-						USA_is_oregon_state = yes
-						USA_is_california_state = yes
-					}
-				}
-				add_manpower = -5000
-			}
-			random_state = {
-				limit = {
-					OR = {
-						USA_is_washington_state = yes
-						USA_is_oregon_state = yes
-						USA_is_california_state = yes
-					}
-				}
-				add_manpower = -5000
-			}
-			random_state = {
-				limit = {
-					OR = {
-						USA_is_washington_state = yes
-						USA_is_oregon_state = yes
-						USA_is_california_state = yes
-					}
-				}
-				add_manpower = -5000
-			}
-		}
-		remove_effect = {
-			PRC = {
-				add_political_power = -50
-				add_stability = -0.05
-			}
-			random_state = {
-				limit = {
-					is_core_of = PRC
-				}
-				add_manpower = 5000
-			}
-			random_state = {
-				limit = {
-					is_core_of = PRC
-				}
-				add_manpower = 5000
-			}
-			random_state = {
-				limit = {
-					is_core_of = PRC
-				}
-				add_manpower = 5000
-			}
-			set_temp_variable = {
-				var = income_var_temp
-				value = 40
-			}
-			add_income = yes
-		}
-	}
-	USB_factories_for_claims_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_enemies_of_america
-			check_variable = {
-				USB_caligula_japan_aid_var < 7
-			}
-		}
-		available = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		days_re_enable = 7
-		cancel_if_not_visible = yes
-		cost = 25
-		remove_effect = {
-			JAP = {
-				add_nuclear_bombs = 1
-			}
-			hidden_effect = {
-				add_to_variable = {
-					var = USB_caligula_japan_aid_var
-					value = 1
-				}
-			}
-		}
-	}
-	USB_utilize_the_aid_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_enemies_of_america
-			check_variable = {
-				USB_caligula_japan_aid_var > 6
-			}
-		}
-		available = {
-			has_completed_focus = USB_enemies_of_america
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		fire_only_once = yes
-		cancel_if_not_visible = yes
-		cost = 100
-		remove_effect = {
-			hidden_effect = {
-				sound_effect = siren_sound_effect
-				every_country = {
-					goto_province = 1182
-				}
-				launch_nuke = {
-					province = 9950
-					controller = JAP
-					use_nuke = yes
-				}
-				launch_nuke = {
-					province = 1092
-					controller = JAP
-					use_nuke = yes
-				}
-				launch_nuke = {
-					province = 7072
-					controller = JAP
-					use_nuke = yes
-				}
-				launch_nuke = {
-					province = 11960
-					controller = JAP
-					use_nuke = yes
-				}
-				launch_nuke = {
-					province = 10125
-					controller = JAP
-					use_nuke = yes
-				}
-				launch_nuke = {
-					province = 1182
-					controller = JAP
-					use_nuke = yes
-				}
-				launch_nuke = {
-					province = 7169
-					controller = JAP
-					use_nuke = yes
-				}
-				JAP = {
-					add_nuclear_bombs = -7
-				}
-			}
-		}
-	}
 	#USB_claim_the_cascadian_bioregion_decision
 	USB_claim_the_natural_borders_of_new_england_decision = {
 		icon = generic_political_discourse
@@ -11841,10 +11508,10 @@ USB_congressional_factions_caligula_category = {
 			original_tag = USB
 		}
 		visible = {
-			has_completed_focus = USB_america_dreaming
+			has_completed_focus = USB_yuanyang_zhidian
 		}
 		available = {
-			has_completed_focus = USB_america_dreaming
+			has_completed_focus = USB_yuanyang_zhidian
 		}
 		ai_will_do = {
 			base = 2
@@ -11855,6 +11522,12 @@ USB_congressional_factions_caligula_category = {
 		cost = 50
 		remove_effect = {
 			#TODO CORES ON MARITIME PROVINCES
+			hidden_effect = {
+				CAN = {
+					add_ideas = CAN_just_fucking_surrender_idea
+				}
+			}
+		
 			create_wargoal = {
 				type = annex_everything
 				target = CAN
@@ -11871,10 +11544,10 @@ USB_congressional_factions_caligula_category = {
 			original_tag = USB
 		}
 		visible = {
-			has_completed_focus = USB_america_dreaming
+			has_completed_focus = USB_yuanyang_zhidian
 		}
 		available = {
-			has_completed_focus = USB_america_dreaming
+			has_completed_focus = USB_yuanyang_zhidian
 		}
 		ai_will_do = {
 			base = 2
@@ -11883,6 +11556,60 @@ USB_congressional_factions_caligula_category = {
 		fire_only_once = yes
 		cancel_if_not_visible = yes
 		cost = 50
+		complete_effect = {
+			if = {
+				limit = {
+					MEX = {
+						has_country_flag = MEX_mexican_unifier_flag
+					}
+				}
+				MEX = {
+					add_ai_strategy = {
+						type = prepare_for_war
+						id = USB
+						value = 1000
+					}
+					add_ai_strategy = {
+						type = force_concentration_front_factor
+						tag = USB
+						value = 100
+					}
+					add_ai_strategy = {
+						type = front_unit_request
+						country_trigger = {
+							original_tag = USB	
+						}
+						value = 100
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ZAP = {
+						has_country_flag = MEX_mexican_unifier_flag
+					}
+				}
+				ZAP = {
+					add_ai_strategy = {
+						type = prepare_for_war
+						id = USB
+						value = 1000
+					}
+					add_ai_strategy = {
+						type = force_concentration_front_factor
+						tag = USB
+						value = 100
+					}
+					add_ai_strategy = {
+						type = front_unit_request
+						country_trigger = {
+							original_tag = USB	
+						}
+						value = 100
+					}
+				}
+			}
+		}
 		remove_effect = {
 			every_other_country = {
 				limit = {
@@ -11907,117 +11634,117 @@ USB_congressional_factions_caligula_category = {
 			}
 		}
 	}
-	USB_secure_our_front_yard_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_america_dreaming
-		}
-		available = {
-			has_completed_focus = USB_america_dreaming
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		fire_only_once = yes
-		cancel_if_not_visible = yes
-		cost = 50
-		remove_effect = {
-			create_wargoal = {
-				type = annex_everything
-				target = NIC
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = ELS
-			}
-		}
-	}
-	USB_rule_by_permission_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			always = no
-			has_completed_focus = USB_america_dreaming
-		}
-		available = {
-			has_completed_focus = USB_america_dreaming
-		}
-		targets = {
-			COL
-			VEN
-			BRA
-			PRU
-			ECU
-			ARG
-			CHL
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		fire_only_once = yes
-		cancel_if_not_visible = yes
-		cost = 50
-		remove_effect = {
-			random_list = {
-				50 = {
-					puppet = FROM
-					FROM = {
-						set_politics = {
-							ruling_party = nationalist
-			    			last_election = "2022.04.10"
-							election_frequency = 60
-							elections_allowed = yes
-						}
-						create_country_leader = {
-							name = "Agent"
-							picture = "gfx/Leaders/AGENT/Agent_leader.png"
-							ideology = purification_administration
-							traits = {
-							}
-						}
-					}
-				}
-				50 = {
-					create_wargoal = {
-						type = annex_everything
-						target = FROM
-					}
-				}
-			}
-		}
-	}
-	USB_reclaim_liberia_decision = {
-		icon = generic_political_discourse
-		allowed = {
-			original_tag = USB
-		}
-		visible = {
-			has_completed_focus = USB_america_dreaming
-		}
-		available = {
-			has_completed_focus = USB_america_dreaming
-		}
-		ai_will_do = {
-			base = 2
-		}
-		days_remove = 14
-		fire_only_once = yes
-		cancel_if_not_visible = yes
-		cost = 50
-		remove_effect = {
-			create_wargoal = {
-				type = annex_everything
-				target = LIB
-			}
-		}
-	}
+	# USB_secure_our_front_yard_decision = {
+	# 	icon = generic_political_discourse
+	# 	allowed = {
+	# 		original_tag = USB
+	# 	}
+	# 	visible = {
+	# 		has_completed_focus = USB_yuanyang_zhidian
+	# 	}
+	# 	available = {
+	# 		has_completed_focus = USB_yuanyang_zhidian
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 2
+	# 	}
+	# 	days_remove = 14
+	# 	fire_only_once = yes
+	# 	cancel_if_not_visible = yes
+	# 	cost = 50
+	# 	remove_effect = {
+	# 		create_wargoal = {
+	# 			type = annex_everything
+	# 			target = NIC
+	# 		}
+	# 		create_wargoal = {
+	# 			type = annex_everything
+	# 			target = ELS
+	# 		}
+	# 	}
+	# }
+	# USB_rule_by_permission_decision = {
+	# 	icon = generic_political_discourse
+	# 	allowed = {
+	# 		original_tag = USB
+	# 	}
+	# 	visible = {
+	# 		always = no
+	# 		has_completed_focus = USB_yuanyang_zhidian
+	# 	}
+	# 	available = {
+	# 		has_completed_focus = USB_yuanyang_zhidian
+	# 	}
+	# 	targets = {
+	# 		COL
+	# 		VEN
+	# 		BRA
+	# 		PRU
+	# 		ECU
+	# 		ARG
+	# 		CHL
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 2
+	# 	}
+	# 	days_remove = 14
+	# 	fire_only_once = yes
+	# 	cancel_if_not_visible = yes
+	# 	cost = 50
+	# 	remove_effect = {
+	# 		random_list = {
+	# 			50 = {
+	# 				puppet = FROM
+	# 				FROM = {
+	# 					set_politics = {
+	# 						ruling_party = nationalist
+	# 		    			last_election = "2022.04.10"
+	# 						election_frequency = 60
+	# 						elections_allowed = yes
+	# 					}
+	# 					create_country_leader = {
+	# 						name = "Agent"
+	# 						picture = "gfx/Leaders/AGENT/Agent_leader.png"
+	# 						ideology = purification_administration
+	# 						traits = {
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 			50 = {
+	# 				create_wargoal = {
+	# 					type = annex_everything
+	# 					target = FROM
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# USB_reclaim_liberia_decision = {
+	# 	icon = generic_political_discourse
+	# 	allowed = {
+	# 		original_tag = USB
+	# 	}
+	# 	visible = {
+	# 		has_completed_focus = USB_yuanyang_zhidian
+	# 	}
+	# 	available = {
+	# 		has_completed_focus = USB_yuanyang_zhidian
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 2
+	# 	}
+	# 	days_remove = 14
+	# 	fire_only_once = yes
+	# 	cancel_if_not_visible = yes
+	# 	cost = 50
+	# 	remove_effect = {
+	# 		create_wargoal = {
+	# 			type = annex_everything
+	# 			target = LIB
+	# 		}
+	# 	}
+	# }
 	USB_party_doctrine_mission = {
 		icon = GFX_FRA_Army_Demands
 		is_good = yes

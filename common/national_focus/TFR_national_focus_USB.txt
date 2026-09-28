@@ -10850,6 +10850,11 @@ focus_tree = {
 			has_completed_focus = USB_the_end_of_history
 		}
 		completion_reward = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.15
+			}
+			USA_add_reconstruction_progress = yes
 			if = {
 				limit = {
 					has_idea = USB_eternity_idea
@@ -11766,6 +11771,11 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.25
+			}
+			USA_add_reconstruction_progress = yes
 			if = {
 				limit = {
 					has_completed_focus = USB_god_in_the_machine
@@ -11803,14 +11813,22 @@ focus_tree = {
 	# 2. 趁手工具
 	focus = {
 		id = USB_chenshou_gongju
-		icon = GFX_focus_USB_saint_of_sanity
+		icon = GFX_focus_USB_presidential_economics
 		prerequisite = { focus = USB_america_the_beautiful }
 		relative_position_id = USB_america_the_beautiful
 		x = -1
 		y = 1
 		cost = 10
+		available = {
+			JAP = {
+				is_faction_leader = yes
+			}
+		}
 		completion_reward = {
 			add_political_power = 50
+			JAP = {
+				add_to_faction = USB
+			}
 		}
 	}
 
@@ -11824,7 +11842,15 @@ focus_tree = {
 		y = 2
 		cost = 10
 		completion_reward = {
-			add_offscreen_civ_factories = 2
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.25
+			}
+			USA_add_reconstruction_progress = yes
 		}
 	}
 
@@ -11852,7 +11878,12 @@ focus_tree = {
 		y = 1
 		cost = 10
 		completion_reward = {
-			add_stability = 0.05
+			add_war_support = 0.05
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.25
+			}
+			USA_add_reconstruction_progress = yes
 		}
 	}
 
@@ -11865,8 +11896,12 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 10
+		available = {
+			is_in_faction_with = JAP
+		}
 		completion_reward = {
 			add_political_power = 50
+			set_faction_leader = yes
 		}
 	}
 
@@ -11874,6 +11909,11 @@ focus_tree = {
 	focus = {
 		id = USB_yinbao_huoyaotong
 		icon = GFX_goal_unknown
+		available = {
+			PRK = {
+				has_war = yes
+			}
+		}
 		prerequisite = { focus = USB_zhixu_zhongcheng }
 		prerequisite = { focus = USB_kongjushi_shengchan }
 		prerequisite = { focus = USB_huayan_qiaoyu }
@@ -11889,7 +11929,7 @@ focus_tree = {
 	# 8. 全知，全能
 	focus = {
 		id = USB_quanzhi_quanneng
-		icon = GFX_goal_unknown
+		icon = GFX_focus_USB_god_in_the_machine
 		prerequisite = { focus = USB_yinbao_huoyaotong }
 		relative_position_id = USB_yinbao_huoyaotong
 		x = -4
@@ -11897,6 +11937,49 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			add_political_power = 50
+			add_country_leader_trait = USB_brainiac_maniac
+			JAP = {
+				create_country_leader = {
+					name = JAP_sanae_takaichi_hog
+					picture = "gfx/leaders/USB/JAP_sanae_machine.png"
+					expire = "1.1.1.1"
+					ideology = purification_administration
+					traits = {
+						USB_brainiac_maniac
+					}
+				}
+				set_politics = {
+					ruling_party = nationalist
+					last_election = "2022.04.10"
+					election_frequency = 60
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.25
+				}
+			}
+			AST = {
+				create_country_leader = {
+					name = AST_pauline_hanson
+					picture = "gfx/leaders/USB/AST_female_machine.png"
+					expire = "1.1.1.1"
+					ideology = purification_administration
+					traits = {
+						USB_brainiac_maniac
+					}
+				}
+				set_politics = {
+					ruling_party = nationalist
+					last_election = "2022.04.10"
+					election_frequency = 60
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.25
+				}
+			}
 		}
 	}
 
@@ -11910,7 +11993,74 @@ focus_tree = {
 		y = 1
 		cost = 10
 		completion_reward = {
-			add_war_support = 0.05
+			add_manpower = -10000
+			PRC = {
+				random_owned_controlled_state = {
+					limit = {
+						anti_air_building < 2
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 1
+					}	
+				}
+				random_owned_controlled_state = {
+					limit = {
+						anti_air_building < 2
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 1
+					}	
+				}
+				random_owned_controlled_state = {
+					limit = {
+						anti_air_building < 2
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 1
+					}	
+				}
+				random_owned_controlled_state = {
+					limit = {
+						anti_air_building < 2
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 1
+					}	
+				}
+				random_owned_controlled_state = {
+					limit = {
+						anti_air_building < 2
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 1
+					}	
+				}
+			}
 		}
 	}
 
@@ -11924,7 +12074,9 @@ focus_tree = {
 		y = 2
 		cost = 10
 		completion_reward = {
-			add_war_support = 0.05
+			PRC = {
+				add_war_support = -0.05
+			}
 		}
 	}
 
@@ -11938,7 +12090,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		completion_reward = {
-			add_war_support = 0.05
+			PRC = {
+
+			}
 		}
 	}
 
@@ -11959,7 +12113,7 @@ focus_tree = {
 	# 13. 系统偏差
 	focus = {
 		id = USB_xitong_piancha
-		icon = GFX_goal_unknown
+		icon = GFX_focus_USB_techno_supremacy
 		prerequisite = { focus = USB_quanzhi_quanneng }
 		prerequisite = { focus = USB_zishashi_xiji }
 		prerequisite = { focus = USB_sanbo_kongju }
@@ -11969,14 +12123,17 @@ focus_tree = {
 		y = 2
 		cost = 10
 		completion_reward = {
-			add_political_power = 50
+			every_enemy_country = {
+				add_stability = -0.1
+				add_political_power = -100
+			}
 		}
 	}
 
 	# 14. 终焉之胜
 	focus = {
 		id = USB_zhongyan_zhi_sheng
-		icon = GFX_goal_unknown
+		icon = GFX_focus_USB_nothing_but_slaughter
 		prerequisite = { focus = USB_sanbo_kongju }
 		prerequisite = { focus = USB_shenshui_zhadan }
 		prerequisite = { focus = USB_yemu_hongzha }
