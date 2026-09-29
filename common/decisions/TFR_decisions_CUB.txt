@@ -379,14 +379,53 @@ great_asian_war_decisions = {
 					}
 				}
 			}
-			PTF = {
-				OR = {
-					surrender_progress > 0.15
-					NOT = {
-						has_war_with = PRC
+			if = {
+				limit = {
+					PTF = {
+						has_country_flag = USA_unifier_flag
 					}
 				}
-				
+				PTF = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
+			}
+			else_if = {
+				limit = {
+					USB = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				USB = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
+			}
+			else_if = {
+				limit = {
+					USC = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				USC = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
 			}
 		}
 		days_mission_timeout = 999
@@ -440,18 +479,51 @@ great_asian_war_decisions = {
 				white_peace = PRC
 				dismantle_faction = yes
 			}
-			every_country = {
+			if = {
 				limit = {
-					has_war_with = PTF
+					PRC = {
+						has_war_with = PTF
+					}
 				}
-				white_peace = PTF
+				every_country = {
+					limit = {
+						has_war_with = PTF
+					}
+					white_peace = PTF
+				}
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_war_with = USB
+					}
+				}
+				every_country = {
+					limit = {
+						has_war_with = USB
+					}
+					white_peace = USB
+				}
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_war_with = USC
+					}
+				}
+				every_country = {
+					limit = {
+						has_war_with = USC
+					}
+					white_peace = USC
+				}
 			}
 			PRC_PTF_gaw = yes
 			PRC_chinas_victory_in_the_gaw_nl = yes
-			news_event = {
-				id = prcs.3120
-				days = 0
-			}
+			# news_event = {
+			# 	id = prcs.3120
+			# 	days = 0
+			# }
 		}
 	}
 }

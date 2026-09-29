@@ -13366,14 +13366,53 @@ PRC_great_asian_war = {
 					}
 				}
 			}
-			PTF = {
-				OR = {
-					surrender_progress > 0.15
-					NOT = {
-						has_war_with = PRC
+			if = {
+				limit = {
+					PTF = {
+						has_country_flag = USA_unifier_flag
 					}
 				}
-				
+				PTF = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
+			}
+			else_if = {
+				limit = {
+					USB = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				USB = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
+			}
+			else_if = {
+				limit = {
+					USC = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				USC = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
 			}
 		}
 		days_mission_timeout = 200
@@ -13436,11 +13475,44 @@ PRC_great_asian_war = {
 					white_peace = PRC
 					dismantle_faction = yes
 				}
-				every_country = {
+				if = {
 					limit = {
-						has_war_with = PTF
+						PTF = {
+							has_country_flag = USA_unifier_flag
+						}
 					}
-					white_peace = PTF
+					every_country = {
+						limit = {
+							has_war_with = PTF
+						}
+						white_peace = PTF
+					}
+				}
+				if = {
+					limit = {
+						USB = {
+							has_country_flag = USA_unifier_flag
+						}
+					}
+					every_country = {
+						limit = {
+							has_war_with = USB
+						}
+						white_peace = USB
+					}
+				}
+				if = {
+					limit = {
+						USC = {
+							has_country_flag = USA_unifier_flag
+						}
+					}
+					every_country = {
+						limit = {
+							has_war_with = USC
+						}
+						white_peace = USC
+					}
 				}
 				news_event = {
 					id = prcs.3120

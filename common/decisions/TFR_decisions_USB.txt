@@ -13142,7 +13142,7 @@ USB_congressional_factions_category = {
 			USB_has_influence_neo_less_than = yes
 		}
 		ai_will_do = {
-			base = 2
+			base = 10
 		}
 		cost = 20
 		days_remove = 35
@@ -13248,7 +13248,7 @@ USB_congressional_factions_category = {
 			USB_has_influence_con_less_than = yes
 		}
 		ai_will_do = {
-			base = 2
+			base = 5
 		}
 		cost = 20
 		days_remove = 35
@@ -15278,7 +15278,23 @@ USB_appalachain_insurgency = {
 		available = {
 		}
 		ai_will_do = {
-			base = 2
+			base = 1
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = The_Biden_Resign
+					option = The_Biden_Resign_All_Known
+				}
+			}
+			modifier = {
+				add = 10
+				NOT = {
+					has_game_rule = {
+						rule = The_Biden_Resign
+						option = The_Biden_Resign_All_Known
+					}
+				}
+			}
 		}
 		state_target = yes
 		days_remove = 14

@@ -107,6 +107,9 @@ country_event = {
 
 	trigger = {
 		tag = PTF
+		NOT = {
+			has_game_rule = { rule = The_USA_civil_war_winner option = USB_win}
+		}
 	}
 
 	immediate = {
@@ -182,5 +185,74 @@ country_event = {
 			PRC_hidden_idea
 			agaricus_sinodeliciosus
 		}
+	}
+}
+
+# ==================== USB 难度激活（难度选择已移至游戏规则，本事件由规则侧接线触发） ====================
+country_event = {
+	id = red_dawn_guide.7
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USB
+		NOT = {
+			has_game_rule = { rule = The_USA_civil_war_winner option = PTF_win}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Baby_Mode } }
+			add_ideas = {
+				USB_Fascist_military_revolution_II_idea
+				USB_Counter_revolutionary_center_II_idea
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Simple_Mode } }
+			add_ideas = {
+				USB_Fascist_military_revolution_I_idea
+				USB_Counter_revolutionary_center_I_idea
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Normal_Mode } }
+			add_ideas = {
+				USB_Fascist_military_revolution_I_idea
+				USB_Counter_revolutionary_center_I_idea
+				PTF_Anti_communist_fortress_idea
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Hard_Mode } }
+			add_ideas = {
+				USB_Fascist_military_revolution_II_idea
+				USB_Counter_revolutionary_center_II_idea
+				PTF_Anti_communist_fortress_idea
+			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
+		}
+		if = {
+			limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Extremely_Hard_Mode } }
+			add_ideas = {
+				USB_Fascist_military_revolution_III_idea
+				USB_Counter_revolutionary_center_III_idea
+				PTF_Anti_communist_fortress_idea
+				PTF_End_of_communism_idea
+			}
+			set_technology = {
+				base_cruise_antiship_missile = 1
+				improved_cruise_antiship_missile = 1
+				ASBM_launcher = 1
+				ship_super_deck = 1
+			}
+		}
+		set_technology = { tide_of_iron = 1 }
 	}
 }

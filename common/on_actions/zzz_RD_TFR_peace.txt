@@ -805,6 +805,65 @@ on_actions = {
                     PRC_PTF_gaw = yes
                     set_global_flag = skip_default_capitulation
                 }
+
+                # PRC kill USB
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = USB
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = USB
+                    }
+                    PRC = {
+                        remove_from_faction = USB
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = USB
+                        }
+                        white_peace = USB
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
+                # PRC kill USC
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = USC
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = USC
+                    }
+                    PRC = {
+                        remove_from_faction = USC
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = USC
+                        }
+                        white_peace = USC
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
                 if = {
                     # PRT kill SIA
                     limit = {

@@ -11547,16 +11547,37 @@ JAP_great_asian_war = {
 			news_event = jap.1001
 			hidden_effect = {
 				add_ideas = JAP_balance_sheet
-				PTF = {
-					if = {
-						limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
-						remove_ideas = {
-							PTF_Fascist_military_revolution_I_idea
-							PTF_Counter_revolutionary_center_I_idea
-						}
+				if = {
+					limit = {
+						is_in_faction_with = PTF
 					}
-					add_ideas = PTF_balance_sheet
+					PTF = {
+						if = {
+							limit = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode } }
+							remove_ideas = {
+								PTF_Fascist_military_revolution_I_idea
+								PTF_Counter_revolutionary_center_I_idea
+							}
+						}
+						add_ideas = PTF_balance_sheet
+					}
 				}
+				if = {
+					limit = {
+						is_in_faction_with = USB
+					}
+					USB = {
+						if = {
+							limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Simple_Mode } }
+							remove_ideas = {
+								USB_Fascist_military_revolution_I_idea
+								USB_Counter_revolutionary_center_I_idea
+							}
+						}
+						add_ideas = PTF_balance_sheet
+					}
+				}
+				
 			}
 		}
 	}

@@ -541,12 +541,46 @@ PRC_chinas_victory_in_the_gaw_nl = {
 }
 
 PRC_PTF_gaw = {
-    PTF = {
-        load_focus_tree = generic_focus
-        add_ideas = GER_national_catastrophe
-        release = MEX
-        release = CAN
+    if = {
+        limit = {
+            PTF = {
+                exists = yes
+            }
+        }
+        PTF = {
+            load_focus_tree = generic_focus
+            add_ideas = GER_national_catastrophe
+            release = MEX
+            release = CAN
+        }
     }
+    else_if = {
+        limit = {
+            USB = {
+                exists = yes
+            }
+        }
+        USB = {
+            load_focus_tree = generic_focus
+            add_ideas = GER_national_catastrophe
+            release = MEX
+            release = CAN
+        }
+    }
+    else_if = {
+        limit = {
+            USC = {
+                exists = yes
+            }
+        }
+        USC = {
+            load_focus_tree = generic_focus
+            add_ideas = GER_national_catastrophe
+            release = MEX
+            release = CAN
+        }
+    }
+
     APA = {
         set_politics = {
             ruling_party = totalitarian_socialist
