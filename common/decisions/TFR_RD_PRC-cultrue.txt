@@ -3205,7 +3205,37 @@ PRC_maoist_politburo_new_left = {
             }
         }
     }
-
+    #   彻底终结分裂主义
+    PRC_end_divisionism = {
+        icon = GFX_PRC_new_left_decision
+        visible = {
+            any_controlled_state = {
+                has_dynamic_modifier = JAP_taiwan_independence_movement
+            }
+        }
+        cost = 35
+        days_remove = 60
+        ai_will_do = {
+            base = 100
+        }
+        fire_only_once = yes
+        modifier = {
+            totalitarian_socialist_drift = 0.02
+            communist_drift = 0.03
+            libertarian_socialist_drift = 0.03
+            social_democrat_drift = 0.02
+        }
+        remove_effect = {
+            every_controlled_state = {
+                limit = {
+                    has_dynamic_modifier = JAP_taiwan_independence_movement
+                }
+                remove_dynamic_modifier = {
+                    modifier = JAP_taiwan_independence_movement
+                }
+            }
+        }
+    }
     # 人大改革：扩大工农兵席位
     PRC_EPS = {
         ai_will_do = {
