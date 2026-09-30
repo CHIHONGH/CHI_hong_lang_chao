@@ -5041,7 +5041,7 @@ USB_securing_north_america_cat = {
 			has_completed_focus = USB_gapigs
 		}
 		targets = {
-			CUB
+			# CUB
 			HAI
 			DOM
 			JAM
@@ -6897,12 +6897,18 @@ USB_securing_north_america_cat = {
 		visible = {
 			tag = USB
 			has_completed_focus = USB_mqwallbreaker
-			has_global_flag = PRC_chinese_gaw_victory_global
+			date > 2030.6.7
 			check_variable = {
 				USB_map_var = 5
 			}
 		}
 		available = {
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
+			}
+			NOT = {
+				has_global_flag = PRC_chinese_gaw_victory_global
+			}
 		}
 		ai_will_do = {
 			base = 1000
@@ -6911,20 +6917,92 @@ USB_securing_north_america_cat = {
 		cost = 50
 		days_remove = 14
 		cancel_if_not_visible = no
+		war_with_on_remove = PRC
+		war_with_on_remove = PRK
+		war_with_on_remove = PAK
 		complete_effect = {
+			set_global_flag = GAW_soon
+			PRC = {
+				country_event = { id = rd_nss.1  days = 1 random_hours = 20 }
+			}
+			RAJ = {
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = PAK
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = consider_weak
+					id = PAK
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = conquer
+					id = PAK
+					value = 1000
+				}
+			}
 		}
 		remove_effect = {
+			PRC_gaw_start = yes
 			set_global_flag = USB_NSS_china_war
+			set_global_flag = pan_asian_war_ongoing
 			USB = {
+				if = {
+					limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Simple_Mode } }
+					remove_ideas = {
+						USB_Fascist_military_revolution_I_idea
+						USB_Counter_revolutionary_center_I_idea
+					}
+				}
+				add_ideas = PTF_balance_sheet
 				declare_war_on = {
 					target = PRC
 					type = topple_government
 				}
 			}
-			hidden_effect = {
-				ZZZ = { activate_mission = cognoscenti_china_war_mission }
-				news_event = nss.127
+			add_to_faction = KOR
+			PRC = {
+				add_to_faction = PRK
 			}
+			PRK = {
+				set_country_flag = eadi_member
+				load_focus_tree	= PRK_focus_tree
+			}
+			KOR = {
+				set_country_flag = pdto_member
+				declare_war_on = {
+					target = PRK
+					type = topple_government
+				}
+			}
+			add_to_war = {
+				targeted_alliance = KOR
+				enemy = PRK
+				hostility_reason = asked_to_join
+			}
+			RAJ = {
+				add_to_war = {
+					targeted_alliance = USB
+					enemy = PRC
+					hostility_reason = asked_to_join
+				}
+				declare_war_on = {
+					target = PAK
+					type = annex_everything
+				}
+			}
+			NAX = {
+				load_focus_tree = NAX_focus
+			}
+			hidden_effect = {
+				news_event = nss.127
+				news_event = { id = news.346 days = 1 random_hours = 12 }
+				news_event = { id = prcs.3121 days = 2 random_hours = 6 }
+			}
+			AST = {
+                add_ideas = AST_just_fucking_surrender_idea
+            }
 		}
 	}
 	USB_nss_hurricane_hong_kong_decision = {
