@@ -3652,12 +3652,12 @@ focus_tree = {
 				has_country_flag = USB_innovationist_enable_flag
 			}
 		}
-		offset = {
-			x = 6
-			trigger = {
-				has_completed_focus = USB_voices_from_above
-			}
-		}
+		# offset = {
+		# 	x = 6
+		# 	trigger = {
+		# 		has_completed_focus = USB_voices_from_above
+		# 	}
+		# }
 		offset = {
 			x = 8
 			y = 0
@@ -5386,12 +5386,12 @@ focus_tree = {
 		prerequisite = {
 			focus = USB_fighting_for_democracy
 		}
-		offset = {
-			x = -8
-			trigger = {
-				has_completed_focus = USB_voices_from_above
-			}
-		}
+		# offset = {
+		# 	x = -8
+		# 	trigger = {
+		# 		has_completed_focus = USB_voices_from_above
+		# 	}
+		# }
 		offset = {
 			x = -8
 			trigger = {
@@ -11828,7 +11828,18 @@ focus_tree = {
 			add_political_power = 50
 			JAP = {
 				add_to_faction = USB
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.1
+				}
+				every_allied_country = {
+					add_popularity = {
+						ideology = nationalist
+						popularity = 0.15
+					}
+				}
 			}
+			
 		}
 	}
 
@@ -11864,7 +11875,10 @@ focus_tree = {
 		y = 1
 		cost = 10
 		completion_reward = {
-			add_political_power = 50
+			add_offsite_building = {
+				type = dockyard
+				level = 10
+			}
 		}
 	}
 
@@ -11883,6 +11897,7 @@ focus_tree = {
 				var = USA_reconstruction_progress_var_temp
 				value = 0.25
 			}
+			add_manpower = 50000
 			USA_add_reconstruction_progress = yes
 		}
 	}
@@ -11902,6 +11917,10 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			set_faction_leader = yes
+			set_temp_variable = {
+				income_var_temp = 500
+			}
+			add_income_with_inflation = yes
 		}
 	}
 
@@ -11914,6 +11933,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
+		bypass = {
+			has_war_with = PRC
+		}
 		prerequisite = { focus = USB_zhixu_zhongcheng }
 		prerequisite = { focus = USB_kongjushi_shengchan }
 		prerequisite = { focus = USB_huayan_qiaoyu }
@@ -11922,6 +11944,17 @@ focus_tree = {
 		y = 1
 		cost = 10
 		completion_reward = {
+			add_war_support = 0.10
+			declare_war_on = {
+				target = PRK
+				type = topple_government
+			}
+			declare_war_on = {
+				target = PRC
+				type = topple_government
+			}
+		}
+		bypass_effect = {
 			add_war_support = 0.10
 		}
 	}
@@ -12075,6 +12108,7 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			PRC = {
+				add_stability = -0.1
 				add_war_support = -0.05
 			}
 		}
@@ -12091,7 +12125,57 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			PRC = {
-
+				add_timed_idea = {
+					idea = USB_spreading_fear_idea
+					days = 150
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				custom_effect_tooltip = on_idea_removal_tt
+				custom_effect_tooltip = generic_skip_one_line_tt
+				effect_tooltip = {
+					random_owned_state = {
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 1
+						}
+						damage_building = {
+							type = arms_factory
+							damage = 1
+						}
+					}
+					random_owned_state = {
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 1
+						}
+						damage_building = {
+							type = arms_factory
+							damage = 1
+						}
+					}
+					random_owned_state = {
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 1
+						}
+						damage_building = {
+							type = arms_factory
+							damage = 1
+						}
+					}
+				}
 			}
 		}
 	}
@@ -12107,6 +12191,57 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			add_war_support = 0.05
+			PRC = {
+				add_timed_idea = {
+					idea = USB_blank_night_sky
+					days = 30
+				}
+				random_owned_state = {
+					limit = {
+						air_base > 2
+					}
+					remove_building = {
+						type = air_base
+						level = 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						air_base > 2
+					}
+					remove_building = {
+						type = air_base
+						level = 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						air_base > 2
+					}
+					damage_building = {
+						type = air_base
+						damage = 2
+					}
+				}
+				random_owned_state = {
+					limit = {
+						air_base > 2
+					}
+					damage_building = {
+						type = air_base
+						damage = 2
+					}
+				}
+				random_owned_state = {
+					limit = {
+						air_base > 2
+					}
+					damage_building = {
+						type = air_base
+						damage = 2
+					}
+				}
+			}
 		}
 	}
 
@@ -12123,7 +12258,10 @@ focus_tree = {
 		y = 2
 		cost = 10
 		completion_reward = {
-			every_enemy_country = {
+			every_country = {
+				limit = {
+					is_in_faction_with = PRC
+				}
 				add_stability = -0.1
 				add_political_power = -100
 			}
@@ -12144,6 +12282,19 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			add_war_support = 0.10
+			add_equipment_to_stockpile = {
+				type = large_plane_airframe_1
+				amount = 100
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_2
+				amount = 100
+			}
+			add_equipment_to_stockpile = {
+				type = attack_helicopter_equipment_1
+				amount = 150
+				producer = PRC
+			}
 		}
 	}
 
@@ -12156,8 +12307,29 @@ focus_tree = {
 		x = -1
 		y = 1
 		cost = 10
+		available = {
+			has_war_with = PRC
+		}
 		completion_reward = {
 			add_war_support = 0.05
+			add_timed_idea = {
+				idea = USB_death_march
+				days = 150
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = RAJ
+						tag = JAP
+						tag = AST
+					}
+					has_war_with = PRC
+				}
+				add_timed_idea = {
+					idea = USB_death_march
+					days = 100
+				}
+			}
 		}
 	}
 
@@ -12170,8 +12342,135 @@ focus_tree = {
 		x = 0
 		y = 4
 		cost = 10
+		available = {
+			has_war_with = PRC
+		}
 		completion_reward = {
 			add_war_support = 0.05
+			PRC = {
+				every_controlled_state = {
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+			if = {
+				limit = {
+					RAJ = {
+						exists = yes
+						has_war_with = PRC
+					}
+				}
+				
+				RAJ = {
+					every_controlled_state = {
+						add_dynamic_modifier = {
+							modifier = USB_dye_the_grass_state_modifier
+							days = 70
+						}
+					}
+					division_template = {
+						name = "Endgame Division"
+						regiments = {
+							modern_armor = {
+								x = 0
+								y = 0
+							}
+							modern_armor = {
+								x = 0
+								y = 1
+							}
+							modern_armor = {
+								x = 0
+								y = 2
+							}
+							mechanized = {
+								x = 0
+								y = 3
+							}
+							mechanized = {
+								x = 0
+								y = 4
+							}
+							modern_armor = {
+								x = 1
+								y = 0
+							}
+							modern_armor = {
+								x = 1
+								y = 1
+							}
+							modern_armor = {
+								x = 1
+								y = 2
+							}
+							light_mechanized = {
+								x = 1
+								y = 3
+							}
+							light_mechanized = {
+								x = 1
+								y = 4
+							}
+							modern_sp_artillery_brigade = {
+								x = 2
+								y = 0
+							}
+							modern_sp_artillery_brigade = {
+								x = 2
+								y = 1
+							}
+							modern_sp_artillery_brigade = {
+								x = 2
+								y = 2
+							}
+							modern_sp_artillery_brigade = {
+								x = 2
+								y = 3
+							}
+							mechanized = {
+								x = 2
+								y = 4
+							}
+							spaa_brigade = {
+								x = 3
+								y = 0
+							}
+						}
+						support = {
+							signal_company = {
+								x = 0
+								y = 0
+							}
+							engineer = {
+								x = 0
+								y = 1
+							}
+						}
+						priority = 120
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"Endgame Division\"  start_experience_factor = 0.75 start_equipment_factor = 1.0"
+							allow_spawning_on_enemy_provs = yes
+							count = 10
+							owner = RAJ
+						}
+					}
+				}
+			}
+			else = {
+				every_state = {
+					limit = {
+						is_core_of = RAJ
+					}
+					add_dynamic_modifier = {
+						modifier = USB_dye_the_grass_state_modifier_1
+						days = 70
+					}
+				}
+			}
+			
 		}
 	}
 
@@ -12184,8 +12483,21 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 10
+		available = {
+			has_war_with = PRC
+		}
 		completion_reward = {
 			add_war_support = 0.05
+			add_timed_idea = {
+				idea = USB_Fascist_military_revolution_I_idea
+				days = 10
+			}
+			every_allied_country = {
+				add_timed_idea = {
+					idea = USB_Fascist_military_revolution_I_idea
+					days = 10
+				}
+			}
 		}
 	}
 
@@ -12196,6 +12508,9 @@ focus_tree = {
 		prerequisite = { focus = USB_siwang_xingjun focus = USB_huimie_xingjun }
 		prerequisite = { focus = USB_ranse_yuanye }
 		relative_position_id = USB_ranse_yuanye
+		available = {
+			has_global_flag = PRC_japanese_gaw_victory_global
+		}
 		x = 0
 		y = 2
 		cost = 10
