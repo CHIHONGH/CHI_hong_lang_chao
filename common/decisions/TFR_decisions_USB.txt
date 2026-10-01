@@ -13017,38 +13017,38 @@ USB_congressional_factions_category = {
 			activate_mission = USB_congressional_session_mission
 		}
 	}
-	USB_civil_unrest_mission = {
-		icon = revolt
-		priority = 9
-		days_mission_timeout = 69
-		is_good = no
-		fixed_random_seed = no
-		allowed = {
-			tag = USB
-		}
-		activation = {
-			always = no
-			has_stability < 0.2
-			USC = { exists = yes }
-			NOT = {
-				has_completed_focus = USB_rebirth
-			}
-		}
-		available = {
-			OR = {
-				NOT = {
-					has_stability < 0.2
-				}
-				USB_has_civil_unrest = no
-			}
-		}
-		timeout_effect = {
-			custom_effect_tooltip = USB_uprising_imminent_tooltip
-			country_event = {
-				id = usb.11
-			}
-		}
-	}
+	# USB_civil_unrest_mission = {
+	# 	icon = revolt
+	# 	priority = 9
+	# 	days_mission_timeout = 69
+	# 	is_good = no
+	# 	fixed_random_seed = no
+	# 	allowed = {
+	# 		tag = USB
+	# 	}
+	# 	activation = {
+	# 		always = no
+	# 		has_stability < 0.2
+	# 		USC = { exists = yes }
+	# 		NOT = {
+	# 			has_completed_focus = USB_rebirth
+	# 		}
+	# 	}
+	# 	available = {
+	# 		OR = {
+	# 			NOT = {
+	# 				has_stability < 0.2
+	# 			}
+	# 			USB_has_civil_unrest = no
+	# 		}
+	# 	}
+	# 	timeout_effect = {
+	# 		custom_effect_tooltip = USB_uprising_imminent_tooltip
+	# 		country_event = {
+	# 			id = usb.11
+	# 		}
+	# 	}
+	# }
 	USB_corporate_influence_mission = {
 		icon = revolt
 		priority = 9
