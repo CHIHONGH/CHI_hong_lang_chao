@@ -8,8 +8,56 @@ country_event = {
     immediate = {
         
     }   
+    timeout_days = 3
     option = {
         name = rd_nss.1.a
+        # 卡里古拉
+        set_country_flag = USB_caligula_enabled
+        focus_unlock = yes
+        ai_chance = {
+            base = 10
+            modifier = {
+                factor = 0
+                has_game_rule = { rule = The_Biden_Resign option = The_Biden_Resign_All_Known }
+            }
+        }
+    }
+    option = {
+        name = rd_nss.1.b
+        # 全知者
+        scoped_play_song = "nonstopviolence"
+        clr_country_flag = USB_wv_insurgency
+        remove_mission = USB_insurgency_mission
+        add_political_power = -150
+        add_ideas = SOM_failed_state
+        retire_character = USB_Warner_Ross_char
+        set_country_flag = USB_anti_government_uprising_flag
+        country_event = {
+            id = nss.0
+            days = 4
+        }
+        if = {
+            limit = {
+                APA = {
+                    NOT = {
+                        has_government = totalitarian_socialist
+                    }
+                }
+            }
+            APA = {
+                country_event = {
+                    id = apla.92
+                    days = 1
+                }
+            }
+        }
+        ai_chance = {
+            base = 10
+            modifier = {
+                factor = 0
+                has_game_rule = { rule = The_Biden_Resign option = The_Biden_Resign_Caligula }
+            }
+        }
         
     }
 }

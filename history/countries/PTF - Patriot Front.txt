@@ -462,10 +462,19 @@ add_ideas = {
 	
 	ZZZ_provisional_government
 }
-add_timed_idea = {
-	idea = PTF_divine_mandate_idea
-	days = 2000
+
+if = {
+	limit = {
+		NOT = {
+			has_game_rule = { rule = The_USA_civil_war_winner option = USB_win }
+		}
+	}
+	add_timed_idea = {
+		idea = PTF_divine_mandate_idea
+		days = 2000
+	}
 }
+
 
 set_party_name = {
 		ideology = totalitarian_socialist 

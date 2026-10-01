@@ -465,5 +465,63 @@ ideas = {
 				out_of_supply_factor = -0.2
 			}
 		}
+
+		USB_divine_mandate_idea = {
+			allowed = {
+				always = yes
+			}
+			cancel = {
+				OR = {
+					has_war_with = MEX
+				}
+			}
+			on_remove = {
+				add_political_power = -100
+				add_stability = -0.10
+				add_war_support = -0.10
+				add_timed_idea = {
+					idea = PTF_war_weariness_idea
+					days = 180
+				}
+			}
+
+			modifier = {
+				army_attack_factor = 1
+				breakthrough_factor = 1
+				army_defence_factor = 1
+				army_org_factor = 0.5
+				land_night_attack = 0.5
+				
+				war_support_factor = 0.5
+				war_stability_factor = 0.5
+
+				industrial_capacity_factory = 2
+			}
+
+			targeted_modifier = {
+				tag = APA
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
+			}
+			targeted_modifier = {
+				tag = CAN
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
+			}
+			targeted_modifier = {
+				tag = PTF
+				attack_bonus_against = 0.25
+				defense_bonus_against = 0.25
+				breakthrough_bonus_against = 0.25
+			}
+			targeted_modifier = {
+				tag = USC
+				attack_bonus_against = 2
+				defense_bonus_against = 2
+				breakthrough_bonus_against = 2
+			}
+		}
     }
 }
