@@ -8,9 +8,24 @@ country_event = {
     immediate = {
         
     }   
-    timeout_days = 3
     option = {
         name = rd_nss.1.a
+        
+    }
+    timeout_days = 3
+    
+}
+country_event = {
+    id = rd_nss.2
+    title = rd_nss.2.t
+    desc = rd_nss.2.d
+    picture = GFX_report_event_generic
+    is_triggered_only = yes
+    immediate = {
+        
+    }
+    option = {
+        name = rd_nss.2.a
         # 卡里古拉
         set_country_flag = USB_caligula_enabled
         focus_unlock = yes
@@ -23,7 +38,7 @@ country_event = {
         }
     }
     option = {
-        name = rd_nss.1.b
+        name = rd_nss.2.b
         # 全知者
         scoped_play_song = "nonstopviolence"
         clr_country_flag = USB_wv_insurgency
@@ -60,18 +75,8 @@ country_event = {
         }
         
     }
-}
-country_event = {
-    id = rd_nss.2
-    title = rd_nss.2.t
-    desc = rd_nss.2.d
-    picture = GFX_report_event_generic
-    is_triggered_only = yes
-    immediate = {
-        
-    }
-    option = {
-        name = rd_nss.2.a
-        
+    after = {
+        remove_mission = USB_insurgency_mission
+        remove_mission = USB_biden_health_timer_mission
     }
 }
