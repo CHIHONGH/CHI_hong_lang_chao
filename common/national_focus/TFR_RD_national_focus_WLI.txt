@@ -123,13 +123,13 @@
 		relative_position_id = WLI_red_flag_flying_high
 		x = 0
 		y = 1
-		cost = 1
+		cost = 10
 		joint_trigger = {
 			is_ally_with = PRC
 		}
 		prerequisite = { focus = WLI_red_flag_flying_high }
 		available = {
-			tag = PRC
+			
 		}
 		completion_reward = {
 			add_political_power = 50
@@ -706,13 +706,15 @@
 		relative_position_id = WLI_red_flag_flying_high
 		x = -10
 		y = 1
-		cost = 1
+		cost = 10
 		prerequisite = {
 			focus = WLI_red_flag_flying_high
 		}
 		available = {
-			tag = PRC
-			has_completed_focus = PRC_nl_WLI_command_line
+			PRC = {
+				has_completed_focus = PRC_nl_WLI_command_line
+			}
+			
 		}
 		joint_trigger = {
 			is_ally_with = PRC
@@ -1361,9 +1363,14 @@
 		}
 		x = 10
 		y = 1
-		cost = 1
+		cost = 10
 		joint_trigger = {
 			is_ally_with = PRC
+		}
+		available = {
+			PRC = {
+				has_completed_focus = nl_PRC_PRC_layout_15th_five_year_plan
+			}
 		}
 		completion_reward = {
 			add_dynamic_modifier = {
