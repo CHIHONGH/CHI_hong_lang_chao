@@ -45,31 +45,7 @@ PRC_export_revolution = {
             set_country_flag = PRC_choose_a_side_flag
         }
         remove_effect = {
-            every_country = {
-                limit = {
-                    OR = {
-                        tag = SOV
-                        tag = FRA
-                        tag = GER
-                    }
-                    OR = {
-                        has_government = totalitarian_socialist
-                        has_government = communist
-                        has_government = libertarian_socialist
-                        has_government = social_democrat
-                    }
-                }
-                if = {
-                    limit = { 
-                        NOT = {
-                            has_idea = PRC_china_supplies
-                        }
-                    }
-                    add_ideas = PRC_china_supplies
-                }
-                add_ideas = PRC_china_trade
-            }
-            add_ideas = PRC_china_trade
+            country_event = prcs.3228
         }
     }
     PRC_armed_neutral = {
@@ -592,6 +568,8 @@ PRC_export_revolution = {
                     leave_faction = yes
                 }
                 LAO = {
+                    clr_country_flag = pdto_member
+                    set_country_flag = eadi_member
                     JAP_leave_PEC = yes
                     set_politics = {
                         ruling_party = communist
@@ -707,6 +685,7 @@ PRC_export_revolution = {
                     load_focus_tree = WLI_tree
                     JAP_leave_PEC = yes
                     set_country_flag = eadi_member
+                    clr_country_flag = pdto_member
                     set_cosmetic_tag = PRC_cam
                     set_party_name = {
                         ideology = communist
@@ -5799,7 +5778,6 @@ PRC_export_revolution = {
 		available = {
 			NOT = {
 				has_war_with = JAP
-				is_ally_with = JAP
 			}
 		}
 		visible = {

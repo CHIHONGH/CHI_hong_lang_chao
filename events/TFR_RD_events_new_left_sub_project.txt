@@ -1131,6 +1131,7 @@ country_event = {
         custom_effect_tooltip = PRC_tfr_nl_china_yongshengyuyongcun_tt
         hidden_effect = {
             complete_national_focus = PRC_nl_red_dawn
+            complete_national_focus = WLI_earth_shaking_heroic_song
         }
     }
 }
@@ -1805,6 +1806,7 @@ country_event = {
         TFR_Country_Closing_Screen_Show = yes
         hidden_effect = {
             complete_national_focus = PRC_nl_red_dawn
+            complete_national_focus = WLI_earth_shaking_heroic_song
         }
     }
 }
@@ -5160,5 +5162,50 @@ country_event = {
             PPRC_ad_drift_var = -0.02
         }
         
+    }
+}
+
+country_event = {
+    id = prcs.3228
+    title = prcs.3228.t
+    desc = prcs.3228.d
+    picture = GFX_PRC_a_meeting
+    is_triggered_only = yes
+    option = {
+        name = prcs.3228.a
+        every_country = {
+            limit = {
+                OR = {
+                    tag = FRA
+                    tag = GER
+                }
+            }
+            if = {
+                limit = { 
+                    NOT = {
+                        has_idea = PRC_china_supplies
+                    }
+                }
+                add_ideas = PRC_china_supplies
+            }
+            add_ideas = PRC_china_trade
+        }
+        add_ideas = PRC_china_trade
+        
+    }
+    option = {
+        name = prcs.3228.b
+        SOV = {
+            if = {
+                limit = { 
+                    NOT = {
+                        has_idea = PRC_china_supplies
+                    }
+                }
+                add_ideas = PRC_china_supplies
+            }
+            add_ideas = PRC_china_trade
+        }
+        add_ideas = PRC_china_trade
     }
 }
