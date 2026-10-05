@@ -144,7 +144,11 @@ shared_focus = {
 	allow_branch = {
 		has_global_flag = USA_american_civil_war_over_global
 		NOT = {
-			has_completed_focus = USB_rebirth
+			OR = {
+				has_completed_focus = USB_rebirth
+				has_completed_focus = USB_rebirth_flag
+				has_country_flag = USB_NSS_flag
+			}
 		}
 	}
 	available = {
