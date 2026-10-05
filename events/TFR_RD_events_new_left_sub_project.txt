@@ -800,18 +800,6 @@ country_event = {
 
 
 country_event = {
-    id = prcs.3228
-    title = prcs.3228.t
-    desc = prcs.3228.d
-
-    is_triggered_only = yes
-    option = {
-        name = prcs.3228.a
-        custom_effect_tooltip = PRC_tfr_nl_china_dangyuanmen_tt
-    }
-}
-
-country_event = {
     id = prcs.3030
     title = prcs.3030.t
     desc = prcs.3030.d
@@ -2671,7 +2659,10 @@ country_event = {
         name = prcs.3141.a
         trigger = {
             PRC = {
-                has_tech = modern_air_defense_systems
+                OR = {
+                    has_tech = engines_3
+                    has_tech = advanced_small_airframe
+                }
                 has_tech = advanced_ballistic_missile
             }
         }
@@ -2686,13 +2677,16 @@ country_event = {
         name = prcs.3141.b
         trigger = {
             NOT = {
-                PRC = {
-                    has_tech = modern_air_defense_systems
-                    has_tech = advanced_ballistic_missile
+                OR = {
+                    has_tech = engines_3
+                    has_tech = advanced_small_airframe
                 }
             }
-            check_variable = {
-                PRC.num_deployed_planes > PTF.num_deployed_planes
+            OR = {
+                has_tech = aa_hmg2
+                check_variable = {
+                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                }
             }
         }
         hidden_effect = {
@@ -2701,7 +2695,18 @@ country_event = {
     }
     option = {
         name = prcs.3141.c
-        
+        trigger = {
+            NOT = {
+                OR = {
+                    has_tech = engines_3
+                    has_tech = advanced_small_airframe
+                    has_tech = aa_hmg2
+                    check_variable = {
+                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    }
+                }
+            }
+        }
         add_to_variable = {
             prcs_nanhai_duigong = -1
         }
