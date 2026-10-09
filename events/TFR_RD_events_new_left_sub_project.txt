@@ -1389,6 +1389,34 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3061.a
+        add_popularity = {
+            ideology = communist
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = libertarian_socialist
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = market_liberal
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = social_liberal
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = conservative
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = authoritarian_democrat
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = nationalist
+            popularity = 0.02
+        }
         hidden_effect = {
             country_event = {
                 id = prcs.3062
@@ -1405,6 +1433,14 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3062.a
+        add_popularity = {
+            ideology = communist
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = libertarian_socialist
+            popularity = 0.02
+        }
         hidden_effect = {
             country_event = {
                 id = prcs.3063
@@ -1421,6 +1457,14 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3063.a
+        add_popularity = {
+            ideology = communist
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = libertarian_socialist
+            popularity = 0.02
+        }
         hidden_effect = {
             country_event = {
                 id = prcs.3064
@@ -1437,6 +1481,14 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3064.a
+        add_popularity = {
+            ideology = communist
+            popularity = 0.02
+        }
+        add_popularity = {
+            ideology = libertarian_socialist
+            popularity = 0.02
+        }
         hidden_effect = {
             country_event = {
                 id = prcs.3065
@@ -1486,6 +1538,7 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3067.a
+        add_political_power = 20
     }
 }
 country_event = {
@@ -1496,6 +1549,7 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3068.a
+        add_political_power = 10
     }
 }
 country_event = {
@@ -2393,6 +2447,10 @@ country_event = {
     picture = GFX_Event_chen_yun
     option = {
         name = prcs.3126.a
+        add_popularity = {
+            ideology = authoritarian_democrat
+            popularity = -0.02
+        }
         country_event = {
             id = prcs.3127
             days = 10
@@ -2408,6 +2466,7 @@ country_event = {
     picture = GFX_Event_past_and_present
     option = {
         name = prcs.3127.a
+        add_political_power = 10
         country_event = {
             id = prcs.3128
             days = 10
@@ -2452,6 +2511,10 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3130.a
+        add_popularity = {
+            ideology = communist
+            popularity = 0.02
+        }
         country_event = {
             id = prcs.3131
             days = 10
@@ -2466,6 +2529,10 @@ country_event = {
     is_triggered_only = yes
     option = {
         name = prcs.3131.a
+        add_popularity = {
+            ideology = libertarian_socialist
+            popularity = 0.02
+        }
     }
 }
 country_event = {
@@ -2597,8 +2664,9 @@ country_event = {
         trigger = {
             PRC = {
                 OR = {
-                    has_tech = fighter_equipment_8
+                    has_tech = advanced_small_airframe
                     has_tech = unmanned_aircraft
+                    has_completed_focus = PLA_KongJunZhuangbei_Fazhan
                     check_variable = {
                         PRC.num_deployed_planes > PTF.num_deployed_planes
                     }
@@ -2625,8 +2693,9 @@ country_event = {
             PRC = {
                 NOT = {
                     OR = {
-                        has_tech = fighter_equipment_8
+                        has_tech = advanced_small_airframe
                         has_tech = unmanned_aircraft
+                        has_completed_focus = PLA_KongJunZhuangbei_Fazhan
                     }
                 } 
             } 
@@ -3696,7 +3765,7 @@ country_event = {
         add_poverty_development = yes
     }
 }
-# ç»³ä¹‹ä»¥æ³•
+# 绳之以法
 country_event = {
     id = prcs.3175
     title = prcs.3175.t
@@ -3707,7 +3776,7 @@ country_event = {
         name = prcs.3175.a
     }
 }
-# è�½åœ°ç”Ÿæ ¹
+# 落地生根
 country_event = {
     id = prcs.3176
     title = prcs.3176.t
@@ -3719,7 +3788,7 @@ country_event = {
     }
 }
 
-# â€œé¥­å›¢â€�
+# 饭团
 country_event = {
     id = prcs.3177
     title = prcs.3177.t
@@ -3731,7 +3800,7 @@ country_event = {
     }
 }
 
-# è¢«äººæ°‘å�šå±€äº†â€¦â€¦ï¼ˆä¸€ï¼‰
+# 被人民做局了……（一）
 country_event = {
     id = pcsr.3178
     title = prcs.3178.t
@@ -3747,7 +3816,7 @@ country_event = {
     }
 }
 
-# è¢«äººæ°‘å�šå±€äº†â€¦â€¦ï¼ˆäºŒï¼‰
+# 被人民做局了……（二）
 country_event = {
     id = prcs.3179
     title = prcs.3179.t
@@ -3759,7 +3828,7 @@ country_event = {
     }
 }
 
-# æ‘†æ‘Šä¸€äº‹
+# 摆摊一事
 country_event = {
     id = prcs.3180
     title = prcs.3180.t
@@ -3771,7 +3840,7 @@ country_event = {
     }
 }
 
-# å¦‚å±¥è–„å†°
+# 如履薄冰
 country_event = {
     id = prcs.3181
     title = prcs.3181.t
@@ -3787,7 +3856,7 @@ country_event = {
     }
 }
 
-# é•¿åˆƒè�½ä¸‹
+# 长刃落下
 country_event = {
     id = prcs.3182
     title = prcs.3182.t
@@ -3799,7 +3868,7 @@ country_event = {
     }
 }
 
-# æ—¥å�‡æ—¥è�½
+# 日升日落
 country_event = {
     id = prcs.3183
     title = prcs.3183.t
@@ -3815,7 +3884,7 @@ country_event = {
     }
 }
 
-# è½¦ä¸Šå¯†è°ˆ
+# 车上密谈
 country_event = {
     id = prcs.3184
     title = prcs.3184.t
@@ -3843,7 +3912,7 @@ country_event = {
     }
 }
 
-# æ�¨æŸ³ä¾�ä¾�
+# 杨柳依依
 country_event = {
     id = prcs.3185
     title = prcs.3185.t
@@ -3872,7 +3941,7 @@ country_event = {
     }
 }
 
-# ç§¦å²­è�‰èŽ½
+# 秦岭草莽
 country_event = {
     id = prcs.3186
     title = prcs.3186.t
@@ -3888,7 +3957,7 @@ country_event = {
     }
 }
 
-# çŽ‰å…°æ ‘ç°Œ
+# 玉兰树簌
 country_event = {
     id = prcs.3187
     title = prcs.3187.t
@@ -3904,7 +3973,7 @@ country_event = {
     }
 }
 
-# æ˜ å±±çº¢é��
+# 映山红遍
 country_event = {
     id = prcs.3188
     title = prcs.3188.t
@@ -3921,7 +3990,7 @@ country_event = {
     }
 }
 
-# å†°å±±ä¸‹çš„æ�¥å®¢
+# 冰山下的来客
 country_event = {
     id = prcs.3189
     title = prcs.3189.t
@@ -3937,7 +4006,7 @@ country_event = {
     }
 }
 
-# å·¥ä½œæŠ¥å‘Š
+# 工作报告
 country_event = {
     id = prcs.3190
     title = prcs.3190.t
@@ -3949,7 +4018,7 @@ country_event = {
     }
 }
 
-# é’ˆé”‹ç›¸å¯¹ï¼ˆä¸€ï¼‰
+# 针锋相对（一）
 country_event = {
     id = prcs.3191
     title = prcs.3191.t
@@ -3965,7 +4034,7 @@ country_event = {
     }
 }
 
-# é’ˆé”‹ç›¸å¯¹ï¼ˆäºŒï¼‰
+# 针锋相对（二）
 country_event = {
     id = prcs.3192
     title = prcs.3192.t
@@ -3981,7 +4050,7 @@ country_event = {
     }
 }
 
-# è½¬æœº
+# 转机
 country_event = {
     id = prcs.3193
     title = prcs.3193.t
@@ -4011,12 +4080,12 @@ country_event = {
     option = {
         name = prcs.3193.c
         add_popularity = {
-	ideology = communist
-	popularity = 0.035
+            ideology = communist
+            popularity = 0.035
         }
         add_popularity = {
-	ideology = libertarian_socialist
-	popularity = 0.035
+            ideology = libertarian_socialist
+            popularity = 0.035
         }
         hidden_effect = {
             country_event = {
@@ -4027,7 +4096,7 @@ country_event = {
     }
 }
 
-# åŠ¡å®žæ”¹é�©
+# 务实改革
 country_event = {
     id = prcs.3194
     title = prcs.3194.t
@@ -4148,7 +4217,7 @@ country_event = {
     }
 }
 
-    # åˆ©å‰‘ï¼Ÿ
+    # 利剑？
     country_event = {
         id = prcs.3195
         title = prcs.3195.t
@@ -4167,7 +4236,7 @@ country_event = {
         }
     }
 
-    # å…¬ä»†ï¼Ÿ
+    # 公仆？
     country_event = {
         id = prcs.3196
         title = prcs.3196.t
@@ -4185,7 +4254,7 @@ country_event = {
         }
     }
 
-    # å¤§ä¼šå�¯å¹•
+    # 大会启幕
     country_event = {
         id = prcs.3197
         title = prcs.3197.t
@@ -4324,7 +4393,7 @@ country_event = {
             }
         }
     }
-    # ä¾¿æ°‘å»ºè®¾
+    # 便民建设
     country_event = {
         id = prcs.3198
         title = prcs.3198.t
@@ -4429,7 +4498,7 @@ country_event = {
         }
     }
 
-    # æž·è�½æ–°ç”Ÿï¼ˆä¸Šï¼‰
+    # 枷落新生（上）
     country_event = {
         id = prcs.3199
         title = prcs.3199.t
@@ -4449,7 +4518,7 @@ country_event = {
         }
     }
 
-    # æž·è�½æ–°ç”Ÿï¼ˆä¸‹ï¼‰
+    # 枷落新生（下）
     country_event = {
         id = prcs.3200
         title = prcs.3200.t
@@ -4465,7 +4534,7 @@ country_event = {
         }
     }
 
-    # é™¤é˜€æ¸…æº�
+    # 除阀清源
     country_event = {
         id = prcs.3201
         title = prcs.3201.t
@@ -4478,7 +4547,7 @@ country_event = {
         }
     }
 
-    # ä¸€ç½‘æ‰“å°½
+    # 一网打尽
     country_event = {
         id = prcs.3202
         title = prcs.3202.t
@@ -4490,7 +4559,7 @@ country_event = {
         }
     }
 
-    # â€œé—¹å‰§â€�
+    # “闹剧”
     country_event = {
         id = prcs.3203
         title = prcs.3203.t
@@ -4601,7 +4670,7 @@ country_event = {
         }
     }
 
-    # æ—§æ–¹æ³•ï¼Œæ–°æž„æƒ³ (1)
+    # 旧方法，新构想 (1)
     country_event = {
         id = prcs.3209
         title = prcs.3209.t
@@ -4612,12 +4681,12 @@ country_event = {
             name = prcs.3209.a
             country_event = {
                 id = prcs.3210
-                days = 0
+                days = 2
             }
         }
     }
 
-    # æ—§æ–¹æ³•ï¼Œæ–°æž„æƒ³ (2)
+    # 旧方法，新构想 (2)
     country_event = {
         id = prcs.3210
         title = prcs.3210.t
@@ -4633,7 +4702,7 @@ country_event = {
         }
     }
 
-    # æ—§æ–¹æ³•ï¼Œæ–°æž„æƒ³ (3)
+    # 旧方法，新构想(3)
     country_event = {
         id = prcs.3211
         title = prcs.3211.t
@@ -4642,6 +4711,7 @@ country_event = {
         picture = GFX_Event_Template105
         option = {
             name = prcs.3211.a
+            add_political_power = 5
         }
     }
 
