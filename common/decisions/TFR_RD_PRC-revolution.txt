@@ -1628,7 +1628,7 @@ PRC_export_revolution = {
                 }
                 transfer_units_fraction = {
                     target = CPP
-                    size = 0.5
+                    size = 0.7
                 }
             }
             CPP = {
@@ -1648,9 +1648,21 @@ PRC_export_revolution = {
                     target = IRQ
                     type = annex_everything
                 }
+                declare_war_on = {
+                    target = FIA
+                    type = annex_everything
+                }
+                declare_war_on = {
+                    target = BUK
+                    type = annex_everything
+                }
+                declare_war_on = {
+                    target = ABK
+                    type = annex_everything
+                }
             }
             add_to_variable = {
-                CPC_frame = 3
+                CPC_frame = 5
             }
             clamp_variable = {
                 var = CPC_frame
@@ -3526,15 +3538,13 @@ PRC_export_revolution = {
             has_completed_focus = PRC_nl_storm_across_west_asia
         }
         visible = {
-            AND = {
-                country_exists = CPP
-                country_exists = CPA
-                CPA = {
-                    has_war = no
-                }
-                CPP = {
-                    has_war = no
-                }
+            country_exists = CPP
+            country_exists = CPA
+            CPA = {
+                has_war = no
+            }
+            CPP = {
+                has_war = no
             }
             has_completed_focus = PRC_nl_storm_across_west_asia
             has_country_flag = CHN_Display_West_Asia
@@ -3630,12 +3640,8 @@ PRC_export_revolution = {
         #西亚
         icon = GFX_PRC_new_left_decision
         available = {
-            custom_trigger_tooltip = {
-                tooltip = PRC_nl_new_west_asia_trigger_tooltip
-                tag = PRC
-                country_exists = CPA
-                country_exists = CPP
-            }
+            country_exists = CPA
+            country_exists = CPP
             hidden_trigger = {
                 has_completed_focus = PRC_nl_storm_across_west_asia
                 NOT = {
