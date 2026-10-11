@@ -2497,8 +2497,11 @@ USB_presidential_health_category = {
 		}
 		cancel_trigger = {
 			OR = {
-				has_completed_focus = USB_out_of_many_one
-				has_completed_focus = USB_the_eternal_president
+				# has_completed_focus = USB_out_of_many_one
+				# has_completed_focus = USB_the_eternal_president
+				has_country_flag = USB_NSS_flag
+				has_country_flag = USB_rebirth_flag
+
 			}
 		}
 		activation = {
@@ -2552,9 +2555,19 @@ USB_presidential_health_category = {
 					}
 				}
 				else = {
-					country_event = {
-						id = usb.11
-						days = 6
+					if = {
+						limit = {
+							NOT = {
+								OR = {
+									has_completed_focus = USB_emergency_presidential_powers
+								}
+								
+							}
+						}
+						country_event = {
+							id = usb.11
+							days = 6
+						}
 					}
 				}
 			}
