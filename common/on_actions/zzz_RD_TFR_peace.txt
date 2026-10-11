@@ -925,10 +925,7 @@ on_actions = {
                 if = {
                     limit = {
                         ROOT = {
-                            OR = {
-                                original_tag = PER
-                                original_tag = IRQ
-                            }
+                            original_tag = PER
                         }
                         FROM = {
                             original_tag = CPP
@@ -940,80 +937,7 @@ on_actions = {
                             transfer_troops = no
                         }
                     }
-                    PRC = {
-                        if = {
-                            limit = {
-                                OR = {
-                                    NOT = {
-                                        country_exists = PER
-                                        country_exists = IRQ
-                                    }
-                                }
-                            }
-                            PRC = {
-                                set_autonomy = {
-                                    target = IRQ
-                                    autonomous_state = autonomy_communist
-                                    freedom_level = 0.1
-                                }
-                            }
-                            PRC = {
-                                set_autonomy = {
-                                    target = CPP
-                                    autonomous_state = autonomy_communist
-                                    freedom_level = 0.1
-                                }
-                            }
-                        }
-                        add_to_faction = CPP
-                        add_to_variable = {
-                            CPC_frame = 8
-                        }
-                        clamp_variable = {
-                            var = CPC_frame
-                            min = 0
-                            max = 100
-                        }
-                        add_to_variable = {
-                            PRC_Lib_Int_Dir_Var = 1
-                        }
-                    }
                     CPP = {
-                        if = {
-                            limit = {
-                                OR = {
-                                    NOT = {
-                                        country_exists = PER
-                                        country_exists = IRQ
-                                    }
-                                }
-                            }
-                            CPP = {
-                                release = IRQ
-                                load_focus_tree = WLI_tree
-                                IRQ = {
-                                    remove_ideas = {
-                                        arab_league_member
-                                    }
-                                    create_country_leader = {
-                                        name = "伊拉克临时人民委员会"
-                                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                                        ideology = marxism_leninism
-                                    }
-                                    set_party_name = {
-                                        ideology = communist
-                                        long_name = PRC_nationalist_party_new_left_IRQ
-                                        name = PRC_nationalist_party_new_left_name_IRQ
-                                    }
-                                    set_politics = {
-                                        ruling_party = communist
-                                        elections_allowed = no
-                                    }
-                                    set_cosmetic_tag = IRQ_rebulid_the_government
-                                    load_focus_tree = WLI_tree
-                                }
-                            }
-                        }
                         promote_character = PER_Ali_Reza_Englebazard
                         set_party_name = {
                             ideology = totalitarian_socialist
@@ -1032,7 +956,140 @@ on_actions = {
                             ruling_party = totalitarian_socialist
                             elections_allowed = no
                         }
+                    }        
+                    set_global_flag = skip_default_capitulation
+                }
+                if = {
+                    limit = {
+                        ROOT = {
+                            OR = {
+                                original_tag = IRQ
+                                original_tag = FIA
+                                original_tag = BUK
+                                original_tag = ABK
+                            }
+                            FROM = {
+                                original_tag = CPP
+                            }
+                        }
                     }
+                    if = {
+                        limit = {
+                            NOT = {
+                                OR = {
+                                    country_exists = IRQ
+                                    country_exists = FIA
+                                    country_exists = BUK
+                                    country_exists = ABK
+                                }
+                            }
+                        }
+                        CPP = {
+                            release = IRQ
+                            load_focus_tree = WLI_tree
+                        }
+                        
+                        IRQ = {
+                            remove_ideas = {
+                                arab_league_member
+                            }
+                            create_country_leader = {
+                                name = "伊拉克临时人民委员会"
+                                picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
+                                ideology = marxism_leninism
+                            }
+                            set_party_name = {
+                                ideology = communist
+                                long_name = PRC_nationalist_party_new_left_IRQ
+                                name = PRC_nationalist_party_new_left_name_IRQ
+                            }
+                            set_politics = {
+                                ruling_party = communist
+                                elections_allowed = no
+                            }
+                            set_cosmetic_tag = IRQ_rebulid_the_government
+                            load_focus_tree = WLI_tree
+                        }
+                        PRC = {
+                            add_to_variable = {
+                                CPC_frame = 10
+                            }
+                            clamp_variable = {
+                                var = CPC_frame
+                                min = 0
+                                max = 100
+                            }
+                            add_to_variable = {
+                                PRC_Lib_Int_Dir_Var = 1
+                            }
+                            set_autonomy = {
+                                target = CPP
+                                autonomous_state = autonomy_communist
+                                freedom_level = 0.1
+                            }  
+                            set_autonomy = {
+                                target = IRQ
+                                autonomous_state = autonomy_communist
+                                freedom_level = 0.1
+                            }  
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_collective_army_modifier
+                                }
+                                CPP = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_collective_army_modifier
+                                    }
+                                }
+                                IRQ = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_collective_army_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                                }
+                                CPP = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_economic_cooperation_modifier
+                                    }
+                                }
+                                IRQ = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_economic_cooperation_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = PRC_WLI_modifiers
+                                }
+                                CPP = {
+                                    add_dynamic_modifier = {
+                                        modifier = PRC_WLI_modifiers
+                                    }
+                                }
+                                IRQ = {
+                                    add_dynamic_modifier = {
+                                        modifier = PRC_WLI_modifiers
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else = {
+                        FROM = {
+                            white_peace = ROOT
+                            annex_country = {
+                                target = ROOT
+                                transfer_troops = no
+                            }
+                        }
+                    }
+                    
+
                     set_global_flag = skip_default_capitulation
                 }
                 if = {
