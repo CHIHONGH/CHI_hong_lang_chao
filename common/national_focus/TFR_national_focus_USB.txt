@@ -11772,7 +11772,11 @@ focus_tree = {
 		completion_reward = {
 			add_offsite_building = {
 				type = industrial_complex
-				level = 2
+				level = 4
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 4
 			}
 			set_temp_variable = {
 				var = USA_reconstruction_progress_var_temp
@@ -11884,7 +11888,8 @@ focus_tree = {
 		relative_position_id = USB_yinbao_huoyaotong
 		x = -4
 		y = 2
-		cost = 10
+		cost = 1
+		ai_will_do = { base = 1000 }
 		completion_reward = {
 			add_political_power = 50
 			add_country_leader_trait = USB_brainiac_maniac
@@ -11962,7 +11967,7 @@ focus_tree = {
 		relative_position_id = USB_yinbao_huoyaotong
 		x = -2
 		y = 1
-		cost = 10
+		cost = 2
 		completion_reward = {
 			add_manpower = -10000
 			PRC = {
@@ -12043,11 +12048,11 @@ focus_tree = {
 		relative_position_id = USB_yinbao_huoyaotong
 		x = 0
 		y = 2
-		cost = 10
+		cost = 3
 		completion_reward = {
 			PRC = {
-				add_stability = -0.1
-				add_war_support = -0.05
+				add_stability = -0.2
+				add_war_support = -0.2
 			}
 		}
 	}
@@ -12060,7 +12065,7 @@ focus_tree = {
 		relative_position_id = USB_yinbao_huoyaotong
 		x = 2
 		y = 1
-		cost = 10
+		cost = 3
 		completion_reward = {
 			PRC = {
 				add_timed_idea = {
@@ -12126,7 +12131,7 @@ focus_tree = {
 		relative_position_id = USB_yinbao_huoyaotong
 		x = 4
 		y = 2
-		cost = 10
+		cost = 3
 		completion_reward = {
 			add_war_support = 0.05
 			PRC = {
@@ -12191,6 +12196,28 @@ focus_tree = {
 		prerequisite = { focus = USB_zishashi_xiji }
 		prerequisite = { focus = USB_sanbo_kongju }
 		mutually_exclusive = { focus = USB_zhongyan_zhi_sheng }
+		available = { 
+			OR = {
+				KOR = {
+					OR = { is_in_faction_with = PRC  surrender_progress > 0.5 }
+				}
+				JAP = {
+					OR = { is_in_faction_with = PRC  surrender_progress > 0.5 }
+				}
+				RAJ = {
+					OR = { is_in_faction_with = PRC  surrender_progress > 0.5 }
+				}
+				PNG = {
+					OR = { is_in_faction_with = PRC  surrender_progress > 0.5 }
+				}
+				AST = {
+					OR = { is_in_faction_with = PRC  surrender_progress > 0.5 }
+				}
+				NZL = {
+					OR = { is_in_faction_with = PRC  surrender_progress > 0.5 }
+				}
+			}
+		}
 		relative_position_id = USB_zishashi_xiji
 		x = 0
 		y = 2
@@ -12201,6 +12228,7 @@ focus_tree = {
 					is_in_faction_with = PRC
 				}
 				add_stability = -0.1
+				add_war_support = -0.1
 				add_political_power = -100
 			}
 		}
@@ -12215,6 +12243,28 @@ focus_tree = {
 		prerequisite = { focus = USB_yemu_hongzha }
 		mutually_exclusive = { focus = USB_xitong_piancha }
 		relative_position_id = USB_shenshui_zhadan
+		available = { 
+			OR = {
+				PAK = {
+					OR = { is_in_faction_with = USB  surrender_progress > 0.5 }
+				}
+				PRK = {
+					OR = { is_in_faction_with = USB  surrender_progress > 0.5 }
+				}
+				VIN = {
+					OR = { is_in_faction_with = USB  surrender_progress > 0.5 }
+				}
+				BRM = {
+					OR = { is_in_faction_with = USB  surrender_progress > 0.5 }
+				}
+				LAO = {
+					OR = { is_in_faction_with = USB  surrender_progress > 0.5 }
+				}
+				NEP = {
+					OR = { is_in_faction_with = USB  surrender_progress > 0.5 }
+				}
+			}
+		}
 		x = 0
 		y = 2
 		cost = 10
@@ -12222,15 +12272,15 @@ focus_tree = {
 			add_war_support = 0.10
 			add_equipment_to_stockpile = {
 				type = large_plane_airframe_1
-				amount = 100
+				amount = 400
 			}
 			add_equipment_to_stockpile = {
 				type = small_plane_airframe_2
-				amount = 100
+				amount = 1000
 			}
 			add_equipment_to_stockpile = {
 				type = attack_helicopter_equipment_1
-				amount = 150
+				amount = 1000
 				producer = PRC
 			}
 		}
@@ -12428,12 +12478,12 @@ focus_tree = {
 			add_war_support = 0.05
 			add_timed_idea = {
 				idea = USB_Fascist_military_revolution_I_idea
-				days = 10
+				days = 15
 			}
 			every_allied_country = {
 				add_timed_idea = {
 					idea = USB_Fascist_military_revolution_I_idea
-					days = 10
+					days = 15
 				}
 			}
 		}
