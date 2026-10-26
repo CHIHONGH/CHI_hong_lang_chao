@@ -379,15 +379,54 @@ great_asian_war_decisions = {
 					}
 				}
 			}
-			PTF = {
-				OR = {
-					surrender_progress > 0.15
-					NOT = {
-						has_war_with = PRC
-					}
+			if = {
+				limit = {
+					OR = {
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+                    }
 				}
-				
+				PTF = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
 			}
+			else_if = {
+				limit = {
+					has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
+				}
+				PTF = {
+					OR = {
+						surrender_progress > 0.35
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
+                    }
+				}
+				PTF = {
+					OR = {
+						surrender_progress > 0.75
+						NOT = {
+							has_war_with = PRC
+						}
+					}	
+				}
+			}
+			
 		}
 		days_mission_timeout = 999
 		activation = {
