@@ -385,15 +385,46 @@ great_asian_war_decisions = {
 						has_country_flag = USA_unifier_flag
 					}
 				}
-				PTF = {
-					OR = {
-						surrender_progress > 0.15
-						NOT = {
-							has_war_with = PRC
+				if = {
+					limit = {
+						OR = {
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        	has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+						}
+						
+					}
+					PTF = {
+						OR = {
+							surrender_progress > 0.15
+							NOT = {
+								has_war_with = PRC
+							}
 						}
 					}
-					
 				}
+				else_if = {
+					limit = {
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
+					}
+					PTF = {
+						OR = {
+							surrender_progress > 0.35
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}	
+				else = {
+					PTF = {
+						OR = {
+							surrender_progress > 0.75
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}			
 			}
 			else_if = {
 				limit = {
@@ -401,14 +432,45 @@ great_asian_war_decisions = {
 						has_country_flag = USA_unifier_flag
 					}
 				}
-				USB = {
-					OR = {
-						surrender_progress > 0.15
-						NOT = {
-							has_war_with = PRC
+				if = {
+					limit = {
+						OR = {
+							has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Simple_Mode }
+                        	has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Baby_Mode }
+						}
+						
+					}
+					USB = {
+						OR = {
+							surrender_progress > 0.15
+							NOT = {
+								has_war_with = PRC
+							}
 						}
 					}
-					
+				}
+				else_if = {
+					limit = {
+						has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Normal_Mode }
+					}
+					USB = {
+						OR = {
+							surrender_progress > 0.35
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}	
+				else = {
+					USB = {
+						OR = {
+							surrender_progress > 0.75
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
 				}
 			}
 			else_if = {
@@ -425,7 +487,7 @@ great_asian_war_decisions = {
 						}
 					}
 					
-				}
+				}	
 			}
 		}
 		days_mission_timeout = 999
