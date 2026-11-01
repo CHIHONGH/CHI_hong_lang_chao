@@ -16153,11 +16153,13 @@ PRC_USB_battle_for_allies_cat = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 2
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
 							}
 							1 = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 3
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
 					}
@@ -16182,11 +16184,14 @@ PRC_USB_battle_for_allies_cat = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 2
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+
 							}
 							1 = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 3
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
 					}
@@ -16233,16 +16238,19 @@ PRC_USB_battle_for_allies_cat = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 1
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt1
 							}
 							1 = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 2
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
 							}
 							1 = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 3
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
 					}
@@ -16496,6 +16504,7 @@ PRC_USB_battle_for_allies_cat = {
 							PRC_share_NSS_info_with_allies_var = 1
 						}
 					}
+					custom_effect_tooltip = PRC_military_combat_NSS_tt
 					add_to_variable = {
 						PRC_share_NSS_info_with_allies_var = 1
 					}
@@ -16515,6 +16524,7 @@ PRC_USB_battle_for_allies_cat = {
 							PRC_share_NSS_info_with_allies_var = 2
 						}
 					}
+					custom_effect_tooltip = PRC_military_combat_NSS_tt
 					add_to_variable = {
 						PRC_share_NSS_info_with_allies_var = 1
 					}
@@ -16579,6 +16589,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		remove_effect = {
 			FROM = {
+				custom_effect_tooltip = PRC_remove_timed_bomb_tt
 				clr_country_flag = NSS_timed_bomb_flag
 			}
 		}
@@ -16596,6 +16607,7 @@ PRC_USB_battle_for_allies_cat = {
 		fire_only_once = yes
 		remove_effect = {
 			set_country_flag = PRC_scan_USA_picture_flag 
+			unlock_decision_tooltip = PRC_anti_moyin_research
 		}
 	}
 
@@ -16606,6 +16618,9 @@ PRC_USB_battle_for_allies_cat = {
 		visible = {
 			has_country_flag = PRC_scan_USA_picture_flag
 		}
+		available = {
+			has_country_flag = USB_NSS_brainwash_steal_flag
+		}
 		cost = 100
 		days_remove = 50
 		fire_only_once = yes
@@ -16613,6 +16628,7 @@ PRC_USB_battle_for_allies_cat = {
 			research_speed_factor = -0.1
 		}
 		remove_effect = {
+			custom_effect_tooltip = PRC_anti_moyin_research_tt
 			set_country_flag = PRC_anti_moyin_research_flag
 		}
 	}
