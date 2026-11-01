@@ -5264,3 +5264,141 @@ country_event = {
         add_ideas = PRC_china_trade
     }
 }
+
+country_event = {
+    id = prcs.3229
+    title = prcs.3229.t
+    desc = prcs.3229.d
+    picture = GFX_PRC_a_meeting
+    is_triggered_only = yes
+    option = {
+        name = prcs.3229.a
+        set_country_flag = USB_NSS_brainwash_start_flag
+    }
+}
+
+country_event = {
+    id = prcs.3230
+    title = prcs.3230.t
+    desc = prcs.3230.d
+    picture = GFX_PRC_a_meeting
+    is_triggered_only = yes
+    option = {
+        name = prcs.3230.a
+        set_country_flag = USB_NSS_brainwash_steal_flag
+    }
+}
+
+country_event = {
+    id = prcs.3231
+    title = prcs.3231.t
+    desc = prcs.3231.d
+    picture = GFX_PRC_a_meeting
+    is_triggered_only = yes
+    option = {
+        name = prcs.3231.a
+        every_allied_country = {
+            limit = {
+                has_country_flag = NSS_release_cog_bomb_flag
+                NOT = {
+                    has_country_flag = NSS_cog_mission_flag
+                }
+            }
+            if = {
+                limit = {
+                    PRC = {
+                        has_country_flag = PRC_anti_moyin_research_flag
+                    }
+                }
+                if = {
+                    limit = { 
+                        check_variable = {
+                            PRC_share_NSS_info_with_allies_var = 3
+                        }
+                    }
+                    set_country_flag = PRC_free_from_NSS_flag
+                    PRC = {
+                        set_variable = {
+                            NSS_attack_time_var = 250
+                        }
+                    }
+                    
+                }
+                else = {
+                    set_country_flag = PRC_free_from_NSS_flag
+                    PRC = {
+                        set_variable = {
+                            NSS_attack_time_var = 250
+                        }
+                        activate_mission = NSS_cog_mission
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        PRC_share_NSS_info_with_allies_var = 1
+                    }
+                }
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 100
+                    }
+                    activate_mission = NSS_cog_mission
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        PRC_share_NSS_info_with_allies_var = 2
+                    }
+                }
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 250
+                    }
+                    activate_mission = NSS_cog_mission
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        PRC_share_NSS_info_with_allies_var = 3
+                    }
+                }
+                set_country_flag = PRC_free_from_NSS_flag
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 250
+                    }
+                }
+            }
+            else = {
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 30
+                    }
+                    activate_mission = NSS_cog_mission
+                }
+            }
+            set_country_flag = NSS_cog_mission_flag
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3232
+    title = prcs.3232.t
+    desc = prcs.3232.d
+    picture = GFX_PRC_a_meeting
+    is_triggered_only = yes
+    option = {
+        name = prcs.3232.a
+        effect_tooltip = {
+            add_days_mission_timeout = {
+                mission = NSS_cog_mission
+                days = -15
+            }
+        }        
+    }
+}

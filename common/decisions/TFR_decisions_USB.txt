@@ -16116,6 +16116,509 @@ USB_treason_punishable_by_death_category = {
 	}
 }
 
+PRC_USB_battle_for_allies_cat = {
+	PRC_share_NSS_info_with_allies = {
+		icon = GFX_USB_loose_ends_category
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = USB_NSS_brainwash_steal_flag
+		}
+		available = {
+			political_power_daily > 1
+		}
+		cost = 50
+		days_remove = 45
+		modifier = {
+			political_power_cost = 1
+			command_power_gain_mult = -0.2
+		}
+		remove_effect = {
+			every_allied_country = {
+				if = {
+					limit = {
+						PRC = {
+							has_country_flag = PRC_anti_moyin_research_flag
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+								PRC_share_NSS_info_with_allies_var = 1
+							}
+						}
+						random_list = {
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 3
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							check_variable = {
+								PRC_share_NSS_info_with_allies_var = 2
+							}
+						}
+						set_variable = {
+							PRC_share_NSS_info_with_allies_var = 3
+						}
+					}
+					else_if = {
+						limit = {
+							check_variable = {
+								PRC_share_NSS_info_with_allies_var = 0
+							}
+						}
+						random_list = {
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 3
+								}
+							}
+						}
+					}
+					
+				}
+				else = {
+					if = {
+						limit = {
+							check_variable = {
+								PRC_share_NSS_info_with_allies_var = 1
+							}
+						}
+						random_list = {
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 3
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							check_variable = {
+								PRC_share_NSS_info_with_allies_var = 2
+							}
+						}
+						set_variable = {
+							PRC_share_NSS_info_with_allies_var = 3
+						}
+					}
+					else_if = {
+						limit = {
+							check_variable = {
+								PRC_share_NSS_info_with_allies_var = 0
+							}
+						}
+						random_list = {
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 1
+								}
+							}
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							1 = {
+								set_variable = {
+									PRC_share_NSS_info_with_allies_var = 3
+								}
+							}
+						}
+					}
+				}
+				
+				
+			}
+		}
+	}
+
+	NSS_release_cog_bomb = {
+		allowed = {
+			original_tag = USB
+		}
+		visible = {
+			has_completed_focus = USB_we_wont_fail_again
+		}
+		available = {
+			NOT = {
+				PRC = {
+					has_active_mission = NSS_cog_mission
+				}
+			}
+		}
+		cost = 30
+		days_remove = 20
+		days_re_enable = NSS_bomb_cooldown_var
+		remove_effect = {
+			PRC = {
+				random_allied_country = {
+					limit = {
+						NOT = {
+							has_country_flag = NSS_cog_mission_flag
+						}
+					}
+					set_country_flag = NSS_release_cog_bomb_flag
+				}
+				country_event = prcs.3231
+			}
+		}
+		ai_will_do = {
+			base = 250
+		}
+	}
+
+	NSS_intensify_cog_bomb = {
+		allowed = {
+			original_tag = USB
+		}
+		visible = {
+			PRC = {
+				has_active_mission = NSS_cog_mission
+			}
+		}
+		available = {
+			
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = NSS_bomb_cooldown_var
+		remove_effect = {
+			PRC = {
+				add_days_mission_timeout = {
+					mission = NSS_cog_mission
+					days = -15
+				}
+				country_event = prcs.3232
+			}
+		}
+		ai_will_do = {
+			base = 250
+		}
+	}
+
+	NSS_cog_mission = {
+		icon = GFX_USB_judas_gambit_category
+		available = {
+			always = no
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		fixed_random_seed = no
+		selectable_mission = no
+		days_mission_timeout = NSS_attack_time_var	
+		timeout_effect = {
+			every_allied_country = {
+				limit = {
+					has_country_flag = NSS_release_cog_bomb_flag
+					NOT = {
+						has_country_flag = PRC_free_from_NSS_flag
+					}
+				}
+				random_list = {
+					1 = {
+						leave_faction = yes
+						set_country_flag = NSS_corrupted_flag
+					}
+					1 = {
+						leave_faction = yes
+						JAP = {
+							add_to_faction = PREV
+						}
+					}
+				}
+			}
+			
+		}
+	}
+
+	NSS_plant_timed_bomb = {
+		allowed = {
+			original_tag = USB
+		}
+		target_root_trigger = {
+			has_completed_focus = USB_we_wont_fail_again
+		}
+		cost = 20
+		days_remove = 50
+		days_re_enable = NSS_bomb_cooldown_var
+		targets = {
+			VIN
+			CAM
+			ROP
+			PRT
+			BRM
+			SMA
+			# SIG
+			CPP
+			CPA
+			IRQ
+			SRI
+			# SRL
+			LAO
+			# BHU
+			# NEP
+		}
+		remove_effect = {
+			FROM = {
+				add_timed_idea = {
+					idea = NSS_timed_bomb_idea
+					days = 90
+				}
+				set_country_flag = NSS_timed_bomb_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	NSS_fast_up_bomb_production = {
+		allowed = {
+			original_tag = USB
+		}
+		visible = {
+			has_completed_focus = USB_we_wont_fail_again
+			check_variable = {
+				NSS_fast_up_bomb_production_var < 3
+			}
+		}
+		cost = 50
+		days_remove = 75
+		remove_effect = {
+			add_to_variable = {
+				NSS_bomb_cooldown_var = -10
+			}
+			add_to_variable = {
+				NSS_fast_up_bomb_production_var = 1
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	PRC_send_experts_dec = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_active_mission = NSS_cog_mission
+		}
+		cost = 75
+		days_remove = 30
+		modifier = {
+			research_speed_factor = -0.1
+		}
+		remove_effect = {
+			remove_mission = NSS_cog_mission
+		}
+	}
+
+	PRC_military_combat_NSS = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_active_mission = NSS_cog_mission
+		}
+		available = {
+			any_allied_country = {
+				has_country_flag = NSS_release_cog_bomb_flag
+				NOT = {
+					has_country_flag = PRC_free_from_NSS_flag
+				}
+				is_ally_with = PRC
+				divisions_in_state = {
+					size > 4
+					state = THIS.capital_scope
+				}
+			}
+		}
+		custom_cost_text = 5_army_xp_cost
+		custom_cost_trigger = {
+			has_army_experience > 5
+		}
+		days_remove = 15
+		complete_effect = {
+			hidden_effect = {
+				army_experience = -5
+			}
+			add_days_mission_timeout = {
+				mission = NSS_cog_mission
+				days = 30
+			}
+		}
+		modifier = {
+			experience_gain_army_factor = -0.1
+			experience_loss_factor = 0.1
+			battalion_upkeep_factor = 0.1
+		}
+		remove_effect = {
+			every_allied_country = {
+				limit = {
+					has_country_flag = NSS_release_cog_bomb_flag
+					NOT = {
+						has_country_flag = PRC_free_from_NSS_flag
+					}
+				}
+				random_controlled_state = {
+					damage_building = {
+						type = infrastructure
+						damage = 1
+					}
+				}
+				if = {
+					limit = { 
+						check_variable = {
+							PRC_share_NSS_info_with_allies_var = 1
+						}
+					}
+					add_to_variable = {
+						PRC_share_NSS_info_with_allies_var = 1
+					}
+					capital_scope = {
+						damage_units = {
+							state = THIS
+							org_damage = 0.3
+							str_damage = 0.3
+							ratio = yes
+							army = yes
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						check_variable = {
+							PRC_share_NSS_info_with_allies_var = 2
+						}
+					}
+					add_to_variable = {
+						PRC_share_NSS_info_with_allies_var = 1
+					}
+					capital_scope = {
+						damage_units = {
+							state = THIS
+							org_damage = 0.1
+							str_damage = 0.1
+							ratio = yes
+							army = yes
+						}
+					}
+				}
+				else = {
+					capital_scope = {
+						damage_units = {
+							state = THIS
+							org_damage = 0.5
+							str_damage = 0.5
+							ratio = yes
+							army = yes
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+	PRC_remove_timed_bomb = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			FROM = {
+				has_country_flag = NSS_timed_bomb_notice_flag
+			}
+		}
+		targets = {
+			VIN
+			CAM
+			ROP
+			PRT
+			BRM
+			SMA
+			# SIG
+			CPP
+			CPA
+			IRQ
+			SRI
+			# SRL
+			LAO
+			# BHU
+			# NEP
+		}
+		cost = 20
+		days_remove = 50
+		days_re_enable = 100
+		modifier = {
+			experience_gain_army_factor = -0.2
+			battalion_upkeep_factor = 0.1
+		}
+		remove_effect = {
+			FROM = {
+				clr_country_flag = NSS_timed_bomb_flag
+			}
+		}
+	}
+
+	PRC_scan_USA_picture = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = USB_NSS_brainwash_start_flag
+		}
+		cost = 200
+		days_remove = 270
+		fire_only_once = yes
+		remove_effect = {
+			set_country_flag = PRC_scan_USA_picture_flag 
+		}
+	}
+
+	PRC_anti_moyin_research = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = PRC_scan_USA_picture_flag
+		}
+		cost = 100
+		days_remove = 50
+		fire_only_once = yes
+		modifier = {
+			research_speed_factor = -0.1
+		}
+		remove_effect = {
+			set_country_flag = PRC_anti_moyin_research_flag
+		}
+	}
+
+}
+
 debug_decisions = {
 	USB_decrease_biden_health_debug_decision = {
 		icon = generic_ignite_civil_war

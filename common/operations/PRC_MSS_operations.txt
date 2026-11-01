@@ -1,0 +1,118 @@
+PRC_monitor_USB_NSS = { ### 1/50
+	icon = GFX_PRC_kill_the_leader_of_antitechnocratic_movement
+	map_icon = GFX_PRC_kill_the_leader_of_antitechnocratic_movement_map
+	name = PRC_monitor_USB_NSS
+	desc = PRC_monitor_USB_NSS_desc
+	days = 45 
+
+	priority = 30
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = { 
+		network_national_coverage = {
+			target = USB
+			value > 25
+		}
+		NOT = {
+			has_country_flag = PRC_monitor_USB_NSS_in_progress
+		}
+	}
+	visible = {
+		USB = {
+			NOT = {
+				has_country_flag = USB_we_wont_fail_again_flag
+			}
+		}
+		has_country_flag = USB_NSS_brainwash_start_flag
+		check_variable = {
+			PRC_monitor_USB_NSS_var < 2
+		}
+	}
+
+	operation_target = {
+		targets = { USB }
+	}
+
+	operatives = 2
+
+	network_strength = 35
+
+	equipment = {
+		infantry_equipment = 100
+		support_equipment = 50
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		PRC = {
+			set_country_flag = {
+				flag = PRC_monitor_USB_NSS_in_progress
+				days = 45
+				value = 1
+			}
+		}
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = PRC_monitor_USB_NSS_outcome_tt
+	}
+	risk_chance = 0.5
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		add_to_variable = {
+			PRC_monitor_USB_NSS_var = 1
+		}
+		USB = {
+			add_to_variable = {
+				USB_gears_of_war_pp_var = -100
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_merge_the_mic
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_unrestrained_rd
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_hunter_killer_program
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_kickstart_the_amnet
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_dumb_construction
+				cost = -14
+			}
+		}
+		add_political_power = 50
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = USB_NSS_brainwash_steal_flag
+				}
+			}
+			country_event = prcs.3230
+		}
+	}
+
+	outcome_extra_chance = 1
+
+	phases = {
+		infiltration_submarine = { base = 100 }
+	}
+	phases = { 
+		infiltrate_military_seduction = { base = 100 }
+	}
+	phases = { 
+		elimination_and_cover_up = { base = 100 }
+	}
+}

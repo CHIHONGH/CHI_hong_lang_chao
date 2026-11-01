@@ -89,6 +89,29 @@ change_economy_type_OGAS_economy = {
 }
 
 PRC_gaw_start = {
+    every_country = {
+        limit = {
+            has_country_flag = NSS_timed_bomb_flag
+            NOT = {
+                tag = PRC
+            }
+            NOT = {
+                check_variable = {
+                    PRC_share_NSS_info_with_allies_var = 3
+                }
+            }
+        }
+        add_stability = -0.5
+        add_war_support = -0.5
+        transfer_units_fraction = {
+            target = USB
+            size = 0.5
+            stockpile_ratio = 0.5
+            army_ratio = 0.5
+            navy_ratio = 0.5
+            air_ratio = 0.5
+        }
+    }
     every_state = {
         limit = {
             OR = {
