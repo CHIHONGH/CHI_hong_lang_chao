@@ -5269,12 +5269,16 @@ country_event = {
     id = prcs.3229
     title = prcs.3229.t
     desc = prcs.3229.d
-    picture = GFX_PRC_a_meeting
+    picture = GFX_USB_cia_guys
     is_triggered_only = yes
     option = {
         name = prcs.3229.a
         custom_effect_tooltip = prcs_3229_tt
         unlock_decision_category_tooltip = PRC_USB_battle_for_allies_cat
+        set_country_flag = PRC_USB_battle_for_allies_cat_flag
+        set_variable = {
+            PRC_USB_battle_for_allies_cat_var = 1
+        }
         set_country_flag = USB_NSS_brainwash_start_flag
     }
 }
@@ -5283,7 +5287,7 @@ country_event = {
     id = prcs.3230
     title = prcs.3230.t
     desc = prcs.3230.d
-    picture = GFX_PRC_a_meeting
+    picture = GFX_USB_cameras
     is_triggered_only = yes
     option = {
         name = prcs.3230.a
@@ -5295,8 +5299,26 @@ country_event = {
 country_event = {
     id = prcs.3231
     title = prcs.3231.t
-    desc = prcs.3231.d
-    picture = GFX_PRC_a_meeting
+    desc = {
+        trigger = {
+            any_country = {
+                has_country_flag = NSS_cog_mission_flag
+            }
+        }
+        text = prcs.3231.d.1
+    }
+
+    desc = {
+        trigger = {
+            every_country = {
+                NOT = {
+                    has_country_flag = NSS_cog_mission_flag
+                }
+            }
+        }
+        text = prcs.3231.d.2
+    }
+    picture = GFX_USB_caligula_bernie_sanders
     is_triggered_only = yes
     option = {
         name = prcs.3231.a
@@ -5395,7 +5417,7 @@ country_event = {
     id = prcs.3232
     title = prcs.3232.t
     desc = prcs.3232.d
-    picture = GFX_PRC_a_meeting
+    picture = GFX_USB_cruelty_squad
     is_triggered_only = yes
     option = {
         name = prcs.3232.a
@@ -5403,6 +5425,34 @@ country_event = {
             add_days_mission_timeout = {
                 mission = NSS_cog_mission
                 days = -15
+            }
+        }        
+    }
+}
+
+country_event = {
+    id = prcs.3233
+    title = prcs.3233.t
+    desc = prcs.3233.d
+    picture = GFX_USB_northwest
+    is_triggered_only = yes
+    option = {
+        name = prcs.3233.a
+        effect_tooltip = {
+            every_country = {
+                limit = {
+                    has_country_flag = NSS_timed_bomb_flag
+                }
+                add_stability = -0.5
+                add_war_support = -0.5
+                transfer_units_fraction = {
+                    target = USB
+                    size = 0.5
+                    stockpile_ratio = 0.5
+                    army_ratio = 0.5
+                    navy_ratio = 0.5
+                    air_ratio = 0.5
+                }
             }
         }        
     }

@@ -8115,7 +8115,7 @@ USB_project_babel_cat = {
 		}
 		icon = GFX_USB_operation_oracle_bone_decision
 		days_remove = 10
-		fire_only_once = yes
+		days_re_enable = 350
 		ai_will_do = {
 			base = 10
 		}
@@ -16117,6 +16117,43 @@ USB_treason_punishable_by_death_category = {
 }
 
 PRC_USB_battle_for_allies_cat = {
+	PRC_stage_1_notifier = {
+		icon = GFX_USB_archaelogical_excavation_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			check_variable = {
+				PRC_USB_battle_for_allies_cat_var = 1
+			}
+		}
+		available = {
+			always = no
+		}
+		days_remove = 1
+		remove_effect = {
+			custom_effect_tooltip = PRC_stage_1_notifier_tt
+		}
+	}
+	PRC_stage_2_notifier = {
+		icon = GFX_USB_archaelogical_excavation_decision
+
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			check_variable = {
+				PRC_USB_battle_for_allies_cat_var = 1
+			}
+		}
+		available = {
+			always = no
+		}
+		days_remove = 1
+		remove_effect = {
+			custom_effect_tooltip = PRC_stage_1_notifier_tt
+		}
+	}
 	PRC_share_NSS_info_with_allies = {
 		icon = GFX_USB_loose_ends_category
 		allowed = {
@@ -16159,6 +16196,9 @@ PRC_USB_battle_for_allies_cat = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 3
 								}
+								add_to_variable = {
+									NSS_secured_tags = 1
+								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
@@ -16171,6 +16211,9 @@ PRC_USB_battle_for_allies_cat = {
 						}
 						set_variable = {
 							PRC_share_NSS_info_with_allies_var = 3
+						}
+						add_to_variable = {
+							NSS_secured_tags = 1
 						}
 					}
 					else_if = {
@@ -16190,6 +16233,9 @@ PRC_USB_battle_for_allies_cat = {
 							1 = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 3
+								}
+								add_to_variable = {
+									NSS_secured_tags = 1
 								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
@@ -16225,6 +16271,9 @@ PRC_USB_battle_for_allies_cat = {
 						}
 						set_variable = {
 							PRC_share_NSS_info_with_allies_var = 3
+						}
+						add_to_variable = {
+							NSS_secured_tags = 1
 						}
 					}
 					else_if = {
@@ -16429,6 +16478,7 @@ PRC_USB_battle_for_allies_cat = {
 	}
 
 	PRC_send_experts_dec = {
+		icon = GFX_USB_federal_rail_network_construction_decision
 		allowed = {
 			tag = PRC
 		}
@@ -16442,10 +16492,14 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		remove_effect = {
 			remove_mission = NSS_cog_mission
+			add_to_variable = {
+				NSS_secured_tags = 1
+			}
 		}
 	}
 
 	PRC_military_combat_NSS = {
+		icon = GFX_USB_constellis_decision
 		allowed = {
 			tag = PRC
 		}
@@ -16528,6 +16582,9 @@ PRC_USB_battle_for_allies_cat = {
 					add_to_variable = {
 						PRC_share_NSS_info_with_allies_var = 1
 					}
+					add_to_variable = {
+						NSS_secured_tags = 1
+					}
 					capital_scope = {
 						damage_units = {
 							state = THIS
@@ -16555,6 +16612,7 @@ PRC_USB_battle_for_allies_cat = {
 	}
 
 	PRC_remove_timed_bomb = {
+		icon = GFX_USB_constellis_decision
 		allowed = {
 			tag = PRC
 		}
@@ -16596,11 +16654,14 @@ PRC_USB_battle_for_allies_cat = {
 	}
 
 	PRC_scan_USA_picture = {
+		icon = GFX_USB_project_babel_category
 		allowed = {
 			tag = PRC
 		}
 		visible = {
-			has_country_flag = USB_NSS_brainwash_start_flag
+			check_variable = {
+				PRC_USB_battle_for_allies_cat_var > 1
+			}
 		}
 		cost = 200
 		days_remove = 270
@@ -16608,15 +16669,62 @@ PRC_USB_battle_for_allies_cat = {
 		remove_effect = {
 			set_country_flag = PRC_scan_USA_picture_flag 
 			unlock_decision_tooltip = PRC_anti_moyin_research
+			add_intel = {
+				target = USB
+				army_intel = 5
+				navy_intel = 5
+				airforce_intel = 5
+			}
 		}
 	}
 
-	PRC_anti_moyin_research = {
+	PRC_scan_PDTO_picture = {
+		icon = GFX_USB_project_babel_category
 		allowed = {
 			tag = PRC
 		}
 		visible = {
-			has_country_flag = PRC_scan_USA_picture_flag
+			check_variable = {
+				PRC_USB_battle_for_allies_cat_var > 1
+			}
+		}
+		cost = 200
+		days_remove = 270
+		fire_only_once = yes
+		remove_effect = {
+			set_country_flag = PRC_scan_PDTO_picture_flag 
+			add_intel = {
+				target = RAJ
+				army_intel = 10
+				navy_intel = 10
+				airforce_intel = 10
+			}
+			add_intel = {
+				target = JAP
+				army_intel = 5
+				navy_intel = 5
+				airforce_intel = 5
+			}
+			add_intel = {
+				target = AST
+				army_intel = 5
+				navy_intel = 5
+				airforce_intel = 5
+			}
+			unlock_decision_tooltip = PRC_anti_moyin_research
+		}
+	}
+
+	PRC_anti_moyin_research = {
+		icon = GFX_USB_project_babel_category
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			OR = {
+				has_country_flag = PRC_scan_USA_picture_flag
+				has_country_flag = PRC_scan_PDTO_picture_flag
+			}	
 		}
 		available = {
 			has_country_flag = USB_NSS_brainwash_steal_flag
@@ -16630,8 +16738,207 @@ PRC_USB_battle_for_allies_cat = {
 		remove_effect = {
 			custom_effect_tooltip = PRC_anti_moyin_research_tt
 			set_country_flag = PRC_anti_moyin_research_flag
+			unlock_decision_tooltip = PRC_neutralize_moyin_research
 		}
 	}
+
+	PRC_neutralize_moyin_research = {
+		icon = GFX_USB_project_babel_category
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = PRC_anti_moyin_research_flag
+		}
+		available = {
+			command_power > 50
+		}
+		cost = 100
+		days_remove = 90
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -50
+		}
+		modifier = {
+			
+		}
+		remove_effect = {
+			custom_effect_tooltip = PRC_neutralize_moyin_research_tt
+			set_country_flag = PRC_neutralize_moyin_research_flag
+			unlock_decision_tooltip = PRC_the_ultimate_weapon
+		}
+	}
+
+	PRC_the_ultimate_weapon = {
+		icon = GFX_USB_decipher_the_nam_shub_of_enki_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = PRC_neutralize_moyin_research_flag
+		}
+		available = {
+			command_power > 50
+		}
+		cost = 200
+		days_remove = 30
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -50
+		}
+		modifier = {
+			research_speed_factor = -0.2
+		}
+		remove_effect = {
+			random_controlled_state = {
+				limit = {
+					office_park > 0
+					infrastructure > 2
+				}
+				damage_building = {
+					type = office_park
+					damage = 1
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+				damage_units = {
+					org_damage = 0.5
+					str_damage = 0.5
+				}
+				every_neighbor_state = {
+					damage_building = {
+						type = infrastructure
+						damage = 1
+					}
+				}
+			}
+			custom_effect_tooltip = PRC_the_ultimate_weapon_tt
+			set_country_flag = PRC_the_ultimate_weapon_flag
+		}
+	}
+
+	PRC_strike_back_NSS = {
+		icon = GFX_USB_decipher_the_nam_shub_of_enki_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			OR = {
+				has_idea = USB_nlp_idea1
+				has_idea = USB_nlp_idea2
+				has_idea = USB_nlp_idea3
+				has_idea = USB_nlp_idea4
+				has_idea = USB_nlp_idea5
+			}
+		}
+		cost = 150
+		days_remove = 30
+		modifier = {
+			consumer_goods_factor = 0.5
+			production_speed_buildings_factor = -0.5
+			industrial_capacity_factory = -0.5
+			industrial_capacity_dockyard = -0.5
+			research_speed_factor = -0.5
+		}
+		remove_effect = {
+			effect_tooltip = {
+				remove_ideas = USB_nlp_idea1
+			}
+			hidden_effect = {
+				remove_ideas = {
+					USB_nlp_idea1
+					USB_nlp_idea2
+					USB_nlp_idea3
+					USB_nlp_idea4
+					USB_nlp_idea5
+				}
+			}
+			random = {
+				chance = 30
+				add_political_power = 50
+			}
+		}
+	}
+	PRC_activate_the_ultimate_weapon = {
+		icon = GFX_USB_decipher_the_nam_shub_of_enki_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = PRC_the_ultimate_weapon_flag
+		}
+		available = {
+			command_power > 10
+		}
+		cost = 20
+		days_remove = 5
+		days_re_enable = 365
+		complete_effect = {
+			add_command_power = -10
+		}
+		modifier = {
+			research_speed_factor = -0.2
+		}
+		remove_effect = {
+			if = {
+				limit = { 
+					has_country_flag = PRC_scan_PDTO_picture_flag
+				}
+				every_country = {
+					limit = {
+						is_in_faction_with = USB
+						NOT = {
+							tag = USB
+						}
+					}
+					add_timed_idea = {
+						idea = USB_nlp_idea1
+						days = 20
+					}
+					add_popularity = {
+						ideology = totalitarian_socialist
+						popularity = 0.025
+					}
+					add_popularity = {
+						ideology = communist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = libertarian_socialist
+						popularity = 0.05
+					}
+				}
+			}
+			if = {
+				limit = { 
+					has_country_flag = PRC_scan_USA_picture_flag
+				}
+				USB = {
+					add_timed_idea = {
+						idea = USB_nlp_idea1
+						days = 20
+					}
+					add_stability = -0.1
+					add_war_support = -0.1
+					add_popularity = {
+						ideology = totalitarian_socialist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = communist
+						popularity = 0.1
+					}
+					add_popularity = {
+						ideology = libertarian_socialist
+						popularity = 0.1
+					}
+				}
+			}
+		}
+	}
+
 
 }
 

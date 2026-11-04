@@ -1,0 +1,48 @@
+scripted_gui = {
+	PRC_NSS_neuro_war = {
+		context_type = decision_category
+		window_name = "RD_NSS_neuro_war_window"
+
+		triggers = {
+			phase_ongoing_1_visible = {
+				check_variable = {
+					PRC_USB_battle_for_allies_cat_var = 1
+				}
+			}
+			phase_ongoing_2_visible = {
+				check_variable = {
+					PRC_USB_battle_for_allies_cat_var = 2
+				}
+			}
+			phase_ongoing_3_visible = {
+				check_variable = {
+					PRC_USB_battle_for_allies_cat_var = 3
+				}
+			}
+			#phase_1_visible = {
+				
+			#}
+			#phase_2_visible = {
+				
+			#}
+			#phase_3_visible = {
+				
+			#}
+			phase_1_finished_visible = {
+				check_variable = {
+					PRC_USB_battle_for_allies_cat_var > 0
+				}
+			}
+			phase_2_finished_visible = {
+				check_variable = {
+					PRC_USB_battle_for_allies_cat_var > 1
+				}
+			}
+			phase_3_finished_visible = {
+				check_variable = {
+					PRC_USB_battle_for_allies_cat_var = 3
+				}
+			}
+		}
+	}
+}
