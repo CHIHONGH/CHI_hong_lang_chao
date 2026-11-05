@@ -107,7 +107,17 @@ USA_second_american_civil_war_category = {
 			original_tag = USB
 		}
 		visible = {
-			has_completed_focus = USB_reunify_the_nation
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USB_NSS_flag
+					}
+					NOT = {
+						has_country_flag = USB_caligula_enabled
+					}
+				}
+				has_completed_focus = USB_reunify_the_nation
+			}
 		}
 		available = {
 			USA_has_states_secured = yes
@@ -16143,7 +16153,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		visible = {
 			check_variable = {
-				PRC_USB_battle_for_allies_cat_var = 1
+				PRC_USB_battle_for_allies_cat_var = 2
 			}
 		}
 		available = {
@@ -16393,6 +16403,9 @@ PRC_USB_battle_for_allies_cat = {
 					NOT = {
 						has_country_flag = PRC_free_from_NSS_flag
 					}
+				}
+				hidden_effect = {
+					load_focus_tree = generic_focus
 				}
 				random_list = {
 					1 = {
