@@ -2394,10 +2394,35 @@ USA_civil_war_outbreak_effect = {
 	}
 	USB = {
 		#USB Idea Transfer
-		add_timed_idea = {
-			idea = USB_divine_mandate_idea
-			days = 2000
+		add_ideas = PTF_hidden_idea
+		add_ideas = PTF_American_Defense_idea
+		add_offsite_building = {
+			type = industrial_complex
+			level = 20
 		}
+		add_offsite_building = {
+			type = arms_factory
+			level = 20
+		}
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = The_USA_civil_war_winner
+					option = USB_win
+				}
+			}
+			add_timed_idea = {
+				idea = USB_divine_mandate_idea
+				days = 2000
+			}
+		}
+		else = {
+			add_timed_idea = {
+				idea = USB_divine_mandate_idea1
+				days = 2000
+			}
+		}
+		
 		if = {
 			limit = {
 				USA = {
