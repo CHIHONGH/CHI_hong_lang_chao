@@ -93,18 +93,27 @@ PRC_monitor_USB_NSS = { ### 1/50
 				cost = -14
 			}
 		}
-		add_political_power = 50
-		if = {
-			limit = {
-				NOT = {
-					has_country_flag = USB_NSS_brainwash_steal_flag
+		PRC = {
+			add_political_power = 50
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USB_NSS_brainwash_steal_flag
+					}
 				}
+				country_event = prcs.3230
 			}
-			country_event = prcs.3230
 		}
+		
 	}
 
 	outcome_extra_chance = 1
+
+	outcome_extra_execute = {
+		PRC = {
+			add_political_power = 50
+		}
+	}
 
 	phases = {
 		infiltration_submarine = { base = 100 }
