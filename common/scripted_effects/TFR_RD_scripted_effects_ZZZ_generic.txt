@@ -464,11 +464,18 @@ PRC_gaw_start = {
 PRC_chinas_victory_in_the_gaw_nl = {
     clr_global_flag = pan_asian_war_ongoing
     set_global_flag = PRC_chinese_gaw_victory_global
-    PRC = {
-        country_event = {
-            id = prcs.3134
-            days = 2
+    if = {
+        limit = {
+            country_exists = PTF
         }
+        PRC = {
+            country_event = {
+                id = prcs.3134
+                days = 2
+            }
+        }
+    }
+    PRC = {
         country_event = {
             id = prcs.3
             days = 7
@@ -573,9 +580,6 @@ PRC_chinas_victory_in_the_gaw_nl = {
             JAP_PEC_member
             JAP_PEC_member_2
         }
-    }
-    PRC = {
-        white_peace = PTF
     }
 }
 
