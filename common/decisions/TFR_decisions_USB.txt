@@ -5421,6 +5421,10 @@ USB_securing_north_america_cat = {
 		}
 		remove_effect = {
 			set_global_flag = USB_gaw_intervention_global
+			declare_war_on = {
+				target = PRC
+				type = topple_government
+			}
 			every_country = {
 				limit = {
 					OR = {
@@ -5436,10 +5440,6 @@ USB_securing_north_america_cat = {
 				clr_country_flag = pdto_member
 				USB = {
 					add_to_faction = PREV
-					declare_war_on = {
-						target = PRC
-						type = topple_government
-					}
 				}
 			}
 			hidden_effect = {
@@ -5499,6 +5499,10 @@ USB_securing_north_america_cat = {
 			}
 		}
 		remove_effect = {
+			news_event = {
+				id = news.415
+				days = 1
+			}
 			PRC_gaw_start = yes
 			set_global_flag = USB_NSS_china_war
 			set_global_flag = pan_asian_war_ongoing
@@ -5519,6 +5523,7 @@ USB_securing_north_america_cat = {
 			add_to_faction = KOR
 			PRC = {
 				add_to_faction = PRK
+				focus_unlock = yes
 			}
 			PRK = {
 				set_country_flag = eadi_member
@@ -5545,6 +5550,17 @@ USB_securing_north_america_cat = {
 				declare_war_on = {
 					target = PAK
 					type = annex_everything
+				}
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = JAP
+				}
+				dismantle_faction = yes
+				leave_faction = yes
+				clr_country_flag = pdto_member
+				USB = {
+					add_to_faction = PREV
 				}
 			}
 			NAX = {
