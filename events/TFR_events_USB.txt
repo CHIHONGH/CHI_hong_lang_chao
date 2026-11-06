@@ -1248,17 +1248,7 @@ country_event = {
 		add_political_power = -100
 		add_stability = -0.1
 		custom_effect_tooltip = USB_corporate_coup_fails_tooltip
-		hidden_effect = {
-			if = {
-				limit = {
-					has_stability < 0.2
-				}
-				country_event = {
-					id = usb.16
-					days = 10
-				}
-			}
-		}
+		
 	}
 	option = {
 		#The Coup Succeeds
@@ -13074,8 +13064,8 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			log = "[GetDateText]: [Root.GetName]: event bdnspch.1141 immediate"
-			activate_mission = USB_sanders_conspiracy_mission
-			add_ideas = USB_sanderite_conspiracy_idea
+			#activate_mission = USB_sanders_conspiracy_mission
+			#add_ideas = USB_sanderite_conspiracy_idea
 		}
 	}
 	option = {
@@ -13103,15 +13093,15 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			log = "[GetDateText]: [Root.GetName]: event bdnspch.115 immediate"
-			activate_mission = USB_bloomberg_conspiracy_mission
-			add_ideas = USB_bloomberg_conspiracy_idea
+			#activate_mission = USB_bloomberg_conspiracy_mission
+			#add_ideas = USB_bloomberg_conspiracy_idea
 		}
 	}
 	option = {
 		name = bdnspch.115.a
 		effect_tooltip = {
-			activate_mission = USB_bloomberg_conspiracy_mission
-			add_ideas = USB_bloomberg_conspiracy_idea
+			#activate_mission = USB_bloomberg_conspiracy_mission
+			#add_ideas = USB_bloomberg_conspiracy_idea
 		}
 	}
 }
@@ -14454,6 +14444,8 @@ country_event = { #Bring Order to Chaos
 		hidden_effect = {
 			log = "[GetDateText]: [Root.GetName]: event nss.0 immediate"
 			remove_ideas = SOM_failed_state
+			clr_country_flag = USB_rebirth_flag
+			clr_country_flag = USB_caligula_enabled
 			set_country_flag = USB_NSS_flag
 		}
 	}

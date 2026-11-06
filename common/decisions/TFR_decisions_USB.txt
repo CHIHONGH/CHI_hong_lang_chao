@@ -2564,22 +2564,7 @@ USB_presidential_health_category = {
 						days = 6
 					}
 				}
-				else = {
-					if = {
-						limit = {
-							NOT = {
-								OR = {
-									has_completed_focus = USB_emergency_presidential_powers
-								}
-								
-							}
-						}
-						country_event = {
-							id = usb.11
-							days = 6
-						}
-					}
-				}
+				
 			}
 		}
 	}
@@ -11108,14 +11093,6 @@ USB_congressional_factions_caligula_category = {
 		}
 		remove_effect = {
 			increase_taxes = yes
-			if = {
-				limit = {
-					NOT = {
-						has_active_mission = USB_party_doctrine_mission
-					}
-				}
-				activate_mission = USB_party_doctrine_mission
-			}
 			clr_country_flag = USB_chose_doctrine_flag
 			if = {
 				limit = {
@@ -11192,14 +11169,7 @@ USB_congressional_factions_caligula_category = {
 		}
 		remove_effect = {
 			add_manpower = 25000
-			if = {
-				limit = {
-					NOT = {
-						has_active_mission = USB_party_doctrine_mission
-					}
-				}
-				activate_mission = USB_party_doctrine_mission
-			}
+			
 			clr_country_flag = USB_chose_doctrine_flag
 			if = {
 				limit = {
