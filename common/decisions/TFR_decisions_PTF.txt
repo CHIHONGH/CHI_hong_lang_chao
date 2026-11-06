@@ -122,9 +122,9 @@ USA_second_american_civil_war_category = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = The_USA_civil_war_winner
-						option = USB_win
+					OR = {
+						has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+						has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
 					}
 				}
 				remove_ideas = {
@@ -142,19 +142,8 @@ USA_second_american_civil_war_category = {
 			}
 			else_if = {
 				limit = {
-					has_game_rule = {
-						rule = The_USA_civil_war_winner
-						option = default
-					}
+					has_global_flag = USA_civil_war_project_winner_PTF_flag
 				}
-				remove_ideas = {
-					PTF_American_Defense_idea
-				}
-				USB = {
-					remove_ideas = PTF_American_Defense_idea
-				}
-			}
-			else = {
 				USB = {
 					remove_ideas = {
 						PTF_hidden_idea
@@ -168,6 +157,15 @@ USA_second_american_civil_war_category = {
 						type = arms_factory
 						level = -20
 					}
+				}
+				
+			}
+			else = {
+				remove_ideas = {
+					PTF_American_Defense_idea
+				}
+				USB = {
+					remove_ideas = PTF_American_Defense_idea
 				}
 			}
 			declare_war_on = {
