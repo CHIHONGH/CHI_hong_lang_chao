@@ -14201,6 +14201,51 @@ on_actions = {
 					}
 					set_global_flag = skip_default_capitulation
 				}
+				if = {
+					limit = {
+						has_global_flag = pan_asian_war_ongoing
+						ROOT = {
+							OR = {
+								original_tag = JAP
+								is_ally_with = JAP
+								original_tag = AST
+								is_ally_with = AST
+								original_tag = RAJ
+								is_ally_with = RAJ
+								has_country_flag = pdto_member
+							}
+						}
+						FROM = {
+							is_ally_with = PRC
+							OR = {
+								original_tag = PRC
+								original_tag = JAP
+								original_tag = AST
+								original_tag = RAJ
+								original_tag = SIA
+								original_tag = VIN
+								original_tag = LAO
+								original_tag = CAM
+								original_tag = BRM
+								original_tag = PHI
+								original_tag = INS
+								original_tag = PNG
+								original_tag = NZL
+								original_tag = MAL
+								original_tag = BAN
+								original_tag = NEP
+								original_tag = BHU
+								original_tag = CHI
+								original_tag = PRK
+								original_tag = SIG
+							}
+						}
+					}
+					ROOT = {
+						clr_country_flag = pdto_member
+						set_country_flag = eadi_member
+					}
+				}
 				#DEFAULT CAPITULATION
 				if = {
 					limit = {
@@ -14885,6 +14930,7 @@ on_actions = {
 							}
 						}
 						ROOT = {
+							is_ally_with = PRC
 							OR = {
 								original_tag = PRC
 								original_tag = JAP
