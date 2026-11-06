@@ -2406,9 +2406,9 @@ USA_civil_war_outbreak_effect = {
 		}
 		if = {
 			limit = {
-				has_game_rule = {
-					rule = The_USA_civil_war_winner
-					option = USB_win
+				OR = {
+					has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+					has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
 				}
 			}
 			add_timed_idea = {
@@ -2623,7 +2623,7 @@ USA_civil_war_outbreak_effect = {
 				is_core_of = USB
 			}
 			create_unit = {
-				division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.1"
+				division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.75"
 				owner = USB
 			}
 		}
@@ -3060,6 +3060,24 @@ USA_civil_war_outbreak_effect = {
 				}
 			}
 			add_core_of = PTF
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+					has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+				}
+			}
+			add_timed_idea = {
+				idea = PTF_divine_mandate_idea
+				days = 2000
+			}
+		}
+		else = {
+			add_timed_idea = {
+				idea = PTF_divine_mandate_idea
+				days = 500
+			}
 		}
 		transfer_state = 1077
 		transfer_state = 795

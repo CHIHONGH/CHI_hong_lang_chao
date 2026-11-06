@@ -239,40 +239,24 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = The_USA_civil_war_winner
-						option = USB_win
+					OR = {
+						has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+						has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
 					}
 				}
-				remove_ideas = {
-					PTF_hidden_idea
-					PTF_American_Defense_idea
-				}
-				add_offsite_building = {
-					type = industrial_complex
-					level = -20
-				}
-				add_offsite_building = {
-					type = arms_factory
-					level = -20
-				}
-			}
-			else_if = {
-				limit = {
-					has_game_rule = {
-						rule = The_USA_civil_war_winner
-						option = default
+				PTF = {
+					delete_unit = {
+						division_template = "Elite Armored Division"
+						disband = yes
 					}
-				}
-				remove_ideas = {
-					PTF_American_Defense_idea
-				}
-				USB = {
-					remove_ideas = PTF_American_Defense_idea
-				}
-			}
-			else = {
-				USB = {
+					delete_unit = {
+						division_template = "Marines"
+						disband = yes
+					}
+					delete_unit = {
+						division_template = "Armored Division"
+						disband = yes
+					}
 					remove_ideas = {
 						PTF_hidden_idea
 						PTF_American_Defense_idea
@@ -286,6 +270,44 @@ focus_tree = {
 						level = -20
 					}
 				}
+				
+			}
+			else_if = {
+				limit = {
+					has_global_flag = USA_civil_war_project_winner_PTF_flag
+				}
+				USB = {
+					remove_ideas = {
+						PTF_hidden_idea
+						PTF_American_Defense_idea
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = -20
+					}
+					add_offsite_building = {
+						type = arms_factory
+						level = -20
+					}
+				}	
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Elite Armored Division\" start_experience_factor = 1"
+						owner = PTF
+						allow_spawning_on_enemy_provs = yes
+						count = 15
+					}
+				}
+			}
+			else = {
+				PTF = {
+					remove_ideas = {
+						PTF_American_Defense_idea
+					}
+				}
+				USB = {
+					remove_ideas = PTF_American_Defense_idea
+				}
 			}
 			create_wargoal = {
 				type = annex_everything
@@ -294,14 +316,6 @@ focus_tree = {
 			add_timed_idea = {
 				idea = PTF_operation_scipio_idea
 				days = 180
-			}
-			capital_scope = {
-				create_unit = {
-					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
-					owner = PTF
-					allow_spawning_on_enemy_provs = yes
-					count = 15
-				}
 			}
 			add_offsite_building = {
 				type = arms_factory
@@ -1172,7 +1186,7 @@ focus_tree = {
 			}
 			capital_scope = {
 				create_unit = {
-					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					division = "division_template = \"Elite Armored Division\" start_experience_factor = 1"
 					owner = PTF
 					allow_spawning_on_enemy_provs = yes
 					count = 5
@@ -1963,7 +1977,7 @@ focus_tree = {
 			}
 			random_controlled_state = {
 				create_unit = {
-					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					division = "division_template = \"Elite Armored Division\" start_experience_factor = 1"
 					owner = PTF
 					allow_spawning_on_enemy_provs = yes
 					count = 2
@@ -1971,7 +1985,7 @@ focus_tree = {
 			}
 			random_controlled_state = {
 				create_unit = {
-					division = "division_template = \"huo_xing_bing\" start_experience_factor = 1"
+					division = "division_template = \"Elite Armored Division\" start_experience_factor = 1"
 					owner = PTF
 					allow_spawning_on_enemy_provs = yes
 					count = 2

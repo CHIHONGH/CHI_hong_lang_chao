@@ -99,6 +99,37 @@ country_event = {
 	}
 }
 
+# ==================== 引导页6：反派 ====================
+country_event = {
+	id = red_dawn_guide.6
+	title = red_dawn_guide.6.t
+	desc = red_dawn_guide.6.d
+	is_triggered_only = yes
+	picture = GFX_Event_PRC_enemies
+
+	option = {
+		name = red_dawn_guide.6.a
+		ai_chance = { base = 10 }
+		set_global_flag = USA_civil_war_project_winner_PTF_flag
+	}
+	option = {
+		name = red_dawn_guide.6.b
+		ai_chance = { base = 10 }
+		set_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+	}
+	option = {
+		name = red_dawn_guide.6.c
+		ai_chance = { base = 10 }
+		set_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+	}
+	option = {
+		name = red_dawn_guide.6.e
+		ai_chance = { base = 10 }
+	}
+}
+
+
+
 # ==================== PTF 难度激活（难度选择已移至游戏规则，本事件由规则侧接线触发） ====================
 country_event = {
 	id = red_dawn_guide.7
@@ -108,7 +139,10 @@ country_event = {
 	trigger = {
 		tag = PTF
 		NOT = {
-			has_game_rule = { rule = The_USA_civil_war_winner option = USB_win}
+			OR = {
+				has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+				has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+			}
 		}
 	}
 
@@ -197,7 +231,7 @@ country_event = {
 	trigger = {
 		tag = USB
 		NOT = {
-			has_game_rule = { rule = The_USA_civil_war_winner option = PTF_win}
+			has_global_flag = USA_civil_war_project_winner_PTF_flag
 		}
 	}
 

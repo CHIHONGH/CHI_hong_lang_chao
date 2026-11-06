@@ -2667,8 +2667,21 @@ country_event = {
                     has_tech = advanced_small_airframe
                     has_tech = unmanned_aircraft
                     has_completed_focus = PLA_KongJunZhuangbei_Fazhan
-                    check_variable = {
-                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    if = {
+                        limit = {
+                            country_exists = PTF
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > PTF.num_deployed_planes
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = USB
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > USB.num_deployed_planes
+                        }
                     }
                 }
             }
@@ -2687,8 +2700,21 @@ country_event = {
     option = {
         name = prcs.3140.b
         trigger = {
-            check_variable = {
-                PRC.num_deployed_planes > PTF.num_deployed_planes
+            if = {
+                limit = {
+                    country_exists = PTF
+                }
+                check_variable = {
+                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                }
+            }
+            if = {
+                limit = {
+                    country_exists = USB
+                }
+                check_variable = {
+                    PRC.num_deployed_planes > USB.num_deployed_planes
+                }
             }
             PRC = {
                 NOT = {
@@ -2753,8 +2779,21 @@ country_event = {
             }
             OR = {
                 has_tech = aa_hmg2
-                check_variable = {
-                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                if = {
+                    limit = {
+                        country_exists = PTF
+                    }
+                    check_variable = {
+                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    }
+                }
+                if = {
+                    limit = {
+                        country_exists = USB
+                    }
+                    check_variable = {
+                        PRC.num_deployed_planes > USB.num_deployed_planes
+                    }
                 }
             }
         }
@@ -2770,8 +2809,21 @@ country_event = {
                     has_tech = engines_3
                     has_tech = advanced_small_airframe
                     has_tech = aa_hmg2
-                    check_variable = {
-                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    if = {
+                        limit = {
+                            country_exists = PTF
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > PTF.num_deployed_planes
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = USB
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > USB.num_deployed_planes
+                        }
                     }
                 }
             }
@@ -2833,15 +2885,35 @@ country_event = {
             add_war_support = 0.025
             add_political_power = 10
         }
-        PTF = {
-            add_war_support = -0.15
-            add_political_power = -30
-            set_temp_variable = {
-				var = debt_var_temp
-				value = -192
-			}
-			add_debt = yes
+        if = {
+            limit = {
+                country_exists = PTF
+            }
+            PTF = {
+                add_war_support = -0.15
+                add_political_power = -30
+                set_temp_variable = {
+                    var = debt_var_temp
+                    value = -192
+                }
+                add_debt = yes
+            }
         }
+        if = {
+            limit = {
+                country_exists = USB
+            }
+            USB = {
+                add_war_support = -0.15
+                add_political_power = -30
+                set_temp_variable = {
+                    var = debt_var_temp
+                    value = -192
+                }
+                add_debt = yes
+            }
+        }
+        
     }
     option = {
         name = prcs.3143.b
@@ -2849,16 +2921,38 @@ country_event = {
         PRC = {
             add_political_power = -20
         }
-        PTF = {
-            add_political_power = -20
+        if = {
+            limit = {
+                country_exists = PTF
+            }
+            PTF = {
+                add_political_power = -20
+            }
         }
+        else = {
+            USB = {
+                add_political_power = -20
+            }
+        }
+        
     }
     option = {
         name = prcs.3143.c
         trigger = { has_country_flag = NHDG_USA_victory_hidden_flag }
-        PTF = {
-            add_war_support = 0.025
-            add_political_power = 10
+        if = {
+            limit = {
+                country_exists = PTF
+            }
+            PTF = {
+                add_war_support = 0.025
+                add_political_power = 10
+            }
+        }
+        else = {
+            USB = {
+                add_war_support = 0.025
+                add_political_power = 10
+            }
         }
         PRC = {
             add_war_support = -0.15
