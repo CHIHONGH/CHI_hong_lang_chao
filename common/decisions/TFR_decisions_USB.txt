@@ -4919,12 +4919,26 @@ USB_securing_north_america_cat = {
 		}
 		visible = {
 			has_completed_focus = USB_nnunion
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = CAN
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
 		}
 		available = {
 			has_completed_focus = USB_nnunion
 		}
 		ai_will_do = {
-			base = 100
+			base = 1000
 		}
 		days_remove = 14
 		fire_only_once = yes
@@ -4947,12 +4961,34 @@ USB_securing_north_america_cat = {
 		}
 		visible = {
 			has_completed_focus = USB_limartini
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = BRN
+							tag = BSK
+							tag = SIN
+							tag = CDJ
+							tag = GUC
+							tag = LFM
+							tag = ZAP
+							tag = MEX
+							tag = CAS
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
 		}
 		available = {
 			has_completed_focus = USB_limartini
 		}
 		ai_will_do = {
-			base = 100
+			base = 1000
 		}
 		days_remove = 14
 		fire_only_once = yes
