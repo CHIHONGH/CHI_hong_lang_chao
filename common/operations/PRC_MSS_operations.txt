@@ -10,11 +10,7 @@ PRC_monitor_USB_NSS = { ### 1/50
 	allowed = {
 		original_tag = PRC
 	}
-	available = { 
-		network_national_coverage = {
-			target = USB
-			value > 25
-		}
+	available = {
 		NOT = {
 			has_country_flag = PRC_monitor_USB_NSS_in_progress
 		}
@@ -37,7 +33,7 @@ PRC_monitor_USB_NSS = { ### 1/50
 
 	operatives = 2
 
-	network_strength = 35
+	network_strength = 25
 
 	equipment = {
 		infantry_equipment = 100
@@ -65,7 +61,7 @@ PRC_monitor_USB_NSS = { ### 1/50
 	experience = 5
 	# outcome is an effect that runs when the operation has completed
 	outcome_execute = { # SCOPE_OPERATION
-		USB = {
+		FROM = {
 			add_to_variable = {
 				USB_gears_of_war_pp_var = -100
 			}
@@ -90,7 +86,7 @@ PRC_monitor_USB_NSS = { ### 1/50
 				cost = -14
 			}
 		}
-		PRC = {
+		ROOT = {
 			add_to_variable = {
 				PRC_monitor_USB_NSS_var = 1
 			}
@@ -107,11 +103,47 @@ PRC_monitor_USB_NSS = { ### 1/50
 		
 	}
 
-	outcome_extra_chance = 1
+	outcome_extra_chance = 0.2
 
 	outcome_extra_execute = {
-		PRC = {
-			add_political_power = 50
+		FROM = {
+			add_to_variable = {
+				USB_gears_of_war_pp_var = -100
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_merge_the_mic
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_unrestrained_rd
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_hunter_killer_program
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_kickstart_the_amnet
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_dumb_construction
+				cost = -14
+			}
+		}
+		ROOT = {
+			add_to_variable = {
+				PRC_monitor_USB_NSS_var = 1
+			}
+			add_political_power = 100
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USB_NSS_brainwash_steal_flag
+					}
+				}
+				country_event = prcs.3230
+			}
 		}
 	}
 
