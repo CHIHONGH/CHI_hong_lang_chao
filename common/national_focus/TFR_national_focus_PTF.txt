@@ -236,6 +236,26 @@ focus_tree = {
 		prerequisite = {
 			focus = PTF_one_nation_one_solution
 		}
+		will_lead_to_war_with = USB
+		select_effect = {
+			USB = {
+				add_ai_strategy = {
+					type = force_concentration_front_factor
+					tag = PTF
+					value = 40
+				}
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = PTF
+					value = 100
+				}
+				add_ai_strategy = {
+					type = front_armor_score
+					id = PTF
+					value = 100
+				}
+			}
+		}
 		completion_reward = {
 			if = {
 				limit = {
@@ -268,6 +288,23 @@ focus_tree = {
 					add_offsite_building = {
 						type = arms_factory
 						level = -20
+					}
+				}
+				USB = {
+					every_state = {
+						limit = {
+							OR = {
+								state = 1174
+								state = 1173
+								state = 359
+								state = 1069
+							}
+						}
+						create_unit = {
+							division = "name = \"Godspeed Brigade\" division_template = \"Armor Division\" start_experience_factor = 1 start_manpower_factor = 1"
+							owner = USB
+							count = 5
+						}
 					}
 				}
 				
@@ -307,6 +344,21 @@ focus_tree = {
 				}
 				USB = {
 					remove_ideas = PTF_American_Defense_idea
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1174
+							state = 1173
+							state = 359
+							state = 1069
+						}
+					}
+					create_unit = {
+						division = "name = \"Godspeed Brigade\" division_template = \"Armor Division\" start_experience_factor = 1 start_manpower_factor = 1"
+    					owner = USB
+						count = 5
+					}
 				}
 			}
 			create_wargoal = {
