@@ -14553,6 +14553,11 @@ focus_tree = {
 			focus = USB_kickstart_the_amnet
 		}
 		completion_reward = {
+			set_country_flag = {
+				flag = USB_give_mexico_sometime_flag
+				value = 1
+				days = 100
+			}
 			hidden_effect = {
 				PRC = {
 					country_event = {
@@ -15125,6 +15130,15 @@ focus_tree = {
 			base = 100
 		}
 		available = {
+			OR = {
+				MEX = {
+					has_country_flag = MEX_mexican_unifier_flag
+				}
+				ZAP = {
+					has_country_flag = MEX_mexican_unifier_flag
+				}
+			}
+			has_country_flag = USB_give_mexico_sometime_flag
 		}
 		allow_branch = {
 			has_completed_focus = USB_we_wont_fail_again
@@ -15136,7 +15150,6 @@ focus_tree = {
 			focus = USB_keep_the_cycle_repeating
 		}
 		completion_reward = {
-			activate_decision = USB_invade_mexico_decision
 			unlock_decision_tooltip = USB_invade_mexico_decision
 		}
 	}

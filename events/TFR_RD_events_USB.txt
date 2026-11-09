@@ -85,3 +85,77 @@ country_event = {
         remove_mission = USB_biden_health_timer_mission
     }
 }
+
+#Biden Supermax
+country_event = {
+	id = rd_nss.3
+	title = rd_nss.3.t
+	desc = {
+        text = rd_nss.3.d.1
+        trigger = {
+            NOT = { 
+                USB = {
+                    has_country_flag = USB_NSS_flag
+                }
+            }
+            
+        }
+    }
+    desc = {
+        text = rd_nss.3.d.2
+        trigger = {
+            USB = {
+                has_country_flag = USB_NSS_flag
+            }
+        }
+    }
+	picture = GFX_USB_supermax
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		OR = {
+			ZAP = {
+				has_country_flag = MEX_mexican_unifier_flag
+			}
+			MEX = {
+				AND = {
+					has_country_flag = MEX_mexican_unifier_flag
+					has_government = communist
+				}
+			}
+		}
+		has_global_flag = USA_american_civil_war_over_global
+		USB = {
+			exists = yes
+		}
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = rd_nss.3.a
+		custom_effect_tooltip = rd_nss_3_tt_a
+		set_country_flag = PRC_MEX_PTF_conservative
+		unlock_decision_tooltip = MEX_add_bunker
+		unlock_decision_tooltip = MEX_buff
+		unlock_decision_tooltip = MEX_train
+
+	}
+	option = {
+		name = rd_nss.3.b
+		custom_effect_tooltip = rd_nss_3_tt_b
+        if = {
+            limit = {
+                USB = {
+                    has_country_flag = USB_NSS_flag
+                }
+            }
+		    custom_effect_tooltip = rd_nss_3_tt_bextra
+        }
+		set_country_flag = PRC_MEX_PTF_bold
+		unlock_decision_tooltip = MEX_ultra_technology
+		unlock_decision_tooltip = MEX_build_an_ultimate_army
+		unlock_decision_tooltip = MEX_pretrain_for_the_worst
+	}
+}
