@@ -350,8 +350,8 @@
 		x = 0
 		y = 2
 		cost = 10
-		cancel_if_invalid = yes
-		continue_if_invalid = no
+		continue_if_invalid = yes
+		cancelable = no
 		will_lead_to_war_with = USB
 		will_lead_to_war_with = PTF
 		will_lead_to_war_with = JAP
@@ -367,6 +367,16 @@
 					}
 				}
 				USC = { is_in_faction_with = JAP } 
+			}
+			if = {
+				limit = { 
+					country_exists = USB
+				}
+				USB = {
+					NOT = {
+						has_decision = USB_kill_china_decision
+					}
+				}
 			}
 		}
 		prerequisite = {

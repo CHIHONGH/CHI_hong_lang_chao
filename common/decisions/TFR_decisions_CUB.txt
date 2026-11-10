@@ -370,12 +370,36 @@ great_asian_war_decisions = {
 		priority = 1
 		icon = GFX_SOV_decision_nato_war_deadline
 		available = {
-			PRC = {
-				NOT = {
-					OR = {
-						has_war_with = JAP
-						has_war_with = RAJ
-						has_war_with = AST
+			JAP = {
+				OR = {
+					NOT = {
+						has_war_with = PRC
+					}
+					AND = {
+						has_war_with = PRC
+						surrender_progress > 0.9
+					}
+				}
+			}
+			AST = {
+				OR = {
+					NOT = {
+						has_war_with = PRC
+					}
+					AND = {
+						has_war_with = PRC
+						surrender_progress > 0.9
+					}
+				}
+			}
+			RAJ = {
+				OR = {
+					NOT = {
+						has_war_with = PRC
+					}
+					AND = {
+						has_war_with = PRC
+						surrender_progress > 0.9
 					}
 				}
 			}
@@ -391,7 +415,6 @@ great_asian_war_decisions = {
 							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
                         	has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
 						}
-						
 					}
 					PTF = {
 						OR = {
@@ -528,6 +551,7 @@ great_asian_war_decisions = {
 			clr_global_flag = pan_asian_war_ongoing
 			PRC = {
 				remove_mission = PRC_GAW_war_exhaustion
+				set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 				# country_event = china.1001
 			}
 			news_event = {

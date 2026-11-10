@@ -2139,7 +2139,6 @@ USB_nss_megalopolis_category = {
 		ai_will_do = {
 			base = 2
 		}
-		state_target = yes
 		cost = 35
 		days_remove = 60
 		fire_only_once = yes
@@ -5686,6 +5685,7 @@ USB_securing_north_america_cat = {
 		cost = 50
 		days_remove = 14
 		cancel_if_not_visible = no
+		war_with_on_remove = PRC
 		complete_effect = {
 		}
 		remove_effect = {
@@ -5727,6 +5727,14 @@ USB_securing_north_america_cat = {
 			date > 2030.6.7
 		}
 		available = {
+			PRC = {
+				NOT = {
+					focus_progress = {
+						focus = PRC_nl_toward_victory
+						progress > 0
+					}
+				}
+			}
 			NOT = {
 				has_global_flag = pan_asian_war_ongoing
 			}
@@ -5791,6 +5799,7 @@ USB_securing_north_america_cat = {
 			}
 			add_to_faction = KOR
 			PRC = {
+				clr_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 				add_to_faction = PRK
 				focus_unlock = yes
 			}
