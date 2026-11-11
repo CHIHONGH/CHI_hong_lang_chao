@@ -13389,6 +13389,7 @@ focus_tree = {
 			has_completed_focus = USB_out_of_many_one_nss
 		}
 		available = {
+			date > 2024.5.1
 		}
 		prerequisite = {
 			focus = USB_out_of_many_one_nss
@@ -14075,7 +14076,7 @@ focus_tree = {
 		completion_reward = {
 			
 			set_variable = {
-				PRC_USB_battle_for_allies_cat_var = 2
+				global.PRC_USB_battle_for_allies_cat_var = 2
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -14557,7 +14558,7 @@ focus_tree = {
 				}
 			}
 			set_variable = {
-				PRC_USB_battle_for_allies_cat_var = 3
+				global.PRC_USB_battle_for_allies_cat_var = 3
 			}
 			unlock_decision_category_tooltip = USB_securing_north_america_cat
 			focus_unlock = yes
@@ -15128,7 +15129,9 @@ focus_tree = {
 					has_country_flag = MEX_mexican_unifier_flag
 				}
 			}
-			has_country_flag = USB_give_mexico_sometime_flag
+			NOT = {
+				has_country_flag = USB_give_mexico_sometime_flag
+			}
 		}
 		allow_branch = {
 			has_completed_focus = USB_we_wont_fail_again

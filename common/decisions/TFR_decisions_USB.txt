@@ -505,6 +505,7 @@ USA_second_american_civil_war_category = {
 			}
 		}
 		available = {
+			date > 2024.7.1
 			NOT = {
 				has_country_flag = USB_war_justification_flag
 			}
@@ -14953,7 +14954,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		visible = {
 			check_variable = {
-				PRC_USB_battle_for_allies_cat_var = 1
+				global.PRC_USB_battle_for_allies_cat_var = 1
 			}
 		}
 		available = {
@@ -14972,7 +14973,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		visible = {
 			check_variable = {
-				PRC_USB_battle_for_allies_cat_var = 2
+				global.PRC_USB_battle_for_allies_cat_var = 2
 			}
 		}
 		available = {
@@ -15150,10 +15151,14 @@ PRC_USB_battle_for_allies_cat = {
 			has_completed_focus = USB_we_wont_fail_again
 		}
 		available = {
+			date > 2025.6.7
 			NOT = {
 				PRC = {
 					has_active_mission = NSS_cog_mission
 				}
+			}
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
 			}
 		}
 		cost = 30
@@ -15187,7 +15192,10 @@ PRC_USB_battle_for_allies_cat = {
 			}
 		}
 		available = {
-			
+			date > 2025.6.7
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
+			}
 		}
 		cost = 50
 		days_remove = 30
@@ -15229,6 +15237,7 @@ PRC_USB_battle_for_allies_cat = {
 				hidden_effect = {
 					load_focus_tree = generic_focus
 				}
+				clr_country_flag = eadi_member
 				random_list = {
 					1 = {
 						leave_faction = yes
@@ -15239,6 +15248,7 @@ PRC_USB_battle_for_allies_cat = {
 						JAP = {
 							add_to_faction = PREV
 						}
+						set_country_flag = pdto_member
 					}
 				}
 			}
@@ -15251,8 +15261,16 @@ PRC_USB_battle_for_allies_cat = {
 			original_tag = USB
 		}
 		target_root_trigger = {
+			date > 2025.6.7
 			has_completed_focus = USB_we_wont_fail_again
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
+			}
+			check_variable = {
+				NSS_plant_timed_bomb_var < 4
+			}
 		}
+		
 		cost = 20
 		days_remove = 50
 		days_re_enable = NSS_bomb_cooldown_var
@@ -15273,7 +15291,15 @@ PRC_USB_battle_for_allies_cat = {
 			# BHU
 			# NEP
 		}
+		complete_effect = {
+			add_to_variable = {
+				NSS_plant_timed_bomb_var = 1
+			}
+		}
 		remove_effect = {
+			add_to_variable = {
+				NSS_plant_timed_bomb_var = -1
+			}
 			FROM = {
 				add_timed_idea = {
 					idea = NSS_timed_bomb_idea
@@ -15295,6 +15321,10 @@ PRC_USB_battle_for_allies_cat = {
 			has_completed_focus = USB_we_wont_fail_again
 			check_variable = {
 				NSS_fast_up_bomb_production_var < 3
+			}
+			date > 2025.6.7
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
 			}
 		}
 		cost = 50
@@ -15582,7 +15612,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		visible = {
 			check_variable = {
-				PRC_USB_battle_for_allies_cat_var > 1
+				global.PRC_USB_battle_for_allies_cat_var > 1
 			}
 		}
 		cost = 200
@@ -15611,7 +15641,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		visible = {
 			check_variable = {
-				PRC_USB_battle_for_allies_cat_var > 1
+				global.PRC_USB_battle_for_allies_cat_var > 1
 			}
 		}
 		cost = 200

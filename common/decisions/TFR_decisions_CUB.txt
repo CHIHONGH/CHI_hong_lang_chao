@@ -365,6 +365,142 @@ second_nato_war_decisions = {
 	}
 }
 
+third_euro_war_decisions = {
+	third_euro_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			GER = {
+				surrender_progress > 0.9
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				FAF = {
+					surrender_progress > 0.9
+				}
+			}
+			else = {
+				GER = {
+					has_war = no
+				}
+				1493 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+				16 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+				126 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+			}
+		}
+		cancel_effect = { # German Victory
+			FPR = {
+				load_focus_tree = generic_focus
+			}
+			FAF = {
+				load_focus_tree = generic_focus
+			}
+			every_country = {
+				limit = {
+					has_war_with = GER
+				}
+				white_peace = GER
+				dismantle_faction = yes
+				leave_faction = yes
+			}
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				GER = {
+					puppet = FAF
+				}
+			}
+			GER = {
+				if = {
+					limit = {
+						has_country_flag = GER_left_accelerationist_flag
+					}
+					news_event = news.644
+				}
+				else_if = {
+					limit = {
+						has_country_flag = GER_spartanist_flag
+					}
+					news_event = news.645
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_country_leader = {
+								character = GER_radelsfuhrer
+								ruling_only = yes
+							}
+							has_country_leader = {
+								character = GER_klaus_armstroff_char
+								ruling_only = yes
+							}
+						}
+					}
+					news_event = news.647
+				}
+				else_if = {
+					limit = {
+						has_country_leader = {
+							character = GER_frank_franz
+							ruling_only = yes
+						}
+					}
+					news_event = news.648
+				}
+				else_if = {
+					limit = {
+						has_country_leader = {
+							character = GER_Heinrich_XIII
+							ruling_only = yes
+						}
+					}
+					news_event = news.649
+				}
+				else = {
+					news_event = news.643
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = third_euro_war_mission
+		}
+		complete_effect = { #French Victory
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				FAF_fascist_victory_in_third_ew = yes
+			}
+			else_if = {
+				limit = {
+					FPR = { exists = yes }
+				}
+				FPR_communist_victory_in_third_ew = yes
+			}
+		}
+	}
+}
+
 great_asian_war_decisions = {
 	great_asian_war_mission = {
 		priority = 1
@@ -523,6 +659,13 @@ great_asian_war_decisions = {
 		cancel_if_not_visible = no
 		is_good = no
 		cancel_trigger = {
+			608 = {
+				NOT = {
+					controller = {
+						has_war_with = PRC
+					}
+				}
+			}
 			PRC = {
 				surrender_progress > 0.6
 			}
