@@ -5675,6 +5675,7 @@ USB_securing_north_america_cat = {
 		visible = {
 			tag = USB
 			has_completed_focus = USB_mqwallbreaker
+			NOT = { has_country_flag = USB_kill_china_decision_flag }
 		}
 		available = {
 			has_global_flag = pan_asian_war_ongoing
@@ -5688,6 +5689,7 @@ USB_securing_north_america_cat = {
 		cancel_if_not_visible = no
 		war_with_on_remove = PRC
 		complete_effect = {
+			set_country_flag = USB_intervene_in_gaw_decision_flag
 		}
 		remove_effect = {
 			set_global_flag = USB_gaw_intervention_global
@@ -5726,6 +5728,7 @@ USB_securing_north_america_cat = {
 			tag = USB
 			has_completed_focus = USB_mqwallbreaker
 			date > 2030.6.7
+			NOT = { has_country_flag = USB_intervene_in_gaw_decision_flag }
 		}
 		available = {
 			PRC = {
@@ -5734,6 +5737,7 @@ USB_securing_north_america_cat = {
 						focus = PRC_nl_toward_victory
 						progress > 0
 					}
+					has_completed_focus = PRC_nl_toward_victory
 				}
 			}
 			NOT = {
@@ -5754,6 +5758,7 @@ USB_securing_north_america_cat = {
 		war_with_on_remove = PRK
 		war_with_on_remove = PAK
 		complete_effect = {
+			set_country_flag = USB_kill_china_decision_flag
 			set_global_flag = GAW_soon
 			PRC = {
 				country_event = { id = rd_nss.1  days = 1 random_hours = 20 }
@@ -5777,10 +5782,6 @@ USB_securing_north_america_cat = {
 			}
 		}
 		remove_effect = {
-			news_event = {
-				id = news.415
-				days = 1
-			}
 			PRC_gaw_start = yes
 			set_global_flag = USB_NSS_china_war
 			set_global_flag = pan_asian_war_ongoing
@@ -15045,6 +15046,7 @@ PRC_USB_battle_for_allies_cat = {
 						add_to_variable = {
 							NSS_secured_tags = 1
 						}
+						custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 					}
 					else_if = {
 						limit = {
@@ -15085,11 +15087,13 @@ PRC_USB_battle_for_allies_cat = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 2
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
 							}
 							1 = {
 								set_variable = {
 									PRC_share_NSS_info_with_allies_var = 3
 								}
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
 					}
@@ -15105,6 +15109,7 @@ PRC_USB_battle_for_allies_cat = {
 						add_to_variable = {
 							NSS_secured_tags = 1
 						}
+						custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 					}
 					else_if = {
 						limit = {
@@ -15351,7 +15356,7 @@ PRC_USB_battle_for_allies_cat = {
 			has_active_mission = NSS_cog_mission
 		}
 		cost = 75
-		days_remove = 30
+		days_remove = 25
 		modifier = {
 			research_speed_factor = -0.1
 		}
@@ -15459,11 +15464,8 @@ PRC_USB_battle_for_allies_cat = {
 					has_country_flag = PRC_free_from_NSS_flag
 				}
 				is_ally_with = PRC
-				divisions_in_state = {
-					size > 4
-					state = THIS.capital_scope
-				}
 			}
+			has_war = no
 		}
 		custom_cost_text = 5_army_xp_cost
 		custom_cost_trigger = {
@@ -15848,6 +15850,10 @@ PRC_USB_battle_for_allies_cat = {
 		days_re_enable = 365
 		complete_effect = {
 			add_command_power = -10
+			country_event = {
+				id = prcs.3235
+				days = 5
+			}
 		}
 		modifier = {
 			research_speed_factor = -0.2

@@ -394,7 +394,6 @@ PRC_export_revolution = {
             }
         }
         remove_effect = {
-            custom_effect_tooltip = PRC_Sia_tootip
             hidden_effect = {
                 country_event = {
                     id = prcs.3043
@@ -436,7 +435,6 @@ PRC_export_revolution = {
         cost = 30
         days_remove = 15
         remove_effect = {
-            custom_effect_tooltip = PRC_Sia_tootip
             SIA = {
                 add_stability = -0.1
                 add_popularity = {
@@ -467,6 +465,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         complete_effect = {
+            custom_effect_tooltip = PRC_thailand_communist_tt
             PRT = {
                 add_stability = -0.25
                 add_war_support = -0.50
@@ -477,6 +476,7 @@ PRC_export_revolution = {
             hidden_effect = {
                 SIA = {
                     leave_faction = yes
+                    clr_country_flag = pdto_member
                 }
                 PRT = {
                     set_cosmetic_tag = PRC_sia
@@ -492,6 +492,10 @@ PRC_export_revolution = {
                 SIA = {
                     transfer_navy = {
                         target = PRT
+                    }
+                    transfer_units_fraction = {
+                        target = PRT
+                        size = 0.25
                     }
                     every_core_state = {
                         add_core_of = PRT
@@ -2663,7 +2667,7 @@ PRC_export_revolution = {
             PAK = {
                 add_popularity = {
                     ideology = communist
-                    popularity = 0.05
+                    popularity = 0.075
                 }
                 add_popularity = {
                     ideology = libertarian_socialist
@@ -2696,7 +2700,7 @@ PRC_export_revolution = {
             PAK = {
                 add_popularity = {
                     ideology = communist
-                    popularity = 0.05
+                    popularity = 0.075
                 }
                 add_popularity = {
                     ideology = libertarian_socialist
@@ -2744,10 +2748,6 @@ PRC_export_revolution = {
             set_country_flag = PAK_teen_advocated
             PAK = {
                 add_stability = -0.03
-                add_popularity = {
-                    ideology = totalitarian_socialist
-                    popularity = 0.02
-                }
                 add_popularity = {
                     ideology = communist
                     popularity = 0.05
@@ -4292,18 +4292,38 @@ PRC_export_revolution = {
         complete_effect = {
             if = {
                 limit = { 
-                    NOT = {
-                        has_country_flag = MEX_buff_flag
+                    PRC = {
+                        has_character = SIA_bak
+                        has_country_flag = PRC_coordinate_strike_SIA_flag
                     }
                 }
-                SIA = {
-                    set_nationality = {
-                        target_country = MEX
-                        character = SIA_bak
+                if = {
+                    limit = {
+                        country_exists = MEX
+                    }
+                    every_possible_country = {
+                        limit = { has_character = SIA_bak }
+                        random_character = {
+                            limit = { is_character = SIA_bak }
+                            set_nationality = MEX
+                        }
                     }
                 }
-                set_country_flag = MEX_buff
+                else_if = {
+                    limit = {
+                        country_exists = ZAP
+                    }
+                    every_possible_country = {
+                        limit = { has_character = SIA_bak }
+                        random_character = {
+                            limit = { is_character = SIA_bak }
+                            set_nationality = ZAP
+                        }
+                    }
+                }
             }
+            
+            
         }
         modifier = {
             experience_gain_army_factor = -0.2

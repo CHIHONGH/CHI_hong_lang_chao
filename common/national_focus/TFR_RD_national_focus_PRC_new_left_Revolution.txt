@@ -444,12 +444,19 @@
 			}
 		}
 		bypass = {
-			has_global_flag = GAW_soon
-			has_global_flag = pan_asian_war_ongoing
+			OR = {
+				has_global_flag = GAW_soon
+				has_global_flag = pan_asian_war_ongoing
+				USB = { has_decision = USB_kill_china_decision }
+			}
+			
 		}
 		cancel = {
-			has_global_flag = GAW_soon
-			has_global_flag = pan_asian_war_ongoing
+			OR = {
+				has_global_flag = GAW_soon
+				has_global_flag = pan_asian_war_ongoing
+				USB = { has_decision = USB_kill_china_decision }
+			}
 		}
 		bypass_effect = {
 			mark_focus_tree_layout_dirty = yes

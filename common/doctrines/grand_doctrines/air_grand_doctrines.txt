@@ -1,0 +1,459 @@
+counter_air_operations = {
+    folder = air
+
+    name = GRAND_DOCTRINE_COUNTER_AIR_OPERATIONS
+    description = GRAND_DOCTRINE_COUNTER_AIR_OPERATIONS_DESC
+    icon = GFX_fighter_baiting_medium
+    available = {
+        always = yes
+    }
+
+    xp_cost = 25
+    xp_type = air
+
+    ai_will_do = { 
+        base = 1
+    }
+
+    tracks = {
+        fighter_aircraft
+        strike_aircraft
+        heavy_aircraft
+		drones
+		helicopters
+    }
+	
+	# EFFECTS
+	
+	
+	air_interception_detect_factor = 0.2
+    air_superiority_efficiency = 0.1
+	
+    milestones = {
+        {
+            #1 Fighters
+			 category_fighter = {
+                air_agility = 0.1
+            }
+            #air_mission_xp_gain_factor = 0.15
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = fighters_milestone_var
+                        }
+                    }
+                    set_variable = { fighters_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { fighters_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #2 Strike Aircraft
+	        air_ace_generation_chance_factor = 0.10
+			#army_bonus_air_superiority_factor = 0.1
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = strikers_milestone_var
+                        }
+                    }
+                    set_variable = { strikers_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { strikers_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #3 Medium Aircraft
+			#category_tac_bomber = {
+            #    air_bombing = 0.2
+            #}
+			category_heavy_fighter = {
+                air_agility = 0.1
+            }
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = mediums_milestone_var
+                        }
+                    }
+                    set_variable = { mediums_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { mediums_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #4 Heavy Aircraft
+	        air_strategic_bomber_defence_factor = 0.05
+			#strategic_bomb_visibility = -0.4
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+		{
+            #4 Heavy Aircraft
+			strategic_bomb_visibility = -0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+		{
+            #4 Heavy Aircraft
+	        army_bonus_air_superiority_factor = 0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+    }
+
+}
+
+multi_sphere_operations = {
+    folder = air
+
+    name = GRAND_DOCTRINE_MULTI_SPHERE_OPERATIONS
+    description = GRAND_DOCTRINE_MULTI_SPHERE_OPERATIONS_DESC
+    icon = GFX_pathfinder_groups_medium
+    available = {
+        always = yes
+    }
+
+    xp_cost = 25
+    xp_type = air
+
+    ai_will_do = {
+        base = 1
+
+        #modifier = {
+        #    factor = 10
+        #    is_major = no
+        #}
+    }
+
+    tracks = {
+        fighter_aircraft
+        strike_aircraft
+        heavy_aircraft
+		drones
+		helicopters
+    }
+
+    # EFFECTS
+	
+	air_superiority_detect_factor = 0.05
+	air_cas_efficiency = 0.05
+	
+    milestones = {
+        {
+            #1 Fighters
+			air_ace_generation_chance_factor = 0.05
+            #army_bonus_air_superiority_factor = 0.15
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = fighters_milestone_var
+                        }
+                    }
+                    set_variable = { fighters_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { fighters_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #2 Strike Aircraft
+	        air_cas_present_factor = 0.05
+			category_cas = {
+                air_agility = 0.1
+            }
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = strikers_milestone_var
+                        }
+                    }
+                    set_variable = { strikers_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { strikers_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #3 Medium Aircraft
+			air_mission_xp_gain_factor = 0.1
+            #tac_bomber = {
+            #    air_bombing = 0.10
+            #}
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = mediums_milestone_var
+                        }
+                    }
+                    set_variable = { mediums_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { mediums_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #4 Heavy Aircraft
+	        air_strategic_bomber_bombing_factor = 0.05
+			#air_interception_detect_factor = 0.1
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+		{
+            #4 Heavy Aircraft
+	       army_bonus_air_superiority_factor = 0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+		{
+            #4 Heavy Aircraft
+			air_interception_detect_factor = 0.1
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+    }
+}
+
+rear_destruction = {
+    folder = air
+
+    name = GRAND_DOCTRINE_REAR_DESTRUCTION
+    description = GRAND_DOCTRINE_REAR_DESTRUCTION_DESC
+    icon = GFX_keypoint_bombing_medium
+    available = {
+        always = yes
+    }
+
+    xp_cost = 25
+    xp_type = air
+
+    ai_will_do = {
+        base = 1
+    }
+
+    tracks = {
+        fighter_aircraft
+        strike_aircraft
+        heavy_aircraft
+		drones
+		helicopters
+    }
+
+    # EFFECTS
+	air_escort_efficiency = 0.1
+    air_strategic_bomber_bombing_factor = 0.05
+	
+    milestones = {
+        {
+            #1 Fighters
+			#category_fighter = {
+            #    air_agility = 0.1
+            #}
+            air_intercept_efficiency = 0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = fighters_milestone_var
+                        }
+                    }
+                    set_variable = { fighters_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { fighters_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #2 Strike Aircraft
+	        army_bonus_air_superiority_factor = 0.05
+            air_nav_efficiency = 0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = strikers_milestone_var
+                        }
+                    }
+                    set_variable = { strikers_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { strikers_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #3 Medium Aircraft
+			category_heavy_fighter = {
+                air_agility = 0.1
+            }
+            air_strategic_bomber_defence_factor = 0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = mediums_milestone_var
+                        }
+                    }
+                    set_variable = { mediums_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { mediums_milestone_var = 1 }
+                }
+            }
+        }
+        {
+            #4 Heavy Aircraft
+	        air_strategic_bomber_bombing_factor = 0.05
+			
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+		{
+            #4 Heavy Aircraft
+	        air_mission_xp_gain_factor = 0.05
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+		{
+            #4 Heavy Aircraft
+			category_fighter = {
+                air_agility = 0.1
+            }
+
+            effect = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = heavies_milestone_var
+                        }
+                    }
+                    set_variable = { heavies_milestone_var = 1 }
+                }
+                else = {
+                    add_to_variable = { heavies_milestone_var = 1 }
+                }
+            }
+        }
+    }
+}
