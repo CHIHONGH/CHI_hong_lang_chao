@@ -15136,6 +15136,7 @@ PRC_USB_battle_for_allies_cat = {
 			custom_effect_tooltip = PRC_stage_1_notifier_tt
 		}
 	}
+	
 	PRC_stage_2_notifier = {
 		icon = GFX_USB_archaelogical_excavation_decision
 
@@ -15155,6 +15156,7 @@ PRC_USB_battle_for_allies_cat = {
 			custom_effect_tooltip = PRC_stage_1_notifier_tt
 		}
 	}
+	
 	PRC_stage_2_map_pin = {
 		visible = {
 			tag = PRC
@@ -15167,6 +15169,7 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		days_remove = 1
 	}
+	
 	PRC_share_NSS_info_with_allies_individual = {
 		icon = {
 			key = RD_NSS_neuro_defence_level0
@@ -15251,6 +15254,7 @@ PRC_USB_battle_for_allies_cat = {
 			MEX
 			ZAP
 		}
+		target_trigger = { is_in_faction_with = PRC }
 		on_map_mode = map_only
 		highlight_states = {
 			highlight_states_trigger = {
@@ -15447,6 +15451,7 @@ PRC_USB_battle_for_allies_cat = {
 			}
 		}
 	}
+
 	PRC_share_NSS_info_with_allies = {
 		icon = GFX_USB_loose_ends_category
 		allowed = {
@@ -15671,21 +15676,68 @@ PRC_USB_battle_for_allies_cat = {
 			NOT = {
 				has_global_flag = pan_asian_war_ongoing
 			}
+			NOT = {
+				PRC = {
+					all_allied_country = {
+						has_country_flag = NSS_cog_mission_flag
+					}
+				}
+			}
+			NOT = {
+				PRC = {
+					all_allied_country = {
+						check_variable = {
+							PRC_share_NSS_info_with_allies_var  = 3
+						}
+					}
+				}
+			}
 		}
 		cost = 30
 		days_remove = 20
 		days_re_enable = NSS_bomb_cooldown_var
 		remove_effect = {
 			PRC = {
-				random_allied_country = {
-					limit = {
-						NOT = {
-							has_country_flag = NSS_cog_mission_flag
+				if = {
+					limit = { 
+						all_allied_country = {
+							NOT = {
+								has_country_flag = NSS_cog_mission_flag
+							}
 						}
 					}
-					set_country_flag = NSS_release_cog_bomb_flag
+					random_allied_country = {
+						limit = {
+							NOT = {
+								has_country_flag = NSS_cog_mission_flag
+							}
+						}
+						set_country_flag = NSS_cog_mission_flag
+						set_country_flag = NSS_release_cog_bomb_flag
+						capital_scope = {
+							save_event_target_as = first_victim
+						}
+						PRC = {
+							country_event = prcs.3231
+						}
+					}
 				}
-				country_event = prcs.3231
+				else = {
+					random_allied_country = {
+						limit = {
+							NOT = {
+								has_country_flag = NSS_cog_mission_flag
+							}
+						}
+						set_country_flag = NSS_cog_mission_flag
+						set_country_flag = NSS_release_cog_bomb_flag
+						PRC = {
+							country_event = prcs.3231
+						}
+					}
+				}
+				
+				
 			}
 		}
 		ai_will_do = {
@@ -15771,6 +15823,11 @@ PRC_USB_battle_for_allies_cat = {
 		allowed = {
 			original_tag = USB
 		}
+		available = {
+			check_variable = {
+				NSS_plant_timed_bomb_times_var < 21
+			}
+		}
 		target_root_trigger = {
 			date > 2025.6.7
 			has_completed_focus = USB_we_wont_fail_again
@@ -15782,7 +15839,7 @@ PRC_USB_battle_for_allies_cat = {
 			}
 		}
 		
-		cost = 20
+		cost = 50
 		days_remove = 50
 		days_re_enable = NSS_bomb_cooldown_var
 		targets = {
@@ -15805,6 +15862,9 @@ PRC_USB_battle_for_allies_cat = {
 		complete_effect = {
 			add_to_variable = {
 				NSS_plant_timed_bomb_var = 1
+			}
+			add_to_variable = {
+				NSS_plant_timed_bomb_times_var = 1
 			}
 		}
 		remove_effect = {
@@ -15873,6 +15933,17 @@ PRC_USB_battle_for_allies_cat = {
 			research_speed_factor = -0.1
 		}
 		remove_effect = {
+			every_allied_country = {
+				limit = {
+					has_country_flag = NSS_release_cog_bomb_flag
+				}
+				clr_country_flag = NSS_release_cog_bomb_flag
+				set_country_flag = {
+					flag = PRC_free_from_NSS_flag
+					value = 1
+					days = 240
+				}
+			}
 			remove_mission = NSS_cog_mission
 			add_to_variable = {
 				global.NSS_secured_tags = 1
@@ -16240,7 +16311,7 @@ PRC_USB_battle_for_allies_cat = {
 			
 		}
 		remove_effect = {
-			custom_effect_tooltip = PRC_neutralize_moyin_research_tt
+			#custom_effect_tooltip = PRC_neutralize_moyin_research_tt
 			set_country_flag = PRC_neutralize_moyin_research_flag
 			unlock_decision_tooltip = PRC_the_ultimate_weapon
 		}
@@ -16347,6 +16418,7 @@ PRC_USB_battle_for_allies_cat = {
 			base = 100
 		}
 	}
+	
 	PRC_activate_the_ultimate_weapon = {
 		icon = GFX_USB_decipher_the_nam_shub_of_enki_decision
 		allowed = {

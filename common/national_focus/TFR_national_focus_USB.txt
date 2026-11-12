@@ -15239,12 +15239,19 @@ focus_tree = {
 					exists = no
 				}
 			}
-			MEX = {
-				OR = {
-					is_puppet_of = USB
-					exists = no
+			OR = {
+				MEX = {
+					OR = {
+						is_puppet_of = USB
+						exists = no
+					}
+				}
+				AND = {
+					has_global_flag = PTF_oh_shit_mexico_flag
+					date > 2029.1.1
 				}
 			}
+			
 		}
 		prerequisite = {
 			focus = USB_arctic_security
