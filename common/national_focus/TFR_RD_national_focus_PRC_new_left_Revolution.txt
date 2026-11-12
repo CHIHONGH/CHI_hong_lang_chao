@@ -20,6 +20,18 @@
        		set_country_flag = PRC_world_revolution
 			set_country_flag = eadi_member
 			create_faction = WLI
+			if = {
+				limit = {
+					VIN = {
+						is_in_faction_with = PRC
+					}
+				}
+				VIN = {
+					add_dynamic_modifier = {
+						modifier = PRC_WLI_modifiers
+					}
+				}
+			}
 			hidden_effect = {
 				remove_faction_goal = faction_goal_the_atomic_race
 				add_faction_goal = faction_goal_placeholder_long_term

@@ -130,6 +130,14 @@ USA_second_american_civil_war_category = {
 			base = 100
 		}
 		complete_effect = {
+			every_state = {
+				limit = {
+					is_core_of = USA
+					has_resistance = yes
+				}
+				add_resistance = -20
+				add_compliance = 20
+			}
 			if = {
 				limit = {
 					has_country_leader = {
@@ -15151,22 +15159,37 @@ PRC_USB_battle_for_allies_cat = {
 		visible = {
 			tag = PRC
 			check_variable = {
-				global.PRC_USB_battle_for_allies_cat_var = 2
+				global.PRC_USB_battle_for_allies_cat_var > 1
 			}
 		}
 		available = {
 			always = no
 		}
-		highlight_states = {
-			highlight_states_trigger = {
-				is_owned_by = ROOT
-				is_capital = yes
-			}
-		}
+		days_remove = 1
 	}
 	PRC_share_NSS_info_with_allies_individual = {
 		icon = {
-			key = spa_garrison_control_strong2
+			key = RD_NSS_neuro_defence_level0
+			trigger = {
+				FROM = {
+					check_variable = {
+						PRC_share_NSS_info_with_allies_var = 0
+					}
+				}
+			}
+		}
+		icon = {
+			key = RD_NSS_neuro_defence_level1
+			trigger = {
+				FROM = {
+					check_variable = {
+						PRC_share_NSS_info_with_allies_var = 1
+					}
+				}
+			}
+		}
+		icon = {
+			key = RD_NSS_neuro_defence_level2
 			trigger = {
 				FROM = {
 					check_variable = {
@@ -15176,17 +15199,7 @@ PRC_USB_battle_for_allies_cat = {
 			}
 		}
 		icon = {
-			key = spa_garrison_control_total
-			trigger = {
-				FROM = {
-					check_variable = {
-						PRC_share_NSS_info_with_allies_var = 2
-					}
-				}
-			}
-		}
-		icon = {
-			key = spr_garrison_control_weak2
+			key = RD_NSS_neuro_defence_level3
 			trigger = {
 				FROM = {
 					check_variable = {
@@ -15201,23 +15214,48 @@ PRC_USB_battle_for_allies_cat = {
 		available = {
 			political_power_daily > 1
 			FROM = {
-				check_variable = {
-					PRC_share_NSS_info_with_allies_var < 3
+				custom_trigger_tooltip = {
+					tooltip = PRC_share_NSS_info_with_allies_individual_tt
+					check_variable = {
+						PRC_share_NSS_info_with_allies_var < 3
+					}
 				}
+				is_in_faction_with = PRC
+				
 			}
 		}
 		visible = {
 			has_country_flag = USB_NSS_brainwash_steal_flag
 		}
-		target_trigger = {
-			is_in_faction_with = PRC
+		targets = {
+			PRK
+			BRM
+			MND
+			LAO
+			PRT
+			SMA
+			CPP
+			CPA
+			ROP
+			JPL
+			NEP
+			BHU
+			VIN
+			PAK
+			NAX
+			SRL
+			BAN
+			SRI
+			IRQ
+			CAM
+			MEX
+			ZAP
 		}
-		targets_dynamic = yes
 		on_map_mode = map_only
 		highlight_states = {
 			highlight_states_trigger = {
 				is_owned_by = FROM
-            	is_capital = yes
+            				is_capital = yes
 			}
 			highlight_color_while_active = 3
 			highlight_color_before_active = 2
@@ -15288,7 +15326,7 @@ PRC_USB_battle_for_allies_cat = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
 									add_to_variable = {
-										NSS_secured_tags = 1
+										global.NSS_secured_tags = 1
 									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
@@ -15304,7 +15342,7 @@ PRC_USB_battle_for_allies_cat = {
 								PRC_share_NSS_info_with_allies_var = 3
 							}
 							add_to_variable = {
-								NSS_secured_tags = 1
+								global.NSS_secured_tags = 1
 							}
 							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 						}
@@ -15327,7 +15365,7 @@ PRC_USB_battle_for_allies_cat = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
 									add_to_variable = {
-										NSS_secured_tags = 1
+										global.NSS_secured_tags = 1
 									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
@@ -15353,6 +15391,9 @@ PRC_USB_battle_for_allies_cat = {
 									set_variable = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
+									add_to_variable = {
+										global.NSS_secured_tags = 1
+									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
 							}
@@ -15367,7 +15408,7 @@ PRC_USB_battle_for_allies_cat = {
 								PRC_share_NSS_info_with_allies_var = 3
 							}
 							add_to_variable = {
-								NSS_secured_tags = 1
+								global.NSS_secured_tags = 1
 							}
 							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 						}
@@ -15393,6 +15434,9 @@ PRC_USB_battle_for_allies_cat = {
 								1 = {
 									set_variable = {
 										PRC_share_NSS_info_with_allies_var = 3
+									}
+									add_to_variable = {
+										global.NSS_secured_tags = 1
 									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
@@ -15481,7 +15525,10 @@ PRC_USB_battle_for_allies_cat = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
 									add_to_variable = {
-										NSS_secured_tags = 1
+										global.NSS_secured_tags = 1
+									}
+									add_to_variable = {
+										global.NSS_secured_tags = 1
 									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
@@ -15497,7 +15544,7 @@ PRC_USB_battle_for_allies_cat = {
 								PRC_share_NSS_info_with_allies_var = 3
 							}
 							add_to_variable = {
-								NSS_secured_tags = 1
+								global.NSS_secured_tags = 1
 							}
 							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 						}
@@ -15520,7 +15567,7 @@ PRC_USB_battle_for_allies_cat = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
 									add_to_variable = {
-										NSS_secured_tags = 1
+										global.NSS_secured_tags = 1
 									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
@@ -15546,6 +15593,9 @@ PRC_USB_battle_for_allies_cat = {
 									set_variable = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
+									add_to_variable = {
+										global.NSS_secured_tags = 1
+									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 								}
 							}
@@ -15560,7 +15610,7 @@ PRC_USB_battle_for_allies_cat = {
 								PRC_share_NSS_info_with_allies_var = 3
 							}
 							add_to_variable = {
-								NSS_secured_tags = 1
+								global.NSS_secured_tags = 1
 							}
 							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 						}
@@ -15587,7 +15637,11 @@ PRC_USB_battle_for_allies_cat = {
 									set_variable = {
 										PRC_share_NSS_info_with_allies_var = 3
 									}
+									add_to_variable = {
+										global.NSS_secured_tags = 1
+									}
 									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+
 								}
 							}
 						}
@@ -15821,7 +15875,7 @@ PRC_USB_battle_for_allies_cat = {
 		remove_effect = {
 			remove_mission = NSS_cog_mission
 			add_to_variable = {
-				NSS_secured_tags = 1
+				global.NSS_secured_tags = 1
 			}
 		}
 		ai_will_do = {
@@ -15989,7 +16043,7 @@ PRC_USB_battle_for_allies_cat = {
 						PRC_share_NSS_info_with_allies_var = 1
 					}
 					add_to_variable = {
-						NSS_secured_tags = 1
+						global.NSS_secured_tags = 1
 					}
 					capital_scope = {
 						damage_units = {
@@ -16028,6 +16082,7 @@ PRC_USB_battle_for_allies_cat = {
 		visible = {
 			FROM = {
 				has_country_flag = NSS_timed_bomb_notice_flag
+				has_country_flag = NSS_timed_bomb_flag
 			}
 		}
 		targets = {
@@ -16075,7 +16130,7 @@ PRC_USB_battle_for_allies_cat = {
 				global.PRC_USB_battle_for_allies_cat_var > 1
 			}
 		}
-		cost = 200
+		cost = 150
 		days_remove = 270
 		fire_only_once = yes
 		remove_effect = {
@@ -16104,7 +16159,7 @@ PRC_USB_battle_for_allies_cat = {
 				global.PRC_USB_battle_for_allies_cat_var > 1
 			}
 		}
-		cost = 200
+		cost = 150
 		days_remove = 270
 		fire_only_once = yes
 		remove_effect = {
