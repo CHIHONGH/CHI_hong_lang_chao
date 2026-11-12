@@ -5030,15 +5030,6 @@ USB_securing_north_america_cat = {
 						}
 					}
 				}
-				if = {
-					limit = {
-						NOT = {
-							has_idea = PTF_American_Defense_idea
-						}
-					}
-					add_ideas = PTF_American_Defense_idea
-				}
-				add_ideas = PTF_American_Defense_idea
 				MEX_ZAP_fuck_off_PTF = yes
 				activate_mission = USB_invade_mexico_mission
 				PRC = {
@@ -5077,9 +5068,172 @@ USB_securing_north_america_cat = {
 		activation = {
 			always = no
 		}
+		cancel_trigger = {
+			961 = {
+				OR = {
+					is_controlled_by = MEX
+					is_controlled_by = ZAP
+				}
+			}
+		}
 		is_good = no
 		selectable_mission = no
 		days_mission_timeout = 180
+		cancel_effect = {
+			set_global_flag = PTF_oh_shit_mexico_flag
+			add_timed_idea = {
+				idea = JAP_shame_defeat
+				days = 365
+			}
+			if = {
+				limit = { 
+					country_exists = ZAP
+				}
+				white_peace = ZAP
+				every_allied_country = {
+					white_peace = ZAP
+				}
+				ZAP = {
+					set_country_flag = eadi_member
+					remove_dynamic_modifier = {
+						modifier = PRC_MEX_modifier
+					}
+					load_focus_tree = WLI_tree
+					remove_ideas = {
+						MEX_the_horror_of_decade_low
+						MEX_the_horror_of_decade_medium
+						MEX_the_horror_of_decade_high
+						MEX_the_horror_of_decade_insane
+					}
+				}	
+				PRC = {
+					remove_ideas = {
+						PRC_MEX_the_horror_of_decade_0
+						PRC_MEX_the_horror_of_decade_1
+						PRC_MEX_the_horror_of_decade_2
+						PRC_MEX_the_horror_of_decade_3
+						PRC_MEX_the_horror_of_decade_4
+						PRC_MEX_the_horror_of_decade_5
+						PRC_MEX_the_horror_of_decade_6
+					}
+					add_to_faction = ZAP
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						ZAP = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
+					add_to_variable = {
+						CPC_frame = 4
+					}
+					clamp_variable = {
+						var = CPC_frame
+						min = 0
+						max = 100
+					}
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+			else = {
+				white_peace = MEX
+				every_allied_country = {
+					white_peace = MEX
+				}
+				
+				MEX = {
+					set_country_flag = eadi_member
+					remove_dynamic_modifier = {
+						modifier = PRC_MEX_modifier
+					}
+					load_focus_tree = WLI_tree
+					remove_ideas = {
+						MEX_the_horror_of_decade_low
+						MEX_the_horror_of_decade_medium
+						MEX_the_horror_of_decade_high
+						MEX_the_horror_of_decade_insane
+					}
+				}	
+				PRC = {
+					remove_ideas = {
+						PRC_MEX_the_horror_of_decade_0
+						PRC_MEX_the_horror_of_decade_1
+						PRC_MEX_the_horror_of_decade_2
+						PRC_MEX_the_horror_of_decade_3
+						PRC_MEX_the_horror_of_decade_4
+						PRC_MEX_the_horror_of_decade_5
+						PRC_MEX_the_horror_of_decade_6
+					}
+					add_to_faction = MEX
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_collective_army_modifier
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = WLI_collective_army_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = WLI_economic_cooperation_modifier
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = WLI_economic_cooperation_modifier
+							}
+						}
+					}
+					if = {
+						limit = { 
+							has_dynamic_modifier = PRC_WLI_modifiers
+						}
+						MEX = {
+							add_dynamic_modifier = {
+								modifier = PRC_WLI_modifiers
+							}
+						}
+					}
+					add_to_variable = {
+						CPC_frame = 4
+					}
+					clamp_variable = {
+						var = CPC_frame
+						min = 0
+						max = 100
+					}
+					add_to_variable = {
+						PRC_Lib_Int_Dir_Var = 1
+					}
+				}
+			}
+		}
 		complete_effect = {
 			PRC = {
 				remove_ideas = {
@@ -5717,6 +5871,14 @@ USB_securing_north_america_cat = {
 			hidden_effect = {
 				news_event = nss.127
 			}
+			if = {
+				limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Simple_Mode } }
+				remove_ideas = {
+					USB_Fascist_military_revolution_I_idea
+					USB_Counter_revolutionary_center_I_idea
+				}
+			}
+			add_ideas = PTF_balance_sheet
 		}
 	}
 	USB_kill_china_decision = {
@@ -14985,6 +15147,262 @@ PRC_USB_battle_for_allies_cat = {
 			custom_effect_tooltip = PRC_stage_1_notifier_tt
 		}
 	}
+	PRC_stage_2_map_pin = {
+		visible = {
+			tag = PRC
+			check_variable = {
+				global.PRC_USB_battle_for_allies_cat_var = 2
+			}
+		}
+		available = {
+			always = no
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = ROOT
+				is_capital = yes
+			}
+		}
+	}
+	PRC_share_NSS_info_with_allies_individual = {
+		icon = {
+			key = spa_garrison_control_strong2
+			trigger = {
+				FROM = {
+					check_variable = {
+						PRC_share_NSS_info_with_allies_var = 2
+					}
+				}
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				FROM = {
+					check_variable = {
+						PRC_share_NSS_info_with_allies_var = 2
+					}
+				}
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak2
+			trigger = {
+				FROM = {
+					check_variable = {
+						PRC_share_NSS_info_with_allies_var = 3
+					}
+				}
+			}
+		}
+		allowed = {
+			tag = PRC
+		}
+		available = {
+			political_power_daily > 1
+			FROM = {
+				check_variable = {
+					PRC_share_NSS_info_with_allies_var < 3
+				}
+			}
+		}
+		visible = {
+			has_country_flag = USB_NSS_brainwash_steal_flag
+		}
+		target_trigger = {
+			is_in_faction_with = PRC
+		}
+		targets_dynamic = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = FROM
+            	is_capital = yes
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+		cost = 20
+		days_remove = 45
+		fixed_random_seed = no
+		modifier = {
+			political_power_cost = 1
+		}
+		remove_effect = {
+			effect_tooltip = {
+				if = {
+					limit = { 
+						has_country_flag = PRC_anti_moyin_research_flag
+					}
+					FROM = {
+						random_list = {
+							1 = {
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+							}
+							1 = {
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+							}
+						}
+					}
+				}
+				else = {
+					FROM = {
+						random_list = {
+							1 = {
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt1
+							}
+							1 = {
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+							}
+							1 = {
+								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+							}
+						}
+					}
+				}
+			}
+
+			FROM = {
+				hidden_effect = {
+					if = {
+						limit = {
+							PRC = {
+								has_country_flag = PRC_anti_moyin_research_flag
+							}
+						}
+						if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 1
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									add_to_variable = {
+										NSS_secured_tags = 1
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							set_variable = {
+								PRC_share_NSS_info_with_allies_var = 3
+							}
+							add_to_variable = {
+								NSS_secured_tags = 1
+							}
+							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 0
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									add_to_variable = {
+										NSS_secured_tags = 1
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+						
+					}
+					else = {
+						if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 1
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							set_variable = {
+								PRC_share_NSS_info_with_allies_var = 3
+							}
+							add_to_variable = {
+								NSS_secured_tags = 1
+							}
+							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 0
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 1
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt1
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	PRC_share_NSS_info_with_allies = {
 		icon = GFX_USB_loose_ends_category
 		allowed = {
@@ -14998,149 +15416,183 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		cost = 50
 		days_remove = 45
+		fixed_random_seed = no
 		modifier = {
 			political_power_cost = 1
 			command_power_gain_mult = -0.2
 		}
 		remove_effect = {
-			every_allied_country = {
+			effect_tooltip = {
 				if = {
-					limit = {
-						PRC = {
-							has_country_flag = PRC_anti_moyin_research_flag
-						}
+					limit = { 
+						has_country_flag = PRC_anti_moyin_research_flag
 					}
-					if = {
-						limit = {
-							check_variable = {
-								PRC_share_NSS_info_with_allies_var = 1
-							}
-						}
+					every_allied_country = {
 						random_list = {
 							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 2
-								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
 							}
 							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 3
-								}
-								add_to_variable = {
-									NSS_secured_tags = 1
-								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
 					}
-					else_if = {
-						limit = {
-							check_variable = {
-								PRC_share_NSS_info_with_allies_var = 2
-							}
-						}
-						set_variable = {
-							PRC_share_NSS_info_with_allies_var = 3
-						}
-						add_to_variable = {
-							NSS_secured_tags = 1
-						}
-						custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
-					}
-					else_if = {
-						limit = {
-							check_variable = {
-								PRC_share_NSS_info_with_allies_var = 0
-							}
-						}
-						random_list = {
-							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 2
-								}
-								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
-
-							}
-							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 3
-								}
-								add_to_variable = {
-									NSS_secured_tags = 1
-								}
-								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
-							}
-						}
-					}
-					
 				}
 				else = {
-					if = {
-						limit = {
-							check_variable = {
-								PRC_share_NSS_info_with_allies_var = 1
-							}
-						}
+					every_allied_country = {
 						random_list = {
 							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 2
-								}
-								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
-							}
-							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 3
-								}
-								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							check_variable = {
-								PRC_share_NSS_info_with_allies_var = 2
-							}
-						}
-						set_variable = {
-							PRC_share_NSS_info_with_allies_var = 3
-						}
-						add_to_variable = {
-							NSS_secured_tags = 1
-						}
-						custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
-					}
-					else_if = {
-						limit = {
-							check_variable = {
-								PRC_share_NSS_info_with_allies_var = 0
-							}
-						}
-						random_list = {
-							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 1
-								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt1
 							}
 							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 2
-								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
 							}
 							1 = {
-								set_variable = {
-									PRC_share_NSS_info_with_allies_var = 3
-								}
 								custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
 							}
 						}
 					}
 				}
-				
-				
+			}
+			custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt
+			hidden_effect = {
+				every_allied_country = {
+					if = {
+						limit = {
+							PRC = {
+								has_country_flag = PRC_anti_moyin_research_flag
+							}
+						}
+						if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 1
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									add_to_variable = {
+										NSS_secured_tags = 1
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							set_variable = {
+								PRC_share_NSS_info_with_allies_var = 3
+							}
+							add_to_variable = {
+								NSS_secured_tags = 1
+							}
+							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 0
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									add_to_variable = {
+										NSS_secured_tags = 1
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+						
+					}
+					else = {
+						if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 1
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 2
+								}
+							}
+							set_variable = {
+								PRC_share_NSS_info_with_allies_var = 3
+							}
+							add_to_variable = {
+								NSS_secured_tags = 1
+							}
+							custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									PRC_share_NSS_info_with_allies_var = 0
+								}
+							}
+							random_list = {
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 1
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt1
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 2
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt2
+								}
+								1 = {
+									set_variable = {
+										PRC_share_NSS_info_with_allies_var = 3
+									}
+									custom_effect_tooltip = PRC_share_NSS_info_with_allies_tt3
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 		ai_will_do = {
@@ -15357,6 +15809,12 @@ PRC_USB_battle_for_allies_cat = {
 		}
 		cost = 75
 		days_remove = 25
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = NSS_cog_mission
+				days = 15
+			}
+		}
 		modifier = {
 			research_speed_factor = -0.1
 		}

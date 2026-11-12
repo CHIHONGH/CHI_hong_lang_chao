@@ -5313,6 +5313,14 @@ PRC_export_revolution = {
         }
     }
     PTF_MEX_war_mission = {
+        available = { 
+            961 = {
+				OR = {
+					is_controlled_by = MEX
+					is_controlled_by = ZAP
+				}
+			}
+        }
         activation = {
             always = no
         }
@@ -5407,6 +5415,77 @@ PRC_export_revolution = {
                 
             }
         }
+        complete_effect = {
+            if = {
+                limit = { 
+                    country_exists = PTF
+                }
+                effect_tooltip = {
+                    PTF = {
+                        white_peace = MEX
+                        white_peace = ZAP
+                        add_timed_idea = {
+                            idea = JAP_shame_defeat
+                            days = 365
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = ZAP
+                        }
+                        ZAP = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = ZAP
+                    }
+                    else = {
+                        MEX = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = MEX
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    USB = {
+                        white_peace = MEX
+                        white_peace = ZAP
+                        add_timed_idea = {
+                            idea = JAP_shame_defeat
+                            days = 365
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = ZAP
+                        }
+                        ZAP = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = ZAP
+                    }
+                    else = {
+                        MEX = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = MEX
+                    }
+                }
+            }
+        }
         timeout_effect = {
             if = {
                 limit = { 
@@ -5477,7 +5556,6 @@ PRC_export_revolution = {
                     }
                 }
             }
-            
         }
     }
     MEX_interfere_civil_war_saberta = {
