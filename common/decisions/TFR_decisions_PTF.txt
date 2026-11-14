@@ -112,14 +112,117 @@ USA_second_american_civil_war_category = {
 		days_remove = 14
 		modifier = {
 		}
+		war_with_on_remove = USB
 		complete_effect = {
 			set_country_flag = {
 				flag = war_justification_flag
 				days = 14
 				value = 1
 			}
+			USB = {
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = PTF
+					value = 100
+				}
+				add_ai_strategy = {
+					type = front_armor_score
+					id = PTF
+					value = 100
+				}
+			}
 		}
 		remove_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+						has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+					}
+				}
+				delete_unit = {
+					division_template = "Elite Armored Division"
+					disband = yes
+				}
+				delete_unit = {
+					division_template = "Marines"
+					disband = yes
+				}
+				delete_unit = {
+					division_template = "Armored Division"
+					disband = yes
+				}
+				remove_ideas = {
+					PTF_hidden_idea
+					PTF_American_Defense_idea
+				}
+				add_offsite_building = {
+					type = industrial_complex
+					level = -20
+				}
+				add_offsite_building = {
+					type = arms_factory
+					level = -20
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1174
+							state = 1173
+							state = 359
+							state = 1069
+						}
+					}
+					create_unit = {
+						division = "name = \"Godspeed Brigade\" division_template = \"Armor Division\" start_experience_factor = 1 start_manpower_factor = 1"
+    					owner = USB
+						count = 5
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_global_flag = USA_civil_war_project_winner_PTF_flag
+				}
+				USB = {
+					remove_ideas = {
+						PTF_hidden_idea
+						USB_American_Defense_idea
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = -20
+					}
+					add_offsite_building = {
+						type = arms_factory
+						level = -20
+					}
+				}
+				
+			}
+			else = {
+				remove_ideas = {
+					PTF_American_Defense_idea
+				}
+				USB = {
+					remove_ideas = USB_American_Defense_idea
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1174
+							state = 1173
+							state = 359
+							state = 1069
+						}
+					}
+					create_unit = {
+						division = "name = \"Godspeed Brigade\" division_template = \"Armor Division\" start_experience_factor = 1 start_manpower_factor = 1"
+    					owner = USB
+						count = 5
+					}
+				}
+			}
 			declare_war_on = {
 				target = USB
 				type = annex_everything

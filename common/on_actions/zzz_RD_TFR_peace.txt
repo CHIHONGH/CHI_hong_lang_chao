@@ -593,6 +593,36 @@ on_actions = {
                                     set_state_controller_to = BRM
                                 }
                             }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_collective_army_modifier
+                                }
+                                BRM = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_collective_army_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                                }
+                                BRM = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_economic_cooperation_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = PRC_WLI_modifiers
+                                }
+                                BRM = {
+                                    add_dynamic_modifier = {
+                                        modifier = PRC_WLI_modifiers
+                                    }
+                                }
+                            }
                         }
                         set_global_flag = BRM_prochinese_asian_cold_war
                         BRM = {
@@ -805,6 +835,65 @@ on_actions = {
                     PRC_PTF_gaw = yes
                     set_global_flag = skip_default_capitulation
                 }
+
+                # PRC kill USB
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = USB
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = USB
+                    }
+                    PRC = {
+                        remove_from_faction = USB
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = USB
+                        }
+                        white_peace = USB
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
+                # PRC kill USC
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = USC
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = USC
+                    }
+                    PRC = {
+                        remove_from_faction = USC
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = USC
+                        }
+                        white_peace = USC
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
                 if = {
                     # PRT kill SIA
                     limit = {
@@ -873,13 +962,13 @@ on_actions = {
                         }
                     }
                     FROM = {
+                        white_peace = ROOT
                         annex_country = {
                             target = ROOT
                             transfer_troops = no
                         }
                     }
                     CPP = {
-                        promote_character = PER_Ali_Reza_Englebazard
                         set_party_name = {
                             ideology = totalitarian_socialist
                             long_name = PER_communist_party_a
@@ -893,144 +982,7 @@ on_actions = {
                         every_core_state = {
                             remove_core_of = PER
                         }
-                        set_politics = {
-                            ruling_party = totalitarian_socialist
-                            elections_allowed = no
-                        }
                     }        
-                    set_global_flag = skip_default_capitulation
-                }
-                if = {
-                    limit = {
-                        ROOT = {
-                            OR = {
-                                original_tag = IRQ
-                                original_tag = FIA
-                                original_tag = BUK
-                                original_tag = ABK
-                            }
-                            FROM = {
-                                original_tag = CPP
-                            }
-                        }
-                    }
-                    if = {
-                        limit = {
-                            NOT = {
-                                OR = {
-                                    country_exists = IRQ
-                                    country_exists = FIA
-                                    country_exists = BUK
-                                    country_exists = ABK
-                                }
-                            }
-                        }
-                        CPP = {
-                            release = IRQ
-                            load_focus_tree = WLI_tree
-                        }
-                        
-                        IRQ = {
-                            remove_ideas = {
-                                arab_league_member
-                            }
-                            create_country_leader = {
-                                name = "伊拉克临时人民委员会"
-                                picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                                ideology = marxism_leninism
-                            }
-                            set_party_name = {
-                                ideology = communist
-                                long_name = PRC_nationalist_party_new_left_IRQ
-                                name = PRC_nationalist_party_new_left_name_IRQ
-                            }
-                            set_politics = {
-                                ruling_party = communist
-                                elections_allowed = no
-                            }
-                            set_cosmetic_tag = IRQ_rebulid_the_government
-                            load_focus_tree = WLI_tree
-                        }
-                        PRC = {
-                            add_to_variable = {
-                                CPC_frame = 10
-                            }
-                            clamp_variable = {
-                                var = CPC_frame
-                                min = 0
-                                max = 100
-                            }
-                            add_to_variable = {
-                                PRC_Lib_Int_Dir_Var = 1
-                            }
-                            set_autonomy = {
-                                target = CPP
-                                autonomous_state = autonomy_communist
-                                freedom_level = 0.1
-                            }  
-                            set_autonomy = {
-                                target = IRQ
-                                autonomous_state = autonomy_communist
-                                freedom_level = 0.1
-                            }  
-                            if = {
-                                limit = { 
-                                    has_dynamic_modifier = WLI_collective_army_modifier
-                                }
-                                CPP = {
-                                    add_dynamic_modifier = {
-                                        modifier = WLI_collective_army_modifier
-                                    }
-                                }
-                                IRQ = {
-                                    add_dynamic_modifier = {
-                                        modifier = WLI_collective_army_modifier
-                                    }
-                                }
-                            }
-                            if = {
-                                limit = { 
-                                    has_dynamic_modifier = WLI_economic_cooperation_modifier
-                                }
-                                CPP = {
-                                    add_dynamic_modifier = {
-                                        modifier = WLI_economic_cooperation_modifier
-                                    }
-                                }
-                                IRQ = {
-                                    add_dynamic_modifier = {
-                                        modifier = WLI_economic_cooperation_modifier
-                                    }
-                                }
-                            }
-                            if = {
-                                limit = { 
-                                    has_dynamic_modifier = PRC_WLI_modifiers
-                                }
-                                CPP = {
-                                    add_dynamic_modifier = {
-                                        modifier = PRC_WLI_modifiers
-                                    }
-                                }
-                                IRQ = {
-                                    add_dynamic_modifier = {
-                                        modifier = PRC_WLI_modifiers
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else = {
-                        FROM = {
-                            white_peace = ROOT
-                            annex_country = {
-                                target = ROOT
-                                transfer_troops = no
-                            }
-                        }
-                    }
-                    
-
                     set_global_flag = skip_default_capitulation
                 }
                 if = {
@@ -1206,6 +1158,36 @@ on_actions = {
                                 id = nlnews.2
                                 days = 2
                             }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_collective_army_modifier
+                                }
+                                ROP = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_collective_army_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                                }
+                                ROP = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_economic_cooperation_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = PRC_WLI_modifiers
+                                }
+                                ROP = {
+                                    add_dynamic_modifier = {
+                                        modifier = PRC_WLI_modifiers
+                                    }
+                                }
+                            }
                         }
                         white_peace = ROOT
                         annex_country = {
@@ -1252,6 +1234,36 @@ on_actions = {
                             news_event = {
                                 id = nlnews.1
                                 days = 2
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_collective_army_modifier
+                                }
+                                SRI = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_collective_army_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                                }
+                                SRI = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_economic_cooperation_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = PRC_WLI_modifiers
+                                }
+                                SRI = {
+                                    add_dynamic_modifier = {
+                                        modifier = PRC_WLI_modifiers
+                                    }
+                                }
                             }
                         }
                         white_peace = ROOT
@@ -1320,6 +1332,36 @@ on_actions = {
                             news_event = {
                                 id = nlnews.3
                                 days = 2
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_collective_army_modifier
+                                }
+                                SMA = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_collective_army_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = WLI_economic_cooperation_modifier
+                                }
+                                SMA = {
+                                    add_dynamic_modifier = {
+                                        modifier = WLI_economic_cooperation_modifier
+                                    }
+                                }
+                            }
+                            if = {
+                                limit = { 
+                                    has_dynamic_modifier = PRC_WLI_modifiers
+                                }
+                                SMA = {
+                                    add_dynamic_modifier = {
+                                        modifier = PRC_WLI_modifiers
+                                    }
+                                }
                             }
                         }
                         white_peace = ROOT

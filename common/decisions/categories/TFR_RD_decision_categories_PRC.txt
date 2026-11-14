@@ -374,3 +374,25 @@ PHI_unification = {
         
     }
 }
+
+PRC_USB_battle_for_allies_cat = {
+    icon = GFX_USB_biolabs_category
+    visible_when_empty = yes
+
+    allowed = {
+        OR = {
+    	    tag = PRC
+            tag = USB
+        }
+    }
+    
+    visible = {
+        PRC = {
+    	    has_country_flag = PRC_USB_battle_for_allies_cat_flag
+        }
+        country_exists = USB
+    }
+    scripted_gui = PRC_NSS_neuro_war
+
+    priority = 10
+}

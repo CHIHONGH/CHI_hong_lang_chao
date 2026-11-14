@@ -394,7 +394,6 @@ PRC_export_revolution = {
             }
         }
         remove_effect = {
-            custom_effect_tooltip = PRC_Sia_tootip
             hidden_effect = {
                 country_event = {
                     id = prcs.3043
@@ -436,7 +435,6 @@ PRC_export_revolution = {
         cost = 30
         days_remove = 15
         remove_effect = {
-            custom_effect_tooltip = PRC_Sia_tootip
             SIA = {
                 add_stability = -0.1
                 add_popularity = {
@@ -467,6 +465,7 @@ PRC_export_revolution = {
         }
         on_map_mode = map_and_decisions_view
         complete_effect = {
+            custom_effect_tooltip = PRC_thailand_communist_tt
             PRT = {
                 add_stability = -0.25
                 add_war_support = -0.50
@@ -477,6 +476,7 @@ PRC_export_revolution = {
             hidden_effect = {
                 SIA = {
                     leave_faction = yes
+                    clr_country_flag = pdto_member
                 }
                 PRT = {
                     set_cosmetic_tag = PRC_sia
@@ -492,6 +492,10 @@ PRC_export_revolution = {
                 SIA = {
                     transfer_navy = {
                         target = PRT
+                    }
+                    transfer_units_fraction = {
+                        target = PRT
+                        size = 0.25
                     }
                     every_core_state = {
                         add_core_of = PRT
@@ -1672,6 +1676,11 @@ PRC_export_revolution = {
             add_to_variable = {
                 PRC_Lib_Int_Dir_Var = 1
             }
+            hidden_effect = {
+                CUB = {
+                    activate_mission = PER_CPP_IRQ_mission
+                }
+            }
         }
         ai_will_do = {
             base = 10
@@ -2581,16 +2590,11 @@ PRC_export_revolution = {
                         totalitarian_socialist = 10
                         social_democrat = 10
                         libertarian_socialist = 20
-                        communist = 10
+                        communist = 60
                     }
                     #set_cosmetic_tag = PRC_military_administration
                     #add_ideas = PRC_unwilling_ally
                     JAP_leave_PEC = yes
-                    create_country_leader = {
-                        name = "斯里兰卡人民委员会"
-                        picture = "gfx/leaders/PRC/generals/PRC_lianm.png"
-                        ideology = marxism_leninism
-                    }
                     load_focus_tree = WLI_tree
                 }
                 add_to_faction = SRL
@@ -2663,7 +2667,7 @@ PRC_export_revolution = {
             PAK = {
                 add_popularity = {
                     ideology = communist
-                    popularity = 0.05
+                    popularity = 0.075
                 }
                 add_popularity = {
                     ideology = libertarian_socialist
@@ -2696,7 +2700,7 @@ PRC_export_revolution = {
             PAK = {
                 add_popularity = {
                     ideology = communist
-                    popularity = 0.05
+                    popularity = 0.075
                 }
                 add_popularity = {
                     ideology = libertarian_socialist
@@ -2744,10 +2748,6 @@ PRC_export_revolution = {
             set_country_flag = PAK_teen_advocated
             PAK = {
                 add_stability = -0.03
-                add_popularity = {
-                    ideology = totalitarian_socialist
-                    popularity = 0.02
-                }
                 add_popularity = {
                     ideology = communist
                     popularity = 0.05
@@ -4036,9 +4036,11 @@ PRC_export_revolution = {
         remove_effect = {
             EFF = {
                 capital_scope = {
-                    division = "division_template = \"EFF Militia\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
-                    owner = EFF
-                    count = 3
+                    create_unit = {
+                        division = "division_template = \"EFF Militia\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+                        owner = EFF
+                        count = 3
+                    }
                 }
             }
         }
@@ -4065,6 +4067,47 @@ PRC_export_revolution = {
             }
         }
     }
+    USB_MEX_intervention_mission = {
+        icon = GFX_USB_great_projects_category
+        visible = {
+            PTF = {
+                exists = no
+            }
+            USB = {
+                exists = yes
+                NOT = {
+                    has_war_with = MEX
+                    has_war_with = ZAP
+                }
+            }
+            OR = {
+                country_exists = MEX
+                country_exists = ZAP
+            }
+            NOT = {
+                has_global_flag = PTF_oh_shit_mexico_flag
+            }
+        }
+        available = {
+            USB = {
+                has_completed_focus = USB_domestic_war_on_terror
+                has_completed_focus = USB_gears_of_war
+                has_completed_focus = USB_keep_the_cycle_repeating
+                has_completed_focus = USB_kickstart_the_amnet
+                has_completed_focus = USB_limartini
+            }
+            hidden_trigger = {
+                always = no
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = USB_MEX_intervention_mission_tt
+        }
+        remove_effect = {
+            custom_effect_tooltip = USB_MEX_intervention_mission_tt2
+        }
+    }
+
     MEX_add_bunker = {
         visible = {
             has_country_flag = MEX_selected
@@ -4082,6 +4125,12 @@ PRC_export_revolution = {
             }
             NOT = {
                 PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+            NOT = {
+                USB = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
@@ -4168,6 +4217,7 @@ PRC_export_revolution = {
             if = {
                 limit = { 
                     OR = {
+                        has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
                         has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Hard_Mode }
                         has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode }
                     }
@@ -4228,6 +4278,12 @@ PRC_export_revolution = {
                     has_war_with = MEX
                 }
             }
+            NOT = {
+                USB = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
         }
         available = {
             
@@ -4238,18 +4294,38 @@ PRC_export_revolution = {
         complete_effect = {
             if = {
                 limit = { 
-                    NOT = {
-                        has_country_flag = MEX_buff_flag
+                    PRC = {
+                        has_character = SIA_bak
+                        has_country_flag = PRC_coordinate_strike_SIA_flag
                     }
                 }
-                SIA = {
-                    set_nationality = {
-                        target_country = MEX
-                        character = SIA_bak
+                if = {
+                    limit = {
+                        country_exists = MEX
+                    }
+                    every_possible_country = {
+                        limit = { has_character = SIA_bak }
+                        random_character = {
+                            limit = { is_character = SIA_bak }
+                            set_nationality = MEX
+                        }
                     }
                 }
-                set_country_flag = MEX_buff
+                else_if = {
+                    limit = {
+                        country_exists = ZAP
+                    }
+                    every_possible_country = {
+                        limit = { has_character = SIA_bak }
+                        random_character = {
+                            limit = { is_character = SIA_bak }
+                            set_nationality = ZAP
+                        }
+                    }
+                }
             }
+            
+            
         }
         modifier = {
             experience_gain_army_factor = -0.2
@@ -4289,6 +4365,12 @@ PRC_export_revolution = {
             }
             NOT = {
                 PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+            }
+            NOT = {
+                USB = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
@@ -4479,8 +4561,13 @@ PRC_export_revolution = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
+                USB = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
                 has_global_flag = PTF_oh_shit_mexico_flag
             }
+            
         }
         available = {
             
@@ -4526,6 +4613,10 @@ PRC_export_revolution = {
             }
             NOT = {
                 PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+                USB = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
@@ -4914,6 +5005,10 @@ PRC_export_revolution = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
+                USB = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
                 has_global_flag = PTF_oh_shit_mexico_flag
             }
         }
@@ -4976,6 +5071,10 @@ PRC_export_revolution = {
             }
             NOT = {
                 PTF = {
+                    has_war_with = ZAP
+                    has_war_with = MEX
+                }
+                USB = {
                     has_war_with = ZAP
                     has_war_with = MEX
                 }
@@ -5216,22 +5315,50 @@ PRC_export_revolution = {
         }
     }
     PTF_MEX_war_mission = {
+        available = { 
+            961 = {
+				OR = {
+					is_controlled_by = MEX
+					is_controlled_by = ZAP
+				}
+			}
+        }
         activation = {
             always = no
         }
         cancel_trigger = {
-            MEX = {
-				OR = {
-					is_subject_of = PTF
-					exists = no
-				}
-			}
-			ZAP = {
-				OR = {
-					is_subject_of = PTF
-					exists = no
-				}
-			}
+            if = {
+                limit = { 
+                    country_exists = PTF
+                }
+                MEX = {
+                    OR = {
+                        is_subject_of = PTF
+                        exists = no
+                    }
+                }
+                ZAP = {
+                    OR = {
+                        is_subject_of = PTF
+                        exists = no
+                    }
+                }
+            }
+            else = {
+                MEX = {
+                    OR = {
+                        is_subject_of = USB
+                        exists = no
+                    }
+                }
+                ZAP = {
+                    OR = {
+                        is_subject_of = USB
+                        exists = no
+                    }
+                }
+            }
+            
         }
         days_mission_timeout = 180
         selectable_mission = no
@@ -5241,56 +5368,194 @@ PRC_export_revolution = {
                 limit = {
                     has_country_flag = PRC_MEX_PTF_bold
                 }
-                add_political_power = -50
-                add_war_support = -0.1
-                add_popularity = {
-                    ideology = totalitarian_socialist
-                    popularity = -0.05
+                if = {
+                    limit = {
+                        country_exists = USB
+                        USB = {
+                            has_country_flag = USB_NSS_flag
+                        }
+                    }
+                    add_political_power = -150
+                    add_war_support = -0.2
+                    add_popularity = {
+                        ideology = totalitarian_socialist
+                        popularity = -0.1
+                    }
+                    add_popularity = {
+                        ideology = communist
+                        popularity = -0.15
+                    }
+                    add_popularity = {
+                        ideology = libertarian_socialist
+                        popularity = -0.1
+                    }
+                    add_popularity = {
+                        ideology = social_democrat
+                        popularity = -0.1
+                    }
                 }
-                add_popularity = {
-                    ideology = communist
-                    popularity = -0.1
+                else = {
+                    add_political_power = -50
+                    add_war_support = -0.1
+                    add_popularity = {
+                        ideology = totalitarian_socialist
+                        popularity = -0.05
+                    }
+                    add_popularity = {
+                        ideology = communist
+                        popularity = -0.1
+                    }
+                    add_popularity = {
+                        ideology = libertarian_socialist
+                        popularity = -0.1
+                    }
+                    add_popularity = {
+                        ideology = social_democrat
+                        popularity = -0.05
+                    }
                 }
-                add_popularity = {
-                    ideology = libertarian_socialist
-                    popularity = -0.1
+                
+            }
+        }
+        complete_effect = {
+            if = {
+                limit = { 
+                    country_exists = PTF
                 }
-                add_popularity = {
-                    ideology = social_democrat
-                    popularity = -0.05
+                effect_tooltip = {
+                    PTF = {
+                        white_peace = MEX
+                        white_peace = ZAP
+                        add_timed_idea = {
+                            idea = JAP_shame_defeat
+                            days = 365
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = ZAP
+                        }
+                        ZAP = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = ZAP
+                    }
+                    else = {
+                        MEX = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = MEX
+                    }
+                }
+            }
+            else = {
+                effect_tooltip = {
+                    USB = {
+                        white_peace = MEX
+                        white_peace = ZAP
+                        add_timed_idea = {
+                            idea = JAP_shame_defeat
+                            days = 365
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = ZAP
+                        }
+                        ZAP = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = ZAP
+                    }
+                    else = {
+                        MEX = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = MEX
+                    }
                 }
             }
         }
         timeout_effect = {
-            effect_tooltip = {
-                PTF = {
-                    white_peace = MEX
-                    white_peace = ZAP
-                    add_timed_idea = {
-                        idea = JAP_shame_defeat
-                        days = 365
+            if = {
+                limit = { 
+                    country_exists = PTF
+                }
+                effect_tooltip = {
+                    PTF = {
+                        white_peace = MEX
+                        white_peace = ZAP
+                        add_timed_idea = {
+                            idea = JAP_shame_defeat
+                            days = 365
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = ZAP
+                        }
+                        ZAP = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = ZAP
+                    }
+                    else = {
+                        MEX = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = MEX
                     }
                 }
-                if = {
-                    limit = {
-                        country_exists = ZAP
-                    }
-                    ZAP = {
-                        remove_dynamic_modifier = {
-                            modifier = PRC_MEX_modifier
+            }
+            else = {
+                effect_tooltip = {
+                    USB = {
+                        white_peace = MEX
+                        white_peace = ZAP
+                        add_timed_idea = {
+                            idea = JAP_shame_defeat
+                            days = 365
                         }
-                        load_focus_tree = WLI_tree
                     }
-                    add_to_faction = ZAP
-                }
-                else = {
-                    MEX = {
-                        remove_dynamic_modifier = {
-                            modifier = PRC_MEX_modifier
+                    if = {
+                        limit = {
+                            country_exists = ZAP
                         }
-                        load_focus_tree = WLI_tree
+                        ZAP = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = ZAP
                     }
-                    add_to_faction = MEX
+                    else = {
+                        MEX = {
+                            remove_dynamic_modifier = {
+                                modifier = PRC_MEX_modifier
+                            }
+                            load_focus_tree = WLI_tree
+                        }
+                        add_to_faction = MEX
+                    }
                 }
             }
         }
@@ -5351,7 +5616,10 @@ PRC_export_revolution = {
                     has_country_flag = MEX_mexican_unifier_flag
                 }
             }
-            country_exists = MEX
+            MEX = {
+                exists = yes
+                is_puppet = no
+            }
         }
         cost = 35
         days_remove = 7

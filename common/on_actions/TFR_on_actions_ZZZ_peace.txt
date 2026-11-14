@@ -14201,6 +14201,142 @@ on_actions = {
 					}
 					set_global_flag = skip_default_capitulation
 				}
+				if = {
+					limit = {
+						has_global_flag = pan_asian_war_ongoing
+						ROOT = {
+							OR = {
+								original_tag = JAP
+								is_ally_with = JAP
+								original_tag = AST
+								is_ally_with = AST
+								original_tag = RAJ
+								is_ally_with = RAJ
+								has_country_flag = pdto_member
+							}
+						}
+						FROM = {
+							is_ally_with = PRC
+							OR = {
+								original_tag = PRC
+								original_tag = JAP
+								original_tag = AST
+								original_tag = RAJ
+								original_tag = SIA
+								original_tag = VIN
+								original_tag = LAO
+								original_tag = CAM
+								original_tag = BRM
+								original_tag = PHI
+								original_tag = INS
+								original_tag = PNG
+								original_tag = NZL
+								original_tag = MAL
+								original_tag = BAN
+								original_tag = NEP
+								original_tag = BHU
+								original_tag = CHI
+								original_tag = PRK
+								original_tag = SIG
+							}
+						}
+					}
+					ROOT = {
+						clr_country_flag = pdto_member
+						set_country_flag = eadi_member
+					}
+				}
+				# PRC kill PTF
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = PTF
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = PTF
+                    }
+                    PRC = {
+                        remove_from_faction = PTF
+                        country_event = {
+                            id = prcs.3134
+                            days = 4
+                        }
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = PTF
+                        }
+                        white_peace = PTF
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
+                # PRC kill USB
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = USB
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = USB
+                    }
+                    PRC = {
+                        remove_from_faction = USB
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = USB
+                        }
+                        white_peace = USB
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
+                # PRC kill USC
+                if = {
+                    limit = {
+                        ROOT = {
+                            original_tag = USC
+                        }
+                        FROM = {
+                            OR = {
+                                is_ally_with = PRC
+                                original_tag = PRC   
+                            }
+                        }
+                    }
+                    FROM = {
+                        end_puppet = USC
+                    }
+                    PRC = {
+                        remove_from_faction = USC
+                    }
+                    every_country = {
+                        limit = {
+                            has_war_with = USC
+                        }
+                        white_peace = USC
+                    }
+                    PRC_PTF_gaw = yes
+                    set_global_flag = skip_default_capitulation
+                }
+
 				#DEFAULT CAPITULATION
 				if = {
 					limit = {
@@ -14885,6 +15021,7 @@ on_actions = {
 							}
 						}
 						ROOT = {
+							is_ally_with = PRC
 							OR = {
 								original_tag = PRC
 								original_tag = JAP
@@ -14967,7 +15104,17 @@ on_actions = {
 						JAP = {
 							remove_from_faction = PRC
 						}
-						PRC_japans_victory_in_the_gaw = yes
+						if = {
+							limit = {
+								608 = {
+									NOT = {
+										is_controlled_by = PRC
+									}
+								}
+							}
+							PRC_japans_victory_in_the_gaw = yes
+						}
+						
 					}
 					if = {
 						limit = {
@@ -17087,7 +17234,16 @@ on_actions = {
 						JAP = {
 							remove_from_faction = PRC
 						}
-						PRC_japans_victory_in_the_gaw = yes
+						if = {
+							limit = {
+								608 = {
+									NOT = {
+										is_controlled_by = PRC
+									}
+								}
+							}
+							PRC_japans_victory_in_the_gaw = yes
+						}
 					}
 					if = {
 						limit = {
@@ -25547,6 +25703,17 @@ on_actions = {
 								ZAP = { exists = no }
 							}
 							puppet = MEX
+						}
+					}
+					PRC = {
+						remove_ideas = {
+							PRC_MEX_the_horror_of_decade_0
+							PRC_MEX_the_horror_of_decade_1
+							PRC_MEX_the_horror_of_decade_2
+							PRC_MEX_the_horror_of_decade_3
+							PRC_MEX_the_horror_of_decade_4
+							PRC_MEX_the_horror_of_decade_5
+							PRC_MEX_the_horror_of_decade_6
 						}
 					}
 					set_global_flag = skip_default_capitulation

@@ -365,28 +365,13 @@ second_nato_war_decisions = {
 	}
 }
 
-great_asian_war_decisions = {
-	great_asian_war_mission = {
+third_euro_war_decisions = {
+	third_euro_war_mission = {
 		priority = 1
 		icon = GFX_SOV_decision_nato_war_deadline
 		available = {
-			PRC = {
-				NOT = {
-					OR = {
-						has_war_with = JAP
-						has_war_with = RAJ
-						has_war_with = AST
-					}
-				}
-			}
-			PTF = {
-				OR = {
-					surrender_progress > 0.15
-					NOT = {
-						has_war_with = PRC
-					}
-				}
-				
+			GER = {
+				surrender_progress > 0.9
 			}
 		}
 		days_mission_timeout = 999
@@ -399,6 +384,288 @@ great_asian_war_decisions = {
 		cancel_if_not_visible = no
 		is_good = no
 		cancel_trigger = {
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				FAF = {
+					surrender_progress > 0.9
+				}
+			}
+			else = {
+				GER = {
+					has_war = no
+				}
+				1493 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+				16 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+				126 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+			}
+		}
+		cancel_effect = { # German Victory
+			FPR = {
+				load_focus_tree = generic_focus
+			}
+			FAF = {
+				load_focus_tree = generic_focus
+			}
+			every_country = {
+				limit = {
+					has_war_with = GER
+				}
+				white_peace = GER
+				dismantle_faction = yes
+				leave_faction = yes
+			}
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				GER = {
+					puppet = FAF
+				}
+			}
+			GER = {
+				if = {
+					limit = {
+						has_country_flag = GER_left_accelerationist_flag
+					}
+					news_event = news.644
+				}
+				else_if = {
+					limit = {
+						has_country_flag = GER_spartanist_flag
+					}
+					news_event = news.645
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_country_leader = {
+								character = GER_radelsfuhrer
+								ruling_only = yes
+							}
+							has_country_leader = {
+								character = GER_klaus_armstroff_char
+								ruling_only = yes
+							}
+						}
+					}
+					news_event = news.647
+				}
+				else_if = {
+					limit = {
+						has_country_leader = {
+							character = GER_frank_franz
+							ruling_only = yes
+						}
+					}
+					news_event = news.648
+				}
+				else_if = {
+					limit = {
+						has_country_leader = {
+							character = GER_Heinrich_XIII
+							ruling_only = yes
+						}
+					}
+					news_event = news.649
+				}
+				else = {
+					news_event = news.643
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = third_euro_war_mission
+		}
+		complete_effect = { #French Victory
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				FAF_fascist_victory_in_third_ew = yes
+			}
+			else_if = {
+				limit = {
+					FPR = { exists = yes }
+				}
+				FPR_communist_victory_in_third_ew = yes
+			}
+		}
+	}
+}
+
+great_asian_war_decisions = {
+	great_asian_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			JAP = {
+				OR = {
+					NOT = {
+						has_war_with = PRC
+					}
+					AND = {
+						has_war_with = PRC
+						surrender_progress > 0.9
+					}
+				}
+			}
+			AST = {
+				OR = {
+					NOT = {
+						has_war_with = PRC
+					}
+					AND = {
+						has_war_with = PRC
+						surrender_progress > 0.9
+					}
+				}
+			}
+			RAJ = {
+				OR = {
+					NOT = {
+						has_war_with = PRC
+					}
+					AND = {
+						has_war_with = PRC
+						surrender_progress > 0.9
+					}
+				}
+			}
+			if = {
+				limit = {
+					PTF = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Simple_Mode }
+                        	has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Baby_Mode }
+						}
+					}
+					PTF = {
+						OR = {
+							surrender_progress > 0.15
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Normal_Mode }
+					}
+					PTF = {
+						OR = {
+							surrender_progress > 0.35
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}	
+				else = {
+					PTF = {
+						OR = {
+							surrender_progress > 0.75
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}			
+			}
+			else_if = {
+				limit = {
+					USB = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Simple_Mode }
+                        	has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Baby_Mode }
+						}
+						
+					}
+					USB = {
+						OR = {
+							surrender_progress > 0.15
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Normal_Mode }
+					}
+					USB = {
+						OR = {
+							surrender_progress > 0.35
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}	
+				else = {
+					USB = {
+						OR = {
+							surrender_progress > 0.75
+							NOT = {
+								has_war_with = PRC
+							}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					USC = {
+						has_country_flag = USA_unifier_flag
+					}
+				}
+				USC = {
+					OR = {
+						surrender_progress > 0.15
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+					
+				}	
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			608 = {
+				NOT = {
+					controller = {
+						has_war_with = PRC
+					}
+				}
+			}
 			PRC = {
 				surrender_progress > 0.6
 			}
@@ -427,6 +694,7 @@ great_asian_war_decisions = {
 			clr_global_flag = pan_asian_war_ongoing
 			PRC = {
 				remove_mission = PRC_GAW_war_exhaustion
+				set_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
 				# country_event = china.1001
 			}
 			news_event = {
@@ -440,11 +708,44 @@ great_asian_war_decisions = {
 				white_peace = PRC
 				dismantle_faction = yes
 			}
-			every_country = {
+			if = {
 				limit = {
-					has_war_with = PTF
+					PRC = {
+						has_war_with = PTF
+					}
 				}
-				white_peace = PTF
+				every_country = {
+					limit = {
+						has_war_with = PTF
+					}
+					white_peace = PTF
+				}
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_war_with = USB
+					}
+				}
+				every_country = {
+					limit = {
+						has_war_with = USB
+					}
+					white_peace = USB
+				}
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_war_with = USC
+					}
+				}
+				every_country = {
+					limit = {
+						has_war_with = USC
+					}
+					white_peace = USC
+				}
 			}
 			PRC_PTF_gaw = yes
 			PRC_chinas_victory_in_the_gaw_nl = yes

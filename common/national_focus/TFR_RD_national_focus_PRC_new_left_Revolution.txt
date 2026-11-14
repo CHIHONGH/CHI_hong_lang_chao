@@ -20,6 +20,18 @@
        		set_country_flag = PRC_world_revolution
 			set_country_flag = eadi_member
 			create_faction = WLI
+			if = {
+				limit = {
+					VIN = {
+						is_in_faction_with = PRC
+					}
+				}
+				VIN = {
+					add_dynamic_modifier = {
+						modifier = PRC_WLI_modifiers
+					}
+				}
+			}
 			hidden_effect = {
 				remove_faction_goal = faction_goal_the_atomic_race
 				add_faction_goal = faction_goal_placeholder_long_term
@@ -350,13 +362,35 @@
 		x = 0
 		y = 2
 		cost = 10
-		cancel_if_invalid = yes
-		continue_if_invalid = no
+		continue_if_invalid = yes
+		cancelable = no
+		will_lead_to_war_with = USB
 		will_lead_to_war_with = PTF
 		will_lead_to_war_with = JAP
 		will_lead_to_war_with = RAJ
 		icon = GFX_focus_PRC_nl_toward_victory_focus
-		available = { PTF = { is_in_faction_with = JAP } }
+		available = { 
+			OR = {
+				PTF = { is_in_faction_with = JAP } 
+				USB = {
+					AND = {
+						has_completed_focus = USB_arctic_security
+						has_completed_focus = USB_work_force_act
+					}
+				}
+				USC = { is_in_faction_with = JAP } 
+			}
+			if = {
+				limit = { 
+					country_exists = USB
+				}
+				USB = {
+					NOT = {
+						has_decision = USB_kill_china_decision
+					}
+				}
+			}
+		}
 		prerequisite = {
 			focus = PRC_nl_WLI_collective_action
 		}
@@ -370,6 +404,23 @@
 		
 		select_effect = {
 			PTF = {
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = PRC
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = consider_weak
+					id = PRC
+					value = 1000
+				}
+				add_ai_strategy = {
+					type = conquer
+					id = PRC
+					value = 1000
+				}
+			}
+			USB = {
 				add_ai_strategy = {
 					type = prepare_for_war
 					id = PRC
@@ -404,13 +455,36 @@
 				}
 			}
 		}
+		bypass = {
+			OR = {
+				has_global_flag = GAW_soon
+				has_global_flag = pan_asian_war_ongoing
+				USB = { has_decision = USB_kill_china_decision }
+			}
+			
+		}
+		cancel = {
+			OR = {
+				has_global_flag = GAW_soon
+				has_global_flag = pan_asian_war_ongoing
+				USB = { has_decision = USB_kill_china_decision }
+			}
+		}
+		bypass_effect = {
+			mark_focus_tree_layout_dirty = yes
+		}
 		completion_reward = {
 			custom_effect_tooltip = PRC_korean_war_picture_tt
 			custom_effect_tooltip = tooltip_white_line
 			hidden_effect = {
-				news_event = {
-					id = prcs.3166 
-					days = 13
+				if = {
+					limit = {
+						country_exists = PTF
+					}
+					news_event = {
+						id = prcs.3166 
+						days = 13
+					}
 				}
 				country_event = {
 					id = china.1722

@@ -1,0 +1,432 @@
+iron_wall = {
+    track = mechanized
+    name = SUBDOCTRINE_IRON_WALL
+    description = SUBDOCTRINE_IRON_WALL_DESC
+    icon = GFX_large_front_operations_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+	
+	engineer = {
+		battalion_mult = {
+            category = category_all_infantry
+            entrenchment = 0.01
+			add = yes
+        }
+    }
+	
+    rewards = {
+        stage_1 = {
+			light_mechanized = {
+				defense = 0.05
+				armor_value = 0.05  
+			}
+			mechanized = {
+				defense = 0.05
+				armor_value = 0.05  
+			}
+		}
+        stage_2 = {
+			light_mechanized = {
+				reliability_factor = 0.01
+				entrenchment = 0.05
+			}
+			mechanized = {
+				reliability_factor = 0.01
+				entrenchment = 0.05
+			}
+		}
+        stage_3 = {
+			light_mechanized = {
+				entrenchment = 0.1
+				armor_value = 0.05  
+			}
+			mechanized = {
+				entrenchment = 0.1
+				armor_value = 0.05  
+			}
+        }
+        stage_4 = {
+			#equipment_bonus = {
+			#	light_mechanized_equipment = {
+			#		entrenchment = 0.1
+			#	}
+			#	mechanized_equipment = {
+			#		entrenchment = 0.1
+			#	}
+			#}
+			light_mechanized = {
+				defense = 0.05
+			}
+			mechanized = {
+				defense = 0.05
+			}
+        }
+        stage_5 = {
+			light_mechanized = {
+				max_strength = 0.1
+				max_organisation = 1
+			}
+			mechanized = {
+				max_strength = 0.1
+				max_organisation = 1
+			}
+        }
+    }
+}
+
+lightning_strikes = {
+    track = mechanized
+    name = SUBDOCTRINE_LIGHTING_STRIKES
+    description = SUBDOCTRINE_LIGHTING_STRIKES_DESC
+    icon = GFX_human_wave_offensive_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+
+    rewards = {
+        stage_1 = {
+			light_mechanized = {
+				soft_attack = 0.05
+			}
+			mechanized = {
+				soft_attack = 0.05
+			}
+		}
+        stage_2 = {
+			light_mechanized = {
+				breakthrough = 0.05
+				initiative = 0.01
+			}
+			mechanized = {
+				breakthrough = 0.05
+				initiative = 0.01
+			}
+		}
+        stage_3 = {
+			light_mechanized = {
+				breakthrough = 0.05
+				default_morale = 0.05
+			}
+			mechanized = {
+				breakthrough = 0.05
+				default_morale = 0.05
+			}
+        }
+        stage_4 = {
+			light_mechanized = {
+				hard_attack = 0.05
+			}
+			mechanized = {
+				hard_attack = 0.05
+			}
+        }
+        stage_5 = {
+			light_mechanized = {
+				soft_attack = 0.05
+				hard_attack = 0.05
+			}
+			mechanized = {
+				soft_attack = 0.05
+				hard_attack = 0.05
+			}
+        }
+    }
+}
+
+mechanized_breakthrough = {
+    track = mechanized
+    name = SUBDOCTRINE_MECHANIZED_BREAKTHROUGH
+    description = SUBDOCTRINE_MECHANIZED_BREAKTHROUGH_DESC
+    icon = GFX_guerilla_warfare_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+
+    rewards = {
+        stage_1 = {
+			light_mechanized = {
+				maximum_speed = 0.05
+				default_morale = 0.05
+			}
+			mechanized = {
+				maximum_speed = 0.05
+				default_morale = 0.05
+			}
+		}
+        stage_2 = {
+			light_mechanized = {
+				breakthrough = 0.1
+				air_attack = 0.1 
+			}
+			mechanized = {
+				breakthrough = 0.1
+				air_attack = 0.1 
+			}
+		}
+        stage_3 = {
+			light_mechanized = {
+				breakthrough = 0.05
+				default_morale = 0.05
+			}
+			mechanized = {
+				breakthrough = 0.05
+				default_morale = 0.05
+			}
+        }
+        stage_4 = {
+			light_mechanized = {
+				maximum_speed = 0.05
+				initiative = 0.01
+			}
+			mechanized = {
+				maximum_speed = 0.05
+				initiative = 0.01
+			}
+        }
+        stage_5 = {
+			light_mechanized = {
+				breakthrough = 0.1
+				default_morale = 0.05
+			}
+			mechanized = {
+				breakthrough = 0.1
+				default_morale = 0.05
+			}
+        }
+    }
+}
+
+amphibious_assault = {
+    track = mechanized
+    name = SUBDOCTRINE_AMPHIBIOUS_ASSAULT
+    description = SUBDOCTRINE_AMPHIBIOUS_ASSAULT_DESC
+    icon = GFX_integrated_convoy_defence_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+
+    rewards = {
+        stage_1 = {
+			amphibious_mechanized = {
+				defense = 0.05
+				max_organisation = 5
+			}
+		}
+        stage_2 = {
+			amphibious_mechanized = {
+				defense = 0.05
+			}
+			equipment_bonus = {
+				amphibious_mechanized_equipment = {
+					entrenchment = 0.05
+				}
+			}
+		}
+        stage_3 = {
+			amphibious_mechanized = {
+				amphibious = {
+					attack = 0.1
+					defence = 0.1
+				}
+			}
+        }
+        stage_4 = {
+			amphibious_mechanized = {
+				ap_attack = 0.1
+			}
+			amphibious_mechanized = {
+				urban = {
+					defence = 0.1
+				}
+			}
+        }
+        stage_5 = {
+			amphibious_mechanized = {
+				max_strength = 0.15
+			}
+			amphibious_mechanized = {
+				plains = {
+					defence = 0.1
+				}
+			}
+        }
+    }
+}
+
+mechanized_armada = {
+    track = mechanized
+    name = SUBDOCTRINE_MECHANIZED_ARMADA
+    description = SUBDOCTRINE_MECHANIZED_ARMADA_DESC
+    icon = GFX_scavage_enemy_vehicles_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+
+    rewards = {
+        stage_1 = {
+			light_mechanized = {
+				max_organisation = 1
+				supply_consumption = -0.01
+				fuel_consumption_factor = -0.05
+			}
+			mechanized = {
+				max_organisation = 1
+				supply_consumption = -0.01
+				fuel_consumption_factor = -0.05
+			}
+		}
+        stage_2 = {
+			light_mechanized = {
+				default_morale = 0.05
+				reliability_factor = 0.01
+				fuel_consumption_factor = -0.05
+			}
+			mechanized = {
+				default_morale = 0.05
+				reliability_factor = 0.01
+				fuel_consumption_factor = -0.05
+			}
+		}
+        stage_3 = {
+			equipment_bonus = {
+				light_mechanized_equipment = {
+					build_cost_ic = -0.05
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.05
+				}
+			}
+        }
+        stage_4 = {
+			light_mechanized = {
+				default_morale = 0.1
+				experience_loss_factor = -0.01
+				casualty_trickleback = 0.01
+			}
+			mechanized = {
+				default_morale = 0.1
+				experience_loss_factor = -0.01
+				casualty_trickleback = 0.01
+			}
+        }
+		stage_5 = {
+			light_mechanized = {
+				max_organisation = 2
+				supply_consumption = -0.02
+			}
+			mechanized = {
+				max_organisation = 2
+				supply_consumption = -0.02
+			}
+        }
+    }
+}
+
+automated_mechanized_units = {
+    track = mechanized
+    name = SUBDOCTRINE_AUTOMATED_MECHANIZED_UNITS
+    description = SUBDOCTRINE_AUTOMATED_MECHANIZED_UNITS_DESC
+    icon = GFX_mechanised_offensive_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        has_tech = support_weapons7
+    }
+
+    rewards = {
+        stage_1 = {
+			light_mechanized = {
+				soft_attack = 0.1
+			}
+			mechanized = {
+				soft_attack = 0.1
+				
+			}
+		}
+        stage_2 = {
+			light_mechanized = {
+				breakthrough = 0.1
+				air_attack = 0.1 
+			}
+			mechanized = {
+				breakthrough = 0.1
+				air_attack = 0.1 
+			}
+		}
+        stage_3 = {
+			light_mechanized = {
+				hard_attack = 0.1
+			}
+			mechanized = {
+				hard_attack = 0.1
+			}
+        }
+        stage_4 = {
+			light_mechanized = {
+				breakthrough = 0.1
+				air_attack = 0.1 
+			}
+			mechanized = {
+				breakthrough = 0.1
+				air_attack = 0.1 
+			}
+        }
+        stage_5 = {
+			light_mechanized = {
+				initiative = 0.01
+				experience_loss_factor = -0.01
+			}
+			mechanized = {
+				initiative = 0.01
+				experience_loss_factor = -0.01
+			}
+        }
+    }
+}

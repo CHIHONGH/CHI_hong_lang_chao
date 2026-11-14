@@ -1,0 +1,320 @@
+frontline_anti_air = {
+    track = support_units
+    name = SUBDOCTRINE_FRONTLINE_ANTI_AIR
+    description = SUBDOCTRINE_FRONTLINE_ANTI_AIR_DESC
+    icon = GFX_multialtitude_flying_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+	
+	spaa_brigade = {
+		battalion_mult = {
+            category = category_all_infantry
+            air_attack = 1
+			add = yes
+        }
+    }
+
+    rewards = {
+        stage_1 = {
+			spaa_company = {
+				air_attack = 0.05
+			}
+			spaa_brigade = {
+				air_attack = 0.05
+			}
+		}
+        stage_2 = {
+			equipment_bonus = {
+				spaa_equipment = {
+					build_cost_ic = -0.1
+					armor_value = 0.1
+				}
+			}
+		}
+        stage_3 = {
+			spaa_company = {
+				soft_attack = 0.1
+				hard_attack = 0.1
+				defense = 0.1
+			}
+			spaa_brigade = {
+				soft_attack = 0.1
+				hard_attack = 0.1
+				defense = 0.1
+			}
+        }
+        stage_4 = {
+			spaa_company = {
+				supply_consumption = -0.01
+				initiative = 0.01
+			}
+			spaa_brigade = {
+				supply_consumption = -0.01
+				initiative = 0.01
+			}
+        }
+        stage_5 = {
+			spaa_company = {
+				air_attack = 0.1
+			}
+			spaa_brigade = {
+				air_attack = 0.1
+			}
+        }
+    }
+}
+
+complex_engineering = {
+    track = support_units
+    name = SUBDOCTRINE_COMPLEX_ENGINEERING
+    description = SUBDOCTRINE_COMPLEX_ENGINEERING_DESC
+    icon = GFX_rat_tunnels_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+	
+	engineer = {
+		battalion_mult = {
+            category = category_all_infantry
+            entrenchment = 0.05
+			add = yes
+        }
+    }
+
+    rewards = {
+        stage_1 = {
+			engineer = {
+				hills = {
+					defence = 0.05
+				}
+				entrenchment = 0.1
+			}
+		}
+        stage_2 = {
+			engineer = {
+				amphibious = {
+					defence = 0.05
+				}
+				entrenchment = 0.1
+			}
+		}
+        stage_3 = {
+			engineer = {
+				urban = {
+					defence = 0.05
+				}
+				entrenchment = 0.1
+			}
+        }
+        stage_4 = {
+			engineer = {
+				breakthrough = 0.5
+				entrenchment = 0.1
+			}
+        }
+        stage_5 = {
+			engineer = {
+				experience_loss_factor = -0.01
+				casualty_trickleback = 0.01
+				entrenchment = 0.1
+			}
+        }
+    }
+}
+
+sophisticated_logistics = {
+    track = support_units
+    name = SUBDOCTRINE_SOPHISTICATED_LOGISTICS
+    description = SUBDOCTRINE_SOPHISTICATED_LOGISTICS_DESC
+    icon = GFX_mass_motorization_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+	
+	logistics_company = {
+		battalion_mult = {
+            category = category_all_armor
+            fuel_consumption_factor = -0.15
+			add = yes
+        }
+    }
+	
+	maintenance_company = {
+		battalion_mult = {
+            category = category_all_armor
+            reliability = 0.10
+			add = yes
+        }
+    }
+
+    rewards = {
+        stage_1 = {
+			logistics_company = {
+				supply_consumption_factor = -0.02
+				fuel_consumption_factor = -0.02
+			}
+		}
+        stage_2 = {
+			logistics_company = {
+				supply_consumption_factor = -0.02
+				fuel_consumption_factor = -0.04
+			}
+		}
+        stage_3 = {
+			logistics_company = {
+				supply_consumption_factor = -0.02
+				fuel_consumption_factor = -0.04
+			}
+        }
+        stage_4 = {
+			logistics_company = {
+				supply_consumption_factor = -0.02
+				fuel_consumption_factor = -0.05
+			}
+        }
+        stage_5 = {
+			logistics_company = {
+				supply_consumption_factor = -0.02
+				fuel_consumption_factor = -0.05
+			}
+        }
+    }
+}
+
+continuous_communication = {
+    track = support_units
+    name = SUBDOCTRINE_CONTINUOUS_COMMUNICATION
+    description = SUBDOCTRINE_CONTINUOUS_COMMUNICATION_DESC
+	icon = GFX_mechanised_offensive_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+	
+	logistics_company = {
+		battalion_mult = {
+            category = category_all_armor
+            initiative = 0.01
+			#add = yes
+        }
+    }
+
+    rewards = {
+        stage_1 = {
+			coordination_bonus = 0.01
+			signal_company = {
+				initiative = 0.01
+			}
+		}
+        stage_2 = {
+			coordination_bonus = 0.01
+			signal_company = {
+				initiative = 0.01
+			}
+		}
+        stage_3 = {
+			coordination_bonus = 0.01
+			signal_company = {
+				initiative = 0.01
+			}
+        }
+        stage_4 = {
+			coordination_bonus = 0.01
+			signal_company = {
+				initiative = 0.01
+			}
+        }
+        stage_5 = {
+			coordination_bonus = 0.01
+			signal_company = {
+				initiative = 0.01
+			}
+        }
+    }
+}
+
+forward_reconnaissance = {
+    track = support_units
+    name = SUBDOCTRINE_FORWARD_RECONNAISSANCE
+    description = SUBDOCTRINE_FORWARD_RECONNAISSANCE_DESC
+    icon = GFX_command_and_control_medium
+
+    xp_cost = 100
+    xp_type = army
+
+    ai_will_do = {
+        base = 1
+    }
+
+    available = {
+        always = yes
+    }
+	
+	recon = {
+		battalion_mult = {
+            category = category_special_forces
+            recon = 0.05
+			add = yes
+        }
+    }
+
+    rewards = {
+        stage_1 = {
+			category_recon = {
+				recon = 0.25
+			}
+		}
+        stage_2 = {
+			category_recon = {
+				recon = 0.25
+			}
+		}
+        stage_3 = {
+			category_recon = {
+				recon = 0.25
+			}
+        }
+        stage_4 = {
+			category_recon = {
+				recon = 0.25
+			}
+        }
+        stage_5 = {
+			category_recon = {
+				recon = 0.25
+			}
+        }
+    }
+}

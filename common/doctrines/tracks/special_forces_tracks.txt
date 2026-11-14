@@ -1,0 +1,74 @@
+special_forces_first = {
+    name = DOCTRINE_TRACK_SPECIAL_FORCES
+    background = "GFX_paratroopers_bg"
+    icon = "GFX_doctrine_milestone_special_forces"
+    icon_frame = "GFX_doctrine_decor_special_forces"
+
+    # SF mastery is sourced per-subdoctrine (each doctrine levels only from its own unit type); the subdoctrine override replaces these track conditions, so no track multiplier needs to be set here, but for the training and banking purposes we are going to plaster multiplier here as well.
+    mastery = {
+        multiplier = 50
+        categories = {
+            category_special_forces
+        }
+    }
+}
+
+special_forces_second = {
+    name = DOCTRINE_TRACK_SPECIAL_FORCES
+    background = "GFX_marine_bg"
+    icon = "GFX_doctrine_milestone_special_forces"
+    icon_frame = "GFX_doctrine_decor_special_forces"
+
+    active = {
+        #can_unlock_second_track_of_sf_doctrine = yes
+    }
+
+     # SF mastery is sourced per-subdoctrine (each doctrine levels only from its own unit type); the subdoctrine override replaces these track conditions, so no track multiplier needs to be set here, but for the training and banking purposes we are going to plaster multiplier here as well.
+    mastery = {
+        multiplier = 50
+        categories = {
+            category_special_forces
+        }
+    }
+}
+
+special_forces_third = {
+    name = DOCTRINE_TRACK_SPECIAL_FORCES
+    background = "GFX_marine_bg"
+    icon = "GFX_doctrine_milestone_special_forces"
+    icon_frame = "GFX_doctrine_decor_special_forces"
+
+    active = {
+			has_tech = tech_special_forces
+    }
+
+     # SF mastery is sourced per-subdoctrine (each doctrine levels only from its own unit type); the subdoctrine override replaces these track conditions, so no track multiplier needs to be set here, but for the training and banking purposes we are going to plaster multiplier here as well.
+    mastery = {
+        multiplier = 100
+        categories = {
+            category_special_forces
+        }
+    }
+}
+
+special_forces_fourth = {
+    name = DOCTRINE_TRACK_SPECIAL_FORCES
+    background = "GFX_marine_bg"
+    icon = "GFX_doctrine_milestone_special_forces"
+    icon_frame = "GFX_doctrine_decor_special_forces"
+
+    active = {
+		OR = {
+			has_tech = extreme_environment_training
+			has_tech = survival_training
+		}
+    }
+
+     # SF mastery is sourced per-subdoctrine (each doctrine levels only from its own unit type); the subdoctrine override replaces these track conditions, so no track multiplier needs to be set here, but for the training and banking purposes we are going to plaster multiplier here as well.
+    mastery = {
+        multiplier = 100
+        categories = {
+            category_special_forces
+        }
+    }
+}
