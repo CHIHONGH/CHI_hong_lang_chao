@@ -3820,6 +3820,7 @@ on_actions = {
 			if = {
 				#PRC kill USAstate
 				limit = {
+					has_global_flag = pan_asian_war_ongoing
 					FROM.FROM = {
 						OR = {
 							state = 932
@@ -3842,12 +3843,18 @@ on_actions = {
 							tag = PTF
 						}
 						FROM = {
+							tag = USB
+						}
+						FROM = {
 							tag = PRC
 						}
 					}
 					OR = {
 						ROOT = {
 							tag = PTF
+						}
+						ROOT = {
+							tag = USB
 						}
 						ROOT = {
 							tag = PRC

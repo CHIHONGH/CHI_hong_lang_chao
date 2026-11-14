@@ -1,0 +1,656 @@
+PRC_coordinate_strike_RAJ = { ### 1/50
+	icon = GFX_operations_coordinated_strike
+	map_icon = GFX_operations_coordinated_strike_map
+	name = PRC_coordinate_strike_RAJ
+	desc = PRC_coordinate_strike_RAJ_desc
+	days = 45 
+
+	priority = 30
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = {
+		PAK = {
+			has_war_with = RAJ
+		}
+	}
+	visible = {
+		NOT = {
+			has_global_flag = pan_asian_war_ongoing
+			PRC = {
+				has_country_flag = PRC_coordinate_strike_RAJ_flag
+			}
+		}
+	}
+
+	operation_target = {
+		targets = { RAJ }
+	}
+
+	operatives = 2
+
+	network_strength = 30
+
+	equipment = {
+		infantry_equipment = 500
+		support_equipment = 100
+		civilian_factories = {
+			amount = 1
+ 			days = 15
+ 		}
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		PRC = {
+			set_country_flag = {
+				flag = PRC_coordinate_strike_RAJ_flag
+				value = 1
+				days = 100
+			}
+		}	
+		
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = PRC_coordinate_strike_RAJ_tt
+	}
+	risk_chance = 0.5
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		execute_operation_coordinated_strike = {
+			# Amount determines how often the mission simulation is run
+			amount = 6 #1 attack per 6 hours --> 12 attacks = 3 days
+		}
+		FROM = {
+			add_command_power = -25
+			army_experience = -50
+			add_timed_idea = {
+				idea = PRC_sudden_attack_RAJ
+				days = 10
+			}
+		}
+	}
+
+	outcome_extra_chance = 0.2
+
+	outcome_extra_execute = {
+		execute_operation_coordinated_strike = {
+			# Amount determines how often the mission simulation is run
+			amount = 12 #1 attack per 6 hours --> 12 attacks = 3 days
+		}
+		FROM = {
+			add_command_power = -50
+			army_experience = -75
+			add_timed_idea = {
+				idea = PRC_sudden_attack_RAJ
+				days = 15
+			}
+			random_controlled_state = {
+				limit = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = RAJ
+						}
+					}
+				}
+				damage_units = {
+					org_damage = 0.9
+					str_damage = 0.7
+					limit = {
+						tag = RAJ
+					}
+					ratio = yes
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = RAJ
+						}
+					}
+				}
+				damage_units = {
+					org_damage = 0.9
+					str_damage = 0.7
+					limit = {
+						tag = RAJ
+					}
+					ratio = yes
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = RAJ
+						}
+					}
+				}
+				damage_units = {
+					org_damage = 0.9
+					str_damage = 0.7
+					limit = {
+						tag = RAJ
+					}
+					ratio = yes
+				}
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0.1 #less likely if we have no transports
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #preparing
+		coordinated_strike_scout_target = { base = 50 }
+		coordinate_strike_mark_targets = { base = 50 }
+	}
+
+	phases = { #execution
+		coordinated_strike_sabotage_communications = { base = 34 }
+		coordinated_strike_direct_units = { base = 34 }
+		coordinated_strike_occupy_bridges = { 
+			base = 34 
+			modifier = {
+				NOT = {
+					FROM = {
+						any_neighbor_country = {
+							tag = ROOT #no land connection between FROM and ROOT
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+
+PRC_coordinate_strike_SIA = { ### 1/50
+	icon = GFX_operations_coordinated_strike
+	map_icon = GFX_operations_coordinated_strike_map
+	name = PRC_coordinate_strike_RAJ
+	desc = PRC_coordinate_strike_SIA_desc
+	days = 15 
+
+	priority = 30
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = {
+		OR = {
+			SIA = {
+				has_war_with = PRT
+			}
+			PRC = {
+				has_decision = PRC_thailand_communist
+			}
+		}
+		
+	}
+	visible = {
+		NOT = {
+			has_global_flag = pan_asian_war_ongoing
+			PRC = {
+				has_country_flag = PRC_coordinate_strike_SIA_flag
+			}
+		}
+	}
+
+	operation_target = {
+		targets = { SIA }
+	}
+
+	operatives = 1
+
+	network_strength = 30
+
+	equipment = {
+		infantry_equipment = 200
+		support_equipment = 50
+		civilian_factories = {
+			amount = 1
+ 			days = 15
+ 		}
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		set_country_flag = PRC_coordinate_strike_SIA_flag
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = PRC_coordinate_strike_RAJ_tt
+	}
+	risk_chance = 0.3
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			add_timed_idea = {
+				idea = PRC_sudden_attack_RAJ
+				days = 7
+			}
+			every_possible_country = {
+				limit = { has_character = SIA_bak }
+				random_character = {
+					limit = { is_character = SIA_bak }
+					set_nationality = ROOT
+				}
+			}
+		}
+	}
+
+	outcome_extra_chance = 0.2
+
+	outcome_extra_execute = {
+		ROOT = {
+			add_war_support = 0.015
+			army_experience = 10
+		}
+		FROM = {
+			add_timed_idea = {
+				idea = PRC_sudden_attack_RAJ
+				days = 10
+			}
+			every_possible_country = {
+				limit = { has_character = SIA_bak }
+				random_character = {
+					limit = { is_character = SIA_bak }
+					set_nationality = ROOT
+				}
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0.1 #less likely if we have no transports
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #preparing
+		coordinated_strike_scout_target = { base = 50 }
+		coordinate_strike_mark_targets = { base = 50 }
+	}
+
+	phases = { #execution
+		coordinated_strike_sabotage_communications = { base = 34 }
+		coordinated_strike_direct_units = { base = 34 }
+		coordinated_strike_occupy_bridges = { 
+			base = 34 
+			modifier = {
+				NOT = {
+					FROM = {
+						any_neighbor_country = {
+							tag = ROOT #no land connection between FROM and ROOT
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+
+
+PRC_monitor_USB_NSS = { ### 1/50
+	icon = GFX_PRC_kill_the_leader_of_antitechnocratic_movement
+	map_icon = GFX_PRC_kill_the_leader_of_antitechnocratic_movement_map
+	name = PRC_monitor_USB_NSS
+	desc = PRC_monitor_USB_NSS_desc
+	days = 45 
+
+	priority = 30
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = {
+		NOT = {
+			has_country_flag = PRC_monitor_USB_NSS_in_progress
+		}
+	}
+	visible = {
+		USB = {
+			NOT = {
+				has_country_flag = USB_we_wont_fail_again_flag
+			}
+		}
+		PRC = {
+			has_country_flag = USB_NSS_brainwash_start_flag
+			check_variable = {
+				PRC_monitor_USB_NSS_var < 2
+			}
+		}
+		
+	}
+
+	operation_target = {
+		targets = { USB }
+	}
+
+	operatives = 2
+
+	network_strength = 25
+
+	equipment = {
+		infantry_equipment = 100
+		support_equipment = 50
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		PRC = {
+			set_country_flag = {
+				flag = PRC_monitor_USB_NSS_in_progress
+				days = 45
+				value = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USB_NSS_brainwash_steal_flag
+					}
+				}
+				country_event = { id = prcs.3230  days = 7 }
+			}
+		}
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = PRC_monitor_USB_NSS_outcome_tt
+	}
+	risk_chance = 0.3
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			add_to_variable = {
+				USB_gears_of_war_pp_var = -100
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_merge_the_mic
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_unrestrained_rd
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_hunter_killer_program
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_kickstart_the_amnet
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_dumb_construction
+				cost = -14
+			}
+		}
+		ROOT = {
+			add_to_variable = {
+				PRC_monitor_USB_NSS_var = 1
+			}
+			add_political_power = 50
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USB_NSS_brainwash_steal_flag
+					}
+				}
+				country_event = prcs.3234
+			}
+		}
+		
+	}
+
+	outcome_extra_chance = 0.2
+
+	outcome_extra_execute = {
+		FROM = {
+			add_to_variable = {
+				USB_gears_of_war_pp_var = -100
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_merge_the_mic
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_unrestrained_rd
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_hunter_killer_program
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_kickstart_the_amnet
+				cost = -14
+			}
+			reduce_focus_completion_cost = {
+				focus = USB_dumb_construction
+				cost = -14
+			}
+		}
+		ROOT = {
+			add_to_variable = {
+				PRC_monitor_USB_NSS_var = 1
+			}
+			add_political_power = 100
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USB_NSS_brainwash_steal_flag
+					}
+				}
+				country_event = prcs.3234
+			}
+		}
+	}
+
+	phases = {
+		infiltration_submarine = { base = 100 }
+	}
+	phases = { 
+		infiltrate_military_seduction = { base = 100 }
+	}
+	phases = { 
+		elimination_and_cover_up = { base = 100 }
+	}
+}
+
+PRC_coordinate_strike_USB = { ### 1/50
+	icon = GFX_operations_coordinated_strike
+	map_icon = GFX_operations_coordinated_strike_map
+	name = PRC_coordinate_strike_RAJ
+	desc = PRC_coordinate_strike_USB_desc
+	days = 15 
+
+	priority = 30
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = {
+		USB = {
+			OR = {
+				has_war_with = MEX
+				has_war_with = ZAP
+			}
+		}
+		
+	}
+	visible = {
+		USB = {
+			has_country_flag = USA_unifier_flag
+		}
+		ROOT = {
+			NOT = {
+				has_country_flag = PRC_coordinate_strike_USB_flag
+			}
+		}
+	}
+
+	operation_target = {
+		targets = { USB }
+	}
+
+	operatives = 1
+
+	network_strength = 30
+
+	equipment = {
+		infantry_equipment = 1000
+		support_equipment = 500
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		PRC = {
+			set_country_flag = {
+				flag = PRC_coordinate_strike_USB_flag
+				value = 1
+				days = 75
+			}
+		}
+		
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = PRC_coordinate_strike_USB_tt
+	}
+	risk_chance = 0.5
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			add_timed_idea = {
+				idea = PRC_sudden_attack_RAJ
+				days = 15
+			}
+		}
+	}
+
+	outcome_extra_chance = 0.2
+
+	outcome_extra_execute = {
+		ROOT = {
+			add_war_support = 0.015
+			army_experience = 10
+		}
+		FROM = {
+			add_timed_idea = {
+				idea = PRC_sudden_attack_RAJ
+				days = 20
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0.1 #less likely if we have no transports
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #preparing
+		coordinated_strike_scout_target = { base = 50 }
+		coordinate_strike_mark_targets = { base = 50 }
+	}
+
+	phases = { #execution
+		coordinated_strike_sabotage_communications = { base = 34 }
+		coordinated_strike_direct_units = { base = 34 }
+		coordinated_strike_occupy_bridges = { 
+			base = 34 
+			modifier = {
+				NOT = {
+					FROM = {
+						any_neighbor_country = {
+							tag = ROOT #no land connection between FROM and ROOT
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}

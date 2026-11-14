@@ -89,6 +89,41 @@ change_economy_type_OGAS_economy = {
 }
 
 PRC_gaw_start = {
+    every_country = {
+        limit = {
+            has_country_flag = NSS_timed_bomb_flag
+            NOT = {
+                tag = PRC
+            }
+            NOT = {
+                check_variable = {
+                    PRC_share_NSS_info_with_allies_var = 3
+                }
+            }
+        }
+        add_stability = -0.5
+        add_war_support = -0.5
+        transfer_units_fraction = {
+            target = USB
+            size = 0.5
+            stockpile_ratio = 0.5
+            army_ratio = 0.5
+            navy_ratio = 0.5
+            air_ratio = 0.5
+        }
+    }
+    if = {
+        limit = { 
+            any_country = {
+                has_country_flag = NSS_timed_bomb_flag
+            }
+        }
+        PRC = {
+            country_event = {
+                id = prcs.3233
+            }
+        }
+    }
     every_state = {
         limit = {
             OR = {
@@ -389,36 +424,8 @@ PRC_gaw_start = {
             }
         }
     }
-    if = {
-        limit = {
-            PRC = {
-                has_completed_focus = PRC_towards_a_digital_world
-                is_ironman = yes
-                has_any_custom_difficulty_setting = no
-                game_rules_allow_achievements = yes
-                has_start_date < 2020.01.02
-                difficulty > 3
-                is_debug = no
-                is_ai = no
-                NOT = {
-                    OR = {
-                        is_in_faction_with = VIN
-                        is_in_faction_with = BHU
-                        is_in_faction_with = NEP
-                        is_in_faction_with = LAO
-                        is_in_faction_with = CAM
-                        is_in_faction_with = SIA
-                        is_in_faction_with = BRM
-                        is_in_faction_with = MAL
-                        is_in_faction_with = SIG
-                        is_in_faction_with = INS
-                        is_in_faction_with = SRL
-                        is_in_faction_with = PAK
-                    }
-                }
-            }
-        }
-        set_global_flag = PRC_big_sister_victory_conditions_fulfilled
+    PRC = {
+        clr_country_flag = Prc_NewLeft_sihai_cheng_ping_flag
     }
     PTF = {
         load_focus_tree = PTF_saint_george_de_dragon_tree
@@ -427,8 +434,22 @@ PRC_gaw_start = {
 }
 
 PRC_chinas_victory_in_the_gaw_nl = {
+    RAJ = {
+        load_focus_tree = generic_focus
+    }
     clr_global_flag = pan_asian_war_ongoing
     set_global_flag = PRC_chinese_gaw_victory_global
+    if = {
+        limit = {
+            country_exists = PTF
+        }
+        PRC = {
+            country_event = {
+                id = prcs.3134
+                days = 2
+            }
+        }
+    }
     PRC = {
         country_event = {
             id = prcs.3134
@@ -539,18 +560,50 @@ PRC_chinas_victory_in_the_gaw_nl = {
             JAP_PEC_member_2
         }
     }
-    PRC = {
-        white_peace = PTF
-    }
 }
 
 PRC_PTF_gaw = {
-    PTF = {
-        load_focus_tree = generic_focus
-        add_ideas = GER_national_catastrophe
-        release = MEX
-        release = CAN
+    if = {
+        limit = {
+            PTF = {
+                exists = yes
+            }
+        }
+        PTF = {
+            load_focus_tree = generic_focus
+            add_ideas = GER_national_catastrophe
+            release = MEX
+            release = CAN
+        }
     }
+    else_if = {
+        limit = {
+            USB = {
+                exists = yes
+            }
+        }
+        USB = {
+            load_focus_tree = generic_focus
+            release = MEX
+            release = CAN
+            USB_cognoscenti_collapse = yes
+            add_ideas = GER_national_catastrophe
+        }
+    }
+    else_if = {
+        limit = {
+            USC = {
+                exists = yes
+            }
+        }
+        USC = {
+            load_focus_tree = generic_focus
+            add_ideas = GER_national_catastrophe
+            release = MEX
+            release = CAN
+        }
+    }
+
     APA = {
         set_politics = {
             ruling_party = totalitarian_socialist

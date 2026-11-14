@@ -1042,7 +1042,7 @@ country_event = {
     id = prcs.3039
     title = prcs.3039.t
     desc = prcs.3039.d
-
+    picture =  GFX_PRC_sunset
     is_triggered_only = yes
     option = {
         name = prcs.3039.a
@@ -2667,8 +2667,21 @@ country_event = {
                     has_tech = advanced_small_airframe
                     has_tech = unmanned_aircraft
                     has_completed_focus = PLA_KongJunZhuangbei_Fazhan
-                    check_variable = {
-                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    if = {
+                        limit = {
+                            country_exists = PTF
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > PTF.num_deployed_planes
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = USB
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > USB.num_deployed_planes
+                        }
                     }
                 }
             }
@@ -2687,8 +2700,21 @@ country_event = {
     option = {
         name = prcs.3140.b
         trigger = {
-            check_variable = {
-                PRC.num_deployed_planes > PTF.num_deployed_planes
+            if = {
+                limit = {
+                    country_exists = PTF
+                }
+                check_variable = {
+                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                }
+            }
+            if = {
+                limit = {
+                    country_exists = USB
+                }
+                check_variable = {
+                    PRC.num_deployed_planes > USB.num_deployed_planes
+                }
             }
             PRC = {
                 NOT = {
@@ -2753,8 +2779,21 @@ country_event = {
             }
             OR = {
                 has_tech = aa_hmg2
-                check_variable = {
-                    PRC.num_deployed_planes > PTF.num_deployed_planes
+                if = {
+                    limit = {
+                        country_exists = PTF
+                    }
+                    check_variable = {
+                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    }
+                }
+                if = {
+                    limit = {
+                        country_exists = USB
+                    }
+                    check_variable = {
+                        PRC.num_deployed_planes > USB.num_deployed_planes
+                    }
                 }
             }
         }
@@ -2770,8 +2809,21 @@ country_event = {
                     has_tech = engines_3
                     has_tech = advanced_small_airframe
                     has_tech = aa_hmg2
-                    check_variable = {
-                        PRC.num_deployed_planes > PTF.num_deployed_planes
+                    if = {
+                        limit = {
+                            country_exists = PTF
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > PTF.num_deployed_planes
+                        }
+                    }
+                    if = {
+                        limit = {
+                            country_exists = USB
+                        }
+                        check_variable = {
+                            PRC.num_deployed_planes > USB.num_deployed_planes
+                        }
                     }
                 }
             }
@@ -2833,15 +2885,35 @@ country_event = {
             add_war_support = 0.025
             add_political_power = 10
         }
-        PTF = {
-            add_war_support = -0.15
-            add_political_power = -30
-            set_temp_variable = {
-				var = debt_var_temp
-				value = -192
-			}
-			add_debt = yes
+        if = {
+            limit = {
+                country_exists = PTF
+            }
+            PTF = {
+                add_war_support = -0.15
+                add_political_power = -30
+                set_temp_variable = {
+                    var = debt_var_temp
+                    value = -192
+                }
+                add_debt = yes
+            }
         }
+        if = {
+            limit = {
+                country_exists = USB
+            }
+            USB = {
+                add_war_support = -0.15
+                add_political_power = -30
+                set_temp_variable = {
+                    var = debt_var_temp
+                    value = -192
+                }
+                add_debt = yes
+            }
+        }
+        
     }
     option = {
         name = prcs.3143.b
@@ -2849,16 +2921,38 @@ country_event = {
         PRC = {
             add_political_power = -20
         }
-        PTF = {
-            add_political_power = -20
+        if = {
+            limit = {
+                country_exists = PTF
+            }
+            PTF = {
+                add_political_power = -20
+            }
         }
+        else = {
+            USB = {
+                add_political_power = -20
+            }
+        }
+        
     }
     option = {
         name = prcs.3143.c
         trigger = { has_country_flag = NHDG_USA_victory_hidden_flag }
-        PTF = {
-            add_war_support = 0.025
-            add_political_power = 10
+        if = {
+            limit = {
+                country_exists = PTF
+            }
+            PTF = {
+                add_war_support = 0.025
+                add_political_power = 10
+            }
+        }
+        else = {
+            USB = {
+                add_war_support = 0.025
+                add_political_power = 10
+            }
         }
         PRC = {
             add_war_support = -0.15
@@ -4658,7 +4752,7 @@ country_event = {
         }
     }
 
-    # é«˜åŽŸè¡¥ç»™
+    # 高原补给
     country_event = {
         id = prcs.3208
         title = prcs.3208.t
@@ -5262,5 +5356,319 @@ country_event = {
             add_ideas = PRC_china_trade
         }
         add_ideas = PRC_china_trade
+    }
+}
+
+country_event = {
+    id = prcs.3229
+    title = prcs.3229.t
+    desc = prcs.3229.d
+    picture = GFX_USB_cia_guys
+    is_triggered_only = yes
+    option = {
+        name = prcs.3229.a
+        custom_effect_tooltip = prcs_3229_tt
+        unlock_decision_category_tooltip = PRC_USB_battle_for_allies_cat
+        set_country_flag = PRC_USB_battle_for_allies_cat_flag
+        set_variable = {
+            global.PRC_USB_battle_for_allies_cat_var = 1
+        }
+        set_country_flag = USB_NSS_brainwash_start_flag
+    }
+}
+
+country_event = {
+    id = prcs.3230
+    title = prcs.3230.t
+    desc = prcs.3230.d
+    picture = GFX_USB_cameras
+    is_triggered_only = yes
+    option = {
+        name = prcs.3230.a
+        
+    }
+}
+
+country_event = {
+    id = prcs.3231
+    title = prcs.3231.t
+    desc = {
+        trigger = {
+            any_country = {
+                has_country_flag = NSS_cog_mission_flag
+            }
+        }
+        text = prcs.3231.d.1
+    }
+
+    desc = {
+        trigger = {
+            all_country = {
+                NOT = {
+                    has_country_flag = NSS_cog_mission_flag
+                }
+            }
+        }
+        text = prcs.3231.d.2
+    }
+    picture = GFX_USB_caligula_bernie_sanders
+    is_triggered_only = yes
+    option = {
+        name = prcs.3231.a
+        every_allied_country = {
+            limit = {
+                has_country_flag = NSS_release_cog_bomb_flag
+                NOT = {
+                    has_country_flag = NSS_cog_mission_flag
+                }
+            }
+            custom_effect_tooltip = prcs_3231_tt
+            if = {
+                limit = {
+                    PRC = {
+                        has_country_flag = PRC_anti_moyin_research_flag
+                    }
+                }
+                if = {
+                    limit = { 
+                        check_variable = {
+                            PRC_share_NSS_info_with_allies_var = 3
+                        }
+                    }
+                    set_country_flag = PRC_free_from_NSS_flag
+	                add_to_variable = { global.NSS_secured_tags = 1 }
+                    PRC = {
+                        set_variable = {
+                            NSS_attack_time_var = 250
+                        }
+                    }
+                    
+                }
+                else = {
+                    
+                    PRC = {
+                        set_variable = {
+                            NSS_attack_time_var = 250
+                        }
+                        activate_mission = NSS_cog_mission
+                    }
+                }
+            }
+            if = {
+                limit = { 
+                    check_variable = {
+                        PRC_share_NSS_info_with_allies_var = 1
+                    }
+                }
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 100
+                    }
+                    activate_mission = NSS_cog_mission
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        PRC_share_NSS_info_with_allies_var = 2
+                    }
+                }
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 250
+                    }
+                    activate_mission = NSS_cog_mission
+                }
+            }
+            else_if = {
+                limit = { 
+                    check_variable = {
+                        PRC_share_NSS_info_with_allies_var = 3
+                    }
+                }
+                set_country_flag = PRC_free_from_NSS_flag
+                custom_effect_tooltip = prcs_3230_tt3
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 250
+                    }
+                }
+            }
+            else = {
+                PRC = {
+                    set_variable = {
+                        NSS_attack_time_var = 30
+                    }
+                    activate_mission = NSS_cog_mission
+                }
+            }
+            #set_country_flag = NSS_cog_mission_flag
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3232
+    title = prcs.3232.t
+    desc = prcs.3232.d
+    picture = GFX_USB_cruelty_squad
+    is_triggered_only = yes
+    option = {
+        name = prcs.3232.a
+        effect_tooltip = {
+            add_days_mission_timeout = {
+                mission = NSS_cog_mission
+                days = -15
+            }
+        }        
+    }
+}
+
+country_event = {
+    id = prcs.3233
+    title = prcs.3233.t
+    desc = prcs.3233.d
+    picture = GFX_USB_northwest
+    is_triggered_only = yes
+    option = {
+        name = prcs.3233.a
+        effect_tooltip = {
+            every_country = {
+                limit = {
+                    has_country_flag = NSS_timed_bomb_flag
+                }
+                add_stability = -0.5
+                add_war_support = -0.5
+                transfer_units_fraction = {
+                    target = USB
+                    size = 0.5
+                    stockpile_ratio = 0.5
+                    army_ratio = 0.5
+                    navy_ratio = 0.5
+                    air_ratio = 0.5
+                }
+            }
+        }        
+    }
+}
+
+country_event = {
+    id = prcs.3234
+    title = prcs.3234.t
+    desc = prcs.3234.d
+    picture = GFX_USB_cruelty_squad
+    is_triggered_only = yes
+    option = {
+        name = prcs.3234.a
+        set_country_flag = USB_NSS_brainwash_steal_flag
+        unlock_decision_tooltip = PRC_share_NSS_info_with_allies
+    }
+}
+
+
+country_event = {
+    id = prcs.3235
+    title = prcs.3235.t
+    desc = prcs.3235.d
+    picture = GFX_USB_megalopolis
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        hidden_effect = {
+            country_event = {
+                id = prcs.3236
+                days = 40
+            }
+        }
+    }
+    option = {
+        name = prcs.3235.a
+        effect_tooltip = {
+            every_enemy_country = {
+                add_timed_idea = {
+                    idea = USB_nlp_idea1
+                    days = 20
+                }
+            }
+        }
+    }
+}
+
+
+country_event = {
+    id = prcs.3236
+    title = prcs.3236.t
+    desc = prcs.3236.d
+    picture = GFX_USB_naked_lunch
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        hidden_effect = {
+            country_event = {
+                id = prcs.3237
+                days = 30
+            }
+        }
+    }
+    option = {
+        name = prcs.3236.a
+        effect_tooltip = {
+            every_enemy_country = {
+                add_timed_idea = {
+                    idea = USB_nlp_idea2
+                    days = 40
+                }
+            }
+        }
+    }
+}
+
+country_event = {
+    id = prcs.3237
+    title = prcs.3237.t
+    desc = prcs.3237.d
+    picture = GFX_USB_release
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        hidden_effect = {
+            country_event = {
+                id = prcs.3238
+                days = 15
+            }
+        }
+    }
+    option = {
+        name = prcs.3237.a
+        effect_tooltip = {
+            every_enemy_country = {
+                add_timed_idea = {
+                    idea = USB_nlp_idea3
+                    days = 30
+                }
+            }
+        }
+    }
+}
+
+
+country_event = {
+    id = prcs.3238
+    title = prcs.3238.t
+    desc = prcs.3238.d
+    picture = GFX_USB_lost_soul
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = {
+        name = prcs.3238.a
+        effect_tooltip = {
+            every_enemy_country = {
+                add_timed_idea = {
+                    idea = USB_nlp_idea4
+                    days = 15
+                }
+            }
+        }
     }
 }

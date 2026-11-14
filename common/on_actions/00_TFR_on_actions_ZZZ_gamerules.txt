@@ -1743,108 +1743,108 @@ on_actions = {
 				}
 			}
 
-			if = {
-				limit = {#美国内战
-					ROOT = {
-						OR = {
-							tag = USB
-							tag = USC
-							tag = APA
-							tag = NSM
-							tag = PTF
-							tag = ATW
-						}
-					}
-					FROM = {
-						OR = {
-							tag = USB
-							tag = USC
-							tag = APA
-							tag = NSM
-							tag = PTF
-							tag = ATW
-						}
-					}
-				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = The_USA_civil_war_winner
-							option = USB_win
-						}
-						NOT = {
-							has_global_flag = USB_win_BUFF_APPLIED
-						}
-					}
-					set_global_flag = USB_win_BUFF_APPLIED
-					USB = { apply_war_buff_with_100_divisions = yes }
-				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = The_USA_civil_war_winner
-							option = USC_win
-						}
-						NOT = {
-							has_global_flag = USC_win_BUFF_APPLIED
-						}
-					}
-					set_global_flag = USC_win_BUFF_APPLIED
-					USC = { apply_war_buff_with_100_divisions = yes }
-				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = The_USA_civil_war_winner
-							option = APA_win
-						}
-						NOT = {
-							has_global_flag = APA_win_BUFF_APPLIED
-						}
-					}
-					set_global_flag = APA_win_BUFF_APPLIED
-					APA = { apply_war_buff_with_100_divisions = yes }
-				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = The_USA_civil_war_winner
-							option = NSM_win
-						}
-						NOT = {
-							has_global_flag = NSM_win_BUFF_APPLIED
-						}
-					}
-					set_global_flag = NSM_win_BUFF_APPLIED
-					NSM = { apply_war_buff_with_100_divisions = yes }
-				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = The_USA_civil_war_winner
-							option = PTF_win
-						}
-						NOT = {
-							has_global_flag = PTF_win_BUFF_APPLIED
-						}
-					}
-					set_global_flag = PTF_win_BUFF_APPLIED
-					PTF = { apply_war_buff_with_100_divisions = yes }
-				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = The_USA_civil_war_winner
-							option = ATW_win
-						}
-						NOT = {
-							has_global_flag = ATW_win_BUFF_APPLIED
-						}
-					}
-					set_global_flag = ATW_win_BUFF_APPLIED
-					ATW = { apply_war_buff_with_100_divisions = yes }
-				}
-			}
+			# if = {
+			# 	limit = {#美国内战
+			# 		ROOT = {
+			# 			OR = {
+			# 				tag = USB
+			# 				tag = USC
+			# 				tag = APA
+			# 				tag = NSM
+			# 				tag = PTF
+			# 				tag = ATW
+			# 			}
+			# 		}
+			# 		FROM = {
+			# 			OR = {
+			# 				tag = USB
+			# 				tag = USC
+			# 				tag = APA
+			# 				tag = NSM
+			# 				tag = PTF
+			# 				tag = ATW
+			# 			}
+			# 		}
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_game_rule = {
+			# 				rule = The_USA_civil_war_winner
+			# 				option = USB_win
+			# 			}
+			# 			NOT = {
+			# 				has_global_flag = USB_win_BUFF_APPLIED
+			# 			}
+			# 		}
+			# 		set_global_flag = USB_win_BUFF_APPLIED
+			# 		USB = { apply_war_buff_with_100_divisions = yes }
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_game_rule = {
+			# 				rule = The_USA_civil_war_winner
+			# 				option = USC_win
+			# 			}
+			# 			NOT = {
+			# 				has_global_flag = USC_win_BUFF_APPLIED
+			# 			}
+			# 		}
+			# 		set_global_flag = USC_win_BUFF_APPLIED
+			# 		USC = { apply_war_buff_with_100_divisions = yes }
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_game_rule = {
+			# 				rule = The_USA_civil_war_winner
+			# 				option = APA_win
+			# 			}
+			# 			NOT = {
+			# 				has_global_flag = APA_win_BUFF_APPLIED
+			# 			}
+			# 		}
+			# 		set_global_flag = APA_win_BUFF_APPLIED
+			# 		APA = { apply_war_buff_with_100_divisions = yes }
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_game_rule = {
+			# 				rule = The_USA_civil_war_winner
+			# 				option = NSM_win
+			# 			}
+			# 			NOT = {
+			# 				has_global_flag = NSM_win_BUFF_APPLIED
+			# 			}
+			# 		}
+			# 		set_global_flag = NSM_win_BUFF_APPLIED
+			# 		NSM = { apply_war_buff_with_100_divisions = yes }
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_game_rule = {
+			# 				rule = The_USA_civil_war_winner
+			# 				option = PTF_win
+			# 			}
+			# 			NOT = {
+			# 				has_global_flag = PTF_win_BUFF_APPLIED
+			# 			}
+			# 		}
+			# 		set_global_flag = PTF_win_BUFF_APPLIED
+			# 		PTF = { apply_war_buff_with_100_divisions = yes }
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_game_rule = {
+			# 				rule = The_USA_civil_war_winner
+			# 				option = ATW_win
+			# 			}
+			# 			NOT = {
+			# 				has_global_flag = ATW_win_BUFF_APPLIED
+			# 			}
+			# 		}
+			# 		set_global_flag = ATW_win_BUFF_APPLIED
+			# 		ATW = { apply_war_buff_with_100_divisions = yes }
+			# 	}
+			# }
 
 			if = {
 				limit = {#萨赫勒省暴乱

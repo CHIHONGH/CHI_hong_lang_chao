@@ -1,0 +1,1518 @@
+PRC_power_balance = {
+	initial_value = 0
+	left_side = PRC_nationalization_side
+	right_side = PRC_privitization_side
+	decision_category = PRC_balance_of_power_category
+	#Middle
+	range = {
+		id = PRC_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+		}
+		on_activate = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = PRC_initial_bop_removed_flag
+					}
+				}
+				effect_tooltip = {
+					if = {
+						limit = {
+							has_idea = common_prosperity_law_left_1
+							power_balance_value = {
+								id = PRC_power_balance
+								value < -0.15
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_1
+							add_idea = common_prosperity_law
+						}
+					}
+					else_if = {
+						limit = {
+							has_idea = common_prosperity_law_right_1
+							power_balance_value = {
+								id = PRC_power_balance
+								value > 0.15
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_1
+							add_idea = common_prosperity_law
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law
+				}
+			}
+			custom_effect_tooltip = PRC_balance_range_tt
+		}
+		on_deactivate = {
+		}
+	}
+	#Nationalization Side
+	side = {
+		id = PRC_nationalization_side
+		icon = GFX_bop_PRC_nationalization
+		range = {
+			id = PRC_total_nationalization_range
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = 0.2
+				production_speed_buildings_factor = 0.2
+				poverty_development_monthly = 0.04
+				society_development_monthly = 0.02
+				industrial_development_monthly = -0.02
+				research_speed_factor = 0.1
+				personal_expense_factor = 0.2
+				production_factory_efficiency_gain_factor = -0.2
+				industrial_capacity_factory = -0.2
+			}
+			on_activate = {
+				#TFR_PRC_switch_econ_law_effect = yes
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > -0.85
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_3
+							add_idea = common_prosperity_law_left_4
+						}
+					}
+					hidden_effect = {
+						add_ideas = common_prosperity_law_left_4
+					}
+				}
+				custom_effect_tooltip = PRC_nationalization_side_tt1
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nationalization_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				political_power_gain = 0.15
+				production_speed_buildings_factor = 0.15
+				poverty_development_monthly = 0.03
+				society_development_monthly = 0.01
+				industrial_development_monthly = -0.01
+				research_speed_factor = 0.07
+				personal_expense_factor = 0.15
+				production_factory_efficiency_gain_factor = -0.15
+				industrial_capacity_factory = -0.15
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < -0.85
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_4
+							add_idea = common_prosperity_law_left_3
+						}
+					}
+					else_if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > -0.65
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_2
+							add_idea = common_prosperity_law_left_3
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_left_3
+				}
+				custom_effect_tooltip = PRC_nationalization_side_tt1
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nationalizaton_alligned_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				production_speed_buildings_factor = 0.1
+				poverty_development_monthly = 0.02
+				society_development_monthly = 0.01
+				industrial_development_monthly = -0.01
+				research_speed_factor = 0.05
+				personal_expense_factor = 0.1
+				production_factory_efficiency_gain_factor = -0.1
+				industrial_capacity_factory = -0.1
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < -0.65
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_3
+							add_idea = common_prosperity_law_left_2
+						}
+					}
+					else_if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > -0.35
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_1
+							add_idea = common_prosperity_law_left_2
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_left_2
+				}
+				custom_effect_tooltip = PRC_nationalization_side_tt
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nationalization_lean_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.05
+				production_speed_buildings_factor = 0.05
+				poverty_development_monthly = 0.01
+				industrial_development_monthly = -0.01
+				personal_expense_factor = 0.05
+				research_speed_factor = 0.03
+				production_factory_efficiency_gain_factor = -0.05
+				industrial_capacity_factory = -0.05
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < -0.35
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_left_2
+							add_idea = common_prosperity_law_left_1
+						}
+					}
+					else_if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > -0.15
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law
+							add_idea = common_prosperity_law_left_1
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_left_1
+				}
+				custom_effect_tooltip = PRC_nationalization_side_tt
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	#Centralization Side
+	side = {
+		id = PRC_privitization_side
+		icon = GFX_bop_PRC_privitization
+		range = {
+			id = PRC_privitization_lean_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_gain = -0.05
+				production_speed_buildings_factor = -0.05
+				poverty_development_monthly = -0.01
+				personal_expense_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < 0.15
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law
+							add_idea = common_prosperity_law_right_1
+						}
+					}
+					else_if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > 0.35
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_2
+							add_idea = common_prosperity_law_right_1
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_right_1
+				}
+				custom_effect_tooltip = PRC_privitization_side_tt
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_privitization_alligned_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				political_power_gain = -0.1
+				production_speed_buildings_factor = -0.1
+				poverty_development_monthly = -0.02
+				society_development_monthly = -0.01
+				industrial_development_monthly = 0.01
+				business_value_factor = 0.05
+				personal_expense_factor = -0.1
+				production_factory_efficiency_gain_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < 0.35
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_1
+							add_idea = common_prosperity_law_right_2
+						}
+					}
+					else_if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > 0.65
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_3
+							add_idea = common_prosperity_law_right_2
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_right_2
+				}
+				custom_effect_tooltip = PRC_privitization_side_tt
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_privitization_dominant_range
+			min = 0.65
+			max = 0.85
+			modifier = {
+				political_power_gain = -0.15
+				production_speed_buildings_factor = -0.15
+				poverty_development_monthly = -0.02
+				society_development_monthly = -0.02
+				industrial_development_monthly = 0.02
+				business_value_factor = 0.1
+				personal_expense_factor = -0.15
+				production_factory_efficiency_gain_factor = 0.15
+				industrial_capacity_factory = 0.15
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < 0.65
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_2
+							add_idea = common_prosperity_law_right_3
+						}
+					}
+					else_if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value > 0.85
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_4
+							add_idea = common_prosperity_law_right_3
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_right_3
+				}
+				custom_effect_tooltip = PRC_privitization_side_tt1
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_privitization_total_control_range
+			min = 0.85
+			max = 1
+			modifier = {
+				political_power_gain = -0.2
+				production_speed_buildings_factor = -0.2
+				poverty_development_monthly = -0.03
+				society_development_monthly = -0.02
+				industrial_development_monthly = 0.04
+				business_value_factor = 0.15
+				personal_expense_factor = -0.2
+				production_factory_efficiency_gain_factor = 0.2
+				industrial_capacity_factory = 0.2
+			}
+			on_activate = {
+				effect_tooltip = {
+					if = {
+						limit = {
+							power_balance_value = {
+								id = PRC_power_balance
+								value < 0.85
+							}
+						}
+						swap_ideas = {
+							remove_idea = common_prosperity_law_right_3
+							add_idea = common_prosperity_law_right_4
+						}
+					}
+				}
+				#TFR_PRC_switch_econ_law_effect = yes
+				hidden_effect = {
+					add_ideas = common_prosperity_law_right_4
+				}
+				custom_effect_tooltip = PRC_privitization_side_tt1
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+
+PRC_nationalist_bop = {
+	initial_value = 0
+	left_side = PRC_digital_leninists_side
+	right_side = PRC_nationalists_side
+	#decision_category = PRC_national_peoples_congress_category
+	#Middle
+	range = {
+		id = PRC_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	#Digital Leninists Side
+	side = {
+		id = PRC_digital_leninists_side
+		icon = GFX_bop_PRC_digital_leninists
+		range = {
+			id = PRC_total_digital_leninists_control
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = 0.2
+				society_development_monthly = 0.03
+				surrender_limit = 0.3
+				conscription = 0.035
+			}
+			on_activate = {
+				effect_tooltip = {
+					country_event = {
+						id = china.202
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_digital_leninists_dominant
+			min = -0.85
+			max = -0.65
+			modifier = {
+				political_power_gain = 0.15
+				society_development_monthly = 0.02
+				surrender_limit = 0.2
+				conscription = 0.03
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_digital_leninists_aligned
+			min = -0.65
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				society_development_monthly = 0.01
+				surrender_limit = 0.15
+				conscription = 0.02
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_digital_leninists_lean
+			min = -0.35
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.05
+				surrender_limit = 0.1
+				conscription = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	#Nationalists Side
+	side = {
+		id = PRC_nationalists_side
+		icon = GFX_bop_PRC_nationalists
+		range = {
+			id = PRC_nationalists_lean
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_gain = -0.05
+				production_speed_industrial_complex_factor = -0.05
+				coordination_bonus = 0.05
+				max_planning_factor = 0.05
+				army_org_factor = 0.05
+				army_attack_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nationalists_aligned
+			min = 0.35
+			max = 0.65
+			modifier = {
+				political_power_gain = -0.1
+				production_speed_industrial_complex_factor = -0.1
+				coordination_bonus = 0.06
+				max_planning_factor = 0.1
+				army_org = 6
+				army_attack_factor = 0.06
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nationalists_dominant
+			min = 0.65
+			max = 0.85
+			modifier = {
+				political_power_gain = -0.15
+				production_speed_industrial_complex_factor = -0.15
+				coordination_bonus = 0.08
+				max_planning_factor = 0.15
+				army_org = 8
+				army_attack_factor = 0.08
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nationalists_total_control
+			min = 0.85
+			max = 1
+			modifier = {
+				political_power_gain = -0.2
+				production_speed_industrial_complex_factor = -0.2
+				coordination_bonus = 0.1
+				max_planning_factor = 0.2
+				army_org = 10
+				army_attack_factor = 0.1
+			}
+			on_activate = {
+				effect_tooltip = {
+					country_event = {
+						id = china.201
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+
+PRC_Liberal_Conservative_power_balance = {
+	initial_value = 0
+	left_side = PRC_conservate_side
+	right_side = PRC_liberal_side
+	decision_category = PRC_balance_of_power_liberal_category
+	#Middle
+	range = {
+		id = PRC_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			stability_factor = 0.075
+			industrial_development_monthly = 0.005
+			poverty_development_monthly = 0.005
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	#Oligarchs Side
+	side = {
+		id = PRC_conservate_side
+		#desc = PRC_conservate_side_desc
+		icon = GFX_bop_PRC_oligarchs
+		range = {
+			id = PRC_conservate_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = -0.2
+				industrial_development_monthly = 0.01
+				poverty_development_monthly = -0.005
+				personal_value_factor = -0.1
+				business_value_factor = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_conservate_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				political_power_gain = -0.15
+				industrial_development_monthly = 0.0075
+				poverty_development_monthly = -0.0025
+				personal_value_factor = -0.075
+				business_value_factor = 0.075
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_conservate_alligned_range
+			min = -0.65
+			max = -0.4
+			modifier = {
+				political_power_gain = -0.1
+				industrial_development_monthly = 0.005
+				poverty_development_monthly = -0.001
+				personal_value_factor = -0.05
+				business_value_factor = 0.05
+			}
+			on_activate = {
+				country_event = {
+					id = china.416
+					days = 10
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_conservate_lean_range
+			min = -0.4
+			max = -0.15
+			modifier = {
+				political_power_gain = -0.05
+				industrial_development_monthly = 0.0025
+				personal_value_factor = -0.025
+				business_value_factor = 0.025
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	#Liberals Side
+	side = {
+		id = PRC_liberal_side
+		icon = GFX_bop_PRC_reformists
+		range = {
+			id = PRC_liberal_lean_range
+			min = 0.15
+			max = 0.4
+			modifier = {
+				political_power_gain = -0.05
+				society_development_monthly = 0.0025
+				personal_value_factor = 0.025
+				business_value_factor = -0.025
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_liberal_alligned_range
+			min = 0.4
+			max = 0.65
+			modifier = {
+				political_power_gain = -0.1
+				society_development_monthly = 0.005
+				industrial_development_monthly = -0.001
+				personal_value_factor = 0.05
+				business_value_factor = -0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_liberal_dominant_range
+			min = 0.65
+			max = 0.85
+			modifier = {
+				political_power_gain = -0.15
+				society_development_monthly = 0.0075
+				poverty_development_monthly = -0.0025
+				personal_value_factor = 0.075
+				business_value_factor = -0.075
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_liberal_total_control_range
+			min = 0.85
+			max = 1
+			modifier = {
+				political_power_gain = -0.2
+				society_development_monthly = 0.01
+				industrial_development_monthly = -0.005
+				personal_value_factor = 0.1
+				business_value_factor = -0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+
+PRC_nick_land_bop = {
+	initial_value = 0
+	left_side = PRC_ccru_side
+	right_side = PRC_nrx_side
+	decision_category = PRC_nick_land_bop_category
+	#Middle
+	range = {
+		id = PRC_balance_range_nl
+		min = -0.15
+		max = 0.15
+		modifier = {
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	#CCRU Side
+	side = {
+		id = PRC_ccru_side
+		icon = GFX_bop_PRC_ccru
+		range = {
+			id = PRC_total_ccru_control
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = 0.2
+				society_development_monthly = 0.03
+				surrender_limit = 0.3
+				conscription = 0.035
+			}
+			on_activate = {
+				effect_tooltip = {
+					country_event = {
+						id = china.202
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_ccru_dominant
+			min = -0.85
+			max = -0.65
+			modifier = {
+				political_power_gain = 0.15
+				society_development_monthly = 0.02
+				surrender_limit = 0.2
+				conscription = 0.03
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_ccru_aligned
+			min = -0.65
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				society_development_monthly = 0.01
+				surrender_limit = 0.15
+				conscription = 0.02
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_ccru_lean
+			min = -0.35
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.05
+				surrender_limit = 0.1
+				conscription = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	#NRX Side
+	side = {
+		id = PRC_nrx_side
+		icon = GFX_bop_PRC_nrx
+		range = {
+			id = PRC_nrx_lean
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_gain = -0.05
+				production_speed_industrial_complex_factor = -0.05
+				coordination_bonus = 0.05
+				max_planning_factor = 0.05
+				army_org_factor = 0.05
+				army_attack_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nrx_aligned
+			min = 0.35
+			max = 0.65
+			modifier = {
+				political_power_gain = -0.1
+				production_speed_industrial_complex_factor = -0.1
+				coordination_bonus = 0.06
+				max_planning_factor = 0.1
+				army_org = 6
+				army_attack_factor = 0.06
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nrx_dominant
+			min = 0.65
+			max = 0.85
+			modifier = {
+				political_power_gain = -0.15
+				production_speed_industrial_complex_factor = -0.15
+				coordination_bonus = 0.08
+				max_planning_factor = 0.15
+				army_org = 8
+				army_attack_factor = 0.08
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_nrx_total_control
+			min = 0.85
+			max = 1
+			modifier = {
+				political_power_gain = -0.2
+				production_speed_industrial_complex_factor = -0.2
+				coordination_bonus = 0.1
+				max_planning_factor = 0.2
+				army_org = 10
+				army_attack_factor = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+
+#New focus tree
+
+#Cybercommunist bop
+PRC_new_digital_leninists_bop = {
+	initial_value = 0
+	left_side = PRC_technological_determinism_bureaucrats_side
+	right_side = PRC_scientists_side
+	decision_category = PRC_new_digital_leninists_bop_category
+	#Middle
+	range = {
+		id = PRC_digital_leninists_balanced_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			stability_factor = 0.1
+		}
+		on_activate = {
+			set_country_leader_portrait = {
+				portrait = GFX_portrait_PRC_Cheng_Wenqing
+			}
+		}
+		on_deactivate = {
+		}
+	}
+	side = {
+		id = PRC_technological_determinism_bureaucrats_side
+		icon = GFX_bop_PRC_technological_determinism_bureaucrats_side
+		range = {
+			id = PRC_technological_determinism_bureaucrats_total_control
+			min = -1
+			max = -0.85
+			modifier = {
+				totalitarian_socialist_drift = 0.03
+				party_popularity_stability_factor = 0.3
+				political_power_factor = 0.15
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = PRC_mss_consolidated_power
+						}
+					}
+					country_event = {
+						id = china.543
+						hours = 6
+					}
+					#remove_power_balance = {
+					#    id = PRC_new_digital_leninists_bop
+					#}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_technological_determinism_bureaucrats_dominant
+			min = -0.85
+			max = -0.65
+			modifier = {
+				totalitarian_socialist_drift = 0.02
+				party_popularity_stability_factor = 0.2
+				political_power_factor = 0.10
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_technological_determinism_bureaucrats_aligned
+			min = -0.65
+			max = -0.35
+			modifier = {
+				totalitarian_socialist_drift = 0.01
+				party_popularity_stability_factor = 0.1
+				political_power_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_technological_determinism_bureaucrats_lean
+			min = -0.35
+			max = -0.15
+			modifier = {
+				totalitarian_socialist_drift = 0.01
+				party_popularity_stability_factor = 0.05
+				political_power_factor = 0.03
+				stability_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	side = {
+		id = PRC_scientists_side
+		icon = GFX_bop_PRC_scientists_side
+		range = {
+			id = PRC_scientists_side_total_control
+			min = 0.85
+			max = 1
+			modifier = {
+				totalitarian_socialist_drift = 0.02
+				research_speed_factor = 0.2
+				stability_factor = -0.15
+				society_development_monthly = 0.06
+				industrial_development_monthly = 0.06
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = PRC_scientists_consolidated_power
+						}
+					}
+					#remove_power_balance = {
+					#    id = PRC_new_digital_leninists_bop
+					#}
+					country_event = {
+						id = china.542
+						hours = 6
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_scientists_side_dominant
+			min = 0.65
+			max = 0.85
+			modifier = {
+				totalitarian_socialist_drift = 0.01
+				research_speed_factor = 0.15
+				stability_factor = -0.10
+				society_development_monthly = 0.04
+				industrial_development_monthly = 0.04
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_scientists_side_aligned
+			min = 0.35
+			max = 0.65 
+			modifier = {
+				research_speed_factor = 0.1
+				totalitarian_socialist_drift = 0.01
+				stability_factor = -0.05
+				society_development_monthly = 0.02
+				industrial_development_monthly = 0.02
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_scientists_side_lean
+			min = 0.15
+			max = 0.35
+			modifier = {
+				totalitarian_socialist_drift = 0.02
+				stability_factor = 0.05
+				society_development_monthly = 0.01
+				industrial_development_monthly = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+#nationalists
+PRC_new_nationalists_bop = {
+	initial_value = 0
+	left_side = PRC_han_nationalists_side
+	right_side = PRC_chinese_confucianists_side
+	decision_category = PRC_new_nationalists_bop_category
+	#Middle
+	range = {
+		id = PRC_new_nationalists_balanced_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			political_power_factor = 0.2
+			political_power_gain = 0.2
+			stability_factor = -0.1
+			war_support_factor = -0.1
+			drift_defence_factor = -0.25
+			totalitarian_socialist_drift = -0.02
+			fascist_drift = -0.02
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	side = {
+		id = PRC_han_nationalists_side
+		icon = GFX_bop_PRC_han_nationalists_side
+		range = {
+			id = PRC_han_nationalists_total_control
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = 0.1
+				army_attack_factor = 0.07
+				conscription_factor = 0.02
+				stability_factor = 0.075
+				war_support_factor = 0.075
+				drift_defence_factor = 0.25
+				society_development_monthly = 0.02
+				poverty_development_monthly = 0.02
+				surrender_limit = 0.15
+				totalitarian_socialist_drift = 0.02
+				fascist_drift = 0.01
+				national_socialist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_han_nationalists_dominant
+			min = -0.85
+			max = -0.65
+			modifier = {
+				political_power_gain = 0.15
+				army_attack_factor = 0.05
+				conscription_factor = 0.01
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				drift_defence_factor = 0.15
+				society_development_monthly = 0.015
+				poverty_development_monthly = 0.015
+				surrender_limit = 0.1
+				totalitarian_socialist_drift = 0.01
+				fascist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_han_nationalists_aligned
+			min = -0.65
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.2
+				army_attack_factor = 0.03
+				stability_factor = 0.025
+				war_support_factor = 0.025
+				drift_defence_factor = 0.1
+				society_development_monthly = 0.01
+				poverty_development_monthly = 0.01
+				surrender_limit = 0.05
+				totalitarian_socialist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_han_nationalists_lean
+			min = -0.35
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.25
+				army_attack_factor = 0.015
+				drift_defence_factor = 0.05
+				society_development_monthly = 0.005
+				poverty_development_monthly = 0.005
+				surrender_limit = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	side = {
+		id = PRC_chinese_confucianists_side
+		icon = GFX_bop_PRC_chinese_confucianists_side
+		range = {
+			id = PRC_chinese_confucianists_total_control
+			min = 0.85
+			max = 1
+			modifier = {
+				political_power_factor = 0.1
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.15
+				conscription_factor = 0.02
+				war_support_factor = 0.1
+				drift_defence_factor = 0.25
+				society_development_monthly = 0.02
+				surrender_limit = 0.2
+				fascist_drift = 0.02
+				authoritarian_democrat_drift = 0.01
+				national_socialist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_chinese_confucianists_dominant
+			min = 0.65
+			max = 0.85
+			modifier = {
+				political_power_factor = 0.15
+				army_core_attack_factor = 0.10
+				army_core_defence_factor = 0.10
+				conscription_factor = 0.01
+				stability_factor = -0.025
+				war_support_factor = 0.075
+				drift_defence_factor = 0.15
+				society_development_monthly = 0.015
+				surrender_limit = 0.1
+				fascist_drift = 0.01
+				authoritarian_democrat_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_chinese_confucianists_aligned
+			min = 0.35
+			max = 0.65 
+			modifier = {
+				political_power_factor = 0.2
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+				stability_factor = -0.05
+				war_support_factor = 0.05
+				drift_defence_factor = 0.075
+				society_development_monthly = 0.01
+				surrender_limit = 0.05
+				fascist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_chinese_confucianists_lean
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_factor = 0.25
+				army_core_attack_factor = 0.025
+				army_core_defence_factor = 0.025
+				stability_factor = -0.075
+				war_support_factor = 0.05
+				drift_defence_factor = 0.05
+				society_development_monthly = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+#Military Junta
+PRC_new_military_junta_bop = {
+	initial_value = 0
+	left_side = PRC_CPC_loyalists_side
+	right_side = PRC_PLA_side
+	decision_category = PRC_new_military_junta_bop_category
+	#Middle
+	range = {
+		id = PRC_new_military_junta_balanced_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			stability_factor = -0.05
+			war_support_factor = -0.1
+			drift_defence_factor = -0.25
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	side = {
+		id = PRC_CPC_loyalists_side
+		icon = GFX_bop_PRC_CPC_loyalists_side
+		range = {
+			id = PRC_CPC_loyalists_total_control
+			min = -1
+			max = -0.85
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.2
+				society_development_monthly = 0.03
+				surrender_limit = 0.15
+				conscription = 0.02
+				drift_defence_factor = 0.25
+				communist_drift = 0.03
+				army_morale_factor = 0.075
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = PRC_li_zuocheng_authority_fully_consolidated_flag
+						}
+					}
+					country_event = {
+						id = china.381
+						hours = 6
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_CPC_loyalists_dominant
+			min = -0.85
+			max = -0.65
+			modifier = {
+				stability_factor = 0.075
+				political_power_gain = 0.15
+				society_development_monthly = 0.015
+				surrender_limit = 0.1
+				conscription = 0.01
+				drift_defence_factor = 0.15
+				communist_drift = 0.02
+				army_morale_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_CPC_loyalists_aligned
+			min = -0.65
+			max = -0.35
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.075
+				society_development_monthly = 0.005
+				surrender_limit = 0.05
+				conscription = 0.01
+				drift_defence_factor = 0.08
+				communist_drift = 0.01
+				army_morale_factor = 0.025
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_CPC_loyalists_lean
+			min = -0.35
+			max = -0.15
+			modifier = {
+				stability_factor = 0.025
+				political_power_gain = 0.035
+				society_development_monthly = 0.005
+				drift_defence_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	side = {
+		id = PRC_PLA_side
+		icon = GFX_bop_PRC_PLA_side
+		range = {
+			id = PRC_PLA_total_control
+			min = 0.9
+			max = 1
+			modifier = {
+				political_power_gain = -0.2
+				production_speed_industrial_complex_factor = -0.2
+				production_speed_arms_factory_factor = -0.2
+				coordination_bonus = 0.1
+				max_planning_factor = 0.2
+				army_org_factor = 0.15
+				army_attack_factor = 0.1
+				totalitarian_socialist_drift = 0.03
+				nationalist_drift = 0.02
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = PRC_pla_authority_fully_consolidated_flag
+						}
+					}
+					country_event = {
+						id = china.382
+						hours = 6
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_PLA_dominant
+			min = 0.65
+			max = 0.9
+			modifier = {
+				political_power_gain = -0.125
+				production_speed_industrial_complex_factor = -0.125
+				production_speed_arms_factory_factor = -0.125
+				coordination_bonus = 0.075
+				max_planning_factor = 0.125
+				army_org_factor = 0.08
+				army_attack_factor = 0.075
+				totalitarian_socialist_drift = 0.02
+				nationalist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_PLA_aligned
+			min = 0.35
+			max = 0.65 
+			modifier = {
+				political_power_gain = -0.075
+				production_speed_industrial_complex_factor = -0.075
+				production_speed_arms_factory_factor = -0.075
+				coordination_bonus = 0.05
+				max_planning_factor = 0.075
+				army_org_factor = 0.04
+				army_attack_factor = 0.05
+				totalitarian_socialist_drift = 0.01
+				nationalist_drift = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = PRC_PLA_lean
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_gain = -0.035
+				production_speed_industrial_complex_factor = -0.035
+				production_speed_arms_factory_factor = -0.035
+				max_planning_factor = 0.05
+				army_attack_factor = 0.025
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}

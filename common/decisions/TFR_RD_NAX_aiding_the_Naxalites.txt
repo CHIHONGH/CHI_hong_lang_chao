@@ -378,6 +378,9 @@ south_america_rev_war_cat = {
         fire_only_once = no
 		cancel_if_not_visible = no
 		is_good = no
+        activation = {
+            always = no
+        }
         cancel_trigger = {
             PRU = {
                 OR = {
@@ -411,5 +414,70 @@ south_america_rev_war_cat = {
         }
 
         
+    }
+}
+
+iran_and_iraq_shit_cat = {
+    PER_CPP_IRQ_mission = {
+        priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+        available = {
+            IRQ = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            FIA = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            BUK = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            ABK = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+            PER = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+        }
+        activation = {
+            always = no
+        }
+        days_mission_timeout = 999
+        fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+        cancel_trigger = {
+            CPP = {
+                OR = {
+                    is_subject = yes
+                    exists = no
+                }
+            }
+        }
+        timeout_effect = {
+            activate_mission = PER_CPP_IRQ_mission
+        }
+        complete_effect = {
+            clr_global_flag = south_america_rev_war_global
+            rev_victory_iran_iraq = yes
+        }
+        cancel_effect = {
+            clr_global_flag = south_america_rev_war_global
+            rev_victory_iran_iraq = yes
+        }
     }
 }

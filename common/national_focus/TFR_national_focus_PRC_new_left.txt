@@ -9,7 +9,7 @@ focus_tree = {
             has_country_flag = PRC_new_left_win
         }
     }
-    initial_show_position = { focus = PRC_nl_clean_house }
+    initial_show_position = { focus = PRC_nl_ancestor_worship }
     #!gfx:interface\New_left_Collection_of_files\goals\PRC_goals.gfx
     #!gfx:interface\New_left_Collection_of_files\goals\RD_New_left_goals.gfx
     #!gfx:interface\New_left_Collection_of_files\goals\NAX_goals.gfx
@@ -20,6 +20,10 @@ focus_tree = {
     shared_focus = PRC_nl_road_to_revolution
     shared_focus = PRC_Southwestern_border_in_critical_condition
     shared_focus = WLI_red_flag_flying_high
+    shortcut = {
+        name = PRC_nl_ancestor_worship
+        target = PRC_nl_ancestor_worship
+    }
     shortcut = {
         name = PRC_gaizaodaxingqiye_category
         target = nl_PRC_reconstruct_planning_commission
@@ -72,6 +76,77 @@ focus_tree = {
                 swap_ideas = {
                     remove_idea = early_mobilization
                     add_idea = civilian_mobilization
+                }
+            }
+            custom_effect_tooltip = PRC_nl_ancestor_worship_tt
+            if = {
+                limit = { 
+                    is_power_balance_in_range = {
+                        id = PRC_power_balance
+                        range = PRC_balance_range
+                    }
+                }
+                set_variable = {
+                    PRC_bop_outcome_var = 0
+                }
+            }
+            else_if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_total_nationalization_range
+                        }
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_nationalization_dominant_range
+                        }
+                    }
+                    
+                }
+                set_variable = {
+                    PRC_bop_outcome_var = 2
+                }
+            }
+            else_if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_nationalizaton_alligned_range
+                        }
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_nationalization_lean_range
+                        }
+                    }
+                    
+                }
+                set_variable = {
+                    PRC_bop_outcome_var = 1
+                }
+            }
+            else_if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_privitization_lean_range
+                        }
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_privitization_alligned_range
+                        }
+                    }
+                    
+                }
+                set_variable = {
+                    PRC_bop_outcome_var = -1
+                }
+            }
+            else = {
+                set_variable = {
+                    PRC_bop_outcome_var = -2
                 }
             }
             remove_power_balance = {
@@ -388,9 +463,6 @@ focus_tree = {
                 PPRC_defence_var = -0.1 # 陆军防御
             }
             set_variable = {
-                PPRC_ad_drift_var = 0.15 # 威权民主每日支持度
-            }
-            set_variable = {
                 PPRC_efficiency_gain_var = -0.15 # 生产效率增长
             }
             set_variable = {
@@ -448,10 +520,12 @@ focus_tree = {
                 PPRC_ship_upkeep_var = 0.15 # 舰船维护费
             }
             set_variable = {
-                PPRC_ad_drift_var = 0.4 # 威权民主每日支持度
+                # PPRC_ad_drift_var = 0.4 # 威权民主每日支持度
+                PPRC_ad_drift_var = 0.3
             }
             set_variable = {
-                PPRC_nt_drift_var = 0.3 # 民族主义每日支持度
+                # PPRC_nt_drift_var = 0.3 # 民族主义每日支持度
+                PPRC_nt_drift_var = 0.2
             }
             set_variable = {
                 PRC_RPD_st_var = -0.1 # 稳定度
@@ -482,38 +556,137 @@ focus_tree = {
                 add_ideas = PRC_road_to_people_democracy
                 add_ideas = PRC_party_rectification_campaign_dummy
             }
+            custom_effect_tooltip = generic_skip_one_line_tt
+            if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_total_nationalization_range
+                        }
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_nationalization_dominant_range
+                        }
+                        check_variable = {
+                            PRC_bop_outcome_var = 2
+                        }
+                    }
+                    
+                }
+                custom_effect_tooltip = PRC_nl_clean_house_var_tt2
+                add_to_variable = {
+                    PPRC_ad_drift_var = -0.05
+                }
+                add_to_variable = {
+                    PPRC_nt_drift_var = -0.05
+                }
+            }
+            else_if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_balance_range
+                        }
+                        check_variable = {
+                            PRC_bop_outcome_var = 0
+                        }
+                    }
+                    
+                }
+                add_to_variable = {
+                    PPRC_ad_drift_var = 0.05
+                }
+                add_to_variable = {
+                    PPRC_nt_drift_var = 0.05
+                }
+                custom_effect_tooltip = PRC_nl_clean_house_var_tt0
+            }
+            else_if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_privitization_lean_range
+                        }
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_privitization_alligned_range
+                        }
+                        check_variable = {
+                            PRC_bop_outcome_var = -1
+                        }
+                    }
+                }
+                add_to_variable = {
+                    PPRC_ad_drift_var = 0.1
+                }
+                add_to_variable = {
+                    PPRC_nt_drift_var = 0.1
+                }
+                custom_effect_tooltip = PRC_nl_clean_house_var_tt_1
+            }
+            else_if = {
+                limit = { 
+                    OR = {
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_privitization_dominant_range
+                        }
+                        is_power_balance_in_range = {
+                            id = PRC_power_balance
+                            range = PRC_privitization_total_control_range
+                        }
+                        check_variable = {
+                            PRC_bop_outcome_var = -2
+                        }
+                    }
+                    
+                }
+                add_to_variable = {
+                    PPRC_ad_drift_var = 0.15
+                }
+                add_to_variable = {
+                    PPRC_nt_drift_var = 0.15
+                }
+                custom_effect_tooltip = PRC_nl_clean_house_var_tt_2
+            }
+            else = {
+                custom_effect_tooltip = PRC_nl_clean_house_var_tt1
+            }
+            custom_effect_tooltip = generic_skip_one_line_tt
             set_party_name = {
                 ideology = authoritarian_democrat
                 long_name = CPC_corrupt_bur
                 name = CPC_corrupt_bur
-            }
-            add_country_leader_role = {
-                character = PRC_CPC_CB
-                country_leader = {
-                    expire = "2099.1.1"
-                    ideology = patriotic_socialism
-                }
-                promote_leader = yes
             }
             set_party_name = {
                 ideology = nationalist
                 long_name = CPC_reactionary_long
                 name = CPC_reactionary_long
             }
-            add_country_leader_role = {
-                character = PRC_CPC_RL
-                country_leader = {
-                    expire = "2099.1.1"
-                    ideology = military_junta
+            hidden_effect = {
+                add_country_leader_role = {
+                    character = PRC_CPC_CB
+                    country_leader = {
+                        expire = "2099.1.1"
+                        ideology = patriotic_socialism
+                    }
+                    promote_leader = yes
                 }
-                promote_leader = yes
+                add_country_leader_role = {
+                    character = PRC_CPC_RL
+                    country_leader = {
+                        expire = "2099.1.1"
+                        ideology = military_junta
+                    }
+                    promote_leader = yes
+                }
             }
-            unlock_decision_category_tooltip = PRC_Rt_People_Democracy
+            
             activate_mission = PRC_damage_from_reactionary_mission
-            set_temp_variable = {
-                campaign_slot_total_var_temp = 1
-            }
-            add_total_campaign_slot = yes
+            
         }
     }
     focus = {
@@ -691,7 +864,7 @@ focus_tree = {
             add_society_development = yes
             add_days_mission_timeout = {
                 mission = PRC_damage_from_reactionary_mission
-                days = 14
+                days = 21
             }
             add_to_variable = {
                 PRC_cpc_political_power_gain_dynamic_var = -0.05 # 政治点数获取
@@ -956,6 +1129,10 @@ focus_tree = {
                 }
             }
             add_political_power = 50
+            add_days_mission_timeout = {
+                mission = PRC_damage_from_reactionary_mission
+                days = 14
+            }
             add_to_variable = {
                 PRC_cpc_personal_expense_factor_dynamic_var = 0.1 # 个人支出
             }

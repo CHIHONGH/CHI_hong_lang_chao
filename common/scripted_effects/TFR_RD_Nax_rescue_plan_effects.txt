@@ -203,6 +203,127 @@ react_victory_south_america_war = {
     }
 }
 
+rev_victory_iran_iraq = {
+    PER = {
+        every_controlled_state = {
+            add_core_of = CPP
+            remove_core_of = PER
+            transfer_state_to = CPP
+        }
+    }
+    CPP = {
+        set_party_name = {
+            ideology = totalitarian_socialist
+            long_name = PER_communist_party_a
+            name = PER_communist_party_a
+        }
+        set_party_name = {
+            ideology = communist
+            long_name = PER_communist_party_a
+            name = PER_communist_party_a
+        }
+    }    
+    CPP = {
+        release = IRQ
+        load_focus_tree = WLI_tree
+    }
+    
+    IRQ = {
+        remove_ideas = {
+            arab_league_member
+        }
+        create_country_leader = {
+            name = IRQ_raed_fahmi
+            picture = "gfx/leaders/IRQ_raed_fahmi.png"
+            ideology = marxism_leninism
+        }
+        set_party_name = {
+            ideology = communist
+            long_name = PRC_nationalist_party_new_left_IRQ
+            name = PRC_nationalist_party_new_left_name_IRQ
+        }
+        set_politics = {
+            ruling_party = communist
+            elections_allowed = no
+        }
+        set_cosmetic_tag = IRQ_rebulid_the_government
+        load_focus_tree = WLI_tree
+    }
+    PRC = {
+        add_to_variable = {
+            CPC_frame = 10
+        }
+        clamp_variable = {
+            var = CPC_frame
+            min = 0
+            max = 100
+        }
+        add_to_variable = {
+            PRC_Lib_Int_Dir_Var = 1
+        }
+        set_autonomy = {
+            target = CPP
+            autonomous_state = autonomy_communist
+            freedom_level = 0.1
+        }  
+        set_autonomy = {
+            target = IRQ
+            autonomous_state = autonomy_communist
+            freedom_level = 0.1
+        }  
+        if = {
+            limit = { 
+                has_dynamic_modifier = WLI_collective_army_modifier
+            }
+            CPP = {
+                add_dynamic_modifier = {
+                    modifier = WLI_collective_army_modifier
+                }
+            }
+            IRQ = {
+                add_dynamic_modifier = {
+                    modifier = WLI_collective_army_modifier
+                }
+            }
+        }
+        if = {
+            limit = { 
+                has_dynamic_modifier = WLI_economic_cooperation_modifier
+            }
+            CPP = {
+                add_dynamic_modifier = {
+                    modifier = WLI_economic_cooperation_modifier
+                }
+            }
+            IRQ = {
+                add_dynamic_modifier = {
+                    modifier = WLI_economic_cooperation_modifier
+                }
+            }
+        }
+        if = {
+            limit = { 
+                has_dynamic_modifier = PRC_WLI_modifiers
+            }
+            CPP = {
+                add_dynamic_modifier = {
+                    modifier = PRC_WLI_modifiers
+                }
+            }
+            IRQ = {
+                add_dynamic_modifier = {
+                    modifier = PRC_WLI_modifiers
+                }
+            }
+        }
+    }
+    CPP = {
+        set_politics = {
+            ruling_party = totalitarian_socialist
+            elections_allowed = no
+        }
+    }
+}
 MEX_buff_normal_effect = {
     if = {
         limit = { 
@@ -488,10 +609,13 @@ MEX_pretrain_for_the_worst_display = {
                         MEX_pretrain_for_the_worst_var = 4
                     }
                 }
-                swap_ideas = {
-                    remove_idea = MEX_the_horror_of_decade_medium
-                    add_idea = MEX_the_horror_of_decade_high
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = MEX_the_horror_of_decade_medium
+                        add_idea = MEX_the_horror_of_decade_high
+                    }
                 }
+                
             }
         }     
     }
@@ -527,10 +651,13 @@ MEX_pretrain_for_the_worst_display = {
                         MEX_pretrain_for_the_worst_var = 2
                     }
                 }
-                swap_ideas = {
-                    remove_idea = MEX_the_horror_of_decade_low
-                    add_idea = MEX_the_horror_of_decade_medium
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = MEX_the_horror_of_decade_low
+                        add_idea = MEX_the_horror_of_decade_medium
+                    }
                 }
+                
             }
             else_if = {
                 limit = { 
@@ -538,10 +665,13 @@ MEX_pretrain_for_the_worst_display = {
                         MEX_pretrain_for_the_worst_var = 4
                     }
                 }
-                swap_ideas = {
-                    remove_idea = MEX_the_horror_of_decade_medium
-                    add_idea = MEX_the_horror_of_decade_high
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = MEX_the_horror_of_decade_medium
+                        add_idea = MEX_the_horror_of_decade_high
+                    }
                 }
+                
             }
             else_if = {
                 limit = { 
@@ -549,10 +679,13 @@ MEX_pretrain_for_the_worst_display = {
                         MEX_pretrain_for_the_worst_var = 5
                     }
                 }
-                swap_ideas = {
-                    remove_idea = MEX_the_horror_of_decade_high
-                    add_idea = MEX_the_horror_of_decade_insane
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = MEX_the_horror_of_decade_high
+                        add_idea = MEX_the_horror_of_decade_insane
+                    }
                 }
+                
             }
         }
         

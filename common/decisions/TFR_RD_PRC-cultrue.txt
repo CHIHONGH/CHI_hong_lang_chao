@@ -88,6 +88,7 @@ PRC_solve_economy_crisis = {
             hidden_effect = {
                 set_country_flag = {
                     flag = PRC_weiji_end_oa
+                    value = 1
                     days = 15
                 }
             }
@@ -956,6 +957,7 @@ PRC_solve_economy_crisis = {
             set_country_flag = PRC_weiji_end
             set_country_flag = {
                 flag = PRC_weiji_end_oa
+                value = 1
                 days = 15
             }
             set_global_flag = TFR_PRC_crists_completed
@@ -3147,6 +3149,50 @@ PRC_nl_expand_reform_category = {
 }
 
 PRC_maoist_politburo_new_left = {
+     PRC_myanmar_negotiations_new_left = {
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			has_country_flag = PRC_myanmar_negotiations_flag
+			NOT = {
+				has_completed_focus = PRC_revolution_in_myanmar
+			}
+		}
+		available = {
+		}
+		fire_only_once = no
+		cost = 15
+		days_remove = 25
+		days_re_enable = 350
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = global.PRC_influence_BRM_var_temp
+				value = 0.1
+			}
+			PRC_add_BRM_influence = yes
+			every_country = {
+				limit = {
+					OR = {
+						tag = KNU
+						tag = CNF
+						tag = KLA
+						tag = PDF
+						tag = BRM
+					}
+				}
+				add_timed_idea = {
+					idea = BRM_national_ceasefire
+					days = 350
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
     #	反动派在行动
     PRC_damage_from_reactionary_mission = {
         icon = GFX_PRC_liberal_decision
@@ -3205,7 +3251,35 @@ PRC_maoist_politburo_new_left = {
             }
         }
     }
-
+    PRC_kick_butt_decision = {
+        icon = GFX_PRC_centrist_decision
+        visible = {
+            any_controlled_state = {
+                has_dynamic_modifier = JAP_taiwan_independence_movement
+            }
+        }
+        cost = 50
+        days_remove = 60
+        fire_only_once = yes
+        remove_effect = {
+            every_controlled_state = {
+                limit = {
+                    has_dynamic_modifier = JAP_taiwan_independence_movement
+                }
+                remove_dynamic_modifier = {
+                    modifier = JAP_taiwan_independence_movement
+                }
+            }
+            add_popularity = {
+                ideology = communist
+                popularity = 0.015
+            }
+            add_popularity = {
+                ideology = libertarian_socialist
+                popularity = 0.015
+            }
+        }
+    }
     # 人大改革：扩大工农兵席位
     PRC_EPS = {
         ai_will_do = {
@@ -5331,6 +5405,10 @@ PRC_maoist_politburo_new_left = {
                 434 = {
                     remove_claim_by = RAJ
                     remove_core_of = RAJ
+                }
+                434 = {
+                    remove_claim_by = TIB
+                    remove_core_of = TIB
                 }
             }
         }

@@ -5,192 +5,190 @@ focus_tree = {
 	}
 	default = no
 
-	# --- 根国策 ---
+# 1. 雪耻日
 	focus = {
-		id = PRK_sunrise_time
-		icon = GFX_goal_unknown
-		x = 10
+		id = PRK_xuechi_ri
+		icon = GFX_focus_PRK_xuechi_ri
+		x = 3
 		y = 0
-		cost = 0
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		cost = 10
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.10
+		}
 	}
 
-	# --- 第一层分支 ---
+	# 2. 家园防线
 	focus = {
-		id = PRK_peoples_volunteer_army
-		icon = GFX_goal_unknown
-		x = -5
-		y = 1
-		cost = 0
-		relative_position_id = PRK_sunrise_time
-		prerequisite = { focus = PRK_sunrise_time }
-	}
-
-	focus = {
-		id = PRK_anti_imp_bastion
-		icon = GFX_goal_unknown
+		id = PRK_jiayuan_fangxian
+		icon = GFX_focus_PRK_jiayuan_fangxian
+		prerequisite = { focus = PRK_xuechi_ri }
+		relative_position_id = PRK_xuechi_ri
 		x = -3
 		y = 1
-		cost = 0
-		relative_position_id = PRK_sunrise_time
-		prerequisite = { focus = PRK_sunrise_time }
+		cost = 10
+		completion_reward = {
+			random_owned_state = { add_extra_state_shared_building_slots = 2 }
+			
+		}
 	}
 
+	# 3. 雷鸣行动（对韩）
 	focus = {
-		id = PRK_blood_sun_setting
-		icon = GFX_goal_unknown
+		id = PRK_leiming_xingdong_dui_han
+		icon = GFX_focus_PRK_leiming_xingdong_dui_han
+		prerequisite = { focus = PRK_xuechi_ri }
+		relative_position_id = PRK_xuechi_ri
 		x = -1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_sunrise_time
-		prerequisite = { focus = PRK_sunrise_time }
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
 	}
 
+	# 4. 蚁穴战术
 	focus = {
-		id = PRK_return_to_seoul
-		icon = GFX_goal_unknown
-		x = 2
-		y = 1
-		cost = 0
-		relative_position_id = PRK_sunrise_time
-		prerequisite = { focus = PRK_sunrise_time }
-	}
-
-	focus = {
-		id = PRK_brothers_cooperation
-		icon = GFX_goal_unknown
-		x = 5
-		y = 1
-		cost = 0
-		relative_position_id = PRK_sunrise_time
-		prerequisite = { focus = PRK_sunrise_time }
-	}
-
-	# --- 第二层分支 ---
-	focus = {
-		id = PRK_logistics_battlefield
-		icon = GFX_goal_unknown
+		id = PRK_yixue_zhanshu
+		icon = GFX_focus_PRK_yixue_zhanshu
+		prerequisite = { focus = PRK_xuechi_ri }
+		relative_position_id = PRK_xuechi_ri
 		x = 0
-		y = 1
-		cost = 0
-		relative_position_id = PRK_peoples_volunteer_army
-		prerequisite = { focus = PRK_peoples_volunteer_army }
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
 	}
 
+	# 5. 碎颅行动（对日）
 	focus = {
-		id = PRK_no_mercy
-		icon = GFX_goal_unknown
+		id = PRK_suilu_xingdong_dui_ri
+		icon = GFX_focus_PRK_suilu_xingdong_dui_ri
+		prerequisite = { focus = PRK_xuechi_ri }
+		relative_position_id = PRK_xuechi_ri
 		x = 1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_anti_imp_bastion
-		prerequisite = { focus = PRK_anti_imp_bastion }
-		prerequisite = { focus = PRK_blood_sun_setting }
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
 	}
 
+	# 6. 收入囊中
 	focus = {
-		id = PRK_southern_revolution
-		icon = GFX_goal_unknown
+		id = PRK_shouru_nangzhong
+		icon = GFX_focus_PRK_shouru_nangzhong
+		prerequisite = { focus = PRK_xuechi_ri }
+		relative_position_id = PRK_xuechi_ri
+		x = 3
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# 7. 抚慰同胞
+	focus = {
+		id = PRK_fuwei_tongbao
+		icon = GFX_focus_PRK_fuwei_tongbao
+		prerequisite = { focus = PRK_leiming_xingdong_dui_han }
+		relative_position_id = PRK_leiming_xingdong_dui_han
 		x = -1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_return_to_seoul
-		prerequisite = { focus = PRK_return_to_seoul }
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
 	}
 
+	# 8. 射虎行动（对印）
 	focus = {
-		id = PRK_master_of_sabotage
-		icon = GFX_goal_unknown
+		id = PRK_shehu_xingdong_dui_yin
+		icon = GFX_focus_PRK_shehu_xingdong_dui_yin
+		prerequisite = { focus = PRK_suilu_xingdong_dui_ri }
+		prerequisite = { focus = PRK_shouru_nangzhong }
+		relative_position_id = PRK_suilu_xingdong_dui_ri
 		x = 1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_return_to_seoul
-		prerequisite = { focus = PRK_return_to_seoul }
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
 	}
 
+	# 9. 清除害虫
 	focus = {
-		id = PRK_sun_and_moon
-		icon = GFX_goal_unknown
-		x = 0
-		y = 1
-		cost = 0
-		relative_position_id = PRK_brothers_cooperation
-		prerequisite = { focus = PRK_brothers_cooperation }
-	}
-
-	# --- 第三层分支 ---
-	focus = {
-		id = PRK_not_an_inch
-		icon = GFX_goal_unknown
+		id = PRK_qingchu_haichong
+		icon = GFX_focus_PRK_qingchu_haichong
+		prerequisite = { focus = PRK_fuwei_tongbao }
+		relative_position_id = PRK_fuwei_tongbao
 		x = -1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_logistics_battlefield
-		prerequisite = { focus = PRK_logistics_battlefield }
+		cost = 10
+		completion_reward = {
+			add_political_power = 50
+		}
 	}
 
+	# 10. 接管工厂
 	focus = {
-		id = PRK_by_any_means
-		icon = GFX_goal_unknown
+		id = PRK_jieguan_gongchang
+		icon = GFX_focus_PRK_jieguan_gongchang
+		prerequisite = { focus = PRK_fuwei_tongbao }
+		relative_position_id = PRK_fuwei_tongbao
 		x = 1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_logistics_battlefield
-		prerequisite = { focus = PRK_logistics_battlefield }
+		cost = 10
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
 	}
 
+	# 11. 露梁海行动（对澳）
 	focus = {
-		id = PRK_national_grudge_settled
-		icon = GFX_goal_unknown
-		x = 0
-		y = 1
-		cost = 0
-		relative_position_id = PRK_no_mercy
-		prerequisite = { focus = PRK_no_mercy }
-	}
-
-	focus = {
-		id = PRK_unification_of_land
-		icon = GFX_goal_unknown
-		x = 1
-		y = 1
-		cost = 0
-		relative_position_id = PRK_southern_revolution
-		prerequisite = { focus = PRK_southern_revolution }
-		prerequisite = { focus = PRK_master_of_sabotage }
-	}
-
-	focus = {
-		id = PRK_toward_the_future
-		icon = GFX_goal_unknown
-		x = 0
-		y = 1
-		cost = 0
-		relative_position_id = PRK_sun_and_moon
-		prerequisite = { focus = PRK_sun_and_moon }
-	}
-
-	# --- 终极国策 ---
-	focus = {
-		id = PRK_world_devouring_flames
-		icon = GFX_goal_unknown
+		id = PRK_lulianghai_xingdong_dui_ao
+		icon = GFX_focus_PRK_lulianghai_xingdong_dui_ao
+		prerequisite = { focus = PRK_shehu_xingdong_dui_yin }
+		relative_position_id = PRK_shehu_xingdong_dui_yin
 		x = -1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_by_any_means
-		prerequisite = { focus = PRK_not_an_inch }
-		prerequisite = { focus = PRK_by_any_means }
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.05
+		}
 	}
 
+	# 12. 火雨行动（对美）
 	focus = {
-		id = PRK_eternal_glory
-		icon = GFX_goal_unknown
-		x = 2
+		id = PRK_huoyu_xingdong_dui_mei
+		icon = GFX_focus_PRK_huoyu_xingdong_dui_mei
+		prerequisite = { focus = PRK_shehu_xingdong_dui_yin }
+		relative_position_id = PRK_shehu_xingdong_dui_yin
+		x = 1
 		y = 1
-		cost = 0
-		relative_position_id = PRK_national_grudge_settled
-		prerequisite = { focus = PRK_national_grudge_settled }
-		prerequisite = { focus = PRK_unification_of_land }
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.10
+		}
+	}
+
+	# 13. 高温杀菌
+	focus = {
+		id = PRK_gaowen_shajun
+		icon = GFX_focus_PRK_gaowen_shajun
+		prerequisite = { focus = PRK_yixue_zhanshu }
+		relative_position_id = PRK_yixue_zhanshu
+		x = 0
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_war_support = 0.10
+			add_political_power = 100
+		}
 	}
 }

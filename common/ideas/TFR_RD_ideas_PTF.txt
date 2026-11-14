@@ -1,7 +1,7 @@
 ideas = {
 	country = {
 
-		 reshape_military_industrial_complex = {
+		reshape_military_industrial_complex = {
             allowed = {
                 always = no
             }
@@ -270,6 +270,7 @@ ideas = {
         }
 
 		PTF_Counter_revolutionary_center_I_idea = {
+			picture = PTF_anti_communist_offensive
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -319,6 +320,7 @@ ideas = {
 		}
 
 		PTF_Counter_revolutionary_center_II_idea = {
+			picture = PTF_anti_communist_offensive
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -371,6 +373,7 @@ ideas = {
 		}
 
 		PTF_Counter_revolutionary_center_III_idea = {
+			picture = PTF_anti_communist_offensive
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -427,6 +430,7 @@ ideas = {
 		}
 
 		PTF_Fascist_military_revolution_I_idea = {
+			picture = PTF_american_fascism
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -490,6 +494,7 @@ ideas = {
 		}
 
 		PTF_Fascist_military_revolution_II_idea = {
+			picture = PTF_american_fascism
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -563,6 +568,7 @@ ideas = {
 		}
 
 		PTF_Fascist_military_revolution_III_idea = {
+			picture = PTF_american_fascism
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -639,7 +645,7 @@ ideas = {
 		}
 
 		PTF_American_Defense_idea = {
-
+			picture = PTF_america_reunited_idea
 			allowed = {
 				always = yes
 			}
@@ -660,7 +666,7 @@ ideas = {
 		}
 
 		PTF_Anti_communist_fortress_idea = {
-			
+			picture = PTF_anti_communist_offensive
 			cancel = {
 				has_global_flag = PRC_chinese_gaw_victory_global
 			}
@@ -689,7 +695,7 @@ ideas = {
 		}
 
 		PTF_End_of_communism_idea = {
-
+			picture = PTF_anti_communist_offensive
 			cancel = {
 				NOT = { has_game_rule = { rule = The_PTF_Difficulty_Choose option = PTF_Extremely_Hard_Mode } }
 				
@@ -861,9 +867,7 @@ ideas = {
 				always = yes
 			}
 			cancel = {
-				OR = {
-					has_war_with = MEX
-				}
+				has_country_flag = USA_unifier_flag
 			}
 			on_remove = {
 				add_political_power = -100
@@ -901,12 +905,6 @@ ideas = {
 				breakthrough_bonus_against = 2
 			}
 			targeted_modifier = {
-				tag = USB
-				attack_bonus_against = 2
-				defense_bonus_against = 2
-				breakthrough_bonus_against = 2
-			}
-			targeted_modifier = {
 				tag = USC
 				attack_bonus_against = 2
 				defense_bonus_against = 2
@@ -916,6 +914,14 @@ ideas = {
 	}
 
 	hidden_ideas = {
+		CAN_just_fucking_surrender_idea = {
+			allowed = {
+				always = yes
+			}
+			modifier = {
+				surrender_limit = -0.25
+			}
+		}
 		AST_just_fucking_surrender_idea = {
 			allowed = {
 				always = yes
@@ -942,9 +948,9 @@ ideas = {
 			
 			modifier = {
 				#industrial_capacity_dockyard = 1
-				no_supply_grace = 3360
+				no_supply_grace = 360
 				fuel_gain_factor = 10
-				army_fuel_capacity_factor = 5000
+				army_fuel_capacity_factor = 500
 				country_resource_oil = 2000
 				country_resource_aluminium = 4000
 				country_resource_chromium = 4000
@@ -965,9 +971,9 @@ ideas = {
 				expense_growth_factor = -0.5 #月度支出 -50%
 				tax_personal_rate = 1 #个税税率 +100% 把税收到90年后
 				misc_income = 75 #杂项收入 大概是抢来的钱
-				production_factory_efficiency_gain_factor = 100
+				production_factory_efficiency_gain_factor = 10
 				factory_energy_consumption = -1
-				resistance_target = -0.2
+				resistance_target = -0.3
 				# air_fuel_consumption_factor = 0.8
 				# army_fuel_consumption_factor = 0.8
 				# navy_fuel_consumption_factor = 0.8
@@ -978,9 +984,9 @@ ideas = {
 				max_command_power = 180
 				command_power_gain = 2
 
-				supply_node_range = 4
+				supply_node_range = 3
 				supply_consumption_factor = -0.88
-				experience_gain_army_unit = 50
+				experience_gain_army_unit = 5
 				navy_max_range_factor = 2
 				naval_accidents_chance = -2
 				naval_attrition = -2

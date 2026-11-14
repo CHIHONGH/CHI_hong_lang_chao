@@ -2394,6 +2394,35 @@ USA_civil_war_outbreak_effect = {
 	}
 	USB = {
 		#USB Idea Transfer
+		add_ideas = PTF_hidden_idea
+		add_ideas = USB_American_Defense_idea
+		add_offsite_building = {
+			type = industrial_complex
+			level = 20
+		}
+		add_offsite_building = {
+			type = arms_factory
+			level = 20
+		}
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+					has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+				}
+			}
+			add_timed_idea = {
+				idea = USB_divine_mandate_idea
+				days = 2000
+			}
+		}
+		else = {
+			add_timed_idea = {
+				idea = USB_divine_mandate_idea1
+				days = 2000
+			}
+		}
+		
 		if = {
 			limit = {
 				USA = {
@@ -2594,7 +2623,7 @@ USA_civil_war_outbreak_effect = {
 				is_core_of = USB
 			}
 			create_unit = {
-				division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.1"
+				division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.75"
 				owner = USB
 			}
 		}
@@ -3031,6 +3060,24 @@ USA_civil_war_outbreak_effect = {
 				}
 			}
 			add_core_of = PTF
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = USA_civil_war_project_winner_USB_NSS_flag
+					has_global_flag = USA_civil_war_project_winner_USB_caligula_flag
+				}
+			}
+			add_timed_idea = {
+				idea = PTF_divine_mandate_idea
+				days = 2000
+			}
+		}
+		else = {
+			add_timed_idea = {
+				idea = PTF_divine_mandate_idea
+				days = 500
+			}
 		}
 		transfer_state = 1077
 		transfer_state = 795
@@ -9347,6 +9394,13 @@ USA_civil_war_over = {
 		remove_ideas = {
 			PTF_Fascist_military_revolution_II_idea
 			PTF_Counter_revolutionary_center_II_idea
+		}
+	}
+	if = {
+		limit = { has_game_rule = { rule = The_USB_Difficulty_Choose option = USB_Baby_Mode } }
+		remove_ideas = {
+			USB_Fascist_military_revolution_II_idea
+			USB_Counter_revolutionary_center_II_idea
 		}
 	}
 	set_country_flag = USA_unifier_flag
