@@ -1798,9 +1798,33 @@ shared_focus = {
     x = 4
     y = 1
     completion_reward = {
-        effect_tooltip = {
-			remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
-		}		
+        if = {
+            limit = { 
+                NOT = {
+                    OR = {
+                        has_game_rule = {
+                            rule = The_USB_Difficulty_Choose
+                            option = USB_Baby_Mode
+                        }
+                        has_game_rule = {
+                            rule = The_USB_Difficulty_Choose
+                            option = USB_Simple_Mode
+                        }
+                        has_game_rule = {
+                            rule = The_PTF_Difficulty_Choose
+                            option = PTF_Baby_Mode
+                        }
+                        has_game_rule = {
+                            rule = The_PTF_Difficulty_Choose
+                            option = PTF_Simple_Mode
+                        }
+                    }
+                }
+            }
+            effect_tooltip = {
+                remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+            }
+        }
 		hidden_effect = {
 			remove_ideas = {
 				PRC_insufficient_understanding_of_modern_warfare_idea
