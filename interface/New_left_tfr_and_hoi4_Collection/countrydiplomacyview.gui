@@ -21,9 +21,9 @@ guiTypes = {
 		margin = { top = 1 left = 1 right = 1 bottom = 1 }
 		clipping = yes
 		iconType = {
-			name = "TFR_global_association_diplo_icon"
+			name = "TFR_UN_coalition_diplo_icon"
 			position = { x = 0 y = 0 }
-			spriteType = "GFX_NATO_Member"
+			spriteType = "GFX_UN_Member"
 			pdx_tooltip = "TFR_GLOBAL_ASSOCIATION_TT"
 		}
 		iconType = {
@@ -35,11 +35,28 @@ guiTypes = {
 			spriteType = "GFX_PRC_liberation_international_faction"
 			scale = 0.8
 			pdx_tooltip = "TFR_LI_TT"
+		iconType = {
+			name = "TFR_global_association_diplo_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_NATO_Member"
+			pdx_tooltip = "TFR_GLOBAL_ASSOCIATION_TT"
 		}
 		iconType = {
 			name = "TFR_csto_diplo_icon"
 			position = { x = 0 y = 0 }
 			spriteType = "GFX_CSTO_faction" 
+			pdx_tooltip = "TFR_GLOBAL_ASSOCIATION_TT"
+		}	
+		iconType = {
+			name = "TFR_csto_red_diplo_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_CSTO_RED_faction" 
+			pdx_tooltip = "TFR_GLOBAL_ASSOCIATION_TT"
+		}	
+		iconType = {
+			name = "TFR_csto_green_diplo_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_CSTO_GREEN_faction" 
 			pdx_tooltip = "TFR_GLOBAL_ASSOCIATION_TT"
 		}
 		iconType = {
@@ -392,6 +409,25 @@ guiTypes = {
 					spriteType = "GFX_win_header_short"
 				}
 				
+				instantTextBoxType = {
+					name = "actions_title"
+					position = { x = 12 y = 9 }
+					font = "VCR02_12"
+					text = "DIPLOMACY_ACTIONS_HEADER"
+					maxWidth = 240
+					maxHeight = 30
+				}
+
+				buttonType = {
+					name = "edit_auto_response"
+					position = { x = 170 y = 7 }
+					quadTextureSprite ="GFX_faction_edit_rule_button"
+					buttonText = "EDIT"
+					font = "VCR02_12"
+					clicksound = click_default
+					scale = 1
+				}
+				
 				gridboxtype = {
 					name = "actions_grid"
 					position = { x = 10 y = 32 }
@@ -461,9 +497,9 @@ guiTypes = {
 					
 				iconType = {
 					name = "leader_portrait"
-					position = { x = 20 y = 10 }
+					position = { x = 22 y = 5 }
 					spriteType = "GFX_leader_unknown"
-					scale = 0.74
+					scale = 0.75
 				}
 				
 				iconType = {
@@ -1105,6 +1141,13 @@ guiTypes = {
 			name = "accept_icon"
 			position = { x = 204 y = 4 }
 			spriteType ="GFX_accept_decline_icon"
+		}
+		
+		iconType = {
+			name = "response_icon"
+			position = { x = 200 y = 2 }
+			spriteType ="GFX_generic_3_state_checkbox"
+			alwaystransparent = yes
 		}
 	}
 	
@@ -2195,6 +2238,63 @@ guiTypes = {
 		}
 		
 		containerWindowType = {
+			name = "naval_blockade"
+			position = { x = -263 y = -157}
+			size = { width = 527 height = 360 }
+			moveable = yes
+			click_to_front = yes
+			orientation= center
+
+			background = {
+				name = "Background"
+				spriteType ="GFX_diplo_action_guarantee_independence_bg"
+			}
+
+			instantTextboxType = {
+				name = "title"
+				position = { x = 0 y = 29 }
+				font = "VCR02_14"
+				text = "Maus"
+				maxWidth = 530
+				maxHeight = 20
+				format = center
+			}
+
+			instantTextboxType = {
+				name = "description"
+				position = { x = 31 y = 90 }
+				font = "VCR02_12"
+				text = "Maus"
+				maxWidth = 470
+				maxHeight = 300
+			}
+			
+			buttonType = {
+				name = "send_button"
+				position = { x = 350 y = -60 }
+
+				quadTextureSprite ="GFX_button_123x34"
+				buttonFont = "VCR02_12"
+				Orientation = "LOWER_LEFT"
+				buttonText = "DIPLOMACY_SEND"
+				pdx_tooltip = "DIPLOMACY_SEND"
+				clicksound = click_send
+			}
+
+			buttonType = {
+				name = "cancel_button"
+				position = { x = 70 y = -60 }
+				shortcut = "ESCAPE"
+				quadTextureSprite ="GFX_button_123x34"
+				buttonFont = "VCR02_12"
+				Orientation = "LOWER_LEFT"
+				buttonText = "DIPLOMACY_CANCEL"
+				pdx_tooltip = "DIPLOMACY_CANCEL"
+				clicksound = click_close
+			}
+		}
+
+		containerWindowType = {
 			name = "send_attache"
 			position = { x = -263 y = -157}	
 			size = { width = 527 height = 430 }
@@ -3219,6 +3319,76 @@ guiTypes = {
 		}
 		
 		containerWindowType = {
+			name = "recall_volunteers"
+			position = { x = -263 y = -306}
+			size = { width = 527 height = 315 }
+			moveable = yes
+			click_to_front = yes
+			orientation= center
+
+			background = {
+				name = "Background"
+				spriteType ="GFX_generic_diplo_action_bg"
+			}
+
+			instantTextboxType = {
+				name = "title"
+				position = { x = -3 y = 29 }
+				font = "hoi_24header"
+				maxWidth = 530
+				maxHeight = 20
+				format = center
+			}
+
+			iconType = {
+				name = "time_icon"
+				position = { x = 210 y = 250 }
+				quadTextureSprite = "GFX_building_status_overlay"
+				frame = 1
+			}
+
+			instantTextboxType = {
+				name = "time_text"
+				position = { x = 250 y = 263 }
+				font = "hoi_18mbs"
+				maxWidth = 100
+				maxHeight = 50
+			}
+
+			instantTextboxType = {
+				name = "description"
+				position = { x = 28 y = -230 }
+				font = "hoi_18mbs"
+				maxWidth = 470
+				maxHeight = 170
+				format = center
+				Orientation = "LOWER_LEFT"
+			}
+
+			buttonType = {
+				name = "send_button"
+				position = { x = 350 y = -60  }
+				quadTextureSprite ="GFX_button_123x34"
+				buttonFont = "hoi_16mbs"
+				Orientation = "LOWER_LEFT"
+				buttonText = "DIPLOMACY_SEND"
+				clicksound = click_send
+				shortcut = "RETURN"
+			}
+
+			buttonType = {
+				name = "cancel_button"
+				position = { x = 70 y = -60 }
+				shortcut = "ESCAPE"
+				quadTextureSprite ="GFX_button_123x34"
+				buttonFont = "hoi_16mbs"
+				Orientation = "LOWER_LEFT"
+				buttonText = "BACK"
+				clicksound = click_close
+			}
+		}
+		
+		containerWindowType = {
 			name = "send_expeditionary_force"
 			position = { x = -263 y = -306}	
 			size = { width = 527 height = 612 }
@@ -4170,6 +4340,13 @@ guiTypes = {
 			scale = 0.6
 		}
 		
+		iconType = {
+			name = "acceptance"
+			position = { x=148 y=24 }
+			spriteType = "GFX_accept_decline_icon"
+			alwaystransparent = yes
+		}
+		
 		instantTextboxType = {
 			name = "equipment_name"
 			position = {x=8 y=4}
@@ -4253,10 +4430,10 @@ guiTypes = {
 		
 		instantTextboxType = {
 			name = "deal_state"
-			position = {x=250 y=10}
+			position = {x=215 y=10}
 			font = "VCR02_12"
-			maxWidth = 160
-			maxHeight = 32
+			maxWidth = 230
+			maxHeight = 50
 			format = center
 			text = "DIPLOMACY_LEND_LEASE_CANCEL"
 			alwaystransparent = yes
@@ -4567,6 +4744,13 @@ guiTypes = {
 			alwaystransparent = yes
 		}
 		
+		iconType = {
+			name = "acceptance"
+			position = { x=148 y=24 }
+			spriteType = "GFX_accept_decline_icon"
+			alwaystransparent = yes
+		}
+		
 		instantTextboxType = {
 			name = "name"
 			position = {x=5 y=4}
@@ -4627,6 +4811,8 @@ guiTypes = {
 			name = "in_stock_icon"
 			position = { x=194 y=7 }
 			spriteType = "GFX_in_stock_icon"
+			
+			alwaystransparent = yes
 
 		}
 		
@@ -4634,6 +4820,8 @@ guiTypes = {
 			name = "balance_icon"
 			position = { x=269 y=7 }
 			spriteType = "GFX_balance_icon"
+			
+			alwaystransparent = yes
 
 		}		
 		
