@@ -172,9 +172,7 @@ set_variable = {
     value = 0.4
 }
 
-activate_mission = PRC_meet_2020_goal
 
-#NPC
 #NPC
 
 set_variable = {
@@ -1293,7 +1291,7 @@ if = {
 
     create_equipment_variant = {
         name = "歼-11B"
-        type = small_plane_airframe_0
+        type = small_plane_airframe_1
         modules = {
             fixed_main_weapon_slot = heavy_mg_4x
             fixed_auxiliary_weapon_slot_1 = bomb_locks
@@ -1333,6 +1331,25 @@ if = {
             special_type_slot_3 = radio_navigation_1
         }
         icon = "GFX_PRC_fighter4_medium"
+    }
+
+    create_equipment_variant = {
+        name = "西安 歼轰-7"
+        type = small_plane_cas_airframe_1
+        icon = "gfx/interface/equipmentdesigner/planes/PRC/PRC_JH-7.png"
+        show_position = no
+        design_team = mio:PRC_avic_guizhou_organization
+        modules = {
+            fixed_main_weapon_slot = heavy_mg_2x
+            fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+            fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+            fixed_auxiliary_weapon_slot_3 = torpedo_mounting
+            engine_type_slot = engine_2_2x
+            special_type_slot_1 = armor_plate_small
+            special_type_slot_2 = self_sealing_fuel_tanks_small_2
+            special_type_slot_3 = non_strategic_materials_small
+            special_type_slot_4 = fuel_tanks_small
+        }
     }
 
     create_equipment_variant = {
