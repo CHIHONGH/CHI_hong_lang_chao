@@ -454,4 +454,608 @@ ideas = {
 			}
 		}
 	}
+	hidden_ideas = {
+		PRC_feiye_piaoling_hidden = {
+			name = PRC_feiye_piaoling
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.06
+				production_factory_max_efficiency_factor = 0.04
+				production_factory_efficiency_gain_factor = 0.07
+			}
+			ai_will_do = {
+				base = 100
+			}
+		}
+		PRC_qiyanuo_hidden = {
+			name = PRC_qiyanuo
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.09
+				war_support_factor = 0.09
+				research_speed_factor = -0.09
+			}
+			ai_will_do = {
+				base = 100
+			}
+		}
+	}
+	head_minister = {
+		PRC_changqi_shuangshi = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			on_add = {
+				if = {
+					limit = { 
+						has_idea = PRC_feiye_piaoling
+					}
+					random_controlled_state = {
+						limit = {
+							industrial_complex > 1
+						}
+						remove_building = {
+							type = industrial_complex
+							level = 2
+						}
+					}
+				}
+				if = {
+					limit = { 
+						has_idea = PRC_alice
+					}
+					add_political_power = 50
+					add_popularity = {
+						ideology = totalitarian_socialist
+						popularity = 0.02
+					}
+				}
+			}
+			on_remove = {
+				
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_second_llyich
+				MEX_multi_minister
+			}
+		}
+	}
+	foreign_minister = {
+		PRC_alice = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_maniac
+			}
+			on_add = {
+				if = {
+					limit = { 
+						has_idea = PRC_changqi_shuangshi
+					}
+					add_political_power = 50
+					add_popularity = {
+						ideology = totalitarian_socialist
+						popularity = 0.02
+					}
+				}
+			}
+		}
+	}
+	economic_minister = {
+		PRC_feiye_piaoling = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_best_egg
+				MEX_fake_bill
+			}
+			on_add = {
+				add_ideas = PRC_feiye_piaoling_hidden
+				if = {
+					limit = { 
+						has_idea = PRC_changqi_shuangshi
+					}
+					random_controlled_state = {
+						limit = {
+							industrial_complex > 1
+						}
+						remove_building = {
+							type = industrial_complex
+							level = 2
+						}
+					}
+				}
+			}
+			ai_will_do = {
+				base = 100
+			}
+		}
+	}
+	economic_minister = {
+		PRC_dachairen = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_tired_fish
+				MEX_poor_survival
+				MEX_red_steward
+			}
+		}
+		PRC_red_fruit = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_tired_fish
+				MEX_poor_survival
+				MEX_red_steward
+			}
+		}
+	}
+	interior_minister = {
+		PRC_qiyanuo = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_united_shaysh_of_america
+				MEX_math_home
+			}
+			ai_will_do = {
+				base = 100
+			}
+			on_add = {
+				
+			}
+		}
+		PRC_pliat = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_new_sky
+			}
+			on_add = {
+				set_temp_variable = {
+					var = academic_development_var_temp
+					value = 0.05
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.05
+				}
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.05
+				}
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.05
+				}
+				add_academic_development = yes
+				add_poverty_development = yes
+				add_military_development = yes
+				add_society_development = yes
+			}
+			ai_will_do = {
+				base = 100
+			}
+		}
+		PRC_atiman = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_are_you_happy
+				MEX_homo_king
+			}
+		}
+		PRC_papersama = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_loli_sun
+				MEX_anti_anti_loli
+			}
+		}
+	}
+	intelligence_minister = {
+		PRC_xiaowang = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_ever_yound
+				MEX_against_cap_value
+			}
+			on_add = {
+				add_popularity = {
+					ideology = conservative
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = national_socialist
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = market_liberal
+					popularity = -0.05
+				}
+				add_popularity = {
+					ideology = social_liberal
+					popularity = -0.05
+				}
+			}
+			ai_will_do = {
+				base = 100
+			}
+		}
+		PRC_diamond_of_time = {
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			available = {
+				OR = {
+					has_idea = highest_police
+					has_idea = PRC_chinese_surveillance_system_2
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_eyeist
+				MEX_theorist
+			}
+		}
+	}
+	theorist_minister = {
+		PRC_sgndkh_the = {
+			name = PRC_sgndkh
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			available = {
+				PRC_sgndkh = {
+					is_hired_as_advisor = no
+				}				
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				MEX_mindless_noodle
+			}
+		}
+		PRC_graygoo = {
+			name = PRC_graygoo
+			allowed = {
+				OR = {
+					tag = PRC
+					tag = ZAP
+					tag = MEX
+				}
+			}
+			visible = {
+				has_country_flag = RD_easter_enabled
+				if = {
+					limit = { 
+						tag = MEX
+					}
+					has_government = communist
+				}
+				if = {
+					limit = { 
+						tag = ZAP
+					}
+					is_puppet = no
+				}
+			}
+			# available = {
+			# 	PRC_graygoo = {
+			# 		is_hired_as_advisor = no
+			# 	}				
+			# }
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {
+				
+			}
+		}
+	}
 }
