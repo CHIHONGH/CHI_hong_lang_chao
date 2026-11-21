@@ -13,13 +13,11 @@ country_event = {
 	immediate = {
 		# 动态修正挂载与初始化分离：修正无条件挂载（has_dynamic_modifier 守卫防重挂，
 		# 避免南海获胜削弱先行时 count>0 导致整块跳过、修正永不挂载）
-		PTF = {
-			if = {
-				limit = {
-					NOT = { has_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic } }
-				}
-				add_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic }
+		if = {
+			limit = {
+				NOT = { has_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic } }
 			}
+			add_dynamic_modifier = { modifier = PTF_elec_warfare_dynamic }
 		}
 		# 仅当尚未发生任何削弱时初始化（南海获胜削弱与获知预排同天发生，
 		# 若 count 已被削弱置 1，跳过硬初始化防止覆盖档位）；
@@ -58,6 +56,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = prc_elec_warfare.201.a
+		PTF_elec_weaken = yes
 		effect_tooltip = {
 			PTF_elec_dummy_stage = yes
 		}
