@@ -63,10 +63,9 @@ PRC_coordinate_strike_RAJ = { ### 1/50
 	experience = 5
 	# outcome is an effect that runs when the operation has completed
 	outcome_execute = { # SCOPE_OPERATION
-		execute_operation_coordinated_strike = {
-			# Amount determines how often the mission simulation is run
-			amount = 6 #1 attack per 6 hours --> 12 attacks = 3 days
-		}
+		# [TFR-crash-fix] execute_operation_coordinated_strike removed:
+		# it crashes on completion (see README.txt).
+
 		FROM = {
 			add_command_power = -25
 			army_experience = -50
@@ -80,10 +79,9 @@ PRC_coordinate_strike_RAJ = { ### 1/50
 	outcome_extra_chance = 0.2
 
 	outcome_extra_execute = {
-		execute_operation_coordinated_strike = {
-			# Amount determines how often the mission simulation is run
-			amount = 12 #1 attack per 6 hours --> 12 attacks = 3 days
-		}
+		# [TFR-crash-fix] execute_operation_coordinated_strike removed:
+		# it crashes on completion (see README.txt).
+
 		FROM = {
 			add_command_power = -50
 			army_experience = -75

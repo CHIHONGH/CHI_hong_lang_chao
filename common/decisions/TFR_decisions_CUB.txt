@@ -660,13 +660,12 @@ great_asian_war_decisions = {
 		is_good = no
 		cancel_trigger = {
 			608 = {
-				NOT = {
-					controller = {
-						has_war_with = PRC
-					}
+				controller = {
+					has_war_with = PRC
 				}
 			}
 			PRC = {
+				is_ai = yes
 				surrender_progress > 0.6
 			}
 		}
@@ -682,10 +681,13 @@ great_asian_war_decisions = {
 				white_peace = JAP
 				white_peace = RAJ
 				white_peace = AST
+				white_peace = PNG
+				white_peace = NZL
 				dismantle_faction = yes
 				leave_faction = yes
 			}
 			PRC_japans_victory_in_the_gaw = yes
+			log = "TFR Fuck you and Fuck me hell no...GAW mission cancelled from CUB"
 		}
 		timeout_effect = {
 			activate_mission = great_asian_war_mission
@@ -746,6 +748,18 @@ great_asian_war_decisions = {
 					}
 					white_peace = USC
 				}
+			}
+			every_country = {
+				limit = {
+					has_war_with = PNG
+				}
+				white_peace = PNG
+			}
+			every_country = {
+				limit = {
+					has_war_with = NZL
+				}
+				white_peace = NZL
 			}
 			PRC_PTF_gaw = yes
 			PRC_chinas_victory_in_the_gaw_nl = yes

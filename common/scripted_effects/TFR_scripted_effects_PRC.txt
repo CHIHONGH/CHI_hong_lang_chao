@@ -1101,51 +1101,8 @@ PRC_japans_victory_in_the_gaw = {
 	set_global_flag = PRC_japanese_gaw_victory_global
 	set_country_flag = GAW_disabled
 	clr_global_flag = pan_asian_war_ongoing
-	PRC = {
-		#return "days = x" later
-		#country_event = { id = china.248 days = 1 }
-		#country_event = { id = china.249 days = 2 }
-		#country_event = { id = china.44 days = 3 }
-		#country_event = { id = china.45 days = 4 }
-		#country_event = { id = china.46 days = 5 }
-		#country_event = { id = china.47 days = 6 }
-		#country_event = { id = china.48 days = 7 }
-		#country_event = { id = china.49 days = 8 }
-		#country_event = { id = china.50 days = 9 }
-		#country_event = { id = china.51 days = 10 }
-		country_event = china.247
-	}
 	set_global_flag = PRC_china_collapse
 	news_event = news.414
-	if = {
-		limit = {
-			has_global_flag = PRC_taiwan_war_lost
-		}
-		CHI = {
-			transfer_state = 1218
-			transfer_state = 1382
-			transfer_state = 879
-		}
-	}
-	else = {
-		CHI = {
-			transfer_state = 1218
-			transfer_state = 1382
-			transfer_state = 879
-			transfer_state = 1148
-			transfer_state = 1149
-			transfer_state = 1150
-			transfer_state = 524
-		}
-	}
-	CHI = {
-		transfer_state = 591
-		transfer_state = 728
-		transfer_state = 591
-		transfer_state = 591
-		transfer_state = 591
-		transfer_state = 591
-	}
 	if = {
 		limit = {
 			CHI = {
@@ -1374,8 +1331,6 @@ PRC_japans_victory_in_the_gaw = {
 			end_puppet = PRJ
 		}
 		PRJ = {
-			transfer_state = 434
-			add_state_core = 434
 			get_current_government_type = yes
 			set_cosmetic_tag = PRJ_pakistan_administration
 		}
@@ -1407,25 +1362,6 @@ PRC_japans_victory_in_the_gaw = {
 	}
 	AST = {
 		set_country_flag = GAW_disabled
-	}
-	PRC = {
-		set_politics = {
-			ruling_party = nationalist
-			last_election = "2019.6.5"
-			election_frequency = 48
-			elections_allowed = no
-		}
-		set_popularities = {
-			social_democrat = 20
-			market_liberal = 3
-			communist = 25
-			social_liberal = 7
-			nationalist = 45
-		}
-		country_event = {
-			id = china.1003
-			days = 30
-		}
 	}
 	every_country = {
 		limit = {

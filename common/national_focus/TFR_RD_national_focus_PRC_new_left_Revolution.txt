@@ -373,9 +373,21 @@
 			OR = {
 				PTF = { is_in_faction_with = JAP } 
 				USB = {
-					AND = {
+					if = {
+						limit = { 
+							has_country_flag = USB_rebirth_flag
+						}
+						has_completed_focus = USB_yinbao_huoyaotong
+					}
+					else_if = {
+						limit = { 
+							has_country_flag = USB_NSS_flag
+						}
 						has_completed_focus = USB_arctic_security
 						has_completed_focus = USB_work_force_act
+					}
+					else = {
+						is_in_faction = yes
 					}
 				}
 				USC = { is_in_faction_with = JAP } 
@@ -384,11 +396,15 @@
 				limit = { 
 					country_exists = USB
 				}
-				USB = {
-					NOT = {
-						has_decision = USB_kill_china_decision
+				custom_trigger_tooltip = {
+					tooltip = PRC_nl_toward_victory_tt
+					USB = {
+						NOT = {
+							has_decision = USB_kill_china_decision
+						}
 					}
 				}
+				
 			}
 		}
 		prerequisite = {

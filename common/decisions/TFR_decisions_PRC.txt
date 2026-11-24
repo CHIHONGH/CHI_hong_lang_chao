@@ -2894,17 +2894,56 @@ PRC_taiwan_war_cat = {
 			}
 		}
 		timeout_effect = {
-			country_event = {
-				id = china.24
-			}
-			hidden_effect = {
-				JAP = {
-					country_event = {
-						id = jap.9
-						days = 3
+			if = {
+				limit = { 
+					OR = {
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Simple_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Simple_Mode
+						}
+					}
+				}
+				
+				custom_effect_tooltip = PRC_taiwan_war_countdown_tt
+				country_event = {
+					id = china.23
+				}
+				hidden_effect = {
+					JAP = {
+						country_event = {
+							id = jap.10
+							days = 3
+						}
 					}
 				}
 			}
+			else = {
+				country_event = {
+					id = china.24
+				}
+				hidden_effect = {
+					JAP = {
+						country_event = {
+							id = jap.9
+							days = 3
+						}
+					}
+				}
+				custom_effect_tooltip = PRC_taiwan_war_countdown_tt2
+			}
+			
 		}
 	}
 	PRC_operation_crimson_sky = {
@@ -3142,6 +3181,26 @@ PRC_taiwan_war_cat = {
 		}
 		visible = {
 			has_completed_focus = PRC_adapt_to_current_realities_of_battles
+			NOT = {
+				OR = {
+					has_game_rule = {
+						rule = The_USB_Difficulty_Choose
+						option = USB_Baby_Mode
+					}
+					has_game_rule = {
+						rule = The_USB_Difficulty_Choose
+						option = USB_Simple_Mode
+					}
+					has_game_rule = {
+						rule = The_PTF_Difficulty_Choose
+						option = PTF_Baby_Mode
+					}
+					has_game_rule = {
+						rule = The_PTF_Difficulty_Choose
+						option = PTF_Simple_Mode
+					}
+				}
+			}
 		}
 		available = {
 			has_completed_focus = PRC_adapt_to_current_realities_of_battles
@@ -3184,11 +3243,31 @@ PRC_taiwan_war_cat = {
 		}
 		visible = {
 			has_completed_focus = PRC_adapt_to_current_realities_of_battles
+			NOT = {
+				OR = {
+					has_game_rule = {
+						rule = The_USB_Difficulty_Choose
+						option = USB_Baby_Mode
+					}
+					has_game_rule = {
+						rule = The_USB_Difficulty_Choose
+						option = USB_Simple_Mode
+					}
+					has_game_rule = {
+						rule = The_PTF_Difficulty_Choose
+						option = PTF_Baby_Mode
+					}
+					has_game_rule = {
+						rule = The_PTF_Difficulty_Choose
+						option = PTF_Simple_Mode
+					}
+				}
+			}
 		}
 		available = {
 			has_completed_focus = PRC_adapt_to_current_realities_of_battles
 			NOT = {
-				has_country_flag = PRC_adapt_to_modern_defense_time_flag
+				has_country_flag = PRC_adapt_to_modern_defense_time_flag	
 			}
 		}
 		cost = 25
@@ -3226,6 +3305,26 @@ PRC_taiwan_war_cat = {
 		}
 		visible = {
 			has_completed_focus = PRC_adapt_to_current_realities_of_battles
+			NOT = {
+				OR = {
+					has_game_rule = {
+						rule = The_USB_Difficulty_Choose
+						option = USB_Baby_Mode
+					}
+					has_game_rule = {
+						rule = The_USB_Difficulty_Choose
+						option = USB_Simple_Mode
+					}
+					has_game_rule = {
+						rule = The_PTF_Difficulty_Choose
+						option = PTF_Baby_Mode
+					}
+					has_game_rule = {
+						rule = The_PTF_Difficulty_Choose
+						option = PTF_Simple_Mode
+					}
+				}
+			}
 		}
 		available = {
 			has_idea = PRC_insufficient_understanding_of_modern_warfare_idea5
@@ -9663,6 +9762,7 @@ debug_decisions = {
 		}
 		complete_effect = {
 			PRC_japans_victory_in_the_gaw = yes
+			log = "TFR Fuck you and Fuck me hell no...GAW mission cancelled from debug"
 		}
 		ai_will_do = {
 			base = 0
@@ -9731,7 +9831,7 @@ debug_decisions = {
 			tag = PRC
 		}
 		complete_effect = {
-			load_focus_tree = china_new_left_focus
+			load_focus_tree = china_left_focus
 		}
 		ai_will_do = {
 			base = 0
@@ -13409,15 +13509,11 @@ PRC_great_asian_war = {
 			}
 		}
 		cancel_effect = {
-			hidden_effect = {
-				PRC_japans_victory_in_the_gaw = yes
-				JAP = {
-					country_event = china.1002
+			effect_tooltip = {
+				news_event = {
+					id = news.414
+					days = 1
 				}
-			}
-			news_event = {
-				id = news.414
-				days = 1
 			}
 		}
 		timeout_effect = {

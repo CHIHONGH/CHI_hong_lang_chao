@@ -1097,7 +1097,7 @@ country_event = {
         TFR_Country_Closing_Screen_Show = yes
         custom_effect_tooltip = PRC_tfr_nl_china_yongshengyuyongcun_tt
         hidden_effect = {
-            complete_national_focus = PRC_nl_red_dawn
+            #complete_national_focus = PRC_nl_red_dawn
             complete_national_focus = WLI_earth_shaking_heroic_song
         }
     }
@@ -1826,7 +1826,7 @@ country_event = {
         }
         TFR_Country_Closing_Screen_Show = yes
         hidden_effect = {
-            complete_national_focus = PRC_nl_red_dawn
+            #complete_national_focus = PRC_nl_red_dawn
             complete_national_focus = WLI_earth_shaking_heroic_song
         }
     }
@@ -2878,12 +2878,44 @@ country_event = {
 
     is_triggered_only = yes
     picture = GFX_Event_dragon_soars
+    immediate = {
+        hidden_effect = {
+            if = {
+                limit = {
+                    country_exists = PTF
+                }
+                PTF = {
+                    country_event = {
+                        id = prc_elec_warfare.101
+                        days = 7
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    country_exists = USB
+                }
+                USB = {
+                    country_event = {
+                        id = prc_elec_warfare.101
+                        days = 7
+                    }
+                }
+            }
+        }
+    }
     option = {
         name = prcs.3143.a
         trigger = { has_country_flag = NHDG_PRC_victory_hidden_flag }
         PRC = {
             add_war_support = 0.025
             add_political_power = 10
+            hidden_effect = {
+                country_event = {
+                    id = prc_elec_warfare.201
+                    days = 14
+                }
+            }
         }
         if = {
             limit = {

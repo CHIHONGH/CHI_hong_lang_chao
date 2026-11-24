@@ -31,6 +31,18 @@ scripted_gui = {
 					has_idea = ZZZ_eurasianist_system
 					has_idea = ZZZ_american_peoples_dictatorship
 					has_idea = ZZZ_proletariat_dictatorship
+					has_idea = ZZZ_personalistic_dictatorship
+					has_idea = ZZZ_peoples_democracy
+					has_idea = ZZZ_corporate_council
+					has_idea = ZZZ_directorial_system
+					has_idea = ZZZ_counterintelligence_state
+					has_idea = ZZZ_skeleton_state
+					has_idea = ZZZ_free_territory
+					has_idea = ZZZ_left_free_territory
+					has_idea = ZZZ_right_free_territory
+					has_idea = ZZZ_crime_syndicate
+					has_idea = ZZZ_chinese_political_system
+					has_idea = ZZZ_taiwanese_semi_presidential_system
 				}
 			}
 			TFR_russian_political_system_type_icon_visible = {
@@ -51,9 +63,15 @@ scripted_gui = {
 			TFR_military_dictatorship_type_icon_visible = {
 				has_idea = ZZZ_military_dictatorship
 			}	
+			TFR_personalistic_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_personalistic_dictatorship
+			}
 			TFR_socialist_republic_type_icon_visible = {
 				has_idea = ZZZ_socialist_republic
 			}	
+			TFR_peoples_democracy_type_icon_visible = {
+				has_idea = ZZZ_peoples_democracy
+			}
 			TFR_semi_constitutional_monarchy_type_icon_visible = {
 				has_idea = ZZZ_semi_constitutional_monarchy
 			}		
@@ -75,6 +93,9 @@ scripted_gui = {
 			TFR_revolutionary_front_type_icon_visible = {
 				has_idea = ZZZ_revolutionary_front
 			}		
+			TFR_corporate_council_type_icon_visible = {
+				has_idea = ZZZ_corporate_council
+			}
 			TFR_communist_party_state_type_icon_visible = {
 				has_idea = ZZZ_communist_party_state
 			}	
@@ -87,6 +108,9 @@ scripted_gui = {
 			TFR_parliamentary_republic_type_icon_visible = {
 				has_idea = ZZZ_parliamentary_republic
 			}	
+			TFR_directorial_system_type_icon_visible = {
+				has_idea = ZZZ_directorial_system
+			}
 			TFR_presidential_republic_type_icon_visible = {
 				has_idea = ZZZ_presidential_republic
 			}		
@@ -105,11 +129,39 @@ scripted_gui = {
 			TFR_ai_governance_type_icon_visible = {
 				has_idea = ZZZ_ai_governance
 			}	
+			TFR_counterintelligence_state_type_icon_visible = {
+				has_idea = ZZZ_counterintelligence_state
+				NOT = {
+					original_tag = SOV
+				}
+			}
+			TFR_counterintelligence_state_SOV_type_icon_visible = {
+				has_idea = ZZZ_counterintelligence_state
+				original_tag = SOV
+			}
+			TFR_taiwanese_semi_presidential_system_type_icon_visible = {
+				has_idea = ZZZ_taiwanese_semi_presidential_system
+			}
+			TFR_crime_syndicate_type_icon_visible = {
+				has_idea = ZZZ_crime_syndicate
+			}
 			TFR_american_peoples_dictatorship_type_icon_visible = {
 				has_idea = ZZZ_american_peoples_dictatorship
 			}		
 			TFR_eurasianist_system_type_icon_visible = {
 				has_idea = ZZZ_eurasianist_system
+			}
+			TFR_skeleton_state_type_icon_visible = {
+				has_idea = ZZZ_skeleton_state
+			}
+			TFR_free_territory_type_icon_visible = {
+				has_idea = ZZZ_free_territory
+			}
+			TFR_left_free_territory_type_icon_visible = {
+				has_idea = ZZZ_left_free_territory
+			}
+			TFR_right_free_territory_type_icon_visible = {
+				has_idea = ZZZ_right_free_territory
 			}
 			PRC_PLA_REFORM_OPEN_visible = {
 				tag = PRC
@@ -169,10 +221,18 @@ scripted_gui = {
 					has_idea = ZZZ_automation_communism
 					has_idea = ZZZ_liberal_corporatism
 					has_idea = ZZZ_kaiser_economy
+					has_idea = ZZZ_cabal_economy
+					has_idea = ZZZ_inclusive_capitalism
 				}
 			}
 			TFR_capitalism_type_politics_icon_visible = {
 				has_idea = ZZZ_capitalist_economy
+			}
+			TFR_inclusive_capitalism_type_politics_icon_visible = {
+				has_idea = ZZZ_inclusive_capitalism
+			}
+			TFR_cabal_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_cabal_economy
 			}
 			TFR_OGAS_type_politics_icon_visible = {
 				has_idea = ZZZ_OGAS
@@ -320,6 +380,18 @@ scripted_gui = {
 			}
 			TFR_csto_politics_icon_visible = {
 				has_country_flag = csto_member
+				NOT = {
+					has_global_flag = SOV_csto_red_flag
+					has_global_flag = SOV_csto_green_flag
+				}
+			}
+			TFR_csto_red_politics_icon_visible = {
+				has_country_flag = csto_member
+				has_global_flag = SOV_csto_red_flag
+			}		
+			TFR_csto_green_politics_icon_visible = {
+				has_country_flag = csto_member
+				has_global_flag = SOV_csto_green_flag
 			}
 			TFR_mto_politics_icon_visible = {
 				has_country_flag = mto_member
@@ -372,6 +444,10 @@ scripted_gui = {
 		window_name = "TFR_global_asssociation_countrydiplomacyview_container"
 		parent_window_token = selected_country_view_diplomacy
 		triggers = {
+			TFR_UN_coalition_diplo_icon_visible = {
+				has_global_flag = USB_un_coalition_global
+				is_ally_with = USB
+			}
 			TFR_global_association_diplo_icon_visible = {
 				has_country_flag = global_ass_lol
 			}
@@ -389,7 +465,19 @@ scripted_gui = {
 			}
 			TFR_csto_diplo_icon_visible = {
 				has_country_flag = csto_member
+				NOT = {
+					has_global_flag = SOV_csto_red_flag
+					has_global_flag = SOV_csto_green_flag
+				}
 			}
+			TFR_csto_red_diplo_icon_visible = {
+				has_country_flag = csto_member
+				has_global_flag = SOV_csto_red_flag
+			}	
+			TFR_csto_green_diplo_icon_visible = {
+				has_country_flag = csto_member
+				has_global_flag = SOV_csto_green_flag
+			}			
 			TFR_mto_diplo_icon_visible = {
 				has_country_flag = mto_member
 			}

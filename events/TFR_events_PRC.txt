@@ -555,7 +555,7 @@ country_event = {
 				id = china.80
 				days = 70
 			}
-			load_focus_tree = china_new_left_focus
+			load_focus_tree = china_left_focus
 			AST = {
 				country_event = {
 					id = Australia.1
@@ -5407,14 +5407,66 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			focus_unlock = yes
-			add_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+			if = {
+				limit = { 
+					OR = {
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Simple_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Simple_Mode
+						}
+					}
+				}
+				custom_effect_tooltip = PRC_insufficient_understanding_of_modern_warfare_disabled_tt
+			}
+			else = {
+				add_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+			}
 		}
 	}
 	option = {
 		name = china.154.a
 		effect_tooltip = {
 			focus_unlock = yes
-			add_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+			if = {
+				limit = { 
+					OR = {
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Simple_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Simple_Mode
+						}
+					}
+				}
+				custom_effect_tooltip = PRC_insufficient_understanding_of_modern_warfare_disabled_tt
+			}
+			else = {
+				custom_effect_tooltip = PRC_insufficient_understanding_of_modern_warfare_enabled_tt
+				add_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+			}
+			
 		}
 	}
 }
