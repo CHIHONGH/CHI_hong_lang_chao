@@ -861,10 +861,36 @@ focus_tree = {
 	    	factor = 10
 	    }
 	    completion_reward = {	
-			swap_ideas = {
-				remove_idea = PRC_insufficient_understanding_of_modern_warfare_idea
-				add_idea = PRC_insufficient_understanding_of_modern_warfare_idea2
-			}	
+			if = {
+				limit = { 
+					OR = {
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_USB_Difficulty_Choose
+							option = USB_Simple_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Baby_Mode
+						}
+						has_game_rule = {
+							rule = The_PTF_Difficulty_Choose
+							option = PTF_Simple_Mode
+						}
+					}
+				}
+				log = "PRC_adapt_to_current_realities_of_battles effect"
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = PRC_insufficient_understanding_of_modern_warfare_idea
+					add_idea = PRC_insufficient_understanding_of_modern_warfare_idea2
+				}	
+			}
+			
 			unlock_decision_tooltip = PRC_adapt_to_modern_defense							
 			unlock_decision_tooltip = PRC_adapt_to_modern_offensives	
 			unlock_decision_tooltip = PRC_adapt_to_modern_airbattles	

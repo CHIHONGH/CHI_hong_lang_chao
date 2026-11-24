@@ -1,0 +1,596 @@
+add_namespace = rd_apa
+
+country_event = {
+	id = rd_apa.1
+	title = rd_apa.1.t
+	desc = rd_apa.1.d
+	picture = GFX_APA_1
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		APA = {
+			OR = {
+				has_war_with = USB
+				has_war_with = PTF
+			}
+			surrender_progress > 0.2
+		}
+	}
+	option = {
+		name = rd_apa.1.a
+		country_event = {
+			id = rd_apa.2
+			days = 2
+			random_hours = 12
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.2
+	title = rd_apa.2.t
+	desc = rd_apa.2.d
+	picture = GFX_APA_2
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.2.a
+		country_event = {
+			id = rd_apa.3
+			days = 2
+			random_hours = 12
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.3
+	title = rd_apa.3.t
+	desc = rd_apa.3.d
+	picture = GFX_APA_3
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.3.a
+	}
+}
+
+
+country_event = {
+	id = rd_apa.4
+	title = rd_apa.4.t
+	desc = rd_apa.4.d
+	picture = GFX_USC_army_protests
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		OR = {
+			MEX = {
+				AND = {
+					has_government = communist
+					has_country_flag = MEX_mexican_unifier_flag
+				}
+			}
+			ZAP = {
+				has_country_flag = MEX_mexican_unifier_flag
+			}
+		}
+	}
+
+	option = {
+		name = rd_apa.4.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.5
+	title = rd_apa.5.t
+	desc = rd_apa.5.d
+	picture = GFX_APA_5
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		PTF = {
+			OR = {
+				has_war_with = MEX
+				has_war_with = ZAP
+			}
+		}
+	}
+
+	option = {
+		name = rd_apa.5.a
+		country_event = {
+			id = rd_apa.6
+			days = 3
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_apa.6
+	title = rd_apa.6.t
+	desc = rd_apa.6.d
+	picture = GFX_APA_apla_soldiers_larp
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.6.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.7
+	title = rd_apa.7.t
+	desc = rd_apa.7.d
+	picture = GFX_APA_7
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		OR = {
+			has_global_flag = USA_american_civil_war_global
+			has_global_flag = USA_american_civil_war_over_global
+		}
+		NOT = {
+			country_exists = APA
+		}
+	}
+	option = {
+		name = rd_apa.7.a
+		country_event = {
+			id = rd_apa.8
+			days = 7
+		}
+		country_event = {
+			id = rd_apa.9
+			days = 21
+			random_hours = 12
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_apa.8
+	title = rd_apa.8.t
+	desc = rd_apa.8.d
+	picture = GFX_Pennsylvania
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.8.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.9
+	title = rd_apa.9.t
+	desc = rd_apa.9.d
+	picture = GFX_event_wv_2
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.9.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.10
+	title = rd_apa.10.t
+	desc = rd_apa.10.d
+	picture = GFX_APA_10
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.10.a
+		country_event = {
+			id = rd_apa.19
+			days = 7
+			random_hours = 16
+		}
+		custom_effect_tooltip = rd_apa_10_tt
+	}
+}
+
+
+country_event = {
+	id = rd_apa.11
+	title = rd_apa.11.t
+	desc = rd_apa.11.d
+	picture = GFX_USB_DSA
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.11.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.12
+	title = rd_apa.12.t
+	desc = rd_apa.12.d
+	picture = GFX_APLA2
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+		OR = {
+			AND = {
+				country_exists = MEX
+				MEX = {
+					has_government = communist
+				}
+				MEX = {
+					OR = {
+						has_war_with = USB
+						has_war_with = PTF
+					}
+				}
+				MEX = {
+					surrender_progress < 0.2
+				}
+			}
+			AND = {
+				country_exists = ZAP
+				ZAP = {
+					OR = {
+						has_war_with = USB
+						has_war_with = PTF
+					}
+				}
+				ZAP = {
+					surrender_progress < 0.2
+				}
+			}
+		}
+	}
+	option = {
+		name = rd_apa.12.a
+		country_event = {
+			id = rd_apa.13
+			days = 5
+		}
+		country_event = {
+			id = rd_apa.14
+			days = 7
+		}	
+	}
+}
+
+
+country_event = {
+	id = rd_apa.13
+	title = rd_apa.13.t
+	desc = rd_apa.13.d
+	picture = GFX_APA_13
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.13.a
+		country_event = {
+			id = rd_apa.15
+			days = 5
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_apa.14
+	title = rd_apa.14.t
+	desc = rd_apa.14.d
+	picture = GFX_USB_redacted_files
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.14.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.15
+	title = rd_apa.15.t
+	desc = rd_apa.15.d
+	picture = GFX_apa_chyna
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.15.a
+		country_event = {
+			id = rd_apa.16
+			days = 3
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_apa.16
+	title = rd_apa.16.t
+	desc = rd_apa.16.d
+	picture = GFX_event_wv_1
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.16.a
+		country_event = {
+			id = rd_apa.17
+			days = 3
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_apa.17
+	title = rd_apa.17.t
+	desc = rd_apa.17.d
+	picture = GFX_APA_17
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.17.a
+		
+	}
+}
+
+
+country_event = {
+	id = rd_apa.18
+	title = rd_apa.18.t
+	desc = rd_apa.18.d
+	picture = GFX_FRA_Connecticut_forest
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		has_global_flag = pan_asian_war_ongoing
+		country_exists = PTF
+		PTF = {
+			surrender_progress > 0.1
+		}
+	}
+	option = {
+		name = rd_apa.18.a
+		country_event = {
+			id = rd_apa.20
+			days = 7
+		}
+	}
+}
+
+
+country_event = {
+	id = rd_apa.19
+	title = rd_apa.19.t
+	desc = rd_apa.19.d
+	picture = GFX_APA_19
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.19.a
+		
+	}
+}
+
+country_event = {
+	id = rd_apa.20
+	title = rd_apa.20.t
+	desc = rd_apa.20.d
+	picture = GFX_APA_20
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.20.a
+		custom_effect_tooltip = rd_apa_20_a_tt
+	}
+}
+
+news_event = {
+	id = rd_apa.21
+	title = rd_apa.21.t
+	desc = rd_apa.21.d
+	picture = GFX_Event_APA_unify_cal
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		country_exists = APA
+		NOT = {
+			country_exists = WLF
+			country_exists = RPP
+			country_exists = NRT
+			country_exists = BGF
+			country_exists = AYB
+			country_exists = SRN
+			country_exists = HLA
+			country_exists = RGA
+		}
+	}
+
+	option = {
+		name = rd_apa.21.a
+	}
+}
+
+country_event = {
+	id = rd_apa.22
+	title = rd_apa.22.t
+	desc = rd_apa.22.d
+	picture = GFX_APA_beijing_visit
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.22.a
+		country_event = {
+			id = rd_apa.23
+			days = 2
+			random_hours = 12
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.23
+	title = rd_apa.23.t
+	desc = rd_apa.23.d
+	picture = GFX_PRC_server_room
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.23.a
+		country_event = {
+			id = rd_apa.24
+			days = 2
+			random_hours = 12
+		}
+		custom_effect_tooltip = rd_apa_23_tt
+	}
+}
+
+country_event = {
+	id = rd_apa.24
+	title = rd_apa.24.t
+	desc = rd_apa.24.d
+	picture = GFX_PRC_situation_in_myanmar
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.24.a
+		country_event = {
+			id = rd_apa.25
+			days = 3
+			random_hours = 6
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.25
+	title = rd_apa.25.t
+	desc = rd_apa.25.d
+	picture = GFX_USB_mena
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.25.a
+		country_event = {
+			id = rd_apa.26
+			days = 2
+			random_hours = 18
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.26
+	title = rd_apa.26.t
+	desc = rd_apa.26.d
+	picture = GFX_USB_oval_office_night
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.26.a
+		country_event = {
+			id = rd_apa.27
+			days = 2
+			random_hours = 18
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.27
+	title = rd_apa.27.t
+	desc = rd_apa.27.d
+	picture = GFX_USB_release
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.27.a
+		country_event = {
+			id = rd_apa.28
+			days = 2
+			random_hours = 18
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.28
+	title = rd_apa.28.t
+	desc = rd_apa.28.d
+	picture = GFX_cybertrot
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.28.a
+		country_event = {
+			id = rd_apa.29
+			days = 2
+			random_hours = 18
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.29
+	title = rd_apa.29.t
+	desc = rd_apa.29.d
+	picture = GFX_PRC_congqing_nightscape
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.29.a
+		country_event = {
+			id = rd_apa.30
+			days = 2
+			random_hours = 18
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.30
+	title = rd_apa.30.t
+	desc = rd_apa.30.d
+	picture = GFX_APA_soviet_flag
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.30.a
+		hidden_effect = {
+			random = {
+				chance = 1
+				country_event = {
+					id = rd_apa.31
+					days = 5
+					random_hours = 18
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = rd_apa.31
+	title = rd_apa.31.t
+	desc = rd_apa.31.d
+	picture = GFX_Event_easter_LJ
+	is_triggered_only = yes
+
+	option = {
+		name = rd_apa.31.a
+	}
+}
+

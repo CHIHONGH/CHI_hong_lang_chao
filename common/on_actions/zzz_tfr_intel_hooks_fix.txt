@@ -1,0 +1,61 @@
+# TFR Operation Crash Fix - on_actions part
+#
+# The Fire Rises declares replace_path="common/on_actions", which drops the
+# whole vanilla folder, and never re-declares the intelligence callbacks below.
+# The engine then logs "On action ... has not been defined" for them.
+# This file re-registers them as empty implementations (no gameplay logic).
+#
+# NOTE: this alone does NOT fix the crash - the actual crash fix lives in
+#       common/operations/PRC_MSS_operations.txt. See README.txt.
+
+on_actions = {
+
+	on_operation_completed = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_operative_death = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_operative_captured = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_operative_on_mission_spotted = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_operative_detected_during_operation = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_fully_decrypted_cipher = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_activated_active_decryption_bonuses = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+	on_coup_succeeded = {
+		effect = {
+			# intentionally empty
+		}
+	}
+
+}

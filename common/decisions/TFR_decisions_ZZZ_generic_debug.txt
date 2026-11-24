@@ -1,0 +1,1197 @@
+debug_decisions = {
+	remove_all_ideas_and_dynamic_modifiers = {
+		icon = generic_political_rally
+		ai_will_do = {
+			factor = 0
+		}
+		allowed = {
+			is_ai = no
+		}
+		complete_effect = {
+			remove_all_national_spirits = yes
+		}
+	}
+	#removing this cringe
+	generic_increase_industrial_development_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+		}
+		remove_effect = {
+		}
+	}
+	generic_decrease_industrial_development_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = -0.1
+			}
+			add_industrial_development = yes
+		}
+		remove_effect = {
+		}
+	}
+	generic_increase_compliance_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+			any_controlled_state = {
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				add_compliance = 10
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_update_economy_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_GDP = yes
+			}
+		}
+	}
+	generic_have_sex_debug_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 270
+		fixed_random_seed = no
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						OR = {
+							tag = MEX
+							tag = ZAP
+						}
+					}
+					MEX = {
+						set_nationality = {
+							target_country = PRC
+							character = PRC_zhe_ergen
+						}
+						set_nationality = {
+							target_country = PRC
+							character = PRC_east_dawn
+						}
+						set_nationality = {
+							target_country = PRC
+							character = PRC_minecraft
+						}
+						set_nationality = {
+							target_country = PRC
+							character = PRC_sgndkh
+						}
+						set_nationality = {
+							target_country = PRC
+							character = PRC_loyal_oldman
+						}
+						set_nationality = {
+							target_country = PRC
+							character = PRC_iiiiii
+						}
+						set_nationality = {
+							target_country = PRC
+							character = PRC_wood_in_ash
+						}
+					}
+					PRC = {
+						promote_character = PRC_wood_in_ash
+						set_country_flag = RD_easter_enabled
+					}
+					set_country_flag = RD_easter_enabled
+				}
+			}
+			
+			random_list = {
+				50 = {
+					add_manpower = 1
+				}
+				40 = {
+				}
+				10 = {
+					add_manpower = -1
+				}
+			}
+		}
+	}
+	generic_eat_ze_bug_debug_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		fixed_random_seed = no
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			country_event = germany.999
+		}
+		remove_effect = {
+			add_stability = 1
+			add_war_support = -1
+			set_cosmetic_tag = GER_WEF_world
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = GER_wef_long
+				name = GER_wef
+			}
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = GER_klaus_schwab_char
+				picture = "gfx/leaders/GER/GER_Klaus_Schwab.png"
+				expire = "1.1.1.1"
+				ideology = ultraglobalism
+				traits = {
+					hos_the_architect
+				}
+			}
+		}
+	}
+	generic_textcolor_showcase_debug_decision = {
+		icon = generic_ignite_civil_war
+		fixed_random_seed = no
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+		}
+	}
+
+	RD_chase_the_moon_debug = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			custom_effect_tooltip = RD_chase_the_moon_debug_tt
+			set_variable = {
+                PRC_NEMS_level = 6
+            }
+            set_variable = {
+                NEMS_consumer_goods_factor_dynamic_var = -0.15
+            }
+            set_variable = {
+                NEMS_expense_growth_factor_dynamic_var = 0.4
+            }
+            set_variable = {
+                NEMS_production_speed_buildings_factor_dynamic_var = 0.325
+            }
+            set_variable = {
+                NEMS_production_factory_start_efficiency_factor_dynamic_var = 0.3
+            }
+            set_variable = {
+                NEMS_production_factory_max_efficiency_factor_dynamic_var = 0.425
+            }
+            set_variable = {
+                NEMS_global_building_slots_factor_dynamic_var = 0.325
+            }
+            set_variable = {
+                NEMS_personal_value_factor_dynamic_var = 0.35
+            }
+            set_variable = {
+                NEMS_business_value_factor_dynamic_var = 0.35
+            }
+            set_variable = {
+                NEMS_society_development_monthly_dynamic_var = 0.03
+            }
+            set_variable = {
+                NEMS_farming_development_monthly_dynamic_var = 0.03
+            }
+            set_variable = {
+                NEMS_industrial_development_monthly_dynamic_var = 0.03
+            }
+			effect_tooltip = {
+				add_ideas = PRC_NEMS_cheat
+			}
+			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = {
+							has_dynamic_modifier = PRC_NEMS_dynamic
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = PRC_NEMS_dynamic
+					}
+				}
+			}
+			
+		}
+	}
+
+	RD_secret_income_debug = {
+		icon = GFX_PRC_liberal_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 150
+		modifier = {
+			misc_income = 300
+		}
+	}
+
+	RD_defend_RD_debug = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 90
+		modifier = {
+			army_core_attack_factor = 1
+			army_core_defence_factor = 1
+		}
+	}
+	RD_high_damage_debug = {
+		icon = GFX_PRC_nationalist_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 60
+		modifier = {
+			army_attack_factor = 1
+			army_defence_factor = 1
+		}
+	}
+	RD_tide_out_debug = {
+		icon = GFX_PRC_liberal_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_stability = 1
+			set_war_support = 1
+			custom_effect_tooltip = RD_tide_out_debug_tt
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_pp_var > 0
+					}
+				}
+				set_variable = {
+					PPRC_pp_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_pp_g_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_pp_g_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_pp_factor_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_pp_factor_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_st_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_st_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_st_week_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_st_week_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_ws_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_ws_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_consumer_var > 0
+					}
+				}
+				set_variable = {
+					PPRC_consumer_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_infrust_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_infrust_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_building_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_building_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_factory_output_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_factory_output_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_line_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_line_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_start_efficiency_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_start_efficiency_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_max_efficiency_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_max_efficiency_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_efficiency_gain_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_efficiency_gain_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_research_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_research_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_conscription_factor_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_conscription_factor_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_income_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_income_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_business_value_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_business_value_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_personal_value_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_personal_value_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_expense_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_expense_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_expense_factor < 0
+					}
+				}
+				set_variable = {
+					PPRC_expense_factor = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_org_factor_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_org_factor_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_org_regain_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_org_regain_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_army_strength_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_army_strength_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_attack_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_attack_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_defence_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_defence_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_reinforce_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_reinforce_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_society_dev_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_society_dev_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_military_dev_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_military_dev_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_poverty_dev_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_poverty_dev_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_industry_dev_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_industry_dev_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_academic_dev_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_academic_dev_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_farming_dev_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_farming_dev_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_drift_defence_factor_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_drift_defence_factor_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_ad_drift_var > 0
+					}
+				}
+				set_variable = {
+					PPRC_ad_drift_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_nt_drift_var > 0
+					}
+				}
+				set_variable = {
+					PPRC_nt_drift_var = 0
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = {
+						PPRC_income_var < 0
+					}
+				}
+				set_variable = {
+					PPRC_income_var = 0
+				}
+			}
+			force_update_dynamic_modifier = yes
+
+		}
+		
+	}
+	RD_high_damage_debug = {
+		icon = GFX_PRC_nationalist_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 60
+		modifier = {
+			army_attack_factor = 1
+			army_defence_factor = 1
+		}
+	}
+
+	RD_loong_warrior_debug = {
+		icon = GFX_PRC_nationalist_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			custom_effect_tooltip = RD_loong_warrior_debug_tt
+			hidden_effect = {
+				remove_country_leader_trait = hos_red_dragon_rider
+				remove_country_leader_trait = hos_red_dragon_rider_1
+				remove_country_leader_trait = hos_red_dragon_rider_2
+				remove_country_leader_trait = hos_red_dragon_rider_nl
+				remove_country_leader_trait = hos_red_dragon_rider_hu
+			}
+			add_country_leader_trait = hos_dragon_warrior
+		}
+	}
+
+	RD_yours_is_mine_debug = {
+		icon = GFX_PRC_nationalist_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		available = {
+			OR = {
+				has_war_with = CHI
+				has_global_flag = USA_american_civil_war_over_global
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 70
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_with = CHI
+				}
+				add_timed_idea = {
+					idea = PRC_Counter_revolutionary_center_I_idea
+					days = 70
+				}
+				add_timed_idea = {
+					idea = PRC_Communist_military_revolution_I_idea
+					days = 70
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						country_exists = PTF
+					}
+					if = {
+						limit = {
+							PTF = {
+								has_idea = PTF_Counter_revolutionary_center_I_idea
+							}
+						}
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_I_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_I_idea
+							days = 70
+						}
+					}
+					else_if = {
+						limit = {
+							PTF = {
+								has_idea = PTF_Counter_revolutionary_center_II_idea
+							}
+						}
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_II_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_II_idea
+							days = 70
+						}
+					}
+					else_if = {
+						limit = {
+							PTF = {
+								has_idea = PTF_Counter_revolutionary_center_III_idea
+							}
+						}
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_III_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_III_idea
+							days = 70
+						}
+					}
+					else = {
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_I_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_I_idea
+							days = 70
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						country_exists = USB
+					}
+					if = {
+						limit = {
+							USB = {
+								has_idea = USB_Counter_revolutionary_center_I_idea
+							}
+						}
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_I_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_I_idea
+							days = 70
+						}
+					}
+					else_if = {
+						limit = {
+							USB = {
+								has_idea = USB_Counter_revolutionary_center_II_idea
+							}
+						}
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_II_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_II_idea
+							days = 70
+						}
+					}
+					else_if = {
+						limit = {
+							USB = {
+								has_idea = USB_Counter_revolutionary_center_III_idea
+							}
+						}
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_III_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_III_idea
+							days = 70
+						}
+					}
+					else = {
+						add_timed_idea = {
+							idea = PRC_Counter_revolutionary_center_I_idea
+							days = 70
+						}
+						add_timed_idea = {
+							idea = PRC_Communist_military_revolution_I_idea
+							days = 70
+						}
+					}
+				}
+				else = {
+					add_timed_idea = {
+						idea = PRC_Counter_revolutionary_center_I_idea
+						days = 70
+					}
+					add_timed_idea = {
+						idea = PRC_Communist_military_revolution_I_idea
+						days = 70
+					}
+				}
+			}
+		}
+	}
+
+	RD_burn_ash_debug = {
+		icon = GFX_PRC_nationalist_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 70
+		modifier = {
+			air_attack_factor = 0.3
+			air_defence_factor = 0.3
+			air_agility_factor = 0.3
+			air_ground_attack = 0.5
+			ground_attack_factor = 0.5
+		}
+	}
+
+	RD_stop_begging_debug = {
+		icon = GFX_PRC_nationalist_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 365
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = JAP
+						tag = PTF
+						tag = USB
+						tag = AST
+						tag = NZL
+						tag = PNG
+					}
+					NOT = {
+						is_in_faction_with = PRC
+					}
+				}
+				add_timed_idea = {
+					idea = JAP_shame_defeat
+					days = 365
+				}
+			}
+		}
+	}
+
+	RD_china_2185_debug = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 70
+		modifier = {
+			political_power_gain = 5
+		}
+	}
+
+	RD_snake_out_of_hole_debug = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		days_remove = 30
+		modifier = {
+			authoritarian_democrat_drift = -1
+			nationalist_drift = -1
+		}
+	}
+
+	RD_the_last_wish_debug = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 10
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 5
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 3
+			}
+		}
+		
+	}
+
+	RD_give_it_all_debug = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = PRC
+		}
+		visible = {
+			is_ai = no
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			custom_effect_tooltip = RD_give_it_all_debug_tt
+			activate_decision = RD_chase_the_moon_debug
+			activate_decision = RD_secret_income_debug
+			activate_decision = RD_defend_RD_debug
+			activate_decision = RD_high_damage_debug
+			activate_decision = RD_tide_out_debug
+			activate_decision = RD_loong_warrior_debug
+			activate_decision = RD_yours_is_mine_debug
+			activate_decision = RD_burn_ash_debug
+			activate_decision = RD_stop_begging_debug
+			activate_decision = RD_china_2185_debug
+			activate_decision = RD_snake_out_of_hole_debug
+			activate_decision = RD_the_last_wish_debug
+
+		}
+	}
+}
+
+zzz_anticheat = {
+	zzz_anticheat = {
+		visible = {
+			tag = ZZZ
+		}
+		available = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 999
+		}
+		complete_effect = {
+			SOV_second_defeat = yes
+			PRC_dissolve_japan = yes
+			PAK = {
+				country_event = PAK.14
+			}
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				country_event = china.666
+			}
+			PRC = {
+				add_ideas = PRC_nationalist_insurgency
+				add_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+				add_ideas = PRC_bombing_raids
+				country_event = china.248
+				country_event = china.249
+				country_event = china.44
+				country_event = china.45
+				country_event = china.46
+				country_event = china.47
+				country_event = china.48
+				country_event = china.49
+				country_event = china.50
+				country_event = china.51
+			}
+		}
+	}
+	hotline_miami_check_mission = {
+		icon = GFX_decision_generic_crossed_guns
+		allowed = { 
+			tag = ZZZ
+		}
+		activation = {
+			always = no
+		}
+		available = { 
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 150
+		complete_effect = {			
+		}
+		timeout_effect = {
+		}
+	}
+	eye_of_the_storm_check_decision = {
+		visible = {
+			tag = ZZZ
+			USC = {
+				has_achievements_enabled = yes
+			}
+		}
+		available = {
+			USC = {
+				has_war_with = APA
+				has_war_with = PTF
+			}
+		}
+		ai_will_do = {
+			factor = 999
+		}
+		complete_effect = {
+			set_global_flag = USC_eye_of_the_storm_conditions_fulfilled
+		}
+	}
+}
